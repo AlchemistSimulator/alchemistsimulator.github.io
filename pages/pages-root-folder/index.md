@@ -42,7 +42,13 @@ widget3:
   If you need to create your own incarnation, you should check our developer instructions and documentation first.'
 permalink: /index.html
 ---
+ <center>
+  <img src="images/unibo-seal.png"></img>
+  <p>Alchemist has been created at University of Bologna by the APICe research group.</p>
+ </center>
+
 
 This example simulation executed in Alchemist shows a group of pedestrians dynamically steered in the city of London. More information about this example can be found in [this scientific paper](http://dl.acm.org/citation.cfm?id=2773424).
+
 
 <iframe src="https://vid.me/e/gsIm?stats=1&amp;tools=1" width="1000" height="560" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="no"></iframe>
