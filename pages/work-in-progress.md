@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "Work in progress"
-meta_title: "Contact and use our contact form"
+meta_title: "This page is not ready yet"
 subheadline: "We are not at this point yet"
 teaser: "Sometimes, working hard isn't enough."
 permalink: "/work-in-progress.html"
