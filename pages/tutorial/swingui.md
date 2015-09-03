@@ -122,10 +122,51 @@ By moving the slider on the right-hand side, the frequency of the updates will b
 
 The current progression of the simulation is displayd in the upper right corner. The top number is the simulated time, and it is a positive real number. The bottom number counts how many steps have been executed, and as such is a positive integer. Both numbers start at zero.
 
-### Tuning the simulation aspect
+## Tuning the simulation aspect
 
+### Default aspect
+
+By default, there will be little information available from the UI:
+
+* A background image, that will depend upon the specific environment. It could be completely white, it could be an indoor map, or it could be an image from OpenStreetMap.
+* Nodes marked as black points, except for the one closest to the user's mouse position, that will be highlighted (currently in yellow and red). Moving the mouse around should make the highlighted node change.
+* In case the user leaves the mouse on a point in the background, a tooltip will appear indicating the exact position and the id of the closest node.
+
+### Moving around
+
+The user interface allows for a series of view port manipulations.
+
+#### Pan
+
+Moves the view port around. It is controlled by drag-and-drop with the primary mouse button. Click the point you are interested to move, drag where it should be, then drop.
+
+![Zoom in]({{ site.url }}/pages/tutorial/images/pan1.png)
+![Zoom out]({{ site.url }}/pages/tutorial/images/pan2.png)
+
+
+#### Zoom
+Enlarges or reduces the portion of space drawn in the view port. It is controlled by the mouse wheel. Roll up to zoom in, roll down to zoom out. The point in which the mouse is located will be the center of the zoom (much like the behavior of Google Maps and other similar services). There is [an open issue regarding the sensibility](https://github.com/DanySK/alchemist/issues/8), so be warned that you may not be able to get exactly at the level you wished.
+
+![Zoom in]({{ site.url }}/pages/tutorial/images/zoomin.png)
+![Zoom out]({{ site.url }}/pages/tutorial/images/zoomout.png)
+
+#### Rotate
+Rotates the view port. It is controlled by the right mouse button drag-and-drop.
+
+![Zoom in]({{ site.url }}/pages/tutorial/images/rotate.png)
+
+#### Lock and follow
+Locks the center of the view port on a node. If the node moves, the view port will move accordingly. The resulting effect looks like the interface of some top-down 2D videogames (among the most diffused: [Grand Theft Auto](https://en.wikipedia.org/wiki/Grand_Theft_Auto_(video_game)) and [Hotline Miami](https://en.wikipedia.org/wiki/Hotline_Miami)). It can be useful to record videos that focus on a specific node moving around. To switch in this mode, click with the central mouse button on the node you intend to follow. Once done, pan gets disabled and the selected node will be at the center of the view port. Rotation and zoom will work as before. To return in normal mode, press the central mouse button again.
 Work in progress: zoom, pan, lock
 
-### Exporting the simulation results
+### Applying effects
+
+
+
+## Getting information from the simulation
+
+### Exploring the content of a node
+
+### Exporting data
 
 Work in progress: monitor attachment
