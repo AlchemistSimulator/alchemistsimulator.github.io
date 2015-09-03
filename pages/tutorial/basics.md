@@ -27,11 +27,11 @@ The world of Alchemist is composed of the following entities:
 * [**Concentration**]({{ site.url }}/javadoc/it/unibo/alchemist/model/interfaces/IConcentration.html)
   * Value associated to a particular *molecule*
   * If Alchemist were an imperative programming language, a *concentration* would have been the abstraction of value associated to a variable
-* [**Node**]({{ site.url }}/javadoc/it/unibo/alchemist/model/interfaces/INode.html)
+* [**Node**][INode]
   * Container of *molecules*
   * Container of *reactions*
   * Lives inside an *environment*
-* [**Environment**]({{ site.url }}/javadoc/it/unibo/alchemist/model/interfaces/IEnvironment.html)
+* [**Environment**][IEnvironment]
   * The *environment* is the Alchemist abstration for the space. It is a container for *nodes*, and it is able to tell:
     1. Where the nodes are in the space - i.e. their *position*
     2. How distant are two *nodes*
@@ -40,10 +40,10 @@ The world of Alchemist is composed of the following entities:
   * Is a function of the current status of the environment that associates to each *node* a *neighborhood*
 * [**Neighborhood**]({{ site.url }}/javadoc/it/unibo/alchemist/model/interfaces/INeighborhood.html)
   * An entity composed by a *node* (centre) and a set of *nodes* (neighbors)
-* [**Reaction**]({{ site.url }}/javadoc/it/unibo/alchemist/model/interfaces/IReaction.html)
+* [**Reaction**][IReaction]
   * Any event that can change the status of the *environment* is a *reaction*
   * Each *node* has a (possibly empty) set of *reactions*
-  * It is composed of a (possibly empty) list of *conditions*, one or more *actions*, and a *time distribution*
+  * It is composed of a (possibly empty) list of *conditions*, one or more *actions*, and a [*time distribution*][TimeDistribution]
   * The frequency at which it happens depends on:
     1. A static "rate" parameter
     2. The value of each *condition*
@@ -231,6 +231,12 @@ Basically, this XML specifies:
 
 * Which Java class will effectively implement any instance of each model entity
 * Which parameters should be passed to its constructor
+  * There are some special parameter values that are worth mentioning:
+    * ``ENV`` passes a reference to the current environment. If your class takes an instance of [``IEnvironment``][IEnvironment] in its constructor, you probably want it to be the current environment, and as such you want to write an attribute like ``p0="ENV"``
+    * ``NODE`` bounds to a reference with the [current node][INode]. This is only available inside a ``<node></node>`` block.
+    * ``TIMEDIST`` bounds to the [time distribution][TimeDistribution] defined more recently. This block is valid also *outside* the ``<timedist/>`` block.
+    * ``REACTION`` bounds to the current [reaction][Reaction]. This is only available inside a ``<reaction></reaction>`` block.
+    * ``RANDOM`` bounds to the current simulation's own [random engine][RandomEngine]. This attribute value is available throughout the whole file. Any time you need to inject randomness in your classes, you should define a constructor taking a [``RandomEngine``][RandomEngine] parameter as input, and initialize it using an attribute like ``p0="RANDOM"``. Failing in doing so **will** prevent simulation seeding and reproducibility, since only one random generator per simulation is allowed.
 * Where nodes should initially be
 
 As an example, consider this is a minimal specifications, that simulates... nothing, since there are no nodes:
@@ -248,3 +254,9 @@ As an example, consider this is a minimal specifications, that simulates... noth
 Even though you can write XML files by hand, our suggestion is to write your own Alchemist XML code generator based on a domain specific language. Alchemist XML generators are provided for the shipped incarnations in form of [Eclipse](https://eclipse.org) plug-ins. Instructions on how to install and use them is provided in other tutorial chapters.
 
 The reason why you should really use a code generator, is that the Alchemist XML is extremely verbose, since each node has its own description.
+
+[IEnvironment]: {{ site.url }}/javadoc/it/unibo/alchemist/model/interfaces/IEnvironment.html
+[INode]: {{ site.url }}/javadoc/it/unibo/alchemist/model/interfaces/INode.html
+[IReaction]: {{ site.url }}/javadoc/it/unibo/alchemist/model/interfaces/IReaction.html
+[TimeDistribution]: {{ site.url }}/javadoc/it/unibo/alchemist/model/interfaces/TimeDistribution.html
+[RandomEngine]: {{ site.url }}/javadoc/it/unibo/alchemist/external/cern/jet/random/engine/RandomEngine.html
