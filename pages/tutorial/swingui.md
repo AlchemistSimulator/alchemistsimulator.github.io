@@ -5,6 +5,7 @@ meta_title: "The Alchemist's Graphical Interface"
 subheadline: "Learn the basics!"
 teaser: "Alchemist is equipped with a Java Swing graphical interface, and here is how to use it."
 permalink: "pages/tutorial/swingui/"
+comments: true
 #categories:
 #    - design
 header:
@@ -140,8 +141,8 @@ The user interface allows for a series of view port manipulations.
 
 Moves the view port around. It is controlled by drag-and-drop with the primary mouse button. Click the point you are interested to move, drag where it should be, then drop.
 
-![Zoom in]({{ site.url }}/pages/tutorial/images/pan1.png)
-![Zoom out]({{ site.url }}/pages/tutorial/images/pan2.png)
+![Pan]({{ site.url }}/pages/tutorial/images/pan1.png)
+![Pan]({{ site.url }}/pages/tutorial/images/pan2.png)
 
 
 #### Zoom
@@ -153,15 +154,144 @@ Enlarges or reduces the portion of space drawn in the view port. It is controlle
 #### Rotate
 Rotates the view port. It is controlled by the right mouse button drag-and-drop.
 
-![Zoom in]({{ site.url }}/pages/tutorial/images/rotate.png)
+![Rotation]({{ site.url }}/pages/tutorial/images/rotate.png)
 
 #### Lock and follow
 Locks the center of the view port on a node. If the node moves, the view port will move accordingly. The resulting effect looks like the interface of some top-down 2D videogames (among the most diffused: [Grand Theft Auto](https://en.wikipedia.org/wiki/Grand_Theft_Auto_(video_game)) and [Hotline Miami](https://en.wikipedia.org/wiki/Hotline_Miami)). It can be useful to record videos that focus on a specific node moving around. To switch in this mode, click with the central mouse button on the node you intend to follow. Once done, pan gets disabled and the selected node will be at the center of the view port. Rotation and zoom will work as before. To return in normal mode, press the central mouse button again.
-Work in progress: zoom, pan, lock
 
-### Applying effects
+### Visual effects
 
+The "View" tab includes the tools to colorize your nodes depending on their status.
 
+#### Seeing neighborhoods
+
+The first feature of the view tab is the possibility to display the network of connections between nodes. By pressing "Draw the links", a gray line will connect each node to its neighbors.
+
+![Display Links]({{ site.url }}/pages/tutorial/images/links.png)
+
+#### The effect stack
+
+The drawing of nodes is demanded to a stack of effects. When a drawing request arrives, the first effect is popped out of the stack, and applied to all nodes. Then, the second one is popped and applied, and so on until all have been applied. Each effect may make some drawing, and each subsequent one may draw about the previous ones, adding or replacing visual information.
+
+![Effect control]({{ site.url }}/pages/tutorial/images/effectcontrol.png)
+
+The effect stack can be controlled with the buttons pictured above. Effects are listed as colored bars. These bars can be selected. The possible operations are:
+
+* **Add a new effect** --- Loads the compatible classes present in the classpath (implementations of [``Effect``]({{ site.url }}/javadoc/it/unibo/alchemist/boundary/gui/effects/Effect.html)), and asks the user which one she desires to load. If confirmed, initializes an instance of such effect and pushes it on the stack.
+* **Remove selected** --- Removes the selected effect from the stack
+* **< (demote)** --- Reduces the priority of the effect (demotes its position on the stack). The effect will be applied before, and as such the ones that come after that may draw above it.
+* **> (promote)** --- Raises the priority of the effect (promotes its position on the stack). The effect will be applied later, and as such it may draw above other effects.
+* **Save** --- Saves, in a user-defined location, the current effect stack in ``.aes`` format.
+* **Load** --- Prompts the user for a ``.aes`` file. If one such file is selected, it becomes the current effect stack, *replacing the previous*. Remember to save before loading if you do not want to lose your current stack.
+
+#### Modifying the effects
+
+By default, a single effect of class [``DrawShape``](DrawShape) is loaded, and displays any node as a small black point. Any effect, however, can be tuned by clicking on it. On click, a frame will appear displaying the editable settings. This is the window you should use to tune the aspect of your simulation.
+
+![Effect editor]({{ site.url }}/pages/tutorial/images/effecteditor.png)
+
+In the case of [``DrawShape``][DrawShape], this is the configuration screen. The possible configurations are:
+
+##### Incarnation to use
+Loads all the available incarnations (implementations of [Incarnation][Incarnation]) and lets the user choose which one to use. This is a *very important* configuration option in case you want to tune your effect based on the content of a node, which is something rather common. If you do not select the correct incarnation, it is very likely that the content won't be matched correctly, and as such you effect will not be applied as expected (which may mean that it gets not applied at all, or that it gets applied in an unwanted fashion). To be sure, always select the actual incarnation you are using in your simulation.
+
+##### Mode
+The kind of shape to draw. Currently there are available:
+  * *Fill Ellipse* --- Draws an ellipse (a circumference by default) and fills it with the proper color
+  * *Fill Rectangle* --- Draws a rectangle (a square by default) and fills it with the proper color
+  * *Draw Ellipse* --- Draws an ellipse (a circumference by default) of the proper color
+  * *Draw Rectangle* --- Draws a rectangle (a square by default) of the proper color
+
+##### R, G, B, A
+These sliders determine the base color applied by this effect, using the [RGBA color space][RGBA]. In short, R stands for red, G for green, B for blue, and A for alpha (namely, the transparency). The chosen color may be later transformed by node content based color tuning.
+
+##### Scale factor
+The ratio between horizontal and vertical dimension of the shape. Changing such value  for an ellipse will make it [eccentric][eccentricity]. Changing it for a rectangle will make it less and less similar to a square.
+
+##### Size
+How big (in pixel) the nodes should appear.
+
+##### Draw only nodes containing a molecule and Molecule
+This combo box and text field determines whether or not all the nodes should get drawn. If it is selected, then a [``IMolecule``][IMolecule] will be produced with the content of the textfield by calling [``IMolecule Incarnation.createMolecule(String)``][create molecule], and only the nodes in which such [``IMolecule``][IMolecule] is present will get the effect applied. Since the specific conversion between [``String``][String] and [``IMolecule``][IMolecule] is delegated to such method, the specific [``IMolecule``][IMolecule] created will depend on the [``Incarnation``][Incarnation] chosen. See "Incarnation to use".
+
+##### Other options: fine color tuning based on contents
+The set of these options is used to modify the base color depending on the [concentration][IConcentration] of a [``IMolecule``][IMolecule]. As explained in [the basics]({{site.url}}/pages/tutorial/basics/), the [concentration][IConcentration] is just the value associated with some [``IMolecule``][IMolecule], and its actual type depends on the specific [``Incarnation``][Incarnation]. Again, make sure that you have chosen the correct one. See "Incarnation to use".
+
+All the fields of this part of the form make sense iff "Tune colors using a molecule property" is enabled. Otherwise, they are just ignored.
+
+"Molecule property" is the [``String``][String] that will be passed down to extract the value of a property (in form of a real number) from each node. To better understand how it works, consider the method [``double Incarnation.getProperty(INode, IMolecule, String)``][molecule property]. This method will be called for each node where the effect should be applied passing as parameters: the node, the [``IMolecule``][IMolecule] matched in the "Molecule" textfield, and the [``String``][String] of the text field "Molecule property": the meaning of such [``String``][String] is **very** incarnation-dependent.
+The numeric result obtained is then mapped into the [0:1] range as follows:
+
+* Let ``G`` be the value of the slider "Property order of magnitude"
+* Let ``m`` be the value of the slider "Minimum property value"
+* Let ``M`` be the value of the slider "Maximum property value"
+* Let ``P`` be the value returned by [the method][molecule property]
+* Let ``x`` be the value mapped to the [0:1] range
+* Then:
+
+![Conversion formula]({{ site.url }}/pages/tutorial/images/latex.png)
+
+Basically, it is mapped linearly, and the order of magnitude is the same for minimum and maximum. Values out of the bounds are considered equal to the bounds. In case "Reverse effect" is enabled, after such processing also ``x`` is changed according to the formula: ``x = 1 - x``.
+
+Our number ``x`` is then used to force the value on one of the color channels, selected with the option "Channel to use". The original value set by the base color with the sliders discussed above will get overridden by this value. Possible values are:
+
+* **Alpha**: overrides the transparency in the [RGBA color space][RGBA]. 0 maps to itself, 1 to 255, intermediate numbers are mapped linearly. This effect is very useful to create a "fade-out" or "fade-in" effect.
+* **Red**: overrides the value of the red channel in the [RGBA color space][RGBA]. 0 maps to itself, 1 to 255, intermediate numbers are mapped linearly. This effect is useful to fade:
+  * black to red and viceversa
+  * blue to magenta and viceversa
+  * green to yellow and viceversa
+  * white to cyan and viceversa
+* **Green**: overrides the value of the green channel in the [RGBA color space][RGBA]. 0 maps to itself, 1 to 255, intermediate numbers are mapped linearly. This effect is useful to fade:
+  * black to green and viceversa
+  * blue to cyan and viceversa
+  * red to yellow and viceversa
+  * white to magenta and viceversa
+* **Blue**: overrides the value of the blue channel in the [RGBA color space][RGBA]. 0 maps to itself, 1 to 255, intermediate numbers are mapped linearly. This effect is useful to fade:
+  * black to blue and viceversa
+  * green to cyan and viceversa
+  * red to magenta and viceversa
+  * white to yellow and viceversa
+* **Hue**: overrides the value of the hue channel in the [HSB color space][HSB]. 0 maps to itself, 1 maps to 360, intermediate numbers are mapped linearly. This effect is useful to fade circularly along all the color range (red-yellow-green-cyan-blue-magenta-red and viceversa). It can create nice color patterns, in particular if the red-yellow-green transition space is used.
+* **Saturation**: overrides the value of the saturation channel in the [HSB color space][HSB]. Values are not remapped. This effect is useful to fade from any color to white.
+* **Brightness**: overrides the value of the brightness channel in the [HSB color space][HSB]. Values are not remapped. This effect is useful to fade from any color to black.
+
+###### Writing properties when using SAPERE
+When using the SAPERE incarnation the string can be any variable included in the reference LSA. For instance, if you are tracking the LSA ``<gradient, 0, Value, Other, Data>``, one possible content for the property field could be ``Value``. In this case, in all the nodes where at least one matching LSA is present, one of them will be retrieved, and its third argument will get extracted and interpreted as a number with a best effort approach.
+
+###### Writing properties when using Protelis
+When using the Protelis incarnation, the molecules actually represent the environment variables, and as such matching a molecule can be translated into a search into the device local environment for a variable named as the molecule is. As a consequence, any variable that is pushed by means of a ``self.putEnvironmentVariable("varName", varVal)`` operation can be then used in the simulator for producing visual effects.
+Once a molecule/variable (they will be used interchangeably in the following) has been found, the property string can be any valid Protelis program *that does not perform operations on neighborhoods nor accesses ``self``*. The value matched will be bound to a variable named ``ans``.
+Let's consider an example. Let's suppose that all the nodes are running the following program:
+
+{% highlight java %}
+rep (d <- Infinity) {
+  mux (env.getEnvironmentVariable("source")) {
+    0
+  } else {
+    let nbrRange = self.getDeviceposition().getDistanceTo(nbr(self.getDeviceposition()));
+    minHood(nbr(d) + nbrRange)
+  }
+}
+{% endhighlight %}
+
+and suppose that we are interested in visualizing the program output. We may change the program as follows:
+
+{% highlight java %}
+let res = rep (d <- Infinity) {
+  mux (env.getEnvironmentVariable("source")) {
+    0
+  } else {
+    let nbrRange = self.getDeviceposition().getDistanceTo(nbr(self.getDeviceposition()));
+    minHood(nbr(d) + nbrRange)
+  }
+};
+self.putEnvironmentVariable("toTrack", res);
+res
+{% endhighlight %}
+
+Now, our environment will contain a ``toTrack`` [``IMolecule``][IMolecule]. In the "Molecule" text field we could enter ``toTrack``, while in the "Molecule property" field we may write just ``ans``. If we properly tune the range of values we want to display, then we would get a fading effect depending on the distance of each device from the nearest one containing a ``source`` environment variable set to ``true``.
+Since any Protelis program is supported, we could also write something like ``e ^ ans``. This would, for instance, create a logarithmic scale for the values. Another example could be: ``ans < 100``. In this case, devices closer than 100 distance units to a source will be marked with ``true``, that will in turn get translated as ``1``, and all the others will get ``false``, that will get translated to ``0``. This will create a visual segmentation into two groups of different colors. Playing with channels and property values sliders can allow a wide range of color combinations.
+Also more complex properties can be written, e.g. ``if (ans ^ 2 < 100) { 0 } else { pi ^ ans }``. Since this property string is fed to the very same interpreter that runs the actual Protelis code and the only difference is that a dummy execution context is used, any string that is also a valid Protelis program will work. Beware that it is largely possible that the returned valued is bound to ``NaN``, mainly because an Object is returned that cannot be interpreted as a number.
 
 ## Getting information from the simulation
 
@@ -170,3 +300,14 @@ Work in progress: zoom, pan, lock
 ### Exporting data
 
 Work in progress: monitor attachment
+
+[create molecule]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/Incarnation.html#createMolecule-java.lang.String-
+[DrawShape]: {{site.url}}/javadoc/it/unibo/alchemist/boundary/gui/effects/DrawShape.html
+[eccentricity]: https://en.wikipedia.org/wiki/Eccentricity_(mathematics)
+[HSB]: https://en.wikipedia.org/wiki/HSL_and_HSV
+[IConcentration]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/IConcentration.html
+[IMolecule]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/IMolecule.html
+[Incarnation]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/Incarnation.html
+[molecule property]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/Incarnation.html#getProperty-it.unibo.alchemist.model.interfaces.INode-it.unibo.alchemist.model.interfaces.IMolecule-java.lang.String-
+[RGBA]: https://en.wikipedia.org/wiki/RGBA_color_space
+[String]: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
