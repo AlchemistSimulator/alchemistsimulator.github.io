@@ -1,10 +1,10 @@
 ---
 layout: page-fullwidth
-title: "Graphical Interface"
-meta_title: "The Alchemist's Graphical Interface"
-subheadline: "Learn the basics!"
-teaser: "Alchemist is equipped with a Java Swing graphical interface, and here is how to use it."
-permalink: "pages/tutorial/swingui/"
+title: "Protelis"
+meta_title: "Protelis incarnation"
+subheadline: "A powerful distributed programming language"
+teaser: "Alchemist can simulate networks of situated devices running Protelis programs."
+permalink: "pages/tutorial/protelis/"
 comments: true
 #categories:
 #    - design
