@@ -295,12 +295,137 @@ Also more complex properties can be written, e.g. ``if (ans ^ 2 < 100) { 0 } els
 
 ## Getting information from the simulation
 
+A simulation has little use if the data it produces is not available. This section will cover the means to export data from the graphical interface of Alchemist.
+
 ### Exploring the content of a node
+
+First of all, we may be interested in exploring what is inside a node, in terms of content, reactions, and position. All this information is available through a double click on the node the user is interested in.
+
+![Node explorer]({{ site.url }}/pages/tutorial/images/export4.png)
+
+This view shows the current position of the node in the environment, its content in the form [``IMolecule.toString()``][IMolecule] > [``IConcentration.toString()``][IConcentration], and all the reactions programmed inside the node, along with their next programmed execution. Note that some events may get disabled and get scheduled to ``Infinity``, but other events may then make them executable again. This is due to the dependency graph, a structure in the engine inherited from stochastic-simulators that greatly improves performance in a variety of cases.
+
+The simulation flow controls are retained from the main perspective, so the simulation can be started, paused and executed step by step with no need to switch view.
 
 ### Exporting data
 
-Work in progress: monitor attachment
+Exporting data in a log file is achieved via so-called monitors. They are [listeners][observer pattern] of a [``ISimulation``][ISimulation], that get called:
+1. when the simulation is successfully initialized
+2. at each step that gets executed
+3. when the simulation concludes, either because of user intervention, or because it reached its final time.
 
+These monitors can be initialized and configured from the "Monitors" tab.
+
+![Node explorer]({{ site.url }}/pages/tutorial/images/export0.png)
+
+From this tab, it is possible to select the class of Monitor that should be initialized from a list of compatible classes automatically generated. At least two of them are incarnation-independent monitors that provide information about the [content of nodes][NodeInspector] or that count the [number of nodes surrounding a node][NumberOfNodesNextToANode].
+
+Once added, the monitor will appear on the UI, and can be detached at any time. Multiple monitors of the same class can be attached at the same time to a single simulation.
+
+![Node explorer]({{ site.url }}/pages/tutorial/images/export3.png)
+
+
+#### Configuring monitors
+
+The configuration of a monitor for exporting data is very similar to the configuration of the visual aspect of the simulation. Upon a click on a monitor, a frame will appear with configuration options. In the following, we will tell more about the incarnation-independent monitors.
+
+##### Common properties
+
+###### File path
+It is the location where the log file will be saved. By default it creates a new file in the user's home directory, with the date of initialization of the monitor.
+
+###### Value separator
+The separator between logged values on the same line. By default, it is `` `` (a single space). This would produce a log file that looks like:
+{% highlight matlab %}
+0.0 0 1
+1.0 2 1284.05415
+2.000154 4 1524.88965
+{% endhighlight %}
+If you want comma separated value or any other delimiter symbol, put it on this text field.
+
+###### Report time and report step
+Decides whether or not the simulation time and the simulation step at the time of sampling should appear in the log file.
+If you are just interested in mapping some property evolution over time, you may want to have your logs clear of unused information.
+The opposite situation occurs when you need to count the number of steps for achieving some result.
+By default, both switches are enabled
+
+###### Sampling mode
+You can choose when to log a value, if any some-time or any some-steps.
+By default, logging is time based.
+
+###### Sample space and order of magnitude
+You can decide how frequently you want to get a sample, by setting an order of magnitude and a value.
+Let ``S`` be the sample space and ``M`` be the order of magnitude, and ``U`` the unit of measure choosen in the sampling mode, the monitor will write a line on the log file every ``S·10^{M} U``. If the unit is an integer, it will be rounded to the closest value, with a minimum of 1.
+By default, it samples every ``1 U``
+
+##### [NodeInspector][NodeInspector]
+The node inspector logs properties based on the content of nodes. For instance, it is able to read and log the value of any [IMolecule][IMolecule].
+
+![Node explorer]({{ site.url }}/pages/tutorial/images/export1.png)
+
+###### Data aggregator
+Using this monitor produces one value for each node.
+Those values can be immediately aggregated by a stateless univariate statistic function.
+Alchemist relies on [Apache Math 3][Apache Math 3] and provides [a number of such functions][statistic functions].
+The most commonly used are ``MEAN``, ``STANDARD_DEVIATION`` and ``SUM``.
+If you do not wish your data to get aggregated, select ``NONE``.
+In case you do so, your log file will get one column for each sampled node, sorted by node id.
+
+###### Filter NaN values / with
+Specifies the policy to adopt in case of [``NaN`` (Not a Number)][NaN] values.
+``NaN`` can be returned for various reasons, frequently because, for instance, a node does not have the requested molecule, or because some property makes no sense on a matched molecule.
+If you are using an aggregator, a single ``NaN`` value will produce a NaN automatically in the log file.
+Frequently, this is unwanted behavior: for instance, if you are counting how many nodes contain a molecule, you may want to select ``SUM`` as aggregator and replace all ``NaN`` values with ``0`` (or just eliminate them, which yields the same result).
+In case you are computing a ``MEAN``, the behavior between forcing ``NaN`` to ``0`` or eliminating the values will produce different evaluations.
+Choose carefully how to treat such special value, depending on what you are measuring.
+By default, ``NaN`` values are filtered (see the checkbox) and eliminated.
+You can keep them by unchecking the checkbox or change the filtering policy in the combo box.
+
+###### Consider only a node id range
+The monitor will not explore any node, but only those whose ID is in the specified range.
+The range should be entered in the text field, and must be in the form: ``100-200``, namely integer numbers separated by a dash (or a space).
+Both values are inclusive, so if you only want to track a single node, say the number 1234, you can just write ``1234 1234``.
+Leave empty for tracking any node, or even better do not enable the checkbox.
+
+###### Incarnation
+As for the visual effects based on a property, this monitor is incarnation-independent, and as such it is required to specify which incarnation should be used to deduce properties and create appropriate molecules.
+Just make sure the incarnation displayed matches the one you are using in your simulation
+
+###### Track id
+If enabled, a new column for every node will be added containing the node id.
+This is useful in particular when you are not aggregating values, and you want to understand which node is holding some value.
+
+###### Track position
+Similar to the previous one, it adds a column for each node and each dimension, where the position of each node is annotated, with one entry for each dimension.
+If you are simulating in a scenario with 2000 nodes and a bidimensional environment, then enabling this option will push 4000 more columns to your log file at each sample.
+
+###### Separators
+These symbols will be considered separators on the last two text fields.
+Please note that the default set is not Protelis-friendly: semicolon, comma, colon and space are all symbols that may appear both in molecule and property names. Use a symbol you do not need (for instance, ``§`` is quite unused).
+
+###### Molecules
+A list of molecules to track.
+If a separator is present, then in that point the string will be considered separated and will generate two trackers.
+Molecules are created in the same way they are in the visual effect panel.
+
+###### Properties
+List of properties to track.
+The separator will work as it does for molecules.
+The properties listed will be evaluated for each molecule listed in the previous text field.
+
+##### [NumberOfNodesNextToANode][NumberOfNodesNextToANode]
+
+This monitor is a simple monitor that counts how many nodes are within some range from another one.
+
+![Node explorer]({{ site.url }}/pages/tutorial/images/export2.png)
+
+###### ID of the central node
+An integer that identifies the node that should be considered the center.
+
+###### Range
+How far a node can be from the central one and still get counted as close.
+
+[Apache Math 3]: http://commons.apache.org/proper/commons-math/
 [create molecule]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/Incarnation.html#createMolecule-java.lang.String-
 [DrawShape]: {{site.url}}/javadoc/it/unibo/alchemist/boundary/gui/effects/DrawShape.html
 [eccentricity]: https://en.wikipedia.org/wiki/Eccentricity_(mathematics)
@@ -308,6 +433,12 @@ Work in progress: monitor attachment
 [IConcentration]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/IConcentration.html
 [IMolecule]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/IMolecule.html
 [Incarnation]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/Incarnation.html
+[ISimulation]: {{site.url}}/javadoc/it/unibo/alchemist/core/interfaces/ISimulation.html
 [molecule property]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/Incarnation.html#getProperty-it.unibo.alchemist.model.interfaces.INode-it.unibo.alchemist.model.interfaces.IMolecule-java.lang.String-
+[NaN]: https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html#NaN
+[NodeInspector]: {{site.url}}/javadoc/it/unibo/alchemist/boundary/monitors/NodeInspector.html
+[NumberOfNodesNextToANode]: {{site.url}}/javadoc/it/unibo/alchemist/boundary/monitors/NumberOfNodesNextToANode.html
+[observer pattern]: https://en.wikipedia.org/wiki/Observer_pattern
 [RGBA]: https://en.wikipedia.org/wiki/RGBA_color_space
+[statistic functions]: https://commons.apache.org/proper/commons-math/apidocs/org/apache/commons/math3/stat/descriptive/AbstractStorelessUnivariateStatistic.html
 [String]: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
