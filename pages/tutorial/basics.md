@@ -107,7 +107,9 @@ The tool also includes a [graphical interface developed in Java Swing][UI] and a
 
 ### Writing simulations using YAML
 
-Alchemist uses YAML as incarnation-agnostic mean to write simulations.
+Alchemist uses YAML as incarnation-agnostic mean to write simulations. For details on the [YAML specification, we suggest referring to the official website](http://www.yaml.org/spec/1.2/spec.html).
+
+[This page]({{site.url}}/pages/tutorial/yaml) explains how YAML can be leveraged to write your simulations and exporting your data.
 
 ### Writing simulations using XML (deprecated)
 
