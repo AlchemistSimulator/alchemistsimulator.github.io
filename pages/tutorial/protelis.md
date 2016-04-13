@@ -10,6 +10,7 @@ comments: true
 #    - design
 header:
    image_fullwidth: "header_mol.png"
+
 ---
 
 
@@ -31,13 +32,13 @@ The Protelis incarnation provides:
 * An Alchemist-compatible implementation of the Protelis Network Manager and Execution Context
 * An [incarnation][ProtelisIncarnation] that includes proper methods to create Protelis-readable data items in form of [molecules][IMolecule] and methods to extract numeric properties from them
 * Proper actions, conditions and concentrations that allow for running Protelis code as a Alchemist reactions in Alchemist nodes
-* A domain-specific language that translates a compact environment description into the (very verbose) Alchemist XML equivalent
+* A (now deprecated) domain-specific language that translates a compact environment description into the (very verbose) Alchemist XML equivalent
 * An Eclipse plug-in that automatically runs such translation, also equipped with code highlight and code suggestions.
 
-## Writing Protelis simulations
+## Step by step tutorial
 This section will cover the creation of Alchemist simulations using the Protelis incarnation.
 
-### Install the Eclipse plugin
+## Usage of the deprecated domain-specific language
 * Download [the latest Eclipse for Java SE developers][eclipse]. Arch Linux users can use the package extra/eclipse-java, which is rather up-to-date.
 * Install Xtext
 	* In Eclipse, click Help -> Eclipse Marketplace...
@@ -87,17 +88,51 @@ place 100 nodes within rect (0,0,9,9) with program prog
 * If such file is correctly generated, your installation has been successful.
 
 ### Example 0: minimal specification
+
+Create a file (e.g. ``000.psim``) into your previously configured project.
+Type the following (use ``ctrl + space`` for code suggestions):
+
 {% highlight java %}
 default environment
 linking nodes in range 1
+
+protelis program program
+1
+@1
+
+place single node at point (0,0)
+with program program
 {% endhighlight %}
 
+It generates the following Alchemist xml in the ``src-gen`` folder:
 
+{% highlight xml %}
+<?xml version="1.0" encoding="UTF-8"?>
+<environment name="environment" type="Continuous2DEnvironment">
+	<concentration type="Local"></concentration>
+	<position type="Continuous2DEuclidean"></position>
+	<linkingrule type="EuclideanDistance" p0="1.0"></linkingrule>
+	<random type="MersenneTwister" seed="RANDOM"></random>
+	<node name="group_0_node_0" type="ProtelisNode" position="0.0,0.0">
+		<content></content>
+		<timedistribution name="time_protoprogram_p0" type="DiracComb" p0="0.07309677873766571" p1="1.0"></timedistribution>
+		<reaction name="protoprogram_p0" type="Event" p0="NODE" p1="TIMEDIST">
+			<action name="act_p0r0c0" type="ProtelisProgram" p0="ENV" p1="NODE" p2="REACTION" p3="RANDOM" p4="1"></action>
+		</reaction>
+		<timedistribution name="time_protoprogram_p0_send" type="ExponentialTime" p0="Infinity" p1="RANDOM"></timedistribution>
+		<reaction name="protoprogram_p0_send" type="ChemicalReaction" p0="NODE" p1="TIMEDIST">
+			<condition name="cond_p0r1c0" type="ComputationalRoundComplete" p0="NODE" p1="act_p0r0c0"></condition>
+			<action name="act_p0r1c0" type="SendToNeighbor" p0="NODE" p1="act_p0r0c0"></action>
+		</reaction>
+	</node>
+</environment>
+{% endhighlight %}
 
-### Example X: maps
+This file can be loaded in Alchemist. To understand how to do so, please refer to [our graphical interface tutorial][gui tutorial].
 
 [eclipse]: https://eclipse.org/downloads/
 [Field Calculus]: http://dx.doi.org/10.1007/978-3-642-45364-9_11
+[gui tutorial]: {{site.url}}/pages/tutorial/swingui
 [IMolecule]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/IMolecule.html
 [Protelis]: http://protelis.org
 [ProtelisIncarnation]: {{site.url}}/javadoc/it/unibo/alchemist/model/ProtelisIncarnation.html
