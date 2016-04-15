@@ -27,188 +27,17 @@ If you are new to Alchemist, we recommend to follow the remainder of this page, 
 
 As a first step, we recommend learning the YAML basics.
 The language is so simple and human readable that there is probably no better way to learn it than to read it directly.
-The following code is from [Learn X in Y minutes where X = YAML](https://learnxinyminutes.com/docs/yaml/), and should provide a good YAML guide (surely sufficient to follow the tutorial):
-
-{% highlight yaml %}
-# Comments in YAML look like this.
-
-################
-# SCALAR TYPES #
-################
-
-# Our root object (which continues for the entire document) will be a map,
-# which is equivalent to a dictionary, hash or object in other languages.
-key: value
-another_key: Another value goes here.
-a_number_value: 100
-# If you want to use number 1 as a value, you have to enclose it in quotes,
-# otherwise, YAML parser will assume that it is a boolean value of true.
-scientific_notation: 1e+12
-boolean: true
-null_value: null
-key with spaces: value
-# Notice that strings don't need to be quoted. However, they can be.
-however: "A string, enclosed in quotes."
-"Keys can be quoted too.": "Useful if you want to put a ':' in your key."
-
-# Multiple-line strings can be written either as a 'literal block' (using |),
-# or a 'folded block' (using '>').
-literal_block: |
-    This entire block of text will be the value of the 'literal_block' key,
-    with line breaks being preserved.
-
-    The literal continues until de-dented, and the leading indentation is
-    stripped.
-
-        Any lines that are 'more-indented' keep the rest of their indentation -
-        these lines will be indented by 4 spaces.
-folded_style: >
-    This entire block of text will be the value of 'folded_style', but this
-    time, all newlines will be replaced with a single space.
-
-    Blank lines, like above, are converted to a newline character.
-
-        'More-indented' lines keep their newlines, too -
-        this text will appear over two lines.
-
-####################
-# COLLECTION TYPES #
-####################
-
-# Nesting is achieved by indentation.
-a_nested_map:
-    key: value
-    another_key: Another Value
-    another_nested_map:
-        hello: hello
-
-# Maps don't have to have string keys.
-0.25: a float key
-
-# Keys can also be complex, like multi-line objects
-# We use ? followed by a space to indicate the start of a complex key.
-? |
-    This is a key
-    that has multiple lines
-: and this is its value
-
-# YAML also allows mapping between sequences with the complex key syntax
-# Some language parsers might complain
-# An example
-? - Manchester United
-  - Real Madrid
-: [ 2001-01-01, 2002-02-02 ]
-
-# Sequences (equivalent to lists or arrays) look like this:
-a_sequence:
-    - Item 1
-    - Item 2
-    - 0.5 # sequences can contain disparate types.
-    - Item 4
-    - key: value
-      another_key: another_value
-    -
-        - This is a sequence
-        - inside another sequence
-
-# Since YAML is a superset of JSON, you can also write JSON-style maps and
-# sequences:
-json_map: {"key": "value"}
-json_seq: [3, 2, 1, "takeoff"]
-
-#######################
-# EXTRA YAML FEATURES #
-#######################
-
-# YAML also has a handy feature called 'anchors', which let you easily duplicate
-# content across your document. Both of these keys will have the same value:
-anchored_content: &anchor_name This string will appear as the value of two keys.
-other_anchor: *anchor_name
-
-# Anchors can be used to duplicate/inherit properties
-base: &base
-    name: Everyone has same name
-
-foo: &foo
-    <<: *base
-    age: 10
-
-bar: &bar
-    <<: *base
-    age: 20
-
-# foo and bar would also have name: Everyone has same name
-
-# YAML also has tags, which you can use to explicitly declare types.
-explicit_string: !!str 0.5
-# Some parsers implement language specific tags, like this one for Python's
-# complex number type.
-python_complex_number: !!python/complex 1+2j
-
-# We can also use yaml complex keys with language specific tags
-? !!python/tuple [5, 7]
-: Fifty Seven
-# Would be {(5, 7): 'Fifty Seven'} in python
-
-####################
-# EXTRA YAML TYPES #
-####################
-
-# Strings and numbers aren't the only scalars that YAML can understand.
-# ISO-formatted date and datetime literals are also parsed.
-datetime: 2001-12-15T02:59:43.1Z
-datetime_with_spaces: 2001-12-14 21:59:43.10 -5
-date: 2002-12-14
-
-# The !!binary tag indicates that a string is actually a base64-encoded
-# representation of a binary blob.
-gif_file: !!binary |
-    R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
-    OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
-    +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
-    AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
-
-# YAML also has a set type, which looks like this:
-set:
-    ? item1
-    ? item2
-    ? item3
-
-# Like Python, sets are just maps with null values; the above is equivalent to:
-set2:
-    item1: null
-    item2: null
-    item3: null
-{% endhighlight %}
-
-Pretty easy, isn't it?
+My suggestion is to use the tutorial "[Learn X in Y minutes where X = YAML](https://learnxinyminutes.com/docs/yaml/)", it should provide a good YAML guide (surely sufficient to follow the tutorial):
 
 ### The Alchemist YAML
 
 Alchemist expects a YAML map as input. In the following, we'll discuss which keys it expects.
 Of course, the user is free to use all the YAML features (e.g. anchors) to organize her code and reduce duplication.
 
-#### The `incarnation` key
-
-The key `incarnation` is mandatory.
-
-It expects a string value.
-Such string will be used to get the most similarly named incarnation (the algorithm may vary), namely the subclass of [Incarnation][Incarnation] whose simple name is closest to the string.
-The (obvious) suggestion is to use an existing incarnation name, such as `sapere` or `protelis`.
-New incarnations may (and will) be available in future.
-
-**Example**
-
-{% highlight yaml %}
-incarnation: sapere
-{% endhighlight %}
-
-*Note:* this is also the most minimal acceptable alchemist specification
-
 #### Class loading with the Alchemist YAML
 
 One important aspect of the Alchemist YAML is the ability to let the user control which actual Java classes should be loaded inside a simulation, and which constructor should be used to do so.
-Almost every entity of an Alchemist simulation (incarnation being a notable exception) can be instanced using arbitrary Java classes.
+Almost every entity of an Alchemist simulation can be instanced using arbitrary Java classes that implement the required interfaces.
 When the alchemist YAML parser encounters an entity that is a YAML Map providing the keys `type` and `parameters`, it tries to resolve the value of the value associated to `type` to a class name, then tries to create the object with the constructor better suiting the provided `parameters`.
 
 **Class name resolution**
@@ -233,21 +62,137 @@ In this case, this would have been a valid `parameters` entry:
 parameters: [4, foo]
 {% endhighlight %}
 
-The value of `parameters` must be a YAML list.
+As you can easily infer, the value of `parameters` must be a YAML list.
 
-Don't despair if the class loading system is still unclear: it is used pervasively and will get clearer and clearer with the examples in the next sections.
+Don't despair if the class loading system is still unclear: it is used pervasively and it will get clearer and clearer with the examples in the next sections.
+
+#### The `incarnation` key
+
+The key `incarnation` is mandatory.
+
+It expects a string value, and does not support the class loading mechanism.
+Such string will be used to get the most similarly named incarnation (the algorithm may vary), namely the subclass of [Incarnation][Incarnation] whose simple name is closest to the string.
+The (obvious) suggestion is to use an existing incarnation name, such as `sapere` or `protelis`.
+New incarnations may (and will) be available in future.
+
+**Examples**
+
+{% highlight yaml %}
+incarnation: sapere
+{% endhighlight %}
+
+{% highlight yaml %}
+incarnation: protelis
+{% endhighlight %}
+
+*Note:* this is also the most minimal valid alchemist specification
+
+#### The `seeds` key
+
+> To be written
+
+#### The `environment` key
+
+The `environment` key is used to load the [Environment][Environment] implementation.
+It is optional, defaults to a [continuous bidimensional space][DefaultEnvironment], and supports the class loading mechanism with default search package `it.unibo.alchemist.model.implementations.environments`.
+
+**Examples**
+
+The following simulations are equivalent, and load the default environment (which is incarnation independent, here `protelis` is picked, but it works for any other incarnation as well):
+{% highlight yaml %}
+incarnation: protelis
+{% endhighlight %}
+{% highlight yaml %}
+incarnation: protelis
+environment:
+  type: Continuous2DEnvironment
+{% endhighlight %}
+{% highlight yaml %}
+incarnation: protelis
+environment:
+  type: it.unibo.alchemist.model.implementations.environments.Continuous2DEnvironment
+{% endhighlight %}
+{% highlight yaml %}
+incarnation: protelis
+environment:
+  type: Continuous2DEnvironment
+  parameters: []
+{% endhighlight %}
+
+The following simulation loads data from an Openstreetmap file (OSM XML and PBF formats are supported) located in the classpath in the folder `maps`:
+{% highlight yaml %}
+incarnation: protelis
+environment:
+  type: OSMEnvironment
+  parameters: [/maps/foo.pbf]
+{% endhighlight %}
+
+The following simulation loads data from a black and white raster image file located in the classpath in the folder `images` , interpreting the black pixels as obstacles (areas where the nodes should can not get):
+{% highlight yaml %}
+incarnation: protelis
+environment:
+  type: ImageEnvironment
+  parameters: [/images/foo.png]
+{% endhighlight %}
+
+The following simulation loads a personalized class named `my.package.FooEnv` implementing [Environment][Environment], whose constructor requires a String and a double:
+{% highlight yaml %}
+incarnation: protelis
+environment:
+  type: my.package.FooEnv
+  parameters: [bar, 2.2]
+{% endhighlight %}
+
+More about the environments shipped with the distribution [here][Environments].
+
+#### The `positions` key
+
+
 
 #### The `network-model` key
 
 The `network-model` key is used to load the implementation of [linking rule][LinkingRule] to use in the simulation.
-It expects a map with two keys: `type` is used to identify which class should be loaded, `parameters`
-If left unspecified, then NoLinks is loaded
+It relies on the class loading mechanism, it is optional, and if not specified defaults to [NoLinks][NoLinks] (nodes in the environment don't get connected).
+Omitting such key is equivalent to writing any of the following (they are equivalent):
+{% highlight yaml %}
+network-model:
+  type: NoLinks
+{% endhighlight %}
+{% highlight yaml %}
+network-model:
+  type: it.unibo.alchemist.model.implementations.linkingrules.NoLinks
+  parameters: []
+{% endhighlight %}
+{% highlight yaml %}
+network-model:
+  type: NoLinks
+  parameters: []
+{% endhighlight %}
+As is probably clear by now, if no fully qualified name is provided for class loading, Alchemist uses the package `it.unibo.alchemist.model.implementations.linkingrules` to search for the class.
+
+**Examples**
+
+#### The `displacements` key
+
+> To be written
+
+#### The `variables` key
+
+> To be written
+
+#### The `export` key
+
+> To be written
 
 
 
-[Node]: {{page.javadoc.root}}{{page.javadoc.base}}model/interfaces/Environment.html
+
+[DefaultEnvironment]: {{page.javadoc.root}}{{page.javadoc.base}}model/implementations/environments/Continuous2DEnvironment.html
+[Environment]: {{page.javadoc.root}}{{page.javadoc.base}}model/interfaces/Environment.html
+[Environments]: {{page.javadoc.root}}{{page.javadoc.base}}model/implementations/environments/package-summary.html
 [Incarnation]: {{page.javadoc.root}}{{page.javadoc.base}}model/interfaces/Incarnation.html
 [LinkingRule]: {{page.javadoc.root}}{{page.javadoc.base}}model/interfaces/LinkingRule.html
+[NoLinks]: {{page.javadoc.root}}{{page.javadoc.base}}model/implementations/linkingrules/NoLinks.html
 [Node]: {{page.javadoc.root}}{{page.javadoc.base}}model/interfaces/Node.html
 [Reaction]: {{page.javadoc.root}}{{page.javadoc.base}}model/interfaces/Reaction.html
 [XML]: https://www.w3.org/XML/
