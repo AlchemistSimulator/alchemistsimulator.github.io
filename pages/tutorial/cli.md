@@ -1,9 +1,9 @@
 ---
 layout: page-fullwidth
 title: "Command Line Interface"
-meta_title: "The Alchemist's Command Line Interface"
+meta_title: "Setting up Alchemist"
 subheadline: "Learn the basics!"
-teaser: "Alchemist is equipped with a command line interface, and here is how to use it."
+teaser: "Creating new simulation projects with alchemist"
 permalink: "pages/tutorial/cli/"
 comments: true
 #categories:
@@ -11,3 +11,15 @@ comments: true
 header:
    image_fullwidth: "header_mol.png"
 ---
+
+This section will explain the possible ways to launch simulations
+
+### Using the redistributable jar and the command line
+
+### Using Gradle
+
+### Using the redistributable jar and the graphical interface
+
+This topic is covered in the [graphical interface tutorial][gui]
+
+[gui]: {{site.url}}/tutorial/swingui/
