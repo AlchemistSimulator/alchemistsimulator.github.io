@@ -36,9 +36,10 @@ The Protelis incarnation provides:
 * An Eclipse plug-in that automatically runs such translation, also equipped with code highlight and code suggestions.
 
 ## Step by step tutorial
-This section will cover the creation of Alchemist simulations using the Protelis incarnation.
+A step by step tutorial is under work [here][Protelis tutorial]. It presents a sequence of examples with increasing complexity, and makes use of the YAML language for the simulation specification.
 
-## Usage of the deprecated domain-specific language
+### Usage of the *deprecated* domain-specific language
+
 * Download [the latest Eclipse for Java SE developers][eclipse]. Arch Linux users can use the package extra/eclipse-java, which is rather up-to-date.
 * Install Xtext
 	* In Eclipse, click Help -> Eclipse Marketplace...
@@ -137,6 +138,7 @@ This file can be loaded in Alchemist. To understand how to do so, please refer t
 [Protelis]: http://protelis.org
 [ProtelisIncarnation]: {{site.url}}/javadoc/it/unibo/alchemist/model/ProtelisIncarnation.html
 [protelis paper]: http://dx.doi.org/10.1145/2695664.2695913
+[Protelis tutorial]: https://github.com/AlchemistSimulator/Protelis-Incarnation-tutorial
 [Proto]: http://proto.bbn.com/
 
 [Apache Math 3]: http://commons.apache.org/proper/commons-math/
