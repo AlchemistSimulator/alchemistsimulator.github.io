@@ -134,9 +134,9 @@ This file can be loaded in Alchemist. To understand how to do so, please refer t
 [eclipse]: https://eclipse.org/downloads/
 [Field Calculus]: http://dx.doi.org/10.1007/978-3-642-45364-9_11
 [gui tutorial]: {{site.url}}/pages/tutorial/swingui
-[IMolecule]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/IMolecule.html
+[IMolecule]: {{site.urldoc}}it/unibo/alchemist/model/interfaces/Molecule.html
 [Protelis]: http://protelis.org
-[ProtelisIncarnation]: {{site.url}}/javadoc/it/unibo/alchemist/model/ProtelisIncarnation.html
+[ProtelisIncarnation]: {{site.urldoc}}it/unibo/alchemist/model/ProtelisIncarnation.html
 [protelis paper]: http://dx.doi.org/10.1145/2695664.2695913
 [Protelis tutorial]: https://github.com/AlchemistSimulator/Protelis-Incarnation-tutorial
 [Proto]: http://proto.bbn.com/
@@ -151,7 +151,6 @@ This file can be loaded in Alchemist. To understand how to do so, please refer t
 [ISimulation]: {{site.url}}/javadoc/it/unibo/alchemist/core/interfaces/ISimulation.html
 [molecule property]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/Incarnation.html#getProperty-it.unibo.alchemist.model.interfaces.INode-it.unibo.alchemist.model.interfaces.IMolecule-java.lang.String-
 [NaN]: https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html#NaN
-[NodeInspector]: {{site.url}}/javadoc/it/unibo/alchemist/boundary/monitors/NodeInspector.html
 [NumberOfNodesNextToANode]: {{site.url}}/javadoc/it/unibo/alchemist/boundary/monitors/NumberOfNodesNextToANode.html
 [observer pattern]: https://en.wikipedia.org/wiki/Observer_pattern
 [RGBA]: https://en.wikipedia.org/wiki/RGBA_color_space
