@@ -89,7 +89,25 @@ incarnation: protelis
 
 #### The `seeds` key
 
-> To be written
+The `seed` section may contains two optional values
+
+**Example**
+{% highlight yaml %}
+variables:
+  random: &random
+    min: 0
+    max: 9
+    step: 1
+    default: 0
+seeds:
+  # scenario: seed of the pseudo-random generator used during the creation of
+  # the simulation (for instance, perturbation of grid nodes in the
+  # `displacement` section)
+  scenario: *random
+  # simulation: seed of the pseudo-random generator used during the simulation
+  # (for instance, controlling which event occurs before the following one)
+  simulation: *random
+{% endhighlight %}
 
 #### The `environment` key
 
@@ -147,7 +165,22 @@ More about the environments shipped with the distribution [here][Environments].
 
 #### The `positions` key
 
+The `position` section list the coordination types of the simulation. Actually, only one value is taken into account. Each coordinate implements the interface [Position][Position].
 
+The following type are implemented at the moment:
+
+* [Continuous2DEuclidean][Continuous2DEuclidean]: bidimensional euclidean distance
+* [ContinuousGenericEuclidean][ContinuousGenericEuclidean]: N-dimensional euclidean distance
+* [Discrete2DManhattan][Discrete2DManhattan]: suitable for bidimensional discrete environments. The distance between two nodes is computed as Manhattan distance (distances as integers)
+* [LatLongPosition][LatLongPosition]: terrestrial coordinates
+
+The `position` type should reflect the simulation physical features. For instance, when a city map is considered Continuous2DEuclidean distance might be no longer suitable. Given two points A e B, `distance(A, B)` may differ from `distance(B, A)`.
+
+**Example**
+{% highlight yaml %}
+positions:
+  type: LatLongPosition
+{% endhighlight %}
 
 #### The `network-model` key
 
@@ -170,21 +203,26 @@ network-model:
 {% endhighlight %}
 As is probably clear by now, if no fully qualified name is provided for class loading, Alchemist uses the package `it.unibo.alchemist.model.implementations.linkingrules` to search for the class.
 
-**Examples**
+**Example**
+{% highlight yaml %}
+network-model:
+  type: EuclideanDistance
+  # Link together all the nodes closer than 100 according to the euclidean
+  # distance function
+  parameters: [100]
+{% endhighlight %}
 
 #### The `displacements` key
 
-The `displacements` sections lists the node locations at the beginning of the simulation. Each displacement type extends the interface [Displacement][displacement]. [Circle], [Point], [Grid], [Rectangle] displacements are implemented at the moment.
+The `displacement` sections lists the node locations at the beginning of the simulation. Each displacement type extends the interface [Displacement][Displacement]. [Circle][Circle], [Point][Point], [Grid][Grid], [Rectangle][Rectangle] are implemented at the moment.
 
-Nodes can change their positions according to [Action]s.
-
-**Examples**
+**Example**
 {% highlight yaml %}
 displacements:
   # "in" entries, where each entry defines a group of nodes
   - in:
       type: Point
-      # Using a constructor taking as input (x,y) coordinats
+      # Using a constructor taking (x,y) coordinates
       parameters: [0, 0]
   - in:
       type: Grid
@@ -192,13 +230,28 @@ displacements:
       # long side, centered in the point where the node was previously placed
       parameters: [-5, -5, 5, 5, 0.25, 0.25, 0.1, 0.1]
     contents:
+      # only the nodes inside the Rectangle area contains the following
+      # molecules
       - in:
           type: Rectangle
           parameters: [-6, -6, 2, 2]
+        # Molecule, in the Protelis incarnation, means "global variable" or  
+        # sensor name
         molecule: source
+        # Concentration is the sensor value. Any valid stateless (no rep or
+        # nbr) protelis program can be entered as concentration value.
         concentration: true
+        molecule: value
+        # Java imports and method calls are allowed. Handle randomness WITH
+        # CARE as it breaks the reproducibility invariant of the simulation
+        molecule: randomSensor
+        concentration: >
+          import java.lang.Math.random
+          random() * pi
+    # list of programs executed by the node of this group
     programs:
-      # Reference to the "gradient" list of programs
+      # Reference to the "gradient" list of programs. This program is
+      # executed in all the grid nodes but not in the other displacements
       - *gradient
   - in:
       type: Circle
@@ -207,7 +260,7 @@ displacements:
 {% endhighlight %}
 
 #### The `variables` key
-The `variables` section lists variables simulation values. A custom variable is defined in a Java class which implements the [Variable][Variable] interface. Custom variable types have to be included in the classpath of the simulation (for example  `scr/main/it/unibo/alchemist/loader/variables`)
+The `variable` section lists variable simulation values. A custom variable is defined in a Java class which implements the [Variable][Variable] interface.
 
 **Examples**
 {% highlight yaml %}
@@ -232,7 +285,7 @@ seeds:
 
 #### The `export` key
 
-The `export` section lists which values are exported into the `data/file`s.    
+The `export` section lists which values are exported into `data/file`s.    
 
 **Examples**
 {% highlight yaml %}
@@ -246,6 +299,9 @@ export:
     aggregators: [sum]
 {% endhighlight %}
 
+#### Extending the simulation
+
+It is possible to enrich the simulation with custom classes (variable types, displacements, etc). The latter have to be included in the simulation classpath and have to implement (extend) the respective interfaces ([abstract] classes).
 
 [DefaultEnvironment]: {{page.javadoc.root}}{{page.javadoc.base}}model/implementations/environments/Continuous2DEnvironment.html
 [Environment]: {{page.javadoc.root}}{{page.javadoc.base}}model/interfaces/Environment.html
@@ -260,3 +316,12 @@ export:
 [YAML]: http://www.yaml.org/spec/1.2/spec.html
 [Variable]: {{site.urldoc}}it/unibo/alchemist/loader/variables/Variable.html
 [Displacement]: {{site.urldoc}}it/unibo/alchemist/loader/displacements/Displacement.html
+[Continuous2DEuclidean]: {{site.urldoc}}it/unibo/alchemist/model/implementations/positions/Continuous2DEuclidean.html
+[ContinuousGenericEuclidean]: {{site.urldoc}}it/unibo/alchemist/model/implementations/positions/ContinuousGenericEuclidean.html
+[Discrete2DManhattan]: {{site.urldoc}}it/unibo/alchemist/model/implementations/positions/Discrete2DManhattan.html
+[LatLongPosition]: {{site.urldoc}}it/unibo/alchemist/model/implementations/positions/LatLongPosition.html
+[Circle]:{{site.urldoc}}it/unibo/alchemist/loader/displacements/Circle.html
+[Grid]:{{site.urldoc}}it/unibo/alchemist/loader/displacements/Grid.html
+[Point]:{{site.urldoc}}it/unibo/alchemist/loader/displacements/Point.html
+[Rectangle]:{{site.urldoc}}it/unibo/alchemist/loader/displacements/Rectangle.html
+[Position]:{{site.urldoc}}it/unibo/alchemist/model/interfaces/Position.html
