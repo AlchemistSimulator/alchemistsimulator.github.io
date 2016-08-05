@@ -174,17 +174,77 @@ As is probably clear by now, if no fully qualified name is provided for class lo
 
 #### The `displacements` key
 
-> To be written
+The `displacements` sections lists the node locations at the beginning of the simulation. Each displacement type extends the interface [Displacement][displacement]. [Circle], [Point], [Grid], [Rectangle] displacements are implemented at the moment.
+
+Nodes can change their positions according to [Action]s.
+
+**Examples**
+{% highlight yaml %}
+displacements:
+  # "in" entries, where each entry defines a group of nodes
+  - in:
+      type: Point
+      # Using a constructor taking as input (x,y) coordinats
+      parameters: [0, 0]
+  - in:
+      type: Grid
+      # Nodes to be located randomly in a square with a 0.1 distance units
+      # long side, centered in the point where the node was previously placed
+      parameters: [-5, -5, 5, 5, 0.25, 0.25, 0.1, 0.1]
+    contents:
+      - in:
+          type: Rectangle
+          parameters: [-6, -6, 2, 2]
+        molecule: source
+        concentration: true
+    programs:
+      # Reference to the "gradient" list of programs
+      - *gradient
+  - in:
+      type: Circle
+      # 10000 nodes, displaced in a circle with center in (0, 0) and radius 10
+      parameters: [10000, 0, 0, 10]
+{% endhighlight %}
 
 #### The `variables` key
+The `variables` section lists variables simulation values. A custom variable is defined in a Java class which implements the [Variable][Variable] interface. Custom variable types have to be included in the classpath of the simulation (for example  `scr/main/it/unibo/alchemist/loader/variables`)
 
-> To be written
+**Examples**
+{% highlight yaml %}
+variables:
+  # Defining variable `random` with its properties
+  random: &random
+    min: 0
+    max: 9
+    step: 1
+    default: 0
+  mape: &mape
+    # Variable with a custom type
+    # scr/main/it/unibo/alchemist/loader/variables/Flag.java
+    type: Flag
+    # Actual parameters of the variable constructor
+    parameters: [true]
+# ...
+seeds:
+  # reference to the random variable
+  scenario: *random
+{% endhighlight %}
 
 #### The `export` key
 
-> To be written
+The `export` section lists which values are exported into the `data/file`s.    
 
-
+**Examples**
+{% highlight yaml %}
+export:
+  # Time step of the simulation
+  - time
+  # Number of nodes involved in the simulation
+  - number-of-nodes
+  # Molecule representing an aggregated value. Further aggregators can be found here [//TODO insert link to apache javadoc]
+  - molecule: danger
+    aggregators: [sum]
+{% endhighlight %}
 
 
 [DefaultEnvironment]: {{page.javadoc.root}}{{page.javadoc.base}}model/implementations/environments/Continuous2DEnvironment.html
@@ -198,3 +258,5 @@ As is probably clear by now, if no fully qualified name is provided for class lo
 [XML]: https://www.w3.org/XML/
 [XML Simulations]: {{site.url}}/pages/tutorial/xml/
 [YAML]: http://www.yaml.org/spec/1.2/spec.html
+[Variable]: {{site.urldoc}}it/unibo/alchemist/loader/variables/Variable.html
+[Displacement]: {{site.urldoc}}it/unibo/alchemist/loader/displacements/Displacement.html
