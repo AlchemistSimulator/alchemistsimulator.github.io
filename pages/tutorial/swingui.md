@@ -21,7 +21,7 @@ header:
 
 ### Download and installation
 
-Alchemist does not require any installation procedure. It is delivered in form of a runnable jar file, that can be retrieved from [the Alchemist release page on Github](https://github.com/DanySK/alchemist/releases). The file name should match ``alchemist-redist-VERSION.jar`` where ``VERSION`` is a [SemVer](http://semver.org/spec/v2.0.0.html) version.
+Alchemist does not require any installation procedure. It is delivered in form of a runnable jar file, that can be retrieved from [the Alchemist release page on Github](https://github.com/AlchemistSimulator/alchemist/releases). The file name should match ``alchemist-redist-VERSION.jar`` where ``VERSION`` is a [SemVer](http://semver.org/spec/v2.0.0.html) version.
 
 #### Lauch from the graphical interface
 
