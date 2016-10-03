@@ -14,7 +14,7 @@ widget1:
   text: 'Alchemist is an extensible "meta-simulator", inspired by stochastic chemistry and tailored to pervasive computing and distributed systems. It provides a flexible meta-model, on which the developers should bind their own abstractions, realizing a so-called "incarnation". Incarnations for SAPERE and Protelis are already available and integrated in the main distribution.'
 widget2:
   title: "Why Alchemist?"
-  url: '/work-in-progress.html'
+  url: '/pages/tutorial/basics/'
   text: '
     1. Extensible: any concrete model that can be translated into the Alchemist generic meta-model can be simulated, reusing common simulator features.
     <br/>2. High performance, scales up to to thousands of nodes easily.
@@ -30,7 +30,7 @@ widget2:
 #  video: '' #<a href="#" data-reveal-id="videoModal"><img src="http://phlow.github.io/feeling-responsive/images/start-video-feeling-responsive-302x182.jpg" width="302" height="182" alt=""/></a>'
 widget3:
   title: "Use Alchemist"
-  url: '/work-in-progress.html'
+  url: '/pages/tutorial/'
   image: screenshot3.png
   text: 'If you want to simulate a network of
   <a target="_blank" href="http://www.sapere-project.eu/">SAPERE</a>
