@@ -206,20 +206,20 @@ The kind of shape to draw. Currently there are available:
 These sliders determine the base color applied by this effect, using the [RGBA color space][RGBA]. In short, R stands for red, G for green, B for blue, and A for alpha (namely, the transparency). The chosen color may be later transformed by node content based color tuning.
 
 ##### Scale factor
-The ratio between horizontal and vertical dimension of the shape. Changing such value  for an ellipse will make it [eccentric][eccentricity]. Changing it for a rectangle will make it less and less similar to a square.
+The ratio between vertical and horiziontal dimension of the shape. Changing such value  for an ellipse will make it [eccentric][eccentricity]. Changing it for a rectangle will make it less and less similar to a square.
 
 ##### Size
-How big (in pixel) the nodes should appear.
+How big (in pixel) the nodes should appear. This implies that node size won't change zooming in or out.
 
 ##### Draw only nodes containing a molecule and Molecule
-This combo box and text field determines whether or not all the nodes should get drawn. If it is selected, then a [``IMolecule``][IMolecule] will be produced with the content of the textfield by calling [``IMolecule Incarnation.createMolecule(String)``][create molecule], and only the nodes in which such [``IMolecule``][IMolecule] is present will get the effect applied. Since the specific conversion between [``String``][String] and [``IMolecule``][IMolecule] is delegated to such method, the specific [``IMolecule``][IMolecule] created will depend on the [``Incarnation``][Incarnation] chosen. See "Incarnation to use".
+This combo box and text field determines whether or not all the nodes should get drawn. If it is selected, then a [``Molecule``][Molecule] will be produced with the content of the textfield by calling [``Molecule Incarnation.createMolecule(String)``][create molecule], and only the nodes in which such [``Molecule``][Molecule] is present will get the effect applied. Since the specific conversion between [``String``][String] and [``Molecule``][Molecule] is delegated to such method, the specific [``Molecule``][Molecule] created will depend on the [``Incarnation``][Incarnation] chosen. See "Incarnation to use".
 
 ##### Other options: fine color tuning based on contents
-The set of these options is used to modify the base color depending on the [concentration][IConcentration] of a [``IMolecule``][IMolecule]. As explained in [the basics]({{site.url}}/pages/tutorial/basics/), the [concentration][IConcentration] is just the value associated with some [``IMolecule``][IMolecule], and its actual type depends on the specific [``Incarnation``][Incarnation]. Again, make sure that you have chosen the correct one. See "Incarnation to use".
+The set of these options is used to modify the base color depending on the [concentration][Concentration] of a [``Molecule``][Molecule]. As explained in [the basics]({{site.url}}/pages/tutorial/basics/), the [concentration][Concentration] is just the value associated with some [``Molecule``][Molecule], and its actual type depends on the specific [``Incarnation``][Incarnation]. Again, make sure that you have chosen the correct one. See "Incarnation to use".
 
 All the fields of this part of the form make sense iff "Tune colors using a molecule property" is enabled. Otherwise, they are just ignored.
 
-"Molecule property" is the [``String``][String] that will be passed down to extract the value of a property (in form of a real number) from each node. To better understand how it works, consider the method [``double Incarnation.getProperty(INode, IMolecule, String)``][molecule property]. This method will be called for each node where the effect should be applied passing as parameters: the node, the [``IMolecule``][IMolecule] matched in the "Molecule" textfield, and the [``String``][String] of the text field "Molecule property": the meaning of such [``String``][String] is **very** incarnation-dependent.
+"Molecule property" is the [``String``][String] that will be passed down to extract the value of a property (in form of a real number) from each node. To better understand how it works, consider the method [``double Incarnation.getProperty(INode, Molecule, String)``][molecule property]. This method will be called for each node where the effect should be applied passing as parameters: the node, the [``Molecule``][Molecule] matched in the "Molecule" textfield, and the [``String``][String] of the text field "Molecule property": the meaning of such [``String``][String] is **very** incarnation-dependent.
 The numeric result obtained is then mapped into the [0:1] range as follows:
 
 * Let ``G`` be the value of the slider "Property order of magnitude"
@@ -289,9 +289,12 @@ self.putEnvironmentVariable("toTrack", res);
 res
 {% endhighlight %}
 
-Now, our environment will contain a ``toTrack`` [``IMolecule``][IMolecule]. In the "Molecule" text field we could enter ``toTrack``, while in the "Molecule property" field we may write just ``ans``. If we properly tune the range of values we want to display, then we would get a fading effect depending on the distance of each device from the nearest one containing a ``source`` environment variable set to ``true``.
+Now, our environment will contain a ``toTrack`` [``Molecule``][Molecule]. In the "Molecule" text field we could enter ``toTrack``, while in the "Molecule property" field we may write just ``ans``. If we properly tune the range of values we want to display, then we would get a fading effect depending on the distance of each device from the nearest one containing a ``source`` environment variable set to ``true``.
 Since any Protelis program is supported, we could also write something like ``e ^ ans``. This would, for instance, create a logarithmic scale for the values. Another example could be: ``ans < 100``. In this case, devices closer than 100 distance units to a source will be marked with ``true``, that will in turn get translated as ``1``, and all the others will get ``false``, that will get translated to ``0``. This will create a visual segmentation into two groups of different colors. Playing with channels and property values sliders can allow a wide range of color combinations.
 Also more complex properties can be written, e.g. ``if (ans ^ 2 < 100) { 0 } else { pi ^ ans }``. Since this property string is fed to the very same interpreter that runs the actual Protelis code and the only difference is that a dummy execution context is used, any string that is also a valid Protelis program will work. Beware that it is largely possible that the returned valued is bound to ``NaN``, mainly because an Object is returned that cannot be interpreted as a number.
+
+###### Writing properties when using Biochemistry
+The only propriety of a molecule in biochemistry is its concetration, so any String given as imput of the text field won't have any effect on the simulation's appearance.
 
 ## Getting information from the simulation
 
@@ -303,13 +306,13 @@ First of all, we may be interested in exploring what is inside a node, in terms 
 
 ![Node explorer]({{ site.url }}/pages/tutorial/images/export4.png)
 
-This view shows the current position of the node in the environment, its content in the form [``IMolecule.toString()``][IMolecule] > [``IConcentration.toString()``][IConcentration], and all the reactions programmed inside the node, along with their next programmed execution. Note that some events may get disabled and get scheduled to ``Infinity``, but other events may then make them executable again. This is due to the dependency graph, a structure in the engine inherited from stochastic-simulators that greatly improves performance in a variety of cases.
+This view shows the current position of the node in the environment, its content in the form [``Molecule.toString()``][Molecule] > [``Concentration.toString()``][Concentration], and all the reactions programmed inside the node, along with their next programmed execution. Note that some events may get disabled and get scheduled to ``Infinity``, but other events may then make them executable again. This is due to the dependency graph, a structure in the engine inherited from stochastic-simulators that greatly improves performance in a variety of cases.
 
 The simulation flow controls are retained from the main perspective, so the simulation can be started, paused and executed step by step with no need to switch view.
 
 ### Exporting data
 
-Exporting data in a log file is achieved via so-called monitors. They are [listeners][observer pattern] of a [``ISimulation``][ISimulation], that get called:
+Exporting data in a log file is achieved via so-called monitors. They are [listeners][observer pattern] of a [``Simulation``][Simulation], that get called:
 1. when the simulation is successfully initialized
 2. at each step that gets executed
 3. when the simulation concludes, either because of user intervention, or because it reached its final time.
@@ -359,7 +362,7 @@ Let ``S`` be the sample space and ``M`` be the order of magnitude, and ``U`` the
 By default, it samples every ``1 U``
 
 ##### [NodeInspector][NodeInspector]
-The node inspector logs properties based on the content of nodes. For instance, it is able to read and log the value of any [IMolecule][IMolecule].
+The node inspector logs properties based on the content of nodes. For instance, it is able to read and log the value of any [Molecule][Molecule].
 
 ![Node explorer]({{ site.url }}/pages/tutorial/images/export1.png)
 
@@ -430,11 +433,11 @@ How far a node can be from the central one and still get counted as close.
 [DrawShape]: {{site.url}}/javadoc/it/unibo/alchemist/boundary/gui/effects/DrawShape.html
 [eccentricity]: https://en.wikipedia.org/wiki/Eccentricity_(mathematics)
 [HSB]: https://en.wikipedia.org/wiki/HSL_and_HSV
-[IConcentration]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/IConcentration.html
-[IMolecule]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/IMolecule.html
+[Concentration]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/Concentration.html
+[Molecule]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/Molecule.html
 [Incarnation]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/Incarnation.html
-[ISimulation]: {{site.url}}/javadoc/it/unibo/alchemist/core/interfaces/ISimulation.html
-[molecule property]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/Incarnation.html#getProperty-it.unibo.alchemist.model.interfaces.INode-it.unibo.alchemist.model.interfaces.IMolecule-java.lang.String-
+[Simulation]: {{site.url}}/javadoc/it/unibo/alchemist/core/interfaces/Simulation.html
+[molecule property]: {{site.url}}/javadoc/it/unibo/alchemist/model/interfaces/Incarnation.html#getProperty-it.unibo.alchemist.model.interfaces.INode-it.unibo.alchemist.model.interfaces.Molecule-java.lang.String-
 [NaN]: https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html#NaN
 [NodeInspector]: {{site.url}}/javadoc/it/unibo/alchemist/boundary/monitors/NodeInspector.html
 [NumberOfNodesNextToANode]: {{site.url}}/javadoc/it/unibo/alchemist/boundary/monitors/NumberOfNodesNextToANode.html
