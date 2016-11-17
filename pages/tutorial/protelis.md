@@ -38,8 +38,6 @@ The Protelis incarnation provides:
 ## Step by step tutorial
 A step by step tutorial is under work [here][Protelis tutorial]. It presents a sequence of examples with increasing complexity, and makes use of the YAML language for the simulation specification.
 
-### Usage of the *deprecated* domain-specific language
-
 * Download [the latest Eclipse for Java SE developers][eclipse]. Arch Linux users can use the package extra/eclipse-java, which is rather up-to-date.
 * Install Xtext
 	* In Eclipse, click Help -> Eclipse Marketplace...
@@ -48,20 +46,22 @@ A step by step tutorial is under work [here][Protelis tutorial]. It presents a s
 	* Follow the instructions, accept the license, wait for Eclipse to download and install the product, accept the installation and restart the IDE.
 * Install the Protelis Eclipse plug-in
 	* In Eclipse, click Help -> Install New Software
-	* In the text field labelled "Work with:", enter: ``http://hephaestus.apice.unibo.it/protelis-dsl/stable/``
-		* If you want to work with the last nightly, choose instead: ``http://hephaestus.apice.unibo.it/alchemist-build/alchemist-protelis-parser/alchemist.protelis.repository/target/repository/``
+	* In the text field labelled "Work with:", enter: ``http://hephaestus.apice.unibo.it/alchemist-build/alchemist-protelis-parser/alchemist.protelis.repository/target/repository/``
 	* Protelis will appear in the plugin list. Select it and click Next.
 	* Follow the instructions, accept the license, wait for Eclipse to download and install the product, restart the IDE when prompted
+
+### **THIS IS DEPRECATED AND YOU SHOULD NOT BE USING IT**
+### Usage of the *deprecated* domain-specific language
+
 * Install the Protelis Simulations Eclipse plug-in
 	* In Eclipse, click Help -> Install New Software
 	* In the text field labelled "Work with:", enter: ``http://hephaestus.apice.unibo.it/protelis-simulation-dsl/stable/``
 		* If you want to work with the last nightly, choose instead: ``http://hephaestus.apice.unibo.it/alchemist-build/alchemist-dsl-protelis/alchemist.protelisdsl.repository/target/repository/``
-
 	* Press Enter
 	* Protelis DSL will appear in the plugin list. Select it and click Next.
 	* Follow the instructions, accept the license, wait for Eclipse to download and install the product, restart the IDE when prompted
 
-### Test installation
+#### Test installation
 
 * Open Eclipse on a workspace of your choice
 * Click on File -> New -> Java Project
