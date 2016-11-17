@@ -46,7 +46,7 @@ A step by step tutorial is under work [here][Protelis tutorial]. It presents a s
 	* Follow the instructions, accept the license, wait for Eclipse to download and install the product, accept the installation and restart the IDE.
 * Install the Protelis Eclipse plug-in
 	* In Eclipse, click Help -> Install New Software
-	* In the text field labelled "Work with:", enter: ``http://hephaestus.apice.unibo.it/alchemist-build/alchemist-protelis-parser/alchemist.protelis.repository/target/repository/``
+	* In the text field labelled "Work with:", enter: ``http://hephaestus.apice.unibo.it/protelis-build/protelis-parser/protelis.parser.repository/target/repository/``
 	* Protelis will appear in the plugin list. Select it and click Next.
 	* Follow the instructions, accept the license, wait for Eclipse to download and install the product, restart the IDE when prompted
 
