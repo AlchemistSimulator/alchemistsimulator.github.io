@@ -11,7 +11,7 @@ header:
    image_fullwidth: "header_mol.png"
 
 javadoc:
-  root: "http://hephaestus.apice.unibo.it/alchemist-build/Alchemist/build/docs/javadoc/"
+  root: "http://alchemist-doc.surge.sh/"
   base: "it/unibo/alchemist/"
   math3: http://commons.apache.org/proper/commons-math/javadocs/api-3.4/org/apache/commons/math3/
 
