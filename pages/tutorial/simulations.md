@@ -32,7 +32,7 @@ My suggestion is to use the tutorial "[Learn X in Y minutes where X = YAML](http
 ### The Alchemist YAML
 
 Alchemist expects a YAML map as input. In the following, we'll discuss which keys it expects.
-Of course, the user is free to use all the YAML features (e.g. anchors) to organize her code and reduce duplication.
+Of course, the user is free to use all the YAML features (e.g. anchors) to organize the code and reduce duplication.
 
 #### Class loading with the Alchemist YAML
 
