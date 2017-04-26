@@ -22,4 +22,4 @@ This section will explain the possible ways to launch simulations
 
 This topic is covered in the [graphical interface tutorial][gui]
 
-[gui]: {{site.url}}/tutorial/swingui/
+[gui]: {{site.url}}/pages/tutorial/swingui/
