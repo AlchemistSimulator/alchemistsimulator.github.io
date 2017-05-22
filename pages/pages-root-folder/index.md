@@ -43,7 +43,7 @@ widget3:
 permalink: /index.html
 ---
  <center>
-  <img src="images/unibo-seal.png"></img>
+  <img src="images/unibo-seal.png"/>
   <p>Alchemist has been created at University of Bologna by the APICe research group.</p>
  </center>
 
