@@ -32,8 +32,7 @@ The Protelis incarnation provides:
 * An Alchemist-compatible implementation of the Protelis Network Manager and Execution Context
 * An [incarnation][ProtelisIncarnation] that includes proper methods to create Protelis-readable data items in form of [molecules][IMolecule] and methods to extract numeric properties from them
 * Proper actions, conditions and concentrations that allow for running Protelis code as a Alchemist reactions in Alchemist nodes
-* A (now deprecated) domain-specific language that translates a compact environment description into the (very verbose) Alchemist XML equivalent
-* An Eclipse plug-in that automatically runs such translation, also equipped with code highlight and code suggestions.
+* An Eclipse plug-in to highlight Protelis syntax that also provides code suggestions.
 
 ## Step by step tutorial
 A step by step tutorial is under work [here][Protelis tutorial]. It presents a sequence of examples with increasing complexity, and makes use of the YAML language for the simulation specification.
@@ -85,7 +84,7 @@ myFunction(x, y)
 
 * Create a ``protelis`` folder in ``scr/main``. This folder will contain all ``*.pt``files.
 * Create a ``yml`` folder in ``src/main``. This folder will contain all ``*.yml`` (simulation) files.
-* Now your workpase should be like this:
+* Now your workspace should be like this:
 
 ![Workspace setup]({{ site.url }}/pages/tutorial/images/workspaceSetup.png)
 * Add this dependencies to your ``build.gradle`` file (replace ``<version>>`` with the [latest available version][alchemistVersion]):
@@ -108,15 +107,17 @@ network-model:
     type: EuclideanDistance
     parameters: [30]
 
-gradient: &gradient
+sum: &sum
   - time-distribution: 1
-  	program: it:unibo:alchemist:tutorial
+    program: it:unibo:alchemist:tutorial
   - program: send
   
 displacements:
   - in:
       type: Grid
       parameters: [-100, -100, 200, 200, 20, 20, 0, 0]
+    programs:
+      - *sum
 ```
 * Create a ``tutorial.pt`` file. Notice that this file should be named ``tutorial.pt`` and contained into the ``protelis/it/unibo/alchemist`` folder, as ``it:unibo:alchemist:tutorial`` is the module name (similar to Java package naming convention). The simulation will not work if the file whole file path mismatches the one specified in the module name. Put this code inside the created file:
 ```javascript
