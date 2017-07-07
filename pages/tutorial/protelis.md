@@ -41,95 +41,104 @@ A step by step tutorial is under work [here][Protelis tutorial]. It presents a s
 * Download [the latest Eclipse for Java SE developers][eclipse]. Arch Linux users can use the package extra/eclipse-java, which is rather up-to-date.
 * Install Xtext
 	* In Eclipse, click Help -> Eclipse Marketplace...
-	* In the search form enter "xtext", then press Enter
-	* One of the retrieved entries should be "Xtext 2.8.x", click Install
+	* In the search form enter "xtext", then press Enter.
+	* One of the retrieved entries should be "Xtext 2.11.x": click Install.
+	* Follow the instructions, accept the license, wait for Eclipse to download and install the product, accept the installation and restart the IDE.
+* Install Buildship Gradle Integration 2.0
+	* In Eclipse, click Help -> Eclipse Marketplace...
+	* In the search form enter "gradle", then press Enter.
+	* One of the retrieved entries should be "Buildship Gradle Integration 2.0": click Install.
 	* Follow the instructions, accept the license, wait for Eclipse to download and install the product, accept the installation and restart the IDE.
 * Install the Protelis Eclipse plug-in
-	* In Eclipse, click Help -> Install New Software
-	* In the text field labelled "Work with:", enter: ``http://hephaestus.apice.unibo.it/protelis-build/protelis-parser/protelis.parser.repository/target/repository/``
+	* In Eclipse, click Help -> Install New Software.
+	* In the text field labelled "Work with:", enter: ``http://hephaestus.apice.unibo.it/protelis-build/protelis-parser/protelis.parser.repository/target/repository/``.
 	* Protelis will appear in the plugin list. Select it and click Next.
-	* Follow the instructions, accept the license, wait for Eclipse to download and install the product, restart the IDE when prompted
+	* Follow the instructions, accept the license, wait for Eclipse to download and install the product, restart the IDE when prompted.
 
-### **THIS IS DEPRECATED AND YOU SHOULD NOT BE USING IT**
-### Usage of the *deprecated* domain-specific language
+### Test installation
 
-* Install the Protelis Simulations Eclipse plug-in
-	* In Eclipse, click Help -> Install New Software
-	* In the text field labelled "Work with:", enter: ``http://hephaestus.apice.unibo.it/protelis-simulation-dsl/stable/``
-		* If you want to work with the last nightly, choose instead: ``http://hephaestus.apice.unibo.it/alchemist-build/alchemist-dsl-protelis/alchemist.protelisdsl.repository/target/repository/``
-	* Press Enter
-	* Protelis DSL will appear in the plugin list. Select it and click Next.
-	* Follow the instructions, accept the license, wait for Eclipse to download and install the product, restart the IDE when prompted
-
-#### Test installation
-
-* Open Eclipse on a workspace of your choice
-* Click on File -> New -> Java Project
-* Give the project a name, then click "Finish"
-* Find the ``src`` folder
-* Create a ``test.psim`` file
-* Eclipse will prompt you with a question: "Do you want to add the Xtext nature to the project "(your project name here")?". Answer "Yes"
-	* If Eclipse does not ask you to add such nature, right click on the project, go to Configure -> Add Xtext Nature
-* Open the ``test.psim`` file
-* It should show an error
+* Open Eclipse on a workspace of your choice.
+* Click on File -> New -> Other.
+* Select Gradle Project.
+* Give the project a name, then follow the instruction and click "Finish".
+* Find the ``src`` folder.
+* Create a ``test.pt`` file.
+* Eclipse will prompt you with a question: "Do you want to add the Xtext nature to the project "(your project name here")?". Answer "Yes".
+	* If Eclipse does not ask you to add such nature, right click on the project, go to Configure -> Convert to Xtext Project.
+* Open the ``test.pt`` file.
+* Writing something, it should show an error.
 * Type the following (you can use ctrl + space, or your user defined shortcut, and use autocompletion):
-{% highlight java %}
-val x = 1
+```javascript
+def myFunction(x, y) {
+	x + y
+}
 
-default environment
-linking nodes in range 1.5
+let x = 1;
+let y = 2;
 
-protelis program prog
-1
-@x,x
+myFunction(x, y)
+```
 
-place 100 nodes within rect (0,0,9,9) with program prog
-{% endhighlight %}
-* A folder named ``src-gen`` will appear, containing a ``test.xml`` file. This file can be loaded by Alchemist.
-* If such file is correctly generated, your installation has been successful.
+* If Protelis is correctly installed, the code will be highlited and Eclipse should not report errors.
 
-### Example 0: minimal specification
+### Sample Project Setup
 
-Create a file (e.g. ``000.psim``) into your previously configured project.
-Type the following (use ``ctrl + space`` for code suggestions):
+* Create a ``protelis`` folder in ``scr/main``. This folder will contain all ``*.pt``files.
+* Create a ``yml`` folder in ``src/main``. This folder will contain all ``*.yml`` (simulation) files.
+* Now your workpase should be like this:
 
-{% highlight java %}
-default environment
-linking nodes in range 1
+![Workspace setup]({{ site.url }}/pages/tutorial/images/workspaceSetup.png)
+* Add this dependencies to your ``build.gradle`` file (replace ``<version>>`` with the [latest available version][alchemistVersion]):
+```gradle
+compile("it.unibo.alchemist:alchemist:<version>") {
+    exclude module: 'org.eclipse.xtext.dependencies'
+}
+```
+* Synchronize the project:
+	* Right click on your project, then Gradle -> Refresh Gradle Project.
+* Create a ``sample.yml`` file in the proper folder (``src/main/yml``) and add the following code:
+```yaml
+incarnation: protelis
 
-protelis program program
-1
-@1
+environment:
+    type: Continuous2DEnvironment
+    parameters: []
 
-place single node at point (0,0)
-with program program
-{% endhighlight %}
+network-model:
+    type: EuclideanDistance
+    parameters: [30]
 
-It generates the following Alchemist xml in the ``src-gen`` folder:
+gradient: &gradient
+  - time-distribution: 1
+  	program: it:unibo:alchemist:tutorial
+  - program: send
+  
+displacements:
+  - in:
+      type: Grid
+      parameters: [-100, -100, 200, 200, 20, 20, 0, 0]
+```
+* Create a ``tutorial.pt`` file. Notice that this file should be named ``tutorial.pt`` and contained into the ``protelis/it/unibo/alchemist`` folder, as ``it:unibo:alchemist:tutorial`` is the module name (similar to Java package naming convention). The simulation will not work if the file whole file path mismatches the one specified in the module name. Put this code inside the created file:
+```javascript
+module it:unibo:alchemist:tutorial
 
-{% highlight xml %}
-<?xml version="1.0" encoding="UTF-8"?>
-<environment name="environment" type="Continuous2DEnvironment">
-	<concentration type="Local"></concentration>
-	<position type="Continuous2DEuclidean"></position>
-	<linkingrule type="EuclideanDistance" p0="1.0"></linkingrule>
-	<random type="MersenneTwister" seed="RANDOM"></random>
-	<node name="group_0_node_0" type="ProtelisNode" position="0.0,0.0">
-		<content></content>
-		<timedistribution name="time_protoprogram_p0" type="DiracComb" p0="0.07309677873766571" p1="1.0"></timedistribution>
-		<reaction name="protoprogram_p0" type="Event" p0="NODE" p1="TIMEDIST">
-			<action name="act_p0r0c0" type="ProtelisProgram" p0="ENV" p1="NODE" p2="REACTION" p3="RANDOM" p4="1"></action>
-		</reaction>
-		<timedistribution name="time_protoprogram_p0_send" type="ExponentialTime" p0="Infinity" p1="RANDOM"></timedistribution>
-		<reaction name="protoprogram_p0_send" type="ChemicalReaction" p0="NODE" p1="TIMEDIST">
-			<condition name="cond_p0r1c0" type="ComputationalRoundComplete" p0="NODE" p1="act_p0r0c0"></condition>
-			<action name="act_p0r1c0" type="SendToNeighbor" p0="NODE" p1="act_p0r0c0"></action>
-		</reaction>
-	</node>
-</environment>
-{% endhighlight %}
+let myId = self.getDeviceUID().getId(); //get the ID of this node
 
-This file can be loaded in Alchemist. To understand how to do so, please refer to [our graphical interface tutorial][gui tutorial].
+env.put("neighbor_sum", sumHood(nbr(myId)));
+```
+* Create the Run Configuration.
+	* Click on Run -> Run Configurations...
+	* Right click on Java Application, then select New.
+	* In the Main tab, give a name to your configuration, select the project and use ``it.unibo.alchemist.Alchemist`` as Main Class.
+	* In the Arguments tab, add the following arguments: ``-y ./src/main/yml/sample.yml``	
+	* In the Classpath tab, select User Entries, then click Advanced, select Add Folders and click Ok. Expand ``src/main`` and select the ``protelis`` folder inside your project, then click Ok.
+* Run the project with this Run Configuration.
+* Alchemist GUI will be launched. Press the P key to start the simulation. The timer on the right corner will start and double-clicking on a node you should see something like this:
+
+![Simulation Running]({{ site.url }}/pages/tutorial/images/simulationRunning.png)
+
+
+
 
 [eclipse]: https://eclipse.org/downloads/
 [Field Calculus]: http://dx.doi.org/10.1007/978-3-642-45364-9_11
@@ -156,3 +165,4 @@ This file can be loaded in Alchemist. To understand how to do so, please refer t
 [RGBA]: https://en.wikipedia.org/wiki/RGBA_color_space
 [statistic functions]: https://commons.apache.org/proper/commons-math/apidocs/org/apache/commons/math3/stat/descriptive/AbstractStorelessUnivariateStatistic.html
 [String]: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
+[alchemistVersion]: https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22it.unibo.alchemist%22%20AND%20a%3A%22alchemist%22
