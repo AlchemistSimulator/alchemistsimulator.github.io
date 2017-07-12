@@ -83,7 +83,7 @@ However, Alchemist is not limited to that. The key of its extensibility is in th
 An **incarnation** of Alchemist includes a **type** definition of **concentration**, and possibly a set of specific conditions, actions and (rarely) environments and reactions that operate on such types. In other words, an incarnation is a concrete instance of the Alchemist meta-model. In addition, a proper [Alchemist incarnation]({{ page.javadoc.root }}{{ page.javadoc.base }}model/interfaces/Incarnation.html) must also define:
 
 * A mean for translating strings into named-entities (molecules)
-* A mean for obtaining a number given a node, a molecule and and a string representing a property
+* A mean for obtaining a number given a node, a molecule and a string representing a property
 * A mean for building incarnation-specific model entities given an appropriate context and a parameter String
 
 These functionalities are required in order to support a uniform access to different incarnations.
