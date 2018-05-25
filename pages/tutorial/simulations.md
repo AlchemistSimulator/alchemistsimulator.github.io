@@ -18,7 +18,7 @@ javadoc:
 ---
 
 Since version 2.0.0, Alchemist uses [YAML][YAML] as primary mean for writing simulations.
-Historically, it relied on [XML][XML] instead, but the system has since be deprecated, due to its verbosity and human-unfriendliness.
+Historically, it relied on [XML][XML] instead, but the system has since been deprecated, due to its verbosity and human-unfriendliness.
 Some resources on how to write a proper Alchemist XML are still available [here][XML Simulations].
 Keep in mind, however, that such method is now deprecated and unmaintained, and it is likely to get dropped if any major breakage occurs.
 If you are new to Alchemist, we recommend to follow the remainder of this page, and learn about the wonders of YAML.
@@ -27,35 +27,35 @@ If you are new to Alchemist, we recommend to follow the remainder of this page, 
 
 As a first step, we recommend learning the YAML basics.
 The language is so simple and human readable that there is probably no better way to learn it than to read it directly.
-My suggestion is to use the tutorial "[Learn X in Y minutes where X = YAML](https://learnxinyminutes.com/docs/yaml/)", it should provide a good YAML guide (surely sufficient to follow the tutorial):
+My suggestion is to use the tutorial "[Learn X in Y minutes where X = YAML](https://learnxinyminutes.com/docs/yaml/)", it should provide a good YAML guide (surely sufficient to follow the tutorial).
 
 ### The Alchemist YAML
 
-Alchemist expects a YAML map as input. In the following, we'll discuss which keys it expects.
+Alchemist expects a YAML map as input. In the following section, we'll discuss which keys it expects.
 Of course, users are free to use all the YAML features (e.g. anchors) to organize their code and reduce duplication.
 
 #### Class loading with the Alchemist YAML
 
 One important aspect of the Alchemist YAML is the ability to let the user control which actual Java classes should be loaded inside a simulation, and which constructor should be used to do so.
 Almost every entity of an Alchemist simulation can be instanced using arbitrary Java classes that implement the required interfaces.
-When the alchemist YAML parser encounters an entity that is a YAML Map providing the keys `type` and `parameters`, it tries to resolve the value of the value associated to `type` to a class name, then tries to create the object with the constructor better suiting the provided `parameters`.
+When the alchemist YAML parser encounters a YAML Map providing the keys `type` and `parameters`, it tries to resolve the value of the value associated to `type` to a class name, then tries to create the object by calling the constructor with parameters most suited to the value of `parameters`.
 
 **Class name resolution**
 
 The value associated with `type` must be a string representing a valid Java identifier.
 If the value contains one or more `.` characters, then it will be interpreted as a fully qualified name.
 If no such character is included, then *the default package for the desired alchemist entity will be prefixed*.
-In no case Alchemist will attempt loading a class situated in the default package (but I am sure good people like you don't put stuff there, do you?).
+Alchemist won't ever attempt to load a class situated in the default package (but I am sure good people like you don't put stuff there, do you?).
 
 **Object instancing**
 
-If the class gets correctly loaded (namely if a class is present in the classpath with the fully qualified name as passed or as guessed by Alchemist), then its constructors get sorted based on the number and type of parameters.
-The system tries to build an object with all the constructors, in order, until one of them provides an instanced object, considering both the current context (namely, the entities that have already been instanced) and the value of `parameters`.
+If the class gets loaded correctly (meaning if a class is present in the classpath with the fully qualified name, whether it was passed or guessed by Alchemist), then its constructors get sorted based on the number and type of parameters.
+The system tries to build an object with all each constructor until one of them provides an instanced object, in an order that considers both the current context (namely, the entities that have already been instanced) and the value of `parameters`.
 
 For instance, imagine that you are trying to build an instance of a [Reaction][Reaction], whose only constructor requires an [Environment][Environment], a [Node][Node], an `int` and a `String`.
 In this case, an [Environment][Environment] and a [Node][Node] must have already been created (or the YAML loader won't be at this point).
 As a consequence, the first two parameters are automatically inferred by the current context and passed to the constructor.
-The other two parameters can not be inferred this way; as such the value associated to `parameters` is used to extract the proper values (if possible).
+The other two parameters can not be inferred this way; instead, the value associated to `parameters` is used to extract the proper values (if possible).
 In this case, this would have been a valid `parameters` entry:
 
 {% highlight yaml %}
@@ -64,13 +64,12 @@ parameters: [4, foo]
 
 As you can easily infer, the value of `parameters` must be a YAML list.
 
-Don't despair if the class loading system is still unclear: it is used pervasively and it will get clearer and clearer with the examples in the next sections.
+Don't despair if the class loading system is still unclear: it is used pervasively and it will become clearer with the examples in the next sections.
 
 #### The `incarnation` key
 
-The key `incarnation` is mandatory.
-
-It expects a string value, and does not support the class loading mechanism.
+The `incarnation` key is mandatory.
+The YAML parser expects a string value, and does not support the class loading mechanism.
 Such string will be used to get the most similarly named incarnation (the algorithm may vary), namely the subclass of [Incarnation][Incarnation] whose simple name is closest to the string.
 The (obvious) suggestion is to use an existing incarnation name, such as `sapere` or `protelis`.
 New incarnations may (and will) be available in future.
@@ -88,7 +87,7 @@ incarnation: protelis
 *Note:* this is also the most minimal valid alchemist specification
 
 #### The `variables` key
-The `variable` section lists variable simulation values. A custom variable is defined in a Java class which implements the [Variable][Variable] interface. If no fully qualified variable name is provided for class loading, Alchemist uses the package [variables][VariablePackage] to search for the class.
+The `variables` section lists variable simulation values. A custom variable is defined in a Java class which implements the [Variable][Variable] interface. If no fully qualified variable name is provided for class loading, Alchemist uses the package [variables][VariablePackage] to search for the class.
 
 **Examples**
 {% highlight yaml %}
@@ -108,9 +107,10 @@ variables:
 
 #### The `seeds` key
 
-The `seed` section may contains two optional values: `scenario` and `simulation`. The former is the seed of the pseudo-random generator used during the creation of the simulation. For instance, perturbating grid nodes in the `displacement` section. The latter is the seed of the pseudo-random generator used during the simulation. For instance, handling events concurrency (which event occurs before another).
+The `seeds` section may contains two optional values: `scenario` and `simulation`. The former is the seed of the pseudo-random generator used during the creation of the simulation. For instance, perturbating grid nodes in the `displacement` section. The latter is the seed of the pseudo-random generator used during the simulation. For instance, handling events concurrently (which event occurs before another).
 
 **Examples**
+
 Setting seeds with integer values.
 {% highlight yaml %}
 incarnation: protelis
@@ -136,7 +136,7 @@ seeds:
 #### The `environment` key
 
 The `environment` key is used to load the [Environment][Environment] implementation.
-It is optional, defaults to a [continuous bidimensional space][DefaultEnvironment]. If no fully qualified environment name is provided for class loading, Alchemist uses the package [environments][EnvironmentPackage] to search for the class.
+It is optional and it defaults to a [continuous bidimensional space][DefaultEnvironment]. If no fully qualified environment name is provided for class loading, Alchemist uses the package [environments][EnvironmentPackage] to search for the class.
 
 **Examples**
 
@@ -161,7 +161,7 @@ environment:
   parameters: []
 {% endhighlight %}
 
-The following simulation loads data from an Openstreetmap file (OSM XML and PBF formats are supported) located in the classpath in the folder `maps`:
+The following simulation loads data from an Openstreetmap file (OSM, XML and PBF formats are supported) located in the classpath in the folder `maps`:
 {% highlight yaml %}
 incarnation: protelis
 environment:
@@ -169,7 +169,7 @@ environment:
   parameters: [/maps/foo.pbf]
 {% endhighlight %}
 
-The following simulation loads data from a black and white raster image file located in the classpath in the folder `images` , interpreting the black pixels as obstacles (areas where the nodes should can not get):
+The following simulation loads data from a black and white raster image file located in the classpath in the folder `images` , interpreting the black pixels as obstacles (areas that cannot be accessed by nodes):
 {% highlight yaml %}
 incarnation: protelis
 environment:
@@ -177,7 +177,7 @@ environment:
   parameters: [/images/foo.png]
 {% endhighlight %}
 
-The following simulation loads a personalized class named `my.package.FooEnv` implementing [Environment][Environment], whose constructor requires a String and a double:
+The following simulation loads a personalized class named `my.package.FooEnv` implementing [Environment][Environment], whose constructor requires a String and a Double:
 {% highlight yaml %}
 incarnation: protelis
 environment:
@@ -189,9 +189,9 @@ More about the environments shipped with the distribution [here][Environments].
 
 #### The `positions` key
 
-The `position` section list the coordinate types of the simulation. Actually, only one value is taken into account. Each type implements the interface [Position][Position]. If no fully qualified position name is provided for class loading, Alchemist uses the package [positions][PositionPackage] to search for the class.
+The `positions` section lists the coordinate types of the simulation. In reality, only one value is taken into account. Each type implements the interface [Position][Position]. If no fully qualified position name is provided for class loading, Alchemist uses the package [positions][PositionPackage] to search for the class.
 
-The `position` should reflect the simulation physical features. For instance, when a city map is considered Continuous2DEuclidean distance might be no longer suitable. Given two points A e B, `distance(A, B)` may differ from `distance(B, A)`.
+The `position` type should reflect the simulation's physical features. For instance, when a city map is considered,  `Continuous2DEuclidean` distance might be no longer suitable. Given two points A and B, `distance(A, B)` may differ from `distance(B, A)`.
 
 **Example**
 {% highlight yaml %}
@@ -201,9 +201,9 @@ positions:
 
 #### The `network-model` key
 
-The `network-model` key is used to load the implementation of [linking rule][LinkingRule] to use in the simulation.
-It relies on the class loading mechanism, it is optional, and if not specified defaults to [NoLinks][NoLinks] (nodes in the environment don't get connected).
-Omitting such key is equivalent to writing any of the following (they are equivalent):
+The `network-model` key is used to load the implementation of [linking rule][LinkingRule] to be used in the simulation.
+It relies on the class loading mechanism, it is optional and defaults to [NoLinks][NoLinks] (nodes in the environment don't get connected).
+Omitting such key is equivalent to writing any of the following:
 {% highlight yaml %}
 network-model:
   type: NoLinks
@@ -231,7 +231,7 @@ network-model:
 
 #### The `displacements` key
 
-The `displacement` sections lists the node locations at the beginning of the simulation. Each displacement type extends the interface [Displacement][Displacement]. If no fully qualified displacement name is provided for class loading, Alchemist uses the package [displacements][DisplacementPackage] to search for the class.
+The `displacements` section lists the node locations at the beginning of the simulation. Each displacement type extends the interface [Displacement][Displacement]. If no fully qualified displacement name is provided for class loading, Alchemist uses the package [displacements][DisplacementPackage] to search for the class.
 
 **Examples**
 
@@ -245,7 +245,7 @@ displacements:
       parameters: [0, 0]
 {% endhighlight %}
 
-10000 nodes, displaced in a circle with center in (0, 0) and radius 10.
+10000 nodes, placed in a circle with center in (0, 0) and radius 10.
 {% highlight yaml %}
 displacements:
   - in:
@@ -304,7 +304,7 @@ displacements:
 
 #### The `export` key
 
-The `export` section lists which simulation values are exported into the `folder` specified with the `-e path/to/folder` argument. Data aggregators are statistically univariated. Valid aggregating functions extend   [AbstractStorelessUnivariateStatistic].
+The `export` section lists which simulation values are exported into the `folder` specified with the `-e path/to/folder` argument. Data aggregators are statistically univariate. Valid aggregating functions extend   [AbstractStorelessUnivariateStatistic].
 
 **Examples**
 {% highlight yaml %}
@@ -320,7 +320,7 @@ export:
 
 #### Extending the simulation
 
-It is possible to enrich the simulation with custom classes (variable types, displacements, etc). The latter have to be included in the simulation classpath and have to implement (extend) the respective interfaces ([abstract] classes).
+It is possible to enrich the simulation with custom classes (variable types, displacements, etc). The latter have to be included in the simulation classpath and have to implement/extend the respective interfaces/abstract classes.
 
 [DefaultEnvironment]: {{site.urldoc}}it/unibo/alchemist/model/implementations/environments/Continuous2DEnvironment.html
 [Environment]: {{site.urldoc}}it/unibo/alchemist/model/interfaces/Environment.html
