@@ -11,15 +11,17 @@ widget1:
   title: "What is Alchemist?"
   url: "http://dx.doi.org/10.1057/jos.2012.27"
   image: screenshot1.png
-  text: 'Alchemist is an extensible "meta-simulator", inspired by stochastic chemistry and tailored to pervasive computing and distributed systems. It provides a flexible meta-model, on which the developers should bind their own abstractions, realizing a so-called "incarnation". Incarnations for SAPERE and Protelis are already available and integrated in the main distribution.'
+  text: 'Alchemist is an extensible "meta-simulator", inspired by stochastic chemistry and tailored to pervasive computing and distributed systems. It provides a flexible meta-model for developers to bind their own abstractions, creating a so-called "incarnation". Incarnations for SAPERE and Protelis are already available and integrated in the main distribution.'
 widget2:
   title: "Why Alchemist?"
   url: '/pages/tutorial/basics/'
   text: '
-    1. Extensible: any concrete model that can be translated into the Alchemist generic meta-model can be simulated, reusing common simulator features.
-    <br/>2. High performance, scales up to to thousands of nodes easily.
-    <br/>3. Built on Java, runs wherever a Java 8 virtual machine runs.
-    <br/>4. Click below for a comprehensive list of features'
+    <ol>
+      <li>Extensible: any concrete model that can be translated into the Alchemist generic meta-model can be simulated, reusing common simulator features.</li>
+      <li>High performance, scales up to to thousands of nodes easily.</li>
+      <li>Built on Java, runs wherever a Java 8 virtual machine runs.</li>
+  </ol>
+  Click below for a comprehensive list of features'
 #    <br/>4. GPL-licensed with linking exception: you can link Alchemist from your private project.
 #    <br/>5. Integrated support for
 #      <a target="_blank" href="http://www.sapere-project.eu/">SAPERE</a>
@@ -36,7 +38,7 @@ widget3:
   <a target="_blank" href="http://www.sapere-project.eu/">SAPERE</a>
   or
   <a target="_blank" href="http://protelis.org">Protelis</a>.
-  programmed devices, you are in the right place. You should start by following our tutorial, that should guide you step by step.
+  programmed devices, you are in the right place. You should start by following our step by step tutorial.
   If you use Alchemist to perform simulations for a scientific work, please cite
   <a target="_blank" href="http://dx.doi.org/10.1057/jos.2012.27">this paper</a>.
   If you need to create your own incarnation, you should check our developer instructions and documentation first.'
