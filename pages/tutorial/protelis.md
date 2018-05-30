@@ -67,6 +67,7 @@ A step by step tutorial is under work [here][Protelis tutorial]. It presents a s
 * Open the ``test.pt`` file.
 * Writing something, it should show an error.
 * Type the following (you can use ctrl + space, or your user defined shortcut, and use autocompletion):
+
 ```javascript
 def myFunction(x, y) {
 	x + y
@@ -86,16 +87,19 @@ myFunction(x, y)
 * Create a ``yml`` folder in ``src/main``. This folder will contain all ``*.yml`` (simulation) files.
 * Now your workspace should be like this:
 
-![Workspace setup]({{ site.url }}/pages/tutorial/images/workspaceSetup.png)
+``![Workspace setup]({{ site.url }}/pages/tutorial/images/workspaceSetup.png)``
 * Add this dependencies to your ``build.gradle`` file (replace ``<version>>`` with the [latest available version][alchemistVersion]):
+
 ```gradle
 compile("it.unibo.alchemist:alchemist:<version>") {
     exclude module: 'org.eclipse.xtext.dependencies'
 }
 ```
+
 * Synchronize the project:
 	* Right click on your project, then Gradle -> Refresh Gradle Project.
 * Create a ``sample.yml`` file in the proper folder (``src/main/yml``) and add the following code:
+
 ```yaml
 incarnation: protelis
 
@@ -119,7 +123,9 @@ displacements:
     programs:
       - *sum
 ```
+
 * Create a ``tutorial.pt`` file. Notice that this file should be named ``tutorial.pt`` and contained into the ``protelis/it/unibo/alchemist`` folder, as ``it:unibo:alchemist:tutorial`` is the module name (similar to Java package naming convention). The simulation will not work if the file whole file path mismatches the one specified in the module name. Put this code inside the created file:
+
 ```javascript
 module it:unibo:alchemist:tutorial
 
@@ -127,6 +133,7 @@ let myId = self.getDeviceUID().getId(); //get the ID of this node
 
 env.put("neighbor_sum", sumHood(nbr(myId)));
 ```
+
 * Create the Run Configuration.
 	* Click on Run -> Run Configurations...
 	* Right click on Java Application, then select New.
@@ -136,7 +143,7 @@ env.put("neighbor_sum", sumHood(nbr(myId)));
 * Run the project with this Run Configuration.
 * Alchemist GUI will be launched. Press the P key to start the simulation. The timer on the right corner will start and double-clicking on a node you should see something like this:
 
-![Simulation Running]({{ site.url }}/pages/tutorial/images/simulationRunning.png)
+``![Simulation Running]({{ site.url }}/pages/tutorial/images/simulationRunning.png)``
 
 
 
