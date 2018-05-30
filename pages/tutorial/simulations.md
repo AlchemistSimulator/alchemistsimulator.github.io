@@ -177,7 +177,7 @@ environment:
   parameters: [/images/foo.png]
 {% endhighlight %}
 
-The following simulation loads a personalized class named `my.package.FooEnv` implementing [Environment][Environment], whose constructor requires a String and a Double:
+The following simulation loads a personalized class named `my.package.FooEnv` implementing [Environment][Environment], whose constructor requires a String and a double:
 {% highlight yaml %}
 incarnation: protelis
 environment:
@@ -189,7 +189,7 @@ More about the environments shipped with the distribution [here][Environments].
 
 #### The `positions` key
 
-The `positions` section lists the coordinate types of the simulation. In reality, only one value is taken into account. Each type implements the interface [Position][Position]. If no fully qualified position name is provided for class loading, Alchemist uses the package [positions][PositionPackage] to search for the class.
+The `positions` section lists the coordinate types of the simulation. Actually, only one value is taken into account. Each type implements the interface [Position][Position]. If no fully qualified position name is provided for class loading, Alchemist uses the package [positions][PositionPackage] to search for the class.
 
 The `position` type should reflect the simulation's physical features. For instance, when a city map is considered,  `Continuous2DEuclidean` distance might be no longer suitable. Given two points A and B, `distance(A, B)` may differ from `distance(B, A)`.
 
