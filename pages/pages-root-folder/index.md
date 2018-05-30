@@ -16,9 +16,9 @@ widget2:
   title: "Why Alchemist?"
   url: '/pages/tutorial/basics/'
   text: '
-  <br/>Extensible: any concrete model that can be translated into the Alchemist generic meta-model can be simulated, reusing common simulator features.
-  <br/>High performance, scales up to to thousands of nodes easily.
-  <br/>Built on Java, runs wherever a Java 8 virtual machine runs.
+  * Extensible: any concrete model that can be translated into the Alchemist generic meta-model can be simulated, reusing common simulator features.
+  * High performance, scales up to to thousands of nodes easily.
+  * Built on Java, runs wherever a Java 8 virtual machine runs.
   Click below for a comprehensive list of features'
 #    <br/>4. GPL-licensed with linking exception: you can link Alchemist from your private project.
 #    <br/>5. Integrated support for
