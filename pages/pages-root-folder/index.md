@@ -43,12 +43,10 @@ widget3:
 permalink: /index.html
 ---
  <center>
-  <img src="images/unibo-seal.png"></img>
+  <img src="images/unibo-seal.png"/>
   <p>Alchemist has been created at University of Bologna by the APICe research group.</p>
- </center>
 
 
-This example simulation executed in Alchemist shows a group of pedestrians dynamically steered in the city of London. More information about this example can be found in [this scientific paper](http://dl.acm.org/citation.cfm?id=2773424).
-
-
-<iframe src="https://vid.me/e/gsIm?stats=1&amp;tools=1" width="1000" height="560" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="no"></iframe>
+<iframe src="https://player.vimeo.com/video/260445665" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/260445665">On-the-fly software upgrade with Protelis (simulated in Alchemist)</a> from <a href="https://vimeo.com/user30882646">Danilo Pianini</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+</center>
