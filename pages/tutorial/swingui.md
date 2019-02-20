@@ -1,9 +1,9 @@
 ---
 layout: page-fullwidth
 title: "Graphical Interface"
-meta_title: "The Alchemist's Graphical Interface"
+meta_title: "The Old Alchemist's Graphical Interface"
 subheadline: "Learn the basics!"
-teaser: "Alchemist is equipped with a Java Swing graphical interface, and here is how to use it."
+teaser: "Alchemist has been equipped with a Java Swing graphical interface, and here is how to use it."
 permalink: "pages/tutorial/swingui/"
 comments: true
 #categories:
@@ -121,7 +121,7 @@ By moving the slider on the right-hand side, the frequency of the updates will b
 
 #### Time and step monitor
 
-The current progression of the simulation is displayd in the upper right corner. The top number is the simulated time, and it is a positive real number. The bottom number counts how many steps have been executed, and as such is a positive integer. Both numbers start at zero.
+The current progression of the simulation is displayed in the upper right corner. The top number is the simulated time, and it is a positive real number. The bottom number counts how many steps have been executed, and as such is a positive integer. Both numbers start at zero.
 
 ## Tuning the simulation aspect
 

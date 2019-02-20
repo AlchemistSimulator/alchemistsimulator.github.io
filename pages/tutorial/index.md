@@ -28,16 +28,18 @@ header:
 0. [The Protelis Incarnation][protelis]
 0. [Examples using the Protelis Incarnation][protelis examples]
 
-#### Protelis
+#### Biochemistry
 
 0. [The Biochemistry Incarnation][biochemistry]
 
 ### Deprecated stuff
 
 0. [The XML language][xml]
+0. [The Swing GUI][swingui]
 
 [basics]: {{site.url}}/pages/tutorial/basics
-[gui]: {{site.url}}/pages/tutorial/swingui
+[gui]: {{site.url}}/pages/tutorial/gui
+[swingui]: {{site.url}}/pages/tutorial/swingui
 [sapere]: {{site.url}}/pages/tutorial/sapere
 [protelis]: {{site.url}}/pages/tutorial/protelis
 [protelis examples]: https://github.com/AlchemistSimulator/Protelis-Incarnation-tutorial
