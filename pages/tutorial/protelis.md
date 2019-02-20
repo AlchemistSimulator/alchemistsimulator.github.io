@@ -43,15 +43,10 @@ A step by step tutorial is under work [here][Protelis tutorial]. It presents a s
 	* In the search form enter "xtext", then press Enter.
 	* One of the retrieved entries should be "Xtext 2.11.x": click Install.
 	* Follow the instructions, accept the license, wait for Eclipse to download and install the product, accept the installation and restart the IDE.
-* Install Buildship Gradle Integration 2.0
+* Install the Protelis Eclipse plug-in from the Eclipse Marketplace
 	* In Eclipse, click Help -> Eclipse Marketplace...
-	* In the search form enter "gradle", then press Enter.
-	* One of the retrieved entries should be "Buildship Gradle Integration 2.0": click Install.
-	* Follow the instructions, accept the license, wait for Eclipse to download and install the product, accept the installation and restart the IDE.
-* Install the Protelis Eclipse plug-in
-	* In Eclipse, click Help -> Install New Software.
-	* In the text field labelled "Work with:", enter: ``http://hephaestus.apice.unibo.it/protelis-build/protelis-parser/protelis.parser.repository/target/repository/``.
-	* Protelis will appear in the plugin list. Select it and click Next.
+	* In the search form enter "protelis", then press Enter.
+	* One of the retrieved entries should be "Protelis": click Install.
 	* Follow the instructions, accept the license, wait for Eclipse to download and install the product, restart the IDE when prompted.
 
 ### Test installation
@@ -68,7 +63,7 @@ A step by step tutorial is under work [here][Protelis tutorial]. It presents a s
 * Writing something, it should show an error.
 * Type the following (you can use ctrl + space, or your user defined shortcut, and use autocompletion):
 
-```javascript
+{% highlight javascript %}
 def myFunction(x, y) {
 	x + y
 }
@@ -77,7 +72,7 @@ let x = 1;
 let y = 2;
 
 myFunction(x, y)
-```
+{% endhighlight %}
 
 * If Protelis is correctly installed, the code will be highlited and Eclipse should not report errors.
 
@@ -87,20 +82,20 @@ myFunction(x, y)
 * Create a ``yml`` folder in ``src/main``. This folder will contain all ``*.yml`` (simulation) files.
 * Now your workspace should be like this:
 
-``![Workspace setup]({{ site.url }}/pages/tutorial/images/workspaceSetup.png)``
+![Workspace setup]({{ site.url }}/pages/tutorial/images/workspaceSetup.png)
 * Add this dependencies to your ``build.gradle`` file (replace ``<version>>`` with the [latest available version][alchemistVersion]):
 
-```gradle
+{% highlight gradle %}
 compile("it.unibo.alchemist:alchemist:<version>") {
     exclude module: 'org.eclipse.xtext.dependencies'
 }
-```
+{% endhighlight %}
 
 * Synchronize the project:
 	* Right click on your project, then Gradle -> Refresh Gradle Project.
 * Create a ``sample.yml`` file in the proper folder (``src/main/yml``) and add the following code:
 
-```yaml
+{% highlight yaml %}
 incarnation: protelis
 
 environment:
@@ -115,35 +110,35 @@ sum: &sum
   - time-distribution: 1
     program: it:unibo:alchemist:tutorial
   - program: send
-  
+
 displacements:
   - in:
       type: Grid
       parameters: [-100, -100, 200, 200, 20, 20, 0, 0]
     programs:
       - *sum
-```
+{% endhighlight %}
 
 * Create a ``tutorial.pt`` file. Notice that this file should be named ``tutorial.pt`` and contained into the ``protelis/it/unibo/alchemist`` folder, as ``it:unibo:alchemist:tutorial`` is the module name (similar to Java package naming convention). The simulation will not work if the file whole file path mismatches the one specified in the module name. Put this code inside the created file:
 
-```javascript
+{% highlight javascript %}
 module it:unibo:alchemist:tutorial
 
 let myId = self.getDeviceUID().getId(); //get the ID of this node
 
 env.put("neighbor_sum", sumHood(nbr(myId)));
-```
+{% endhighlight %}
 
 * Create the Run Configuration.
 	* Click on Run -> Run Configurations...
 	* Right click on Java Application, then select New.
 	* In the Main tab, give a name to your configuration, select the project and use ``it.unibo.alchemist.Alchemist`` as Main Class.
-	* In the Arguments tab, add the following arguments: ``-y ./src/main/yml/sample.yml``	
+	* In the Arguments tab, add the following arguments: ``-y ./src/main/yml/sample.yml``
 	* In the Classpath tab, select User Entries, then click Advanced, select Add Folders and click Ok. Expand ``src/main`` and select the ``protelis`` folder inside your project, then click Ok.
 * Run the project with this Run Configuration.
 * Alchemist GUI will be launched. Press the P key to start the simulation. The timer on the right corner will start and double-clicking on a node you should see something like this:
 
-``![Simulation Running]({{ site.url }}/pages/tutorial/images/simulationRunning.png)``
+![Simulation Running]({{ site.url }}/pages/tutorial/images/simulationRunning.png)
 
 
 
