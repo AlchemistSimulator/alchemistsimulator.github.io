@@ -71,7 +71,7 @@ Don't despair if the class loading system is still unclear: it is used pervasive
 The `incarnation` key is mandatory.
 The YAML parser expects a string value, and does not support the class loading mechanism.
 Such string will be used to get the most similarly named incarnation (the algorithm may vary), namely the subclass of [Incarnation][Incarnation] whose simple name is closest to the string.
-The (obvious) suggestion is to use an existing incarnation name, such as `sapere` or `protelis`.
+The (obvious) suggestion is to use an existing incarnation name, such as `sapere`, `protelis` or `biochemistry`.
 New incarnations may (and will) be available in future.
 
 **Examples**
@@ -82,6 +82,10 @@ incarnation: sapere
 
 {% highlight yaml %}
 incarnation: protelis
+{% endhighlight %}
+
+{% highlight yaml %}
+incarnation: biochemistry
 {% endhighlight %}
 
 *Note:* this is also the most minimal valid alchemist specification

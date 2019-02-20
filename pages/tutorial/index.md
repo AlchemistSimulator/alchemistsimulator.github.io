@@ -28,6 +28,9 @@ header:
 0. [The Protelis Incarnation][protelis]
 0. [Examples using the Protelis Incarnation][protelis examples]
 
+#### Protelis
+
+0. [The Biochemistry Incarnation][biochemistry]
 
 ### Deprecated stuff
 
@@ -38,6 +41,7 @@ header:
 [sapere]: {{site.url}}/pages/tutorial/sapere
 [protelis]: {{site.url}}/pages/tutorial/protelis
 [protelis examples]: https://github.com/AlchemistSimulator/Protelis-Incarnation-tutorial
+[biochemistry]: {{site.url}}/pages/tutorial/biochemistry
 [setup]: {{site.url}}/pages/tutorial/cli
 [simulations]: {{site.url}}/pages/tutorial/simulations
 [xml]: {{site.url}}/pages/tutorial/xml

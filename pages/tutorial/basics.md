@@ -92,6 +92,7 @@ The standalone distribution comes with:
 
 * [SAPERE Incarnation](http://www.sapere-project.eu)
 * [Protelis Incarnation](http://protelis.org)
+* [Biochemistry Incarnation]({{site.url}}/pages/tutorial/biochemistry)
 
 More details on how to use each of the included incarnations will be provided after this introductory chapter.
 
