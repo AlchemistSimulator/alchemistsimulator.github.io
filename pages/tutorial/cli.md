@@ -1,6 +1,6 @@
 ---
 layout: page-fullwidth
-title: "Command Line Interface"
+title: "Simulator Setup"
 meta_title: "Setting up Alchemist"
 subheadline: "Learn the basics!"
 teaser: "Creating new simulation projects with alchemist"
@@ -12,14 +12,13 @@ header:
    image_fullwidth: "header_mol.png"
 ---
 
-This section will explain the possible ways to launch simulations
-
-### Using the redistributable jar and the command line
-
 ### Using Gradle
+
+You can find tutorials about how to setup a project with gradle and how to create configuration files for all the incarnations at the [Github's Alchemist Page][github]
 
 ### Using the redistributable jar and the graphical interface
 
 This topic is covered in the [graphical interface tutorial][gui]
 
 [gui]: {{site.url}}/pages/tutorial/swingui/
+[github]: https://github.com/AlchemistSimulator
