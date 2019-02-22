@@ -17,6 +17,7 @@ header:
 0. [Simulator setup][setup]
 0. [How to write simulations][Simulations]
 0. [The graphical interface][gui]
+0. [YAML for Alchemist][yaml]
 
 ### Incarnations
 
@@ -40,6 +41,7 @@ header:
 [basics]: {{site.url}}/pages/tutorial/basics
 [gui]: {{site.url}}/pages/tutorial/gui
 [swingui]: {{site.url}}/pages/tutorial/swingui
+[yaml]: {{site.url}}/pages/tutorial/yaml
 [sapere]: {{site.url}}/pages/tutorial/sapere
 [protelis]: {{site.url}}/pages/tutorial/protelis
 [protelis examples]: https://github.com/AlchemistSimulator/Protelis-Incarnation-tutorial
