@@ -17,15 +17,25 @@ header:
 ### Prerequisites
 
 * A working graphical environment
-* A Java 8 (or newer) runtime environment
+* Java 8 with OpenJFX 8, Java 11, or a later Java version. Java 9 and Java 10 are not supported, although the Java 8 version of Alchemist might work, if OpenJFX or another JavaFX library is correctly installed
 
 ### Download and installation
 
-Alchemist does not require any installation procedure. It is delivered in form of a runnable jar file, that can be retrieved from [the Alchemist release page on Github](https://github.com/AlchemistSimulator/alchemist/releases). The file name should match ``alchemist-redist-VERSION.jar`` where ``VERSION`` is a [SemVer](http://semver.org/spec/v2.0.0.html) version.
+Alchemist does not require any installation procedure. It can be rerieved via Gradle or in the form of a runnable JAR file.
 
-#### Launch from the graphical interface
+#### Gradle
 
-Once downloaded, if your Java 8 environment is correctly setup, you should be able to launch it the same way you open any file (classically in most environments, by double clicking it). If Alchemist does not start this way, you can fall back to using a terminal.
+Retrieving Alchemist via Gradle is preferable and it can be done by cloning the empty project for Alchemist that is stored [here](https://github.com/AlchemistSimulator/Empty-Alchemist-project-using-Gradle) using the command: `git clone https://github.com/AlchemistSimulator/Empty-Alchemist-project-using-Gradle.git` (or `git clone git@github.com:AlchemistSimulator/Empty-Alchemist-project-using-Gradle.git`, if you want to use SSH) in a Command Line Interface.
+
+Then, you will be able to import the project inside Eclipse or IntelliJ IDEA and start the graphical interface from a Commang Line Interface using the Gradle Wrapper with the command `gradlew.bat` if you are on Windows, or `./gradlew` if you are on \*nix (Linux, MacOS, FreeBSD, Solaris).
+
+For further information, you can find more specific tutorials [here](https://github.com/AlchemistSimulator).
+
+#### JAR
+
+You can get Alchemist in the form of a runnable jar file, that can be retrieved from [the Alchemist release page on Github](https://github.com/AlchemistSimulator/alchemist/releases). The file name should match ``alchemist-redist-VERSION.jar`` where ``VERSION`` is a [SemVer](http://semver.org/spec/v2.0.0.html) version.
+
+Once downloaded, if your Java environment is correctly setup, you should be able to launch it the same way you open any file (classically in most environments, by double clicking it). If Alchemist does not start this way, you can fall back to using a terminal.
 
 ### Shortcuts
 

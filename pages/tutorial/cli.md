@@ -14,7 +14,7 @@ header:
 
 ### Using Gradle
 
-You can find tutorials about how to setup a project with gradle and how to create configuration files for all the incarnations at the [Github's Alchemist Page][github]
+You can find tutorials about how to setup a project with gradle and how to create configuration files for any incarnation [here][github]
 
 ### Using the redistributable jar and the graphical interface
 

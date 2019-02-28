@@ -92,6 +92,6 @@ nodes:
   parameters: [max-radius, rigidity]
 {% endhighlight %}
 
-The min radius of the cell is so that ``min-radius = rigidity * max-radius`` and the two parameters are used to compute collisions and impacts between the cells.
+The minimum radius of the cell is so that ``min-radius = rigidity * max-radius`` and the two parameters are used to compute collisions and impacts between the cells.
 
 [yaml]: {{site.url}}/pages/tutorial/yaml
