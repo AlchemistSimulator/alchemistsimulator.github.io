@@ -17,6 +17,7 @@ header:
 0. [Simulator setup][setup]
 0. [How to write simulations][Simulations]
 0. [The graphical interface][gui]
+0. [YAML for Alchemist][yaml]
 
 ### Incarnations
 
@@ -28,16 +29,23 @@ header:
 0. [The Protelis Incarnation][protelis]
 0. [Examples using the Protelis Incarnation][protelis examples]
 
+#### Biochemistry
+
+0. [The Biochemistry Incarnation][biochemistry]
 
 ### Deprecated stuff
 
 0. [The XML language][xml]
+0. [The Swing GUI][swingui]
 
 [basics]: {{site.url}}/pages/tutorial/basics
-[gui]: {{site.url}}/pages/tutorial/swingui
+[gui]: {{site.url}}/pages/tutorial/gui
+[swingui]: {{site.url}}/pages/tutorial/swingui
+[yaml]: {{site.url}}/pages/tutorial/yaml
 [sapere]: {{site.url}}/pages/tutorial/sapere
 [protelis]: {{site.url}}/pages/tutorial/protelis
 [protelis examples]: https://github.com/AlchemistSimulator/Protelis-Incarnation-tutorial
+[biochemistry]: {{site.url}}/pages/tutorial/biochemistry
 [setup]: {{site.url}}/pages/tutorial/cli
 [simulations]: {{site.url}}/pages/tutorial/simulations
 [xml]: {{site.url}}/pages/tutorial/xml
