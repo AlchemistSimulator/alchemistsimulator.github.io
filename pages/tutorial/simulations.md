@@ -265,6 +265,21 @@ displacements:
       parameters: [-5, -5, 5, 5, 0.25, 0.25, 0.1, 0.1]
 {% endhighlight %}
 
+In order to specify a particular node implementation you want to put inside the environment you can use the `nodes` key
+followed by the name of the class and the parameters required to build it.
+
+100 `MyCustomNodeImpl` nodes, whose constructor needs only the environment, placed in a circle with center in (0, 0) and radius 20.
+{% highlight yaml %}
+displacements:
+  - in:
+      type: Circle
+      parameters: [100, 0, 0, 20]
+    nodes:
+      type: MyCustomNodeImpl
+      parameters: []
+{% endhighlight %}
+
+
 It is possible to set the content of the nodes inside a given region. Only the nodes inside the `Rectangle` area contain the `source` and `randomSensor` molecules (global variables).
 {% highlight yaml %}
 displacements:
