@@ -1,0 +1,681 @@
+{
+  "ownKey": "wiki",
+  "childrenPages": {"wiki": {
+    "ownKey": "wiki",
+    "childrenPages": {
+      "license": {
+        "ownKey": "license",
+        "ownPages": [{
+          "reference": {
+            "path": "wiki",
+            "baseUrl": "https://alchemistsimulator.github.io/latest",
+            "fileName": "license",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://alchemistsimulator.github.io/latest/wiki/license"
+          },
+          "previous": {
+            "path": "wiki/examples",
+            "baseUrl": "https://alchemistsimulator.github.io/latest",
+            "fileName": "maps",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://alchemistsimulator.github.io/latest/wiki/examples/maps"
+          },
+          "description": "",
+          "title": "License",
+          "content": ""
+        }]
+      },
+      "simulator": {
+        "ownKey": "simulator",
+        "childrenPages": {"metamodel": {
+          "ownKey": "metamodel",
+          "ownPages": [{
+            "reference": {
+              "path": "wiki/simulator",
+              "baseUrl": "https://alchemistsimulator.github.io/latest",
+              "fileName": "metamodel",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://alchemistsimulator.github.io/latest/wiki/simulator/metamodel"
+            },
+            "next": {
+              "path": "wiki",
+              "baseUrl": "https://alchemistsimulator.github.io/latest",
+              "fileName": "usage",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://alchemistsimulator.github.io/latest/wiki/usage"
+            },
+            "previous": {
+              "path": "wiki",
+              "baseUrl": "https://alchemistsimulator.github.io/latest",
+              "fileName": "simulator",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://alchemistsimulator.github.io/latest/wiki/simulator"
+            },
+            "description": "",
+            "title": "The Alchemist Simulator metamodel",
+            "content": "<h2 id=\"the-world-of-alchemist\">The world of Alchemist<\/h2>\n<p>The first step to take in order to use the simulator, is to answer the question<\/p>\n<blockquote>\n<p>what does Alchemist simulate?<\/p>\n<\/blockquote>\n<h3 id=\"the-model\">The model<\/h3>\n<p>The world of Alchemist is composed of the following entities:<\/p>\n<ul>\n<li><strong><a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/Molecule\">Molecule<\/a><\/strong>\n<ul>\n<li>The name of a data item<\/li>\n<li>If Alchemist were an imperative programming language, a <em>molecule<\/em> would be the concept of <em>variable name<\/em><\/li>\n<\/ul>\n<\/li>\n<li><strong><a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/Concentration\">Concentration<\/a><\/strong>\n<ul>\n<li>The value associated to a particular <em>molecule<\/em><\/li>\n<li>If Alchemist were an imperative programming language, a <em>concentration<\/em> would be the concept of <em>value associated to a variable<\/em><\/li>\n<\/ul>\n<\/li>\n<li><strong><a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/Node\">Node<\/a><\/strong>\n<ul>\n<li>A container of <em>molecules<\/em> and <em>reactions<\/em>, living inside an <em>environment<\/em><\/li>\n<\/ul>\n<\/li>\n<li><strong><a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/Environment\">Environment<\/a><\/strong>\n<ul>\n<li>The Alchemist abstration for the space. It is a container for <em>nodes<\/em>, and it is able to tell:\n<ol>\n<li>Where the nodes are in the space - i.e. their <em>position<\/em><\/li>\n<li>The distance between two <em>nodes<\/em><\/li>\n<li>Optionally, support for moving <em>nodes<\/em><\/li>\n<\/ol>\n<\/li>\n<\/ul>\n<\/li>\n<li><strong><a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/LinkingRule\">Linking rule<\/a><\/strong>\n<ul>\n<li>A function of the current status of the environment that associates to each <em>node<\/em> a <em>neighborhood<\/em><\/li>\n<\/ul>\n<\/li>\n<li><strong><a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/Neighborhood\">Neighborhood<\/a><\/strong>\n<ul>\n<li>An entity composed by a <em>node<\/em> (centre) and a set of <em>nodes<\/em> (neighbors)<\/li>\n<\/ul>\n<\/li>\n<li><strong><a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/Reaction\">Reaction<\/a><\/strong>\n<ul>\n<li>Any event that can change the status of the <em>environment<\/em><\/li>\n<li>Each <em>node<\/em> has a possibly empty set of <em>reactions<\/em><\/li>\n<li>Each reaction is defined by a possibly empty list of <em>conditions<\/em>, one or more <em>actions<\/em> and a <em><a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/TimeDistribution\">time distribution<\/a><\/em><\/li>\n<li>The frequency at which it happens depends on:\n<ol>\n<li>A static &quot;rate&quot; parameter<\/li>\n<li>The value of each <em>condition<\/em><\/li>\n<li>A &quot;rate equation&quot;, that combines the static rate and the value of conditions, giving back an &quot;instantaneous rate&quot;<\/li>\n<li>A <em>time distribution<\/em><\/li>\n<\/ol>\n<\/li>\n<\/ul>\n<\/li>\n<li><strong><a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/Condition\">Condition<\/a><\/strong>\n<ul>\n<li>A function that takes the current <em>environment<\/em> as input and outputs a boolean and a number<\/li>\n<li>If the <em>condition<\/em> does not hold (i.e. its current output is <code>false<\/code>), the <em>reaction<\/em> to which it is associated cannot run<\/li>\n<li>The outputed number may or may not influence the <em>reaction<\/em> speed (i.e. the average number of times the <em>reaction<\/em> &quot;happens&quot; per time unit), depending on the <em>reaction<\/em> and its <em>time distribution<\/em>.<\/li>\n<\/ul>\n<\/li>\n<li><strong><a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/Action\">Action<\/a><\/strong>\n<ul>\n<li>Models a change in the environment.<\/li>\n<\/ul>\n<\/li>\n<\/ul>\n<p>The following image is a visualization of such model:<\/p>\n<p><img src=\"https://alchemistsimulator.github.io/latest/assets/media/simulator/model.png\" alt=\"Alchemist model\" /><\/p>\n<p>The behavior of the system is described in terms of reactions. As such, here's a pictorial representation of a reaction:<\/p>\n<p><img src=\"https://alchemistsimulator.github.io/latest/assets/media/simulator/reaction.png\" alt=\"Alchemist reaction\" /><\/p>\n<h3 id=\"incarnations\">Incarnations<\/h3>\n<p>As you can see, names are given after classical chemistry terms.\nThis is mostly for historical reasons: Alchemist has been initially conceived as a chemical-oriented multi-compartment\nstochastic simulation engine, able to support compartment (node) mobility while still retaining high performance.<\/p>\n<p>However, Alchemist is not limited to that. The key of its extensibility is in the very loose interpretation of\n<strong>molecule<\/strong> and <strong>concentration<\/strong>. These two terms have a very precise definition in chemistry, but in Alchemist they\nare respectively<\/p>\n<ol>\n<li>a generic identifier, and<\/li>\n<li>a piece of data of some <strong>type<\/strong><\/li>\n<\/ol>\n<p>An <strong>incarnation<\/strong> of Alchemist includes a <strong>type<\/strong> definition of <strong>concentration<\/strong>,\nand possibly a set of specific conditions, actions and (rarely) environments and reactions that operate on such types.\nIn other words, an incarnation is a concrete instance of the Alchemist meta-model.\nIn addition, a proper <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/Incarnation\">Alchemist incarnation<\/a> must also define:<\/p>\n<ul>\n<li>Means for translating strings into named entities (molecules)<\/li>\n<li>Means for obtaining a number when given a node, a molecule and a string representing a property<\/li>\n<li>Means for building incarnation-specific model entities given an appropriate context and a parameter String<\/li>\n<\/ul>\n<p>These functionalities are required in order to support a uniform access to different incarnations.<\/p>\n<p>Different Incarnations can model completely different universes.\nFor instance, if the concentration is defined as a positive integer and proper actions and conditions are provided,\nAlchemist becomes a stochastic simulator for chemistry featuring interconnected and mobile compartments.<\/p>\n<p>The standalone distribution comes with:<\/p>\n<ul>\n<li><a href=\"http://protelis.org\">Protelis Incarnation<\/a><\/li>\n<li><a href=\"http://dx.doi.org/10.1016/j.pmcj.2014.12.002\">SAPERE Incarnation<\/a><\/li>\n<li><a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/BiochemistryIncarnation\">Biochemistry Incarnation<\/a><\/li>\n<li><a href=\"https://scafi.github.io/\">Scafi incarnation<\/a><\/li>\n<\/ul>\n<p>More details on how to use each of the included incarnations will be provided after this introductory chapter.<\/p>\n<h2 id=\"the-tool\">The tool<\/h2>\n<p>The core part of the tool is the incarnation-agnostic simulation engine.\nIts current implementation is based on <a href=\"http://dx.doi.org/10.1021/jp993732q\">Gibson and Bruck's Next Reaction<\/a>,\nextended to support addition and removal of reactions, and improved using input and output contexts for reactions,\nin order to prune the dependency graph as much as possible.\nMore details on that are demanded to <a href=\"http://dx.doi.org/10.1057/jos.2012.27\">this scientific paper on Journal of Simulation<\/a>.<\/p>\n<p>The engine's entry point is the <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/core/interfaces/Simulation\">Simulation<\/a>.\nIt is equipped with support for commands like play, pause and stop, and can be equipped with an <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/boundary/interfaces/OutputMonitor\">OutputMonitor<\/a>.\nThe output monitor can be a graphical interface, a logger or any kind of environment inspector.<\/p>\n"
+          }]
+        }},
+        "ownPages": [{
+          "reference": {
+            "path": "wiki",
+            "baseUrl": "https://alchemistsimulator.github.io/latest",
+            "fileName": "simulator",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://alchemistsimulator.github.io/latest/wiki/simulator"
+          },
+          "next": {
+            "path": "wiki/simulator",
+            "baseUrl": "https://alchemistsimulator.github.io/latest",
+            "fileName": "metamodel",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://alchemistsimulator.github.io/latest/wiki/simulator/metamodel"
+          },
+          "description": "",
+          "title": "Understanding Alchemist",
+          "content": "<p>Understanding Alchemist<\/p>\n"
+        }]
+      },
+      "examples": {
+        "ownKey": "examples",
+        "childrenPages": {
+          "maps": {
+            "ownKey": "maps",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/examples",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "maps",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/examples/maps"
+              },
+              "next": {
+                "path": "wiki",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "license",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/license"
+              },
+              "previous": {
+                "path": "wiki/examples",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "scafi",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/examples/scafi"
+              },
+              "description": "",
+              "title": "On maps",
+              "content": "<p>On maps<\/p>\n"
+            }]
+          },
+          "scafi": {
+            "ownKey": "scafi",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/examples",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "scafi",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/examples/scafi"
+              },
+              "next": {
+                "path": "wiki/examples",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "maps",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/examples/maps"
+              },
+              "previous": {
+                "path": "wiki/examples",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "protelis",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/examples/protelis"
+              },
+              "description": "",
+              "title": "With Scafi",
+              "content": "<p>With Scafi<\/p>\n"
+            }]
+          },
+          "protelis": {
+            "ownKey": "protelis",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/examples",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "protelis",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/examples/protelis"
+              },
+              "next": {
+                "path": "wiki/examples",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "scafi",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/examples/scafi"
+              },
+              "previous": {
+                "path": "wiki",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "examples",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/examples"
+              },
+              "description": "",
+              "title": "With Protelis",
+              "content": "<p>With Protelis<\/p>\n"
+            }]
+          }
+        },
+        "ownPages": [{
+          "reference": {
+            "path": "wiki",
+            "baseUrl": "https://alchemistsimulator.github.io/latest",
+            "fileName": "examples",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://alchemistsimulator.github.io/latest/wiki/examples"
+          },
+          "next": {
+            "path": "wiki/examples",
+            "baseUrl": "https://alchemistsimulator.github.io/latest",
+            "fileName": "protelis",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://alchemistsimulator.github.io/latest/wiki/examples/protelis"
+          },
+          "previous": {
+            "path": "wiki/usage",
+            "baseUrl": "https://alchemistsimulator.github.io/latest",
+            "fileName": "customization",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://alchemistsimulator.github.io/latest/wiki/usage/customization"
+          },
+          "description": "",
+          "title": "Simulation examples",
+          "content": "<p>Simulation examples<\/p>\n"
+        }]
+      },
+      "usage": {
+        "ownKey": "usage",
+        "childrenPages": {
+          "quickstart": {
+            "ownKey": "quickstart",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "quickstart",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/quickstart"
+              },
+              "next": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "gui",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/gui"
+              },
+              "previous": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "installation",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/installation"
+              },
+              "description": "",
+              "title": "Uber quick start",
+              "content": "<p>Uber quick start<\/p>\n"
+            }]
+          },
+          "maps": {
+            "ownKey": "maps",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "maps",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/maps"
+              },
+              "next": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "export",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/export"
+              },
+              "previous": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "scafi",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/scafi"
+              },
+              "description": "",
+              "title": "Maps and GPS traces",
+              "content": "<p>Maps and GPS traces<\/p>\n"
+            }]
+          },
+          "customization": {
+            "ownKey": "customization",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "customization",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/customization"
+              },
+              "next": {
+                "path": "wiki",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "examples",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/examples"
+              },
+              "previous": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "grid",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/grid"
+              },
+              "description": "",
+              "title": "Writing custom components",
+              "content": "<p>Writing custom components<\/p>\n"
+            }]
+          },
+          "batch": {
+            "ownKey": "batch",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "batch",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/batch"
+              },
+              "next": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "grid",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/grid"
+              },
+              "previous": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "export",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/export"
+              },
+              "description": "",
+              "title": "Executing batches",
+              "content": "<p>Executing batches<\/p>\n"
+            }]
+          },
+          "grid": {
+            "ownKey": "grid",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "grid",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/grid"
+              },
+              "next": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "customization",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/customization"
+              },
+              "previous": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "batch",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/batch"
+              },
+              "description": "",
+              "title": "Grid computing support",
+              "content": "<p>Grid computing support<\/p>\n"
+            }]
+          },
+          "installation": {
+            "ownKey": "installation",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "installation",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/installation"
+              },
+              "next": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "quickstart",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/quickstart"
+              },
+              "previous": {
+                "path": "wiki",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "usage",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage"
+              },
+              "description": "",
+              "title": "Requirements and installation",
+              "content": ""
+            }]
+          },
+          "biochemistry": {
+            "ownKey": "biochemistry",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "biochemistry",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/biochemistry"
+              },
+              "next": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "protelis",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/protelis"
+              },
+              "previous": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "yaml",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/yaml"
+              },
+              "description": "",
+              "title": "Alchemist biochemistry incarnation",
+              "content": "<p>Biochemistry is an incarnation of Alchemist developed to provide support for biochemical reactions that take place inside a biological cell or a group of those surrounded by a common environment.<\/p>\n<h3 id=\"the-biochemistry-incarnation\">The Biochemistry Incarnation<\/h3>\n<p>The Biochemistry incarnation provides a way to:<\/p>\n<ul>\n<li>Manage the creation, destruction and relocation of a molecule (which can be either a simple atom or a complex protein) inside a cell or from a cell to another<\/li>\n<li>Create junctions between cells using a specified amount of molecules. The junctions are modeled in a general way, but with a simple use of actions and conditions it will be possible to create tight junctions, anchoring junctions, gap junctions and even customized one<\/li>\n<li>Move a cell inside its environment in different ways, handling collisions between two ore more of them in a simplistic but effective way<\/li>\n<\/ul>\n<h3 id=\"how-to-run-a-simulation\">How To Run A Simulation<\/h3>\n<p>As first step, it is required to add this line of code in order to notice Alchemist to use the Biochemistry Incarnation:<\/p>\n<pre><code class=\"language-yaml\">incarnation: biochemistry\n<\/code><\/pre>\n<h2 id=\"the-biochemistry-dsl\">The Biochemistry DSL<\/h2>\n<p>Biochemistry programs are encapsulated inside the YAML configuration file with a simple and human-readable syntax.\nThose simple reactions can be written in the section <code>programs<\/code> of the configuration file, as value of the <code>program<\/code> key:<\/p>\n<pre><code class=\"language-yaml\">programs:\n  -\n    - time-distribution: 1\n      program: &quot;[ATP] --&gt; [ADP] + [P]&quot;\n<\/code><\/pre>\n<h3 id=\"reactions\">Reactions<\/h3>\n<p>A reaction rule can be set using the symbol <code>--&gt;<\/code> according to chemistry equations, and placing both the molecules and the actions inside two square brackets (ex. <code>[OH]<\/code>, <code>[H2O]<\/code>, <code>[BrownianMove(0.1)]<\/code>)<\/p>\n<p>The following line, so, represents a basic chemical reaction that happens inside a cell: <code>[H] + [OH] --&gt; [H2O]<\/code><\/p>\n<p>However, reactions can also take place outside the cell itself. Biological cells, indeed, can swap molecules with its neighbour or the surrounding environment, and this is possible in Alchemist too, using the keywords: <code>in cell<\/code>, <code>in neighbour<\/code> and <code>in env<\/code>.<\/p>\n<p>The reaction <code>[A in env] --&gt; [A in cell]<\/code> moves the molecule A from the environement inside the cell.<\/p>\n<p>If the location is not explicit, it is assumed the molecule to be inside the cell.<\/p>\n<h3 id=\"junctions\">Junctions<\/h3>\n<p>A junction can be created just with a neighbor of the programmed cell.<\/p>\n<p>The way to create it is with the syntax <code>[X] + [Y in neighbor] --&gt; [junction X-Y]<\/code>, which means that when this reaction happens a junction using the molecule <code>X<\/code> from the cell and the molecule <code>Y<\/code> from the neighbor will be created.<\/p>\n<p>The junction can also be destroyed using the syntax <code>[junction X-Y] --&gt; []<\/code>, causing the reintroduction of the molecule <code>X<\/code> inside the cell and the molecule <code>Y<\/code> inside the neighbor.<\/p>\n<p>Also, the junction will be automatically removed if, because of their movement, the cells will stop being in a neighborhood.<\/p>\n<h3 id=\"custom-conditions\">Custom Conditions<\/h3>\n<p>Any custom condition must be placed after the reaction products following an <code>if<\/code> clause.<\/p>\n<p>For example, to create a molecule if the cell has at least three neighbor you would write:<\/p>\n<p><code>[] --&gt; [X] if NumberOfNeighborsGreaterThan(5)<\/code><\/p>\n<h3 id=\"movement\">Movement<\/h3>\n<p>A movement can be performed in the same way of a reaction, using the function as it is a product of the reaction itself.<\/p>\n<p>This program constantly moves a cell without any other condition:<\/p>\n<p><code>[] --&gt; [BrownianMove(0.1)]<\/code><\/p>\n<h3 id=\"collisions\">Collisions<\/h3>\n<p>The Biochemistry Incarnation supports cell collisions and deformations too.<\/p>\n<p>In order to do that, however, you must set this environment:<\/p>\n<pre><code class=\"language-yaml\">environment:\n  type: BioRect2DEnvironmentNoOverlap\n<\/code><\/pre>\n<p>Then, when creating the cells, you must use these specific implementations:<\/p>\n<pre><code class=\"language-yaml\">nodes:\n  type: CircularDeformableCellImpl\n  parameters: [max-radius, rigidity]\n<\/code><\/pre>\n<p>The minimum radius of the cell is so that <code>min-radius = rigidity * max-radius<\/code> and the two parameters are used to compute collisions and impacts between the cells.<\/p>\n"
+            }]
+          },
+          "scafi": {
+            "ownKey": "scafi",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "scafi",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/scafi"
+              },
+              "next": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "maps",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/maps"
+              },
+              "previous": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "sapere",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/sapere"
+              },
+              "description": "",
+              "title": "Scafi",
+              "content": "<p>Scafi<\/p>\n"
+            }]
+          },
+          "gui": {
+            "ownKey": "gui",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "gui",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/gui"
+              },
+              "next": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "yaml",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/yaml"
+              },
+              "previous": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "quickstart",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/quickstart"
+              },
+              "description": "",
+              "title": "Alchemist graphical interface",
+              "content": "<p>The current, Swing-based graphical interface for Alchemist is being replaced by a new, JavaFX-based interface.\nThis page currently hosts minimal information on how to use such legacy GUI.<\/p>\n<h3 id=\"shortcuts\">Shortcuts<\/h3>\n<table>\n<thead>\n<tr><th>Key binding<\/th><th>Active<\/th><th>Effect<\/th><\/tr>\n<\/thead>\n<tbody>\n<tr><td><kbd>L<\/kbd><\/td><td>always<\/td><td>(En/Dis)ables the painting of links between nodes<\/td><\/tr>\n<tr><td><kbd>M<\/kbd><\/td><td>always<\/td><td>(En/Dis)ables the painting of a marker on the closest node<\/td><\/tr>\n<tr><td><kbd>Mouse pan<\/kbd><\/td><td>in normal mode<\/td><td>Moves around<\/td><\/tr>\n<tr><td><kbd>Mouse wheel<\/kbd><\/td><td>in normal mode<\/td><td>Zooms in/out<\/td><\/tr>\n<tr><td><kbd>Double click<\/kbd><\/td><td>in normal mode<\/td><td>Opens a frame with the closest node information<\/td><\/tr>\n<tr><td><kbd>Right click<\/kbd><\/td><td>in normal mode<\/td><td>Enters screen rotation mode<\/td><\/tr>\n<tr><td><kbd>P<\/kbd><\/td><td>always<\/td><td>Plays/pauses the simulation<\/td><\/tr>\n<tr><td><kbd>R<\/kbd><\/td><td>always<\/td><td>Enables the real-time mode<\/td><\/tr>\n<tr><td><kbd>Left arrow<\/kbd><\/td><td>always<\/td><td>Speeds the simulation down (more calls to the graphics)<\/td><\/tr>\n<tr><td><kbd>Right arrow<\/kbd><\/td><td>always<\/td><td>Speeds the simulation up (less calls to the graphics)<\/td><\/tr>\n<tr><td><kbd>S<\/kbd><\/td><td>always<\/td><td>Enters / exits the select mode (nodes can be selected with the mouse)<\/td><\/tr>\n<tr><td><kbd>O<\/kbd><\/td><td>in select mode<\/td><td>Selected nodes can be moved by drag and drop<\/td><\/tr>\n<tr><td><kbd>E<\/kbd><\/td><td>in select mode<\/td><td>Enters edit mode (to manually change node contents)<\/td><\/tr>\n<\/tbody>\n<\/table>\n"
+            }]
+          },
+          "export": {
+            "ownKey": "export",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "export",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/export"
+              },
+              "next": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "batch",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/batch"
+              },
+              "previous": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "maps",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/maps"
+              },
+              "description": "",
+              "title": "Exporting data",
+              "content": "<h2 id=\"defining-exported-data\">Defining exported data<\/h2>\n<p>Data expected as output can be exported by telling Alchemist what to log, and by passing to the executable information\non where to export.<\/p>\n<p>The <code>export<\/code> section lists which simulation values are exported into the <code>folder<\/code> specified with the <code>-e path/to/folder<\/code>\nargument.<\/p>\n<h3 id=\"aggregating-data\">Aggregating data<\/h3>\n<p>Data aggregators are statistically univariate.\nValid aggregation functions must extend <a href=\"http://commons.apache.org/proper/commons-math/javadocs/api-3.4/org/apache/commons/math3/stat/descriptive/AbstractStorelessUnivariateStatistic.html\">AbstractStorelessUnivariateStatistic<\/a>.<\/p>\n<p><strong>Examples<\/strong><\/p>\n<pre><code class=\"language-yaml\">export:\n  # Time step of the simulation\n  - time\n  # Number of nodes involved in the simulation\n  - number-of-nodes\n  # Molecule representing an aggregated value\n  - molecule: danger\n    aggregators: [sum]\n<\/code><\/pre>\n<h3 id=\"filtering-unwanted-values\">Filtering unwanted values<\/h3>\n<p>TODO<\/p>\n"
+            }]
+          },
+          "protelis": {
+            "ownKey": "protelis",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "protelis",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/protelis"
+              },
+              "next": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "sapere",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/sapere"
+              },
+              "previous": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "biochemistry",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/biochemistry"
+              },
+              "description": "",
+              "title": "Alchemist Protelis incarnation",
+              "content": "<p>[Protelis][Protelis], from the Latin word figuratively meaning &quot;regarding a team&quot;, is a language targeting the aggregate of devices rather than the single one.\nIt has been developed on the solid foundation of [Field Calculus][Field Calculus], a theoretical model of aggregate programming, and it is written and interoperable with Java.<\/p>\n<h3 id=\"learning-protelis\">Learning Protelis<\/h3>\n<p>The language and all the machinery of Protelis are out of the scope of this tutorial. However, we warmly recommend to read [this paper][protelis paper] first, and then to deepen your knowledge of Protelis by reading the resources available in [the official Protelis website][Protelis].<\/p>\n"
+            }]
+          },
+          "sapere": {
+            "ownKey": "sapere",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "sapere",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/sapere"
+              },
+              "next": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "scafi",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/scafi"
+              },
+              "previous": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "protelis",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/protelis"
+              },
+              "description": "",
+              "title": "SAPERE",
+              "content": "<p>SAPERE<\/p>\n"
+            }]
+          },
+          "yaml": {
+            "ownKey": "yaml",
+            "ownPages": [{
+              "reference": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "yaml",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/yaml"
+              },
+              "next": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "biochemistry",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/biochemistry"
+              },
+              "previous": {
+                "path": "wiki/usage",
+                "baseUrl": "https://alchemistsimulator.github.io/latest",
+                "fileName": "gui",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://alchemistsimulator.github.io/latest/wiki/usage/gui"
+              },
+              "description": "",
+              "title": "Writing Alchemist simulations",
+              "content": "<p>As a first step, we recommend learning the YAML basics.\nThe language is so simple and human readable that there is probably no better way to learn it than to read it directly.\nMy suggestion is to use the tutorial &quot;<a href=\"https://learnxinyminutes.com/docs/yaml/\">Learn X in Y minutes where X = YAML<\/a>&quot;,\nit should provide a good YAML guide (surely sufficient to follow the tutorial).<\/p>\n<p>Alchemist expects a YAML map as input. In the following section, we'll discuss which keys it expects.\nOf course, users are free to use all the YAML features (e.g. anchors) to organize their code and reduce duplication.<\/p>\n<h2 id=\"choosing-an-incarnation\">Choosing an incarnation<\/h2>\n<p>The <code>incarnation<\/code> key is mandatory.\nActually, it's the only mandatory key.\nThe YAML parser expects a string value.\nSuch string will be used to get the most similarly named incarnation, namely the subclass of Incarnation whose simple\nname is closest to the string.<\/p>\n<p><strong>Examples<\/strong><\/p>\n<pre><code class=\"language-yaml\">incarnation: sapere\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">incarnation: protelis\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">incarnation: biochemistry\n<\/code><\/pre>\n<p><em>Note:<\/em> this is also the most minimal valid alchemist specification<\/p>\n<h2 id=\"loading-arbitrary-java-classes-with-the-typeparameters-syntax\">Loading arbitrary Java classes with the <code>type<\/code>/<code>parameters<\/code> syntax<\/h2>\n<p>One important aspect of the Alchemist YAML is the ability to let the user control which actual Java classes should be\nloaded inside a simulation, and which constructor should be used to do so.\nAlmost every entity of an Alchemist simulation can be instanced using arbitrary Java classes that implement the required\ninterfaces.\nWhen the alchemist YAML parser encounters a YAML Map providing the keys <code>type<\/code> and <code>parameters<\/code>, it tries to resolve the\nvalue of the value associated to <code>type<\/code> to a class name, then tries to create the object by calling the constructor with\nparameters most suited to the value of <code>parameters<\/code>.<\/p>\n<p><strong>Class name resolution<\/strong><\/p>\n<p>The value associated with <code>type<\/code> must be a string representing a valid Java identifier.\nIf the value contains one or more <code>.<\/code> characters, then it will be interpreted as a fully qualified name.\nIf no such character is included, then <em>the default package for the desired alchemist entity will be prefixed<\/em>.\nAlchemist won't ever attempt to load a class situated in the default package (so don't put your classes there, it's a\nbad practice anyway).<\/p>\n<p><strong>Object instancing<\/strong><\/p>\n<p>If the class gets loaded correctly (meaning if a class is present in the classpath with the fully qualified name,\nwhether it was passed or guessed by Alchemist), then its constructors get sorted based on the number and type of\nparameters.\nThe system tries to build an object with all the available constructors until one of them provides an instanced object,\nin an order that considers both the current context (namely, the entities that have already been instanced) and the\nvalue of <code>parameters<\/code>.<\/p>\n<p>For instance, imagine that you are trying to build an instance of a <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/Reaction\">Reaction<\/a>, whose only constructor requires an\n<a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/Environment\">Environment<\/a>, a <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/Node\">Node<\/a>, an <code>int<\/code> and a <code>String<\/code>.\nIn this case, an Environment and a Node must have already been created (or the YAML loader won't be at this point).\nAs a consequence, the first two parameters are automatically inferred by the current context and passed to the constructor.\nThe other two parameters can not be inferred this way; instead, the value associated to <code>parameters<\/code> is used to extract the proper values (if possible).\nIn this case, this would have been a valid <code>parameters<\/code> entry:<\/p>\n<pre><code class=\"language-yaml\">type: my.package.MyCustomReaction\nparameters: [4, foo]\n<\/code><\/pre>\n<p>As you can easily infer, the value of <code>parameters<\/code> must be a YAML list.<\/p>\n<p>Don't despair if the class loading system is still unclear: it is used pervasively and it will become clearer with the examples in the next sections.<\/p>\n<h2 id=\"setting-up-the-environment\">Setting up the environment<\/h2>\n<p>The <code>environment<\/code> key is used to load the <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/Environment\">Environment<\/a> implementation.\nIt is optional and it defaults to a <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/implementations/environments/Continuous2DEnvironment\">continuous bidimensional space<\/a>.\nIf no fully qualified environment name is provided for class loading, Alchemist uses the package\n<a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/implementations/environments\">it.unibo.alchemist.model.implementations.environments<\/a> to search for the class.<\/p>\n<h3 id=\"examples\">Examples<\/h3>\n<p>The following simulations are equivalent, and load the default environment (which is incarnation independent, here\n<code>protelis<\/code> is picked, but it works for any other incarnation as well):<\/p>\n<pre><code class=\"language-yaml\">incarnation: protelis\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: Continuous2DEnvironment\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: it.unibo.alchemist.model.implementations.environments.Continuous2DEnvironment\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: Continuous2DEnvironment\n  parameters: []\n<\/code><\/pre>\n<p><a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/implementations/environments/OSMEnvironment\">OSMEnvironment<\/a> allows for running simulations over real world maps. The following simulation\nloads data from an Openstreetmap file (OSM, XML and PBF formats are supported) located in the classpath in the folder\n<code>maps<\/code>:<\/p>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: OSMEnvironment\n  parameters: [maps/foo.pbf]\n<\/code><\/pre>\n<p><a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/implementations/environments/ImageEnvironment\">ImageEnvironment<\/a> loads data from a black and white raster image file (in this example, located in the\nclasspath in the folder <code>images<\/code>), interpreting the black pixels as obstacles (areas that cannot be accessed by nodes):<\/p>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: ImageEnvironment\n  parameters: [images/foo.png]\n<\/code><\/pre>\n<p>Finally, if you write your own custom class named <code>my.package.FooEnv<\/code> implementing <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/Environment\">Environment<\/a>, whose\nconstructor requires a String and a double, you can use it in the simulator by writing, for instance:<\/p>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: my.package.FooEnv\n  parameters: [bar, 2.2]\n<\/code><\/pre>\n<p>The environments shipped with the distribution can be found in the package\n<a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/implementations/environments\">it.unibo.alchemist.model.implementations.environments<\/a>.<\/p>\n<h2 id=\"declaring-variables\">Declaring variables<\/h2>\n<p>The <code>variables<\/code> section lists variable simulation values.\nA variable defines some kind of value that can be referenced in the simulation file.<\/p>\n<p>There are two kinds of variables: free and dependent variables.\nThe difference is that variables of the latter kind can always be computed given the values of all the other variables.<\/p>\n<h3 id=\"free-variables\">Free variables<\/h3>\n<p>Free variables define a set of values and a default.\nThe value set is used to define the batch matrix, i.e., if the variable is selected for a batch, all its value are\nincluded in the cartesian product that determines which simulations are to be executed.\nIf the simulation is not executed as batch, then the default value is used<\/p>\n<h4 id=\"linear-variables\">Linear variables<\/h4>\n<h4 id=\"geometric-variables\">Geometric variables<\/h4>\n<h4 id=\"arbitrary-valued-variables\">Arbitrary-valued variables<\/h4>\n<h3 id=\"dependent-variables\">Dependent variables<\/h3>\n<h3 id=\"using-variables\">Using variables<\/h3>\n<h2 id=\"controlling-the-reproducibility\">Controlling the reproducibility<\/h2>\n<p>Alchemist simulations can be reproduced by feeding them the same random number generator.\nThis assumption is true as far as the custom component in use:<\/p>\n<ul>\n<li>do not use any other random generator but the one provided by the simulation framework<\/li>\n<li>do not iterate over collections with no predicible iteration order (i.e., <code>Set<\/code> and <code>Map<\/code>) containing elements (or\nkeys) whose <code>hashCode()<\/code> has not been overridden to return the same value regardless of the specific JVM in use.<\/li>\n<li>do not run operations in parallel<\/li>\n<\/ul>\n<p>The <code>seeds<\/code> section may contain two optional values: <code>scenario<\/code> and <code>simulation<\/code>.\nThe former is the seed of the pseudo-random generator used during the creation of the simulation, e.g. for displacing\nnodes in random arrangements.\nThe latter is the seed of the pseudo-random generator used during the simulation, e.g. for computing time distributions\nor generating random positions.\nA typical example in which one may want to have different values, is to keep the same random displacement of devices in\nsome scenario but allow events to happen with different timings.<\/p>\n<p>A typical <code>seed<\/code> section may look like:<\/p>\n<pre><code class=\"language-yaml\">seeds:\n  scenario: 0\n  simulation: 1\n<\/code><\/pre>\n<p>Usually, in batches, you wan to run multiple runs per experiment, varying the simulation seed, in order to get more\nreliable data (and appropriate error bars).\nAs per any other value, variables can be feeded as random generator seeds.\nIn the following example, 100 simulations are generated with different seeds (both for environment configuration and\nsimulation execution)<\/p>\n<pre><code class=\"language-yaml\">variables:\n  random: &amp;random\n    min: 0\n    max: 9\n    step: 1\n    default: 0\nseeds:\n  # reference to the `random` variable\n  scenario: *random\n  simulation: *random\n<\/code><\/pre>\n<h2 id=\"defining-the-network\">Defining the network<\/h2>\n<p>The <code>network-model<\/code> key is used to load the implementation of <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/LinkingRule\">LinkingRule<\/a> to be used in the simulation,\nwhich determines the neighborhood of every node.\nThe key is optional, but defaults to <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/implementations/linkingrules/NoLinks\">NoLinks<\/a>, so if unspecified nodes in the environment don't get\nconnected.\nOmitting such key is equivalent to writing any of the following:<\/p>\n<pre><code class=\"language-yaml\">network-model:\n  type: NoLinks\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">network-model:\n  type: it.unibo.alchemist.model.implementations.linkingrules.NoLinks\n  parameters: []\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">network-model:\n  type: NoLinks\n  parameters: []\n<\/code><\/pre>\n<p>If no fully qualified linking rule name is provided for class loading, Alchemist uses the package\n<a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/implementations/linkingrules\">it.unibo.alchemist.model.implementations.linkingrules<\/a> to search for the class.<\/p>\n<h3 id=\"linking-nodes-based-on-distance\">Linking nodes based on distance<\/h3>\n<p>One of the most common ways of linking nodes is to connect those which are close enough to each other. To do so, you can\nuse the class <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/implementations/linkingrules/ConnectWithinDistance\">ConnectWithinDistance<\/a>, passing a parameter representing the maximum connection distance.\nNote that such distance depends on the environment: while the definition of distance is straightforward for euclidean\nspaces, it's not so for <a href=\"https://en.wikipedia.org/wiki/Riemannian_geometry\">Riemannian manifolds<\/a>, which is a fancy\nname to define geometries such as the one typical of a urban map (you can roughly interpret it as a euclidean space\n&quot;with holes&quot;).\nFor instance, in case of environments using <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/model/interfaces/GeoPosition\">GeoPosition<\/a>, the distance is computed in meters, so the\ndistance between <code>[44.133254, 12.237770]<\/code> and <code>[44.146680, 12.258627]<\/code> is about <code>2240<\/code> (meters).<\/p>\n<pre><code class=\"language-yaml\">network-model:\n  type: ConnectWithinDistance\n  # Link together all the nodes closer than 100 according to the distance function\n  parameters: [100]\n<\/code><\/pre>\n<h2 id=\"displacing-nodes\">Displacing nodes<\/h2>\n<p>The <code>displacements<\/code> section lists the node locations at the beginning of the simulation.\nEach displacement type extends the interface <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/loader/displacements/Displacement\">Displacement<\/a>. If no fully qualified displacement name is\nprovided for class loading,\nAlchemist uses the package <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/loader/displacements\">it.unibo.alchemist.loader.displacements<\/a> to search for the class.\nThe YAML key associated to displacements is <code>in<\/code>.<\/p>\n<h3 id=\"displacing-on-specific-positions\">Displacing on specific positions<\/h3>\n<p>The following example places a single node in the (0, 0) <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/loader/displacements/Point\">Point<\/a>.<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  # &quot;in&quot; entries, where each entry defines a group of nodes\n  - in:\n      type: Point\n      # Using a constructor taking (x,y) coordinates\n      parameters: [0, 0]\n<\/code><\/pre>\n<h3 id=\"displacing-multiple-nodes-at-once\">Displacing multiple nodes at once<\/h3>\n<p>This example places 10000 nodes randomly in a <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/loader/shapes/Circle\">Circle<\/a> with center in (0, 0) and radius 10.<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  - in:\n      type: Circle\n      parameters: [10000, 0, 0, 10]\n<\/code><\/pre>\n<p>Here instead nodes are located in a <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/loader/displacements/Grid\">Grid<\/a> centered in (0, 0), with nodes distanced of 0.25 both\nhorizontally and vertically, and whose position is not exact but randomly perturbed (±0.1 distance units).<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  - in:\n      type: Grid\n      parameters: [-5, -5, 5, 5, 0.25, 0.25, 0.1, 0.1]\n<\/code><\/pre>\n<h3 id=\"customizing-the-node-type\">Customizing the node type<\/h3>\n<p>In order to specify a particular node implementation you want to put inside the environment you can use the <code>nodes<\/code> key\nfollowed by the name of the class and the parameters required to build it.<\/p>\n<p>100 <code>MyCustomNodeImpl<\/code> nodes, whose constructor needs only the environment, placed in a circle with center in (0, 0) and\nradius 20.<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  - in:\n      type: Circle\n      parameters: [100, 0, 0, 20]\n    nodes:\n      type: MyCustomNodeImpl\n      parameters: []\n<\/code><\/pre>\n<p>The empty parameters section can be omitted (as per custom class loading mechanism):<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  - in:\n      type: Circle\n      parameters: [100, 0, 0, 20]\n    nodes:\n      type: MyCustomNodeImpl\n<\/code><\/pre>\n<h3 id=\"customizing-the-nodes-content\">Customizing the nodes content<\/h3>\n<p>It is possible to set the content of the nodes inside a given region. Only the nodes inside the <a href=\"https://alchemistsimulator.github.io/latest/it/unibo/alchemist/loader/shapes/Rectangle\">Rectangle<\/a> area contain\nthe <code>source<\/code> and <code>randomSensor<\/code> molecules (global variables).<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  - in:\n      type: Grid\n      parameters: [-5, -5, 5, 5, 0.25, 0.25, 0.1, 0.1]\n    contents:\n      - in:\n          type: Rectangle\n          parameters: [-6, -6, 2, 2]\n        molecule: source\n        concentration: true\n        molecule: randomSensor\n        concentration: &gt;\n          import java.lang.Math.random\n          random() * pi\n<\/code><\/pre>\n<h2 id=\"writing-behaviors-reactions\">Writing behaviors (Reactions)<\/h2>\n<p>TODO!<\/p>\n<p>Nodes can be programmed using reactions.<\/p>\n<pre><code class=\"language-yaml\"># Variable representing the program to be executed\ngradient: &amp;gradient\n  - time-distribution: 1\n    # Make sure that the program folder is part of the project classpath\n    program: program:package:distanceTo\n  - program: send\ndisplacements:\n  - in:\n      type: Grid\n      parameters: [-5, -5, 5, 5, 0.25, 0.25, 0.1, 0.1]\n    programs:\n      # Reference to the &quot;gradient&quot; list of programs. This program is executed in all\n      # the grid nodes\n      - *gradient\n<\/code><\/pre>\n"
+            }]
+          }
+        },
+        "ownPages": [{
+          "reference": {
+            "path": "wiki",
+            "baseUrl": "https://alchemistsimulator.github.io/latest",
+            "fileName": "usage",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://alchemistsimulator.github.io/latest/wiki/usage"
+          },
+          "next": {
+            "path": "wiki/usage",
+            "baseUrl": "https://alchemistsimulator.github.io/latest",
+            "fileName": "installation",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://alchemistsimulator.github.io/latest/wiki/usage/installation"
+          },
+          "previous": {
+            "path": "wiki/simulator",
+            "baseUrl": "https://alchemistsimulator.github.io/latest",
+            "fileName": "metamodel",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://alchemistsimulator.github.io/latest/wiki/simulator/metamodel"
+          },
+          "description": "",
+          "title": "Using Alchemist",
+          "content": "<p>Using Alchemist<\/p>\n"
+        }]
+      }
+    },
+    "ownPages": [{
+      "reference": {
+        "path": "",
+        "baseUrl": "https://alchemistsimulator.github.io/latest",
+        "fileName": "wiki",
+        "extension": "html",
+        "usePrettyUrl": true,
+        "link": "https://alchemistsimulator.github.io/latest/wiki"
+      },
+      "description": "",
+      "title": "Wiki",
+      "content": "<html>\n <head><\/head>\n <body>\n  <h1 id=\"alchemist-simulator-user-guide\">Alchemist simulator user guide<\/h1> \n  <ul> \n   <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/simulator\">Understanding Alchemist<\/a> \n    <ul> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/simulator/metamodel\">The metamodel<\/a><\/li> \n    <\/ul> <\/li> \n   <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/usage\">Using Alchemist<\/a> \n    <ul> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/usage/installation\">Requirements and installation<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/usage/quickstart\">Uber quick start<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/usage/gui\">The graphical interface<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/usage/yaml\">How to write simulations<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/usage/biochemistry\">Biology and Biochemistry<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/usage/protelis\">Protelis<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/usage/sapere\">SAPERE<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/usage/scafi\">Scafi<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/usage/maps\">Maps and GPS traces<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/usage/export\">Exporting data<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/usage/batch\">Executing batches<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/usage/grid\">Grid computing support<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/usage/customization\">Writing custom components<\/a><\/li> \n    <\/ul> <\/li> \n   <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/examples\">Simulation examples<\/a> \n    <ul> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/examples/protelis\">With Protelis<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/examples/scafi\">With Scafi<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/examples/maps\">On maps<\/a><\/li> \n    <\/ul> <\/li> \n   <li><a href=\"https://alchemistsimulator.github.io/latest/wiki/license\">License<\/a><\/li> \n  <\/ul> \n <\/body>\n<\/html>\n"
+    }]
+  }}
+}
