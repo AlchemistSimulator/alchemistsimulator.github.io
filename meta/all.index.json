@@ -231,10 +231,10 @@
                 "next": {
                   "path": "wiki/usage",
                   "baseUrl": "https://alchemistsimulator.github.io",
-                  "fileName": "gui",
+                  "fileName": "yaml",
                   "extension": "html",
                   "usePrettyUrl": true,
-                  "link": "https://alchemistsimulator.github.io/wiki/usage/gui"
+                  "link": "https://alchemistsimulator.github.io/wiki/usage/yaml"
                 },
                 "previous": {
                   "path": "wiki/usage",
@@ -245,8 +245,8 @@
                   "link": "https://alchemistsimulator.github.io/wiki/usage/installation"
                 },
                 "description": "",
-                "title": "Uber quick start",
-                "content": "<p>Uber quick start<\/p>\n"
+                "title": "Quick start",
+                "content": "<p>Quick start<\/p>\n"
               }]
             },
             "maps": {
@@ -431,10 +431,10 @@
                 "previous": {
                   "path": "wiki/usage",
                   "baseUrl": "https://alchemistsimulator.github.io",
-                  "fileName": "yaml",
+                  "fileName": "gui",
                   "extension": "html",
                   "usePrettyUrl": true,
-                  "link": "https://alchemistsimulator.github.io/wiki/usage/yaml"
+                  "link": "https://alchemistsimulator.github.io/wiki/usage/gui"
                 },
                 "description": "",
                 "title": "Alchemist biochemistry incarnation",
@@ -487,18 +487,18 @@
                 "next": {
                   "path": "wiki/usage",
                   "baseUrl": "https://alchemistsimulator.github.io",
-                  "fileName": "yaml",
+                  "fileName": "biochemistry",
                   "extension": "html",
                   "usePrettyUrl": true,
-                  "link": "https://alchemistsimulator.github.io/wiki/usage/yaml"
+                  "link": "https://alchemistsimulator.github.io/wiki/usage/biochemistry"
                 },
                 "previous": {
                   "path": "wiki/usage",
                   "baseUrl": "https://alchemistsimulator.github.io",
-                  "fileName": "quickstart",
+                  "fileName": "yaml",
                   "extension": "html",
                   "usePrettyUrl": true,
-                  "link": "https://alchemistsimulator.github.io/wiki/usage/quickstart"
+                  "link": "https://alchemistsimulator.github.io/wiki/usage/yaml"
                 },
                 "description": "",
                 "title": "Alchemist graphical interface",
@@ -615,22 +615,22 @@
                 "next": {
                   "path": "wiki/usage",
                   "baseUrl": "https://alchemistsimulator.github.io",
-                  "fileName": "biochemistry",
-                  "extension": "html",
-                  "usePrettyUrl": true,
-                  "link": "https://alchemistsimulator.github.io/wiki/usage/biochemistry"
-                },
-                "previous": {
-                  "path": "wiki/usage",
-                  "baseUrl": "https://alchemistsimulator.github.io",
                   "fileName": "gui",
                   "extension": "html",
                   "usePrettyUrl": true,
                   "link": "https://alchemistsimulator.github.io/wiki/usage/gui"
                 },
+                "previous": {
+                  "path": "wiki/usage",
+                  "baseUrl": "https://alchemistsimulator.github.io",
+                  "fileName": "quickstart",
+                  "extension": "html",
+                  "usePrettyUrl": true,
+                  "link": "https://alchemistsimulator.github.io/wiki/usage/quickstart"
+                },
                 "description": "",
                 "title": "Writing Alchemist simulations",
-                "content": "<p>As a first step, we recommend learning the YAML basics.\nThe language is so simple and human readable that there is probably no better way to learn it than to read it directly.\nMy suggestion is to use the tutorial &quot;<a href=\"https://learnxinyminutes.com/docs/yaml/\">Learn X in Y minutes where X = YAML<\/a>&quot;,\nit should provide a good YAML guide (surely sufficient to follow the tutorial).<\/p>\n<p>Alchemist expects a YAML map as input. In the following section, we'll discuss which keys it expects.\nOf course, users are free to use all the YAML features (e.g. anchors) to organize their code and reduce duplication.<\/p>\n<h2 id=\"choosing-an-incarnation\">Choosing an incarnation<\/h2>\n<p>The <code>incarnation<\/code> key is mandatory.\nActually, it's the only mandatory key.\nThe YAML parser expects a string value.\nSuch string will be used to get the most similarly named incarnation, namely the subclass of Incarnation whose simple\nname is closest to the string.<\/p>\n<p><strong>Examples<\/strong><\/p>\n<pre><code class=\"language-yaml\">incarnation: sapere\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">incarnation: protelis\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">incarnation: biochemistry\n<\/code><\/pre>\n<p><em>Note:<\/em> this is also the most minimal valid alchemist specification<\/p>\n<h2 id=\"loading-arbitrary-java-classes-with-the-typeparameters-syntax\">Loading arbitrary Java classes with the <code>type<\/code>/<code>parameters<\/code> syntax<\/h2>\n<p>One important aspect of the Alchemist YAML is the ability to let the user control which actual Java classes should be\nloaded inside a simulation, and which constructor should be used to do so.\nAlmost every entity of an Alchemist simulation can be instanced using arbitrary Java classes that implement the required\ninterfaces.\nWhen the alchemist YAML parser encounters a YAML Map providing the keys <code>type<\/code> and <code>parameters<\/code>, it tries to resolve the\nvalue of the value associated to <code>type<\/code> to a class name, then tries to create the object by calling the constructor with\nparameters most suited to the value of <code>parameters<\/code>.<\/p>\n<p><strong>Class name resolution<\/strong><\/p>\n<p>The value associated with <code>type<\/code> must be a string representing a valid Java identifier.\nIf the value contains one or more <code>.<\/code> characters, then it will be interpreted as a fully qualified name.\nIf no such character is included, then <em>the default package for the desired alchemist entity will be prefixed<\/em>.\nAlchemist won't ever attempt to load a class situated in the default package (so don't put your classes there, it's a\nbad practice anyway).<\/p>\n<p><strong>Object instancing<\/strong><\/p>\n<p>If the class gets loaded correctly (meaning if a class is present in the classpath with the fully qualified name,\nwhether it was passed or guessed by Alchemist), then its constructors get sorted based on the number and type of\nparameters.\nThe system tries to build an object with all the available constructors until one of them provides an instanced object,\nin an order that considers both the current context (namely, the entities that have already been instanced) and the\nvalue of <code>parameters<\/code>.<\/p>\n<p>For instance, imagine that you are trying to build an instance of a <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Reaction\">Reaction<\/a>, whose only constructor requires an\n<a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Environment\">Environment<\/a>, a <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Node\">Node<\/a>, an <code>int<\/code> and a <code>String<\/code>.\nIn this case, an Environment and a Node must have already been created (or the YAML loader won't be at this point).\nAs a consequence, the first two parameters are automatically inferred by the current context and passed to the constructor.\nThe other two parameters can not be inferred this way; instead, the value associated to <code>parameters<\/code> is used to extract the proper values (if possible).\nIn this case, this would have been a valid <code>parameters<\/code> entry:<\/p>\n<pre><code class=\"language-yaml\">type: my.package.MyCustomReaction\nparameters: [4, foo]\n<\/code><\/pre>\n<p>As you can easily infer, the value of <code>parameters<\/code> must be a YAML list.<\/p>\n<p>Don't despair if the class loading system is still unclear: it is used pervasively and it will become clearer with the examples in the next sections.<\/p>\n<h2 id=\"setting-up-the-environment\">Setting up the environment<\/h2>\n<p>The <code>environment<\/code> key is used to load the <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Environment\">Environment<\/a> implementation.\nIt is optional and it defaults to a <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/environments/Continuous2DEnvironment\">continuous bidimensional space<\/a>.\nIf no fully qualified environment name is provided for class loading, Alchemist uses the package\n<a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/environments\">it.unibo.alchemist.model.implementations.environments<\/a> to search for the class.<\/p>\n<h3 id=\"examples\">Examples<\/h3>\n<p>The following simulations are equivalent, and load the default environment (which is incarnation independent, here\n<code>protelis<\/code> is picked, but it works for any other incarnation as well):<\/p>\n<pre><code class=\"language-yaml\">incarnation: protelis\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: Continuous2DEnvironment\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: it.unibo.alchemist.model.implementations.environments.Continuous2DEnvironment\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: Continuous2DEnvironment\n  parameters: []\n<\/code><\/pre>\n<p><a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/environments/OSMEnvironment\">OSMEnvironment<\/a> allows for running simulations over real world maps. The following simulation\nloads data from an Openstreetmap file (OSM, XML and PBF formats are supported) located in the classpath in the folder\n<code>maps<\/code>:<\/p>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: OSMEnvironment\n  parameters: [maps/foo.pbf]\n<\/code><\/pre>\n<p><a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/environments/ImageEnvironment\">ImageEnvironment<\/a> loads data from a black and white raster image file (in this example, located in the\nclasspath in the folder <code>images<\/code>), interpreting the black pixels as obstacles (areas that cannot be accessed by nodes):<\/p>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: ImageEnvironment\n  parameters: [images/foo.png]\n<\/code><\/pre>\n<p>Finally, if you write your own custom class named <code>my.package.FooEnv<\/code> implementing <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Environment\">Environment<\/a>, whose\nconstructor requires a String and a double, you can use it in the simulator by writing, for instance:<\/p>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: my.package.FooEnv\n  parameters: [bar, 2.2]\n<\/code><\/pre>\n<p>The environments shipped with the distribution can be found in the package\n<a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/environments\">it.unibo.alchemist.model.implementations.environments<\/a>.<\/p>\n<h2 id=\"declaring-variables\">Declaring variables<\/h2>\n<p>The <code>variables<\/code> section lists variable simulation values.\nA variable defines some kind of value that can be referenced in the simulation file.<\/p>\n<p>There are two kinds of variables: free and dependent variables.\nThe difference is that variables of the latter kind can always be computed given the values of all the other variables.<\/p>\n<h3 id=\"free-variables\">Free variables<\/h3>\n<p>Free variables define a set of values and a default.\nThe value set is used to define the batch matrix, i.e., if the variable is selected for a batch, all its value are\nincluded in the cartesian product that determines which simulations are to be executed.\nIf the simulation is not executed as batch, then the default value is used<\/p>\n<h4 id=\"linear-variables\">Linear variables<\/h4>\n<h4 id=\"geometric-variables\">Geometric variables<\/h4>\n<h4 id=\"arbitrary-valued-variables\">Arbitrary-valued variables<\/h4>\n<h3 id=\"dependent-variables\">Dependent variables<\/h3>\n<h3 id=\"using-variables\">Using variables<\/h3>\n<h2 id=\"controlling-the-reproducibility\">Controlling the reproducibility<\/h2>\n<p>Alchemist simulations can be reproduced by feeding them the same random number generator.\nThis assumption is true as far as the custom component in use:<\/p>\n<ul>\n<li>do not use any other random generator but the one provided by the simulation framework<\/li>\n<li>do not iterate over collections with no predicible iteration order (i.e., <code>Set<\/code> and <code>Map<\/code>) containing elements (or\nkeys) whose <code>hashCode()<\/code> has not been overridden to return the same value regardless of the specific JVM in use.<\/li>\n<li>do not run operations in parallel<\/li>\n<\/ul>\n<p>The <code>seeds<\/code> section may contain two optional values: <code>scenario<\/code> and <code>simulation<\/code>.\nThe former is the seed of the pseudo-random generator used during the creation of the simulation, e.g. for displacing\nnodes in random arrangements.\nThe latter is the seed of the pseudo-random generator used during the simulation, e.g. for computing time distributions\nor generating random positions.\nA typical example in which one may want to have different values, is to keep the same random displacement of devices in\nsome scenario but allow events to happen with different timings.<\/p>\n<p>A typical <code>seed<\/code> section may look like:<\/p>\n<pre><code class=\"language-yaml\">seeds:\n  scenario: 0\n  simulation: 1\n<\/code><\/pre>\n<p>Usually, in batches, you wan to run multiple runs per experiment, varying the simulation seed, in order to get more\nreliable data (and appropriate error bars).\nAs per any other value, variables can be feeded as random generator seeds.\nIn the following example, 100 simulations are generated with different seeds (both for environment configuration and\nsimulation execution)<\/p>\n<pre><code class=\"language-yaml\">variables:\n  random: &amp;random\n    min: 0\n    max: 9\n    step: 1\n    default: 0\nseeds:\n  # reference to the `random` variable\n  scenario: *random\n  simulation: *random\n<\/code><\/pre>\n<h2 id=\"defining-the-network\">Defining the network<\/h2>\n<p>The <code>network-model<\/code> key is used to load the implementation of <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/LinkingRule\">LinkingRule<\/a> to be used in the simulation,\nwhich determines the neighborhood of every node.\nThe key is optional, but defaults to <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/linkingrules/NoLinks\">NoLinks<\/a>, so if unspecified nodes in the environment don't get\nconnected.\nOmitting such key is equivalent to writing any of the following:<\/p>\n<pre><code class=\"language-yaml\">network-model:\n  type: NoLinks\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">network-model:\n  type: it.unibo.alchemist.model.implementations.linkingrules.NoLinks\n  parameters: []\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">network-model:\n  type: NoLinks\n  parameters: []\n<\/code><\/pre>\n<p>If no fully qualified linking rule name is provided for class loading, Alchemist uses the package\n<a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/linkingrules\">it.unibo.alchemist.model.implementations.linkingrules<\/a> to search for the class.<\/p>\n<h3 id=\"linking-nodes-based-on-distance\">Linking nodes based on distance<\/h3>\n<p>One of the most common ways of linking nodes is to connect those which are close enough to each other. To do so, you can\nuse the class <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/linkingrules/ConnectWithinDistance\">ConnectWithinDistance<\/a>, passing a parameter representing the maximum connection distance.\nNote that such distance depends on the environment: while the definition of distance is straightforward for euclidean\nspaces, it's not so for <a href=\"https://en.wikipedia.org/wiki/Riemannian_geometry\">Riemannian manifolds<\/a>, which is a fancy\nname to define geometries such as the one typical of a urban map (you can roughly interpret it as a euclidean space\n&quot;with holes&quot;).\nFor instance, in case of environments using <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/GeoPosition\">GeoPosition<\/a>, the distance is computed in meters, so the\ndistance between <code>[44.133254, 12.237770]<\/code> and <code>[44.146680, 12.258627]<\/code> is about <code>2240<\/code> (meters).<\/p>\n<pre><code class=\"language-yaml\">network-model:\n  type: ConnectWithinDistance\n  # Link together all the nodes closer than 100 according to the distance function\n  parameters: [100]\n<\/code><\/pre>\n<h2 id=\"displacing-nodes\">Displacing nodes<\/h2>\n<p>The <code>displacements<\/code> section lists the node locations at the beginning of the simulation.\nEach displacement type extends the interface <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/loader/displacements/Displacement\">Displacement<\/a>. If no fully qualified displacement name is\nprovided for class loading,\nAlchemist uses the package <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/loader/displacements\">it.unibo.alchemist.loader.displacements<\/a> to search for the class.\nThe YAML key associated to displacements is <code>in<\/code>.<\/p>\n<h3 id=\"displacing-on-specific-positions\">Displacing on specific positions<\/h3>\n<p>The following example places a single node in the (0, 0) <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/loader/displacements/Point\">Point<\/a>.<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  # &quot;in&quot; entries, where each entry defines a group of nodes\n  - in:\n      type: Point\n      # Using a constructor taking (x,y) coordinates\n      parameters: [0, 0]\n<\/code><\/pre>\n<h3 id=\"displacing-multiple-nodes-at-once\">Displacing multiple nodes at once<\/h3>\n<p>This example places 10000 nodes randomly in a <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/loader/shapes/Circle\">Circle<\/a> with center in (0, 0) and radius 10.<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  - in:\n      type: Circle\n      parameters: [10000, 0, 0, 10]\n<\/code><\/pre>\n<p>Here instead nodes are located in a <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/loader/displacements/Grid\">Grid<\/a> centered in (0, 0), with nodes distanced of 0.25 both\nhorizontally and vertically, and whose position is not exact but randomly perturbed (±0.1 distance units).<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  - in:\n      type: Grid\n      parameters: [-5, -5, 5, 5, 0.25, 0.25, 0.1, 0.1]\n<\/code><\/pre>\n<h3 id=\"customizing-the-node-type\">Customizing the node type<\/h3>\n<p>In order to specify a particular node implementation you want to put inside the environment you can use the <code>nodes<\/code> key\nfollowed by the name of the class and the parameters required to build it.<\/p>\n<p>100 <code>MyCustomNodeImpl<\/code> nodes, whose constructor needs only the environment, placed in a circle with center in (0, 0) and\nradius 20.<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  - in:\n      type: Circle\n      parameters: [100, 0, 0, 20]\n    nodes:\n      type: MyCustomNodeImpl\n      parameters: []\n<\/code><\/pre>\n<p>The empty parameters section can be omitted (as per custom class loading mechanism):<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  - in:\n      type: Circle\n      parameters: [100, 0, 0, 20]\n    nodes:\n      type: MyCustomNodeImpl\n<\/code><\/pre>\n<h3 id=\"customizing-the-nodes-content\">Customizing the nodes content<\/h3>\n<p>It is possible to set the content of the nodes inside a given region. Only the nodes inside the <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/loader/shapes/Rectangle\">Rectangle<\/a> area contain\nthe <code>source<\/code> and <code>randomSensor<\/code> molecules (global variables).<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  - in:\n      type: Grid\n      parameters: [-5, -5, 5, 5, 0.25, 0.25, 0.1, 0.1]\n    contents:\n      - in:\n          type: Rectangle\n          parameters: [-6, -6, 2, 2]\n        molecule: source\n        concentration: true\n        molecule: randomSensor\n        concentration: &gt;\n          import java.lang.Math.random\n          random() * pi\n<\/code><\/pre>\n<h2 id=\"writing-behaviors-reactions\">Writing behaviors (Reactions)<\/h2>\n<p>TODO!<\/p>\n<p>Nodes can be programmed using reactions.<\/p>\n<pre><code class=\"language-yaml\"># Variable representing the program to be executed\ngradient: &amp;gradient\n  - time-distribution: 1\n    # Make sure that the program folder is part of the project classpath\n    program: program:package:distanceTo\n  - program: send\ndisplacements:\n  - in:\n      type: Grid\n      parameters: [-5, -5, 5, 5, 0.25, 0.25, 0.1, 0.1]\n    programs:\n      # Reference to the &quot;gradient&quot; list of programs. This program is executed in all\n      # the grid nodes\n      - *gradient\n<\/code><\/pre>\n"
+                "content": "<p>As a first step, we recommend learning the YAML basics.\nThe language is so simple and human readable that there is probably no better way to learn it than to read it directly.\nMy suggestion is to use the tutorial &quot;<a href=\"https://learnxinyminutes.com/docs/yaml/\">Learn X in Y minutes where X = YAML<\/a>&quot;,\nit should provide a good YAML guide (surely sufficient to follow the tutorial).<\/p>\n<p>Alchemist expects a YAML map as input. In the following section, we'll discuss which keys it expects.\nOf course, users are free to use all the YAML features (e.g. anchors) to organize their code and reduce duplication.<\/p>\n<h2 id=\"choosing-an-incarnation\">Choosing an incarnation<\/h2>\n<p>The <code>incarnation<\/code> key is mandatory.\nActually, it's the only mandatory key.\nThe YAML parser expects a string value.\nSuch string will be used to get the most similarly named incarnation, namely the subclass of Incarnation whose simple\nname is closest to the string.<\/p>\n<p><strong>Examples<\/strong><\/p>\n<pre><code class=\"language-yaml\">incarnation: sapere\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">incarnation: protelis\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">incarnation: biochemistry\n<\/code><\/pre>\n<p><em>Note:<\/em> this is also the most minimal valid alchemist specification<\/p>\n<h2 id=\"loading-arbitrary-java-classes-with-the-typeparameters-syntax\">Loading arbitrary Java classes with the <code>type<\/code>/<code>parameters<\/code> syntax<\/h2>\n<p>One important aspect of the Alchemist YAML is the ability to let the user control which actual Java classes should be\nloaded inside a simulation, and which constructor should be used to do so.\nAlmost every entity of an Alchemist simulation can be instanced using arbitrary Java classes that implement the required\ninterfaces.\nWhen the alchemist YAML parser encounters a YAML Map providing the keys <code>type<\/code> and <code>parameters<\/code>, it tries to resolve the\nvalue of the value associated to <code>type<\/code> to a class name, then tries to create the object by calling the constructor with\nparameters most suited to the value of <code>parameters<\/code>.<\/p>\n<p><strong>Class name resolution<\/strong><\/p>\n<p>The value associated with <code>type<\/code> must be a string representing a valid Java identifier.\nIf the value contains one or more <code>.<\/code> characters, then it will be interpreted as a fully qualified name.\nIf no such character is included, then <em>the default package for the desired alchemist entity will be prefixed<\/em>.\nAlchemist won't ever attempt to load a class situated in the default package (so don't put your classes there, it's a\nbad practice anyway).<\/p>\n<p><strong>Object instancing<\/strong><\/p>\n<p>If the class gets loaded correctly (meaning if a class is present in the classpath with the fully qualified name,\nwhether it was passed or guessed by Alchemist), then its constructors get sorted based on the number and type of\nparameters.\nThe system tries to build an object with all the available constructors until one of them provides an instanced object,\nin an order that considers both the current context (namely, the entities that have already been instanced) and the\nvalue of <code>parameters<\/code>.<\/p>\n<p>For instance, imagine that you are trying to build an instance of a <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Reaction\">Reaction<\/a>, whose only constructor requires an\n<a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Environment\">Environment<\/a>, a <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Node\">Node<\/a>, an <code>int<\/code> and a <code>String<\/code>.\nIn this case, an Environment and a Node must have already been created (or the YAML loader won't be at this point).\nAs a consequence, the first two parameters are automatically inferred by the current context and passed to the constructor.\nThe other two parameters can not be inferred this way; instead, the value associated to <code>parameters<\/code> is used to extract the proper values (if possible).\nIn this case, this would have been a valid <code>parameters<\/code> entry:<\/p>\n<pre><code class=\"language-yaml\">type: my.package.MyCustomReaction\nparameters: [4, foo]\n<\/code><\/pre>\n<p>As you can easily infer, the value of <code>parameters<\/code> must be a YAML list.<\/p>\n<p>Don't despair if the class loading system is still unclear: it is used pervasively and it will become clearer with the examples in the next sections.<\/p>\n<h2 id=\"setting-up-the-environment\">Setting up the environment<\/h2>\n<p>The <code>environment<\/code> key is used to load the <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Environment\">Environment<\/a> implementation.\nIt is optional and it defaults to a <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/environments/Continuous2DEnvironment\">continuous bidimensional space<\/a>.\nIf no fully qualified environment name is provided for class loading, Alchemist uses the package\n<a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/environments\">it.unibo.alchemist.model.implementations.environments<\/a> to search for the class.<\/p>\n<h3 id=\"examples\">Examples<\/h3>\n<p>The following simulations are equivalent, and load the default environment (which is incarnation independent, here\n<code>protelis<\/code> is picked, but it works for any other incarnation as well):<\/p>\n<pre><code class=\"language-yaml\">incarnation: protelis\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: Continuous2DEnvironment\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: it.unibo.alchemist.model.implementations.environments.Continuous2DEnvironment\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: Continuous2DEnvironment\n  parameters: []\n<\/code><\/pre>\n<p><a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/environments/OSMEnvironment\">OSMEnvironment<\/a> allows for running simulations over real world maps. The following simulation\nloads data from an Openstreetmap file (OSM, XML and PBF formats are supported) located in the classpath in the folder\n<code>maps<\/code>:<\/p>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: OSMEnvironment\n  parameters: [maps/foo.pbf]\n<\/code><\/pre>\n<p><a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/environments/ImageEnvironment\">ImageEnvironment<\/a> loads data from a black and white raster image file (in this example, located in the\nclasspath in the folder <code>images<\/code>), interpreting the black pixels as obstacles (areas that cannot be accessed by nodes):<\/p>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: ImageEnvironment\n  parameters: [images/foo.png]\n<\/code><\/pre>\n<p>Finally, if you write your own custom class named <code>my.package.FooEnv<\/code> implementing <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Environment\">Environment<\/a>, whose\nconstructor requires a String and a double, you can use it in the simulator by writing, for instance:<\/p>\n<pre><code class=\"language-yaml\">incarnation: protelis\nenvironment:\n  type: my.package.FooEnv\n  parameters: [bar, 2.2]\n<\/code><\/pre>\n<p>The environments shipped with the distribution can be found in the package\n<a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/environments\">it.unibo.alchemist.model.implementations.environments<\/a>.<\/p>\n<h2 id=\"declaring-variables\">Declaring variables<\/h2>\n<p>The <code>variables<\/code> section lists variable simulation values.\nA variable defines some kind of value that can be referenced in the simulation file.<\/p>\n<p>There are two kinds of variables: free and dependent variables.\nThe difference is that variables of the latter kind can always be computed given the values of all the other variables.<\/p>\n<h3 id=\"free-variables\">Free variables<\/h3>\n<p>Free variables define a set of values and a default.\nThe value set is used to define the batch matrix, i.e., if the variable is selected for a batch, all its value are\nincluded in the cartesian product that determines which simulations are to be executed.\nIf the simulation is not executed as batch, then the default value is used<\/p>\n<h4 id=\"linear-variables\">Linear variables<\/h4>\n<h4 id=\"geometric-variables\">Geometric variables<\/h4>\n<h4 id=\"arbitrary-valued-variables\">Arbitrary-valued variables<\/h4>\n<h3 id=\"dependent-variables\">Dependent variables<\/h3>\n<h3 id=\"using-variables\">Using variables<\/h3>\n<h2 id=\"controlling-the-reproducibility\">Controlling the reproducibility<\/h2>\n<p>Alchemist simulations can be reproduced by feeding them the same random number generator.\nThis assumption is true as far as the custom component in use:<\/p>\n<ul>\n<li>do not use any other random generator but the one provided by the simulation framework<\/li>\n<li>do not iterate over collections with no predicible iteration order (i.e., <code>Set<\/code> and <code>Map<\/code>) containing elements (or\nkeys) whose <code>hashCode()<\/code> has not been overridden to return the same value regardless of the specific JVM in use.<\/li>\n<li>do not run operations in parallel<\/li>\n<\/ul>\n<p>The <code>seeds<\/code> section may contain two optional values: <code>scenario<\/code> and <code>simulation<\/code>.\nThe former is the seed of the pseudo-random generator used during the creation of the simulation, e.g. for displacing\nnodes in random arrangements.\nThe latter is the seed of the pseudo-random generator used during the simulation, e.g. for computing time distributions\nor generating random positions.\nA typical example in which one may want to have different values, is to keep the same random displacement of devices in\nsome scenario but allow events to happen with different timings.<\/p>\n<p>A typical <code>seed<\/code> section may look like:<\/p>\n<pre><code class=\"language-yaml\">seeds:\n  scenario: 0\n  simulation: 1\n<\/code><\/pre>\n<p>Usually, in batches, you wan to run multiple runs per experiment, varying the simulation seed, in order to get more\nreliable data (and appropriate error bars).\nAs per any other value, variables can be feeded as random generator seeds.\nIn the following example, 100 simulations are generated with different seeds (both for environment configuration and\nsimulation execution)<\/p>\n<pre><code class=\"language-yaml\">variables:\n  random: &amp;random\n    min: 0\n    max: 9\n    step: 1\n    default: 0\nseeds:\n  # reference to the `random` variable\n  scenario: *random\n  simulation: *random\n<\/code><\/pre>\n<h2 id=\"defining-the-network\">Defining the network<\/h2>\n<p>The <code>network-model<\/code> key is used to load the implementation of <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/LinkingRule\">LinkingRule<\/a> to be used in the simulation,\nwhich determines the neighborhood of every node.\nThe key is optional, but defaults to <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/linkingrules/NoLinks\">NoLinks<\/a>, so if unspecified nodes in the environment don't get\nconnected.\nOmitting such key is equivalent to writing any of the following:<\/p>\n<pre><code class=\"language-yaml\">network-model:\n  type: NoLinks\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">network-model:\n  type: it.unibo.alchemist.model.implementations.linkingrules.NoLinks\n  parameters: []\n<\/code><\/pre>\n<pre><code class=\"language-yaml\">network-model:\n  type: NoLinks\n  parameters: []\n<\/code><\/pre>\n<p>If no fully qualified linking rule name is provided for class loading, Alchemist uses the package\n<a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/linkingrules\">it.unibo.alchemist.model.implementations.linkingrules<\/a> to search for the class.<\/p>\n<h3 id=\"linking-nodes-based-on-distance\">Linking nodes based on distance<\/h3>\n<p>One of the most common ways of linking nodes is to connect those which are close enough to each other. To do so, you can\nuse the class <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/linkingrules/ConnectWithinDistance\">ConnectWithinDistance<\/a>, passing a parameter representing the maximum connection distance.\nNote that such distance depends on the environment: while the definition of distance is straightforward for euclidean\nspaces, it's not so for <a href=\"https://en.wikipedia.org/wiki/Riemannian_geometry\">Riemannian manifolds<\/a>, which is a fancy\nname to define geometries such as the one typical of a urban map (you can roughly interpret it as a euclidean space\n&quot;with holes&quot;).\nFor instance, in case of environments using <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/GeoPosition\">GeoPosition<\/a>, the distance is computed in meters, so the\ndistance between <code>[44.133254, 12.237770]<\/code> and <code>[44.146680, 12.258627]<\/code> is about <code>2240<\/code> (meters).<\/p>\n<pre><code class=\"language-yaml\">network-model:\n  type: ConnectWithinDistance\n  # Link together all the nodes closer than 100 according to the distance function\n  parameters: [100]\n<\/code><\/pre>\n<h2 id=\"displacing-nodes\">Displacing nodes<\/h2>\n<p>The <code>displacements<\/code> section lists the node locations at the beginning of the simulation.\nEach displacement type extends the interface <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/loader/displacements/Displacement\">Displacement<\/a>. If no fully qualified displacement name is\nprovided for class loading,\nAlchemist uses the package <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/loader/displacements\">it.unibo.alchemist.loader.displacements<\/a> to search for the class.\nThe YAML key associated to displacements is <code>in<\/code>.<\/p>\n<h3 id=\"displacing-on-specific-positions\">Displacing on specific positions<\/h3>\n<p>The following example places a single node in the (0, 0) <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/loader/displacements/Point\">Point<\/a>.<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  # &quot;in&quot; entries, where each entry defines a group of nodes\n  - in:\n      type: Point\n      # Using a constructor taking (x,y) coordinates\n      parameters: [0, 0]\n<\/code><\/pre>\n<h3 id=\"displacing-multiple-nodes-at-once\">Displacing multiple nodes at once<\/h3>\n<p>This example places 10000 nodes randomly in a <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/loader/shapes/Circle\">Circle<\/a> with center in (0, 0) and radius 10.<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  - in:\n      type: Circle\n      parameters: [10000, 0, 0, 10]\n<\/code><\/pre>\n<p>Here instead nodes are located in a <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/loader/displacements/Grid\">Grid<\/a> centered in (0, 0), with nodes distanced of 0.25 both\nhorizontally and vertically, and whose position is not exact but randomly perturbed (±0.1 distance units).<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  - in:\n      type: Grid\n      parameters: [-5, -5, 5, 5, 0.25, 0.25, 0.1, 0.1]\n<\/code><\/pre>\n<h3 id=\"customizing-the-node-type\">Customizing the node type<\/h3>\n<p>In order to specify a particular node implementation you want to put inside the environment you can use the <code>nodes<\/code> key\nfollowed by the name of the class and the parameters required to build it.<\/p>\n<p>100 <code>MyCustomNodeImpl<\/code> nodes, whose constructor needs only the environment, placed in a circle with center in (0, 0) and\nradius 20.<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  - in:\n      type: Circle\n      parameters: [100, 0, 0, 20]\n    nodes:\n      type: MyCustomNodeImpl\n      parameters: []\n<\/code><\/pre>\n<p>The empty parameters section can be omitted (as per custom class loading mechanism):<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  - in:\n      type: Circle\n      parameters: [100, 0, 0, 20]\n    nodes:\n      type: MyCustomNodeImpl\n<\/code><\/pre>\n<h3 id=\"customizing-the-nodes-content\">Customizing the nodes content<\/h3>\n<p>It is possible to set the content of the nodes inside a given region. Only the nodes inside the <a href=\"https://alchemistsimulator.github.io/it/unibo/alchemist/loader/shapes/Rectangle\">Rectangle<\/a> area contain\nthe <code>source<\/code> and <code>randomSensor<\/code> molecules (global variables).<\/p>\n<pre><code class=\"language-yaml\">displacements:\n  - in:\n      type: Grid\n      parameters: [-5, -5, 5, 5, 0.25, 0.25, 0.1, 0.1]\n    contents:\n      - in:\n          type: Rectangle\n          parameters: [-6, -6, 2, 2]\n        molecule: source\n        concentration: true\n        molecule: randomSensor\n        concentration: &gt;\n          import java.lang.Math.random\n          random() * pi\n<\/code><\/pre>\n<h2 id=\"writing-behaviors-reactions\">Writing behaviors (Reactions)<\/h2>\n<p>TODO!<\/p>\n<p>Nodes can be programmed using reactions.<\/p>\n<pre><code class=\"language-yaml\"># Variable representing the program to be executed\ngradient: &amp;gradient\n  - time-distribution: 1\n    # Make sure that the program folder is part of the project classpath\n    program: program:package:distanceTo\n  - program: send\ndisplacements:\n  - in:\n      type: Grid\n      parameters: [-5, -5, 5, 5, 0.25, 0.25, 0.1, 0.1]\n    programs:\n      # Reference to the &quot;gradient&quot; list of programs. This program is executed in all\n      # the grid nodes\n      - *gradient\n<\/code><\/pre>\n<h2 id=\"writing-layers\">Writing layers<\/h2>\n<p>In order to put a layer inside the previously specified environment you have to define the type of the layer, the molecule\nit refers to and possibly the parameters needed for the type of layer you have chosen.<br />\nOf course, it is possible to add more than one layer inside the same environment.<br />\nThe syntax is like the following:<\/p>\n<pre><code class=\"language-yaml\">layers:\n  - type: BidimensionalGaussianLayer\n    molecule: pippo\n    parameters: [0.0, 0.0, 2.0, 5.0]\n  - type: BidimensionalGaussianLayer\n    molecule: pluto\n    parameters: [0.0, 0.0, 5.0, 10.0]\n<\/code><\/pre>\n"
               }]
             }
           },
@@ -676,7 +676,7 @@
         },
         "description": "",
         "title": "Wiki",
-        "content": "<html>\n <head><\/head>\n <body>\n  <h1 id=\"alchemist-simulator-user-guide\">Alchemist simulator user guide<\/h1> \n  <ul> \n   <li><a href=\"https://alchemistsimulator.github.io/wiki/simulator\">Understanding Alchemist<\/a> \n    <ul> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/simulator/metamodel\">The metamodel<\/a><\/li> \n    <\/ul> <\/li> \n   <li><a href=\"https://alchemistsimulator.github.io/wiki/usage\">Using Alchemist<\/a> \n    <ul> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/installation\">Requirements and installation<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/quickstart\">Uber quick start<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/gui\">The graphical interface<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/yaml\">How to write simulations<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/biochemistry\">Biology and Biochemistry<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/protelis\">Protelis<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/sapere\">SAPERE<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/scafi\">Scafi<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/maps\">Maps and GPS traces<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/export\">Exporting data<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/batch\">Executing batches<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/grid\">Grid computing support<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/customization\">Writing custom components<\/a><\/li> \n    <\/ul> <\/li> \n   <li><a href=\"https://alchemistsimulator.github.io/wiki/examples\">Simulation examples<\/a> \n    <ul> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/examples/protelis\">With Protelis<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/examples/scafi\">With Scafi<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/examples/maps\">On maps<\/a><\/li> \n    <\/ul> <\/li> \n   <li><a href=\"https://alchemistsimulator.github.io/wiki/license\">License<\/a><\/li> \n  <\/ul> \n <\/body>\n<\/html>\n"
+        "content": "<html>\n <head><\/head>\n <body>\n  <h1 id=\"alchemist-simulator-user-guide\">Alchemist simulator user guide<\/h1> \n  <ul> \n   <li><a href=\"https://alchemistsimulator.github.io/wiki/simulator\">Understanding Alchemist<\/a> \n    <ul> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/simulator/metamodel\">The metamodel<\/a><\/li> \n    <\/ul> <\/li> \n   <li><a href=\"https://alchemistsimulator.github.io/wiki/usage\">Using Alchemist<\/a> \n    <ul> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/installation\">Requirements and installation<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/quickstart\">Quick start<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/yaml\">How to write simulations<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/gui\">Graphical interface<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/biochemistry\">Biology and Biochemistry<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/protelis\">Protelis<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/sapere\">SAPERE<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/scafi\">Scafi<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/maps\">Maps and GPS traces<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/export\">Exporting data<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/batch\">Executing batches<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/grid\">Grid computing support<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/usage/customization\">Writing custom components<\/a><\/li> \n    <\/ul> <\/li> \n   <li><a href=\"https://alchemistsimulator.github.io/wiki/examples\">Simulation examples<\/a> \n    <ul> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/examples/protelis\">With Protelis<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/examples/scafi\">With Scafi<\/a><\/li> \n     <li><a href=\"https://alchemistsimulator.github.io/wiki/examples/maps\">On maps<\/a><\/li> \n    <\/ul> <\/li> \n   <li><a href=\"https://alchemistsimulator.github.io/wiki/license\">License<\/a><\/li> \n  <\/ul> \n <\/body>\n<\/html>\n"
       }]
     },
     "it": {
@@ -3917,138 +3917,6 @@
                 }
               }
             },
-            "sensory": {
-              "ownKey": "sensory",
-              "childrenPages": {
-                "InfluenceSphere": {
-                  "ownKey": "InfluenceSphere",
-                  "ownPages": [{
-                    "reference": {
-                      "path": "it/unibo/alchemist/sensory",
-                      "baseUrl": "https://alchemistsimulator.github.io",
-                      "fileName": "InfluenceSphere",
-                      "extension": "html",
-                      "usePrettyUrl": true,
-                      "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/sensory/InfluenceSphere"
-                    },
-                    "description": "",
-                    "title": "InfluenceSphere",
-                    "content": "<p>A sphere of influence in any n-dimensional space.<\/p>\n<p>isInfluenced\nWhenever or not a given point has an influence on the node equipped with this sphere.<\/p>\n"
-                  }]
-                },
-                "InfluenceSphere2D": {
-                  "ownKey": "InfluenceSphere2D",
-                  "ownPages": [{
-                    "reference": {
-                      "path": "it/unibo/alchemist/sensory",
-                      "baseUrl": "https://alchemistsimulator.github.io",
-                      "fileName": "InfluenceSphere2D",
-                      "extension": "html",
-                      "usePrettyUrl": true,
-                      "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/sensory/InfluenceSphere2D"
-                    },
-                    "description": "",
-                    "title": "InfluenceSphere2D",
-                    "content": "<p>A sphere of influence in the 2D world.<init>\nA sphere of influence in the 2D world.<\/p>\n<p>isInfluenced\nWhenever or not a given point has an influence on the node equipped with this sphere.<\/p>\n"
-                  }]
-                },
-                "HearingField2D": {
-                  "ownKey": "HearingField2D",
-                  "ownPages": [{
-                    "reference": {
-                      "path": "it/unibo/alchemist/sensory",
-                      "baseUrl": "https://alchemistsimulator.github.io",
-                      "fileName": "HearingField2D",
-                      "extension": "html",
-                      "usePrettyUrl": true,
-                      "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/sensory/HearingField2D"
-                    },
-                    "description": "",
-                    "title": "HearingField2D",
-                    "content": "<p><init><\/p>\n"
-                  }]
-                },
-                "FieldOfView2D": {
-                  "ownKey": "FieldOfView2D",
-                  "ownPages": [{
-                    "reference": {
-                      "path": "it/unibo/alchemist/sensory",
-                      "baseUrl": "https://alchemistsimulator.github.io",
-                      "fileName": "FieldOfView2D",
-                      "extension": "html",
-                      "usePrettyUrl": true,
-                      "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/sensory/FieldOfView2D"
-                    },
-                    "description": "",
-                    "title": "FieldOfView2D",
-                    "content": "<p><init><\/p>\n"
-                  }]
-                }
-              },
-              "ownPages": [{
-                "reference": {
-                  "path": "it/unibo/alchemist",
-                  "baseUrl": "https://alchemistsimulator.github.io",
-                  "fileName": "sensory",
-                  "extension": "html",
-                  "usePrettyUrl": true,
-                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/sensory"
-                },
-                "description": "",
-                "title": "it.unibo.alchemist.sensory",
-                "content": ""
-              }]
-            },
-            "shapes": {
-              "ownKey": "shapes",
-              "childrenPages": {
-                "GeometricShape2D": {
-                  "ownKey": "GeometricShape2D",
-                  "ownPages": [{
-                    "reference": {
-                      "path": "it/unibo/alchemist/shapes",
-                      "baseUrl": "https://alchemistsimulator.github.io",
-                      "fileName": "GeometricShape2D",
-                      "extension": "html",
-                      "usePrettyUrl": true,
-                      "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/shapes/GeometricShape2D"
-                    },
-                    "description": "",
-                    "title": "GeometricShape2D",
-                    "content": "<p>Defines a generic 2D shape.<init>\nDefines a generic 2D shape.<\/p>\n<p>contains\nWhether or not a given point is inside this shape.<\/p>\n"
-                  }]
-                },
-                "GeometricShape": {
-                  "ownKey": "GeometricShape",
-                  "ownPages": [{
-                    "reference": {
-                      "path": "it/unibo/alchemist/shapes",
-                      "baseUrl": "https://alchemistsimulator.github.io",
-                      "fileName": "GeometricShape",
-                      "extension": "html",
-                      "usePrettyUrl": true,
-                      "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/shapes/GeometricShape"
-                    },
-                    "description": "",
-                    "title": "GeometricShape",
-                    "content": "<p>Defines a generic n-dimensional shape.<\/p>\n<p>contains\nWhether or not a given point is inside this shape.<\/p>\n"
-                  }]
-                }
-              },
-              "ownPages": [{
-                "reference": {
-                  "path": "it/unibo/alchemist",
-                  "baseUrl": "https://alchemistsimulator.github.io",
-                  "fileName": "shapes",
-                  "extension": "html",
-                  "usePrettyUrl": true,
-                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/shapes"
-                },
-                "description": "",
-                "title": "it.unibo.alchemist.shapes",
-                "content": ""
-              }]
-            },
             "biochemistrydsl": {
               "ownKey": "biochemistrydsl",
               "childrenPages": {
@@ -5235,6 +5103,565 @@
             "model": {
               "ownKey": "model",
               "childrenPages": {
+                "cognitiveagents": {
+                  "ownKey": "cognitiveagents",
+                  "childrenPages": {
+                    "characteristics": {
+                      "ownKey": "characteristics",
+                      "childrenPages": {
+                        "cognitive": {
+                          "ownKey": "cognitive",
+                          "childrenPages": {
+                            "DesireEvacuate": {
+                              "ownKey": "DesireEvacuate",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "DesireEvacuate",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive/DesireEvacuate"
+                                },
+                                "description": "",
+                                "title": "DesireEvacuate",
+                                "content": "<p><init><\/p>\n<p>combinationFunction<\/p>\n"
+                              }]
+                            },
+                            "DesireWalkRandomly": {
+                              "ownKey": "DesireWalkRandomly",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "DesireWalkRandomly",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive/DesireWalkRandomly"
+                                },
+                                "description": "",
+                                "title": "DesireWalkRandomly",
+                                "content": "<p><init><\/p>\n<p>combinationFunction<\/p>\n"
+                              }]
+                            },
+                            "AbstractCognitiveCharacteristic": {
+                              "ownKey": "AbstractCognitiveCharacteristic",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "AbstractCognitiveCharacteristic",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive/AbstractCognitiveCharacteristic"
+                                },
+                                "description": "",
+                                "title": "AbstractCognitiveCharacteristic",
+                                "content": "<p><init><\/p>\n<p>currentLevel<\/p>\n<p>level\nA number between 0 and 1 describing the current intensity of this characteristic.\ncombinationFunction<\/p>\n"
+                              }]
+                            },
+                            "Fear": {
+                              "ownKey": "Fear",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "Fear",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive/Fear"
+                                },
+                                "description": "",
+                                "title": "Fear",
+                                "content": "<p><init><\/p>\n<p>combinationFunction<\/p>\n"
+                              }]
+                            },
+                            "BodyCognitiveCharacteristic": {
+                              "ownKey": "BodyCognitiveCharacteristic",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "BodyCognitiveCharacteristic",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive/BodyCognitiveCharacteristic"
+                                },
+                                "description": "",
+                                "title": "BodyCognitiveCharacteristic",
+                                "content": "<p><init><\/p>\n<p>update\nUpdate the current intensity of this characteristic.<\/p>\n"
+                              }]
+                            },
+                            "CognitiveSpec": {
+                              "ownKey": "CognitiveSpec",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "CognitiveSpec",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive/CognitiveSpec"
+                                },
+                                "description": "",
+                                "title": "CognitiveSpec",
+                                "content": "<p>sensingOmega<\/p>\n<p>affectiveBiasingOmega<\/p>\n<p>persistingOmega<\/p>\n<p>amplifyingFeelingOmega<\/p>\n<p>inhibitingFeelingOmega<\/p>\n<p>amplifyingEvacuationOmega<\/p>\n<p>inhibitingWalkRandOmega<\/p>\n<p>amplifyingIntentionOmega<\/p>\n<p>inhibitingIntentionOmega<\/p>\n<p>mentalEta<\/p>\n<p>bodyEta<\/p>\n<p>logisticSigma<\/p>\n<p>logisticTau<\/p>\n<p>advancedLogisticSigma<\/p>\n<p>advancedLogisticTau<\/p>\n"
+                              }]
+                            },
+                            "CognitiveCharacteristic": {
+                              "ownKey": "CognitiveCharacteristic",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "CognitiveCharacteristic",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive/CognitiveCharacteristic"
+                                },
+                                "description": "",
+                                "title": "CognitiveCharacteristic",
+                                "content": "<p>A characteristic which depends also on the other pedestrians in the environment.<\/p>\n<p>level\nA number between 0 and 1 describing the current intensity of this characteristic.\nupdate\nUpdate the current intensity of this characteristic.<\/p>\n"
+                              }]
+                            },
+                            "MentalCognitiveCharacteristic": {
+                              "ownKey": "MentalCognitiveCharacteristic",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "MentalCognitiveCharacteristic",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive/MentalCognitiveCharacteristic"
+                                },
+                                "description": "",
+                                "title": "MentalCognitiveCharacteristic",
+                                "content": "<p><init><\/p>\n<p>update\nUpdate the current intensity of this characteristic.<\/p>\n"
+                              }]
+                            },
+                            "BeliefDanger": {
+                              "ownKey": "BeliefDanger",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "BeliefDanger",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive/BeliefDanger"
+                                },
+                                "description": "",
+                                "title": "BeliefDanger",
+                                "content": "<p><init><\/p>\n<p>combinationFunction<\/p>\n"
+                              }]
+                            },
+                            "IntentionWalkRandomly": {
+                              "ownKey": "IntentionWalkRandomly",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "IntentionWalkRandomly",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive/IntentionWalkRandomly"
+                                },
+                                "description": "",
+                                "title": "IntentionWalkRandomly",
+                                "content": "<p><init><\/p>\n<p>combinationFunction<\/p>\n"
+                              }]
+                            },
+                            "IntentionEvacuate": {
+                              "ownKey": "IntentionEvacuate",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "IntentionEvacuate",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive/IntentionEvacuate"
+                                },
+                                "description": "",
+                                "title": "IntentionEvacuate",
+                                "content": "<p><init><\/p>\n<p>combinationFunction<\/p>\n"
+                              }]
+                            }
+                          },
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/cognitiveagents/characteristics",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "cognitive",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/cognitive"
+                            },
+                            "description": "",
+                            "title": "it.unibo.alchemist.model.cognitiveagents.characteristics.cognitive",
+                            "content": ""
+                          }]
+                        },
+                        "individual": {
+                          "ownKey": "individual",
+                          "childrenPages": {
+                            "Speed": {
+                              "ownKey": "Speed",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/individual",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "Speed",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/individual/Speed"
+                                },
+                                "description": "",
+                                "title": "Speed",
+                                "content": "<p><init><\/p>\n<p>walking<\/p>\n<p>running<\/p>\n"
+                              }]
+                            },
+                            "IndividualCharacteristic": {
+                              "ownKey": "IndividualCharacteristic",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/individual",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "IndividualCharacteristic",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/individual/IndividualCharacteristic"
+                                },
+                                "description": "",
+                                "title": "IndividualCharacteristic",
+                                "content": "<p>A characteristic which is intrinsically part of a pedestrian no matter the environment around him.<\/p>\n"
+                              }]
+                            },
+                            "Compliance": {
+                              "ownKey": "Compliance",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/individual",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "Compliance",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/individual/Compliance"
+                                },
+                                "description": "",
+                                "title": "Compliance",
+                                "content": "<p><init><\/p>\n<p>level<\/p>\n"
+                              }]
+                            },
+                            "ComplianceSpec": {
+                              "ownKey": "ComplianceSpec",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/individual",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "ComplianceSpec",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/individual/ComplianceSpec"
+                                },
+                                "description": "",
+                                "title": "ComplianceSpec",
+                                "content": "<p>childMale<\/p>\n<p>adultMale<\/p>\n<p>elderlyMale<\/p>\n<p>childFemale<\/p>\n<p>adultFemale<\/p>\n<p>elderlyFemale<\/p>\n"
+                              }]
+                            },
+                            "HelpAttitude": {
+                              "ownKey": "HelpAttitude",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/individual",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "HelpAttitude",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/individual/HelpAttitude"
+                                },
+                                "description": "",
+                                "title": "HelpAttitude",
+                                "content": "<p><init><\/p>\n<p>level<\/p>\n"
+                              }]
+                            },
+                            "SpeedSpec": {
+                              "ownKey": "SpeedSpec",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/individual",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "SpeedSpec",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/individual/SpeedSpec"
+                                },
+                                "description": "",
+                                "title": "SpeedSpec",
+                                "content": "<p>childMale<\/p>\n<p>adultMale<\/p>\n<p>elderlyMale<\/p>\n<p>childFemale<\/p>\n<p>adultFemale<\/p>\n<p>elderlyFemale<\/p>\n<p>default<\/p>\n<p>variance<\/p>\n"
+                              }]
+                            },
+                            "HelpAttitudeSpec": {
+                              "ownKey": "HelpAttitudeSpec",
+                              "childrenPages": {
+                                "ElderlyFemale": {
+                                  "ownKey": "ElderlyFemale",
+                                  "ownPages": [{
+                                    "reference": {
+                                      "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/individual/HelpAttitudeSpec",
+                                      "baseUrl": "https://alchemistsimulator.github.io",
+                                      "fileName": "ElderlyFemale",
+                                      "extension": "html",
+                                      "usePrettyUrl": true,
+                                      "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/individual/HelpAttitudeSpec/ElderlyFemale"
+                                    },
+                                    "description": "",
+                                    "title": "ElderlyFemale",
+                                    "content": "<p>childMale<\/p>\n<p>adultMale<\/p>\n<p>elderlyMale<\/p>\n<p>childFemale<\/p>\n<p>adultFemale<\/p>\n<p>elderlyFemale<\/p>\n"
+                                  }]
+                                },
+                                "ElderlyMale": {
+                                  "ownKey": "ElderlyMale",
+                                  "ownPages": [{
+                                    "reference": {
+                                      "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/individual/HelpAttitudeSpec",
+                                      "baseUrl": "https://alchemistsimulator.github.io",
+                                      "fileName": "ElderlyMale",
+                                      "extension": "html",
+                                      "usePrettyUrl": true,
+                                      "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/individual/HelpAttitudeSpec/ElderlyMale"
+                                    },
+                                    "description": "",
+                                    "title": "ElderlyMale",
+                                    "content": "<p>childMale<\/p>\n<p>adultMale<\/p>\n<p>elderlyMale<\/p>\n<p>childFemale<\/p>\n<p>adultFemale<\/p>\n<p>elderlyFemale<\/p>\n"
+                                  }]
+                                },
+                                "AdultMale": {
+                                  "ownKey": "AdultMale",
+                                  "ownPages": [{
+                                    "reference": {
+                                      "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/individual/HelpAttitudeSpec",
+                                      "baseUrl": "https://alchemistsimulator.github.io",
+                                      "fileName": "AdultMale",
+                                      "extension": "html",
+                                      "usePrettyUrl": true,
+                                      "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/individual/HelpAttitudeSpec/AdultMale"
+                                    },
+                                    "description": "",
+                                    "title": "AdultMale",
+                                    "content": "<p>childMale<\/p>\n<p>adultMale<\/p>\n<p>elderlyMale<\/p>\n<p>childFemale<\/p>\n<p>adultFemale<\/p>\n<p>elderlyFemale<\/p>\n"
+                                  }]
+                                },
+                                "AdultFemale": {
+                                  "ownKey": "AdultFemale",
+                                  "ownPages": [{
+                                    "reference": {
+                                      "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/individual/HelpAttitudeSpec",
+                                      "baseUrl": "https://alchemistsimulator.github.io",
+                                      "fileName": "AdultFemale",
+                                      "extension": "html",
+                                      "usePrettyUrl": true,
+                                      "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/individual/HelpAttitudeSpec/AdultFemale"
+                                    },
+                                    "description": "",
+                                    "title": "AdultFemale",
+                                    "content": "<p>childMale<\/p>\n<p>adultMale<\/p>\n<p>elderlyMale<\/p>\n<p>childFemale<\/p>\n<p>adultFemale<\/p>\n<p>elderlyFemale<\/p>\n"
+                                  }]
+                                }
+                              },
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/individual",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "HelpAttitudeSpec",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/individual/HelpAttitudeSpec"
+                                },
+                                "description": "",
+                                "title": "HelpAttitudeSpec",
+                                "content": ""
+                              }]
+                            },
+                            "Gender": {
+                              "ownKey": "Gender",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/individual",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "Gender",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/individual/Gender"
+                                },
+                                "description": "",
+                                "title": "Gender",
+                                "content": ""
+                              }]
+                            },
+                            "Age": {
+                              "ownKey": "Age",
+                              "ownPages": [{
+                                "reference": {
+                                  "path": "it/unibo/alchemist/model/cognitiveagents/characteristics/individual",
+                                  "baseUrl": "https://alchemistsimulator.github.io",
+                                  "fileName": "Age",
+                                  "extension": "html",
+                                  "usePrettyUrl": true,
+                                  "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/individual/Age"
+                                },
+                                "description": "",
+                                "title": "Age",
+                                "content": ""
+                              }]
+                            }
+                          },
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/cognitiveagents/characteristics",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "individual",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/individual"
+                            },
+                            "description": "",
+                            "title": "it.unibo.alchemist.model.cognitiveagents.characteristics.individual",
+                            "content": ""
+                          }]
+                        },
+                        "utils": {
+                          "ownKey": "utils",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/cognitiveagents/characteristics",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "utils",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/utils"
+                            },
+                            "description": "",
+                            "title": "it.unibo.alchemist.model.cognitiveagents.characteristics.utils",
+                            "content": "<p>logistic\nhttps://en.wikipedia.org/wiki/Logistic_function\nadvancedLogistic<\/p>\n"
+                          }]
+                        },
+                        "Characteristic": {
+                          "ownKey": "Characteristic",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/cognitiveagents/characteristics",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "Characteristic",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics/Characteristic"
+                            },
+                            "description": "",
+                            "title": "Characteristic",
+                            "content": "<p>Any characteristic associable to a pedestrian.<\/p>\n"
+                          }]
+                        }
+                      },
+                      "ownPages": [{
+                        "reference": {
+                          "path": "it/unibo/alchemist/model/cognitiveagents",
+                          "baseUrl": "https://alchemistsimulator.github.io",
+                          "fileName": "characteristics",
+                          "extension": "html",
+                          "usePrettyUrl": true,
+                          "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/characteristics"
+                        },
+                        "description": "",
+                        "title": "it.unibo.alchemist.model.cognitiveagents.characteristics",
+                        "content": ""
+                      }]
+                    },
+                    "groups": {
+                      "ownKey": "groups",
+                      "childrenPages": {
+                        "NoGroup": {
+                          "ownKey": "NoGroup",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/cognitiveagents/groups",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "NoGroup",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/groups/NoGroup"
+                            },
+                            "description": "",
+                            "title": "NoGroup",
+                            "content": "<p>An object representing a pedestrian alone.\nmembers\nThe list of pedestrians belonging to this group.\ncontains\nWhether a pedestrian belongs to this group or not.<\/p>\n"
+                          }]
+                        },
+                        "Group": {
+                          "ownKey": "Group",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/cognitiveagents/groups",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "Group",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/groups/Group"
+                            },
+                            "description": "",
+                            "title": "Group",
+                            "content": "<p>A generic group of pedestrians.\nmembers\nThe list of pedestrians belonging to this group.\ncontains\nWhether a pedestrian belongs to this group or not.<\/p>\n"
+                          }]
+                        },
+                        "AbstractGroup": {
+                          "ownKey": "AbstractGroup",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/cognitiveagents/groups",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "AbstractGroup",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/groups/AbstractGroup"
+                            },
+                            "description": "",
+                            "title": "AbstractGroup",
+                            "content": "<p><init><\/p>\n<p>members\nThe list of pedestrians belonging to this group.<\/p>\n"
+                          }]
+                        },
+                        "Family": {
+                          "ownKey": "Family",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/cognitiveagents/groups",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "Family",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/groups/Family"
+                            },
+                            "description": "",
+                            "title": "Family",
+                            "content": "<p><init><\/p>\n"
+                          }]
+                        }
+                      },
+                      "ownPages": [{
+                        "reference": {
+                          "path": "it/unibo/alchemist/model/cognitiveagents",
+                          "baseUrl": "https://alchemistsimulator.github.io",
+                          "fileName": "groups",
+                          "extension": "html",
+                          "usePrettyUrl": true,
+                          "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/groups"
+                        },
+                        "description": "",
+                        "title": "it.unibo.alchemist.model.cognitiveagents.groups",
+                        "content": ""
+                      }]
+                    }
+                  }
+                },
                 "interfaces": {
                   "ownKey": "interfaces",
                   "childrenPages": {
@@ -5348,6 +5775,22 @@
                         "description": "",
                         "title": "ILsaMolecule",
                         "content": "<p>moreGenericOf<\/p>\n<p>hasDuplicateVariables<\/p>\n<p>isIstance<\/p>\n<p>toHashString<\/p>\n<p>isIdenticalTo<\/p>\n<p>size<\/p>\n<p>allocateVar<\/p>\n<p>argsNumber<\/p>\n<p>getArg<\/p>\n<p>generalize<\/p>\n<p>matches<\/p>\n<p>matches<\/p>\n"
+                      }]
+                    },
+                    "Pedestrian": {
+                      "ownKey": "Pedestrian",
+                      "ownPages": [{
+                        "reference": {
+                          "path": "it/unibo/alchemist/model/interfaces",
+                          "baseUrl": "https://alchemistsimulator.github.io",
+                          "fileName": "Pedestrian",
+                          "extension": "html",
+                          "usePrettyUrl": true,
+                          "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Pedestrian"
+                        },
+                        "description": "",
+                        "title": "Pedestrian",
+                        "content": "<p>A pedestrian with any characteristic taken into consideration.\nmembershipGroup\nThe group this pedestrian belongs to.\nwalkingSpeed\nThe speed at which the pedestrian moves if it's walking.\nrunningSpeed\nThe speed at which the pedestrian moves if it's running.<\/p>\n"
                       }]
                     },
                     "Time": {
@@ -5524,6 +5967,22 @@
                         "description": "",
                         "title": "Route",
                         "content": "<p>length<\/p>\n<p>stream<\/p>\n<p>getPoint<\/p>\n<p>size<\/p>\n<p>getPoints<\/p>\n"
+                      }]
+                    },
+                    "CognitivePedestrian": {
+                      "ownKey": "CognitivePedestrian",
+                      "ownPages": [{
+                        "reference": {
+                          "path": "it/unibo/alchemist/model/interfaces",
+                          "baseUrl": "https://alchemistsimulator.github.io",
+                          "fileName": "CognitivePedestrian",
+                          "extension": "html",
+                          "usePrettyUrl": true,
+                          "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/CognitivePedestrian"
+                        },
+                        "description": "",
+                        "title": "CognitivePedestrian",
+                        "content": "<p>An heterogeneous pedestrian with cognitive capabilities too.<\/p>\n<p>dangerBelief\nValue between 0 and 1 representing the current belief of the situation dangerousness for this pedestrian.\nfear\nValue between 0 and 1 representing the level of fear of this pedestrian.\ninfluencialPeople\nA collection of all the pedestrians in the same environment who have an influence on this pedestrian.\ncognitiveCharacteristics\nThe list of all the cognitive characteristics of this pedestrian.<\/p>\n"
                       }]
                     },
                     "Condition": {
@@ -5816,6 +6275,22 @@
                         "content": "<p>Interface for a molecule.<\/p>\n<p>getName<\/p>\n<p>getId\nAllows to access the id of a molecule.<\/p>\n"
                       }]
                     },
+                    "HeterogeneousPedestrian": {
+                      "ownKey": "HeterogeneousPedestrian",
+                      "ownPages": [{
+                        "reference": {
+                          "path": "it/unibo/alchemist/model/interfaces",
+                          "baseUrl": "https://alchemistsimulator.github.io",
+                          "fileName": "HeterogeneousPedestrian",
+                          "extension": "html",
+                          "usePrettyUrl": true,
+                          "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/HeterogeneousPedestrian"
+                        },
+                        "description": "",
+                        "title": "HeterogeneousPedestrian",
+                        "content": "<p>An heterogeneous pedestrian is a pedestrian where individual characteristics are taken into consideration.\nage\nThe age of this pedestrian.\ngender\nThe gender of this pedestrian.\ncompliance\nValue between 0 and 1 representing the attitude towards conforming to social rules of this pedestrian.\nprobabilityOfHelping\nValue between 0 and 1 representing the probability this pedestrian will help another pedestrian in difficulty.<\/p>\n"
+                      }]
+                    },
                     "Position2D": {
                       "ownKey": "Position2D",
                       "ownPages": [{
@@ -5976,6 +6451,143 @@
                     "title": "ProtelisIncarnation",
                     "content": "<p><init><\/p>\n<p>VALUE_TOKEN\nThe name that can be used in a property to refer to the extracted value.\ncreateNode<\/p>\n<p>toString<\/p>\n<p>createReaction<\/p>\n<p>createAction<\/p>\n<p>createMolecule<\/p>\n<p>getProperty<\/p>\n<p>createCondition<\/p>\n<p>createTimeDistribution<\/p>\n<p>createConcentration<\/p>\n"
                   }]
+                },
+                "influencesphere": {
+                  "ownKey": "influencesphere",
+                  "childrenPages": {
+                    "sensory": {
+                      "ownKey": "sensory",
+                      "childrenPages": {
+                        "InfluenceSphere": {
+                          "ownKey": "InfluenceSphere",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/influencesphere/sensory",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "InfluenceSphere",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/influencesphere/sensory/InfluenceSphere"
+                            },
+                            "description": "",
+                            "title": "InfluenceSphere",
+                            "content": "<p>A sphere of influence in any n-dimensional space.<\/p>\n<p>isInfluenced\nWhenever or not a given point has an influence on the node equipped with this sphere.<\/p>\n"
+                          }]
+                        },
+                        "InfluenceSphere2D": {
+                          "ownKey": "InfluenceSphere2D",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/influencesphere/sensory",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "InfluenceSphere2D",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/influencesphere/sensory/InfluenceSphere2D"
+                            },
+                            "description": "",
+                            "title": "InfluenceSphere2D",
+                            "content": "<p>A sphere of influence in the 2D world.<init>\nA sphere of influence in the 2D world.<\/p>\n<p>isInfluenced\nWhenever or not a given point has an influence on the node equipped with this sphere.<\/p>\n"
+                          }]
+                        },
+                        "HearingField2D": {
+                          "ownKey": "HearingField2D",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/influencesphere/sensory",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "HearingField2D",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/influencesphere/sensory/HearingField2D"
+                            },
+                            "description": "",
+                            "title": "HearingField2D",
+                            "content": "<p><init><\/p>\n"
+                          }]
+                        },
+                        "FieldOfView2D": {
+                          "ownKey": "FieldOfView2D",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/influencesphere/sensory",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "FieldOfView2D",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/influencesphere/sensory/FieldOfView2D"
+                            },
+                            "description": "",
+                            "title": "FieldOfView2D",
+                            "content": "<p><init><\/p>\n"
+                          }]
+                        }
+                      },
+                      "ownPages": [{
+                        "reference": {
+                          "path": "it/unibo/alchemist/model/influencesphere",
+                          "baseUrl": "https://alchemistsimulator.github.io",
+                          "fileName": "sensory",
+                          "extension": "html",
+                          "usePrettyUrl": true,
+                          "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/influencesphere/sensory"
+                        },
+                        "description": "",
+                        "title": "it.unibo.alchemist.model.influencesphere.sensory",
+                        "content": ""
+                      }]
+                    },
+                    "shapes": {
+                      "ownKey": "shapes",
+                      "childrenPages": {
+                        "GeometricShape2D": {
+                          "ownKey": "GeometricShape2D",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/influencesphere/shapes",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "GeometricShape2D",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/influencesphere/shapes/GeometricShape2D"
+                            },
+                            "description": "",
+                            "title": "GeometricShape2D",
+                            "content": "<p>Defines a generic 2D shape.<init>\nDefines a generic 2D shape.<\/p>\n<p>contains\nWhether or not a given point is inside this shape.<\/p>\n"
+                          }]
+                        },
+                        "GeometricShape": {
+                          "ownKey": "GeometricShape",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/influencesphere/shapes",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "GeometricShape",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/influencesphere/shapes/GeometricShape"
+                            },
+                            "description": "",
+                            "title": "GeometricShape",
+                            "content": "<p>Defines a generic n-dimensional shape.<\/p>\n<p>contains\nWhether or not a given point is inside this shape.<\/p>\n"
+                          }]
+                        }
+                      },
+                      "ownPages": [{
+                        "reference": {
+                          "path": "it/unibo/alchemist/model/influencesphere",
+                          "baseUrl": "https://alchemistsimulator.github.io",
+                          "fileName": "shapes",
+                          "extension": "html",
+                          "usePrettyUrl": true,
+                          "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/influencesphere/shapes"
+                        },
+                        "description": "",
+                        "title": "it.unibo.alchemist.model.influencesphere.shapes",
+                        "content": ""
+                      }]
+                    }
+                  }
                 },
                 "BiochemistryIncarnation": {
                   "ownKey": "BiochemistryIncarnation",
@@ -6883,20 +7495,20 @@
                     "nodes": {
                       "ownKey": "nodes",
                       "childrenPages": {
-                        "IntNode": {
-                          "ownKey": "IntNode",
+                        "CognitivePedestrian2D": {
+                          "ownKey": "CognitivePedestrian2D",
                           "ownPages": [{
                             "reference": {
                               "path": "it/unibo/alchemist/model/implementations/nodes",
                               "baseUrl": "https://alchemistsimulator.github.io",
-                              "fileName": "IntNode",
+                              "fileName": "CognitivePedestrian2D",
                               "extension": "html",
                               "usePrettyUrl": true,
-                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/nodes/IntNode"
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/nodes/CognitivePedestrian2D"
                             },
                             "description": "",
-                            "title": "IntNode",
-                            "content": "<p><init><\/p>\n<p>createT<\/p>\n"
+                            "title": "CognitivePedestrian2D",
+                            "content": "<p><init><\/p>\n<p><init><\/p>\n<p><init><\/p>\n<p>env<\/p>\n<p>influencialPeople\nA collection of all the pedestrians in the same environment who have an influence on this pedestrian.<\/p>\n"
                           }]
                         },
                         "AbstractNode": {
@@ -6915,6 +7527,38 @@
                             "content": "<p>This class realizes an abstract node. You may extend it to realize your own nodes.<init><\/p>\n<p>contains\n{@inheritDoc}\nhashCode<\/p>\n<p>getChemicalSpecies\n{@inheritDoc}\nequals<\/p>\n<p>setConcentration\n{@inheritDoc}\ntoString\n{@inheritDoc}\ngetId<\/p>\n<p>compareTo<\/p>\n<p>addReaction<\/p>\n<p>cloneNode\nDefault implementation fails: override correctly calling the constructor.\nremoveConcentration\n{@inheritDoc}\ngetReactions<\/p>\n<p>getConcentration\n{@inheritDoc}\niterator<\/p>\n<p>getContents\n{@inheritDoc}\nforEach<\/p>\n<p>spliterator<\/p>\n<p>removeReaction<\/p>\n"
                           }]
                         },
+                        "AbstractHomogeneousPedestrian": {
+                          "ownKey": "AbstractHomogeneousPedestrian",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/implementations/nodes",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "AbstractHomogeneousPedestrian",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/nodes/AbstractHomogeneousPedestrian"
+                            },
+                            "description": "",
+                            "title": "AbstractHomogeneousPedestrian",
+                            "content": "<p><init><\/p>\n<p>membershipGroup\nThe group this pedestrian belongs to.\nwalkingSpeed\nThe speed at which the pedestrian moves if it's walking.\nrunningSpeed\nThe speed at which the pedestrian moves if it's running.\ncreateT<\/p>\n"
+                          }]
+                        },
+                        "AbstractCognitivePedestrian": {
+                          "ownKey": "AbstractCognitivePedestrian",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/implementations/nodes",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "AbstractCognitivePedestrian",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/nodes/AbstractCognitivePedestrian"
+                            },
+                            "description": "",
+                            "title": "AbstractCognitivePedestrian",
+                            "content": "<p><init><\/p>\n<p>env<\/p>\n<p>rg<\/p>\n<p>dangerBelief\nValue between 0 and 1 representing the current belief of the situation dangerousness for this pedestrian.\nfear\nValue between 0 and 1 representing the level of fear of this pedestrian.\ncognitiveCharacteristics\nThe list of all the cognitive characteristics of this pedestrian.<\/p>\n"
+                          }]
+                        },
                         "IntegerNode": {
                           "ownKey": "IntegerNode",
                           "ownPages": [{
@@ -6931,20 +7575,20 @@
                             "content": "<p><init>\nCreate a new integer node.<\/p>\n"
                           }]
                         },
-                        "CircularDeformableCellImpl": {
-                          "ownKey": "CircularDeformableCellImpl",
+                        "AbstractHeterogeneousPedestrian": {
+                          "ownKey": "AbstractHeterogeneousPedestrian",
                           "ownPages": [{
                             "reference": {
                               "path": "it/unibo/alchemist/model/implementations/nodes",
                               "baseUrl": "https://alchemistsimulator.github.io",
-                              "fileName": "CircularDeformableCellImpl",
+                              "fileName": "AbstractHeterogeneousPedestrian",
                               "extension": "html",
                               "usePrettyUrl": true,
-                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/nodes/CircularDeformableCellImpl"
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/nodes/AbstractHeterogeneousPedestrian"
                             },
                             "description": "",
-                            "title": "CircularDeformableCellImpl",
-                            "content": "<p>Implementation of a circular deformable cell.<init>\nCreate a circular deformable cell of maxDiam = maxDiameter and minDiam = deformability * maxDiam.<\/p>\n<p>getMaxRadius<\/p>\n<p>getMaxDiameter<\/p>\n"
+                            "title": "AbstractHeterogeneousPedestrian",
+                            "content": "<p><init><\/p>\n<p>compliance\nValue between 0 and 1 representing the attitude towards conforming to social rules of this pedestrian.\nwalkingSpeed\nThe speed at which the pedestrian moves if it's walking.\nrunningSpeed\nThe speed at which the pedestrian moves if it's running.\nage\nThe age of this pedestrian.\ngender\nThe gender of this pedestrian.\nprobabilityOfHelping\nValue between 0 and 1 representing the probability this pedestrian will help another pedestrian in difficulty.<\/p>\n"
                           }]
                         },
                         "EnvironmentNodeImpl": {
@@ -6995,6 +7639,70 @@
                             "content": "<p><init>\nBuilds a new ProtelisNode.<\/p>\n<p>getNetworkManager<\/p>\n<p>commit<\/p>\n<p>cloneNode<\/p>\n<p>has<\/p>\n<p>get<\/p>\n<p>get<\/p>\n<p>setup<\/p>\n<p>putField\nAllows writing a Field as a value. Use only for debug purposes, storing fields and reusing them over time breaks Field Calculus alignment.\nput<\/p>\n<p>toString<\/p>\n<p>remove<\/p>\n<p>addNetworkManger\nAdds a new AlchemistNetworkManager.\nkeySet<\/p>\n"
                           }]
                         },
+                        "LsaNode": {
+                          "ownKey": "LsaNode",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/implementations/nodes",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "LsaNode",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/nodes/LsaNode"
+                            },
+                            "description": "",
+                            "title": "LsaNode",
+                            "content": "<p>This class realizes a node with LSA concentration.<init><\/p>\n<p>contains<\/p>\n<p>getChemicalSpecies<\/p>\n<p>setConcentration<\/p>\n<p>setConcentration<\/p>\n<p>toString<\/p>\n<p>removeConcentration<\/p>\n<p>getConcentration<\/p>\n<p>getLsaSpace<\/p>\n<p>getContents<\/p>\n"
+                          }]
+                        },
+                        "IntNode": {
+                          "ownKey": "IntNode",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/implementations/nodes",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "IntNode",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/nodes/IntNode"
+                            },
+                            "description": "",
+                            "title": "IntNode",
+                            "content": "<p><init><\/p>\n<p>createT<\/p>\n"
+                          }]
+                        },
+                        "CircularDeformableCellImpl": {
+                          "ownKey": "CircularDeformableCellImpl",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/implementations/nodes",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "CircularDeformableCellImpl",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/nodes/CircularDeformableCellImpl"
+                            },
+                            "description": "",
+                            "title": "CircularDeformableCellImpl",
+                            "content": "<p>Implementation of a circular deformable cell.<init>\nCreate a circular deformable cell of maxDiam = maxDiameter and minDiam = deformability * maxDiam.<\/p>\n<p>getMaxRadius<\/p>\n<p>getMaxDiameter<\/p>\n"
+                          }]
+                        },
+                        "HeterogeneousPedestrian2D": {
+                          "ownKey": "HeterogeneousPedestrian2D",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/implementations/nodes",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "HeterogeneousPedestrian2D",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/nodes/HeterogeneousPedestrian2D"
+                            },
+                            "description": "",
+                            "title": "HeterogeneousPedestrian2D",
+                            "content": "<p><init><\/p>\n<p><init><\/p>\n<p><init><\/p>\n"
+                          }]
+                        },
                         "CellNodeImpl": {
                           "ownKey": "CellNodeImpl",
                           "ownPages": [{
@@ -7011,20 +7719,20 @@
                             "content": "<p><init>\ncreate a new cell node.\n<init><\/p>\n<p>contains<\/p>\n<p>getJunctionsCount<\/p>\n<p>removeJunction<\/p>\n<p>setConcentration<\/p>\n<p>getNeighborsLinkWithJunction<\/p>\n<p>containsJunction<\/p>\n<p>getDiameter<\/p>\n<p>setPolarization<\/p>\n<p>getJunctions<\/p>\n<p>getPolarizationVersor<\/p>\n<p>toString\n{@inheritDoc}\ngetAllNodesLinkWithJunction<\/p>\n<p>addJunction<\/p>\n<p>getRadius<\/p>\n<p>addPolarization<\/p>\n"
                           }]
                         },
-                        "LsaNode": {
-                          "ownKey": "LsaNode",
+                        "HomogeneousPedestrian2D": {
+                          "ownKey": "HomogeneousPedestrian2D",
                           "ownPages": [{
                             "reference": {
                               "path": "it/unibo/alchemist/model/implementations/nodes",
                               "baseUrl": "https://alchemistsimulator.github.io",
-                              "fileName": "LsaNode",
+                              "fileName": "HomogeneousPedestrian2D",
                               "extension": "html",
                               "usePrettyUrl": true,
-                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/nodes/LsaNode"
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/nodes/HomogeneousPedestrian2D"
                             },
                             "description": "",
-                            "title": "LsaNode",
-                            "content": "<p>This class realizes a node with LSA concentration.<init><\/p>\n<p>contains<\/p>\n<p>getChemicalSpecies<\/p>\n<p>setConcentration<\/p>\n<p>setConcentration<\/p>\n<p>toString<\/p>\n<p>removeConcentration<\/p>\n<p>getConcentration<\/p>\n<p>getLsaSpace<\/p>\n<p>getContents<\/p>\n"
+                            "title": "HomogeneousPedestrian2D",
+                            "content": "<p><init><\/p>\n"
                           }]
                         }
                       },
@@ -7449,6 +8157,22 @@
                             "description": "",
                             "title": "ChemicalReaction",
                             "content": "<p><init><\/p>\n<p>initializationComplete<\/p>\n<p>cloneOnNewNode\n{@inheritDoc}\ngetRate<\/p>\n"
+                          }]
+                        },
+                        "CognitiveBehaviour": {
+                          "ownKey": "CognitiveBehaviour",
+                          "ownPages": [{
+                            "reference": {
+                              "path": "it/unibo/alchemist/model/implementations/reactions",
+                              "baseUrl": "https://alchemistsimulator.github.io",
+                              "fileName": "CognitiveBehaviour",
+                              "extension": "html",
+                              "usePrettyUrl": true,
+                              "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/reactions/CognitiveBehaviour"
+                            },
+                            "description": "",
+                            "title": "CognitiveBehaviour",
+                            "content": "<p><init><\/p>\n<p>cloneOnNewNode<\/p>\n<p>getRate<\/p>\n<p>updateInternalStatus<\/p>\n"
                           }]
                         },
                         "BiochemicalReactionBuilder": {
