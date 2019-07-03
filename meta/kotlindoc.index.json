@@ -1740,6 +1740,22 @@
                       "content": "<p>A variable spanning over an arbitrary set of values.<init><\/p>\n<p><init><\/p>\n<p>getDefault<\/p>\n<p>stream<\/p>\n"
                     }]
                   },
+                  "JSR223Variable": {
+                    "ownKey": "JSR223Variable",
+                    "ownPages": [{
+                      "reference": {
+                        "path": "it/unibo/alchemist/loader/variables",
+                        "baseUrl": "https://alchemistsimulator.github.io",
+                        "fileName": "JSR223Variable",
+                        "extension": "html",
+                        "usePrettyUrl": true,
+                        "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/loader/variables/JSR223Variable"
+                      },
+                      "description": "",
+                      "title": "JSR223Variable",
+                      "content": "<p>This variable loads any <a href=\"http://archive.fo/PGdk8\">JSR-233<\/a> language available in the classpath.<init>\nbuilds a new JSR223Variable given a language name and a script.\nlanguage\ncan be the name of the language, the file extension, or its mime type\nformula\nthe script that will get interpreted\ngetWith\nGiven the current controlled variables, computes the current values for\nthis variable.\nasBindings<\/p>\n"
+                    }]
+                  },
                   "GeometricVariable": {
                     "ownKey": "GeometricVariable",
                     "ownPages": [{
@@ -1772,22 +1788,6 @@
                       "content": "<p>A numeric constant.<init><\/p>\n<p>getWith<\/p>\n"
                     }]
                   },
-                  "GroovyVariable": {
-                    "ownKey": "GroovyVariable",
-                    "ownPages": [{
-                      "reference": {
-                        "path": "it/unibo/alchemist/loader/variables",
-                        "baseUrl": "https://alchemistsimulator.github.io",
-                        "fileName": "GroovyVariable",
-                        "extension": "html",
-                        "usePrettyUrl": true,
-                        "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/loader/variables/GroovyVariable"
-                      },
-                      "description": "",
-                      "title": "GroovyVariable",
-                      "content": "<p><init><\/p>\n<p>interpret<\/p>\n"
-                    }]
-                  },
                   "PrintableVariable": {
                     "ownKey": "PrintableVariable",
                     "ownPages": [{
@@ -1802,54 +1802,6 @@
                       "description": "",
                       "title": "PrintableVariable",
                       "content": "<p>A variable stub, with a default <code>#toString()<\/code> method.<init>\nA variable stub, with a default <code>#toString()<\/code> method.<\/p>\n<p>toString\n{@inheritDoc}<\/p>\n"
-                    }]
-                  },
-                  "JavascriptVariable": {
-                    "ownKey": "JavascriptVariable",
-                    "ownPages": [{
-                      "reference": {
-                        "path": "it/unibo/alchemist/loader/variables",
-                        "baseUrl": "https://alchemistsimulator.github.io",
-                        "fileName": "JavascriptVariable",
-                        "extension": "html",
-                        "usePrettyUrl": true,
-                        "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/loader/variables/JavascriptVariable"
-                      },
-                      "description": "",
-                      "title": "JavascriptVariable",
-                      "content": "<p>Interpreter that relies on the Nashorn Javascript engine shipped with the standard JDK. Variables are substituted with their provided values using a simple regular expression, and then the resulting String is fed to the Javascript interpereter.<init><\/p>\n"
-                    }]
-                  },
-                  "ScriptVariable": {
-                    "ownKey": "ScriptVariable",
-                    "ownPages": [{
-                      "reference": {
-                        "path": "it/unibo/alchemist/loader/variables",
-                        "baseUrl": "https://alchemistsimulator.github.io",
-                        "fileName": "ScriptVariable",
-                        "extension": "html",
-                        "usePrettyUrl": true,
-                        "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/loader/variables/ScriptVariable"
-                      },
-                      "description": "",
-                      "title": "ScriptVariable",
-                      "content": "<p>This variable can be initialized by providing a formula where other variables are prefixed with the $ symbol. Subclasses must implement an interpreter able to compute on the string produced by this class.<init><\/p>\n<p>toString\n{@inheritDoc}\ngetWith<\/p>\n"
-                    }]
-                  },
-                  "ScalaVariable": {
-                    "ownKey": "ScalaVariable",
-                    "ownPages": [{
-                      "reference": {
-                        "path": "it/unibo/alchemist/loader/variables",
-                        "baseUrl": "https://alchemistsimulator.github.io",
-                        "fileName": "ScalaVariable",
-                        "extension": "html",
-                        "usePrettyUrl": true,
-                        "link": "https://alchemistsimulator.github.io/it/unibo/alchemist/loader/variables/ScalaVariable"
-                      },
-                      "description": "",
-                      "title": "ScalaVariable",
-                      "content": "<p>Interpreter that relies on the Scala Toolbox for interpreting the formula String.<init><\/p>\n"
                     }]
                   },
                   "Flag": {
@@ -2252,7 +2204,7 @@
                   },
                   "description": "",
                   "title": "Loader",
-                  "content": "<p>An entity which is able to produce an Alchemist Environment, possibly with user defined variable values.<\/p>\n<p>getDefault<\/p>\n<p>getVariables<\/p>\n<p>getWith<\/p>\n<p>getDependencies<\/p>\n<p>getDataExtractors<\/p>\n"
+                  "content": "<p>An entity which is able to produce an Alchemist Environment, possibly with user defined variable values.<\/p>\n<p>getDefault<\/p>\n<p>getVariables<\/p>\n<p>getWith<\/p>\n<p>getConstants\nAllows to access the currently defined constants, namely variables defined in the simulation file whose value is constant and does not depend on the value of any free variable (directly or indirectly).\ngetDependencies<\/p>\n<p>getDependentVariables\nAllows to access the currently defined dependent variable (those variables whose value can be determined given a valid set of values for the free variables).\ngetDataExtractors<\/p>\n"
                 }]
               },
               "YamlLoader": {
@@ -2268,7 +2220,7 @@
                   },
                   "description": "",
                   "title": "YamlLoader",
-                  "content": "<p>Loads a properly formatted YAML file and provides method for instancing a batch of scenarios.<init><\/p>\n<p><init><\/p>\n<p><init><\/p>\n<p>getVariables<\/p>\n<p>getDefault<\/p>\n<p>getWith<\/p>\n<p>getDependencies<\/p>\n<p>getDataExtractors<\/p>\n"
+                  "content": "<p>Loads a properly formatted YAML file and provides method for instancing a batch of scenarios.<init><\/p>\n<p><init><\/p>\n<p><init><\/p>\n<p>getVariables<\/p>\n<p>getDefault<\/p>\n<p>getWith<\/p>\n<p>getConstants<\/p>\n<p>getDependencies<\/p>\n<p>getDependentVariables<\/p>\n<p>getDataExtractors<\/p>\n"
                 }]
               },
               "export": {

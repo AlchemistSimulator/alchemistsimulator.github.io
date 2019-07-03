@@ -21,7 +21,7 @@
 
 
 
-<title>ScalaVariable</title>
+<title>JSR223Variable</title>
 
 
 <meta name="description" content="An extensible simulator for doing science and engineering in pervasive, bio-inspired, and aggregate computing.">
@@ -31,7 +31,7 @@
 
 
 <script>
-    window.site = {"orchidVersion":"0.17.1","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"8.1.1"};
+    window.site = {"orchidVersion":"0.17.1","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"8.2.0"};
 </script>
 
 
@@ -54,11 +54,11 @@
 
 <!-- RESOURCE -->
 <!-- Class: com.eden.orchid.kotlindoc.resources.KotlinClassdocResource -->
-<!-- Source Filename: it/unibo/alchemist/loader/variables/ScalaVariable.html -->
+<!-- Source Filename: it/unibo/alchemist/loader/variables/JSR223Variable.html -->
 
 <!-- COMPLETE PAGE CONFIGURATION -->
 <script>
-    window.allData = {"reference":{"path":"it/unibo/alchemist/loader/variables","baseUrl":"https://alchemistsimulator.github.io","fileName":"ScalaVariable","extension":"html","usePrettyUrl":true,"link":"https://alchemistsimulator.github.io/it/unibo/alchemist/loader/variables/ScalaVariable"},"description":"","title":"ScalaVariable"};
+    window.allData = {"reference":{"path":"it/unibo/alchemist/loader/variables","baseUrl":"https://alchemistsimulator.github.io","fileName":"JSR223Variable","extension":"html","usePrettyUrl":true,"link":"https://alchemistsimulator.github.io/it/unibo/alchemist/loader/variables/JSR223Variable"},"description":"","title":"JSR223Variable"};
 </script>
 
 <!-- end:debug info -->
@@ -106,7 +106,7 @@
             
             
                 <section id="pageContent">
-                    <header class="major"><h2>ScalaVariable</h2></header>
+                    <header class="major"><h2>JSR223Variable</h2></header>
                     <article>
                         
     <!-- start:inject components -->
@@ -123,16 +123,42 @@
 </p>
 <p>
     <code style="padding: 0;">
-        class it.unibo.alchemist.loader.variables.ScalaVariable
+        class it.unibo.alchemist.loader.variables.JSR223Variable
     </code>
 </p>
 <div class="class-description" id="description">
-<p>Interpreter that relies on the Scala Toolbox for interpreting the formula String.</p>
+<p>This variable loads any <a href="http://archive.fo/PGdk8">JSR-233</a> language available in the classpath.</p>
 
 </div>
 
 
 
+
+
+<h2 id="fields">Fields</h2>
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading" id="field__language__String">
+        <code>
+        language: String
+        </code>
+    </div>
+    <div class="panel-body"><p>can be the name of the language, the file extension, or its mime type</p>
+</div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading" id="field__formula__String">
+        <code>
+        formula: String
+        </code>
+    </div>
+    <div class="panel-body"><p>the script that will get interpreted</p>
+</div>
+</div>
 
 
 
@@ -144,12 +170,13 @@
 
 
 <div class="panel panel-default">
-    <div class="panel-heading" id="constructor__constructor_formula__String_">
+    <div class="panel-heading" id="constructor__constructor_language__String__formula__String_">
         <code>
-        constructor(formula: String)
+        constructor(language: String, formula: String)
         </code>
     </div>
-    <div class="panel-body"></div>
+    <div class="panel-body"><p>builds a new JSR223Variable given a language name and a script.</p>
+</div>
 
     
 <div class="panel-body">
@@ -159,11 +186,22 @@
 
     <li class="list-group-item clearfix">
         <code class="pull-left">
+        language: String
+        </code>
+        
+            <br><br>
+            <div><p>can be the name of the language, the file extension, or its mime type</p>
+</div>
+        
+    </li>
+
+    <li class="list-group-item clearfix">
+        <code class="pull-left">
         formula: String
         </code>
         
             <br><br>
-            <div><p>the Scala script</p>
+            <div><p>the script that will get interpreted</p>
 </div>
         
     </li>
@@ -172,6 +210,102 @@
 
 </div>
 
+
+
+
+    <h2 id="methods">Methods</h2>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading" id="method__fun_getWith_variables__Map___R">
+        <code>
+        fun getWith(variables: Map): R
+        </code>
+    </div>
+    <div class="panel-body"><p>Given the current controlled variables, computes the current values for
+this variable.</p>
+</div>
+
+    
+
+    
+<div class="panel-body">
+    <b>Parameters: </b>
+</div>
+<ul class="list-group">
+
+    <li class="list-group-item clearfix">
+        <code class="pull-left">
+        variables: Map
+        </code>
+        
+            <br><br>
+            <div><p>a mapping between variable names and values</p>
+</div>
+        
+    </li>
+
+</ul>
+
+    
+
+<div class="panel-footer">
+    <div><b>Returns: </b></div>
+    <div>
+        <code>
+        R
+        </code>
+    </div>
+    <div><p>the value for this value</p>
+</div>
+</div>
+
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading" id="method__fun_Map.asBindings____Bindings">
+        <code>
+        fun Map.asBindings(): Bindings
+        </code>
+    </div>
+    <div class="panel-body"></div>
+
+    
+
+<div class="panel-footer">
+    <div><b>Receiver: </b></div>
+    <div>
+        <code>
+        Map
+        </code>
+    </div>
+    <div></div>
+</div>
+
+    
+<div class="panel-body">
+    <b>Parameters: </b>
+</div>
+<ul class="list-group">
+
+    <li class="list-group-item">No parameters</li>
+
+</ul>
+
+    
+
+<div class="panel-footer">
+    <div><b>Returns: </b></div>
+    <div>
+        <code>
+        Bindings
+        </code>
+    </div>
+    <div></div>
+</div>
+
+</div>
 
 
 
@@ -2874,14 +3008,6 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/loader/variables/GroovyVariable">GroovyVariable</a>
-    </li>
-    
-
-        
-            
-    
-    <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/cognitiveagents/groups/Group">Group</a>
     </li>
     
@@ -3162,6 +3288,14 @@
             
     
     <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/loader/variables/JSR223Variable">JSR223Variable</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/tape/JTape">JTape</a>
     </li>
     
@@ -3219,14 +3353,6 @@
     
     <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/biochemistrydsl/BiochemistrydslParser/JavaConstructorContext">JavaConstructorContext</a>
-    </li>
-    
-
-        
-            
-    
-    <li>
-        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/loader/variables/JavascriptVariable">JavascriptVariable</a>
     </li>
     
 
@@ -4354,23 +4480,7 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/loader/variables/ScalaVariable">ScalaVariable</a>
-    </li>
-    
-
-        
-            
-    
-    <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/core/interfaces/Scheduler">Scheduler</a>
-    </li>
-    
-
-        
-            
-    
-    <li>
-        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/loader/variables/ScriptVariable">ScriptVariable</a>
     </li>
     
 
@@ -4906,7 +5016,7 @@
         <!-- Section -->
         <section>
             <p class="text-center">
-                Currently 8.1.1. Created with <a href="https://orchid.netlify.com">Orchid </a> and <b>Orchid Editorial Theme</b>.
+                Currently 8.2.0. Created with <a href="https://orchid.netlify.com">Orchid </a> and <b>Orchid Editorial Theme</b>.
             </p>
         </section>
 
