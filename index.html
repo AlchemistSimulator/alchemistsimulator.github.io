@@ -31,7 +31,7 @@
 
 
 <script>
-    window.site = {"orchidVersion":"0.17.6","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"9.2.1"};
+    window.site = {"orchidVersion":"0.17.6","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"9.3.0"};
 </script>
 
 
@@ -66,9 +66,9 @@
 
 
 <!-- start:inject styles -->
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/3721055d/assets/css/editorial_main.css" />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/3721055d/assets/css/editorial_orchidCustomizations.css" />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/3721055d/assets/css/orchidSearch.css" />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/bfe07541/assets/css/editorial_main.css" />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/bfe07541/assets/css/editorial_orchidCustomizations.css" />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/bfe07541/assets/css/orchidSearch.css" />
 <link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/assets/css/pygments.css" />
 <link rel="stylesheet" type="text/css" href="https://rawgit.com/PrismJS/prism-themes/master/themes/prism-ghcolors.css" />
 <!-- end:inject styles -->
@@ -198,15 +198,12 @@ If you need to access the documentation for any older stable version, <a href="h
 <li>Navigate your file system and find the folder where you cloned the repository. <strong>Do not select it</strong>. Open the folder, and you should find a lowercase <code>alchemist</code> folder. That is the correct project folder, not the outermost <code>Alchemist</code> folder (created by <code>git</code> in case you cloned without specifying a different folder name). Once the correct folder has been selected, click <kbd>Ok</kbd></li>
 <li>Select &quot;Import Project from external model&quot;</li>
 <li>Make sure &quot;Gradle&quot; is selected as external model tool</li>
-<li>click <kbd>Next</kbd></li>
-<li>Check &quot;Use auto-import&quot;</li>
-<li>Check &quot;Create directories for empty content roots automatically&quot;</li>
-<li>The correct group module option is &quot;using explicit module groups&quot;, make sure it is selected</li>
-<li>Check &quot;Create separate module per source set&quot;</li>
-<li><em>Important:</em> ensure that &quot;Use default gradle wrapper (recommended) is selected</li>
 <li>Click <kbd>Finish</kbd></li>
-<li>If prompted to override any .idea file, try to answer <kbd>No</kbd>. It's possible that IntelliJ refuses to proceed and comes back to the previous window, in which case click <kbd>Finish</kbd> again, then select <kbd>Yes</kbd>.</li>
-<li>Wait for the IDE to import the project from Gradle. The process may take several minutes, due to the amount of dependencies. Should the synchronization fail, make sure that the IDE's Gradle is configured correctly. In 'Settings -&gt; Build, Execution, Deployment -&gt; Build Tools &gt; Gradle', select 'Use default gradle wrapper (recommended)'.</li>
+<li>If prompted to override any .idea file, try to answer <kbd>No</kbd>. It's possible that IntelliJ refuses to proceed, in which case click <kbd>Finish</kbd> again, then select <kbd>Yes</kbd>.</li>
+<li>A dialog stating that &quot;IntelliJ IDEA found a Gradle build script&quot; may appear, in such case answer <kbd>Import Gradle Project</kbd>.</li>
+<li>Wait for the IDE to import the project from Gradle. The process may take several minutes, due to the amount of dependencies. Should the synchronization fail, make sure that the IDE's Gradle is configured correctly:</li>
+<li>In 'Settings -&gt; Build, Execution, Deployment -&gt; Build Tools &gt; Gradle', for the option 'Use Gradle from' select 'gradle-wrapper.properties file'. Enabling auto-import is also recommended.</li>
+<li><strong>Important:</strong> Alchemist requires java 11+, so make sure the 'Gradle JVM' option points to such a version (if you don't have a JDK 11+ installed make sure to get one).</li>
 <li>Once imported, the project may still be unable to compile, due to missing sources in incarnation-biochemistry. This problem can be solved by opening the IntelliJ terminal (e.g. with <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>, typing &quot;terminal&quot; and pressing <kbd>Enter</kbd>), and issue:</li>
 </ol>
 <ul>
@@ -223,11 +220,12 @@ If you need to access the documentation for any older stable version, <a href="h
 <li>Do not introduce low quality code. All the new code must comply with the checker rules (that are quite strict) and must not introduce any other warning. Resolutions of existing warnings (if any is present) are very welcome instead.</li>
 </ul>
 <h4 id="building-the-project">Building the project</h4>
-<p>While developing, you can rely on Eclipse to build the project, it will generally do a very good job.
+<p>While developing, you can rely on IntelliJ to build the project, it will generally do a very good job.
 If you want to generate the artifacts, you can rely on Gradle. Just point a terminal on the project's root and issue</p>
-<pre><code class="language-bash">./gradlew
+<pre><code class="language-bash">./gradlew build
 </code></pre>
 <p>This will trigger the creation of the artifacts the executions of the tests, the generation of the documentation and of the project reports.</p>
+<p><em><strong>NOTE THAT:</strong></em> Alchemist requires java 11+ to work, make sure to have a JDK version 11+ installed.</p>
 <h4 id="build-reports">Build reports</h4>
 <p>Every Alchemist build triggers the creation of a set of reports, that provide hints regarding the current status of quality of the code base. Such reports are available for both <a href="http://alchemist-reports.surge.sh/build/reports/buildDashboard/">the latest stable</a> and <a href="http://alchemist-unstable-reports.surge.sh/build/reports/buildDashboard/">the latest development</a> versions.</p>
 
@@ -340,6 +338,22 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
             
     
     <li>
+        <a href="https://alchemistsimulator.github.io/wiki/usage/run-gradle">Running Alchemist via Gradle</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/wiki/usage/run-stand-alone">Running Alchemist stand-alone</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
         <a href="https://alchemistsimulator.github.io/wiki/usage/yaml">Writing Alchemist simulations</a>
     </li>
     
@@ -372,7 +386,7 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/wiki/usage/sapere">SAPERE</a>
+        <a href="https://alchemistsimulator.github.io/wiki/usage/sapere">Alchemist SAPERE incarnation</a>
     </li>
     
 
@@ -445,6 +459,14 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
     
     <li>
         <a href="https://alchemistsimulator.github.io/wiki/usage/customization">Writing custom components</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/wiki/usage/faq">Frequently Asked Questions</a>
     </li>
     
 
@@ -559,6 +581,14 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
     
     <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects">it.unibo.alchemist.boundary.gui.effects</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines">it.unibo.alchemist.boundary.gui.isolines</a>
     </li>
     
 
@@ -1239,6 +1269,14 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
             
     
     <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/AbstractDrawLayers">AbstractDrawLayers</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/environments/AbstractEnvironment">AbstractEnvironment</a>
     </li>
     
@@ -1615,6 +1653,14 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
             
     
     <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/IsolinesFinder/BidimensionalFunction">BidimensionalFunction</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/utils/BidimensionalGaussian">BidimensionalGaussian</a>
     </li>
     
@@ -1624,6 +1670,14 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
     
     <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/layers/BidimensionalGaussianLayer">BidimensionalGaussianLayer</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/BidimensionalGaussianLayersMapper">BidimensionalGaussianLayersMapper</a>
     </li>
     
 
@@ -2295,6 +2349,14 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
             
     
     <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/ConcreteIsolinesFactory">ConcreteIsolinesFactory</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Condition">Condition</a>
     </li>
     
@@ -2336,6 +2398,14 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
     
     <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/linkingrules/ConnectionBeam">ConnectionBeam</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/ConrecIsolinesFinder">ConrecIsolinesFinder</a>
     </li>
     
 
@@ -2559,6 +2629,14 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
             
     
     <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/DrawLayersIsolines/Distribution">Distribution</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/wormhole/implementation/DoubleDimension">DoubleDimension</a>
     </li>
     
@@ -2584,6 +2662,54 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
     
     <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/times/DoubleTime">DoubleTime</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/DrawBidimensionalGaussianLayersGradient">DrawBidimensionalGaussianLayersGradient</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/DrawBidimensionalGaussianLayersIsolines">DrawBidimensionalGaussianLayersIsolines</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/DrawLayers">DrawLayers</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/DrawLayersGradient">DrawLayersGradient</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/DrawLayersIsolines">DrawLayersIsolines</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/DrawLayersValues">DrawLayersValues</a>
     </li>
     
 
@@ -3048,6 +3174,14 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
     
     <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/linkingrules/FullyConnected">FullyConnected</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/FunctionDrawer">FunctionDrawer</a>
     </li>
     
 
@@ -3535,6 +3669,38 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
             
     
     <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/Isoline">Isoline</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/IsolinesFactory/IsolineFinders">IsolineFinders</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/IsolinesFactory">IsolinesFactory</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/IsolinesFinder">IsolinesFinder</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/JEffectRepresentation">JEffectRepresentation</a>
     </li>
     
@@ -3728,6 +3894,14 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
     
     <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Layer">Layer</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/LayerToFunctionMapper">LayerToFunctionMapper</a>
     </li>
     
 
@@ -4895,6 +5069,14 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
             
     
     <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/Segment2D">Segment2D</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/linkingrules/SelectiveAdaptiveRange">SelectiveAdaptiveRange</a>
     </li>
     
@@ -5551,7 +5733,7 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
         <!-- Section -->
         <section>
             <p class="text-center">
-                Currently 9.2.1. Created with <a href="https://orchid.netlify.com">Orchid </a> and <b>Orchid Editorial Theme</b>.
+                Currently 9.3.0. Created with <a href="https://orchid.netlify.com">Orchid </a> and <b>Orchid Editorial Theme</b>.
             </p>
         </section>
 
@@ -5568,11 +5750,11 @@ If you want to generate the artifacts, you can rely on Gradle. Just point a term
 <!-- start:inject scripts -->
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/3721055d/assets/js/editorial_util.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/3721055d/assets/js/editorial_main.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/3721055d/assets/js/editorial_orchidCustomizations.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/bfe07541/assets/js/editorial_util.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/bfe07541/assets/js/editorial_main.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/bfe07541/assets/js/editorial_orchidCustomizations.js"></script>
 <script  src="https://unpkg.com/lunr/lunr.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/3721055d/assets/js/orchidSearch.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/bfe07541/assets/js/orchidSearch.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/prism.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-kotlin.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-java.min.js"></script>

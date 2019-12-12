@@ -21,7 +21,7 @@
 
 
 
-<title>SAPERE</title>
+<title>Alchemist SAPERE incarnation</title>
 
 
 <meta name="description" content="An extensible simulator for doing science and engineering in pervasive, bio-inspired, and aggregate computing.">
@@ -35,7 +35,7 @@
 
 
 <script>
-    window.site = {"orchidVersion":"0.17.6","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"9.2.1"};
+    window.site = {"orchidVersion":"0.17.6","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"9.3.0"};
 </script>
 
 
@@ -57,12 +57,12 @@
 <!-- Resolved Page Template:  -->
 
 <!-- RESOURCE -->
-<!-- Class: com.eden.orchid.api.resources.resource.StringResource -->
-<!-- Source Filename: wiki/usage/sapere/index.md -->
+<!-- Class: com.eden.orchid.api.resources.resource.FileResource -->
+<!-- Source Filename: wiki/usage/sapere.md -->
 
 <!-- COMPLETE PAGE CONFIGURATION -->
 <script>
-    window.allData = {"reference":{"path":"wiki/usage","baseUrl":"https://alchemistsimulator.github.io","fileName":"sapere","extension":"html","usePrettyUrl":true,"link":"https://alchemistsimulator.github.io/wiki/usage/sapere"},"next":{"path":"wiki/usage","baseUrl":"https://alchemistsimulator.github.io","fileName":"scafi","extension":"html","usePrettyUrl":true,"link":"https://alchemistsimulator.github.io/wiki/usage/scafi"},"previous":{"path":"wiki/usage","baseUrl":"https://alchemistsimulator.github.io","fileName":"protelis","extension":"html","usePrettyUrl":true,"link":"https://alchemistsimulator.github.io/wiki/usage/protelis"},"description":"","title":"SAPERE"};
+    window.allData = {"reference":{"path":"wiki/usage","baseUrl":"https://alchemistsimulator.github.io","fileName":"sapere","extension":"html","usePrettyUrl":true,"link":"https://alchemistsimulator.github.io/wiki/usage/sapere"},"next":{"path":"wiki/usage","baseUrl":"https://alchemistsimulator.github.io","fileName":"scafi","extension":"html","usePrettyUrl":true,"link":"https://alchemistsimulator.github.io/wiki/usage/scafi"},"previous":{"path":"wiki/usage","baseUrl":"https://alchemistsimulator.github.io","fileName":"protelis","extension":"html","usePrettyUrl":true,"link":"https://alchemistsimulator.github.io/wiki/usage/protelis"},"description":"","title":"Alchemist SAPERE incarnation"};
 </script>
 
 <!-- end:debug info -->
@@ -70,9 +70,9 @@
 
 
 <!-- start:inject styles -->
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/3721055d/assets/css/editorial_main.css" />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/3721055d/assets/css/editorial_orchidCustomizations.css" />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/3721055d/assets/css/orchidSearch.css" />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/bfe07541/assets/css/editorial_main.css" />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/bfe07541/assets/css/editorial_orchidCustomizations.css" />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/bfe07541/assets/css/orchidSearch.css" />
 <link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/assets/css/pygments.css" />
 <link rel="stylesheet" type="text/css" href="https://rawgit.com/PrismJS/prism-themes/master/themes/prism-ghcolors.css" />
 <!-- end:inject styles -->
@@ -109,7 +109,7 @@
             
             
                 <section id="pageContent">
-                    <header class="major"><h2>SAPERE</h2></header>
+                    <header class="major"><h2>Alchemist SAPERE incarnation</h2></header>
                     <article>
                         
     <!-- start:inject components -->
@@ -118,7 +118,102 @@
             
                 
                     
-                        <p>SAPERE</p>
+                        <p>The SAPERE incarnation for Alchemist was the first stable incarnation produced for the simulator.
+It was developed in the context of the <a href="http://archive.ph/umlcC">SAPERE EU project</a>.</p>
+<p>At the core of <a href="https://doi.org/10.1016/j.pmcj.2014.12.002">SAPERE</a> was the concept of <em>Live Semantic Annotation</em> (LSA),
+namely a description of a resource (sensor, service, actuator...) always mapping the current resource status
+(somewhat a prelude to the currently famous <a href="http://archive.ph/YR1v9">digital twin</a> concept).</p>
+<p>These annotations evolve following so-called <em>Eco-Laws</em>,
+mimicking the complex behaviours of natural ecosystems.</p>
+<p>The SAPERE approach fostered subsequent approaches, such as <a href="https://doi.org/10.1109/MC.2015.261">aggregate computing</a>.</p>
+<h2 id="live-semantic-annotations">Live Semantic Annotations</h2>
+<p>An LSA as modeled in Alchemist is a tuple of values.
+These tuples can be injected in nodes as data items.
+From the point of view of <a href="https://alchemistsimulator.github.io/wiki/simulator/metamodel">the Alchemist metamodel</a>,
+the concept of <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Molecule">Molecule</a> is mapped to <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/molecules/LsaMolecule">LSA</a>.
+As a consequence, LSAs can be inserted in nodes.
+For instance, the following code creates an irregular grid of devices,
+of which those located around the center of such grid contain the tuple <code>{ token }</code>:</p>
+<script src="https://gist-it.appspot.com/github/AlchemistSimulator/SAPERE-incarnation-tutorial/blob/master/src/main/yaml/05-content.yml"></script>
+<p>The relevant part here is <code>molecule: token</code>.
+If we wanted to inject the tuple <code>{ foo, 1, bar, 2 }</code>, we could have written <code>molecule: foo, 1, bar, 2</code>.</p>
+<h3 id="ground-lsa-syntax">Ground LSA syntax</h3>
+<pre><code>GroundLSA ::= GroundArgument (',' GroundArgument)*
+GroundArgument ::= Number | Atom | Set
+Atom ::= [a-z]([a-z]|[A-Z]|[0-9])*
+Number ::= [0-9]+('.'[0-9]*)
+Set ::= '[' ((Atom | Number)';')* ']'
+</code></pre>
+<p>LSAs, similarly to Prolog terms, support <a href="http://archive.ph/oLSpq">unification and substitution</a>:
+it is possible to create tuple templates,
+match them against sets of ground tuples,
+and obtain a matching ground tuple as result.</p>
+<p>A tuple argument is considered a variable if it begins with an uppercase letter.
+Additionally, it is possible to discard some matches by expressing constraints on values.</p>
+<h3 id="lsa-syntax">LSA Syntax</h3>
+<pre><code>LSA ::= '{' GroundLSA | TemplateLSA '}'
+TemplateLSA ::= Argument (',' Argument)*
+Argument ::= GroundArgument | Variable | Constraint
+Variable ::= [A-Z]([a-z]|[A-Z]|[0-9])*
+Constraint ::= 'def:' Variable Operation
+Operation ::= ('&gt;'|'&gt;'|'='|'!=') Number | 'add ' Variable | 'del ' Variable
+</code></pre>
+<h2 id="eco-laws">Eco-Laws</h2>
+<p>Tuple matching is used to define <em><a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/reactions/SAPEREReaction">Eco-Laws</a></em>.
+An Eco-Law is a rewriting rule very similar in concept to chemical reactions:
+elements on the left-hand side of the reaction are removed from the container,
+elements on the right hand side are inserted instead.</p>
+<p>The following program matches LSAs with two arguments, the former must be <code>foo</code>,
+the latter a number greater than <code>30</code>, and produces in a new tuple having as first element <code>bar</code> and as second
+the opposite of the matched number:</p>
+<p><code>{ foo, def: N &gt; 30 } --&gt; { bar, -N }</code></p>
+<p>Nodes can be programmed with Eco-Laws as follows:</p>
+<script src="https://gist-it.appspot.com/github/AlchemistSimulator/SAPERE-incarnation-tutorial/blob/master/src/main/yaml/06-send.yml"></script>
+<h3 id="sharing">Sharing</h3>
+<p>Eco-Laws can be programmed to send LSAs to neighbors, as well as to look into neighboring nodes for getting LSAs.
+In order to do so, the LSA template in the Eco-Law must be preceded by a neighbor operator, either <code>+</code> or <code>*</code>.</p>
+<p><code>+</code> means <em>in a neighbor</em>:
+if used on the left hand side,
+it considers the condition satisfied if at least one neighbor has at least one LSA matching the provided template;
+if used on the right hand side,
+sends the LSA to one random neighbor.</p>
+<p><code>*</code> means <em>in all neighbors</em>:
+if used on the left hand side,
+it considers the condition satisfied if all neighbors have at least one LSA matching the provided template;
+if used on the right hand side,
+sends a copy of the LSA to all neighbors.</p>
+<p>The following code exemplifies a diffusion program:
+when <code>{ token }</code> is present locally, it is copied into neighboring nodes once per second;
+and as soon as two copies of <code>{ token }</code> are present, one gets removed.</p>
+<script src="https://gist-it.appspot.com/github/AlchemistSimulator/SAPERE-incarnation-tutorial/blob/master/src/main/yaml/09-diffuse.yml"></script>
+<h3 id="eco-laws-syntax">Eco-Laws syntax</h3>
+<h3 id="rates">Rates</h3>
+<p>The time distribution with which reactions should get scheduled can be controlled by thinkering with the yaml specification
+as per every reaction in Alchemist.
+If no <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/TimeDistribution">time distribution</a> is specified,
+the Eco-Law is assumed to run &quot;as soon as possible&quot; (ASAP).</p>
+<p>This may lead to unwanted behaviour.
+For instance, programming a single node with:
+<code>--&gt; { foo }</code>
+will cause the simulation to schedule a reaction producing <code>{ foo }</code> at time zero,
+and at each execution the time will remain zero:
+the simulator will be producing copies over copies of the tuple,
+never advancing in time (Alchemist is a discrete event simulator),
+and possibly going on until the JVM memory limit is reached.</p>
+<p>If a number is specified as time distribution, using the <code>time-distribution</code> key,
+then it will be interpreted as the <a href="https://en.wikipedia.org/wiki/Markov_chain">Markovian rate</a>
+of an <a href="https://en.wikipedia.org/wiki/Exponential_distribution">exponentially distributed time</a>.</p>
+<p><a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/timedistributions">Other distributions</a> can be used leveraging the <code>type</code>/<code>parameters</code> syntax.</p>
+<p>In the following example, two Eco-Laws are configured, and one of them is bound to an
+<a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/timedistributions/ExponentialTime">exponentially distributed time</a> with rate 1, namely, such reaction,
+when executable (the left hand LSAs have local matches), will execute at an average of once per second
+(with a variance of 1 s²).</p>
+<script src="https://gist-it.appspot.com/github/AlchemistSimulator/SAPERE-incarnation-tutorial/blob/master/src/main/yaml/06-send.yml"></script>
+<h2 id="tutorial-and-exercises">Tutorial and exercises</h2>
+<p>To better grasp details of the incarnation, we recommend looking at the examples available on
+<a href="https://github.com/AlchemistSimulator/SAPERE-incarnation-tutorial">the Alchemist SAPERE Incarnation tutorial on GitHub</a>.</p>
+<p>Besides examples with growing complexity,
+there are a number of proposed exercises that should help you getting acquainted with the SAPERE way of writing self-organizing behaviors.</p>
 
                     
                 
@@ -242,6 +337,22 @@
             
     
     <li>
+        <a href="https://alchemistsimulator.github.io/wiki/usage/run-gradle">Running Alchemist via Gradle</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/wiki/usage/run-stand-alone">Running Alchemist stand-alone</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
         <a href="https://alchemistsimulator.github.io/wiki/usage/yaml">Writing Alchemist simulations</a>
     </li>
     
@@ -274,7 +385,7 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/wiki/usage/sapere">SAPERE</a>
+        <a href="https://alchemistsimulator.github.io/wiki/usage/sapere">Alchemist SAPERE incarnation</a>
     </li>
     
 
@@ -347,6 +458,14 @@
     
     <li>
         <a href="https://alchemistsimulator.github.io/wiki/usage/customization">Writing custom components</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/wiki/usage/faq">Frequently Asked Questions</a>
     </li>
     
 
@@ -461,6 +580,14 @@
     
     <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects">it.unibo.alchemist.boundary.gui.effects</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines">it.unibo.alchemist.boundary.gui.isolines</a>
     </li>
     
 
@@ -1141,6 +1268,14 @@
             
     
     <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/AbstractDrawLayers">AbstractDrawLayers</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/environments/AbstractEnvironment">AbstractEnvironment</a>
     </li>
     
@@ -1517,6 +1652,14 @@
             
     
     <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/IsolinesFinder/BidimensionalFunction">BidimensionalFunction</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/utils/BidimensionalGaussian">BidimensionalGaussian</a>
     </li>
     
@@ -1526,6 +1669,14 @@
     
     <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/layers/BidimensionalGaussianLayer">BidimensionalGaussianLayer</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/BidimensionalGaussianLayersMapper">BidimensionalGaussianLayersMapper</a>
     </li>
     
 
@@ -2197,6 +2348,14 @@
             
     
     <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/ConcreteIsolinesFactory">ConcreteIsolinesFactory</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Condition">Condition</a>
     </li>
     
@@ -2238,6 +2397,14 @@
     
     <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/linkingrules/ConnectionBeam">ConnectionBeam</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/ConrecIsolinesFinder">ConrecIsolinesFinder</a>
     </li>
     
 
@@ -2461,6 +2628,14 @@
             
     
     <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/DrawLayersIsolines/Distribution">Distribution</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/wormhole/implementation/DoubleDimension">DoubleDimension</a>
     </li>
     
@@ -2486,6 +2661,54 @@
     
     <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/times/DoubleTime">DoubleTime</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/DrawBidimensionalGaussianLayersGradient">DrawBidimensionalGaussianLayersGradient</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/DrawBidimensionalGaussianLayersIsolines">DrawBidimensionalGaussianLayersIsolines</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/DrawLayers">DrawLayers</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/DrawLayersGradient">DrawLayersGradient</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/DrawLayersIsolines">DrawLayersIsolines</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/DrawLayersValues">DrawLayersValues</a>
     </li>
     
 
@@ -2950,6 +3173,14 @@
     
     <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/linkingrules/FullyConnected">FullyConnected</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/FunctionDrawer">FunctionDrawer</a>
     </li>
     
 
@@ -3437,6 +3668,38 @@
             
     
     <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/Isoline">Isoline</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/IsolinesFactory/IsolineFinders">IsolineFinders</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/IsolinesFactory">IsolinesFactory</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/IsolinesFinder">IsolinesFinder</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/JEffectRepresentation">JEffectRepresentation</a>
     </li>
     
@@ -3630,6 +3893,14 @@
     
     <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/interfaces/Layer">Layer</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/effects/LayerToFunctionMapper">LayerToFunctionMapper</a>
     </li>
     
 
@@ -4797,6 +5068,14 @@
             
     
     <li>
+        <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/boundary/gui/isolines/Segment2D">Segment2D</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
         <a href="https://alchemistsimulator.github.io/it/unibo/alchemist/model/implementations/linkingrules/SelectiveAdaptiveRange">SelectiveAdaptiveRange</a>
     </li>
     
@@ -5453,7 +5732,7 @@
         <!-- Section -->
         <section>
             <p class="text-center">
-                Currently 9.2.1. Created with <a href="https://orchid.netlify.com">Orchid </a> and <b>Orchid Editorial Theme</b>.
+                Currently 9.3.0. Created with <a href="https://orchid.netlify.com">Orchid </a> and <b>Orchid Editorial Theme</b>.
             </p>
         </section>
 
@@ -5470,11 +5749,11 @@
 <!-- start:inject scripts -->
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/3721055d/assets/js/editorial_util.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/3721055d/assets/js/editorial_main.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/3721055d/assets/js/editorial_orchidCustomizations.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/bfe07541/assets/js/editorial_util.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/bfe07541/assets/js/editorial_main.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/bfe07541/assets/js/editorial_orchidCustomizations.js"></script>
 <script  src="https://unpkg.com/lunr/lunr.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/3721055d/assets/js/orchidSearch.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/bfe07541/assets/js/orchidSearch.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/prism.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-kotlin.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-java.min.js"></script>
