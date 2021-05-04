@@ -37,10 +37,10 @@
 
 
 <!-- start:inject styles -->
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/editorial_main.css"  />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/editorial_orchidCustomizations.css"  />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/orchidSearch.css"  />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/pygments.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/1282233c/assets/css/editorial_main.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/1282233c/assets/css/editorial_orchidCustomizations.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/1282233c/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/1282233c/assets/css/pygments.css"  />
 <link rel="stylesheet" type="text/css" href="https://rawgit.com/PrismJS/prism-themes/master/themes/prism-ghcolors.css"  />
 <!-- end:inject styles -->
 
@@ -76,7 +76,7 @@
 
 
 <script>
-    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"11.0.0"};
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"11.1.0"};
 </script>
 
 
@@ -178,6 +178,32 @@ Otherwise, you can try to disable Swing OpenGL support by <a href="https://alche
 which sets Swing non-accelerated mode, by invoking the following Java code:</p>
 <pre><code class="language-java">System.setProperty(&quot;sun.java2d.opengl&quot;,&quot;false&quot;);
 </code></pre>
+<h3 id="memory-pressure-for-long-run-on-linux-systems-with-more-than-64gb-of-ram"><a href="#memory-pressure-for-long-run-on-linux-systems-with-more-than-64gb-of-ram" id="memory-pressure-for-long-run-on-linux-systems-with-more-than-64gb-of-ram" class="anchor"></a>Memory pressure for long run on Linux systems with more than 64GB of RAM</h3>
+<h4 id="problem-description-1"><a href="#problem-description-1" id="problem-description-1" class="anchor"></a>Problem description</h4>
+<p>In some situations, Alchemist is used on computers with a large amount of memory and parallelism, which require appropriate configuration.
+This has more to do with the way memory allocation on Linux and the JVM works than with Alchemist itself.
+The symptoms are:</p>
+<ul>
+<li>batch execution slowing down (this is due to the memory pressure)</li>
+<li>analysis of memory shows that the amount of memory actually in use by the JVM is always growing (similar to a memory leak)</li>
+<li>the following warning upon startup</li>
+</ul>
+<pre><code>[warning][gc] ***** WARNING! INCORRECT SYSTEM CONFIGURATION DETECTED! *****
+[warning][gc] The system limit on number of memory mappings per process might be too low for the given
+[warning][gc] max Java heap size (101754M). Please adjust /proc/sys/vm/max_map_count to allow for at
+[warning][gc] least 183157 mappings (current limit is 65530). Continuing execution with the current
+[warning][gc] limit could lead to a premature OutOfMemoryError being thrown, due to failure to map memory.
+</code></pre>
+<p>which is actually rather clear</p>
+<h4 id="solution-1"><a href="#solution-1" id="solution-1" class="anchor"></a>Solution</h4>
+<p>The <code>/proc/sys/vm/max_map_count</code> could be changed manually, but you probably want this change to persist reboots.
+One way is to create a sysctl configuration file (e.g., <code>/etc/sysctl.d/99-vm-max-map-count.conf</code>)
+the following line: <code>vm.max_map_count=XXXXXX</code>;
+where <code>XXXXXX</code> should be computed as <code>4*RAM_IN_GB*1024</code>
+(for instance vm.max_map_count=524288 for a system with 128GB RAM).
+This can be done on a root shell via <code>echo &quot;vm.max_map_count=524288&quot; &gt; /etc/sysctl.d/99-vm-max-map-count.conf</code>.
+Once done, run as root <code>sysctl --system</code> to load the new configuration without rebooting.
+When in doubt, select a higher value, <a href="https://archive.is/xyaA6">apparently the negative effects are negligible</a>.</p>
 
                     
                 
@@ -981,6 +1007,14 @@ which sets Swing non-accelerated mode, by invoking the following Java code:</p>
     
     <li>
         <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/export/statistic">i.u.alchemist.loader.export.statistic</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/m2m">it.unibo.alchemist.loader.m2m</a>
     </li>
     
 
@@ -4893,7 +4927,7 @@ which sets Swing non-accelerated mode, by invoking the following Java code:</p>
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/jvmconstructor">JVMConstructor</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/m2m/jvmconstructor">JVMConstructor</a>
     </li>
     
 
@@ -5589,7 +5623,7 @@ which sets Swing non-accelerated mode, by invoking the following Java code:</p>
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/namedparametersconstructor">NamedParametersConstructor</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/m2m/namedparametersconstructor">NamedParametersConstructor</a>
     </li>
     
 
@@ -5829,14 +5863,6 @@ which sets Swing non-accelerated mode, by invoking the following Java code:</p>
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/objectfactory">ObjectFactory</a>
-    </li>
-    
-
-        
-            
-    
-    <li>
         <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/objectwithgps">ObjectWithGPS</a>
     </li>
     
@@ -5901,7 +5927,7 @@ which sets Swing non-accelerated mode, by invoking the following Java code:</p>
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/orderedparametersconstructor">OrderedParametersConstructor</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/m2m/orderedparametersconstructor">OrderedParametersConstructor</a>
     </li>
     
 
@@ -6549,7 +6575,7 @@ which sets Swing non-accelerated mode, by invoking the following Java code:</p>
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/geometry/euclidean2d/segment2d">Segment2D</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gui/isolines/segment2d">Segment2D</a>
     </li>
     
 
@@ -6557,7 +6583,7 @@ which sets Swing non-accelerated mode, by invoking the following Java code:</p>
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gui/isolines/segment2d">Segment2D</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/geometry/euclidean2d/segment2d">Segment2D</a>
     </li>
     
 
@@ -6741,14 +6767,6 @@ which sets Swing non-accelerated mode, by invoking the following Java code:</p>
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/simulationmodel">SimulationModel</a>
-    </li>
-    
-
-        
-            
-    
-    <li>
         <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/grid/simulation/simulationset">SimulationSet</a>
     </li>
     
@@ -6893,7 +6911,7 @@ which sets Swing non-accelerated mode, by invoking the following Java code:</p>
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gui/reactivitypanel/status">Status</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/core/interfaces/status">Status</a>
     </li>
     
 
@@ -6901,7 +6919,7 @@ which sets Swing non-accelerated mode, by invoking the following Java code:</p>
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/core/interfaces/status">Status</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gui/reactivitypanel/status">Status</a>
     </li>
     
 
@@ -7005,7 +7023,7 @@ which sets Swing non-accelerated mode, by invoking the following Java code:</p>
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/time">Time</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/export/time">Time</a>
     </li>
     
 
@@ -7013,7 +7031,7 @@ which sets Swing non-accelerated mode, by invoking the following Java code:</p>
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/export/time">Time</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/time">Time</a>
     </li>
     
 
@@ -7357,7 +7375,7 @@ which sets Swing non-accelerated mode, by invoking the following Java code:</p>
         <!-- Section -->
         <section>
             <p class="text-center">
-                Currently 11.0.0. Created with <a href="https://orchid.run">Orchid </a> and <b>Orchid Editorial Theme</b>.
+                Currently 11.1.0. Created with <a href="https://orchid.run">Orchid </a> and <b>Orchid Editorial Theme</b>.
             </p>
         </section>
 
@@ -7392,9 +7410,9 @@ which sets Swing non-accelerated mode, by invoking the following Java code:</p>
 <!-- start:inject scripts -->
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/js/editorial_util.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/js/editorial_main.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/js/editorial_orchidCustomizations.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/1282233c/assets/js/editorial_util.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/1282233c/assets/js/editorial_main.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/1282233c/assets/js/editorial_orchidCustomizations.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>

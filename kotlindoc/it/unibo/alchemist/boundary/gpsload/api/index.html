@@ -33,10 +33,10 @@
 
 
 <!-- start:inject styles -->
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/editorial_main.css"  />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/editorial_orchidCustomizations.css"  />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/orchidSearch.css"  />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/pygments.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/1282233c/assets/css/editorial_main.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/1282233c/assets/css/editorial_orchidCustomizations.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/1282233c/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/1282233c/assets/css/pygments.css"  />
 <link rel="stylesheet" type="text/css" href="https://rawgit.com/PrismJS/prism-themes/master/themes/prism-ghcolors.css"  />
 <link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/assets/css/orchidSourceDoc.css"  />
 <link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/assets/css/orchidKotlindoc.css"  />
@@ -74,7 +74,7 @@
 
 
 <script>
-    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"11.0.0"};
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"11.1.0"};
 </script>
 
 
@@ -207,22 +207,21 @@
         </td>
       </tr>
       
-      <tr class="sourcedoc-section section-element" id="f36422ac8f88ede4f5d8ae843b1e8d58e65fa91f">
+      <tr class="sourcedoc-section section-element" id="9f42ab54f82cacefb81f9953e50ff20625b4cca8">
         <td class="sourcedoc-section section-signature">
-          <code>class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/aligntotime">AlignToTime</a>: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/abstractgpstimealignment">AbstractGPSTimeAlignment</a></code>
+          <code>abstract class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/abstractgpstimealignment">AbstractGPSTimeAlignment</a>: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/gpstimealignment">GPSTimeAlignment</a>, Any</code>
         </td>
         <td class="sourcedoc-section section-comments content">
-        <p>Alings the traces with the given time in seconds from Epoch. All points before such time will be discarded. All points after the provided time will be shifted back. Summarizing, the time that is provided represents in the real world the time zero of the simulation.</p>
-
+        
         </td>
       </tr>
       
-      <tr class="sourcedoc-section section-element" id="d854a811d762a47d2360c05a1c58e8daaeee65ba">
+      <tr class="sourcedoc-section section-element" id="c2efec834c8030000698f0d380ca63fcf06983ab">
         <td class="sourcedoc-section section-signature">
-          <code>class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/aligntofirsttrace">AlignToFirstTrace</a>: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/abstractgpstimealignment">AbstractGPSTimeAlignment</a></code>
+          <code>interface <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/gpsfileloader">GPSFileLoader</a>: Any</code>
         </td>
         <td class="sourcedoc-section section-comments content">
-        <p>Aligns all traces at the start time of the first trace. If you have two traces, the first trace start with time = 2 and second point with time = 5, the second trace start with time = 4 and second point with time = 6, the result will be: - first trace start with time = 0 and second point with time = 3 - second trace start with time = 2 and second point with time = 4</p>
+        <p>Strategy to read GPSTrace from file.</p>
 
         </td>
       </tr>
@@ -237,6 +236,26 @@
         </td>
       </tr>
       
+      <tr class="sourcedoc-section section-element" id="d854a811d762a47d2360c05a1c58e8daaeee65ba">
+        <td class="sourcedoc-section section-signature">
+          <code>class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/aligntofirsttrace">AlignToFirstTrace</a>: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/abstractgpstimealignment">AbstractGPSTimeAlignment</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Aligns all traces at the start time of the first trace. If you have two traces, the first trace start with time = 2 and second point with time = 5, the second trace start with time = 4 and second point with time = 6, the result will be: - first trace start with time = 0 and second point with time = 3 - second trace start with time = 2 and second point with time = 4</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="f36422ac8f88ede4f5d8ae843b1e8d58e65fa91f">
+        <td class="sourcedoc-section section-signature">
+          <code>class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/aligntotime">AlignToTime</a>: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/abstractgpstimealignment">AbstractGPSTimeAlignment</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Alings the traces with the given time in seconds from Epoch. All points before such time will be discarded. All points after the provided time will be shifted back. Summarizing, the time that is provided represents in the real world the time zero of the simulation.</p>
+
+        </td>
+      </tr>
+      
       <tr class="sourcedoc-section section-element" id="9a45b94f75a2577359e51b45ae72c124246021ae">
         <td class="sourcedoc-section section-signature">
           <code>class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/noalignment">NoAlignment</a>: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/abstractgpstimealignment">AbstractGPSTimeAlignment</a></code>
@@ -244,25 +263,6 @@
         <td class="sourcedoc-section section-comments content">
         <p>No alignment is performed. If you have two traces, the first trace start with time = 2 and second point with time = 5, the second trace start with time = 4 and second point with time = 6, the result will be: - first trace start with time = 2 and second point with time = 5 - second trace start with time = 4 and second point with time = 6</p>
 
-        </td>
-      </tr>
-      
-      <tr class="sourcedoc-section section-element" id="c2efec834c8030000698f0d380ca63fcf06983ab">
-        <td class="sourcedoc-section section-signature">
-          <code>interface <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/gpsfileloader">GPSFileLoader</a>: Any</code>
-        </td>
-        <td class="sourcedoc-section section-comments content">
-        <p>Strategy to read GPSTrace from file.</p>
-
-        </td>
-      </tr>
-      
-      <tr class="sourcedoc-section section-element" id="9f42ab54f82cacefb81f9953e50ff20625b4cca8">
-        <td class="sourcedoc-section section-signature">
-          <code>abstract class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/abstractgpstimealignment">AbstractGPSTimeAlignment</a>: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gpsload/api/gpstimealignment">GPSTimeAlignment</a>, Any</code>
-        </td>
-        <td class="sourcedoc-section section-comments content">
-        
         </td>
       </tr>
       
@@ -1074,6 +1074,14 @@
     
     <li>
         <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/export/statistic">i.u.alchemist.loader.export.statistic</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/m2m">it.unibo.alchemist.loader.m2m</a>
     </li>
     
 
@@ -4986,7 +4994,7 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/jvmconstructor">JVMConstructor</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/m2m/jvmconstructor">JVMConstructor</a>
     </li>
     
 
@@ -5682,7 +5690,7 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/namedparametersconstructor">NamedParametersConstructor</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/m2m/namedparametersconstructor">NamedParametersConstructor</a>
     </li>
     
 
@@ -5922,14 +5930,6 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/objectfactory">ObjectFactory</a>
-    </li>
-    
-
-        
-            
-    
-    <li>
         <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/objectwithgps">ObjectWithGPS</a>
     </li>
     
@@ -5994,7 +5994,7 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/orderedparametersconstructor">OrderedParametersConstructor</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/m2m/orderedparametersconstructor">OrderedParametersConstructor</a>
     </li>
     
 
@@ -6642,7 +6642,7 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/geometry/euclidean2d/segment2d">Segment2D</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gui/isolines/segment2d">Segment2D</a>
     </li>
     
 
@@ -6650,7 +6650,7 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gui/isolines/segment2d">Segment2D</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/geometry/euclidean2d/segment2d">Segment2D</a>
     </li>
     
 
@@ -6834,14 +6834,6 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/simulationmodel">SimulationModel</a>
-    </li>
-    
-
-        
-            
-    
-    <li>
         <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/grid/simulation/simulationset">SimulationSet</a>
     </li>
     
@@ -6986,7 +6978,7 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gui/reactivitypanel/status">Status</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/core/interfaces/status">Status</a>
     </li>
     
 
@@ -6994,7 +6986,7 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/core/interfaces/status">Status</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gui/reactivitypanel/status">Status</a>
     </li>
     
 
@@ -7098,7 +7090,7 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/time">Time</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/export/time">Time</a>
     </li>
     
 
@@ -7106,7 +7098,7 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/export/time">Time</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/time">Time</a>
     </li>
     
 
@@ -7450,7 +7442,7 @@
         <!-- Section -->
         <section>
             <p class="text-center">
-                Currently 11.0.0. Created with <a href="https://orchid.run">Orchid </a> and <b>Orchid Editorial Theme</b>.
+                Currently 11.1.0. Created with <a href="https://orchid.run">Orchid </a> and <b>Orchid Editorial Theme</b>.
             </p>
         </section>
 
@@ -7485,9 +7477,9 @@
 <!-- start:inject scripts -->
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/js/editorial_util.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/js/editorial_main.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/js/editorial_orchidCustomizations.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/1282233c/assets/js/editorial_util.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/1282233c/assets/js/editorial_main.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/1282233c/assets/js/editorial_orchidCustomizations.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
