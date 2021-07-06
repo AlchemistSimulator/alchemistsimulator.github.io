@@ -33,10 +33,10 @@
 
 
 <!-- start:inject styles -->
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/editorial_main.css"  />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/editorial_orchidCustomizations.css"  />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/orchidSearch.css"  />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/pygments.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/806c328a/assets/css/editorial_main.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/806c328a/assets/css/editorial_orchidCustomizations.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/806c328a/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/806c328a/assets/css/pygments.css"  />
 <link rel="stylesheet" type="text/css" href="https://rawgit.com/PrismJS/prism-themes/master/themes/prism-ghcolors.css"  />
 <link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/assets/css/orchidSourceDoc.css"  />
 <link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/assets/css/orchidKotlindoc.css"  />
@@ -74,7 +74,7 @@
 
 
 <script>
-    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"11.2.0"};
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"11.3.0"};
 </script>
 
 
@@ -258,12 +258,12 @@ provided graph.</p>
         </td>
       </tr>
       
-      <tr class="sourcedoc-section section-element" id="f897886569e77a5076208b3eddef259df5509f52">
+      <tr class="sourcedoc-section section-element" id="871f89875b326215f68afb0cc01f9b75c867dae1">
         <td class="sourcedoc-section section-signature">
-          <code>open class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/closestn">ClosestN</a>&lt;T : Any?, P : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/position">Position</a>&lt;P&gt;?&gt; : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/linkingrule">LinkingRule</a>&lt;T, P&gt;, Any</code>
+          <code>open class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/connectwithindistance">ConnectWithinDistance</a>&lt;T : Any?, P : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/position">Position</a>&lt;P&gt;?&gt; : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/abstractlocallyconsistentlinkingrule">AbstractLocallyConsistentLinkingRule</a>&lt;T, P&gt;</code>
         </td>
         <td class="sourcedoc-section section-comments content">
-        <p>Non local-consistent rule that connect the closest N nodes together. Two nodes get connected if either one belongs to the set of the ten devices closest to the other.</p>
+        <p>LinkingRule which connects nodes whose euclidean distance is shorter than a given radius.</p>
 
         </td>
       </tr>
@@ -278,6 +278,16 @@ provided graph.</p>
         </td>
       </tr>
       
+      <tr class="sourcedoc-section section-element" id="65f09762dee4d8228f559d1c796b2bff3834c54b">
+        <td class="sourcedoc-section section-signature">
+          <code>class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/conditionalclosestn">ConditionalClosestN</a>&lt;T : Any?, P : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/position">Position</a>&lt;P&gt;?&gt; : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/closestn">ClosestN</a>&lt;T, P&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>A <code><a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/closestn">ClosestN</a></code> rule that also checks that a <code><a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/molecule">Molecule</a></code> has a specific concentration before allowing the connection.</p>
+
+        </td>
+      </tr>
+      
       <tr class="sourcedoc-section section-element" id="635c5de49b644ecdb143e575b571e79daa9d9ba4">
         <td class="sourcedoc-section section-signature">
           <code>open class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/adaptiverange">AdaptiveRange</a>&lt;T : Any?, P : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/position">Position</a>&lt;P&gt;?&gt; : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/connectwithindistance">ConnectWithinDistance</a>&lt;T, P&gt;</code>
@@ -288,13 +298,12 @@ provided graph.</p>
         </td>
       </tr>
       
-      <tr class="sourcedoc-section section-element" id="871f89875b326215f68afb0cc01f9b75c867dae1">
+      <tr class="sourcedoc-section section-element" id="aa0af10ca7ff7a8c6b31d1d884a06b94b3822b27">
         <td class="sourcedoc-section section-signature">
-          <code>open class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/connectwithindistance">ConnectWithinDistance</a>&lt;T : Any?, P : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/position">Position</a>&lt;P&gt;?&gt; : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/abstractlocallyconsistentlinkingrule">AbstractLocallyConsistentLinkingRule</a>&lt;T, P&gt;</code>
+          <code>abstract class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/abstractlocallyconsistentlinkingrule">AbstractLocallyConsistentLinkingRule</a>&lt;T : Any?, P : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/position">Position</a>&lt;P&gt;?&gt; : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/linkingrule">LinkingRule</a>&lt;T, P&gt;, Any</code>
         </td>
         <td class="sourcedoc-section section-comments content">
-        <p>LinkingRule which connects nodes whose euclidean distance is shorter than a given radius.</p>
-
+        
         </td>
       </tr>
       
@@ -308,22 +317,13 @@ provided graph.</p>
         </td>
       </tr>
       
-      <tr class="sourcedoc-section section-element" id="65f09762dee4d8228f559d1c796b2bff3834c54b">
+      <tr class="sourcedoc-section section-element" id="f897886569e77a5076208b3eddef259df5509f52">
         <td class="sourcedoc-section section-signature">
-          <code>class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/conditionalclosestn">ConditionalClosestN</a>&lt;T : Any?, P : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/position">Position</a>&lt;P&gt;?&gt; : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/closestn">ClosestN</a>&lt;T, P&gt;</code>
+          <code>open class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/closestn">ClosestN</a>&lt;T : Any?, P : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/position">Position</a>&lt;P&gt;?&gt; : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/linkingrule">LinkingRule</a>&lt;T, P&gt;, Any</code>
         </td>
         <td class="sourcedoc-section section-comments content">
-        <p>A <code><a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/closestn">ClosestN</a></code> rule that also checks that a <code><a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/molecule">Molecule</a></code> has a specific concentration before allowing the connection.</p>
+        <p>Non local-consistent rule that connect the closest N nodes together. Two nodes get connected if either one belongs to the set of the ten devices closest to the other.</p>
 
-        </td>
-      </tr>
-      
-      <tr class="sourcedoc-section section-element" id="aa0af10ca7ff7a8c6b31d1d884a06b94b3822b27">
-        <td class="sourcedoc-section section-signature">
-          <code>abstract class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/linkingrules/abstractlocallyconsistentlinkingrule">AbstractLocallyConsistentLinkingRule</a>&lt;T : Any?, P : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/position">Position</a>&lt;P&gt;?&gt; : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/linkingrule">LinkingRule</a>&lt;T, P&gt;, Any</code>
-        </td>
-        <td class="sourcedoc-section section-comments content">
-        
         </td>
       </tr>
       
@@ -7169,7 +7169,7 @@ provided graph.</p>
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/time">Time</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/export/time">Time</a>
     </li>
     
 
@@ -7177,7 +7177,7 @@ provided graph.</p>
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/export/time">Time</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/time">Time</a>
     </li>
     
 
@@ -7521,7 +7521,7 @@ provided graph.</p>
         <!-- Section -->
         <section>
             <p class="text-center">
-                Currently 11.2.0. Created with <a href="https://orchid.run">Orchid </a> and <b>Orchid Editorial Theme</b>.
+                Currently 11.3.0. Created with <a href="https://orchid.run">Orchid </a> and <b>Orchid Editorial Theme</b>.
             </p>
         </section>
 
@@ -7556,9 +7556,9 @@ provided graph.</p>
 <!-- start:inject scripts -->
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/js/editorial_util.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/js/editorial_main.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/js/editorial_orchidCustomizations.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/806c328a/assets/js/editorial_util.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/806c328a/assets/js/editorial_main.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/806c328a/assets/js/editorial_orchidCustomizations.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>

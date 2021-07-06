@@ -33,10 +33,10 @@
 
 
 <!-- start:inject styles -->
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/editorial_main.css"  />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/editorial_orchidCustomizations.css"  />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/orchidSearch.css"  />
-<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/css/pygments.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/806c328a/assets/css/editorial_main.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/806c328a/assets/css/editorial_orchidCustomizations.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/806c328a/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/Editorial/806c328a/assets/css/pygments.css"  />
 <link rel="stylesheet" type="text/css" href="https://rawgit.com/PrismJS/prism-themes/master/themes/prism-ghcolors.css"  />
 <link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/assets/css/orchidSourceDoc.css"  />
 <link rel="stylesheet" type="text/css" href="https://alchemistsimulator.github.io/assets/css/orchidKotlindoc.css"  />
@@ -74,7 +74,7 @@
 
 
 <script>
-    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"11.2.0"};
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"11.3.0"};
 </script>
 
 
@@ -217,32 +217,22 @@
         </td>
       </tr>
       
-      <tr class="sourcedoc-section section-element" id="b9bc416e6b7b589e6e8ba6de45be0fd475371f23">
+      <tr class="sourcedoc-section section-element" id="c1aa164812159beb79c2500b62190ea9c5875824">
         <td class="sourcedoc-section section-signature">
-          <code>interface <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/variable">Variable</a>&lt;V : Serializable?&gt; : Serializable, MutableIterable&lt;V&gt;, Any</code>
+          <code>class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/linearvariable">LinearVariable</a>: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/printablevariable">PrintableVariable</a>&lt;Double?&gt;</code>
         </td>
         <td class="sourcedoc-section section-comments content">
-        <p>A variable simulation value, that provides a range of values for batches, and a default value for single-shot runs.</p>
+        <p>This class represents a linear variable, namely a variable whose values span linearly between minimum and maximum.</p>
 
         </td>
       </tr>
       
-      <tr class="sourcedoc-section section-element" id="0f871a68bb7e5471c64bf70c1ed54201a57feb41">
+      <tr class="sourcedoc-section section-element" id="43031cd3e324b20d6cc238df54cd1b14437238ce">
         <td class="sourcedoc-section section-signature">
-          <code>interface <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/dependentvariable">DependentVariable</a>&lt;V : Any?&gt; : Serializable, Any</code>
+          <code>class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/flag">Flag</a>: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/printablevariable">PrintableVariable</a>&lt;Boolean?&gt;</code>
         </td>
         <td class="sourcedoc-section section-comments content">
-        <p>A dependent variable, namely a variable whose value can be obtained given the values of other variables.</p>
-
-        </td>
-      </tr>
-      
-      <tr class="sourcedoc-section section-element" id="be3082574838fc249c6138cf2463ec03bcc88071">
-        <td class="sourcedoc-section section-signature">
-          <code>class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/arbitraryvariable">ArbitraryVariable</a>: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/printablevariable">PrintableVariable</a>&lt;Serializable?&gt;</code>
-        </td>
-        <td class="sourcedoc-section section-comments content">
-        <p>A variable spanning over an arbitrary set of values.</p>
+        <p>This variable is a flag. Being booleans not a valid data type in charts, this variable just outputs 0 and 1. This is equivalent to a <code><a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/linearvariable">LinearVariable</a></code> with two samples ranging from 0 to 1.</p>
 
         </td>
       </tr>
@@ -267,12 +257,32 @@
         </td>
       </tr>
       
-      <tr class="sourcedoc-section section-element" id="c1aa164812159beb79c2500b62190ea9c5875824">
+      <tr class="sourcedoc-section section-element" id="0f871a68bb7e5471c64bf70c1ed54201a57feb41">
         <td class="sourcedoc-section section-signature">
-          <code>class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/linearvariable">LinearVariable</a>: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/printablevariable">PrintableVariable</a>&lt;Double?&gt;</code>
+          <code>interface <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/dependentvariable">DependentVariable</a>&lt;V : Any?&gt; : Serializable, Any</code>
         </td>
         <td class="sourcedoc-section section-comments content">
-        <p>This class represents a linear variable, namely a variable whose values span linearly between minimum and maximum.</p>
+        <p>A dependent variable, namely a variable whose value can be obtained given the values of other variables.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b9bc416e6b7b589e6e8ba6de45be0fd475371f23">
+        <td class="sourcedoc-section section-signature">
+          <code>interface <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/variable">Variable</a>&lt;V : Serializable?&gt; : Serializable, MutableIterable&lt;V&gt;, Any</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>A variable simulation value, that provides a range of values for batches, and a default value for single-shot runs.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="be3082574838fc249c6138cf2463ec03bcc88071">
+        <td class="sourcedoc-section section-signature">
+          <code>class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/arbitraryvariable">ArbitraryVariable</a>: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/printablevariable">PrintableVariable</a>&lt;Serializable?&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>A variable spanning over an arbitrary set of values.</p>
 
         </td>
       </tr>
@@ -283,16 +293,6 @@
         </td>
         <td class="sourcedoc-section section-comments content">
         <p>A variable stub, with a default <code>#toString()</code> method.</p>
-
-        </td>
-      </tr>
-      
-      <tr class="sourcedoc-section section-element" id="43031cd3e324b20d6cc238df54cd1b14437238ce">
-        <td class="sourcedoc-section section-signature">
-          <code>class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/flag">Flag</a>: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/printablevariable">PrintableVariable</a>&lt;Boolean?&gt;</code>
-        </td>
-        <td class="sourcedoc-section section-comments content">
-        <p>This variable is a flag. Being booleans not a valid data type in charts, this variable just outputs 0 and 1. This is equivalent to a <code><a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/variables/linearvariable">LinearVariable</a></code> with two samples ranging from 0 to 1.</p>
 
         </td>
       </tr>
@@ -7121,7 +7121,7 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/time">Time</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/export/time">Time</a>
     </li>
     
 
@@ -7129,7 +7129,7 @@
             
     
     <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/loader/export/time">Time</a>
+        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/time">Time</a>
     </li>
     
 
@@ -7473,7 +7473,7 @@
         <!-- Section -->
         <section>
             <p class="text-center">
-                Currently 11.2.0. Created with <a href="https://orchid.run">Orchid </a> and <b>Orchid Editorial Theme</b>.
+                Currently 11.3.0. Created with <a href="https://orchid.run">Orchid </a> and <b>Orchid Editorial Theme</b>.
             </p>
         </section>
 
@@ -7508,9 +7508,9 @@
 <!-- start:inject scripts -->
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/js/editorial_util.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/js/editorial_main.js"></script>
-<script  src="https://alchemistsimulator.github.io/Editorial/943a1a5/assets/js/editorial_orchidCustomizations.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/806c328a/assets/js/editorial_util.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/806c328a/assets/js/editorial_main.js"></script>
+<script  src="https://alchemistsimulator.github.io/Editorial/806c328a/assets/js/editorial_orchidCustomizations.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
 <script  src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
