@@ -74,7 +74,7 @@
 
 
 <script>
-    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"11.3.0"};
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://alchemistsimulator.github.io","environment":"debug","version":"11.3.1"};
 </script>
 
 
@@ -161,10 +161,10 @@
   
 
   
-    <div class="sourcedoc-section section-element" id="c57fc0c11b56ba7b15f92ea8dbea3d5102250d12">
+    <div class="sourcedoc-section section-element" id="9822da542dc4934f16b51af73b457c86c1d78ea6">
       
       <p class="sourcedoc-section section-signature">
-        <code>class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/nodes/cognitiveorientingpedestrian2d">CognitiveOrientingPedestrian2D</a>&lt;T, N : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/geometry/euclidean2d/convexpolygon">ConvexPolygon</a>, E&gt; : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/nodes/homogeneousorientingpedestrian2d">HomogeneousOrientingPedestrian2D</a>&lt;T, N, E&gt;, <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/cognitiveagents/cognitiveagent">CognitiveAgent</a></code>
+        <code>class <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/nodes/cognitiveorientingpedestrian2d">CognitiveOrientingPedestrian2D</a>&lt;T, N : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/geometry/euclidean2d/convexpolygon">ConvexPolygon</a>, E&gt; : <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/nodes/homogeneousorientingpedestrian2d">HomogeneousOrientingPedestrian2D</a>&lt;T, N, E&gt;, <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/cognitivepedestrian">CognitivePedestrian</a>&lt;T, <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/positions/euclidean2dposition">Euclidean2DPosition</a>, <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/geometry/euclidean2d/euclidean2dtransformation">Euclidean2DTransformation</a>&gt;</code>
       </p>
 
       
@@ -181,6 +181,70 @@
 
       
       
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="fields">
+
+
+  <p class="sourcedoc-section section-name"><strong>Fields</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="031a9e028e9ecef9d492dda76f965a271ce2db0f">
+        <td class="sourcedoc-section section-signature">
+          <code>val cognitive: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/cognitiveagents/cognitivemodel">CognitiveModel</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>The cognitive model this agent adheres to.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b221fe430e704d450dcc2da0d792c50604c6df45">
+        <td class="sourcedoc-section section-signature">
+          <code>val age: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/cognitiveagents/impact/individual/age">Age</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>The age of this pedestrian.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="7266069641997222c7e863da1392732e8fd171c6">
+        <td class="sourcedoc-section section-signature">
+          <code>val gender: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/cognitiveagents/impact/individual/gender">Gender</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>The gender of this pedestrian.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="21fe97d78cd1858c14068d060253f1fe673e50fd">
+        <td class="sourcedoc-section section-signature">
+          <code>val compliance: Double</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Value between 0 and 1 representing the attitude towards conforming to social rules of this pedestrian.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
         
           
 <div class="sourcedoc-section section-root section-level-2" id="constructors">
@@ -531,6 +595,144 @@
   
 
   
+    <div class="sourcedoc-section section-element" id="d53a7c87bf4f681c9cd75526ed36ad11ddb16fae">
+      
+      <h3 class="sourcedoc-section element-name">influencialPeople</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun influencialPeople(): List&lt;<a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/cognitiveagents/cognitiveagent">CognitiveAgent</a>&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>A list of all the cognitive agents who exert an influence on this cognitive agent.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="55b794a504094a265324a48151b931e1e4fee6d2">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fd127b641c3db0fb07554c918474b89b6795a7f1">
+        <td class="sourcedoc-section section-signature">
+          <code>List&lt;<a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/cognitiveagents/cognitiveagent">CognitiveAgent</a>&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="6993a6dfdeae737599abd14ed97f8141cb75671a">
+      
+      <h3 class="sourcedoc-section element-name">probabilityOfHelping</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun probabilityOfHelping(toHelp: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/heterogeneouspedestrian">HeterogeneousPedestrian</a>&lt;T, <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/positions/euclidean2dposition">Euclidean2DPosition</a>, <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/geometry/euclidean2d/euclidean2dtransformation">Euclidean2DTransformation</a>&gt;): Double</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Value between 0 and 1 representing the probability this pedestrian will help another pedestrian in difficulty.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d912ed349e37bda28f874fe629164cae9dd2170b">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="056f960e5c99348d823dfca061c7f2aa0a5debab">
+        <td class="sourcedoc-section section-signature">
+          <code>toHelp: <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/heterogeneouspedestrian">HeterogeneousPedestrian</a>&lt;T, <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/implementations/positions/euclidean2dposition">Euclidean2DPosition</a>, <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/interfaces/geometry/euclidean2d/euclidean2dtransformation">Euclidean2DTransformation</a>&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>The pedestrian who needs help.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="284c46f26c7da71bd70c4f28cb0a8cb9002da1b2">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="81581597044514bf54d4f97266022fc991f3915e">
+        <td class="sourcedoc-section section-signature">
+          <code>Double</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
     <div class="sourcedoc-section section-element" id="69a9c19fd25e41eef0723a42133562ae49636bac">
       
       <h3 class="sourcedoc-section element-name">speed</h3>
@@ -541,7 +743,8 @@
 
       
 
-      <div class="sourcedoc-section section-comments"></div>
+      <div class="sourcedoc-section section-comments"><p>The speed at which the pedestrian is moving.</p>
+</div>
 
       
       
@@ -3931,14 +4134,6 @@
     
     <li>
         <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/boundary/gui/effects/drawsmartcam">DrawSmartcam</a>
-    </li>
-    
-
-        
-            
-    
-    <li>
-        <a href="https://alchemistsimulator.github.io/kotlindoc/it/unibo/alchemist/model/protelisincarnation/dummycontext">DummyContext</a>
     </li>
     
 
@@ -7754,7 +7949,7 @@
         <!-- Section -->
         <section>
             <p class="text-center">
-                Currently 11.3.0. Created with <a href="https://orchid.run">Orchid </a> and <b>Orchid Editorial Theme</b>.
+                Currently 11.3.1. Created with <a href="https://orchid.run">Orchid </a> and <b>Orchid Editorial Theme</b>.
             </p>
         </section>
 
