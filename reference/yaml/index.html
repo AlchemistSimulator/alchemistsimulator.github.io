@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.92.0" />
+    <meta name="generator" content="Relearn 2.9.2
+">
+    <link rel="alternate" type="application/rss&#43;xml" href="../../reference/yaml/index.xml" title="Documentation for the Alchemist Simulator" />
+    <meta name="description" content="The Alchemist Simulator">
+    <meta name="author" content="Danilo Pianini">
+    <link rel="icon" href="../../images/logo.svg?1643070332" type="image/svg+xml">
+
+    <title>YAML simulation specification :: Documentation for the Alchemist Simulator</title>
+    <link href="../../css/nucleus.css?1643070332" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1643070332" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1643070332" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1643070332" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1643070332" rel="stylesheet">
+    <link href="../../css/theme.css?1643070332" rel="stylesheet">
+    <link href="../../css/theme-relearn.css?1643070332" rel="stylesheet">
+    <link href="../../css/variant.css?1643070332" rel="stylesheet">
+    <link href="../../css/print.css?1643070332" rel="stylesheet" media="print">
+    <script src="../../js/jquery.min.js?1643070332"></script>
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+        display:none !important;
+      }
+    </style>
+  </head>
+  <body class="" data-url="../../reference/yaml/">
+    <script>
+      var index_url="../../index.json";
+      var root_url="../../";
+      var baseUri=root_url.replace(/\/$/, '');
+    </script>
+    <nav id="sidebar" class="showVisitedLinks">
+      <div id="header-wrapper">
+        <div id="header">
+<div style="white-space: nowrap;">
+    <div style="max-width: 100%; display: inline-block; ">
+        <img alt="The Alchemist Logo" src="../../images/logo.svg"/>
+    </div>
+</div>
+
+        </div>
+        <div class="searchbox">
+          <label for="search-by"><i class="fas fa-search"></i></label>
+          <input data-search-input id="search-by" type="search" placeholder="Search...">
+          <span data-search-clear=""><i class="fas fa-times"></i></span>
+        </div>
+        <script src="../../js/lunr.min.js?1643070332"></script>
+        <script src="../../js/auto-complete.js?1643070332"></script>
+        <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
+        <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
+        <script src="../../js/search.js?1643070332"></script>
+      </div>
+      <div id="homelinks">
+        <ul>
+          <li>
+              <a class="padding" href="../../"><i class='fas fa-home'></i> Home</a>
+          </li>
+        </ul>
+      </div>
+      <div class="highlightable">
+        <ul class="topics">
+          <li data-nav-id="/tutorials/" title="Tutorials" class="dd-item"><a href="../../tutorials/"><b>1. </b>Tutorials<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/tutorials/quickstart/" title="Quickstart" class="dd-item alwaysopen"><a href="../../tutorials/quickstart/">Quickstart<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/tutorials/basics/" title="Step-by-step tutorial" class="dd-item alwaysopen"><a href="../../tutorials/basics/">Step-by-step tutorial<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/tutorials/protelis/" title="Protelis Incarnation Tutorial" class="dd-item alwaysopen"><a href="../../tutorials/protelis/">Protelis Incarnation Tutorial<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/tutorials/sapere/" title="SAPERE Incarnation Tutorial" class="dd-item alwaysopen"><a href="../../tutorials/sapere/">SAPERE Incarnation Tutorial<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/tutorials/scafi/" title="Scafi Incarnation Tutorial" class="dd-item alwaysopen"><a href="../../tutorials/scafi/">Scafi Incarnation Tutorial<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/" title="How-to Guides" class="dd-item"><a href="../../howtos/"><b>2. </b>How-to Guides<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/preparation/" title="Preparation" class="dd-item alwaysopen"><a href="../../howtos/preparation/">Preparation<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/preparation/jar/" title="Alchemist stand-alone" class="dd-item alwaysopen"><a href="../../howtos/preparation/jar/">Alchemist stand-alone<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/preparation/gradle/" title="Alchemist via Gradle" class="dd-item alwaysopen"><a href="../../howtos/preparation/gradle/">Alchemist via Gradle<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/simulation/" title="Simulation" class="dd-item alwaysopen"><a href="../../howtos/simulation/">Simulation<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/simulation/variables/" title="Create reusable variables" class="dd-item alwaysopen"><a href="../../howtos/simulation/variables/">Create reusable variables<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/repeatability/" title="Ensure repeatability" class="dd-item alwaysopen"><a href="../../howtos/simulation/repeatability/">Ensure repeatability<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/cognitive/" title="Cognitive Agents" class="dd-item alwaysopen"><a href="../../howtos/simulation/cognitive/">Cognitive Agents<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/link/" title="Create a network" class="dd-item alwaysopen"><a href="../../howtos/simulation/link/">Create a network<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/layers/" title="Create Layers" class="dd-item alwaysopen"><a href="../../howtos/simulation/layers/">Create Layers<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/environment/" title="Create rich environments" class="dd-item alwaysopen"><a href="../../howtos/simulation/environment/">Create rich environments<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/simulation/environment/pathfinding/" title="Find paths indoors" class="dd-item alwaysopen"><a href="../../howtos/simulation/environment/pathfinding/">Find paths indoors<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/environment/maps/" title="Maps and GPS traces" class="dd-item alwaysopen"><a href="../../howtos/simulation/environment/maps/">Maps and GPS traces<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/environment/indoor/" title="Simulate indoor" class="dd-item alwaysopen"><a href="../../howtos/simulation/environment/indoor/">Simulate indoor<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/simulation/deploy/" title="Deploy Nodes" class="dd-item alwaysopen"><a href="../../howtos/simulation/deploy/">Deploy Nodes<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/simulation/deploy/grid/" title="(Irregular) Grids" class="dd-item alwaysopen"><a href="../../howtos/simulation/deploy/grid/">(Irregular) Grids<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/deploy/shape/" title="Nodes inside shapes" class="dd-item alwaysopen"><a href="../../howtos/simulation/deploy/shape/">Nodes inside shapes<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/deploy/gps/" title="GPS Traces" class="dd-item alwaysopen"><a href="../../howtos/simulation/deploy/gps/">GPS Traces<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/deploy/graph/" title="Graphs" class="dd-item alwaysopen"><a href="../../howtos/simulation/deploy/graph/">Graphs<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/simulation/export/" title="Export data" class="dd-item alwaysopen"><a href="../../howtos/simulation/export/">Export data<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/program/" title="Program Nodes" class="dd-item alwaysopen"><a href="../../howtos/simulation/program/">Program Nodes<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/simulation/program/move-on-maps/" title="Move nodes on maps" class="dd-item alwaysopen"><a href="../../howtos/simulation/program/move-on-maps/">Move nodes on maps<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/program/content/" title="Node contents" class="dd-item alwaysopen"><a href="../../howtos/simulation/program/content/">Node contents<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/simulation/smartcam/" title="Smart cameras and drones" class="dd-item alwaysopen"><a href="../../howtos/simulation/smartcam/">Smart cameras and drones<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/execution/" title="Execution" class="dd-item alwaysopen"><a href="../../howtos/execution/">Execution<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/execution/swing-effects/" title="Customize the Swing GUI" class="dd-item alwaysopen"><a href="../../howtos/execution/swing-effects/">Customize the Swing GUI<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/execution/termination/" title="Define the termination criteria" class="dd-item alwaysopen"><a href="../../howtos/execution/termination/">Define the termination criteria<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/workarounds/" title="Workarounds" class="dd-item alwaysopen"><a href="../../howtos/workarounds/">Workarounds<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/workarounds/swing-glitch/" title="Graphical Glitches in Swing" class="dd-item alwaysopen"><a href="../../howtos/workarounds/swing-glitch/">Graphical Glitches in Swing<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/workarounds/max-map-count/" title="Memory leaks under Linux" class="dd-item alwaysopen"><a href="../../howtos/workarounds/max-map-count/">Memory leaks under Linux<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/extensions/" title="Experiment-specific extensions" class="dd-item alwaysopen"><a href="../../howtos/extensions/">Experiment-specific extensions<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/development/" title="Development" class="dd-item alwaysopen"><a href="../../howtos/development/">Development<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/reference/" title="Reference" class="dd-item parent"><a href="../../reference/"><b>3. </b>Reference<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/reference/yaml/" title="YAML simulation specification" class="dd-item active parent alwaysopen"><a href="../../reference/yaml/">YAML simulation specification<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/kdoc/" title="KDoc API" class="dd-item alwaysopen"><a href="../../reference/kdoc/"><i>(recommended)</i> KDoc API<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/organization/" title="Project organization" class="dd-item alwaysopen"><a href="../../reference/organization/">Project organization<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/biochemistry/" title="Biochemistry Incarnation" class="dd-item alwaysopen"><a href="../../reference/biochemistry/">Biochemistry Incarnation<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/cli/" title="Command Line interface" class="dd-item alwaysopen"><a href="../../reference/cli/">Command Line interface<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/default-ui/" title="Default Graphical User Interface" class="dd-item alwaysopen"><a href="../../reference/default-ui/">Default Graphical User Interface<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/sapere/" title="SAPERE Incarnation" class="dd-item alwaysopen"><a href="../../reference/sapere/">SAPERE Incarnation<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/swing/" title="Swing GUI" class="dd-item alwaysopen"><a href="../../reference/swing/">Swing GUI<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/javadoc/" title="Javadoc API" class="dd-item alwaysopen"><a href="../../reference/javadoc/"><i>(legacy)</i> Javadoc API<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/explanation/" title="Explanation" class="dd-item"><a href="../../explanation/"><b>4. </b>Explanation<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/explanation/metamodel/" title="The Alchemist Meta-Model" class="dd-item alwaysopen"><a href="../../explanation/metamodel/">The Alchemist Meta-Model<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/explanation/engine/" title="The Alchemist Simulation Engine" class="dd-item alwaysopen"><a href="../../explanation/engine/">The Alchemist Simulation Engine<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/explanation/biochemistry/" title="Biochemistry Incarnation" class="dd-item alwaysopen"><a href="../../explanation/biochemistry/">Biochemistry Incarnation<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/explanation/cognitive/" title="Cognitive Agents" class="dd-item alwaysopen"><a href="../../explanation/cognitive/">Cognitive Agents<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/explanation/pathfinding/" title="Pathfinding" class="dd-item alwaysopen"><a href="../../explanation/pathfinding/">Pathfinding<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/explanation/sapere/" title="SAPERE Incarnation" class="dd-item alwaysopen"><a href="../../explanation/sapere/">SAPERE Incarnation<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+        </ul>
+        <div id="shortcuts">
+          <div class="nav-title">More</div>
+          <ul>
+            <li><a class="padding" href="https://github.com/AlchemistSimulator/Alchemist"><i class='fab fa-fw fa-github'></i> GitHub repo</a></li>
+            <li><a class="padding" href="https://www.youtube.com/channel/UC0o4FQEhRC6fWLLxxfPByKw"><i class='fab fa-youtube'></i> YouTube channel</a></li>
+            <li><a class="padding" href="../../showcase/"><i class='fas fa-fw fa-camera'></i> Use cases</a></li>
+            <li><a class="padding" href="../../license/"><i class='fas fa-balance-scale'></i> License</a></li>
+            <li><a class="padding" href="../../tags/"><i class='fas fa-fw fa-tags'></i> Tags</a></li>
+          </ul>
+        </div>
+        <div id="prefooter">
+          <hr/>
+          <ul>
+            <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+          </ul>
+        </div>
+        <div id="footer"><div><strong>Alchemist Simulator 12.0.0</strong></div>
+<br>
+<a
+    class="github-button"
+    href="https://github.com/AlchemistSimulator/Alchemist/releases/latest/"
+    data-icon="octicon-cloud-download" aria-label="Download Alchemist-full on GitHub"
+>
+Download
+</a>
+<a
+    class="github-button"
+    href="https://github.com/AlchemistSimulator/Alchemist"
+    data-icon="octicon-star"
+    data-show-count="true"
+    aria-label="Star McShelby/hugo-theme-relearn on GitHub"
+>
+Star
+</a>
+<a
+    class="github-button"
+    href="https://github.com/AlchemistSimulator/Alchemist/fork"
+    data-icon="octicon-repo-forked"
+    data-show-count="true"
+    aria-label="Fork McShelby/hugo-theme-relearn on GitHub"
+>
+Fork
+</a>
+<p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn"><span class="fas fa-heart"></span></a> by <a href="https://gohugo.io/">Hugo</a></p>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+        </div>
+      </div>
+    </nav>
+    <div id="body">
+      <div id="overlay"></div>
+      <div class="padding highlightable">
+        <div id="top-bar">
+          <div id="top-github-link">
+            <a class="github-link" title='Edit this page' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/reference/yaml/_index.md" target="blank">
+              <i class="fas fa-code-branch"></i>
+              <span id="top-github-link-text">Edit this page</span>
+            </a>
+          </div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                <i class="fas fa-bars"></i>
+              </a>
+            </span>
+            <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <meta itemprop="itemListOrder" content="Descending" />
+                <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
+                <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../reference/"><span itemprop="name">Reference</span></a> > </li>
+                <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../reference/yaml/" aria-disabled="true"><span itemprop="name">YAML simulation specification</span></a></li>
+            </ol>
+          </div>
+            <div class="progress">
+              <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#simulation-document-structure">Simulation document structure</a>
+      <ul>
+        <li><a href="#types-of-entries">Types of entries</a></li>
+        <li><a href="#arbitrary-class-loading-system">Arbitrary class loading system</a></li>
+        <li><a href="#document-root">Document root</a></li>
+        <li><a href="#incarnation"><code>incarnation</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#action"><code>action</code></a></li>
+    <li><a href="#condition"><code>condition</code></a>
+      <ul>
+        <li><a href="#deployments"><code>deployments</code></a></li>
+        <li><a href="#deployment"><code>deployment</code></a></li>
+        <li><a href="#deploymenttype"><code>deployment.type</code></a></li>
+        <li><a href="#deploymentparameters"><code>deployment.parameters</code></a></li>
+        <li><a href="#deploymentcontents"><code>deployment.contents</code></a></li>
+        <li><a href="#deploymentnodes"><code>deployment.nodes</code></a></li>
+        <li><a href="#deploymentprograms"><code>deployment.programs</code></a></li>
+        <li><a href="#content"><code>content</code></a></li>
+        <li><a href="#contentmolecule"><code>content.molecule</code></a></li>
+        <li><a href="#content-1"><code>content</code></a></li>
+        <li><a href="#contentin"><code>content.in</code></a></li>
+        <li><a href="#environment"><code>environment</code></a></li>
+        <li><a href="#export"><code>export</code></a></li>
+        <li><a href="#exporter"><code>exporter</code></a></li>
+        <li><a href="#exportertype"><code>exporter.type</code></a></li>
+        <li><a href="#exporterdata"><code>exporter.data</code></a></li>
+        <li><a href="#exporterparameters"><code>exporter.parameters</code></a></li>
+        <li><a href="#extractor"><code>extractor</code></a></li>
+        <li><a href="#extractortype"><code>extractor.type</code></a></li>
+        <li><a href="#extractorparameters"><code>extractor.parameters</code></a></li>
+        <li><a href="#extractormolecule"><code>extractor.molecule</code></a></li>
+        <li><a href="#extractorproperty"><code>extractor.property</code></a></li>
+        <li><a href="#extractoraggregators"><code>extractor.aggregators</code></a></li>
+        <li><a href="#extractorvalue-filter"><code>extractor.value-filter</code></a></li>
+        <li><a href="#extractorvalue-filtertype"><code>extractor.value-filter.type</code></a></li>
+        <li><a href="#extractorvalue-filterparameters"><code>extractor.value-filter.parameters</code></a></li>
+        <li><a href="#layer"><code>layer</code></a></li>
+        <li><a href="#layers"><code>layers</code></a></li>
+        <li><a href="#network-model"><code>network-model</code></a></li>
+        <li><a href="#program"><code>program</code></a></li>
+        <li><a href="#programtype"><code>program.type</code></a></li>
+        <li><a href="#programprogram"><code>program.program</code></a></li>
+        <li><a href="#programactions"><code>program.actions</code></a></li>
+        <li><a href="#programconditions"><code>program.conditions</code></a></li>
+        <li><a href="#programparameters"><code>program.parameters</code></a></li>
+        <li><a href="#programtime-distribution"><code>program.time-distribution</code></a></li>
+        <li><a href="#remote-dependencies"><code>remote-dependencies</code></a></li>
+        <li><a href="#shape"><code>shape</code></a></li>
+        <li><a href="#seeds"><code>seeds</code></a></li>
+        <li><a href="#seedsscenario"><code>seeds.scenario</code></a></li>
+        <li><a href="#seedssimulation"><code>seeds.simulation</code></a></li>
+        <li><a href="#terminate"><code>terminate</code></a></li>
+        <li><a href="#terminator"><code>terminator</code></a></li>
+        <li><a href="#variable"><code>variable</code></a></li>
+        <li><a href="#variabletype"><code>variable.type</code></a></li>
+        <li><a href="#variableparameters"><code>variable.parameters</code></a></li>
+        <li><a href="#variabledefault"><code>variable.default</code></a></li>
+        <li><a href="#variablemax"><code>variable.max</code></a></li>
+        <li><a href="#variablemin"><code>variable.min</code></a></li>
+        <li><a href="#variablestep"><code>variable.step</code></a></li>
+        <li><a href="#variableformula"><code>variable.formula</code></a></li>
+        <li><a href="#variablelanguage"><code>variable.language</code></a></li>
+        <li><a href="#variabletimeout"><code>variable.timeout</code></a></li>
+        <li><a href="#variables"><code>variables</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+        </div>
+        <div id="head-tags">
+<div class="tags">
+  <a class="tag-link" href="../../tags/yaml">yaml</a>
+  <a class="tag-link" href="../../tags/simulations">simulations</a>
+  <a class="tag-link" href="../../tags/specification">specification</a>
+  <a class="tag-link" href="../../tags/environment">environment</a>
+  <a class="tag-link" href="../../tags/extension">extension</a>
+  <a class="tag-link" href="../../tags/programming">programming</a>
+</div>
+        </div>
+        <main id="body-inner">
+          <h1>YAML simulation specification</h1>
+
+
+<div class="notices warning">
+    <div class="label">Warning</div><p>This reference guide assumes that the reader knows the basics of <a href="https://yaml.org/">YAML</a>.
+A good resource to learn it quickly is  <a href="https://learnxinyminutes.com/docs/yaml/">Learn X in Y minutes where X = YAML</a></p>
+
+</div>
+
+<div class="notices info">
+    <div class="label">Reading this document</div><p>The key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>,
+<strong>RECOMMENDED</strong>,  <strong>MAY</strong>, and <strong>OPTIONAL</strong> in this document are to be interpreted as described in
+<a href="https://datatracker.ietf.org/doc/html/rfc2119">RFC 2119</a>.</p>
+
+</div>
+<h2 id="simulation-document-structure">Simulation document structure</h2>
+<p>The document <strong>MUST</strong> be YAML map.
+The map <strong>MUST</strong> contain all the mandatory Alchemist keys,
+<strong>MAY</strong> contain any subset of the optional Alchemist keys,
+<strong>MAY</strong> contain any key whose name begins with underscore (<code>_</code>),
+and <strong>MUST NOT</strong> contain any other key.</p>
+<p>The sets of valid cobinations of mandatory and optional keys for each section of the document is specified
+in form of Kotlin code as follows:</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#78787e">/*
+</span><span style="color:#78787e"> * Copyright (C) 2010-2022, Danilo Pianini and contributors
+</span><span style="color:#78787e"> * listed, for each module, in the respective subproject&#39;s build.gradle.kts file.
+</span><span style="color:#78787e"> *
+</span><span style="color:#78787e"> * This file is part of Alchemist, and is distributed under the terms of the
+</span><span style="color:#78787e"> * GNU General Public License, with a linking exception,
+</span><span style="color:#78787e"> * as described in the file LICENSE in the Alchemist distribution&#39;s top directory.
+</span><span style="color:#78787e"> */</span>
+
+<span style="color:#ff6ac1">package</span> it.unibo.alchemist.loader.m2m.syntax
+
+<span style="color:#ff6ac1">import</span> kotlin.reflect.KProperty
+
+<span style="color:#ff6ac1">internal</span> <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">DocumentRoot</span> : SyntaxElement {
+    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">JavaType</span> : SyntaxElement {
+        <span style="color:#ff6ac1">val</span> type <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">val</span> parameters <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
+            validDescriptor {
+                mandatory(type)
+                optional(parameters)
+            }
+        )
+    }
+    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">DependentVariable</span> : SyntaxElement {
+        <span style="color:#ff6ac1">val</span> language <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">val</span> formula <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">val</span> timeout <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = JavaType.validDescriptors + setOf(
+            validDescriptor {
+                mandatory(formula)
+                optional(language)
+                optional(timeout)
+            }
+        )
+    }
+    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Deployment</span> : SyntaxElement {
+        <span style="color:#ff6ac1">val</span> contents <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">val</span> nodes <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">val</span> programs <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
+            validDescriptor {
+                mandatory(JavaType.type)
+                optional(JavaType.parameters, contents, nodes, programs)
+                forbidden(Contents.shapes)
+            }
+        )
+        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Contents</span> : SyntaxElement {
+            <span style="color:#ff6ac1">val</span> molecule <span style="color:#ff6ac1">by</span> OwnName()
+            <span style="color:#ff6ac1">val</span> concentration <span style="color:#ff6ac1">by</span> OwnName()
+            <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> shapes = <span style="color:#5af78e">&#34;in&#34;</span>
+            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
+                validDescriptor {
+                    mandatory(molecule, concentration)
+                    optional(shapes)
+                }
+            )
+        }
+        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Program</span> : SyntaxElement {
+            <span style="color:#ff6ac1">val</span> program <span style="color:#ff6ac1">by</span> OwnName()
+            <span style="color:#ff6ac1">val</span> actions <span style="color:#ff6ac1">by</span> OwnName()
+            <span style="color:#ff6ac1">val</span> conditions <span style="color:#ff6ac1">by</span> OwnName()
+            <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> timeDistribution = <span style="color:#5af78e">&#34;time-distribution&#34;</span>
+            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
+                validDescriptor {
+                    mandatory(JavaType.type)
+                    optional(JavaType.parameters, conditions, timeDistribution, actions)
+                },
+                validDescriptor {
+                    mandatory(program)
+                    optional(timeDistribution)
+                }
+            )
+        }
+    }
+
+    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Export</span> : SyntaxElement {
+        <span style="color:#ff6ac1">val</span> data <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
+            validDescriptor { mandatory(JavaType.type, JavaType.parameters, <span style="color:#ff6ac1">data</span>) },
+        )
+        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Data</span> : SyntaxElement {
+            <span style="color:#ff6ac1">val</span> time <span style="color:#ff6ac1">by</span> OwnName()
+            <span style="color:#ff6ac1">val</span> molecule <span style="color:#ff6ac1">by</span> OwnName()
+            <span style="color:#ff6ac1">val</span> property <span style="color:#ff6ac1">by</span> OwnName()
+            <span style="color:#ff6ac1">val</span> aggregators <span style="color:#ff6ac1">by</span> OwnName()
+            <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> valueFilter = <span style="color:#5af78e">&#34;value-filter&#34;</span>
+            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = JavaType.validDescriptors + setOf(
+                validDescriptor { mandatory(time) },
+                validDescriptor {
+                    mandatory(molecule)
+                    optional(<span style="color:#ff6ac1">property</span>, aggregators, valueFilter)
+                }
+            )
+        }
+    }
+
+    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Layer</span> : SyntaxElement {
+        <span style="color:#ff6ac1">val</span> molecule <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
+            validDescriptor {
+                mandatory(JavaType.type, molecule)
+                optional(JavaType.parameters)
+            }
+        )
+    }
+    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Seeds</span> : SyntaxElement {
+        <span style="color:#ff6ac1">val</span> scenario <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">val</span> simulation <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
+            validDescriptor { optional(simulation, scenario) }
+        )
+    }
+    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Variable</span> : SyntaxElement {
+        <span style="color:#ff6ac1">val</span> min <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">val</span> max <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">val</span> default <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">val</span> step <span style="color:#ff6ac1">by</span> OwnName()
+        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = JavaType.validDescriptors + setOf(
+            validDescriptor { mandatory(min, max, default, step) }
+        )
+    }
+    <span style="color:#ff6ac1">val</span> deployments <span style="color:#ff6ac1">by</span> OwnName()
+    <span style="color:#ff6ac1">val</span> environment <span style="color:#ff6ac1">by</span> OwnName()
+    <span style="color:#ff6ac1">val</span> export <span style="color:#ff6ac1">by</span> OwnName()
+    <span style="color:#ff6ac1">val</span> incarnation <span style="color:#ff6ac1">by</span> OwnName()
+    <span style="color:#ff6ac1">val</span> layers <span style="color:#ff6ac1">by</span> OwnName()
+    <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> linkingRule = <span style="color:#5af78e">&#34;network-model&#34;</span>
+    <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> remoteDependencies = <span style="color:#5af78e">&#34;remote-dependencies&#34;</span>
+    <span style="color:#ff6ac1">val</span> seeds <span style="color:#ff6ac1">by</span> OwnName()
+    <span style="color:#ff6ac1">val</span> terminate <span style="color:#ff6ac1">by</span> OwnName()
+    <span style="color:#ff6ac1">val</span> variables <span style="color:#ff6ac1">by</span> OwnName()
+    <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
+        validDescriptor {
+            mandatory(incarnation)
+            optional(*validKeys.toTypedArray())
+        }
+    )
+}
+
+<span style="color:#ff6ac1">internal</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">OwnName</span> {
+    <span style="color:#ff6ac1">operator</span> <span style="color:#ff6ac1">fun</span> <span style="color:#57c7ff">getValue</span>(thisRef: Any?, <span style="color:#ff6ac1">property</span>: KProperty&lt;*&gt;): String = <span style="color:#ff6ac1">property</span>.name.lowercase()
+}
+
+<span style="color:#ff6ac1">private</span> <span style="color:#ff6ac1">fun</span> <span style="color:#57c7ff">validDescriptor</span>(configuration: DescriptorBuilder.() <span style="color:#ff6ac1">-&gt;</span> Unit): SyntaxElement.ValidDescriptor =
+    DescriptorBuilder().apply(configuration).build()
+</code></pre></div></div>
+    </div>
+<h3 id="types-of-entries">Types of entries</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Any</td>
+<td>Any YAML type</td>
+</tr>
+<tr>
+<td>Int</td>
+<td>YAML integer number, or other type that can be parsed into an integer</td>
+</tr>
+<tr>
+<td>List</td>
+<td>Any YAML List</td>
+</tr>
+<tr>
+<td>Map</td>
+<td>Any YAML Map</td>
+</tr>
+<tr>
+<td>MultiSpec</td>
+<td>A list of Spec. A Map matches a MultiSpec if it matches one and only one of its Spec.</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>YAML number</td>
+</tr>
+<tr>
+<td>Spec</td>
+<td>Pair of lists of strings. The first list contains mandatory keys, the second optional keys. A map matches a Spec if it contains all its mandatory keys, any of the optional keys, and no other key</td>
+</tr>
+<tr>
+<td>SpecMap</td>
+<td>A YAML Map matching a MultiSpec</td>
+</tr>
+<tr>
+<td>String</td>
+<td>YAML String</td>
+</tr>
+<tr>
+<td>Traversable</td>
+<td>One of: A SpecMap, a List of Traversable, a Map of Traversable</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="arbitrary-class-loading-system">Arbitrary class loading system</h3>
+<p><strong>Type</strong>: SpecMap</p>
+<p>Alchemist is able to load arbitrary types conforming to the expected <code>interface</code>
+(or Scala <code>trait</code>).
+The expected type depends on where the class is requested.
+This section describes how the system works independently of the specific target type.</p>
+<p><strong>(Multi)Spec</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mandatory keys</th>
+<th>Optional keys</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>parameters</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="type"><code>type</code></h4>
+<p><strong>Type</strong>: String</p>
+<p>The name of an instanceable class compatible with the expected interface.
+It can be either the qualified name or a simple name,
+in the latter case the class <strong>SHOULD</strong> be located in the same package where the
+default alchemist implementations of the same interface live.</p>
+<p>If a name includes a <code>.</code>, it is interpreted as a fully qualified name.
+Otherwise, it is interpreted as a simple name.
+Provided types <strong>SHOULD NOT</strong> be located in the default package.</p>
+<p>For instance, if the expected type is an <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-action/"><code>Action</code></a> and the concrete type <code>FooAction</code>,
+<code>FooAction</code> <strong>SHOULD</strong> be located into package <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/"><code>it.unibo.alchemist.model.implementations.actions</code></a>.</p>
+<h4 id="parameters"><code>parameters</code></h4>
+<p><strong>Type</strong>: List or Map</p>
+<p>The list of parameters the constructor of <a href="#type">type</a> should be passed.
+Alchemist automatically provides <em>contextual</em> information to the constructors:
+for instance, if an <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-action/"><code>Action</code></a> is being built,
+the loading system is aware of the current
+<code>RandomGenerator</code>,
+<a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/"><code>Incarnation</code></a>,
+<a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-environment/"><code>Environment</code></a>,
+<a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-deployment/"><code>Deployment</code></a>,
+<a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-node/"><code>Node</code></a>, <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-time-distribution/"><code>TimeDistribution</code></a>, and
+<a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-reaction/"><code>Reaction</code></a>,
+as the action requires all of them.
+Consequently, all parameters of these types <strong>SHOULD NOT</strong> be manually specified
+(on the other hand, the syntax is built to make it very difficult to do by mistake).
+The constructor <strong>MAY</strong> fail if they are provided.</p>
+<p>If a Map is provided instead of a List,
+then the keys are interpred as the parameter names,
+and their associated values as the corresponding parameter values.
+Since Java 11 does not support named arguments,
+this special invocation type is built around the Kotlin reflection,
+thus, the concrete class whose constructor is being invoked <strong>MUST</strong> be written in Kotlin.</p>
+<p>Instantiation is delegated to the <a href="https://github.com/DanySK/jirf/">Java Implicit Reflective Factory</a>.</p>
+<h4 id="examples">Examples</h4>
+<ul>
+<li>Construction of a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-point/"><code>Point</code></a>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+<span style="color:#ff6ac1">deployments</span>:
+  <span style="color:#ff6ac1">type</span>: Point
+  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>]
+</code></pre></div></div>
+    </div></li>
+<li>Construction of variables with named parameters
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
+<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
+<span style="color:#ff6ac1">deployments</span>:
+  <span style="color:#ff6ac1">type</span>: GraphStreamDeployment
+  <span style="color:#ff6ac1">parameters</span>:
+    <span style="color:#ff6ac1">nodeCount</span>: <span style="color:#ff9f43">1000</span>
+    <span style="color:#ff6ac1">offsetX</span>: -<span style="color:#ff9f43">10</span>
+    <span style="color:#ff6ac1">offsetY</span>: <span style="color:#ff9f43">10</span>
+    <span style="color:#ff6ac1">zoom</span>: <span style="color:#ff9f43">100</span>
+    <span style="color:#ff6ac1">layoutQuality</span>: <span style="color:#ff9f43">0.2</span>
+    <span style="color:#ff6ac1">generatorName</span>: Lobster
+    <span style="color:#ff6ac1">createLinks</span>: <span style="color:#ff6ac1">true</span>
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">15</span>]
+</code></pre></div></div>
+    </div></li>
+</ul>
+<hr>
+<h3 id="document-root">Document root</h3>
+<p><strong>Type</strong>: SpecMap</p>
+<p>The document contents at the root of the file. Builds an
+<a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader/-initialized-environment/"><code>InitializedEnvironment</code></a>.</p>
+<p><strong>(Multi)Spec</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mandatory keys</th>
+<th>Optional keys</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>incarnation</code></td>
+<td><code>deployments</code>, <code>environment</code>, <code>export</code>, <code>layers</code>, <code>network-model</code>, <code>remote-dependencies</code>, <code>seeds</code>, <code>terminate</code>, <code>variables</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="examples-1">Examples</h4>
+<ul>
+<li>Minimal Biochemistry specification
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: biochemistry
+</code></pre></div></div>
+    </div></li>
+<li>Minimal Protelis specification
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+</code></pre></div></div>
+    </div></li>
+<li>Minimal SAPERE specification
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
+</code></pre></div></div>
+    </div></li>
+</ul>
+<hr>
+<h3 id="incarnation"><code>incarnation</code></h3>
+<p><strong>Type</strong>: String</p>
+<p>Valid incarnation types in the full distribution:</p>
+<ul>
+<li><code>biochemistry</code></li>
+<li><code>protelis</code></li>
+<li><code>sapere</code></li>
+<li><code>scafi</code></li>
+</ul>
+<h4 id="examples-2">Examples</h4>
+<ul>
+<li>Minimal Biochemistry specification
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: biochemistry
+</code></pre></div></div>
+    </div></li>
+<li>Minimal Protelis specification
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+</code></pre></div></div>
+    </div></li>
+<li>Minimal SAPERE specification
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
+</code></pre></div></div>
+    </div></li>
+</ul>
+<hr>
+<h2 id="action"><code>action</code></h2>
+<p>Builds an <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-action/"><code>Action</code></a>
+using the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.</p>
+<hr>
+<h2 id="condition"><code>condition</code></h2>
+<p>Builds a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-condition/"><code>Condition</code></a>
+using the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.</p>
+<hr>
+<h3 id="deployments"><code>deployments</code></h3>
+<p><strong>Type</strong>: Traversable</p>
+<p>Traversable of <a href="#deployment"><code>deployment</code></a></p>
+<h3 id="deployment"><code>deployment</code></h3>
+<p><strong>Type</strong>: SpecMap</p>
+<p>Definition of the positions of a set of nodes.
+Builds a
+<a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-deployment/"><code>Deployment</code></a>
+using the same syntax of <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>,
+with additional keys.</p>
+<p><strong>(Multi)Spec</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mandatory keys</th>
+<th>Optional keys</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>parameters</code>, <code>contents</code>, <code>nodes</code>, <code>programs</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="examples-3">Examples</h4>
+<ul>
+<li>Deployment of a single node in a point
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+<span style="color:#ff6ac1">deployments</span>:
+  <span style="color:#ff6ac1">type</span>: Point
+  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>]
+</code></pre></div></div>
+    </div></li>
+<li>Deployment of three nodes
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere <span style="color:#78787e"># The incarnation is always mandatory</span>
+<span style="color:#ff6ac1">network-model</span>:
+  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance <span style="color:#78787e"># Loads a class with this name implementing LinkingRule</span>
+  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>] <span style="color:#78787e"># Connection radius (parameter of a ConnectWithinDistance&#39;s constructor)</span>
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Point <span style="color:#78787e"># Loads a class with this name implementing Deployment</span>
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>] <span style="color:#78787e"># Coordinates</span>
+  - { <span style="color:#ff6ac1">type: Point, parameters</span>: [<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
+  - { <span style="color:#ff6ac1">type: Point, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
+</code></pre></div></div>
+    </div></li>
+<li>Deployment of three nodes, but nesting the traversable
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+<span style="color:#ff6ac1">deployments</span>:
+  <span style="color:#ff6ac1">the_bottom_point</span>:
+    <span style="color:#ff6ac1">type</span>: Point
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>]
+  <span style="color:#ff6ac1">the_top_points</span>:
+    - <span style="color:#ff6ac1">type</span>: Point
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>]
+    - <span style="color:#ff6ac1">type</span>: Point
+      <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>]
+</code></pre></div></div>
+    </div></li>
+<li>Deployment of three nodes through <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-specific-positions/"><code>SpecificPositions</code></a>.
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
+<span style="color:#ff6ac1">deployments</span>:
+  <span style="color:#ff6ac1">type</span>: SpecificPositions
+  <span style="color:#ff6ac1">parameters</span>: [[<span style="color:#ff9f43">0</span>,<span style="color:#ff9f43">1</span>],[<span style="color:#ff9f43">2</span>,<span style="color:#ff9f43">2</span>],[<span style="color:#ff9f43">3</span>,<span style="color:#ff9f43">4</span>]]
+</code></pre></div></div>
+    </div></li>
+<li><a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-grid/"><code>Grid</code></a> centered in <code>(0, 0)</code>, with nodes distanced of <code>0.25</code> both horizontally and vertically.
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
+<span style="color:#ff6ac1">deployments</span>:
+  <span style="color:#ff6ac1">type</span>: Grid
+  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>]
+</code></pre></div></div>
+    </div></li>
+<li>Irregular <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-grid/"><code>Grid</code></a> centered in <code>(0, 0)</code>, with nodes distanced of <code>0.25</code> both horizontally and vertically, randomly perturbed of (±<code>0.1</code> distance units).
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
+<span style="color:#ff6ac1">deployments</span>:
+  <span style="color:#ff6ac1">type</span>: Grid
+  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.1</span>, <span style="color:#ff9f43">0.1</span>]
+</code></pre></div></div>
+    </div></li>
+<li>Nodes located randomly inside a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-circle/"><code>Circle</code></a>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
+<span style="color:#ff6ac1">deployments</span>:
+  <span style="color:#ff6ac1">type</span>: Circle
+  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1000</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>]
+</code></pre></div></div>
+    </div></li>
+<li>Nodes located randomly inside a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-rectangle/"><code>Rectangle</code></a>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
+<span style="color:#ff6ac1">deployments</span>:
+  <span style="color:#ff6ac1">type</span>: Rectangle
+  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1000</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">20</span>]
+</code></pre></div></div>
+    </div></li>
+<li>Nodes located randomly inside a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-polygon/"><code>Polygon</code></a> delimiting the Venice Lagoon
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
+<span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type</span>: OSMEnvironment }
+<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">1000</span>] }
+<span style="color:#ff6ac1">_venice_lagoon</span>: <span style="color:#78787e">&amp;lagoon</span>
+  [[<span style="color:#ff9f43">45.2038121</span>, <span style="color:#ff9f43">12.2504425</span>], [<span style="color:#ff9f43">45.2207426</span>, <span style="color:#ff9f43">12.2641754</span>], [<span style="color:#ff9f43">45.2381516</span>, <span style="color:#ff9f43">12.2806549</span>],
+   [<span style="color:#ff9f43">45.2570053</span>, <span style="color:#ff9f43">12.2895813</span>], [<span style="color:#ff9f43">45.276336</span>, <span style="color:#ff9f43">12.2957611</span>], [<span style="color:#ff9f43">45.3029049</span>, <span style="color:#ff9f43">12.2991943</span>],
+   [<span style="color:#ff9f43">45.3212544</span>, <span style="color:#ff9f43">12.3046875</span>], [<span style="color:#ff9f43">45.331875</span>, <span style="color:#ff9f43">12.3040009</span>], [<span style="color:#ff9f43">45.3453893</span>, <span style="color:#ff9f43">12.3040009</span>],
+   [<span style="color:#ff9f43">45.3502151</span>, <span style="color:#ff9f43">12.3156738</span>], [<span style="color:#ff9f43">45.3622776</span>, <span style="color:#ff9f43">12.3232269</span>], [<span style="color:#ff9f43">45.3719259</span>, <span style="color:#ff9f43">12.3300934</span>],
+   [<span style="color:#ff9f43">45.3830193</span>, <span style="color:#ff9f43">12.3348999</span>], [<span style="color:#ff9f43">45.395557</span>, <span style="color:#ff9f43">12.3445129</span>], [<span style="color:#ff9f43">45.3998964</span>, <span style="color:#ff9f43">12.3300934</span>],
+   [<span style="color:#ff9f43">45.4018249</span>, <span style="color:#ff9f43">12.3136139</span>], [<span style="color:#ff9f43">45.4105023</span>, <span style="color:#ff9f43">12.3122406</span>], [<span style="color:#ff9f43">45.4167685</span>, <span style="color:#ff9f43">12.311554</span>],
+   [<span style="color:#ff9f43">45.4278531</span>, <span style="color:#ff9f43">12.3012543</span>], [<span style="color:#ff9f43">45.4408627</span>, <span style="color:#ff9f43">12.2902679</span>], [<span style="color:#ff9f43">45.4355628</span>, <span style="color:#ff9f43">12.2772217</span>],
+   [<span style="color:#ff9f43">45.4206242</span>, <span style="color:#ff9f43">12.2703552</span>], [<span style="color:#ff9f43">45.3994143</span>, <span style="color:#ff9f43">12.2744751</span>], [<span style="color:#ff9f43">45.3738553</span>, <span style="color:#ff9f43">12.2676086</span>],
+   [<span style="color:#ff9f43">45.3579354</span>, <span style="color:#ff9f43">12.2614288</span>], [<span style="color:#ff9f43">45.3429763</span>, <span style="color:#ff9f43">12.2497559</span>], [<span style="color:#ff9f43">45.3198059</span>, <span style="color:#ff9f43">12.2408295</span>],
+   [<span style="color:#ff9f43">45.2975921</span>, <span style="color:#ff9f43">12.2346497</span>], [<span style="color:#ff9f43">45.2802014</span>, <span style="color:#ff9f43">12.2408295</span>], [<span style="color:#ff9f43">45.257972</span>, <span style="color:#ff9f43">12.233963</span>],
+   [<span style="color:#ff9f43">45.2038121</span>, <span style="color:#ff9f43">12.2504425</span>]]
+<span style="color:#ff6ac1">deployments</span>:
+  <span style="color:#ff6ac1">type</span>: Polygon
+  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">500</span>, <span style="color:#78787e">*lagoon]</span>
+  <span style="color:#ff6ac1">programs</span>:
+    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">10</span>
+      <span style="color:#ff6ac1">type</span>: Event
+      <span style="color:#ff6ac1">actions</span>: { <span style="color:#ff6ac1">type: BrownianMove, parameters</span>: [<span style="color:#ff9f43">0.0005</span>]}
+</code></pre></div></div>
+    </div></li>
+</ul>
+<hr>
+<h3 id="deploymenttype"><code>deployment.type</code></h3>
+<p>Same as <a href="#type">type</a></p>
+<h3 id="deploymentparameters"><code>deployment.parameters</code></h3>
+<p>Same as <a href="#parameters">parameters</a></p>
+<h3 id="deploymentcontents"><code>deployment.contents</code></h3>
+<p><strong>Type</strong>: Traversable of <a href="#content"><code>content</code></a></p>
+<h3 id="deploymentnodes"><code>deployment.nodes</code></h3>
+<p><strong>Type</strong>: SpecMap</p>
+<p>Forces the type of <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-node/"><code>Node</code></a>, building concrete types through
+the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.
+If left unspecified, nodes get created through
+<a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-node.html"><code>Incarnation.createNode</code></a>.</p>
+<h4 id="examples-4">Examples</h4>
+<ul>
+<li>Creation of heterogeneous pedestrians
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">environment</span>:
+  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+
+<span style="color:#ff6ac1">seeds</span>:
+  <span style="color:#ff6ac1">scenario</span>: <span style="color:#ff9f43">0</span>
+  <span style="color:#ff6ac1">simulation</span>: <span style="color:#ff9f43">1</span>
+
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Circle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
+    <span style="color:#ff6ac1">nodes</span>:
+      <span style="color:#ff6ac1">type</span>: HeterogeneousPedestrian2D
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;elderly&#34;</span>, <span style="color:#5af78e">&#34;female&#34;</span>]
+  - <span style="color:#ff6ac1">type</span>: Circle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
+    <span style="color:#ff6ac1">nodes</span>:
+      <span style="color:#ff6ac1">type</span>: HeterogeneousPedestrian2D
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;child&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]</code></pre></div></div>
+    </div></li>
+</ul>
+<h3 id="deploymentprograms"><code>deployment.programs</code></h3>
+<p><strong>Type</strong>: Traversable of <a href="#program"><code>program</code></a></p>
+<hr>
+<h3 id="content"><code>content</code></h3>
+<p><strong>Type</strong>: SpecMap</p>
+<p>Definition of the contents (<a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a>s and <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-concentration/"><code>Concentration</code></a>s) of a group of nodes.</p>
+<p><strong>(Multi)Spec</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mandatory keys</th>
+<th>Optional keys</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>molecule</code>, <code>concentration</code></td>
+<td><code>in</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="examples-5">Examples</h4>
+<ul>
+<li>Three molecules injected into all nodes deployed in the scenario
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">network-model</span>:
+  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance
+  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">7</span>]
+
+<span style="color:#ff6ac1">_gradient</span>: <span style="color:#78787e">&amp;gradient</span>
+  - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
+    <span style="color:#ff6ac1">type</span>: Event
+    <span style="color:#ff6ac1">actions</span>:
+      - <span style="color:#ff6ac1">type</span>: RunProtelisProgram
+        <span style="color:#ff6ac1">parameters</span>: [distanceTo, 1.01]
+  - <span style="color:#ff6ac1">program</span>: send
+
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Point
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>,<span style="color:#ff9f43">0</span>]
+    <span style="color:#ff6ac1">contents</span>:
+      - <span style="color:#ff6ac1">molecule</span>: source
+        <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff6ac1">false</span>
+      - <span style="color:#ff6ac1">molecule</span>: enabled
+        <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff6ac1">true</span>
+      - <span style="color:#ff6ac1">molecule</span>: data
+        <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff9f43">1</span> / 0
+    <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*gradient</span>
+</code></pre></div></div>
+    </div></li>
+<li>Injection of a molecule only in those nodes located inside a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.shapes/-rectangle/"><code>Rectangle</code></a>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
+<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
+<span style="color:#ff6ac1">deployments</span>:
+  <span style="color:#ff6ac1">type</span>: Grid
+  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.1</span>, <span style="color:#ff9f43">0.1</span>] <span style="color:#78787e"># A perturbed grid of devices</span>
+  <span style="color:#ff6ac1">contents</span>:
+    - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;{hit, 0}&#34;</span> <span style="color:#78787e"># Everywhere, no one has been hit</span>
+    - <span style="color:#ff6ac1">in</span>: { <span style="color:#ff6ac1">type: Rectangle, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, -<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>] } <span style="color:#78787e"># Inside this shape...</span>
+      <span style="color:#ff6ac1">molecule</span>: ball <span style="color:#78787e"># ...every node has a ball</span>
+  <span style="color:#ff6ac1">programs</span>:
+    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span> <span style="color:#78787e"># This is a frequency, time distribution type is left to the incarnation</span>
+      <span style="color:#78787e"># &#39;program&#39; specs are passed down to the incarnation for being interpreted as reactions</span>
+      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{ball} {hit, N} --&gt; {hit, N + 1} {launching}&#34;</span> <span style="color:#78787e"># If hit, count the hit</span>
+    - <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{launching} --&gt; +{ball}&#34;</span> <span style="color:#78787e"># As soon as possible, throw the ball to a neighbor</span>
+</code></pre></div></div>
+    </div></li>
+</ul>
+<h3 id="contentmolecule"><code>content.molecule</code></h3>
+<p><strong>Type</strong>: String or SpecMap</p>
+<p>The name of the molecule to be injected.
+If a String is provided, then it is created via <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-molecule.html"><code>Incarnation.createMolecule</code></a>.
+Otherwise, the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a> <strong>SHOULD</strong> be used.</p>
+<h3 id="content-1"><code>content</code></h3>
+<p><strong>Type</strong>: String</p>
+<p>The concentration of the molecule to be injected.
+If a String is provided, then it is created via <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-concentration.html"><code>Incarnation.createConcentration</code></a>.
+Otherwise, the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a> <strong>SHOULD</strong> be used.</p>
+<h3 id="contentin"><code>content.in</code></h3>
+<p><strong>Type</strong>: Traversable of Shape</p>
+<hr>
+<h3 id="environment"><code>environment</code></h3>
+<p><strong>Type</strong>: SpecMap</p>
+<p>Builds an <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-environment/"><code>Environment</code></a>
+using the same syntax of <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.</p>
+<p>If left unspecified, defaults to a bidimensional Euclidean manifold:
+<a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a>.</p>
+<p><strong>Type</strong>: SpecMap</p>
+<h4 id="examples-6">Examples</h4>
+<ul>
+<li>Default environment, omitted specification
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+</code></pre></div></div>
+    </div></li>
+<li>Explicitly builds a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a> solely with the contextual parameters
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+<span style="color:#ff6ac1">environment</span>:
+  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+</code></pre></div></div>
+    </div></li>
+<li>Explicitly builds a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a> using the qualified type name using only the contextual parameters
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+<span style="color:#ff6ac1">environment</span>:
+  <span style="color:#ff6ac1">type</span>: it.unibo.alchemist.model.implementations.environments.Continuous2DEnvironment
+</code></pre></div></div>
+    </div></li>
+<li>Explicitly builds a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a> explicitly specifying that no parameters but the contextual ones should be used
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+<span style="color:#ff6ac1">environment</span>:
+  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+  <span style="color:#ff6ac1">parameters</span>: []
+</code></pre></div></div>
+    </div></li>
+</ul>
+<hr>
+<h3 id="export"><code>export</code></h3>
+<p><strong>Type</strong>: Traversable of <a href="#exporter"><code>exporter</code></a></p>
+<hr>
+<h3 id="exporter"><code>exporter</code></h3>
+<p><strong>Type</strong>: SpecMap</p>
+<p>Definition of the contents (<a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a>s and <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-concentration/"><code>Concentration</code></a>s) of a group of nodes.</p>
+<p><strong>(Multi)Spec</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mandatory keys</th>
+<th>Optional keys</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code>, <code>data</code></td>
+<td><code>parameters</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="exportertype"><code>exporter.type</code></h3>
+<p>Same as <a href="#type">type</a></p>
+<h3 id="exporterdata"><code>exporter.data</code></h3>
+<p><strong>Type</strong>: Traversable of <a href="#extractor"><code>extractor</code></a></p>
+<h3 id="exporterparameters"><code>exporter.parameters</code></h3>
+<p>Same as <a href="#parameters">parameters</a></p>
+<hr>
+<h3 id="extractor"><code>extractor</code></h3>
+<p><strong>Type</strong>: String or SpecMap</p>
+<p>The only supported String is <code>&quot;time&quot;</code>.
+Otherwise, a SpecMap <strong>MUST</strong> be provided.</p>
+<p><strong>(Multi)Spec</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mandatory keys</th>
+<th>Optional keys</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>parameters</code></td>
+</tr>
+<tr>
+<td><code>molecule</code></td>
+<td><code>property</code>, <code>aggregators</code>, <code>value-filter</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="extractortype"><code>extractor.type</code></h3>
+<p>Same as <a href="#type">type</a></p>
+<h3 id="extractorparameters"><code>extractor.parameters</code></h3>
+<p>Same as <a href="#parameters">parameters</a></p>
+<h3 id="extractormolecule"><code>extractor.molecule</code></h3>
+<p><strong>Type</strong>: String</p>
+<p>Name of a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a> to be read from nodes and exported.
+The String is passed down to <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-molecule.html"><code>Incarnation.createMolecule</code></a>.
+The created molecule is read from every node.</p>
+<h3 id="extractorproperty"><code>extractor.property</code></h3>
+<p><strong>Type</strong>: String</p>
+<p>Name of a property to be extracted from the selected <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a>.
+The Molecule and the String are passed down to <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/get-property.html"><code>Incarnation.getProperty</code></a>.
+The obtained value is added to the exports.</p>
+<h3 id="extractoraggregators"><code>extractor.aggregators</code></h3>
+<p><strong>Type</strong>: String or List of Strings</p>
+<p>Name of any valid
+<a href="https://commons.apache.org/proper/commons-math/javadocs/api-3.6/org/apache/commons/math3/stat/descriptive/UnivariateStatistic.html">`UnivariateStatistic</a>,
+case insensitive.
+All those provided with Apache Commons Math are available by default.
+New statistics can be defined,
+they get loaded transparently as far as their package matches the one of Apache Commons Math.</p>
+<p>If the aggregators are specified, only one value per aggregator gets exported,
+instead of one value for each node.</p>
+<h3 id="extractorvalue-filter"><code>extractor.value-filter</code></h3>
+<p><strong>Type</strong>: String or SpecMap</p>
+<p>Builds a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.export/-filtering-policy/"><code>FilteringPolicy</code></a>,
+to be applied to raw data before being processed by the <code>aggregators</code>(#extractoraggregators),
+if present.
+If a String is provided, then it is used to load a policy from <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.export.filters/-common-filters/"><code>CommonFilters</code></a>.
+Otherwise, the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a> <strong>MUST</strong> be used.</p>
+<table>
+<thead>
+<tr>
+<th>Mandatory keys</th>
+<th>Optional keys</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>parameters</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="extractorvalue-filtertype"><code>extractor.value-filter.type</code></h3>
+<p>Same as <a href="#type">type</a></p>
+<h3 id="extractorvalue-filterparameters"><code>extractor.value-filter.parameters</code></h3>
+<p>Same as <a href="#parameters">parameters</a></p>
+<hr>
+<h3 id="layer"><code>layer</code></h3>
+<p><strong>Type</strong>: SpecMap</p>
+<p>Builds a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-layer/"><code>Layer</code></a>
+using the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.</p>
+<h4 id="examples-7">Examples</h4>
+<ul>
+<li>Creation of two <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-layer/"><code>Layer</code></a>s
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
+
+<span style="color:#ff6ac1">environment</span>:
+  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+  <span style="color:#ff6ac1">parameters</span>: []
+
+<span style="color:#ff6ac1">layers</span>:
+  - <span style="color:#ff6ac1">type</span>: StepLayer
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">0</span>]
+    <span style="color:#ff6ac1">molecule</span>: A
+  - <span style="color:#ff6ac1">type</span>: StepLayer
+    <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">2</span>, -<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">100</span>]
+    <span style="color:#ff6ac1">molecule</span>: B
+</code></pre></div></div>
+    </div></li>
+<li>Creation of two <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.layers/-bidimensional-gaussian-layer/"><code>BidimensionalGaussianLayer</code></a>s:
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">variables</span>:
+  <span style="color:#ff6ac1">danger</span>: <span style="color:#78787e">&amp;danger</span>
+    <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;\&#34;danger\&#34;&#34;</span>
+  <span style="color:#ff6ac1">target</span>: <span style="color:#78787e">&amp;target</span>
+    <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;\&#34;target\&#34;&#34;</span>
+
+<span style="color:#ff6ac1">environment</span>:
+  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+
+<span style="color:#ff6ac1">layers</span>:
+  - <span style="color:#ff6ac1">type</span>: BidimensionalGaussianLayer
+    <span style="color:#ff6ac1">molecule</span>: <span style="color:#78787e">*danger</span>
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">80</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">20</span>]
+  - <span style="color:#ff6ac1">type</span>: BidimensionalGaussianLayer
+    <span style="color:#ff6ac1">molecule</span>: <span style="color:#78787e">*target</span>
+    <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">50</span>]
+
+<span style="color:#ff6ac1">seeds</span>:
+  <span style="color:#ff6ac1">scenario</span>: <span style="color:#ff9f43">0</span>
+  <span style="color:#ff6ac1">simulation</span>: <span style="color:#ff9f43">1</span>
+
+<span style="color:#ff6ac1">_reactions</span>: <span style="color:#78787e">&amp;behavior</span>
+  - <span style="color:#ff6ac1">time-distribution</span>:
+      <span style="color:#ff6ac1">type</span>: DiracComb
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2.0</span>]
+    <span style="color:#ff6ac1">type</span>: BlendedSteering
+    <span style="color:#ff6ac1">actions</span>:
+      - <span style="color:#ff6ac1">type</span>: CognitiveAgentAvoidLayer
+        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*danger]</span>
+      - <span style="color:#ff6ac1">type</span>: CognitiveAgentFollowLayer
+        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*target]</span>
+    <span style="color:#ff6ac1">conditions</span>:
+      - <span style="color:#ff6ac1">type</span>: WantToEscape
+  - <span style="color:#ff6ac1">time-distribution</span>:
+      <span style="color:#ff6ac1">type</span>: DiracComb
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>]
+    <span style="color:#ff6ac1">type</span>: CognitiveBehavior
+    <span style="color:#ff6ac1">actions</span>:
+      - <span style="color:#ff6ac1">type</span>: HeadTowardRandomDirection
+
+<span style="color:#ff6ac1">_nodes</span>: <span style="color:#78787e">&amp;nodes</span>
+  <span style="color:#ff6ac1">nodes</span>:
+    <span style="color:#ff6ac1">type</span>: CognitivePedestrian2D
+    <span style="color:#ff6ac1">parameters</span>:
+      <span style="color:#ff6ac1">age</span>: <span style="color:#5af78e">&#34;adult&#34;</span>
+      <span style="color:#ff6ac1">gender</span>: <span style="color:#5af78e">&#34;male&#34;</span>
+      <span style="color:#ff6ac1">danger</span>: <span style="color:#78787e">*danger</span>
+  <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*behavior</span>
+
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Circle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">25</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">8</span>]
+    <span style="color:#ff6ac1">&lt;&lt;</span>: <span style="color:#78787e">*nodes</span>
+  - <span style="color:#ff6ac1">type</span>: Circle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">75</span>, <span style="color:#ff9f43">60</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>]
+    <span style="color:#ff6ac1">&lt;&lt;</span>: <span style="color:#78787e">*nodes</span>
+</code></pre></div></div>
+    </div></li>
+</ul>
+<hr>
+<h3 id="layers"><code>layers</code></h3>
+<p><strong>Type</strong>: Traversable of <a href="#layer"><code>layer</code></a></p>
+<h4 id="examples-8">Examples</h4>
+<ul>
+<li>Creation of two <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-layer/"><code>Layer</code></a>s
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
+
+<span style="color:#ff6ac1">environment</span>:
+  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+  <span style="color:#ff6ac1">parameters</span>: []
+
+<span style="color:#ff6ac1">layers</span>:
+  - <span style="color:#ff6ac1">type</span>: StepLayer
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">0</span>]
+    <span style="color:#ff6ac1">molecule</span>: A
+  - <span style="color:#ff6ac1">type</span>: StepLayer
+    <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">2</span>, -<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">100</span>]
+    <span style="color:#ff6ac1">molecule</span>: B
+</code></pre></div></div>
+    </div></li>
+<li>Creation of two <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.layers/-bidimensional-gaussian-layer/"><code>BidimensionalGaussianLayer</code></a>s:
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">variables</span>:
+  <span style="color:#ff6ac1">danger</span>: <span style="color:#78787e">&amp;danger</span>
+    <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;\&#34;danger\&#34;&#34;</span>
+  <span style="color:#ff6ac1">target</span>: <span style="color:#78787e">&amp;target</span>
+    <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;\&#34;target\&#34;&#34;</span>
+
+<span style="color:#ff6ac1">environment</span>:
+  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+
+<span style="color:#ff6ac1">layers</span>:
+  - <span style="color:#ff6ac1">type</span>: BidimensionalGaussianLayer
+    <span style="color:#ff6ac1">molecule</span>: <span style="color:#78787e">*danger</span>
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">80</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">20</span>]
+  - <span style="color:#ff6ac1">type</span>: BidimensionalGaussianLayer
+    <span style="color:#ff6ac1">molecule</span>: <span style="color:#78787e">*target</span>
+    <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">50</span>]
+
+<span style="color:#ff6ac1">seeds</span>:
+  <span style="color:#ff6ac1">scenario</span>: <span style="color:#ff9f43">0</span>
+  <span style="color:#ff6ac1">simulation</span>: <span style="color:#ff9f43">1</span>
+
+<span style="color:#ff6ac1">_reactions</span>: <span style="color:#78787e">&amp;behavior</span>
+  - <span style="color:#ff6ac1">time-distribution</span>:
+      <span style="color:#ff6ac1">type</span>: DiracComb
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2.0</span>]
+    <span style="color:#ff6ac1">type</span>: BlendedSteering
+    <span style="color:#ff6ac1">actions</span>:
+      - <span style="color:#ff6ac1">type</span>: CognitiveAgentAvoidLayer
+        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*danger]</span>
+      - <span style="color:#ff6ac1">type</span>: CognitiveAgentFollowLayer
+        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*target]</span>
+    <span style="color:#ff6ac1">conditions</span>:
+      - <span style="color:#ff6ac1">type</span>: WantToEscape
+  - <span style="color:#ff6ac1">time-distribution</span>:
+      <span style="color:#ff6ac1">type</span>: DiracComb
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>]
+    <span style="color:#ff6ac1">type</span>: CognitiveBehavior
+    <span style="color:#ff6ac1">actions</span>:
+      - <span style="color:#ff6ac1">type</span>: HeadTowardRandomDirection
+
+<span style="color:#ff6ac1">_nodes</span>: <span style="color:#78787e">&amp;nodes</span>
+  <span style="color:#ff6ac1">nodes</span>:
+    <span style="color:#ff6ac1">type</span>: CognitivePedestrian2D
+    <span style="color:#ff6ac1">parameters</span>:
+      <span style="color:#ff6ac1">age</span>: <span style="color:#5af78e">&#34;adult&#34;</span>
+      <span style="color:#ff6ac1">gender</span>: <span style="color:#5af78e">&#34;male&#34;</span>
+      <span style="color:#ff6ac1">danger</span>: <span style="color:#78787e">*danger</span>
+  <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*behavior</span>
+
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Circle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">25</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">8</span>]
+    <span style="color:#ff6ac1">&lt;&lt;</span>: <span style="color:#78787e">*nodes</span>
+  - <span style="color:#ff6ac1">type</span>: Circle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">75</span>, <span style="color:#ff9f43">60</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>]
+    <span style="color:#ff6ac1">&lt;&lt;</span>: <span style="color:#78787e">*nodes</span>
+</code></pre></div></div>
+    </div></li>
+</ul>
+<hr>
+<h3 id="network-model"><code>network-model</code></h3>
+<p><strong>Type</strong>: SpecMap</p>
+<p>Builds a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-linking-rule/"><code>LinkingRule</code></a>
+using the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.
+If unspecified, defaults to <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.linkingrules/-no-links/"><code>NoLinks</code></a>,
+and no nodes will have any neighbor.</p>
+<h4 id="examples-9">Examples</h4>
+<ul>
+<li>Nodes connected when closer than some range
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere <span style="color:#78787e"># The incarnation is always mandatory</span>
+<span style="color:#ff6ac1">network-model</span>:
+  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance <span style="color:#78787e"># Loads a class with this name implementing LinkingRule</span>
+  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>] <span style="color:#78787e"># Connection radius (parameter of a ConnectWithinDistance&#39;s constructor)</span>
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Point <span style="color:#78787e"># Loads a class with this name implementing Deployment</span>
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>] <span style="color:#78787e"># Coordinates</span>
+  - { <span style="color:#ff6ac1">type: Point, parameters</span>: [<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
+  - { <span style="color:#ff6ac1">type: Point, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
+</code></pre></div></div>
+    </div></li>
+</ul>
+<hr>
+<h3 id="program"><code>program</code></h3>
+<p><strong>Type</strong>: SpecMap</p>
+<p>Definition of the contents (<a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a>s and <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-concentration/"><code>Concentration</code></a>s) of a group of nodes.</p>
+<p><strong>(Multi)Spec</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mandatory keys</th>
+<th>Optional keys</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>parameters</code>, <code>conditions</code>, <code>time-distribution</code> <code>actions</code></td>
+</tr>
+<tr>
+<td><code>program</code></td>
+<td><code>time-distribution</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="programtype"><code>program.type</code></h3>
+<p>Same as <a href="#type">type</a></p>
+<h3 id="programprogram"><code>program.program</code></h3>
+<p><strong>Type</strong>: String</p>
+<p>Passed to <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-reaction.html"><code>Incarnation.createReaction</code></a> to be interepreted and</p>
+<h3 id="programactions"><code>program.actions</code></h3>
+<p><strong>Type</strong>: Traversable of <a href="#action"><code>action</code></a></p>
+<h3 id="programconditions"><code>program.conditions</code></h3>
+<p><strong>Type</strong>: Traversable of <a href="#condition"><code>condition</code></a></p>
+<h3 id="programparameters"><code>program.parameters</code></h3>
+<p>Same as <a href="#parameters">parameters</a></p>
+<h3 id="programtime-distribution"><code>program.time-distribution</code></h3>
+<p><strong>Type</strong>: String or SpecMap</p>
+<p>Builds a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-time-distribution/"><code>TimeDistribution</code></a>.
+If a String is provided, then it is created via <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-time-distribution.html"><code>Incarnation.createTimeDistribution</code></a>.
+Otherwise, the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a> <strong>SHOULD</strong> be used.</p>
+<hr>
+<h3 id="remote-dependencies"><code>remote-dependencies</code></h3>
+<hr>
+<h3 id="shape"><code>shape</code></h3>
+<p><strong>Type</strong>: SpecMap</p>
+<p>Builds a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.shapes/-shape/"><code>Shape</code></a>
+using the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.</p>
+<h4 id="examples-10">Examples</h4>
+<ul>
+<li>Injection of a molecule only in those nodes located inside a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.shapes/-rectangle/"><code>Rectangle</code></a>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
+<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
+<span style="color:#ff6ac1">deployments</span>:
+  <span style="color:#ff6ac1">type</span>: Grid
+  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.1</span>, <span style="color:#ff9f43">0.1</span>] <span style="color:#78787e"># A perturbed grid of devices</span>
+  <span style="color:#ff6ac1">contents</span>:
+    - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;{hit, 0}&#34;</span> <span style="color:#78787e"># Everywhere, no one has been hit</span>
+    - <span style="color:#ff6ac1">in</span>: { <span style="color:#ff6ac1">type: Rectangle, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, -<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>] } <span style="color:#78787e"># Inside this shape...</span>
+      <span style="color:#ff6ac1">molecule</span>: ball <span style="color:#78787e"># ...every node has a ball</span>
+  <span style="color:#ff6ac1">programs</span>:
+    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span> <span style="color:#78787e"># This is a frequency, time distribution type is left to the incarnation</span>
+      <span style="color:#78787e"># &#39;program&#39; specs are passed down to the incarnation for being interpreted as reactions</span>
+      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{ball} {hit, N} --&gt; {hit, N + 1} {launching}&#34;</span> <span style="color:#78787e"># If hit, count the hit</span>
+    - <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{launching} --&gt; +{ball}&#34;</span> <span style="color:#78787e"># As soon as possible, throw the ball to a neighbor</span>
+</code></pre></div></div>
+    </div></li>
+</ul>
+<hr>
+<h3 id="seeds"><code>seeds</code></h3>
+<p><strong>Type</strong>: SpecMap</p>
+<p>Selection of the seed for the
+<a href="https://commons.apache.org/proper/commons-math/javadocs/api-3.4/org/apache/commons/math3/random/RandomGenerator.html"><code>RandomGenerator</code></a>s.</p>
+<p><strong>(Multi)Spec</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mandatory keys</th>
+<th>Optional keys</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><code>scenario</code>, <code>simulation</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="seedsscenario"><code>seeds.scenario</code></h3>
+<p><strong>Type</strong>: Int</p>
+<p>Selection of the seed for the
+<a href="https://commons.apache.org/proper/commons-math/javadocs/api-3.4/org/apache/commons/math3/random/RandomGenerator.html"><code>RandomGenerator</code></a>
+controlling the position of random displacements.</p>
+<h3 id="seedssimulation"><code>seeds.simulation</code></h3>
+<p><strong>Type</strong>: Int</p>
+<p>Selection of the seed for the
+<a href="https://commons.apache.org/proper/commons-math/javadocs/api-3.4/org/apache/commons/math3/random/RandomGenerator.html"><code>RandomGenerator</code></a>
+controlling the evolution of the events of the simulation.</p>
+<hr>
+<h3 id="terminate"><code>terminate</code></h3>
+<p><strong>Type</strong>: Traversable of <a href="#terminator"><code>terminator</code></a></p>
+<hr>
+<h3 id="terminator"><code>terminator</code></h3>
+<p><strong>Type</strong>: SpecMap</p>
+<p>Builds a <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/function/Predicate.html"><code>Predicate</code></a>
+using the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.</p>
+<h4 id="examples-11">Examples</h4>
+<ul>
+<li>Termination after some time
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">network-model</span>:
+  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance
+  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">30</span>]
+
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Rectangle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
+    <span style="color:#ff6ac1">contents</span>:
+      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;source&#34;</span>
+        <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff6ac1">true</span>
+        <span style="color:#ff6ac1">in</span>:
+          <span style="color:#ff6ac1">type</span>: Circle
+          <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">107.96487911806524</span>, <span style="color:#ff9f43">102.49167432603535</span>, <span style="color:#ff9f43">10</span>]
+    <span style="color:#ff6ac1">programs</span>:
+      - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span> <span style="color:#78787e"># This is a frequency</span>
+        <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
+</span><span style="color:#5af78e">           import protelis:coord:spreading
+</span><span style="color:#5af78e">           distanceTo(self.getDeviceUID().getId() == 0)</span>           
+      - <span style="color:#ff6ac1">program</span>: send
+
+<span style="color:#ff6ac1">terminate</span>:
+  - <span style="color:#ff6ac1">type</span>: AfterTime
+    <span style="color:#ff6ac1">parameters</span>: <span style="color:#ff9f43">1</span>
+</code></pre></div></div>
+    </div>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+<span style="color:#ff6ac1">variables</span>:
+  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
+    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span>
+  <span style="color:#ff6ac1">image_name</span>: { <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;&#39;chiaravalle.png&#39;&#34;</span> }
+  <span style="color:#ff6ac1">image_path</span>: <span style="color:#78787e">&amp;image_path</span>
+    <span style="color:#ff6ac1">language</span>: kotlin
+    <span style="color:#ff6ac1">formula</span>: &gt;<span style="color:#5af78e">
+</span><span style="color:#5af78e">      import java.io.File
+</span><span style="color:#5af78e">      File(&#34;../..&#34;).walkTopDown().find { image_name in it.name }?.absolutePath ?: image_name</span>      
+  <span style="color:#ff6ac1">walking_speed</span>: <span style="color:#78787e">&amp;walk-speed</span> { <span style="color:#ff6ac1">default: 1.4, min: 1, max: 2, step</span>: <span style="color:#ff9f43">0.1</span> }
+  <span style="color:#ff6ac1">seed</span>: <span style="color:#78787e">&amp;seed</span> { <span style="color:#ff6ac1">default: 0, min: 0, max: 99, step</span>: <span style="color:#ff9f43">1</span> }
+  <span style="color:#ff6ac1">scenario_seed</span>: <span style="color:#78787e">&amp;scenario_seed</span> { <span style="color:#ff6ac1">formula</span>: (seed + 31) * seed }
+  <span style="color:#ff6ac1">people_count</span>: <span style="color:#78787e">&amp;people_count</span>
+    <span style="color:#ff6ac1">type</span>: GeometricVariable
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">500</span>, <span style="color:#ff9f43">9</span>]
+<span style="color:#ff6ac1">seeds</span>: { <span style="color:#ff6ac1">simulation: *seed, scenario</span>: <span style="color:#78787e">*scenario_seed}</span>
+<span style="color:#ff6ac1">export</span>:
+  - <span style="color:#ff6ac1">type</span>: CSVExporter
+    <span style="color:#ff6ac1">parameters</span>:
+      <span style="color:#ff6ac1">fileNameRoot</span>: <span style="color:#5af78e">&#34;00-testing_csv_export&#34;</span>
+    <span style="color:#ff6ac1">data</span>:
+      - time
+      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
+        <span style="color:#ff6ac1">aggregators</span>: [ mean, max, min, variance, median ]
+        <span style="color:#ff6ac1">value-filter</span>: onlyfinite
+<span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type: ImageEnvironment, parameters</span>: [<span style="color:#78787e">*image_path,</span> <span style="color:#78787e">*zoom]</span> }
+<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ObstaclesBreakConnection, parameters</span>: [<span style="color:#ff9f43">50</span>] }
+<span style="color:#ff6ac1">deployments</span>:
+  <span style="color:#ff6ac1">type</span>: Rectangle
+  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*people_count,</span> <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
+  <span style="color:#ff6ac1">programs</span>:
+    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
+      <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
+</span><span style="color:#5af78e">        import protelis:coord:spreading
+</span><span style="color:#5af78e">        let source = [110, 325]
+</span><span style="color:#5af78e">        let vector = self.getCoordinates() - source
+</span><span style="color:#5af78e">        let distance = hypot(vector.get(0), vector.get(1))
+</span><span style="color:#5af78e">        distanceTo(distance &lt; 50)</span>        
+    - <span style="color:#ff6ac1">program</span>: send
+    - { <span style="color:#ff6ac1">type: Event, time-distribution: 1, actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
+
+<span style="color:#ff6ac1">terminate</span>:
+  - <span style="color:#ff6ac1">type</span>: AfterTime
+    <span style="color:#ff6ac1">parameters</span>: <span style="color:#ff9f43">10</span></code></pre></div></div>
+    </div>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+<span style="color:#ff6ac1">variables</span>:
+  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
+    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span>
+  <span style="color:#ff6ac1">image_name</span>: { <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;&#39;chiaravalle.png&#39;&#34;</span> }
+  <span style="color:#ff6ac1">image_path</span>: <span style="color:#78787e">&amp;image_path</span>
+    <span style="color:#ff6ac1">language</span>: kotlin
+    <span style="color:#ff6ac1">formula</span>: &gt;<span style="color:#5af78e">
+</span><span style="color:#5af78e">      import java.io.File
+</span><span style="color:#5af78e">      File(&#34;../..&#34;).walkTopDown().find { image_name in it.name }?.absolutePath ?: image_name</span>      
+  <span style="color:#ff6ac1">walking_speed</span>: <span style="color:#78787e">&amp;walk-speed</span> { <span style="color:#ff6ac1">default: 1.4, min: 1, max: 2, step</span>: <span style="color:#ff9f43">0.1</span> }
+  <span style="color:#ff6ac1">seed</span>: <span style="color:#78787e">&amp;seed</span> { <span style="color:#ff6ac1">default: 0, min: 0, max: 99, step</span>: <span style="color:#ff9f43">1</span> }
+  <span style="color:#ff6ac1">scenario_seed</span>: <span style="color:#78787e">&amp;scenario_seed</span> { <span style="color:#ff6ac1">formula</span>: (seed + 31) * seed }
+  <span style="color:#ff6ac1">people_count</span>: <span style="color:#78787e">&amp;people_count</span>
+    <span style="color:#ff6ac1">type</span>: GeometricVariable
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">500</span>, <span style="color:#ff9f43">9</span>]
+<span style="color:#ff6ac1">seeds</span>: { <span style="color:#ff6ac1">simulation: *seed, scenario</span>: <span style="color:#78787e">*scenario_seed}</span>
+<span style="color:#ff6ac1">export</span>:
+  - <span style="color:#ff6ac1">type</span>: MongoDBExporter
+    <span style="color:#ff6ac1">parameters</span>:
+      <span style="color:#ff6ac1">uri</span>: <span style="color:#5af78e">&#34;mongodb://localhost:27017/&#34;</span>
+      <span style="color:#ff6ac1">dbName</span>: <span style="color:#5af78e">&#34;test&#34;</span>
+      <span style="color:#ff6ac1">interval</span>: <span style="color:#ff9f43">2.0</span>
+    <span style="color:#ff6ac1">data</span>:
+      - time
+      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
+        <span style="color:#ff6ac1">aggregators</span>: [ mean, max, min, variance, median ]
+        <span style="color:#ff6ac1">value-filter</span>: onlyfinite
+<span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type: ImageEnvironment, parameters</span>: [<span style="color:#78787e">*image_path,</span> <span style="color:#78787e">*zoom]</span> }
+<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ObstaclesBreakConnection, parameters</span>: [<span style="color:#ff9f43">50</span>] }
+<span style="color:#ff6ac1">deployments</span>:
+  <span style="color:#ff6ac1">type</span>: Rectangle
+  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*people_count,</span> <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
+  <span style="color:#ff6ac1">programs</span>:
+    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
+      <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
+</span><span style="color:#5af78e">        import protelis:coord:spreading
+</span><span style="color:#5af78e">        let source = [110, 325]
+</span><span style="color:#5af78e">        let vector = self.getCoordinates() - source
+</span><span style="color:#5af78e">        let distance = hypot(vector.get(0), vector.get(1))
+</span><span style="color:#5af78e">        distanceTo(distance &lt; 50)</span>        
+    - <span style="color:#ff6ac1">program</span>: send
+    - { <span style="color:#ff6ac1">type: Event, time-distribution: 1, actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
+
+<span style="color:#ff6ac1">terminate</span>:
+  - <span style="color:#ff6ac1">type</span>: AfterTime
+    <span style="color:#ff6ac1">parameters</span>: <span style="color:#ff9f43">3</span>
+</code></pre></div></div>
+    </div></li>
+</ul>
+<h3 id="variable"><code>variable</code></h3>
+<p><strong>Type</strong>: SpecMap</p>
+<p>Definition of <a href="../../howtos/simulation/variables/#free-variables">free</a>
+and <a href="../../howtos/simulation/variables/#dependent-variables">dependent</a> variables.</p>
+<p><strong>(Multi)Spec</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mandatory keys</th>
+<th>Optional keys</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>parameters</code></td>
+</tr>
+<tr>
+<td><code>min</code>, <code>max</code>, <code>step</code>, <code>default</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>formula</code></td>
+<td><code>language</code>, <code>timeout</code></td>
+</tr>
+</tbody>
+</table>
+<p>Variables can be created in three ways:</p>
+<ul>
+<li>Using the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>
+to produce an instance of <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.variables/-variable/"><code>Variable</code></a> or
+<a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.variables/-dependent-variable/"><code>DependentVariable</code></a>;</li>
+<li>specifying the parameters of a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.variables/-linear-variable/"><code>LinearVariable</code></a>
+(minimum and maximum values, incrementation step, and default value);</li>
+<li>writing an expression that can be interpreted by some JSR-223-compatible language whose interpreter is in the
+classpath, possibly specifying a timeout. Produces a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.variables/-dependent-variable/"><code>DependentVariable</code></a>.</li>
+</ul>
+<h3 id="variabletype"><code>variable.type</code></h3>
+<p>Same as <a href="#type">type</a></p>
+<h3 id="variableparameters"><code>variable.parameters</code></h3>
+<p>Same as <a href="#parameters">parameters</a></p>
+<h3 id="variabledefault"><code>variable.default</code></h3>
+<p><strong>Type</strong>: Number</p>
+<p>Default value for a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.variables/-linear-variable/"><code>LinearVariable</code></a>,
+to be selected if the variable is not among those generating the batch.</p>
+<h3 id="variablemax"><code>variable.max</code></h3>
+<p><strong>Type</strong>: Number</p>
+<p>Maximum value for a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.variables/-linear-variable/"><code>LinearVariable</code></a></p>
+<h3 id="variablemin"><code>variable.min</code></h3>
+<p><strong>Type</strong>: Number</p>
+<p>Minimum value for a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.variables/-linear-variable/"><code>LinearVariable</code></a></p>
+<h3 id="variablestep"><code>variable.step</code></h3>
+<p><strong>Type</strong>: Number</p>
+<p>Size of the incremental step of a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.variables/-linear-variable/"><code>LinearVariable</code></a></p>
+<h3 id="variableformula"><code>variable.formula</code></h3>
+<p><strong>Type</strong>: String</p>
+<p>Code that can be interpreted by a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.variables/-j-s-r223-variable/"><code>JSR223Variable</code></a>.</p>
+<h3 id="variablelanguage"><code>variable.language</code></h3>
+<p><strong>Type</strong>: String</p>
+<p>Language to be used by a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.variables/-j-s-r223-variable/"><code>JSR223Variable</code></a>.
+The language must be available in the classpath.
+Groovy (default), Kotlin (<code>kotlin</code> or <code>kts</code>), and Scala (<code>scala</code>) are supported natively.</p>
+<h3 id="variabletimeout"><code>variable.timeout</code></h3>
+<p><strong>Type</strong>: Int</p>
+<p>Time in milliseconds after which the interpreter of the
+<a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.variables/-j-s-r223-variable/"><code>JSR223Variable</code></a>
+is considered stuck or in livelock.
+The interpreter gets interrupted and the simulation loading fails to prevent unresponsive simulations.
+Defaults to 1000ms.</p>
+<hr>
+<h3 id="variables"><code>variables</code></h3>
+<p><strong>Type</strong>: Traversable of <a href="#layer"><code>variable</code></a></p>
+<hr>
+
+          <footer class=" footline">
+          </footer>
+        </main>
+      </div>
+      <div id="navigation">
+        <a class="nav nav-prev" href="../../reference/" title="Reference"><i class="fa fa-chevron-left"></i></a>
+        <a class="nav nav-next" href="../../reference/kdoc/" title="KDoc API"><i class="fa fa-chevron-right"></i></a>
+      </div>
+    </div>
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1643070332"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1643070332"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1643070332"></script>
+    <script src="../../js/jquery.svg.pan.zoom.js?1643070332"></script>
+    <script src="../../js/featherlight.min.js?1643070332"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1643070332"></script>
+    <script src="../../js/mermaid.min.js?1643070332"></script>
+    <script>
+      if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
+        mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
+      }
+    </script>
+    <script src="../../js/relearn.js?1643070332"></script>
+  </body>
+</html>

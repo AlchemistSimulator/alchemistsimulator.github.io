@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.92.0" />
+    <meta name="generator" content="Relearn 2.9.2
+">
+    <link rel="alternate" type="application/rss&#43;xml" href="../../../howtos/simulation/cognitive/index.xml" title="Documentation for the Alchemist Simulator" />
+    <meta name="description" content="The Alchemist Simulator">
+    <meta name="author" content="Danilo Pianini">
+    <link rel="icon" href="../../../images/logo.svg?1643070331" type="image/svg+xml">
+
+    <title>Cognitive Agents :: Documentation for the Alchemist Simulator</title>
+    <link href="../../../css/nucleus.css?1643070331" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1643070331" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1643070331" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1643070331" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1643070331" rel="stylesheet">
+    <link href="../../../css/theme.css?1643070331" rel="stylesheet">
+    <link href="../../../css/theme-relearn.css?1643070331" rel="stylesheet">
+    <link href="../../../css/variant.css?1643070331" rel="stylesheet">
+    <link href="../../../css/print.css?1643070331" rel="stylesheet" media="print">
+    <script src="../../../js/jquery.min.js?1643070331"></script>
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+        display:none !important;
+      }
+    </style>
+  </head>
+  <body class="" data-url="../../../howtos/simulation/cognitive/">
+    <script>
+      var index_url="../../../index.json";
+      var root_url="../../../";
+      var baseUri=root_url.replace(/\/$/, '');
+    </script>
+    <nav id="sidebar" class="showVisitedLinks">
+      <div id="header-wrapper">
+        <div id="header">
+<div style="white-space: nowrap;">
+    <div style="max-width: 100%; display: inline-block; ">
+        <img alt="The Alchemist Logo" src="../../../images/logo.svg"/>
+    </div>
+</div>
+
+        </div>
+        <div class="searchbox">
+          <label for="search-by"><i class="fas fa-search"></i></label>
+          <input data-search-input id="search-by" type="search" placeholder="Search...">
+          <span data-search-clear=""><i class="fas fa-times"></i></span>
+        </div>
+        <script src="../../../js/lunr.min.js?1643070331"></script>
+        <script src="../../../js/auto-complete.js?1643070331"></script>
+        <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
+        <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
+        <script src="../../../js/search.js?1643070331"></script>
+      </div>
+      <div id="homelinks">
+        <ul>
+          <li>
+              <a class="padding" href="../../../"><i class='fas fa-home'></i> Home</a>
+          </li>
+        </ul>
+      </div>
+      <div class="highlightable">
+        <ul class="topics">
+          <li data-nav-id="/tutorials/" title="Tutorials" class="dd-item"><a href="../../../tutorials/"><b>1. </b>Tutorials<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/tutorials/quickstart/" title="Quickstart" class="dd-item alwaysopen"><a href="../../../tutorials/quickstart/">Quickstart<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/tutorials/basics/" title="Step-by-step tutorial" class="dd-item alwaysopen"><a href="../../../tutorials/basics/">Step-by-step tutorial<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/tutorials/protelis/" title="Protelis Incarnation Tutorial" class="dd-item alwaysopen"><a href="../../../tutorials/protelis/">Protelis Incarnation Tutorial<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/tutorials/sapere/" title="SAPERE Incarnation Tutorial" class="dd-item alwaysopen"><a href="../../../tutorials/sapere/">SAPERE Incarnation Tutorial<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/tutorials/scafi/" title="Scafi Incarnation Tutorial" class="dd-item alwaysopen"><a href="../../../tutorials/scafi/">Scafi Incarnation Tutorial<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/" title="How-to Guides" class="dd-item parent"><a href="../../../howtos/"><b>2. </b>How-to Guides<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/preparation/" title="Preparation" class="dd-item alwaysopen"><a href="../../../howtos/preparation/">Preparation<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/preparation/jar/" title="Alchemist stand-alone" class="dd-item alwaysopen"><a href="../../../howtos/preparation/jar/">Alchemist stand-alone<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/preparation/gradle/" title="Alchemist via Gradle" class="dd-item alwaysopen"><a href="../../../howtos/preparation/gradle/">Alchemist via Gradle<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/simulation/" title="Simulation" class="dd-item parent alwaysopen"><a href="../../../howtos/simulation/">Simulation<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/simulation/variables/" title="Create reusable variables" class="dd-item alwaysopen"><a href="../../../howtos/simulation/variables/">Create reusable variables<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/repeatability/" title="Ensure repeatability" class="dd-item alwaysopen"><a href="../../../howtos/simulation/repeatability/">Ensure repeatability<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/cognitive/" title="Cognitive Agents" class="dd-item active parent alwaysopen"><a href="../../../howtos/simulation/cognitive/">Cognitive Agents<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/link/" title="Create a network" class="dd-item alwaysopen"><a href="../../../howtos/simulation/link/">Create a network<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/layers/" title="Create Layers" class="dd-item alwaysopen"><a href="../../../howtos/simulation/layers/">Create Layers<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/environment/" title="Create rich environments" class="dd-item alwaysopen"><a href="../../../howtos/simulation/environment/">Create rich environments<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/simulation/environment/pathfinding/" title="Find paths indoors" class="dd-item alwaysopen"><a href="../../../howtos/simulation/environment/pathfinding/">Find paths indoors<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/environment/maps/" title="Maps and GPS traces" class="dd-item alwaysopen"><a href="../../../howtos/simulation/environment/maps/">Maps and GPS traces<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/environment/indoor/" title="Simulate indoor" class="dd-item alwaysopen"><a href="../../../howtos/simulation/environment/indoor/">Simulate indoor<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/simulation/deploy/" title="Deploy Nodes" class="dd-item alwaysopen"><a href="../../../howtos/simulation/deploy/">Deploy Nodes<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/simulation/deploy/grid/" title="(Irregular) Grids" class="dd-item alwaysopen"><a href="../../../howtos/simulation/deploy/grid/">(Irregular) Grids<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/deploy/shape/" title="Nodes inside shapes" class="dd-item alwaysopen"><a href="../../../howtos/simulation/deploy/shape/">Nodes inside shapes<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/deploy/gps/" title="GPS Traces" class="dd-item alwaysopen"><a href="../../../howtos/simulation/deploy/gps/">GPS Traces<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/deploy/graph/" title="Graphs" class="dd-item alwaysopen"><a href="../../../howtos/simulation/deploy/graph/">Graphs<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/simulation/export/" title="Export data" class="dd-item alwaysopen"><a href="../../../howtos/simulation/export/">Export data<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/program/" title="Program Nodes" class="dd-item alwaysopen"><a href="../../../howtos/simulation/program/">Program Nodes<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/simulation/program/move-on-maps/" title="Move nodes on maps" class="dd-item alwaysopen"><a href="../../../howtos/simulation/program/move-on-maps/">Move nodes on maps<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/program/content/" title="Node contents" class="dd-item alwaysopen"><a href="../../../howtos/simulation/program/content/">Node contents<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/simulation/smartcam/" title="Smart cameras and drones" class="dd-item alwaysopen"><a href="../../../howtos/simulation/smartcam/">Smart cameras and drones<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/execution/" title="Execution" class="dd-item alwaysopen"><a href="../../../howtos/execution/">Execution<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/execution/swing-effects/" title="Customize the Swing GUI" class="dd-item alwaysopen"><a href="../../../howtos/execution/swing-effects/">Customize the Swing GUI<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/execution/termination/" title="Define the termination criteria" class="dd-item alwaysopen"><a href="../../../howtos/execution/termination/">Define the termination criteria<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/workarounds/" title="Workarounds" class="dd-item alwaysopen"><a href="../../../howtos/workarounds/">Workarounds<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/workarounds/swing-glitch/" title="Graphical Glitches in Swing" class="dd-item alwaysopen"><a href="../../../howtos/workarounds/swing-glitch/">Graphical Glitches in Swing<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/workarounds/max-map-count/" title="Memory leaks under Linux" class="dd-item alwaysopen"><a href="../../../howtos/workarounds/max-map-count/">Memory leaks under Linux<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/extensions/" title="Experiment-specific extensions" class="dd-item alwaysopen"><a href="../../../howtos/extensions/">Experiment-specific extensions<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/development/" title="Development" class="dd-item alwaysopen"><a href="../../../howtos/development/">Development<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/reference/" title="Reference" class="dd-item"><a href="../../../reference/"><b>3. </b>Reference<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/reference/yaml/" title="YAML simulation specification" class="dd-item alwaysopen"><a href="../../../reference/yaml/">YAML simulation specification<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/kdoc/" title="KDoc API" class="dd-item alwaysopen"><a href="../../../reference/kdoc/"><i>(recommended)</i> KDoc API<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/organization/" title="Project organization" class="dd-item alwaysopen"><a href="../../../reference/organization/">Project organization<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/biochemistry/" title="Biochemistry Incarnation" class="dd-item alwaysopen"><a href="../../../reference/biochemistry/">Biochemistry Incarnation<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/cli/" title="Command Line interface" class="dd-item alwaysopen"><a href="../../../reference/cli/">Command Line interface<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/default-ui/" title="Default Graphical User Interface" class="dd-item alwaysopen"><a href="../../../reference/default-ui/">Default Graphical User Interface<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/sapere/" title="SAPERE Incarnation" class="dd-item alwaysopen"><a href="../../../reference/sapere/">SAPERE Incarnation<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/swing/" title="Swing GUI" class="dd-item alwaysopen"><a href="../../../reference/swing/">Swing GUI<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/javadoc/" title="Javadoc API" class="dd-item alwaysopen"><a href="../../../reference/javadoc/"><i>(legacy)</i> Javadoc API<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/explanation/" title="Explanation" class="dd-item"><a href="../../../explanation/"><b>4. </b>Explanation<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/explanation/metamodel/" title="The Alchemist Meta-Model" class="dd-item alwaysopen"><a href="../../../explanation/metamodel/">The Alchemist Meta-Model<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/explanation/engine/" title="The Alchemist Simulation Engine" class="dd-item alwaysopen"><a href="../../../explanation/engine/">The Alchemist Simulation Engine<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/explanation/biochemistry/" title="Biochemistry Incarnation" class="dd-item alwaysopen"><a href="../../../explanation/biochemistry/">Biochemistry Incarnation<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/explanation/cognitive/" title="Cognitive Agents" class="dd-item alwaysopen"><a href="../../../explanation/cognitive/">Cognitive Agents<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/explanation/pathfinding/" title="Pathfinding" class="dd-item alwaysopen"><a href="../../../explanation/pathfinding/">Pathfinding<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/explanation/sapere/" title="SAPERE Incarnation" class="dd-item alwaysopen"><a href="../../../explanation/sapere/">SAPERE Incarnation<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+        </ul>
+        <div id="shortcuts">
+          <div class="nav-title">More</div>
+          <ul>
+            <li><a class="padding" href="https://github.com/AlchemistSimulator/Alchemist"><i class='fab fa-fw fa-github'></i> GitHub repo</a></li>
+            <li><a class="padding" href="https://www.youtube.com/channel/UC0o4FQEhRC6fWLLxxfPByKw"><i class='fab fa-youtube'></i> YouTube channel</a></li>
+            <li><a class="padding" href="../../../showcase/"><i class='fas fa-fw fa-camera'></i> Use cases</a></li>
+            <li><a class="padding" href="../../../license/"><i class='fas fa-balance-scale'></i> License</a></li>
+            <li><a class="padding" href="../../../tags/"><i class='fas fa-fw fa-tags'></i> Tags</a></li>
+          </ul>
+        </div>
+        <div id="prefooter">
+          <hr/>
+          <ul>
+            <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+          </ul>
+        </div>
+        <div id="footer"><div><strong>Alchemist Simulator 12.0.0</strong></div>
+<br>
+<a
+    class="github-button"
+    href="https://github.com/AlchemistSimulator/Alchemist/releases/latest/"
+    data-icon="octicon-cloud-download" aria-label="Download Alchemist-full on GitHub"
+>
+Download
+</a>
+<a
+    class="github-button"
+    href="https://github.com/AlchemistSimulator/Alchemist"
+    data-icon="octicon-star"
+    data-show-count="true"
+    aria-label="Star McShelby/hugo-theme-relearn on GitHub"
+>
+Star
+</a>
+<a
+    class="github-button"
+    href="https://github.com/AlchemistSimulator/Alchemist/fork"
+    data-icon="octicon-repo-forked"
+    data-show-count="true"
+    aria-label="Fork McShelby/hugo-theme-relearn on GitHub"
+>
+Fork
+</a>
+<p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn"><span class="fas fa-heart"></span></a> by <a href="https://gohugo.io/">Hugo</a></p>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+        </div>
+      </div>
+    </nav>
+    <div id="body">
+      <div id="overlay"></div>
+      <div class="padding highlightable">
+        <div id="top-bar">
+          <div id="top-github-link">
+            <a class="github-link" title='Edit this page' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/howtos/simulation/cognitive/_index.md" target="blank">
+              <i class="fas fa-code-branch"></i>
+              <span id="top-github-link-text">Edit this page</span>
+            </a>
+          </div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                <i class="fas fa-bars"></i>
+              </a>
+            </span>
+            <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <meta itemprop="itemListOrder" content="Descending" />
+                <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="4" /><a itemprop="item" href="../../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
+                <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../../howtos/"><span itemprop="name">How-to Guides</span></a> > </li>
+                <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../../howtos/simulation/"><span itemprop="name">Simulation</span></a> > </li>
+                <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../../howtos/simulation/cognitive/" aria-disabled="true"><span itemprop="name">Cognitive Agents</span></a></li>
+            </ol>
+          </div>
+            <div class="progress">
+              <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#homogeneous-pedestrian">Homogeneous Pedestrian</a></li>
+    <li><a href="#heterogeneous-pedestrian">Heterogeneous Pedestrian</a></li>
+    <li><a href="#cognitive-pedestrian">Cognitive Pedestrian</a></li>
+    <li><a href="#homogeneous-orienting-pedestrian">Homogeneous orienting pedestrian</a></li>
+    <li><a href="#cognitive-orienting-pedestrian">Cognitive orienting pedestrian</a></li>
+    <li><a href="#groups">Groups</a></li>
+    <li><a href="#steering-actions">Steering Actions</a></li>
+    <li><a href="#steering-strategies">Steering Strategies</a></li>
+    <li><a href="#danger-and-evacuations">Danger and evacuations</a>
+      <ul>
+        <li><a href="#hardcoded-parameters">Hardcoded parameters</a></li>
+        <li><a href="#physical-pedestrians">Physical pedestrians</a></li>
+        <li><a href="#physical-steering-strategies">Physical steering strategies</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+        </div>
+        <div id="head-tags">
+<div class="tags">
+  <a class="tag-link" href="../../../tags/cognitive">cognitive</a>
+  <a class="tag-link" href="../../../tags/pedestrian">pedestrian</a>
+  <a class="tag-link" href="../../../tags/agents">agents</a>
+</div>
+        </div>
+        <main id="body-inner">
+          <h1>Cognitive Agents</h1>
+
+<p>We recommend to read our <a href="../../../explanation/cognitive">explanation of the cognitive agents</a>
+to better understand the contents of this how-to.</p>
+<h2 id="homogeneous-pedestrian">Homogeneous Pedestrian</h2>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Circle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
+    <span style="color:#ff6ac1">nodes</span>:
+      <span style="color:#ff6ac1">type</span>: HomogeneousPedestrian2D</code></pre></div></div>
+    </div>
+<h2 id="heterogeneous-pedestrian">Heterogeneous Pedestrian</h2>
+<p>The age groups available are: <em>child</em>, <em>adult</em>, <em>elderly</em>;
+alternatively you can specify the exact age.
+The genders available are: <em>male</em>, <em>female</em>.</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Circle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
+    <span style="color:#ff6ac1">nodes</span>:
+      <span style="color:#ff6ac1">type</span>: HeterogeneousPedestrian2D
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;elderly&#34;</span>, <span style="color:#5af78e">&#34;female&#34;</span>]
+  - <span style="color:#ff6ac1">type</span>: Circle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
+    <span style="color:#ff6ac1">nodes</span>:
+      <span style="color:#ff6ac1">type</span>: HeterogeneousPedestrian2D
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;child&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]</code></pre></div></div>
+    </div>
+<h2 id="cognitive-pedestrian">Cognitive Pedestrian</h2>
+<p>Cognitive pedestrians are heterogeneous pedestrians with cognitive capabilities.
+They have an emotional state and are able to influence and be influenced by others with the same capabilities. As an example, cognitive pedestrians can perceive fear via social contagion (e.g. seeing other people fleeing may cause them flee as well despite they haven&rsquo;t directly seen the danger).</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">_reactions</span>: <span style="color:#78787e">&amp;behavior</span>
+  - <span style="color:#ff6ac1">time-distribution</span>:
+      <span style="color:#ff6ac1">type</span>: DiracComb
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1.0</span>]
+    <span style="color:#ff6ac1">type</span>: CognitiveBehavior
+
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Circle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
+    <span style="color:#ff6ac1">nodes</span>:
+      <span style="color:#ff6ac1">type</span>: CognitivePedestrian2D
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]
+    <span style="color:#ff6ac1">programs</span>:
+      - <span style="color:#78787e">*behavior</span>
+  - <span style="color:#ff6ac1">type</span>: Circle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
+    <span style="color:#ff6ac1">nodes</span>:
+      <span style="color:#ff6ac1">type</span>: CognitivePedestrian2D
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;female&#34;</span>]
+    <span style="color:#ff6ac1">programs</span>:
+      - <span style="color:#78787e">*behavior</span></code></pre></div></div>
+    </div>
+<h2 id="homogeneous-orienting-pedestrian">Homogeneous orienting pedestrian</h2>
+<p>These are homogeneous pedestrians that can be equipped with a given knowledge degree of the environment.
+Such quantity is a <code>Double</code> value in <code>[0,1]</code>
+describing the percentage of environment the pedestrian is familiar with prior to the start of the simulation
+(thus it does not take into account the knowledge the pedestrian will gain during it).
+Note that despite their name (&ldquo;homogeneous&rdquo;),
+knowledge degrees of different homogeneous orienting pedestrians may differ,
+and even pedestrians with the same knowledge degree can be different as each one
+can be familiar with different portions of the environment.
+Be also aware that orienting pedestrians can only be placed in an
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces.environments/-environment-with-graph/"><code>EnvironmentWithGraph</code></a>
+which is a type of environment providing a navigation graph.</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">environment</span>:
+  <span style="color:#ff6ac1">type</span>: ImageEnvironmentWithGraph
+  <span style="color:#ff6ac1">parameters</span>:
+    <span style="color:#ff6ac1">path</span>: planimetry.png
+    <span style="color:#ff6ac1">zoom</span>: <span style="color:#ff9f43">0.05</span>
+
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Point
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>]
+    <span style="color:#ff6ac1">nodes</span>:
+      <span style="color:#ff6ac1">type</span>: HomogeneousOrientingPedestrian2D
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>]
+</code></pre></div></div>
+    </div>
+<h2 id="cognitive-orienting-pedestrian">Cognitive orienting pedestrian</h2>
+<p>These are cognitive pedestrians equipable with a given knowledge degree of the environment.
+Cognitive orienting pedestrians can be instanced providing their knowledge degree as first parameter.</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">environment</span>:
+  <span style="color:#ff6ac1">type</span>: ImageEnvironmentWithGraph
+  <span style="color:#ff6ac1">parameters</span>:
+    <span style="color:#ff6ac1">path</span>: planimetry.png
+    <span style="color:#ff6ac1">zoom</span>: <span style="color:#ff9f43">0.05</span>
+
+<span style="color:#ff6ac1">_reactions</span>: <span style="color:#78787e">&amp;behavior</span>
+  - <span style="color:#ff6ac1">time-distribution</span>:
+      <span style="color:#ff6ac1">type</span>: DiracComb
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1.0</span>]
+    <span style="color:#ff6ac1">type</span>: CognitiveBehavior
+
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Point
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>]
+    <span style="color:#ff6ac1">nodes</span>:
+      <span style="color:#ff6ac1">type</span>: CognitiveOrientingPedestrian2D
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>, <span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]
+    <span style="color:#ff6ac1">programs</span>:
+      - <span style="color:#78787e">*behavior</span></code></pre></div></div>
+    </div>
+<h2 id="groups">Groups</h2>
+<p>It is likely that a pedestrian doesn&rsquo;t move on its own,
+but there is a group consisting of multiple people
+which are related each other and whose behaviors are strictly dependent on that structure.
+The only way you can currently assign a group to a pedestrian is by creating it as a variable and passing it
+as a parameter when the
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-node/"><code>Node</code></a>s
+created are of pedestrian type.
+If you don&rsquo;t specify any group in this phase,
+automatically a new group of type
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.groups/-alone/"><code>Alone</code></a>
+is assigned.</p>
+<p>The following simulation example loads two groups of homogeneous pedestrians
+representing friends around the center of the scene,
+one having 10 members and the other 15.</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">variables</span>:
+  <span style="color:#ff6ac1">group1</span>: <span style="color:#78787e">&amp;group1</span>
+    <span style="color:#ff6ac1">formula</span>: it.unibo.alchemist.model.implementations.groups.GroupFactory.friends()
+    <span style="color:#ff6ac1">language</span>: kotlin
+  <span style="color:#ff6ac1">group2</span>: <span style="color:#78787e">&amp;group2</span>
+    <span style="color:#ff6ac1">formula</span>: it.unibo.alchemist.model.implementations.groups.GroupFactory.friends()
+    <span style="color:#ff6ac1">language</span>: kotlin
+
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Circle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
+    <span style="color:#ff6ac1">nodes</span>:
+      <span style="color:#ff6ac1">type</span>: HomogeneousPedestrian2D
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*group1]</span>
+  - <span style="color:#ff6ac1">type</span>: Circle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
+    <span style="color:#ff6ac1">nodes</span>:
+      <span style="color:#ff6ac1">type</span>: HomogeneousPedestrian2D
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*group2]</span></code></pre></div></div>
+    </div>
+<h2 id="steering-actions">Steering Actions</h2>
+<p>Steering actions are
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-action/"><code>Action</code></a>s
+whose purpose is moving a node inside an environment.
+These actions  can be divided into two categories:</p>
+<ul>
+<li>greedy, i.e. performing only local choices;</li>
+<li><a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-navigation-action/"><code>NavigationAction</code></a>s,
+which exploit the spatial information available to orienting pedestrians
+in order to navigate the environment consciously
+(e.g. without getting stuck in U-shaped obstacles).</li>
+</ul>
+<p>For a complete overview of the available actions refer to the api documentation.
+The creation of complex movements can be accomplished by combining different steering actions together.
+The only way currently available to do so is by using some
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.reactions/-steering-behavior/"><code>SteeringBehavior</code></a>
+extending
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-reaction/"><code>Reaction</code></a>, which can recognize, across all the actions specified,
+the steering ones to trait them in a separate way.</p>
+<p>In this simulation 50 people wander around the environment and,
+if they are approaching an obstacle, they avoid it.</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">environment</span>:
+  <span style="color:#ff6ac1">type</span>: ImageEnvironment
+  <span style="color:#ff6ac1">parameters</span>: [planimetry.png]
+
+<span style="color:#ff6ac1">_reactions</span>: <span style="color:#78787e">&amp;behavior</span>
+  - <span style="color:#ff6ac1">time-distribution</span>:
+      <span style="color:#ff6ac1">type</span>: DiracComb
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">3.0</span>]
+    <span style="color:#ff6ac1">type</span>: PrioritySteering
+    <span style="color:#ff6ac1">actions</span>:
+      - <span style="color:#ff6ac1">type</span>: HeadTowardRandomDirection
+      - <span style="color:#ff6ac1">type</span>: CognitiveAgentWander
+        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">6</span>, <span style="color:#ff9f43">4</span>]
+      - <span style="color:#ff6ac1">type</span>: CognitiveAgentObstacleAvoidance
+        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">4</span>]
+
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Circle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">25</span>]
+    <span style="color:#ff6ac1">nodes</span>:
+      <span style="color:#ff6ac1">type</span>: HomogeneousPedestrian2D
+    <span style="color:#ff6ac1">programs</span>:
+      - <span style="color:#78787e">*behavior</span></code></pre></div></div>
+    </div>
+<h2 id="steering-strategies">Steering Strategies</h2>
+<p>In order to decide the logic according to which the different steering actions must be combined,
+the concept of steering strategy has been introduced and related to it different reactions are available to be used
+with the aim of computing the desired route for the pedestrians.
+If you want a pedestrian to execute a single steering action at a time,
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.reactions/-priority-steering/"><code>PrioritySteering</code></a>
+is a reaction
+which gives relevance only to the steering action whose target point is the nearest to the current pedestrian position.
+If you want a pedestrian to execute a movement considering multiple actions at a time,
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.reactions/-blended-steering/"><code>BlendedSteering</code></a>
+weights them considering their target distance to the current pedestrian position.
+There is no limit to the number of steering actions which can be used together but some messy compositions
+can result in unpredictable behaviors, so pay attention.</p>
+<p>In the example below a pedestrian reaches a point of interest, avoiding in the meantime to approach another position.</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">environment</span>:
+  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+
+<span style="color:#ff6ac1">_reactions</span>: <span style="color:#78787e">&amp;behavior</span>
+  - <span style="color:#ff6ac1">time-distribution</span>:
+      <span style="color:#ff6ac1">type</span>: DiracComb
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1.0</span>]
+    <span style="color:#ff6ac1">type</span>: BlendedSteering
+    <span style="color:#ff6ac1">actions</span>:
+      - <span style="color:#ff6ac1">type</span>: CognitiveAgentSeek
+        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1000</span>, <span style="color:#ff9f43">500</span>]
+      - <span style="color:#ff6ac1">type</span>: CognitiveAgentFlee
+        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">500</span>, -<span style="color:#ff9f43">500</span>]
+
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Point
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>]
+    <span style="color:#ff6ac1">nodes</span>:
+      <span style="color:#ff6ac1">type</span>: HomogeneousPedestrian2D
+    <span style="color:#ff6ac1">programs</span>:
+      - <span style="color:#78787e">*behavior</span></code></pre></div></div>
+    </div>
+<h2 id="danger-and-evacuations">Danger and evacuations</h2>
+<p>Pedestrians can be loaded in any kind of
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-environment/"><code>Environment</code></a>
+but it is recommended to use
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces.environments/-physics-environment/"><code>PhysicsEnvironment</code></a>s
+since they
+have properties such as non-overlapping shapes which are advisable to be taken into consideration
+when working with a crowd.
+To specify the existence of a potential danger or a significative zone in general inside the environment you can use
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-layer/"><code>Layer</code></a>s.
+You must specify to any cognitive pedestrian the
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a>
+representing danger in the
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-environment/"><code>Environment</code></a>,
+otherwise it won&rsquo;t have the ability to recognize its presence.</p>
+<p>In the following example,
+100 adult females with cognitive capabilities get away from a zone in the environment where
+there is a potential danger.</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">variables</span>:
+  <span style="color:#ff6ac1">danger</span>: <span style="color:#78787e">&amp;danger</span>
+    <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;\&#34;danger\&#34;&#34;</span>
+
+<span style="color:#ff6ac1">environment</span>:
+  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+
+<span style="color:#ff6ac1">layers</span>:
+  - <span style="color:#ff6ac1">type</span>: BidimensionalGaussianLayer
+    <span style="color:#ff6ac1">molecule</span>: <span style="color:#78787e">*danger</span>
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.0</span>, <span style="color:#ff9f43">0.0</span>, <span style="color:#ff9f43">20.0</span>, <span style="color:#ff9f43">15.0</span>]
+
+<span style="color:#ff6ac1">_reactions</span>: <span style="color:#78787e">&amp;behavior</span>
+  - <span style="color:#ff6ac1">time-distribution</span>:
+      <span style="color:#ff6ac1">type</span>: DiracComb
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1.0</span>]
+    <span style="color:#ff6ac1">type</span>: CognitiveBehavior
+    <span style="color:#ff6ac1">actions</span>:
+      - <span style="color:#ff6ac1">type</span>: CognitiveAgentAvoidLayer
+        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*danger]</span>
+
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Circle
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">50</span>]
+    <span style="color:#ff6ac1">nodes</span>:
+      <span style="color:#ff6ac1">type</span>: CognitivePedestrian2D
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;female&#34;</span>, <span style="color:#78787e">*danger]</span>
+    <span style="color:#ff6ac1">programs</span>:
+      - <span style="color:#78787e">*behavior</span></code></pre></div></div>
+    </div>
+<h3 id="hardcoded-parameters">Hardcoded parameters</h3>
+<p>Here&rsquo;s a list of all the hardcoded parameters.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>knownImpasseWeight</td>
+<td>10</td>
+<td>Weight assigned to known impasses (= areas with a single door). It&rsquo;s usually a high value, allowing to avoid them.</td>
+</tr>
+<tr>
+<td>toleranceAngle</td>
+<td>45 degrees</td>
+<td>Used by <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions.steeringstrategies/-single-prevalent/"><code>SinglePrevalent</code></a>, that linearly combines multiple steering actions (= multiple forces) assuming one of them is prevalent. Weights for the linear combination are determined so that the resulting force forms with the prevalent one an angle smaller than or equal to the tolerance angle. The prevalent force usually wants to move the pedestrian consciously, whereas other forces are more &ldquo;greedy&rdquo;. The purpose of the tolerance angle is allowing to steer the pedestrian towards the target defined by the prevalent force, while using a trajectory which takes into account other urges as well.</td>
+</tr>
+<tr>
+<td>alpha</td>
+<td>0.5</td>
+<td>Used by <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions.steeringstrategies/-single-prevalent/"><code>SinglePrevalent</code></a>, an exponential smoothing with this alpha is applied to the resulting force in order to reduce oscillatory movements.</td>
+</tr>
+<tr>
+<td>maxWalkRatio</td>
+<td>0.3</td>
+<td>Used by <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions.steeringstrategies/-single-prevalent/"><code>SinglePrevalent</code></a>. When the pedestrian is subject to contrasting forces the resulting one may be small in magnitude, hence a lower bound for such quantity is set to (maximum distance walkable by the pedestrian) * (this parameter) so as to avoid extremely slow movements.</td>
+</tr>
+<tr>
+<td>delta</td>
+<td>0.05</td>
+<td>Used by <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions.steeringstrategies/-single-prevalent/"><code>SinglePrevalent</code></a>. The weight assigned to disturbing forces is set to 1 and then iteratively decreased by delta until the resulting force satisfies the required conditions (see the api). This is similar to a gradient descent.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="physical-pedestrians">Physical pedestrians</h3>
+<p>Physical pedestrians are capable of pushing and bumping into each other.
+Similarly to Orienting Pedestrians,
+we have
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.nodes/-homogeneous-physical-pedestrian2-d/"><code>HomogeneousPhysicalPedestrian2D</code></a>,
+and
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.nodes/-cognitive-physical-pedestrian2-d/"><code>CognitivePhysicalPedestrian2D</code></a>.</p>
+<p>Whatsmore, you can have a physical pedestrian capable of orienting as well:
+there are
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.nodes/-homogeneous-orienting-physical-pedestrian2-d/"><code>HomogeneousOrientingPhysicalPedestrian2D</code></a>
+and
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.nodes/-cognitive-orienting-physical-pedestrian2-d/"><code>CognitiveOrientingPhysicalPedestrian2D</code></a>.</p>
+<h3 id="physical-steering-strategies">Physical steering strategies</h3>
+<p>In order to work properly,
+physical pedestrians should be equipped with physical steering strategies.
+Such strategies define how steering actions (which are intentional)
+are combined with physical forces
+(which are mostly unintentional).
+At present, only
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.reactions/-blended-steering-with-physics/"><code>BlendedSteeringWithPhysics</code></a>
+and
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.reactions/-navigation-prioritised-steering-with-physics/"><code>NavigationPrioritisedSteeringWithPhysics</code></a>
+are available.</p>
+<p>Here&rsquo;s a simple code for loading a
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.nodes/-homogeneous-physical-pedestrian2-d/"><code>HomogeneousPhysicalPedestrian2D</code></a>
+with
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-cognitive-agent-seek/"><code>CognitiveAgentSeek</code></a>
+and
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-cognitive-agent-flee/"><code>CognitiveAgentFlee</code></a>:</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">environment</span>:
+  <span style="color:#ff6ac1">type</span>: ImageEnvironmentWithGraph
+  <span style="color:#ff6ac1">parameters</span>:
+    <span style="color:#ff6ac1">path</span>: planimetry.png
+    <span style="color:#ff6ac1">zoom</span>: <span style="color:#ff9f43">0.05</span>
+
+<span style="color:#ff6ac1">_reactions</span>: <span style="color:#78787e">&amp;behavior</span>
+  - <span style="color:#ff6ac1">time-distribution</span>:
+      <span style="color:#ff6ac1">type</span>: DiracComb
+      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1.0</span>]
+    <span style="color:#ff6ac1">type</span>: BlendedSteeringWithPhysics
+    <span style="color:#ff6ac1">actions</span>:
+      - <span style="color:#ff6ac1">type</span>: CognitiveAgentSeek
+        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1000</span>, <span style="color:#ff9f43">500</span>]
+      - <span style="color:#ff6ac1">type</span>: CognitiveAgentFlee
+        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">500</span>, -<span style="color:#ff9f43">500</span>]
+
+<span style="color:#ff6ac1">deployments</span>:
+  - <span style="color:#ff6ac1">type</span>: Point
+    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>]
+    <span style="color:#ff6ac1">nodes</span>:
+      <span style="color:#ff6ac1">type</span>: HomogeneousPhysicalPedestrian2D
+    <span style="color:#ff6ac1">programs</span>:
+      - <span style="color:#78787e">*behavior</span></code></pre></div></div>
+    </div>
+
+          <footer class=" footline">
+          </footer>
+        </main>
+      </div>
+      <div id="navigation">
+        <a class="nav nav-prev" href="../../../howtos/simulation/repeatability/" title="Ensure repeatability"><i class="fa fa-chevron-left"></i></a>
+        <a class="nav nav-next" href="../../../howtos/simulation/link/" title="Create a network"><i class="fa fa-chevron-right"></i></a>
+      </div>
+    </div>
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../../js/clipboard.min.js?1643070331"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1643070331"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1643070331"></script>
+    <script src="../../../js/jquery.svg.pan.zoom.js?1643070331"></script>
+    <script src="../../../js/featherlight.min.js?1643070331"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1643070331"></script>
+    <script src="../../../js/mermaid.min.js?1643070331"></script>
+    <script>
+      if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
+        mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
+      }
+    </script>
+    <script src="../../../js/relearn.js?1643070331"></script>
+  </body>
+</html>

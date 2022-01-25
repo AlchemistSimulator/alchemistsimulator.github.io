@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.92.0" />
+    <meta name="generator" content="Relearn 2.9.2
+">
+    <link rel="alternate" type="application/rss&#43;xml" href="../../tutorials/scafi/index.xml" title="Documentation for the Alchemist Simulator" />
+    <meta name="description" content="The Alchemist Simulator">
+    <meta name="author" content="Danilo Pianini">
+    <link rel="icon" href="../../images/logo.svg?1643070334" type="image/svg+xml">
+
+    <title>Scafi Incarnation Tutorial :: Documentation for the Alchemist Simulator</title>
+    <link href="../../css/nucleus.css?1643070334" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1643070334" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1643070334" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1643070334" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1643070334" rel="stylesheet">
+    <link href="../../css/theme.css?1643070334" rel="stylesheet">
+    <link href="../../css/theme-relearn.css?1643070334" rel="stylesheet">
+    <link href="../../css/variant.css?1643070334" rel="stylesheet">
+    <link href="../../css/print.css?1643070334" rel="stylesheet" media="print">
+    <script src="../../js/jquery.min.js?1643070334"></script>
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+        display:none !important;
+      }
+    </style>
+  </head>
+  <body class="" data-url="../../tutorials/scafi/">
+    <script>
+      var index_url="../../index.json";
+      var root_url="../../";
+      var baseUri=root_url.replace(/\/$/, '');
+    </script>
+    <nav id="sidebar" class="showVisitedLinks">
+      <div id="header-wrapper">
+        <div id="header">
+<div style="white-space: nowrap;">
+    <div style="max-width: 100%; display: inline-block; ">
+        <img alt="The Alchemist Logo" src="../../images/logo.svg"/>
+    </div>
+</div>
+
+        </div>
+        <div class="searchbox">
+          <label for="search-by"><i class="fas fa-search"></i></label>
+          <input data-search-input id="search-by" type="search" placeholder="Search...">
+          <span data-search-clear=""><i class="fas fa-times"></i></span>
+        </div>
+        <script src="../../js/lunr.min.js?1643070334"></script>
+        <script src="../../js/auto-complete.js?1643070334"></script>
+        <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
+        <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
+        <script src="../../js/search.js?1643070334"></script>
+      </div>
+      <div id="homelinks">
+        <ul>
+          <li>
+              <a class="padding" href="../../"><i class='fas fa-home'></i> Home</a>
+          </li>
+        </ul>
+      </div>
+      <div class="highlightable">
+        <ul class="topics">
+          <li data-nav-id="/tutorials/" title="Tutorials" class="dd-item parent"><a href="../../tutorials/"><b>1. </b>Tutorials<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/tutorials/quickstart/" title="Quickstart" class="dd-item alwaysopen"><a href="../../tutorials/quickstart/">Quickstart<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/tutorials/basics/" title="Step-by-step tutorial" class="dd-item alwaysopen"><a href="../../tutorials/basics/">Step-by-step tutorial<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/tutorials/protelis/" title="Protelis Incarnation Tutorial" class="dd-item alwaysopen"><a href="../../tutorials/protelis/">Protelis Incarnation Tutorial<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/tutorials/sapere/" title="SAPERE Incarnation Tutorial" class="dd-item alwaysopen"><a href="../../tutorials/sapere/">SAPERE Incarnation Tutorial<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/tutorials/scafi/" title="Scafi Incarnation Tutorial" class="dd-item active parent alwaysopen"><a href="../../tutorials/scafi/">Scafi Incarnation Tutorial<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/" title="How-to Guides" class="dd-item"><a href="../../howtos/"><b>2. </b>How-to Guides<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/preparation/" title="Preparation" class="dd-item alwaysopen"><a href="../../howtos/preparation/">Preparation<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/preparation/jar/" title="Alchemist stand-alone" class="dd-item alwaysopen"><a href="../../howtos/preparation/jar/">Alchemist stand-alone<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/preparation/gradle/" title="Alchemist via Gradle" class="dd-item alwaysopen"><a href="../../howtos/preparation/gradle/">Alchemist via Gradle<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/simulation/" title="Simulation" class="dd-item alwaysopen"><a href="../../howtos/simulation/">Simulation<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/simulation/variables/" title="Create reusable variables" class="dd-item alwaysopen"><a href="../../howtos/simulation/variables/">Create reusable variables<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/repeatability/" title="Ensure repeatability" class="dd-item alwaysopen"><a href="../../howtos/simulation/repeatability/">Ensure repeatability<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/cognitive/" title="Cognitive Agents" class="dd-item alwaysopen"><a href="../../howtos/simulation/cognitive/">Cognitive Agents<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/link/" title="Create a network" class="dd-item alwaysopen"><a href="../../howtos/simulation/link/">Create a network<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/layers/" title="Create Layers" class="dd-item alwaysopen"><a href="../../howtos/simulation/layers/">Create Layers<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/environment/" title="Create rich environments" class="dd-item alwaysopen"><a href="../../howtos/simulation/environment/">Create rich environments<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/simulation/environment/pathfinding/" title="Find paths indoors" class="dd-item alwaysopen"><a href="../../howtos/simulation/environment/pathfinding/">Find paths indoors<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/environment/maps/" title="Maps and GPS traces" class="dd-item alwaysopen"><a href="../../howtos/simulation/environment/maps/">Maps and GPS traces<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/environment/indoor/" title="Simulate indoor" class="dd-item alwaysopen"><a href="../../howtos/simulation/environment/indoor/">Simulate indoor<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/simulation/deploy/" title="Deploy Nodes" class="dd-item alwaysopen"><a href="../../howtos/simulation/deploy/">Deploy Nodes<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/simulation/deploy/grid/" title="(Irregular) Grids" class="dd-item alwaysopen"><a href="../../howtos/simulation/deploy/grid/">(Irregular) Grids<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/deploy/shape/" title="Nodes inside shapes" class="dd-item alwaysopen"><a href="../../howtos/simulation/deploy/shape/">Nodes inside shapes<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/deploy/gps/" title="GPS Traces" class="dd-item alwaysopen"><a href="../../howtos/simulation/deploy/gps/">GPS Traces<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/deploy/graph/" title="Graphs" class="dd-item alwaysopen"><a href="../../howtos/simulation/deploy/graph/">Graphs<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/simulation/export/" title="Export data" class="dd-item alwaysopen"><a href="../../howtos/simulation/export/">Export data<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/program/" title="Program Nodes" class="dd-item alwaysopen"><a href="../../howtos/simulation/program/">Program Nodes<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/simulation/program/move-on-maps/" title="Move nodes on maps" class="dd-item alwaysopen"><a href="../../howtos/simulation/program/move-on-maps/">Move nodes on maps<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/simulation/program/content/" title="Node contents" class="dd-item alwaysopen"><a href="../../howtos/simulation/program/content/">Node contents<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/simulation/smartcam/" title="Smart cameras and drones" class="dd-item alwaysopen"><a href="../../howtos/simulation/smartcam/">Smart cameras and drones<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/execution/" title="Execution" class="dd-item alwaysopen"><a href="../../howtos/execution/">Execution<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/execution/swing-effects/" title="Customize the Swing GUI" class="dd-item alwaysopen"><a href="../../howtos/execution/swing-effects/">Customize the Swing GUI<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/execution/termination/" title="Define the termination criteria" class="dd-item alwaysopen"><a href="../../howtos/execution/termination/">Define the termination criteria<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/workarounds/" title="Workarounds" class="dd-item alwaysopen"><a href="../../howtos/workarounds/">Workarounds<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/howtos/workarounds/swing-glitch/" title="Graphical Glitches in Swing" class="dd-item alwaysopen"><a href="../../howtos/workarounds/swing-glitch/">Graphical Glitches in Swing<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/workarounds/max-map-count/" title="Memory leaks under Linux" class="dd-item alwaysopen"><a href="../../howtos/workarounds/max-map-count/">Memory leaks under Linux<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/howtos/extensions/" title="Experiment-specific extensions" class="dd-item alwaysopen"><a href="../../howtos/extensions/">Experiment-specific extensions<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/howtos/development/" title="Development" class="dd-item alwaysopen"><a href="../../howtos/development/">Development<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/reference/" title="Reference" class="dd-item"><a href="../../reference/"><b>3. </b>Reference<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/reference/yaml/" title="YAML simulation specification" class="dd-item alwaysopen"><a href="../../reference/yaml/">YAML simulation specification<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/kdoc/" title="KDoc API" class="dd-item alwaysopen"><a href="../../reference/kdoc/"><i>(recommended)</i> KDoc API<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/organization/" title="Project organization" class="dd-item alwaysopen"><a href="../../reference/organization/">Project organization<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/biochemistry/" title="Biochemistry Incarnation" class="dd-item alwaysopen"><a href="../../reference/biochemistry/">Biochemistry Incarnation<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/cli/" title="Command Line interface" class="dd-item alwaysopen"><a href="../../reference/cli/">Command Line interface<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/default-ui/" title="Default Graphical User Interface" class="dd-item alwaysopen"><a href="../../reference/default-ui/">Default Graphical User Interface<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/sapere/" title="SAPERE Incarnation" class="dd-item alwaysopen"><a href="../../reference/sapere/">SAPERE Incarnation<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/swing/" title="Swing GUI" class="dd-item alwaysopen"><a href="../../reference/swing/">Swing GUI<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/reference/javadoc/" title="Javadoc API" class="dd-item alwaysopen"><a href="../../reference/javadoc/"><i>(legacy)</i> Javadoc API<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+          <li data-nav-id="/explanation/" title="Explanation" class="dd-item"><a href="../../explanation/"><b>4. </b>Explanation<i class="fas fa-check read-icon"></i></a><ul>
+          <li data-nav-id="/explanation/metamodel/" title="The Alchemist Meta-Model" class="dd-item alwaysopen"><a href="../../explanation/metamodel/">The Alchemist Meta-Model<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/explanation/engine/" title="The Alchemist Simulation Engine" class="dd-item alwaysopen"><a href="../../explanation/engine/">The Alchemist Simulation Engine<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/explanation/biochemistry/" title="Biochemistry Incarnation" class="dd-item alwaysopen"><a href="../../explanation/biochemistry/">Biochemistry Incarnation<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/explanation/cognitive/" title="Cognitive Agents" class="dd-item alwaysopen"><a href="../../explanation/cognitive/">Cognitive Agents<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/explanation/pathfinding/" title="Pathfinding" class="dd-item alwaysopen"><a href="../../explanation/pathfinding/">Pathfinding<i class="fas fa-check read-icon"></i></a><ul></ul></li>
+          <li data-nav-id="/explanation/sapere/" title="SAPERE Incarnation" class="dd-item alwaysopen"><a href="../../explanation/sapere/">SAPERE Incarnation<i class="fas fa-check read-icon"></i></a><ul></ul></li></ul></li>
+        </ul>
+        <div id="shortcuts">
+          <div class="nav-title">More</div>
+          <ul>
+            <li><a class="padding" href="https://github.com/AlchemistSimulator/Alchemist"><i class='fab fa-fw fa-github'></i> GitHub repo</a></li>
+            <li><a class="padding" href="https://www.youtube.com/channel/UC0o4FQEhRC6fWLLxxfPByKw"><i class='fab fa-youtube'></i> YouTube channel</a></li>
+            <li><a class="padding" href="../../showcase/"><i class='fas fa-fw fa-camera'></i> Use cases</a></li>
+            <li><a class="padding" href="../../license/"><i class='fas fa-balance-scale'></i> License</a></li>
+            <li><a class="padding" href="../../tags/"><i class='fas fa-fw fa-tags'></i> Tags</a></li>
+          </ul>
+        </div>
+        <div id="prefooter">
+          <hr/>
+          <ul>
+            <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+          </ul>
+        </div>
+        <div id="footer"><div><strong>Alchemist Simulator 12.0.0</strong></div>
+<br>
+<a
+    class="github-button"
+    href="https://github.com/AlchemistSimulator/Alchemist/releases/latest/"
+    data-icon="octicon-cloud-download" aria-label="Download Alchemist-full on GitHub"
+>
+Download
+</a>
+<a
+    class="github-button"
+    href="https://github.com/AlchemistSimulator/Alchemist"
+    data-icon="octicon-star"
+    data-show-count="true"
+    aria-label="Star McShelby/hugo-theme-relearn on GitHub"
+>
+Star
+</a>
+<a
+    class="github-button"
+    href="https://github.com/AlchemistSimulator/Alchemist/fork"
+    data-icon="octicon-repo-forked"
+    data-show-count="true"
+    aria-label="Fork McShelby/hugo-theme-relearn on GitHub"
+>
+Fork
+</a>
+<p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn"><span class="fas fa-heart"></span></a> by <a href="https://gohugo.io/">Hugo</a></p>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+        </div>
+      </div>
+    </nav>
+    <div id="body">
+      <div id="overlay"></div>
+      <div class="padding highlightable">
+        <div id="top-bar">
+          <div id="top-github-link">
+            <a class="github-link" title='Edit this page' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/tutorials/scafi/_index.md" target="blank">
+              <i class="fas fa-code-branch"></i>
+              <span id="top-github-link-text">Edit this page</span>
+            </a>
+          </div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                <i class="fas fa-bars"></i>
+              </a>
+            </span>
+            <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <meta itemprop="itemListOrder" content="Descending" />
+                <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
+                <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../tutorials/"><span itemprop="name">Tutorials</span></a> > </li>
+                <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../tutorials/scafi/" aria-disabled="true"><span itemprop="name">Scafi Incarnation Tutorial</span></a></li>
+            </ol>
+          </div>
+            <div class="progress">
+              <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#how-to-use-scafi-with-alchemist">How to use ScaFi with Alchemist</a></li>
+  </ul>
+</nav>
+              </div>
+            </div>
+        </div>
+        <div id="head-tags">
+<div class="tags">
+  <a class="tag-link" href="../../tags/scala">scala</a>
+  <a class="tag-link" href="../../tags/scafi">scafi</a>
+  <a class="tag-link" href="../../tags/scala-fields">scala fields</a>
+  <a class="tag-link" href="../../tags/tutorial">tutorial</a>
+  <a class="tag-link" href="../../tags/aggregate">aggregate</a>
+  <a class="tag-link" href="../../tags/aggregate-computing">aggregate computing</a>
+  <a class="tag-link" href="../../tags/aggregate-programming">aggregate programming</a>
+</div>
+        </div>
+        <main id="body-inner">
+          <h1>Scafi Incarnation Tutorial</h1>
+
+<p>ScaFi (Scala Fields) is a Scala-based library and framework for Aggregate Programming.
+It implements a variant of the Higher-Order Field Calculus (HOFC) operational semantics,
+which is made available as a usable domain-specific language (DSL),
+and provides a platform and API for simulating and executing Aggregate Computing systems and applications.</p>
+<h2 id="how-to-use-scafi-with-alchemist">How to use ScaFi with Alchemist</h2>
+<p>For more details about ScaFi please read the
+documentation in the <a href="https://scafi.github.io/docs/">official site</a>
+where you can find a description of how to integrate ScaFi toolkit
+with Alchemist.</p>
+<p>A tutorial similar to the <a href="../basics">base tutorial</a>, with increasingly rich examples,
+focused on the Scafi incarnation.</p>
+<p>The tutorial can be found on <a href="https://github.com/scafi/learning-scafi-alchemist">GitHub</a>.
+The <code>README.md</code> file of the project explains the use and the steps to follow.</p>
+
+<div class="expand">
+    
+    <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+        <i class="fas fa-chevron-down"></i>
+        <i class="fas fa-chevron-right"></i>
+        Show README.md
+    </a>
+    <div class="expand-content" style="display: none;">
+        <h1 id="learning-simulations-with-scafi-alchemist">Learning simulations with ScaFi-Alchemist</h1>
+<ul>
+<li><a href="https://scafi.github.io">ScaFi</a> is an aggregate programming framework</li>
+<li><a href="https://alchemistsimulator.github.io">Alchemist</a> is a flexible (meta-)simulator for multi-agent systems</li>
+</ul>
+<h2 id="alchemist">Alchemist</h2>
+<h3 id="conceptual-model">Conceptual model</h3>
+<ul>
+<li><strong>Molecule</strong>: name of a data item</li>
+<li><strong>Concentration</strong>: value associated to a particular molecule</li>
+<li><strong>Node</strong>: a container of molecules/reactions, living inside an environment</li>
+<li><strong>Environment</strong>: the Alchemist abstration for the space.
+<ul>
+<li>It is a container for nodes, and it is able to tell:
+a) Where the nodes are in the space - i.e. their position
+b) How distant are two nodes
+c) Optionally, it may provide support for moving nodes</li>
+</ul>
+</li>
+<li><strong>Linking rule</strong>: a function of the current status of the environment that associates to each node a
+neighborhood
+<ul>
+<li><strong>Neighborhood</strong>: an entity composed by a node (centre) + a set of nodes (neighbors)</li>
+</ul>
+</li>
+<li><strong>Reaction</strong>: any event that can change (through an <strong>action</strong>) the state of the environment
+<ul>
+<li>Consists of 0+ <strong>conditions</strong>, 1+ <strong>actions</strong>, and a <strong>time distribution</strong></li>
+<li>Conditions, time distribution, static rate, and rate equation affect the <strong>frequency</strong> of the reaction</li>
+</ul>
+</li>
+<li>Alchemist implements an optimised version (NRM) of Gillespie&rsquo;s Stochastic Simulation Algorithm (SSA)</li>
+</ul>
+<p>So</p>
+<ul>
+<li>The <strong>system state</strong> depends on the configuration of molecules floating in it</li>
+<li>The <strong>system evolution</strong> depends on the kinds of chemical reactions applicable over time</li>
+</ul>
+<p>Another key concept is the <strong>dependency graph</strong></p>
+<ul>
+<li>Actions are outputs</li>
+<li>Conditions are inputs</li>
+</ul>
+<h3 id="running-simulations">Running simulations</h3>
+<p>Use task configured in <code>build.gradle.kts</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./gradlew hello
+</code></pre></div><p>Basically, all you need to do to launch a simulation (batch) is running <code>it.unibo.alchemist.Alchemist</code>
+with your simulation&rsquo;s descriptor. So, another approach is the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gradlew fatJar <span style="color:#78787e"># or shadowJar</span>
+
+java -Xmx2524m -cp <span style="color:#5af78e">&#34;build/libs/&lt;MYFATJAR&gt;.jar&#34;</span> <span style="color:#5af78e">\
+</span><span style="color:#5af78e"></span>  it.unibo.alchemist.Alchemist <span style="color:#5af78e">\
+</span><span style="color:#5af78e"></span>  -b -var random <span style="color:#5af78e">\
+</span><span style="color:#5af78e"></span>  -y &lt;path-to-yaml&gt; -e data/20191004-test <span style="color:#5af78e">\
+</span><span style="color:#5af78e"></span>  -t <span style="color:#ff9f43">100</span> -p <span style="color:#ff9f43">1</span> -v &amp;&gt; exec.txt &amp;
+</code></pre></div><p>You can also use some IDE (such as Eclipse or IntelliJ Idea).
+In IntelliJ, you can create a run configuration of type <code>Application</code>
+that looks like the following.</p>
+<p><img src="assets/imgs/intellij-run-configuration.png" alt=""></p>
+<p>You basically have to pass arguments to the Java program that
+leverages main class <code>it.unibo.alchemist.Alchemist</code>.
+Your project must be properly imported and synchronised via Gradle;
+the Scala SDK must be properly set up, as well as the JDK Runtime.
+If everything works ok, you should be able to see the following simulation,
+which shows a gradient computation on a simulated network situated in the map of Vienna.</p>
+<p><img src="assets/imgs/gradient-vienna.png" alt=""></p>
+<h3 id="scafi">Scafi</h3>
+<p>The simulation descriptor must indicate <code>incarnation: scafi</code>
+and configure a <code>RunScafiProgram</code> action
+pointing to the class of some class implementing <code>AggregateProgram</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: scafi
+
+<span style="color:#ff6ac1">pools</span>:
+  - <span style="color:#ff6ac1">pool</span>: <span style="color:#78787e">&amp;program</span>
+    - <span style="color:#ff6ac1">time-distribution</span>:
+        <span style="color:#ff6ac1">type</span>: ExponentialTime
+        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1</span>]
+      <span style="color:#ff6ac1">type</span>: Event
+      <span style="color:#ff6ac1">actions</span>:
+        - <span style="color:#ff6ac1">type</span>: RunScafiProgram
+          <span style="color:#ff6ac1">parameters</span>: [it.unibo.casestudy.HelloWorld, 5.0] <span style="color:#78787e"># second argument is retention time</span>
+    - <span style="color:#ff6ac1">program</span>: send
+</code></pre></div><p>An example ScaFi program is the following</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#ff6ac1">package</span> it.unibo.casestudy
+
+<span style="color:#ff6ac1">import</span> it.unibo.alchemist.model.implementations.molecules.SimpleMolecule
+<span style="color:#ff6ac1">import</span> it.unibo.alchemist.model.scafi.ScafiIncarnationForAlchemist._
+
+<span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">HelloWorld</span> <span style="color:#ff6ac1">extends</span> <span style="color:#f3f99d">AggregateProgram</span> <span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">StandardSensors</span> <span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">ScafiAlchemistSupport</span>
+  <span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">Gradients</span> <span style="color:#ff6ac1">{</span>
+  <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">def</span> main<span style="color:#ff6ac1">()</span><span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">Any</span> <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">{</span>
+    <span style="color:#78787e">// Access to node state through &#34;molecule&#34;
+</span><span style="color:#78787e"></span>    <span style="color:#ff6ac1">val</span> x <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">if</span><span style="color:#ff6ac1">(</span>node<span style="color:#ff6ac1">.</span>has<span style="color:#ff6ac1">(</span><span style="color:#5af78e">&#34;prova&#34;</span><span style="color:#ff6ac1">))</span> node<span style="color:#ff6ac1">.</span>get<span style="color:#ff6ac1">[</span><span style="color:#9aedfe">Int</span><span style="color:#ff6ac1">](</span><span style="color:#5af78e">&#34;prova&#34;</span><span style="color:#ff6ac1">)</span> <span style="color:#ff6ac1">else</span> <span style="color:#ff9f43">1</span>
+    <span style="color:#78787e">// An aggregate operation
+</span><span style="color:#78787e"></span>    <span style="color:#ff6ac1">val</span> g <span style="color:#ff6ac1">=</span> classicGradient<span style="color:#ff6ac1">(</span>mid<span style="color:#ff6ac1">==</span><span style="color:#ff9f43">100</span><span style="color:#ff6ac1">)</span>
+    <span style="color:#78787e">// Write access to node state
+</span><span style="color:#78787e"></span>    node<span style="color:#ff6ac1">.</span>put<span style="color:#ff6ac1">(</span><span style="color:#5af78e">&#34;g&#34;</span><span style="color:#ff6ac1">,</span> g<span style="color:#ff6ac1">)</span>
+    <span style="color:#78787e">// Return value of the program
+</span><span style="color:#78787e"></span>    g
+  <span style="color:#ff6ac1">}</span>
+<span style="color:#ff6ac1">}</span>
+</code></pre></div><h2 id="on-this-version-and-past-versions">On this version and past versions</h2>
+<p>I will try to keep this repository aligned with the latest versions of scafi and Alchemist.</p>
+<p>However, I have also set up different branches to &ldquo;freeze&rdquo; particular project configurations that have proven to work.
+These can be checked out through the usual git branch mechanism, e.g.:</p>
+<p><code>git checkout scafi-0.3.2-alchemist-9.2.1</code></p>
+<p>Available branches/configurations:</p>
+<ul>
+<li><code>scafi-0.3.2-alchemist-9.2.1</code></li>
+</ul>
+
+    </div>
+</div>
+
+<div class="notices note">
+    <div class="label">Note</div><p>Something went wrong along the line? Drop us an
+<a href="https://github.com/scafi/learning-scafi-alchemist/issues/new/choose">issue report</a>
+and we&rsquo;ll get back to you.</p>
+
+</div>
+
+          <footer class=" footline">
+          </footer>
+        </main>
+      </div>
+      <div id="navigation">
+        <a class="nav nav-prev" href="../../tutorials/sapere/" title="SAPERE Incarnation Tutorial"><i class="fa fa-chevron-left"></i></a>
+        <a class="nav nav-next" href="../../howtos/" title="How-to Guides"><i class="fa fa-chevron-right"></i></a>
+      </div>
+    </div>
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1643070334"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1643070334"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1643070334"></script>
+    <script src="../../js/jquery.svg.pan.zoom.js?1643070334"></script>
+    <script src="../../js/featherlight.min.js?1643070334"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1643070334"></script>
+    <script src="../../js/mermaid.min.js?1643070334"></script>
+    <script>
+      if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
+        mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
+      }
+    </script>
+    <script src="../../js/relearn.js?1643070334"></script>
+  </body>
+</html>
