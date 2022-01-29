@@ -9,19 +9,19 @@
     <link rel="alternate" type="application/rss&#43;xml" href="../../reference/yaml/index.xml" title="Documentation for the Alchemist Simulator" />
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
-    <link rel="icon" href="../../images/logo.svg?1643226627" type="image/svg+xml">
+    <link rel="icon" href="../../images/logo.svg?1643468873" type="image/svg+xml">
 
     <title>YAML simulation specification :: Documentation for the Alchemist Simulator</title>
-    <link href="../../css/nucleus.css?1643226627" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1643226627" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1643226627" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1643226627" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1643226627" rel="stylesheet">
-    <link href="../../css/theme.css?1643226627" rel="stylesheet">
-    <link href="../../css/theme-relearn.css?1643226627" rel="stylesheet">
-    <link href="../../css/variant.css?1643226627" rel="stylesheet">
-    <link href="../../css/print.css?1643226627" rel="stylesheet" media="print">
-    <script src="../../js/jquery.min.js?1643226627"></script>
+    <link href="../../css/nucleus.css?1643468873" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1643468873" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1643468873" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1643468873" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1643468873" rel="stylesheet">
+    <link href="../../css/theme.css?1643468873" rel="stylesheet">
+    <link href="../../css/theme-relearn.css?1643468873" rel="stylesheet">
+    <link href="../../css/variant.css?1643468873" rel="stylesheet">
+    <link href="../../css/print.css?1643468873" rel="stylesheet" media="print">
+    <script src="../../js/jquery.min.js?1643468873"></script>
     <style>
       :root #header + #content > #left > #rlblock_left{
         display:none !important;
@@ -49,11 +49,11 @@
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../js/lunr.min.js?1643226627"></script>
-        <script src="../../js/auto-complete.js?1643226627"></script>
+        <script src="../../js/lunr.min.js?1643468873"></script>
+        <script src="../../js/auto-complete.js?1643468873"></script>
         <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
         <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
-        <script src="../../js/search.js?1643226627"></script>
+        <script src="../../js/search.js?1643468873"></script>
       </div>
       <div id="homelinks">
         <ul>
@@ -563,6 +563,14 @@ and their associated values as the corresponding parameter values.
 Since Java 11 does not support named arguments,
 this special invocation type is built around the Kotlin reflection,
 thus, the concrete class whose constructor is being invoked <strong>MUST</strong> be written in Kotlin.</p>
+<p>When using named arguments,
+if at least one optional parameter is specified,
+then all the previous optional parameters <strong>MUST</strong> be specified as well.
+This limitation is due to the fact that Alchemist supports loading of JVM classes regardless of their origin language,
+and, thus, the simulator must leverage constructor overloading to emulate optional parameters.
+In the case of Kotlin classes, because of the way
+<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/"><code>@JvmOverloads</code></a>
+works, only a (reasonable) subset of all possible overloads gets generated, and they differ by parameter count.</p>
 <p>Instantiation is delegated to the <a href="https://github.com/DanySK/jirf/">Java Implicit Reflective Factory</a>.</p>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -599,6 +607,43 @@ thus, the concrete class whose constructor is being invoked <strong>MUST</strong
     <span style="color:#ff6ac1">generatorName</span>: Lobster
     <span style="color:#ff6ac1">createLinks</span>: <span style="color:#ff6ac1">true</span>
     <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">15</span>]
+</code></pre></div></div>
+    </div></li>
+</ul>
+<h4 id="counter-examples">Counter-examples</h4>
+<ul>
+<li>The following simulation <strong>fails on loading</strong>, as
+<a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.layers/-bidimensional-gaussian-layer/"><code>BidimensionalGaussianLayer</code></a>
+has the <em>first</em> and <em>last</em> parameters marked as optional:
+in order to provide the latter, the designer must also provide the former.
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
+
+<span style="color:#ff6ac1">network-model</span>:
+  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance
+  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">6</span>]
+
+<span style="color:#ff6ac1">deployments</span>:
+  <span style="color:#ff6ac1">type</span>: Rectangle
+  <span style="color:#ff6ac1">parameters</span>:
+    [<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">100</span>]
+  <span style="color:#ff6ac1">contents</span>:
+    <span style="color:#ff6ac1">molecule</span>: grain
+    <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff9f43">5</span>
+
+<span style="color:#ff6ac1">layers</span>:
+  - <span style="color:#ff6ac1">molecule</span>: layer
+    <span style="color:#ff6ac1">type</span>: BidimensionalGaussianLayer
+    <span style="color:#ff6ac1">parameters</span>:
+      <span style="color:#ff6ac1">centerX</span>: <span style="color:#ff9f43">30</span>
+      <span style="color:#ff6ac1">centerY</span>: <span style="color:#ff9f43">30</span>
+      <span style="color:#ff6ac1">norm</span>: <span style="color:#ff9f43">30</span>
+      <span style="color:#ff6ac1">sigmaX</span>: <span style="color:#ff9f43">15</span>
 </code></pre></div></div>
     </div></li>
 </ul>
@@ -1737,18 +1782,18 @@ Defaults to 1000ms.</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1643226627"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1643226627"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1643226627"></script>
-    <script src="../../js/jquery.svg.pan.zoom.js?1643226627"></script>
-    <script src="../../js/featherlight.min.js?1643226627"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1643226627"></script>
-    <script src="../../js/mermaid.min.js?1643226627"></script>
+    <script src="../../js/clipboard.min.js?1643468873"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1643468873"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1643468873"></script>
+    <script src="../../js/jquery.svg.pan.zoom.js?1643468873"></script>
+    <script src="../../js/featherlight.min.js?1643468873"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1643468873"></script>
+    <script src="../../js/mermaid.min.js?1643468873"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script src="../../js/relearn.js?1643226627"></script>
+    <script src="../../js/relearn.js?1643468873"></script>
   </body>
 </html>
