@@ -3,30 +3,75 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.92.0" />
+    <meta name="generator" content="Hugo 0.92.2" />
     <meta name="generator" content="Relearn 2.9.6">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <title>environment :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../tags/environment/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../images/logo.svg?1644756444" type="image/svg+xml">
-    <link href="../../css/nucleus.css?1644756444" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1644756444" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1644756444" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1644756444" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1644756444" rel="stylesheet">
-    <link href="../../css/theme.css?1644756444" rel="stylesheet">
-    <link href="../../css/theme-relearn.css?1644756444" rel="stylesheet">
-    <link href="../../css/variant.css?1644756444" rel="stylesheet">
-    <link href="../../css/print.css?1644756444" rel="stylesheet" media="print">
+    <link rel="icon" href="../../images/logo.svg?1644940514" type="image/svg+xml">
+    <link href="../../css/nucleus.css?1644940514" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1644940514" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1644940514" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1644940514" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1644940514" rel="stylesheet">
+    <link href="../../css/theme.css?1644940514" rel="stylesheet">
+    <link id="variant-style" href="../../css/theme-relearn.css?1644940514" rel="stylesheet">
+    <link href="../../css/variant.css?1644940514" rel="stylesheet">
+    <link href="../../css/print.css?1644940514" rel="stylesheet" media="print">
     <style>
-      :root #header + #content > #left > #rlblock_left{
-        display:none !important;
-      }
     </style>
-    <script src="../../js/jquery.min.js?1644756444"></script>
+    <script>
+      // we need to define this script in the head to avoid flickering
+      // on page load if the user has selected a non default variant
+      var theme = window.localStorage.getItem( 'theme' );
+      changeTheme( theme );
+      function getTheme(){
+        var link = document.querySelector( '#variant-style' );
+        if( !link ){
+          return;
+        }
+        var path = link.getAttribute( 'href' );
+        var theme = path.match(/^.*\/theme-(.*?)\.css.*$/)[ 1 ];
+        return theme;
+      }
+      function markTheme( theme ){
+        var select = document.querySelector( '#select-theme' );
+        if( !select ){
+          return;
+        }
+        select.value = theme;
+      }
+      function changeTheme( theme ){
+        var themes = [ "relearn" ];
+        if( themes.indexOf( theme ) < 0 ){
+          theme = themes.length ? themes[ 0 ] : null;
+        }
+        if( !theme ){
+          return;
+        }
+        var link = document.querySelector( '#variant-style' );
+        if( !link ){
+          return;
+        }
+        var old_path = link.getAttribute( 'href' );
+        var new_path = old_path.replace( /^(.*\/theme-).*?(\.css.*)$/, '$1' + theme + '$2' );
+        if( old_path != new_path ){
+          window.localStorage.setItem( 'theme', theme );
+          link.setAttribute( 'href', new_path );
+          markTheme( theme );
+          // remove selection, because if some uses an arrow navigation
+          // by pressing the left or right cursor key, we will automatically
+          // select a different style
+          if( document.activeElement ){
+            document.activeElement.blur();
+          }
+        }
+      }
+    </script>
+    <script src="../../js/jquery.min.js?1644940514"></script>
   </head>
-  <body class="" data-url="../../tags/environment/">
+  <body class="default-animation" data-url="../../tags/environment/">
     <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
     <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
     <script>
@@ -34,9 +79,9 @@
       var root_url="../../";
       var baseUri=root_url.replace(/\/$/, '');
     </script>
-    <nav id="sidebar" class="showVisitedLinks">
-      <div id="header-wrapper">
-        <div id="header">
+    <nav id="sidebar" class="default-animation showVisitedLinks">
+      <div id="header-wrapper" class="default-animation">
+        <div id="header" class="default-animation">
 <div style="white-space: nowrap;">
     <div style="max-width: 100%; display: inline-block; ">
         <img alt="The Alchemist Logo" src="../../images/logo.svg"/>
@@ -44,23 +89,23 @@
 </div>
 
         </div>
-        <div class="searchbox">
+        <div class="searchbox default-animation">
           <label for="search-by"><i class="fas fa-search"></i></label>
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../js/lunr.min.js?1644756444"></script>
-        <script src="../../js/auto-complete.js?1644756444"></script>
-        <script src="../../js/search.js?1644756444"></script>
+        <script src="../../js/lunr.min.js?1644940514"></script>
+        <script src="../../js/auto-complete.js?1644940514"></script>
+        <script src="../../js/search.js?1644940514"></script>
       </div>
-      <div id="homelinks">
+      <div id="homelinks" class="default-animation">
         <ul>
           <li>
               <a class="padding" href="../../"><i class='fas fa-home'></i> Home</a>
           </li>
         </ul>
       </div>
-      <div class="highlightable">
+      <div id="content-wrapper" class="highlightable">
         <ul class="topics">
           <li data-nav-id="/tutorials/" title="Tutorials" class="dd-item"><a href="../../tutorials/"><b>1. </b>Tutorials<i class="fas fa-check read-icon"></i></a><ul>
           <li data-nav-id="/tutorials/quickstart/" title="Quickstart" class="dd-item alwaysopen"><a href="../../tutorials/quickstart/">Quickstart<i class="fas fa-check read-icon"></i></a><ul></ul></li>
@@ -131,13 +176,14 @@
             <li><a class="padding" href="../../tags/"><i class='fas fa-fw fa-tags'></i> Tags</a></li>
           </ul>
         </div>
+        <div class="footermargin"></div>
+        <hr class="default-animation"/>
         <div id="prefooter">
-          <hr/>
           <ul>
             <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer"><div><strong>Alchemist Simulator 13.0.1</strong></div>
+        <div id="footer"><div><strong>Alchemist Simulator 13.0.2</strong></div>
 <br>
 <a
     class="github-button"
@@ -170,13 +216,13 @@ Fork
         </div>
       </div>
     </nav>
-    <div id="body">
+    <div id="body" class="default-animation">
       <div id="overlay"></div>
       <div class="padding highlightable">
-        <div id="top-bar">
+        <div id="top-bar"><div>
           <div id="breadcrumbs">
             <span id="sidebar-toggle-span">
-              <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+              <a href="#" id="sidebar-toggle" title='Menu' data-sidebar-toggle="">
                 <i class="fas fa-bars"></i>
               </a>
             </span>
@@ -193,7 +239,7 @@ Fork
 
               </div>
             </div>
-        </div>
+        </div></div>
         <div id="head-tags">
         </div>
         <main id="body-inner">
@@ -209,24 +255,24 @@ Fork
         </main>
       </div>
       <div id="navigation">
-        <a class="nav nav-prev" href="../../reference/javadoc/" title="Javadoc API"><i class="fa fa-chevron-left"></i></a>
+        <a class="nav nav-prev default-animation" href="../../reference/javadoc/" title="Javadoc API"><i class="fa fa-chevron-left"></i></a>
       </div>
     </div>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1644756444"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1644756444"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1644756444"></script>
-    <script src="../../js/jquery.svg.pan.zoom.js?1644756444"></script>
-    <script src="../../js/featherlight.min.js?1644756444"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1644756444"></script>
-    <script src="../../js/mermaid.min.js?1644756444"></script>
+    <script src="../../js/clipboard.min.js?1644940514"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1644940514"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1644940514"></script>
+    <script src="../../js/jquery.svg.pan.zoom.js?1644940514"></script>
+    <script src="../../js/featherlight.min.js?1644940514"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1644940514"></script>
+    <script src="../../js/mermaid.min.js?1644940514"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script src="../../js/relearn.js?1644756444"></script>
+    <script src="../../js/relearn.js?1644940514"></script>
   </body>
 </html>
