@@ -2,76 +2,574 @@
 <html lang="en" class="js csstransforms3d">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.92.2" />
-    <meta name="generator" content="Relearn 2.9.6">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.93.2" />
+    <meta name="generator" content="Relearn 3.0.4&#43;tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <title>Step-by-step tutorial :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../tutorials/basics/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../images/logo.svg?1644940513" type="image/svg+xml">
-    <link href="../../css/nucleus.css?1644940513" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1644940513" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1644940513" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1644940513" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1644940513" rel="stylesheet">
-    <link href="../../css/theme.css?1644940513" rel="stylesheet">
-    <link id="variant-style" href="../../css/theme-relearn.css?1644940513" rel="stylesheet">
-    <link href="../../css/variant.css?1644940513" rel="stylesheet">
-    <link href="../../css/print.css?1644940513" rel="stylesheet" media="print">
+    <link rel="icon" href="../../images/logo.svg?1646584834" type="image/svg+xml">
+    <link href="../../css/nucleus.css?1646584834" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1646584834" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1646584834" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1646584834" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1646584834" rel="stylesheet">
+    <link href="../../css/theme.css?1646584834" rel="stylesheet">
+    <link id="variant-style" href="../../css/theme-relearn.css?1646584834" rel="stylesheet">
+    <link href="../../css/variant.css?1646584834" rel="stylesheet">
+    <link href="../../css/theme-relearn-light.css?1646584834" rel="stylesheet" media="print">
+    <link href="../../css/print.css?1646584834" rel="stylesheet" media="print">
     <style>
     </style>
+    <script src="../../js/variant.js?1646584834"></script>
     <script>
-      // we need to define this script in the head to avoid flickering
-      // on page load if the user has selected a non default variant
-      var theme = window.localStorage.getItem( 'theme' );
-      changeTheme( theme );
-      function getTheme(){
-        var link = document.querySelector( '#variant-style' );
-        if( !link ){
-          return;
-        }
-        var path = link.getAttribute( 'href' );
-        var theme = path.match(/^.*\/theme-(.*?)\.css.*$/)[ 1 ];
-        return theme;
-      }
-      function markTheme( theme ){
-        var select = document.querySelector( '#select-theme' );
-        if( !select ){
-          return;
-        }
-        select.value = theme;
-      }
-      function changeTheme( theme ){
-        var themes = [ "relearn" ];
-        if( themes.indexOf( theme ) < 0 ){
-          theme = themes.length ? themes[ 0 ] : null;
-        }
-        if( !theme ){
-          return;
-        }
-        var link = document.querySelector( '#variant-style' );
-        if( !link ){
-          return;
-        }
-        var old_path = link.getAttribute( 'href' );
-        var new_path = old_path.replace( /^(.*\/theme-).*?(\.css.*)$/, '$1' + theme + '$2' );
-        if( old_path != new_path ){
-          window.localStorage.setItem( 'theme', theme );
-          link.setAttribute( 'href', new_path );
-          markTheme( theme );
-          // remove selection, because if some uses an arrow navigation
-          // by pressing the left or right cursor key, we will automatically
-          // select a different style
-          if( document.activeElement ){
-            document.activeElement.blur();
-          }
-        }
-      }
+      variants.init( [ "relearn" ] );
     </script>
-    <script src="../../js/jquery.min.js?1644940513"></script>
+    <script src="../../js/jquery.min.js?1646584834"></script>
   </head>
   <body class="default-animation" data-url="../../tutorials/basics/">
+    <div id="body" class="default-animation">
+      <div id="sidebar-overlay"></div>
+      <div id="toc-overlay"></div>
+      <nav id="topbar" class="highlightable">
+        <div>
+          <div class="navigation">
+              <a class="nav nav-next" href="../../tutorials/protelis/" title="Protelis Incarnation Tutorial"><i class="fas fa-chevron-right fa-fw"></i></a>
+          </div>
+          <div class="navigation">
+              <a class="nav nav-prev" href="../../tutorials/quickstart/" title="Quickstart"><i class="fas fa-chevron-left fa-fw"></i></a>
+          </div>
+          <div id="top-github-link">
+            <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/tutorials/basics/_index.md" target="blank">
+              <i class="fas fa-pen fa-fw"></i>
+            </a>
+          </div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" title='Menu'><i class="fas fa-bars fa-fw"></i></a>
+            </span>
+            <span id="toc-menu" title='Table of Contents'><i class="fas fa-list-alt fa-fw"></i></span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <meta itemprop="itemListOrder" content="Descending" />
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../tutorials/"><span itemprop="name">Tutorials</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../tutorials/basics/" aria-disabled="true"><span itemprop="name">Step-by-step tutorial</span></a></li>
+            </ol>
+          </div>
+            <div class="progress">
+              <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#import-the-infrastructure">Import the infrastructure</a></li>
+    <li><a href="#writing-and-launching-simple-simulations">Writing and launching simple simulations</a>
+      <ul>
+        <li><a href="#three-connected-devices">Three connected devices</a></li>
+        <li><a href="#a-grid-of-devices-playing-dodgeball">A grid of devices playing dodgeball</a></li>
+        <li><a href="#a-gradient-on-a-grid-of-devices">A gradient on a grid of devices</a></li>
+        <li><a href="#arbitrary-network-graphs">Arbitrary network graphs</a></li>
+      </ul>
+    </li>
+    <li><a href="#advanced-examples">Advanced examples</a>
+      <ul>
+        <li><a href="#node-mobility-and-indoor-environments">Node mobility and indoor environments</a></li>
+        <li><a href="#real-world-maps-and-gps-traces">Real-world maps and GPS traces</a></li>
+        <li><a href="#in-depth-analysis-of-simulated-scenarios">In-depth analysis of simulated scenarios</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+        </div>
+      </nav>
+      <main id="body-inner" class="highlightable ">
+        <div class="flex-block-wrapper">
+          <div id="head-tags">
+<div class="tags">
+  <a class="tag-link" href="../../tags/basics">basics</a>
+  <a class="tag-link" href="../../tags/deployment">deployment</a>
+  <a class="tag-link" href="../../tags/examples">examples</a>
+  <a class="tag-link" href="../../tags/export">export</a>
+  <a class="tag-link" href="../../tags/graph">graph</a>
+  <a class="tag-link" href="../../tags/indoor">indoor</a>
+  <a class="tag-link" href="../../tags/maps">maps</a>
+  <a class="tag-link" href="../../tags/tutorial">tutorial</a>
+  <a class="tag-link" href="../../tags/video">video</a>
+</div>
+          </div>
+          <h1>Step-by-step tutorial</h1>
+
+<p>In this page, we show an up to date version the examples that are presented in the tutorial paper presented at
+<a href="http://www.discotec.org/2021/dais.html">DAIS 2021</a>
+(one of the three conferences of <a href="https://www.discotec.org/2021/">DisCoTec 2021</a>).</p>
+<p>This tutorial features some companion videos, embedded in this page.</p>
+
+<div class="box notices info">
+    <div class="box-label">Info</div>
+    <div class="box-content">
+<p>The tutorial is also available as a scientific document: <a href="https://doi.org/10.1007/978-3-030-78198-9_10">Pianini, D. (2021). Simulation of Large Scale Computational Ecosystems with Alchemist: A Tutorial. Lecture Notes in Computer Science, 145–161. <a href="https://doi.org/10.1007/978-3-030-78198-9_10">https://doi.org/10.1007/978-3-030-78198-9_10</a></a></p>
+
+    </div>
+</div>
+
+<div class="box notices info">
+    <div class="box-label">Info</div>
+    <div class="box-content">
+<p>All code has been open-sourced and it is being actively maintained on <a href="https://github.com/DanySK/DisCoTec-2021-Tutorial">GitHub</a></p>
+
+    </div>
+</div>
+
+<div class="box notices warning">
+    <div class="box-label">Warning</div>
+    <div class="box-content">
+<p>Snapshots presented here are from the Java Swing GUI module that was the main UI at the time the tutorial was written,
+and may or may not reflect the current graphical appearance of the examples
+(which can be configured in any case).</p>
+
+    </div>
+</div>
+
+<div class="box notices tip">
+    <div class="box-label">Tip</div>
+    <div class="box-content">
+<p>Simulations in alchemist are written in <a href="https://yaml.org/">YAML</a>.
+YAML is pretty intuitive, it can be learnt quickly through
+<em><a href="https://learnxinyminutes.com/docs/yaml/">Learn X in Y minutes Where X=yaml</a></em>.
+Even without any prior knowledge, looking at the syntax and comparing it with the information in the aforementioned page
+should provide enough information.</p>
+
+    </div>
+</div>
+<h2 id="import-the-infrastructure">Import the infrastructure</h2>
+
+<div class="box notices warning">
+    <div class="box-label">Warning</div>
+    <div class="box-content">
+<p>You need to be able to import an existing Gradle project from GitHub.
+If you have no idea of what I&rsquo;m talking about,
+<a href="../quickstart">take a step back and make sure you followed the quickstart</a>.</p>
+
+    </div>
+</div>
+<ol>
+<li><code>git clone git@github.com:DanySK/DisCoTec-2021-Tutorial.git</code></li>
+<li><code>cd DisCoTec-2021-Tutorial</code></li>
+<li>
+<ul>
+<li>Unix-like terminals: <code>./gradlew run00</code></li>
+<li>Windows terminals (cmd, Powershell): <code>gradlew.bat run00</code></li>
+</ul>
+</li>
+</ol>
+<p>The shell should begin to work, download the required components, and pop a graphical interface in front of you.</p>
+
+<div class="box notices note">
+    <div class="box-label">Note</div>
+    <div class="box-content">
+<p>If something went wrong, let us know by <strong><a href="https://github.com/DanySK/DisCoTec-2021-Tutorial/issues/new/choose">opening an issue</a></strong>!</p>
+<p>The build system is <em>continuous-integration sensitive</em>.
+If a GUI is not displayed but the proces terminates successfully,
+make sure that you do not have a <code>CI</code> environment variable set to <code>true</code>.</p>
+
+    </div>
+</div>
+<h2 id="writing-and-launching-simple-simulations">Writing and launching simple simulations</h2>
+<p>In this video you will see how to:</p>
+<ol>
+<li>import the example project, and how to use it to run simulations;</li>
+<li>write simple simulations in YAML;</li>
+<li>deploy nodes into a bidimensional space; and</li>
+<li>write programs that perform manipulation of data in form of tuples.</li>
+</ol>
+
+<div class="box notices note">
+    <div class="box-label">Note</div>
+    <div class="box-content">
+<p>This is actually the <strong>second</strong> video of the tutorial.
+The first presents introductory information on the simulator and its meta-model,
+it can be found in the <a href="../../explanation/">Explanation</a> chapter of the documentation.</p>
+
+    </div>
+</div>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/nORRuG3VjYU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>The examples presented in the video are presented in the following subsections,
+updated to execute with the latest version of the simulator.
+You will find this code in the current version of the tutorial.</p>
+
+<div class="box notices tip">
+    <div class="box-label">Tip</div>
+    <div class="box-content">
+<p>Make changes to the existing configuration files and see what happens!</p>
+
+    </div>
+</div>
+<h3 id="three-connected-devices">Three connected devices</h3>
+<p>In this simple example, we simply deploy three nodes in a bidimensional space.
+They do nothing, they are just there.
+Starting the simulation would make it go to infinite time instantly,
+as there are no events to simulate.</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere <span style="color:#78787e"># The incarnation is always mandatory</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance <span style="color:#78787e"># Loads a class with this name implementing LinkingRule</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>] <span style="color:#78787e"># Connection radius (parameter of a ConnectWithinDistance&#39;s constructor)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point <span style="color:#78787e"># Loads a class with this name implementing Deployment</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>] <span style="color:#78787e"># Coordinates</span>
+</span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type: Point, parameters</span>: [<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
+</span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type: Point, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
+</span></span></code></pre></div></div>
+    </div>
+<p>The graphic effect is just to see three dots in the interface.
+If links are displayed (see the <a href="../../reference/default-ui">reference of the graphical interface</a>),
+then the three nodes appear linked.
+
+<div class="expand">
+    <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+        <i class="fas fa-chevron-down"></i>
+        <i class="fas fa-chevron-right"></i>
+        Show snapshot
+    </a>
+    <div class="expand-content" style="display: none;">
+<p><img src="3nodes.png" alt="Dodgeball"></p>
+
+    </div>
+</div></p>
+<h3 id="a-grid-of-devices-playing-dodgeball">A grid of devices playing dodgeball</h3>
+<p>In this example we create a grid of devices
+and make them play dodgeball. The program to be injected is rather simple:
+some nodes will begin the simulation with a ball, and their goal will be to
+throw it to a random neighbor; whichever node gets hit takes a point, updates
+its score, and throws the ball again. This program is easy to write in a network
+of programmable tuple spaces, hence we write the following specification using
+the SAPERE incarnation.</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Grid
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.1</span>, <span style="color:#ff9f43">0.1</span>] <span style="color:#78787e"># A perturbed grid of devices</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">contents</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;{hit, 0}&#34;</span> <span style="color:#78787e"># Everywhere, no one has been hit</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">in</span>: { <span style="color:#ff6ac1">type: Rectangle, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, -<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>] } <span style="color:#78787e"># Inside this shape...</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">molecule</span>: ball <span style="color:#78787e"># ...every node has a ball</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span> <span style="color:#78787e"># This is a frequency, time distribution type is left to the incarnation</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#78787e"># &#39;program&#39; specs are passed down to the incarnation for being interpreted as reactions</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{ball} {hit, N} --&gt; {hit, N + 1} {launching}&#34;</span> <span style="color:#78787e"># If hit, count the hit</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{launching} --&gt; +{ball}&#34;</span> <span style="color:#78787e"># As soon as possible, throw the ball to a neighbor</span>
+</span></span></code></pre></div></div>
+    </div>
+<p>Snapshots of the simulation of the “dodgeball” example follow.
+Devices with a ball are depicted in black. All other devices’ color hue depends on the
+hit count, shifting from red (zero hits) towards blue.</p>
+
+<div class="expand">
+    <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+        <i class="fas fa-chevron-down"></i>
+        <i class="fas fa-chevron-right"></i>
+        Show snapshots
+    </a>
+    <div class="expand-content" style="display: none;">
+<p><img src="dodgeball00.png" alt="Dodgeball">
+<img src="dodgeball01.png" alt="Dodgeball">
+<img src="dodgeball02.png" alt="Dodgeball">
+<img src="dodgeball03.png" alt="Dodgeball">
+<img src="dodgeball04.png" alt="Dodgeball"></p>
+
+    </div>
+</div>
+<h3 id="a-gradient-on-a-grid-of-devices">A gradient on a grid of devices</h3>
+<p>In this example, we implement with the SAPERE incarnation a very simple
+specification of a gradient, a pattern that is considered to be the basis of many
+other patterns <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Grid
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.1</span>, <span style="color:#ff9f43">0.1</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">contents</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">in</span>: { <span style="color:#ff6ac1">type: Rectangle, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, -<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>] }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: source <span style="color:#78787e"># Here is the source of the gradient</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">0.1</span> <span style="color:#78787e"># Exponential with λ=0.1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#78787e"># If there is a source, then the gradient is zero.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{source} --&gt; {source} {gradient, 0}&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span> <span style="color:#78787e"># Exponential distribution with λ=1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#78787e"># Send all neighbors your gradient value plus one</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{gradient, N} --&gt; {gradient, N} *{gradient, N+1}&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#78787e"># In case of multiple gradients, take the shortest</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{gradient, N}{gradient, def: N2&gt;=N} --&gt; {gradient, N}&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">0.1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{gradient, N} --&gt; {gradient, N + 1}&#34;</span> <span style="color:#78787e"># Aging process</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{gradient, def: N &gt; 30} --&gt;&#34;</span> <span style="color:#78787e"># Death process</span>
+</span></span></code></pre></div></div>
+    </div>
+<p>Here are some snapshots of the simulation of the “gradient” example.
+Source devices have a central black dot. Devices’ color hue depends on the gradient
+value, shifting from red (low) towards blue (high).</p>
+
+<div class="expand">
+    <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+        <i class="fas fa-chevron-down"></i>
+        <i class="fas fa-chevron-right"></i>
+        Show snapshots
+    </a>
+    <div class="expand-content" style="display: none;">
+<p><img src="gradient00.png" alt="Gradient">
+<img src="gradient01.png" alt="Gradient">
+<img src="gradient02.png" alt="Gradient"></p>
+
+    </div>
+</div>
+<h3 id="arbitrary-network-graphs">Arbitrary network graphs</h3>
+<p>This example showcases some complex deployments made possible by Alchemist via <a href="https://graphstream-project.org/">Graphstream</a></p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type: GraphStreamDeployment, parameters</span>: [<span style="color:#ff9f43">300</span>, -<span style="color:#ff9f43">30</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0.8</span>, Lobster, [5, 15]] }
+</span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type: GraphStreamDeployment, parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">2</span>, BananaTree, 10] }
+</span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type: GraphStreamDeployment, parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">30</span>, <span style="color:#ff9f43">0</span>, PreferentialAttachment] }
+</span></span></code></pre></div></div>
+    </div>
+<p>The example creates a single environment with three advanced deployments. From left to right: a
+Lobster graph, a banana tree, and a scale-free network with preferential attachment.</p>
+<p><img src="../../images/simulator/graphstream.png" alt="Arbitrary graphs"></p>
+<h2 id="advanced-examples">Advanced examples</h2>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/crZM6Idpg74" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>In this video, we learn how to:</p>
+<ol>
+<li>use aggregate programming (via Protelis) to write simulations;</li>
+<li>use images to create indoor environments with physical obstacles;</li>
+<li>use OpenStreetMap data to simulate on real-world maps; and</li>
+<li>export data from simulations and configure batches exploring all possible combinations</li>
+</ol>
+<h3 id="node-mobility-and-indoor-environments">Node mobility and indoor environments</h3>
+<p>Many interesting scenarios the simulator targets
+require mobility and a richer environment. In the following example, we show
+a group of mobile devices estimating the distance from a point of interest (the
+altar) while moving within a church, whose planimetry has been taken from
+an existing building.
+Since the gradient is propagated in a network of mobile devices, we use a Protelis implementation of the
+adaptive Bellman-Ford algorithm from the Protelis-lang library<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type: ImageEnvironment, parameters</span>: [chiaravalle.png, 0.1] }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ObstaclesBreakConnection, parameters</span>: [<span style="color:#ff9f43">50</span>] }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Rectangle
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        import protelis:coord:spreading
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let source = [110, 325]
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let vector = self.getCoordinates() - source
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let distance = hypot(vector.get(0), vector.get(1))
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        distanceTo(distance &lt; 50)</span>        
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: send <span style="color:#78787e"># Actual network message delivery</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Event
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#ff9f43">1.4</span>] }
+</span></span></code></pre></div></div>
+    </div>
+<p>In the following snapshots, mobile devices progressively explore the location, while measuring the distance from a point of interest
+via gradient (red nodes are closer to the point of interest; purple ones are farther).</p>
+
+<div class="expand">
+    <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+        <i class="fas fa-chevron-down"></i>
+        <i class="fas fa-chevron-right"></i>
+        Show snapshots
+    </a>
+    <div class="expand-content" style="display: none;">
+<p><img src="chiaravalle00.png" alt="Mobility in indoor environments">
+<img src="chiaravalle01.png" alt="Mobility in indoor environments">
+<img src="chiaravalle02.png" alt="Mobility in indoor environments">
+<img src="chiaravalle03.png" alt="Mobility in indoor environments"></p>
+
+    </div>
+</div>
+<h3 id="real-world-maps-and-gps-traces">Real-world maps and GPS traces</h3>
+<p>The simulator can
+load data from OpenStreetMap exports, navigate devices towards a destination
+along streets by relying on GraphHopper or by using GPS traces in GPX format,
+or even using the navigation system to interpolate sparse GPS traces, thus
+preventing nodes from taking impossible paths. In the following simple
+scenario buoys are deployed in the Venice lagoon and move Brownianly.</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type</span>: OSMEnvironment }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">1000</span>] }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_venice_lagoon</span>: <span style="color:#78787e">&amp;lagoon</span>
+</span></span><span style="display:flex;"><span>  [[<span style="color:#ff9f43">45.2038121</span>, <span style="color:#ff9f43">12.2504425</span>], [<span style="color:#ff9f43">45.2207426</span>, <span style="color:#ff9f43">12.2641754</span>], [<span style="color:#ff9f43">45.2381516</span>, <span style="color:#ff9f43">12.2806549</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.2570053</span>, <span style="color:#ff9f43">12.2895813</span>], [<span style="color:#ff9f43">45.276336</span>, <span style="color:#ff9f43">12.2957611</span>], [<span style="color:#ff9f43">45.3029049</span>, <span style="color:#ff9f43">12.2991943</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3212544</span>, <span style="color:#ff9f43">12.3046875</span>], [<span style="color:#ff9f43">45.331875</span>, <span style="color:#ff9f43">12.3040009</span>], [<span style="color:#ff9f43">45.3453893</span>, <span style="color:#ff9f43">12.3040009</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3502151</span>, <span style="color:#ff9f43">12.3156738</span>], [<span style="color:#ff9f43">45.3622776</span>, <span style="color:#ff9f43">12.3232269</span>], [<span style="color:#ff9f43">45.3719259</span>, <span style="color:#ff9f43">12.3300934</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3830193</span>, <span style="color:#ff9f43">12.3348999</span>], [<span style="color:#ff9f43">45.395557</span>, <span style="color:#ff9f43">12.3445129</span>], [<span style="color:#ff9f43">45.3998964</span>, <span style="color:#ff9f43">12.3300934</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.4018249</span>, <span style="color:#ff9f43">12.3136139</span>], [<span style="color:#ff9f43">45.4105023</span>, <span style="color:#ff9f43">12.3122406</span>], [<span style="color:#ff9f43">45.4167685</span>, <span style="color:#ff9f43">12.311554</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.4278531</span>, <span style="color:#ff9f43">12.3012543</span>], [<span style="color:#ff9f43">45.4408627</span>, <span style="color:#ff9f43">12.2902679</span>], [<span style="color:#ff9f43">45.4355628</span>, <span style="color:#ff9f43">12.2772217</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.4206242</span>, <span style="color:#ff9f43">12.2703552</span>], [<span style="color:#ff9f43">45.3994143</span>, <span style="color:#ff9f43">12.2744751</span>], [<span style="color:#ff9f43">45.3738553</span>, <span style="color:#ff9f43">12.2676086</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3579354</span>, <span style="color:#ff9f43">12.2614288</span>], [<span style="color:#ff9f43">45.3429763</span>, <span style="color:#ff9f43">12.2497559</span>], [<span style="color:#ff9f43">45.3198059</span>, <span style="color:#ff9f43">12.2408295</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.2975921</span>, <span style="color:#ff9f43">12.2346497</span>], [<span style="color:#ff9f43">45.2802014</span>, <span style="color:#ff9f43">12.2408295</span>], [<span style="color:#ff9f43">45.257972</span>, <span style="color:#ff9f43">12.233963</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.2038121</span>, <span style="color:#ff9f43">12.2504425</span>]]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Polygon
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">500</span>, <span style="color:#78787e">*lagoon]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">10</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: Event
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">actions</span>: { <span style="color:#ff6ac1">type: BrownianMove, parameters</span>: [<span style="color:#ff9f43">0.0005</span>]}
+</span></span></code></pre></div></div>
+    </div>
+<p>The following snapshots depict the simulation in execution.</p>
+
+<div class="expand">
+    <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+        <i class="fas fa-chevron-down"></i>
+        <i class="fas fa-chevron-right"></i>
+        Show snapshots
+    </a>
+    <div class="expand-content" style="display: none;">
+<p><img src="venice.png" alt="Venice">
+<img src="venice2.png" alt="Venice"></p>
+
+    </div>
+</div>
+<h3 id="in-depth-analysis-of-simulated-scenarios">In-depth analysis of simulated scenarios</h3>
+<p>The following snippet showcases the aforementioned features by enriching
+the example of a gradient in an indoor environment presented previously with:</p>
+<ol>
+<li>variables for the pedestrian walking speed, pedestrian count, and random seed;</li>
+<li>constants to ease the configuration of the simulation;</li>
+<li>a Kotlin resource search expressed as a variable;</li>
+<li>controlled reproducibility by controlling random seeds;</li>
+<li>export of generated data (time and several statistics on the gradient).</li>
+</ol>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span> <span style="color:#78787e"># Must be a valid Groovy snippet</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">image_name</span>: { <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;&#39;chiaravalle.png&#39;&#34;</span> }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">image_path</span>: <span style="color:#78787e">&amp;image_path</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin <span style="color:#78787e"># Pick whatever JSR223 language you like and add it to the classpath</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: | <span style="color:#78787e"># The following is pure Kotlin code. Other variables can be referenced!</span>
+</span></span><span style="display:flex;"><span>      import java.io.File
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">fun File.findImage()</span>: String? = walkTopDown().find { image_name in it.name }?.absolutePath
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">fun File.findImageRecursively(): String = findImage() ?</span>: File(this, &#34;..&#34;).findImageRecursively()
+</span></span><span style="display:flex;"><span>      File(&#34;.&#34;).findImageRecursively()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">timeout</span>: <span style="color:#ff9f43">5000</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#78787e"># Linear free variable</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">walking_speed</span>: <span style="color:#78787e">&amp;walk-speed</span> { <span style="color:#ff6ac1">default: 1.4, min: 1, max: 2, step</span>: <span style="color:#ff9f43">0.1</span> }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">seed</span>: <span style="color:#78787e">&amp;seed</span> { <span style="color:#ff6ac1">default: 0, min: 0, max: 99, step</span>: <span style="color:#ff9f43">1</span> } <span style="color:#78787e"># 100 samples</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">scenario_seed</span>: <span style="color:#78787e">&amp;scenario_seed</span> { <span style="color:#ff6ac1">formula</span>: (seed + 31) * seed } <span style="color:#78787e"># Variable-dependent</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">people_count</span>: <span style="color:#78787e">&amp;people_count</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: GeometricVariable <span style="color:#78787e"># A variable scanning a space with geometric segmentation</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">500</span>, <span style="color:#ff9f43">9</span>] <span style="color:#78787e"># default 300, minimum 50, maximum 100, 9 samples</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">seeds</span>: { <span style="color:#ff6ac1">simulation: *seed, scenario</span>: <span style="color:#78787e">*scenario_seed}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">export</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: CSVExporter
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">fileNameRoot</span>: <span style="color:#5af78e">&#34;snippet-variables-export&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
+</span></span><span style="display:flex;"><span>      - time
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">aggregators</span>: [ mean, max, min, variance, median ] <span style="color:#78787e"># From Apache&#39;s UnivariateStatistic</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">value-filter</span>: onlyfinite <span style="color:#78787e"># discards NaN and Infinity</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type: ImageEnvironment, parameters</span>: [<span style="color:#78787e">*image_path,</span> <span style="color:#78787e">*zoom]</span> }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ObstaclesBreakConnection, parameters</span>: [<span style="color:#ff9f43">50</span>] }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Rectangle
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*people_count,</span> <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        import protelis:coord:spreading
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let source = [110, 325]
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let vector = self.getCoordinates() - source
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let distance = hypot(vector.get(0), vector.get(1))
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        distanceTo(distance &lt; 50)</span>        
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: send
+</span></span><span style="display:flex;"><span>    - { <span style="color:#ff6ac1">type: Event, time-distribution: 1, actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
+</span></span></code></pre></div></div>
+    </div>
+
+<div class="box notices info">
+    <div class="box-label">Info</div>
+    <div class="box-content">
+<p>This example:</p>
+<ul>
+<li><a href="../../howtos/simulation/repeatability">controls randomness by specifying the random seeds</a>,</li>
+<li><a href="../../howtos/simulation/variables">uses variables to define multiple scenarios at once and don&rsquo;t repeat itself</a></li>
+<li><a href="../../howtos/simulation/export">uses the data export infrastructure</a></li>
+</ul>
+
+    </div>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://doi.org/10.1007/s11047-012-9324-y">Fernandez-Marquez, J. L., Di Marzo Serugendo, G., Montagna, S., Viroli, M., &amp; Arcos, J. L. (2012). Description and composition of bio-inspired design patterns: a complete overview. Natural Computing, 12(1), 43–67. https://doi.org/10.1007/s11047-012-9324-y</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://doi.org/10.1109/FAS-W.2017.116">Francia, M., Pianini, D., Beal, J., &amp; Viroli, M. (2017). Towards a Foundational API for Resilient Distributed Systems Design. 2017 IEEE 2nd International Workshops on Foundations and Applications of Self* Systems (FAS*W). https://doi.org/10.1109/fas-w.2017.116</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+          <footer class="footline">
+          </footer>
+        </div>
+      </main>
+    </div>
     <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
     <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
     <script>
@@ -79,7 +577,7 @@
       var root_url="../../";
       var baseUri=root_url.replace(/\/$/, '');
     </script>
-    <nav id="sidebar" class="default-animation showVisitedLinks">
+    <aside id="sidebar" class="default-animation showVisitedLinks">
       <div id="header-wrapper" class="default-animation">
         <div id="header" class="default-animation">
 <div style="white-space: nowrap;">
@@ -94,9 +592,9 @@
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../js/lunr.min.js?1644940513"></script>
-        <script src="../../js/auto-complete.js?1644940513"></script>
-        <script src="../../js/search.js?1644940513"></script>
+        <script src="../../js/lunr.min.js?1646584834"></script>
+        <script src="../../js/auto-complete.js?1646584834"></script>
+        <script src="../../js/search.js?1646584834"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -176,14 +674,38 @@
             <li><a class="padding" href="../../tags/"><i class='fas fa-fw fa-tags'></i> Tags</a></li>
           </ul>
         </div>
-        <div class="footermargin"></div>
-        <hr class="default-animation"/>
-        <div id="prefooter">
+        <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"></div>
+        <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"/>
+        <div id="prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks showVisitedLinks">
           <ul>
-            <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+            <li id="select-language-container" class="footerLangSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-language fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-language" onchange="location = baseUri + this.value;">
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+            </li>
+            <li id="select-variant-container" class="footerVariantSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-paint-brush fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-variant" onchange="variants.changeVariant( this.value );">
+                    <option id="relearn" value="relearn" selected>Relearn</option>
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+              <script>variants.markSelectedVariant();</script>
+            </li>
+            <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer"><div><strong>Alchemist Simulator 13.0.2</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.3</strong></div>
 <br>
 <a
     class="github-button"
@@ -215,534 +737,24 @@ Fork
 
         </div>
       </div>
-    </nav>
-    <div id="body" class="default-animation">
-      <div id="overlay"></div>
-      <div class="padding highlightable">
-        <div id="top-bar"><div>
-          <div id="top-github-link">
-            <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/tutorials/basics/_index.md" target="blank">
-              <i class="fas fa-pencil"></i>
-            </a>
-          </div>
-          <div id="breadcrumbs">
-            <span id="sidebar-toggle-span">
-              <a href="#" id="sidebar-toggle" title='Menu' data-sidebar-toggle="">
-                <i class="fas fa-bars"></i>
-              </a>
-            </span>
-            <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
-            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
-              <meta itemprop="itemListOrder" content="Descending" />
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../tutorials/"><span itemprop="name">Tutorials</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../tutorials/basics/" aria-disabled="true"><span itemprop="name">Step-by-step tutorial</span></a></li>
-            </ol>
-          </div>
-            <div class="progress">
-              <div class="wrapper">
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#import-the-infrastructure">Import the infrastructure</a></li>
-    <li><a href="#writing-and-launching-simple-simulations">Writing and launching simple simulations</a>
-      <ul>
-        <li><a href="#three-connected-devices">Three connected devices</a></li>
-        <li><a href="#a-grid-of-devices-playing-dodgeball">A grid of devices playing dodgeball</a></li>
-        <li><a href="#a-gradient-on-a-grid-of-devices">A gradient on a grid of devices</a></li>
-        <li><a href="#arbitrary-network-graphs">Arbitrary network graphs</a></li>
-      </ul>
-    </li>
-    <li><a href="#advanced-examples">Advanced examples</a>
-      <ul>
-        <li><a href="#node-mobility-and-indoor-environments">Node mobility and indoor environments</a></li>
-        <li><a href="#real-world-maps-and-gps-traces">Real-world maps and GPS traces</a></li>
-        <li><a href="#in-depth-analysis-of-simulated-scenarios">In-depth analysis of simulated scenarios</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-              </div>
-            </div>
-        </div></div>
-        <div id="head-tags">
-<div class="tags">
-  <a class="tag-link" href="../../tags/tutorial">tutorial</a>
-  <a class="tag-link" href="../../tags/basics">basics</a>
-  <a class="tag-link" href="../../tags/video">video</a>
-  <a class="tag-link" href="../../tags/examples">examples</a>
-  <a class="tag-link" href="../../tags/deployment">deployment</a>
-  <a class="tag-link" href="../../tags/maps">maps</a>
-  <a class="tag-link" href="../../tags/indoor">indoor</a>
-  <a class="tag-link" href="../../tags/graph">graph</a>
-  <a class="tag-link" href="../../tags/export">export</a>
-</div>
-        </div>
-        <main id="body-inner">
-          <h1>Step-by-step tutorial</h1>
-
-<p>In this page, we show an up to date version the examples that are presented in the tutorial paper presented at
-<a href="http://www.discotec.org/2021/dais.html">DAIS 2021</a>
-(one of the three conferences of <a href="https://www.discotec.org/2021/">DisCoTec 2021</a>).</p>
-<p>This tutorial features some companion videos, embedded in this page.</p>
-
-<div class="notices info">
-    <div class="label">Info</div>
-<p>The tutorial is also available as a scientific document: <a href="https://doi.org/10.1007/978-3-030-78198-9_10">Pianini, D. (2021). Simulation of Large Scale Computational Ecosystems with Alchemist: A Tutorial. Lecture Notes in Computer Science, 145–161. <a href="https://doi.org/10.1007/978-3-030-78198-9_10">https://doi.org/10.1007/978-3-030-78198-9_10</a></a></p>
-</div>
-
-<div class="notices info">
-    <div class="label">Info</div>
-<p>All code has been open-sourced and it is being actively maintained on <a href="https://github.com/DanySK/DisCoTec-2021-Tutorial">GitHub</a></p>
-</div>
-
-<div class="notices warning">
-    <div class="label">Warning</div>
-<p>Snapshots presented here are from the Java Swing GUI module that was the main UI at the time the tutorial was written,
-and may or may not reflect the current graphical appearance of the examples
-(which can be configured in any case).</p>
-</div>
-
-<div class="notices tip">
-    <div class="label">Tip</div>
-<p>Simulations in alchemist are written in <a href="https://yaml.org/">YAML</a>.
-YAML is pretty intuitive, it can be learnt quickly through
-<em><a href="https://learnxinyminutes.com/docs/yaml/">Learn X in Y minutes Where X=yaml</a></em>.
-Even without any prior knowledge, looking at the syntax and comparing it with the information in the aforementioned page
-should provide enough information.</p>
-</div>
-<h2 id="import-the-infrastructure">Import the infrastructure</h2>
-
-<div class="notices warning">
-    <div class="label">Warning</div>
-<p>You need to be able to import an existing Gradle project from GitHub.
-If you have no idea of what I&rsquo;m talking about,
-<a href="../quickstart">take a step back and make sure you followed the quickstart</a>.</p>
-</div>
-<ol>
-<li><code>git clone git@github.com:DanySK/DisCoTec-2021-Tutorial.git</code></li>
-<li><code>cd DisCoTec-2021-Tutorial</code></li>
-<li>
-<ul>
-<li>Unix-like terminals: <code>./gradlew run00</code></li>
-<li>Windows terminals (cmd, Powershell): <code>gradlew.bat run00</code></li>
-</ul>
-</li>
-</ol>
-<p>The shell should begin to work, download the required components, and pop a graphical interface in front of you.</p>
-
-<div class="notices note">
-    <div class="label">Note</div>
-<p>If something went wrong, let us know by <strong><a href="https://github.com/DanySK/DisCoTec-2021-Tutorial/issues/new/choose">opening an issue</a></strong>!</p>
-<p>The build system is <em>continuous-integration sensitive</em>.
-If a GUI is not displayed but the proces terminates successfully,
-make sure that you do not have a <code>CI</code> environment variable set to <code>true</code>.</p>
-</div>
-<h2 id="writing-and-launching-simple-simulations">Writing and launching simple simulations</h2>
-<p>In this video you will see how to:</p>
-<ol>
-<li>import the example project, and how to use it to run simulations;</li>
-<li>write simple simulations in YAML;</li>
-<li>deploy nodes into a bidimensional space; and</li>
-<li>write programs that perform manipulation of data in form of tuples.</li>
-</ol>
-
-<div class="notices note">
-    <div class="label">Note</div>
-<p>This is actually the <strong>second</strong> video of the tutorial.
-The first presents introductory information on the simulator and its meta-model,
-it can be found in the <a href="../../explanation/">Explanation</a> chapter of the documentation.</p>
-</div>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/nORRuG3VjYU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-<p>The examples presented in the video are presented in the following subsections,
-updated to execute with the latest version of the simulator.
-You will find this code in the current version of the tutorial.</p>
-
-<div class="notices tip">
-    <div class="label">Tip</div>
-<p>Make changes to the existing configuration files and see what happens!</p>
-</div>
-<h3 id="three-connected-devices">Three connected devices</h3>
-<p>In this simple example, we simply deploy three nodes in a bidimensional space.
-They do nothing, they are just there.
-Starting the simulation would make it go to infinite time instantly,
-as there are no events to simulate.</p>
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere <span style="color:#78787e"># The incarnation is always mandatory</span>
-<span style="color:#ff6ac1">network-model</span>:
-  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance <span style="color:#78787e"># Loads a class with this name implementing LinkingRule</span>
-  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>] <span style="color:#78787e"># Connection radius (parameter of a ConnectWithinDistance&#39;s constructor)</span>
-<span style="color:#ff6ac1">deployments</span>:
-  - <span style="color:#ff6ac1">type</span>: Point <span style="color:#78787e"># Loads a class with this name implementing Deployment</span>
-    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>] <span style="color:#78787e"># Coordinates</span>
-  - { <span style="color:#ff6ac1">type: Point, parameters</span>: [<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
-  - { <span style="color:#ff6ac1">type: Point, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
-</code></pre></div></div>
-    </div>
-<p>The graphic effect is just to see three dots in the interface.
-If links are displayed (see the <a href="../../reference/default-ui">reference of the graphical interface</a>),
-then the three nodes appear linked.
-
-<div class="expand">
-    <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-        <i class="fas fa-chevron-down"></i>
-        <i class="fas fa-chevron-right"></i>
-        Show snapshot
-    </a>
-    <div class="expand-content" style="display: none;">
-<p><img src="3nodes.png" alt="Dodgeball"></p>
-
-    </div>
-</div></p>
-<h3 id="a-grid-of-devices-playing-dodgeball">A grid of devices playing dodgeball</h3>
-<p>In this example we create a grid of devices
-and make them play dodgeball. The program to be injected is rather simple:
-some nodes will begin the simulation with a ball, and their goal will be to
-throw it to a random neighbor; whichever node gets hit takes a point, updates
-its score, and throws the ball again. This program is easy to write in a network
-of programmable tuple spaces, hence we write the following specification using
-the SAPERE incarnation.</p>
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
-<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
-<span style="color:#ff6ac1">deployments</span>:
-  <span style="color:#ff6ac1">type</span>: Grid
-  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.1</span>, <span style="color:#ff9f43">0.1</span>] <span style="color:#78787e"># A perturbed grid of devices</span>
-  <span style="color:#ff6ac1">contents</span>:
-    - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;{hit, 0}&#34;</span> <span style="color:#78787e"># Everywhere, no one has been hit</span>
-    - <span style="color:#ff6ac1">in</span>: { <span style="color:#ff6ac1">type: Rectangle, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, -<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>] } <span style="color:#78787e"># Inside this shape...</span>
-      <span style="color:#ff6ac1">molecule</span>: ball <span style="color:#78787e"># ...every node has a ball</span>
-  <span style="color:#ff6ac1">programs</span>:
-    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span> <span style="color:#78787e"># This is a frequency, time distribution type is left to the incarnation</span>
-      <span style="color:#78787e"># &#39;program&#39; specs are passed down to the incarnation for being interpreted as reactions</span>
-      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{ball} {hit, N} --&gt; {hit, N + 1} {launching}&#34;</span> <span style="color:#78787e"># If hit, count the hit</span>
-    - <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{launching} --&gt; +{ball}&#34;</span> <span style="color:#78787e"># As soon as possible, throw the ball to a neighbor</span>
-</code></pre></div></div>
-    </div>
-<p>Snapshots of the simulation of the “dodgeball” example follow.
-Devices with a ball are depicted in black. All other devices’ color hue depends on the
-hit count, shifting from red (zero hits) towards blue.</p>
-
-<div class="expand">
-    <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-        <i class="fas fa-chevron-down"></i>
-        <i class="fas fa-chevron-right"></i>
-        Show snapshots
-    </a>
-    <div class="expand-content" style="display: none;">
-<p><img src="dodgeball00.png" alt="Dodgeball">
-<img src="dodgeball01.png" alt="Dodgeball">
-<img src="dodgeball02.png" alt="Dodgeball">
-<img src="dodgeball03.png" alt="Dodgeball">
-<img src="dodgeball04.png" alt="Dodgeball"></p>
-
-    </div>
-</div>
-<h3 id="a-gradient-on-a-grid-of-devices">A gradient on a grid of devices</h3>
-<p>In this example, we implement with the SAPERE incarnation a very simple
-specification of a gradient, a pattern that is considered to be the basis of many
-other patterns <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
-<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
-<span style="color:#ff6ac1">deployments</span>:
-  <span style="color:#ff6ac1">type</span>: Grid
-  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.1</span>, <span style="color:#ff9f43">0.1</span>]
-  <span style="color:#ff6ac1">contents</span>:
-    <span style="color:#ff6ac1">in</span>: { <span style="color:#ff6ac1">type: Rectangle, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, -<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>] }
-    <span style="color:#ff6ac1">molecule</span>: source <span style="color:#78787e"># Here is the source of the gradient</span>
-  <span style="color:#ff6ac1">programs</span>:
-    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">0.1</span> <span style="color:#78787e"># Exponential with λ=0.1</span>
-      <span style="color:#78787e"># If there is a source, then the gradient is zero.</span>
-      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{source} --&gt; {source} {gradient, 0}&#34;</span>
-    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span> <span style="color:#78787e"># Exponential distribution with λ=1</span>
-      <span style="color:#78787e"># Send all neighbors your gradient value plus one</span>
-      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{gradient, N} --&gt; {gradient, N} *{gradient, N+1}&#34;</span>
-      <span style="color:#78787e"># In case of multiple gradients, take the shortest</span>
-    - <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{gradient, N}{gradient, def: N2&gt;=N} --&gt; {gradient, N}&#34;</span>
-    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">0.1</span>
-      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{gradient, N} --&gt; {gradient, N + 1}&#34;</span> <span style="color:#78787e"># Aging process</span>
-    - <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{gradient, def: N &gt; 30} --&gt;&#34;</span> <span style="color:#78787e"># Death process</span>
-</code></pre></div></div>
-    </div>
-<p>Here are some snapshots of the simulation of the “gradient” example.
-Source devices have a central black dot. Devices’ color hue depends on the gradient
-value, shifting from red (low) towards blue (high).</p>
-
-<div class="expand">
-    <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-        <i class="fas fa-chevron-down"></i>
-        <i class="fas fa-chevron-right"></i>
-        Show snapshots
-    </a>
-    <div class="expand-content" style="display: none;">
-<p><img src="gradient00.png" alt="Gradient">
-<img src="gradient01.png" alt="Gradient">
-<img src="gradient02.png" alt="Gradient"></p>
-
-    </div>
-</div>
-<h3 id="arbitrary-network-graphs">Arbitrary network graphs</h3>
-<p>This example showcases some complex deployments made possible by Alchemist via <a href="https://graphstream-project.org/">Graphstream</a></p>
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
-<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
-<span style="color:#ff6ac1">deployments</span>:
-  - { <span style="color:#ff6ac1">type: GraphStreamDeployment, parameters</span>: [<span style="color:#ff9f43">300</span>, -<span style="color:#ff9f43">30</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0.8</span>, Lobster, [5, 15]] }
-  - { <span style="color:#ff6ac1">type: GraphStreamDeployment, parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">2</span>, BananaTree, 10] }
-  - { <span style="color:#ff6ac1">type: GraphStreamDeployment, parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">30</span>, <span style="color:#ff9f43">0</span>, PreferentialAttachment] }
-</code></pre></div></div>
-    </div>
-<p>The example creates a single environment with three advanced deployments. From left to right: a
-Lobster graph, a banana tree, and a scale-free network with preferential attachment.</p>
-<p><img src="../../images/simulator/graphstream.png" alt="Arbitrary graphs"></p>
-<h2 id="advanced-examples">Advanced examples</h2>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/crZM6Idpg74" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-<p>In this video, we learn how to:</p>
-<ol>
-<li>use aggregate programming (via Protelis) to write simulations;</li>
-<li>use images to create indoor environments with physical obstacles;</li>
-<li>use OpenStreetMap data to simulate on real-world maps; and</li>
-<li>export data from simulations and configure batches exploring all possible combinations</li>
-</ol>
-<h3 id="node-mobility-and-indoor-environments">Node mobility and indoor environments</h3>
-<p>Many interesting scenarios the simulator targets
-require mobility and a richer environment. In the following example, we show
-a group of mobile devices estimating the distance from a point of interest (the
-altar) while moving within a church, whose planimetry has been taken from
-an existing building.
-Since the gradient is propagated in a network of mobile devices, we use a Protelis implementation of the
-adaptive Bellman-Ford algorithm from the Protelis-lang library<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
-<span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type: ImageEnvironment, parameters</span>: [chiaravalle.png, 0.1] }
-<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ObstaclesBreakConnection, parameters</span>: [<span style="color:#ff9f43">50</span>] }
-<span style="color:#ff6ac1">deployments</span>:
-  <span style="color:#ff6ac1">type</span>: Rectangle
-  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
-  <span style="color:#ff6ac1">programs</span>:
-    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
-      <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
-</span><span style="color:#5af78e">        import protelis:coord:spreading
-</span><span style="color:#5af78e">        let source = [110, 325]
-</span><span style="color:#5af78e">        let vector = self.getCoordinates() - source
-</span><span style="color:#5af78e">        let distance = hypot(vector.get(0), vector.get(1))
-</span><span style="color:#5af78e">        distanceTo(distance &lt; 50)</span>        
-    - <span style="color:#ff6ac1">program</span>: send <span style="color:#78787e"># Actual network message delivery</span>
-    - <span style="color:#ff6ac1">type</span>: Event
-      <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
-      <span style="color:#ff6ac1">actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#ff9f43">1.4</span>] }
-</code></pre></div></div>
-    </div>
-<p>In the following snapshots, mobile devices progressively explore the location, while measuring the distance from a point of interest
-via gradient (red nodes are closer to the point of interest; purple ones are farther).</p>
-
-<div class="expand">
-    <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-        <i class="fas fa-chevron-down"></i>
-        <i class="fas fa-chevron-right"></i>
-        Show snapshots
-    </a>
-    <div class="expand-content" style="display: none;">
-<p><img src="chiaravalle00.png" alt="Mobility in indoor environments">
-<img src="chiaravalle01.png" alt="Mobility in indoor environments">
-<img src="chiaravalle02.png" alt="Mobility in indoor environments">
-<img src="chiaravalle03.png" alt="Mobility in indoor environments"></p>
-
-    </div>
-</div>
-<h3 id="real-world-maps-and-gps-traces">Real-world maps and GPS traces</h3>
-<p>The simulator can
-load data from OpenStreetMap exports, navigate devices towards a destination
-along streets by relying on GraphHopper or by using GPS traces in GPX format,
-or even using the navigation system to interpolate sparse GPS traces, thus
-preventing nodes from taking impossible paths. In the following simple
-scenario buoys are deployed in the Venice lagoon and move Brownianly.</p>
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
-<span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type</span>: OSMEnvironment }
-<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">1000</span>] }
-<span style="color:#ff6ac1">_venice_lagoon</span>: <span style="color:#78787e">&amp;lagoon</span>
-  [[<span style="color:#ff9f43">45.2038121</span>, <span style="color:#ff9f43">12.2504425</span>], [<span style="color:#ff9f43">45.2207426</span>, <span style="color:#ff9f43">12.2641754</span>], [<span style="color:#ff9f43">45.2381516</span>, <span style="color:#ff9f43">12.2806549</span>],
-   [<span style="color:#ff9f43">45.2570053</span>, <span style="color:#ff9f43">12.2895813</span>], [<span style="color:#ff9f43">45.276336</span>, <span style="color:#ff9f43">12.2957611</span>], [<span style="color:#ff9f43">45.3029049</span>, <span style="color:#ff9f43">12.2991943</span>],
-   [<span style="color:#ff9f43">45.3212544</span>, <span style="color:#ff9f43">12.3046875</span>], [<span style="color:#ff9f43">45.331875</span>, <span style="color:#ff9f43">12.3040009</span>], [<span style="color:#ff9f43">45.3453893</span>, <span style="color:#ff9f43">12.3040009</span>],
-   [<span style="color:#ff9f43">45.3502151</span>, <span style="color:#ff9f43">12.3156738</span>], [<span style="color:#ff9f43">45.3622776</span>, <span style="color:#ff9f43">12.3232269</span>], [<span style="color:#ff9f43">45.3719259</span>, <span style="color:#ff9f43">12.3300934</span>],
-   [<span style="color:#ff9f43">45.3830193</span>, <span style="color:#ff9f43">12.3348999</span>], [<span style="color:#ff9f43">45.395557</span>, <span style="color:#ff9f43">12.3445129</span>], [<span style="color:#ff9f43">45.3998964</span>, <span style="color:#ff9f43">12.3300934</span>],
-   [<span style="color:#ff9f43">45.4018249</span>, <span style="color:#ff9f43">12.3136139</span>], [<span style="color:#ff9f43">45.4105023</span>, <span style="color:#ff9f43">12.3122406</span>], [<span style="color:#ff9f43">45.4167685</span>, <span style="color:#ff9f43">12.311554</span>],
-   [<span style="color:#ff9f43">45.4278531</span>, <span style="color:#ff9f43">12.3012543</span>], [<span style="color:#ff9f43">45.4408627</span>, <span style="color:#ff9f43">12.2902679</span>], [<span style="color:#ff9f43">45.4355628</span>, <span style="color:#ff9f43">12.2772217</span>],
-   [<span style="color:#ff9f43">45.4206242</span>, <span style="color:#ff9f43">12.2703552</span>], [<span style="color:#ff9f43">45.3994143</span>, <span style="color:#ff9f43">12.2744751</span>], [<span style="color:#ff9f43">45.3738553</span>, <span style="color:#ff9f43">12.2676086</span>],
-   [<span style="color:#ff9f43">45.3579354</span>, <span style="color:#ff9f43">12.2614288</span>], [<span style="color:#ff9f43">45.3429763</span>, <span style="color:#ff9f43">12.2497559</span>], [<span style="color:#ff9f43">45.3198059</span>, <span style="color:#ff9f43">12.2408295</span>],
-   [<span style="color:#ff9f43">45.2975921</span>, <span style="color:#ff9f43">12.2346497</span>], [<span style="color:#ff9f43">45.2802014</span>, <span style="color:#ff9f43">12.2408295</span>], [<span style="color:#ff9f43">45.257972</span>, <span style="color:#ff9f43">12.233963</span>],
-   [<span style="color:#ff9f43">45.2038121</span>, <span style="color:#ff9f43">12.2504425</span>]]
-<span style="color:#ff6ac1">deployments</span>:
-  <span style="color:#ff6ac1">type</span>: Polygon
-  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">500</span>, <span style="color:#78787e">*lagoon]</span>
-  <span style="color:#ff6ac1">programs</span>:
-    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">10</span>
-      <span style="color:#ff6ac1">type</span>: Event
-      <span style="color:#ff6ac1">actions</span>: { <span style="color:#ff6ac1">type: BrownianMove, parameters</span>: [<span style="color:#ff9f43">0.0005</span>]}
-</code></pre></div></div>
-    </div>
-<p>The following snapshots depict the simulation in execution.</p>
-
-<div class="expand">
-    <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-        <i class="fas fa-chevron-down"></i>
-        <i class="fas fa-chevron-right"></i>
-        Show snapshots
-    </a>
-    <div class="expand-content" style="display: none;">
-<p><img src="venice.png" alt="Venice">
-<img src="venice2.png" alt="Venice"></p>
-
-    </div>
-</div>
-<h3 id="in-depth-analysis-of-simulated-scenarios">In-depth analysis of simulated scenarios</h3>
-<p>The following snippet showcases the aforementioned features by enriching
-the example of a gradient in an indoor environment presented previously with:</p>
-<ol>
-<li>variables for the pedestrian walking speed, pedestrian count, and random seed;</li>
-<li>constants to ease the configuration of the simulation;</li>
-<li>a Kotlin resource search expressed as a variable;</li>
-<li>controlled reproducibility by controlling random seeds;</li>
-<li>export of generated data (time and several statistics on the gradient).</li>
-</ol>
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
-<span style="color:#ff6ac1">variables</span>:
-  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
-    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span> <span style="color:#78787e"># Must be a valid Groovy snippet</span>
-  <span style="color:#ff6ac1">image_name</span>: { <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;&#39;chiaravalle.png&#39;&#34;</span> }
-  <span style="color:#ff6ac1">image_path</span>: <span style="color:#78787e">&amp;image_path</span>
-    <span style="color:#ff6ac1">language</span>: kotlin <span style="color:#78787e"># Pick whatever JSR223 language you like and add it to the classpath</span>
-    <span style="color:#ff6ac1">formula</span>: | <span style="color:#78787e"># The following is pure Kotlin code. Other variables can be referenced!</span>
-      import java.io.File
-      <span style="color:#ff6ac1">fun File.findImage()</span>: String? = walkTopDown().find { image_name in it.name }?.absolutePath
-      <span style="color:#ff6ac1">fun File.findImageRecursively(): String = findImage() ?</span>: File(this, &#34;..&#34;).findImageRecursively()
-      File(&#34;.&#34;).findImageRecursively()
-    <span style="color:#ff6ac1">timeout</span>: <span style="color:#ff9f43">5000</span>
-  <span style="color:#78787e"># Linear free variable</span>
-  <span style="color:#ff6ac1">walking_speed</span>: <span style="color:#78787e">&amp;walk-speed</span> { <span style="color:#ff6ac1">default: 1.4, min: 1, max: 2, step</span>: <span style="color:#ff9f43">0.1</span> }
-  <span style="color:#ff6ac1">seed</span>: <span style="color:#78787e">&amp;seed</span> { <span style="color:#ff6ac1">default: 0, min: 0, max: 99, step</span>: <span style="color:#ff9f43">1</span> } <span style="color:#78787e"># 100 samples</span>
-  <span style="color:#ff6ac1">scenario_seed</span>: <span style="color:#78787e">&amp;scenario_seed</span> { <span style="color:#ff6ac1">formula</span>: (seed + 31) * seed } <span style="color:#78787e"># Variable-dependent</span>
-  <span style="color:#ff6ac1">people_count</span>: <span style="color:#78787e">&amp;people_count</span>
-    <span style="color:#ff6ac1">type</span>: GeometricVariable <span style="color:#78787e"># A variable scanning a space with geometric segmentation</span>
-    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">500</span>, <span style="color:#ff9f43">9</span>] <span style="color:#78787e"># default 300, minimum 50, maximum 100, 9 samples</span>
-<span style="color:#ff6ac1">seeds</span>: { <span style="color:#ff6ac1">simulation: *seed, scenario</span>: <span style="color:#78787e">*scenario_seed}</span>
-<span style="color:#ff6ac1">export</span>:
-    <span style="color:#ff6ac1">type</span>: CSVExporter
-    <span style="color:#ff6ac1">parameters</span>:
-      <span style="color:#ff6ac1">fileNameRoot</span>: <span style="color:#5af78e">&#34;snippet-variables-export&#34;</span>
-    <span style="color:#ff6ac1">data</span>:
-      - time
-      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
-        <span style="color:#ff6ac1">aggregators</span>: [ mean, max, min, variance, median ] <span style="color:#78787e"># From Apache&#39;s UnivariateStatistic</span>
-        <span style="color:#ff6ac1">value-filter</span>: onlyfinite <span style="color:#78787e"># discards NaN and Infinity</span>
-<span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type: ImageEnvironment, parameters</span>: [<span style="color:#78787e">*image_path,</span> <span style="color:#78787e">*zoom]</span> }
-<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ObstaclesBreakConnection, parameters</span>: [<span style="color:#ff9f43">50</span>] }
-<span style="color:#ff6ac1">deployments</span>:
-  <span style="color:#ff6ac1">type</span>: Rectangle
-  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*people_count,</span> <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
-  <span style="color:#ff6ac1">programs</span>:
-    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
-      <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
-</span><span style="color:#5af78e">        import protelis:coord:spreading
-</span><span style="color:#5af78e">        let source = [110, 325]
-</span><span style="color:#5af78e">        let vector = self.getCoordinates() - source
-</span><span style="color:#5af78e">        let distance = hypot(vector.get(0), vector.get(1))
-</span><span style="color:#5af78e">        distanceTo(distance &lt; 50)</span>        
-    - <span style="color:#ff6ac1">program</span>: send
-    - { <span style="color:#ff6ac1">type: Event, time-distribution: 1, actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
-</code></pre></div></div>
-    </div>
-
-<div class="notices info">
-    <div class="label">Info</div>
-<p>This example:</p>
-<ul>
-<li><a href="../../howtos/simulation/repeatability">controls randomness by specifying the random seeds</a>,</li>
-<li><a href="../../howtos/simulation/variables">uses variables to define multiple scenarios at once and don&rsquo;t repeat itself</a></li>
-<li><a href="../../howtos/simulation/export">uses the data export infrastructure</a></li>
-</ul>
-</div>
-<section class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1" role="doc-endnote">
-<p><a href="https://doi.org/10.1007/s11047-012-9324-y">Fernandez-Marquez, J. L., Di Marzo Serugendo, G., Montagna, S., Viroli, M., &amp; Arcos, J. L. (2012). Description and composition of bio-inspired design patterns: a complete overview. Natural Computing, 12(1), 43–67. https://doi.org/10.1007/s11047-012-9324-y</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2" role="doc-endnote">
-<p><a href="https://doi.org/10.1109/FAS-W.2017.116">Francia, M., Pianini, D., Beal, J., &amp; Viroli, M. (2017). Towards a Foundational API for Resilient Distributed Systems Design. 2017 IEEE 2nd International Workshops on Foundations and Applications of Self* Systems (FAS*W). https://doi.org/10.1109/fas-w.2017.116</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</section>
-
-          <footer class=" footline">
-          </footer>
-        </main>
-      </div>
-      <div id="navigation">
-        <a class="nav nav-prev default-animation" href="../../tutorials/quickstart/" title="Quickstart"><i class="fa fa-chevron-left"></i></a>
-        <a class="nav nav-next default-animation" href="../../tutorials/protelis/" title="Protelis Incarnation Tutorial"><i class="fa fa-chevron-right"></i></a>
-      </div>
-    </div>
-    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
-      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
-    </div>
-    <script src="../../js/clipboard.min.js?1644940513"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1644940513"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1644940513"></script>
-    <script src="../../js/jquery.svg.pan.zoom.js?1644940513"></script>
-    <script src="../../js/featherlight.min.js?1644940513"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1644940513"></script>
-    <script src="../../js/mermaid.min.js?1644940513"></script>
+    </aside>
+    <script src="../../js/clipboard.min.js?1646584834"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1646584834"></script>
+    <script src="../../js/jquery.svg.pan.zoom.js?1646584834"></script>
+    <script src="../../js/featherlight.min.js?1646584834"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1646584834"></script>
+    <script src="../../js/mermaid.min.js?1646584834"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script src="../../js/relearn.js?1644940513"></script>
+    <script>
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+    </script>
+    <script src="../../js/theme.js?1646584834"></script>
   </body>
 </html>

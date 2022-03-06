@@ -2,76 +2,173 @@
 <html lang="en" class="js csstransforms3d">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.92.2" />
-    <meta name="generator" content="Relearn 2.9.6">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.93.2" />
+    <meta name="generator" content="Relearn 3.0.4&#43;tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <title>Alchemist via Gradle :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../../howtos/preparation/gradle/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../../images/logo.svg?1644940503" type="image/svg+xml">
-    <link href="../../../css/nucleus.css?1644940503" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1644940503" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1644940503" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1644940503" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1644940503" rel="stylesheet">
-    <link href="../../../css/theme.css?1644940503" rel="stylesheet">
-    <link id="variant-style" href="../../../css/theme-relearn.css?1644940503" rel="stylesheet">
-    <link href="../../../css/variant.css?1644940503" rel="stylesheet">
-    <link href="../../../css/print.css?1644940503" rel="stylesheet" media="print">
+    <link rel="icon" href="../../../images/logo.svg?1646584824" type="image/svg+xml">
+    <link href="../../../css/nucleus.css?1646584824" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1646584824" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1646584824" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1646584824" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1646584824" rel="stylesheet">
+    <link href="../../../css/theme.css?1646584824" rel="stylesheet">
+    <link id="variant-style" href="../../../css/theme-relearn.css?1646584824" rel="stylesheet">
+    <link href="../../../css/variant.css?1646584824" rel="stylesheet">
+    <link href="../../../css/theme-relearn-light.css?1646584824" rel="stylesheet" media="print">
+    <link href="../../../css/print.css?1646584824" rel="stylesheet" media="print">
     <style>
     </style>
+    <script src="../../../js/variant.js?1646584824"></script>
     <script>
-      // we need to define this script in the head to avoid flickering
-      // on page load if the user has selected a non default variant
-      var theme = window.localStorage.getItem( 'theme' );
-      changeTheme( theme );
-      function getTheme(){
-        var link = document.querySelector( '#variant-style' );
-        if( !link ){
-          return;
-        }
-        var path = link.getAttribute( 'href' );
-        var theme = path.match(/^.*\/theme-(.*?)\.css.*$/)[ 1 ];
-        return theme;
-      }
-      function markTheme( theme ){
-        var select = document.querySelector( '#select-theme' );
-        if( !select ){
-          return;
-        }
-        select.value = theme;
-      }
-      function changeTheme( theme ){
-        var themes = [ "relearn" ];
-        if( themes.indexOf( theme ) < 0 ){
-          theme = themes.length ? themes[ 0 ] : null;
-        }
-        if( !theme ){
-          return;
-        }
-        var link = document.querySelector( '#variant-style' );
-        if( !link ){
-          return;
-        }
-        var old_path = link.getAttribute( 'href' );
-        var new_path = old_path.replace( /^(.*\/theme-).*?(\.css.*)$/, '$1' + theme + '$2' );
-        if( old_path != new_path ){
-          window.localStorage.setItem( 'theme', theme );
-          link.setAttribute( 'href', new_path );
-          markTheme( theme );
-          // remove selection, because if some uses an arrow navigation
-          // by pressing the left or right cursor key, we will automatically
-          // select a different style
-          if( document.activeElement ){
-            document.activeElement.blur();
-          }
-        }
-      }
+      variants.init( [ "relearn" ] );
     </script>
-    <script src="../../../js/jquery.min.js?1644940503"></script>
+    <script src="../../../js/jquery.min.js?1646584824"></script>
   </head>
   <body class="default-animation" data-url="../../../howtos/preparation/gradle/">
+    <div id="body" class="default-animation">
+      <div id="sidebar-overlay"></div>
+      <div id="toc-overlay"></div>
+      <nav id="topbar" class="highlightable">
+        <div>
+          <div class="navigation">
+              <a class="nav nav-next" href="../../../howtos/simulation/" title="Simulation"><i class="fas fa-chevron-right fa-fw"></i></a>
+          </div>
+          <div class="navigation">
+              <a class="nav nav-prev" href="../../../howtos/preparation/jar/" title="Alchemist stand-alone"><i class="fas fa-chevron-left fa-fw"></i></a>
+          </div>
+          <div id="top-github-link">
+            <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/howtos/preparation/gradle/_index.md" target="blank">
+              <i class="fas fa-pen fa-fw"></i>
+            </a>
+          </div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" title='Menu'><i class="fas fa-bars fa-fw"></i></a>
+            </span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <meta itemprop="itemListOrder" content="Descending" />
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="4" /><a itemprop="item" href="../../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../../howtos/"><span itemprop="name">How-to Guides</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../../howtos/preparation/"><span itemprop="name">Preparation</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../../howtos/preparation/gradle/" aria-disabled="true"><span itemprop="name">Alchemist via Gradle</span></a></li>
+            </ol>
+          </div>
+        </div>
+      </nav>
+      <main id="body-inner" class="highlightable ">
+        <div class="flex-block-wrapper">
+          <div id="head-tags">
+<div class="tags">
+  <a class="tag-link" href="../../../tags/example">example</a>
+  <a class="tag-link" href="../../../tags/gradle">gradle</a>
+  <a class="tag-link" href="../../../tags/launch">launch</a>
+  <a class="tag-link" href="../../../tags/run">run</a>
+</div>
+          </div>
+          <h1>Alchemist via Gradle</h1>
+
+<p>We recommend to start by generating a new GitHub repository through the
+<a href="https://github.com/AlchemistSimulator/alchemist-primer">Alchemist Primer template repository</a>.</p>
+<p>We report here the README.md file contents as reference</p>
+
+<div class="expand">
+    <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+        <i class="fas fa-chevron-down"></i>
+        <i class="fas fa-chevron-right"></i>
+        Alchemist Primer README file
+    </a>
+    <div class="expand-content" style="display: none;">
+<h1 id="alchemist-primer">Alchemist Primer</h1>
+<p>This is a template project to spawn projects using the <a href="https://github.com/AlchemistSimulator/Alchemist">Alchemist Simulator</a>.
+It provides a pre-configured gradle build.</p>
+<p>This project is a quick start for the <a href="https://github.com/AlchemistSimulator/Alchemist">Alchemist</a> simulator, it shows how to use the simulator via <a href="https://gradle.org">Gradle</a> to run a simple simulation. More information can be found on <a href="https://alchemistsimulator.github.io">the official Alchemist website</a>.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>A <a href="https://docs.gradle.org/current/userguide/compatibility.html">Gradle-compatible Java version</a>.</p>
+<h2 id="how-to-launch">How to launch</h2>
+<p>To run the example you can rely on the pre-configured <a href="https://gradle.org">Gradle</a> build script.
+It will automatically download all the required libraries, set up the environment, and execute the simulator via command line for you.
+As first step, use <code>git</code> to locally clone this repository.</p>
+<p>Simulations can be included in the <code>src/main/yaml</code> folder,
+and executed via the <code>runAll</code> Gradle task.</p>
+<p>For each YAML file in <code>src/main/yaml</code> a task <code>runFileName</code> will be created.</p>
+<p>In order to launch, open a terminal and move to the project root folder, then on UNIX:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew runAll
+</span></span></code></pre></div><p>On Windows:</p>
+<pre tabindex="0"><code>gradlew.bat runAll
+</code></pre><p>Press <kb>P</kb> to start the simulation.
+For further information about the gui, see the <a href="https://alchemistsimulator.github.io/">Alchemist documentation</a>.</p>
+<p>Note that the first launch will take some time, since Gradle will download all the required files.
+They will get cached in the user&rsquo;s home folder (as per Gradle normal behavior).</p>
+<h2 id="the-build-script">The build script</h2>
+<p>Let&rsquo;s explain how things work by looking at the <code>build.gradle.kts</code> script and the <code>gradle/libs.versions.toml</code> file.
+The latter is a <a href="https://docs.gradle.org/current/userguide/platforms.html#sub:conventional-dependencies-toml">Gradle dependency catalog file</a>
+including the specification of the required libraries,
+including their name, their version, and how they get bundled;
+while the former is the actual script that launches the simulator.</p>
+<p>The build script imports the bundled alchemist dependencies as:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>dependencies {
+</span></span><span style="display:flex;"><span>    implementation(libs.bundles.alchemist)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>You will either need to import the full version of alchemist (but it&rsquo;s not recommended, as it pulls in a lot of dependencies you probably don&rsquo;t want),
+or manually declare which modules you want to include into your Alchemist simulations.</p>
+<p>At the very least, you want to pull in an incarnation.
+This can be done directly in the build file, or (recommended way) through the TOML catalog.</p>
+<p>For instance,
+let&rsquo;s say that you want to pull in the module for simulating on real-world maps,
+and that you also need a library named <code>bar</code> at version <code>1.2.3</code>, from group <code>io.github.foo</code>, available on <a href="https://search.maven.org/">Maven Central</a>.
+You could import both of them by changing the catalog as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[versions]
+</span></span><span style="display:flex;"><span>alchemist = <span style="color:#5af78e">&#34;&lt;the version of alchemist is here&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[libraries]
+</span></span><span style="display:flex;"><span>alchemist = { module = <span style="color:#5af78e">&#34;it.unibo.alchemist:alchemist&#34;</span>, version.ref = <span style="color:#5af78e">&#34;alchemist&#34;</span> }
+</span></span><span style="display:flex;"><span>alchemist-incarnation-protelis = { module = <span style="color:#5af78e">&#34;it.unibo.alchemist:alchemist-incarnation-protelis&#34;</span>, version.ref = <span style="color:#5af78e">&#34;alchemist&#34;</span> }
+</span></span><span style="display:flex;"><span>alchemist-swingui = { module = <span style="color:#5af78e">&#34;it.unibo.alchemist:alchemist-swingui&#34;</span>, version.ref = <span style="color:#5af78e">&#34;alchemist&#34;</span> }
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># The following two lines are additions, the first defines the maps module of alchemist...</span>
+</span></span><span style="display:flex;"><span>alchemist-maps = { module = <span style="color:#5af78e">&#34;it.unibo.alchemist:alchemist-maps&#34;</span>, version.ref = <span style="color:#5af78e">&#34;alchemist&#34;</span> }
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># ...the second the custom library with a more compact syntax as there is no need to reuse the version defined above.</span>
+</span></span><span style="display:flex;"><span>foobar = <span style="color:#5af78e">&#34;io.github.foo:bar:1.2.3&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[bundles]
+</span></span><span style="display:flex;"><span>alchemist = [
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;alchemist&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;alchemist-incarnation-protelis&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;alchemist-swingui&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Adding the newly defined libraries to the alchemist bundle makes them available automatically</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;alchemist-maps&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;foobar&#34;</span>
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>The build script defines some tasks meant to run Alchemist from the command line through Gradle with ease.
+There will be one task for each simulation file in <code>src/main/yaml</code>, dynamically detected and prepared by Gradle.
+You can see a summary of the tasks for running Alchemist by issuing
+<code>./gradlew tasks --all</code>
+(or <code>gradlew.bat tasks --all</code> under Windows)
+and looking for the <code>Run Alchemist</code> task group.</p>
+<p>Internally, the task relies on the Alchemist command-line interface.
+Alchemist simulations are <a href="https://yaml.org/spec/">YAML</a> files,
+more information about them can be found <a href="https://alchemistsimulator.github.io/">here</a>.</p>
+
+    </div>
+</div>
+
+<div class="box notices info">
+    <div class="box-label">Info</div>
+    <div class="box-content">
+<p>Although Alchemist requires Java 11 or above to run,
+Gradle users can rely on <a href="https://docs.gradle.org/current/userguide/compatibility.html">any Gradle-compatible Java version</a>
+and leverage the Gradle toolchains to obtain an Alchemist-compatible Java Virtual Machine.</p>
+
+    </div>
+</div>
+          <footer class="footline">
+          </footer>
+        </div>
+      </main>
+    </div>
     <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
     <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
     <script>
@@ -79,7 +176,7 @@
       var root_url="../../../";
       var baseUri=root_url.replace(/\/$/, '');
     </script>
-    <nav id="sidebar" class="default-animation showVisitedLinks">
+    <aside id="sidebar" class="default-animation showVisitedLinks">
       <div id="header-wrapper" class="default-animation">
         <div id="header" class="default-animation">
 <div style="white-space: nowrap;">
@@ -94,9 +191,9 @@
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../../js/lunr.min.js?1644940503"></script>
-        <script src="../../../js/auto-complete.js?1644940503"></script>
-        <script src="../../../js/search.js?1644940503"></script>
+        <script src="../../../js/lunr.min.js?1646584824"></script>
+        <script src="../../../js/auto-complete.js?1646584824"></script>
+        <script src="../../../js/search.js?1646584824"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -176,14 +273,38 @@
             <li><a class="padding" href="../../../tags/"><i class='fas fa-fw fa-tags'></i> Tags</a></li>
           </ul>
         </div>
-        <div class="footermargin"></div>
-        <hr class="default-animation"/>
-        <div id="prefooter">
+        <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"></div>
+        <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"/>
+        <div id="prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks showVisitedLinks">
           <ul>
-            <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+            <li id="select-language-container" class="footerLangSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-language fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-language" onchange="location = baseUri + this.value;">
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+            </li>
+            <li id="select-variant-container" class="footerVariantSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-paint-brush fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-variant" onchange="variants.changeVariant( this.value );">
+                    <option id="relearn" value="relearn" selected>Relearn</option>
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+              <script>variants.markSelectedVariant();</script>
+            </li>
+            <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer"><div><strong>Alchemist Simulator 13.0.2</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.3</strong></div>
 <br>
 <a
     class="github-button"
@@ -215,164 +336,24 @@ Fork
 
         </div>
       </div>
-    </nav>
-    <div id="body" class="default-animation">
-      <div id="overlay"></div>
-      <div class="padding highlightable">
-        <div id="top-bar"><div>
-          <div id="top-github-link">
-            <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/howtos/preparation/gradle/_index.md" target="blank">
-              <i class="fas fa-pencil"></i>
-            </a>
-          </div>
-          <div id="breadcrumbs">
-            <span id="sidebar-toggle-span">
-              <a href="#" id="sidebar-toggle" title='Menu' data-sidebar-toggle="">
-                <i class="fas fa-bars"></i>
-              </a>
-            </span>
-            <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
-            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
-              <meta itemprop="itemListOrder" content="Descending" />
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="4" /><a itemprop="item" href="../../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../../howtos/"><span itemprop="name">How-to Guides</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../../howtos/preparation/"><span itemprop="name">Preparation</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../../howtos/preparation/gradle/" aria-disabled="true"><span itemprop="name">Alchemist via Gradle</span></a></li>
-            </ol>
-          </div>
-            <div class="progress">
-              <div class="wrapper">
-<nav id="TableOfContents"></nav>
-              </div>
-            </div>
-        </div></div>
-        <div id="head-tags">
-<div class="tags">
-  <a class="tag-link" href="../../../tags/gradle">gradle</a>
-  <a class="tag-link" href="../../../tags/run">run</a>
-  <a class="tag-link" href="../../../tags/launch">launch</a>
-  <a class="tag-link" href="../../../tags/example">example</a>
-</div>
-        </div>
-        <main id="body-inner">
-          <h1>Alchemist via Gradle</h1>
-
-<p>We recommend to start by generating a new GitHub repository through the
-<a href="https://github.com/AlchemistSimulator/alchemist-primer">Alchemist Primer template repository</a>.</p>
-<p>We report here the README.md file contents as reference</p>
-
-<div class="expand">
-    <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-        <i class="fas fa-chevron-down"></i>
-        <i class="fas fa-chevron-right"></i>
-        Alchemist Primer README file
-    </a>
-    <div class="expand-content" style="display: none;">
-<h1 id="alchemist-primer">Alchemist Primer</h1>
-<p>This is a template project to spawn projects using the <a href="https://github.com/AlchemistSimulator/Alchemist">Alchemist Simulator</a>.
-It provides a pre-configured gradle build.</p>
-<p>This project is a quick start for the <a href="https://github.com/AlchemistSimulator/Alchemist">Alchemist</a> simulator, it shows how to use the simulator via <a href="https://gradle.org">Gradle</a> to run a simple simulation. More information can be found on <a href="https://alchemistsimulator.github.io">the official Alchemist website</a>.</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<p>A <a href="https://docs.gradle.org/current/userguide/compatibility.html">Gradle-compatible Java version</a>.</p>
-<h2 id="how-to-launch">How to launch</h2>
-<p>To run the example you can rely on the pre-configured <a href="https://gradle.org">Gradle</a> build script.
-It will automatically download all the required libraries, set up the environment, and execute the simulator via command line for you.
-As first step, use <code>git</code> to locally clone this repository.</p>
-<p>Simulations can be included in the <code>src/main/yaml</code> folder,
-and executed via the <code>runAll</code> Gradle task.</p>
-<p>For each YAML file in <code>src/main/yaml</code> a task <code>runFileName</code> will be created.</p>
-<p>In order to launch, open a terminal and move to the project root folder, then on UNIX:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gradlew runAll
-</code></pre></div><p>On Windows:</p>
-<pre tabindex="0"><code>gradlew.bat runAll
-</code></pre><p>Press <kb>P</kb> to start the simulation.
-For further information about the gui, see the <a href="https://alchemistsimulator.github.io/">Alchemist documentation</a>.</p>
-<p>Note that the first launch will take some time, since Gradle will download all the required files.
-They will get cached in the user&rsquo;s home folder (as per Gradle normal behavior).</p>
-<h2 id="the-build-script">The build script</h2>
-<p>Let&rsquo;s explain how things work by looking at the <code>build.gradle.kts</code> script and the <code>gradle/libs.versions.toml</code> file.
-The latter is a <a href="https://docs.gradle.org/current/userguide/platforms.html#sub:conventional-dependencies-toml">Gradle dependency catalog file</a>
-including the specification of the required libraries,
-including their name, their version, and how they get bundled;
-while the former is the actual script that launches the simulator.</p>
-<p>The build script imports the bundled alchemist dependencies as:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">dependencies {
-    implementation(libs.bundles.alchemist)
-}
-</code></pre></div><p>You will either need to import the full version of alchemist (but it&rsquo;s not recommended, as it pulls in a lot of dependencies you probably don&rsquo;t want),
-or manually declare which modules you want to include into your Alchemist simulations.</p>
-<p>At the very least, you want to pull in an incarnation.
-This can be done directly in the build file, or (recommended way) through the TOML catalog.</p>
-<p>For instance,
-let&rsquo;s say that you want to pull in the module for simulating on real-world maps,
-and that you also need a library named <code>bar</code> at version <code>1.2.3</code>, from group <code>io.github.foo</code>, available on <a href="https://search.maven.org/">Maven Central</a>.
-You could import both of them by changing the catalog as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[versions]
-alchemist = <span style="color:#5af78e">&#34;&lt;the version of alchemist is here&gt;&#34;</span>
-
-[libraries]
-alchemist = { module = <span style="color:#5af78e">&#34;it.unibo.alchemist:alchemist&#34;</span>, version.ref = <span style="color:#5af78e">&#34;alchemist&#34;</span> }
-alchemist-incarnation-protelis = { module = <span style="color:#5af78e">&#34;it.unibo.alchemist:alchemist-incarnation-protelis&#34;</span>, version.ref = <span style="color:#5af78e">&#34;alchemist&#34;</span> }
-alchemist-swingui = { module = <span style="color:#5af78e">&#34;it.unibo.alchemist:alchemist-swingui&#34;</span>, version.ref = <span style="color:#5af78e">&#34;alchemist&#34;</span> }
-<span style="color:#78787e"># The following two lines are additions, the first defines the maps module of alchemist...</span>
-alchemist-maps = { module = <span style="color:#5af78e">&#34;it.unibo.alchemist:alchemist-maps&#34;</span>, version.ref = <span style="color:#5af78e">&#34;alchemist&#34;</span> }
-<span style="color:#78787e"># ...the second the custom library with a more compact syntax as there is no need to reuse the version defined above.</span>
-foobar = <span style="color:#5af78e">&#34;io.github.foo:bar:1.2.3&#34;</span>
-
-[bundles]
-alchemist = [
-    <span style="color:#5af78e">&#34;alchemist&#34;</span>,
-    <span style="color:#5af78e">&#34;alchemist-incarnation-protelis&#34;</span>,
-    <span style="color:#5af78e">&#34;alchemist-swingui&#34;</span>,
-    <span style="color:#78787e"># Adding the newly defined libraries to the alchemist bundle makes them available automatically</span>
-    <span style="color:#5af78e">&#34;alchemist-maps&#34;</span>,
-    <span style="color:#5af78e">&#34;foobar&#34;</span>
-]
-
-</code></pre></div><p>The build script defines some tasks meant to run Alchemist from the command line through Gradle with ease.
-There will be one task for each simulation file in <code>src/main/yaml</code>, dynamically detected and prepared by Gradle.
-You can see a summary of the tasks for running Alchemist by issuing
-<code>./gradlew tasks --all</code>
-(or <code>gradlew.bat tasks --all</code> under Windows)
-and looking for the <code>Run Alchemist</code> task group.</p>
-<p>Internally, the task relies on the Alchemist command-line interface.
-Alchemist simulations are <a href="https://yaml.org/spec/">YAML</a> files,
-more information about them can be found <a href="https://alchemistsimulator.github.io/">here</a>.</p>
-
-    </div>
-</div>
-
-<div class="notices info">
-    <div class="label">Info</div>
-<p>Although Alchemist requires Java 11 or above to run,
-Gradle users can rely on <a href="https://docs.gradle.org/current/userguide/compatibility.html">any Gradle-compatible Java version</a>
-and leverage the Gradle toolchains to obtain an Alchemist-compatible Java Virtual Machine.</p>
-</div>
-
-          <footer class=" footline">
-          </footer>
-        </main>
-      </div>
-      <div id="navigation">
-        <a class="nav nav-prev default-animation" href="../../../howtos/preparation/jar/" title="Alchemist stand-alone"><i class="fa fa-chevron-left"></i></a>
-        <a class="nav nav-next default-animation" href="../../../howtos/simulation/" title="Simulation"><i class="fa fa-chevron-right"></i></a>
-      </div>
-    </div>
-    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
-      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
-    </div>
-    <script src="../../../js/clipboard.min.js?1644940503"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1644940503"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1644940503"></script>
-    <script src="../../../js/jquery.svg.pan.zoom.js?1644940503"></script>
-    <script src="../../../js/featherlight.min.js?1644940503"></script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1644940503"></script>
-    <script src="../../../js/mermaid.min.js?1644940503"></script>
+    </aside>
+    <script src="../../../js/clipboard.min.js?1646584824"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1646584824"></script>
+    <script src="../../../js/jquery.svg.pan.zoom.js?1646584824"></script>
+    <script src="../../../js/featherlight.min.js?1646584824"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1646584824"></script>
+    <script src="../../../js/mermaid.min.js?1646584824"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script src="../../../js/relearn.js?1644940503"></script>
+    <script>
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+    </script>
+    <script src="../../../js/theme.js?1646584824"></script>
   </body>
 </html>

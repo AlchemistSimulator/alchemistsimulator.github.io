@@ -2,76 +2,324 @@
 <html lang="en" class="js csstransforms3d">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.92.2" />
-    <meta name="generator" content="Relearn 2.9.6">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.93.2" />
+    <meta name="generator" content="Relearn 3.0.4&#43;tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <title>Export data :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../../howtos/simulation/export/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../../images/logo.svg?1644940503" type="image/svg+xml">
-    <link href="../../../css/nucleus.css?1644940503" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1644940503" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1644940503" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1644940503" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1644940503" rel="stylesheet">
-    <link href="../../../css/theme.css?1644940503" rel="stylesheet">
-    <link id="variant-style" href="../../../css/theme-relearn.css?1644940503" rel="stylesheet">
-    <link href="../../../css/variant.css?1644940503" rel="stylesheet">
-    <link href="../../../css/print.css?1644940503" rel="stylesheet" media="print">
+    <link rel="icon" href="../../../images/logo.svg?1646584824" type="image/svg+xml">
+    <link href="../../../css/nucleus.css?1646584824" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1646584824" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1646584824" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1646584824" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1646584824" rel="stylesheet">
+    <link href="../../../css/theme.css?1646584824" rel="stylesheet">
+    <link id="variant-style" href="../../../css/theme-relearn.css?1646584824" rel="stylesheet">
+    <link href="../../../css/variant.css?1646584824" rel="stylesheet">
+    <link href="../../../css/theme-relearn-light.css?1646584824" rel="stylesheet" media="print">
+    <link href="../../../css/print.css?1646584824" rel="stylesheet" media="print">
     <style>
     </style>
+    <script src="../../../js/variant.js?1646584824"></script>
     <script>
-      // we need to define this script in the head to avoid flickering
-      // on page load if the user has selected a non default variant
-      var theme = window.localStorage.getItem( 'theme' );
-      changeTheme( theme );
-      function getTheme(){
-        var link = document.querySelector( '#variant-style' );
-        if( !link ){
-          return;
-        }
-        var path = link.getAttribute( 'href' );
-        var theme = path.match(/^.*\/theme-(.*?)\.css.*$/)[ 1 ];
-        return theme;
-      }
-      function markTheme( theme ){
-        var select = document.querySelector( '#select-theme' );
-        if( !select ){
-          return;
-        }
-        select.value = theme;
-      }
-      function changeTheme( theme ){
-        var themes = [ "relearn" ];
-        if( themes.indexOf( theme ) < 0 ){
-          theme = themes.length ? themes[ 0 ] : null;
-        }
-        if( !theme ){
-          return;
-        }
-        var link = document.querySelector( '#variant-style' );
-        if( !link ){
-          return;
-        }
-        var old_path = link.getAttribute( 'href' );
-        var new_path = old_path.replace( /^(.*\/theme-).*?(\.css.*)$/, '$1' + theme + '$2' );
-        if( old_path != new_path ){
-          window.localStorage.setItem( 'theme', theme );
-          link.setAttribute( 'href', new_path );
-          markTheme( theme );
-          // remove selection, because if some uses an arrow navigation
-          // by pressing the left or right cursor key, we will automatically
-          // select a different style
-          if( document.activeElement ){
-            document.activeElement.blur();
-          }
-        }
-      }
+      variants.init( [ "relearn" ] );
     </script>
-    <script src="../../../js/jquery.min.js?1644940503"></script>
+    <script src="../../../js/jquery.min.js?1646584824"></script>
   </head>
   <body class="default-animation" data-url="../../../howtos/simulation/export/">
+    <div id="body" class="default-animation">
+      <div id="sidebar-overlay"></div>
+      <div id="toc-overlay"></div>
+      <nav id="topbar" class="highlightable">
+        <div>
+          <div class="navigation">
+              <a class="nav nav-next" href="../../../howtos/simulation/program/" title="Program Nodes"><i class="fas fa-chevron-right fa-fw"></i></a>
+          </div>
+          <div class="navigation">
+              <a class="nav nav-prev" href="../../../howtos/simulation/deploy/graph/" title="Graphs"><i class="fas fa-chevron-left fa-fw"></i></a>
+          </div>
+          <div id="top-github-link">
+            <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/howtos/simulation/export/_index.md" target="blank">
+              <i class="fas fa-pen fa-fw"></i>
+            </a>
+          </div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" title='Menu'><i class="fas fa-bars fa-fw"></i></a>
+            </span>
+            <span id="toc-menu" title='Table of Contents'><i class="fas fa-list-alt fa-fw"></i></span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <meta itemprop="itemListOrder" content="Descending" />
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="4" /><a itemprop="item" href="../../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../../howtos/"><span itemprop="name">How-to Guides</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../../howtos/simulation/"><span itemprop="name">Simulation</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../../howtos/simulation/export/" aria-disabled="true"><span itemprop="name">Export data</span></a></li>
+            </ol>
+          </div>
+            <div class="progress">
+              <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#export-data-as-csv">Export data as CSV</a>
+      <ul>
+        <li><a href="#examples">Examples</a></li>
+      </ul>
+    </li>
+    <li><a href="#export-data-to-a-mongodb-instance">Export data to a MongoDB instance</a>
+      <ul>
+        <li><a href="#examples-1">Examples</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+        </div>
+      </nav>
+      <main id="body-inner" class="highlightable ">
+        <div class="flex-block-wrapper">
+          <div id="head-tags">
+<div class="tags">
+  <a class="tag-link" href="../../../tags/csv">csv</a>
+  <a class="tag-link" href="../../../tags/data">data</a>
+  <a class="tag-link" href="../../../tags/data-analysis">data analysis</a>
+  <a class="tag-link" href="../../../tags/export">export</a>
+  <a class="tag-link" href="../../../tags/mongodb">mongodb</a>
+</div>
+          </div>
+          <h1>Export data</h1>
+
+<p>The simulator provides tools for exporting data automatically.
+An  export section on the simulation file instructs which data is considered interesting,
+and should be thus exported with the selected sampling frequency.
+Data can be exported separately for each node, or can be aggregated on the fly using any
+univariate statistic function (e.g., mean, sum, product, percentile, median&hellip;).
+The treatment of missing or non-finite values can be specified as well. Results
+are exported in comma-separated values files, easily importable in a variety of
+data analysis tools.</p>
+<p>Data export is realized by
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.export/-exporter/"><code>Exporter</code></a>s.
+Exporters are defined in the <a href="../../../reference/yaml#export"><code>export</code></a> section of the configuration,
+by specifying their <a href="../../../reference/yaml/#exportertype"><code>type</code></a>,
+their constructor <a href="../../../reference/yaml/#parameters"><code>parameters</code></a>,
+and the <a href="../../../reference/yaml/#data"><code>data</code></a> they should export.
+The elements under <a href="../../../reference/yaml/#data"><code>data</code></a> must be instanceable implementations of
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.export/-extractor/"><code>Extractor</code></a>.</p>
+<h2 id="export-data-as-csv">Export data as CSV</h2>
+<p>Alchemist can export data to a custom comma-separated-values format.
+This is the classic way data is exported from the simulator, and relies on
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.export.exporters/-c-s-v-exporter/"><code>CSVExporter</code></a>.</p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>Export of the output of a Protelis program every 3 simulated seconds:
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">export</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: CSVExporter
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">fileNameRoot</span>: <span style="color:#5af78e">&#34;test_export_interval&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">interval</span>: <span style="color:#ff9f43">3.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
+</span></span><span style="display:flex;"><span>      - time
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
+</span></span></code></pre></div></div>
+    </div></li>
+<li>Export data to both a csv file and a MongoDB instance:
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">export</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: CSVExporter
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">fileNameRoot</span>: <span style="color:#5af78e">&#34;test_exporters_loading&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">interval</span>: <span style="color:#ff9f43">2.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
+</span></span><span style="display:flex;"><span>      - time
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: MongoDBExporter
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">uri</span>: <span style="color:#5af78e">&#34;mongodb://localhost:27017/&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">dbName</span>: <span style="color:#5af78e">&#34;test&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">interval</span>: <span style="color:#ff9f43">2.5</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
+</span></span><span style="display:flex;"><span>      - time
+</span></span></code></pre></div></div>
+    </div></li>
+<li>Export of the <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.export.extractors/-mean-squared-error/"><code>MeanSquaredError</code></a> of some custom properties:
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">export</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: CSVExporter
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;test-custom-export&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: MeanSquaredError
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [ <span style="color:#5af78e">&#34;A&#34;</span>, <span style="color:#5af78e">&#34;A&#34;</span>, product, &#34;A&#34;, &#34;A&#34; ]
+</span></span></code></pre></div></div>
+    </div></li>
+<li>Export of the output of a Protelis program, values generated from nodes get accumulated into mean, max, min, variance, and median:
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">image_name</span>: { <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;&#39;chiaravalle.png&#39;&#34;</span> }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">image_path</span>: <span style="color:#78787e">&amp;image_path</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: &gt;<span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">      import java.io.File
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">      File(&#34;../..&#34;).walkTopDown().find { image_name in it.name }?.absolutePath ?: image_name</span>      
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">walking_speed</span>: <span style="color:#78787e">&amp;walk-speed</span> { <span style="color:#ff6ac1">default: 1.4, min: 1, max: 2, step</span>: <span style="color:#ff9f43">0.1</span> }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">seed</span>: <span style="color:#78787e">&amp;seed</span> { <span style="color:#ff6ac1">default: 0, min: 0, max: 99, step</span>: <span style="color:#ff9f43">1</span> }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">scenario_seed</span>: <span style="color:#78787e">&amp;scenario_seed</span> { <span style="color:#ff6ac1">formula</span>: (seed + 31) * seed }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">people_count</span>: <span style="color:#78787e">&amp;people_count</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: GeometricVariable
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">500</span>, <span style="color:#ff9f43">9</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">seeds</span>: { <span style="color:#ff6ac1">simulation: *seed, scenario</span>: <span style="color:#78787e">*scenario_seed}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">export</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: CSVExporter
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">fileNameRoot</span>: <span style="color:#5af78e">&#34;00-testing_csv_export&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
+</span></span><span style="display:flex;"><span>      - time
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">aggregators</span>: [ mean, max, min, variance, median ]
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">value-filter</span>: onlyfinite
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type: ImageEnvironment, parameters</span>: [<span style="color:#78787e">*image_path,</span> <span style="color:#78787e">*zoom]</span> }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ObstaclesBreakConnection, parameters</span>: [<span style="color:#ff9f43">50</span>] }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Rectangle
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*people_count,</span> <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        import protelis:coord:spreading
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let source = [110, 325]
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let vector = self.getCoordinates() - source
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let distance = hypot(vector.get(0), vector.get(1))
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        distanceTo(distance &lt; 50)</span>        
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: send
+</span></span><span style="display:flex;"><span>    - { <span style="color:#ff6ac1">type: Event, time-distribution: 1, actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">terminate</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: AfterTime
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: <span style="color:#ff9f43">10</span></span></span></code></pre></div></div>
+    </div></li>
+</ul>
+<h2 id="export-data-to-a-mongodb-instance">Export data to a MongoDB instance</h2>
+<p>Alchemist can send data directly to a pre-existing MongoDB instance through its
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.export.exporters/-mongo-d-b-exporter/"><code>MongoDBExporter</code></a>.</p>
+<h3 id="examples-1">Examples</h3>
+<ul>
+<li>Export data to both a csv file and a MongoDB instance:
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">export</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: CSVExporter
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">fileNameRoot</span>: <span style="color:#5af78e">&#34;test_exporters_loading&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">interval</span>: <span style="color:#ff9f43">2.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
+</span></span><span style="display:flex;"><span>      - time
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: MongoDBExporter
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">uri</span>: <span style="color:#5af78e">&#34;mongodb://localhost:27017/&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">dbName</span>: <span style="color:#5af78e">&#34;test&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">interval</span>: <span style="color:#ff9f43">2.5</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
+</span></span><span style="display:flex;"><span>      - time
+</span></span></code></pre></div></div>
+    </div></li>
+<li>Export of the output of a Protelis program, values generated from nodes get accumulated into mean, max, min, variance, and median:
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">image_name</span>: { <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;&#39;chiaravalle.png&#39;&#34;</span> }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">image_path</span>: <span style="color:#78787e">&amp;image_path</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: &gt;<span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">      import java.io.File
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">      File(&#34;../..&#34;).walkTopDown().find { image_name in it.name }?.absolutePath ?: image_name</span>      
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">walking_speed</span>: <span style="color:#78787e">&amp;walk-speed</span> { <span style="color:#ff6ac1">default: 1.4, min: 1, max: 2, step</span>: <span style="color:#ff9f43">0.1</span> }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">seed</span>: <span style="color:#78787e">&amp;seed</span> { <span style="color:#ff6ac1">default: 0, min: 0, max: 99, step</span>: <span style="color:#ff9f43">1</span> }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">scenario_seed</span>: <span style="color:#78787e">&amp;scenario_seed</span> { <span style="color:#ff6ac1">formula</span>: (seed + 31) * seed }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">people_count</span>: <span style="color:#78787e">&amp;people_count</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: GeometricVariable
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">500</span>, <span style="color:#ff9f43">9</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">seeds</span>: { <span style="color:#ff6ac1">simulation: *seed, scenario</span>: <span style="color:#78787e">*scenario_seed}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">export</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: MongoDBExporter
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">uri</span>: <span style="color:#5af78e">&#34;mongodb://localhost:27017/&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">dbName</span>: <span style="color:#5af78e">&#34;test&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">interval</span>: <span style="color:#ff9f43">2.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
+</span></span><span style="display:flex;"><span>      - time
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">aggregators</span>: [ mean, max, min, variance, median ]
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">value-filter</span>: onlyfinite
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type: ImageEnvironment, parameters</span>: [<span style="color:#78787e">*image_path,</span> <span style="color:#78787e">*zoom]</span> }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ObstaclesBreakConnection, parameters</span>: [<span style="color:#ff9f43">50</span>] }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Rectangle
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*people_count,</span> <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        import protelis:coord:spreading
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let source = [110, 325]
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let vector = self.getCoordinates() - source
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let distance = hypot(vector.get(0), vector.get(1))
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        distanceTo(distance &lt; 50)</span>        
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: send
+</span></span><span style="display:flex;"><span>    - { <span style="color:#ff6ac1">type: Event, time-distribution: 1, actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">terminate</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: AfterTime
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: <span style="color:#ff9f43">3</span>
+</span></span></code></pre></div></div>
+    </div></li>
+</ul>
+          <footer class="footline">
+          </footer>
+        </div>
+      </main>
+    </div>
     <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
     <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
     <script>
@@ -79,7 +327,7 @@
       var root_url="../../../";
       var baseUri=root_url.replace(/\/$/, '');
     </script>
-    <nav id="sidebar" class="default-animation showVisitedLinks">
+    <aside id="sidebar" class="default-animation showVisitedLinks">
       <div id="header-wrapper" class="default-animation">
         <div id="header" class="default-animation">
 <div style="white-space: nowrap;">
@@ -94,9 +342,9 @@
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../../js/lunr.min.js?1644940503"></script>
-        <script src="../../../js/auto-complete.js?1644940503"></script>
-        <script src="../../../js/search.js?1644940503"></script>
+        <script src="../../../js/lunr.min.js?1646584824"></script>
+        <script src="../../../js/auto-complete.js?1646584824"></script>
+        <script src="../../../js/search.js?1646584824"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -176,14 +424,38 @@
             <li><a class="padding" href="../../../tags/"><i class='fas fa-fw fa-tags'></i> Tags</a></li>
           </ul>
         </div>
-        <div class="footermargin"></div>
-        <hr class="default-animation"/>
-        <div id="prefooter">
+        <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"></div>
+        <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"/>
+        <div id="prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks showVisitedLinks">
           <ul>
-            <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+            <li id="select-language-container" class="footerLangSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-language fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-language" onchange="location = baseUri + this.value;">
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+            </li>
+            <li id="select-variant-container" class="footerVariantSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-paint-brush fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-variant" onchange="variants.changeVariant( this.value );">
+                    <option id="relearn" value="relearn" selected>Relearn</option>
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+              <script>variants.markSelectedVariant();</script>
+            </li>
+            <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer"><div><strong>Alchemist Simulator 13.0.2</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.3</strong></div>
 <br>
 <a
     class="github-button"
@@ -215,311 +487,24 @@ Fork
 
         </div>
       </div>
-    </nav>
-    <div id="body" class="default-animation">
-      <div id="overlay"></div>
-      <div class="padding highlightable">
-        <div id="top-bar"><div>
-          <div id="top-github-link">
-            <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/howtos/simulation/export/_index.md" target="blank">
-              <i class="fas fa-pencil"></i>
-            </a>
-          </div>
-          <div id="breadcrumbs">
-            <span id="sidebar-toggle-span">
-              <a href="#" id="sidebar-toggle" title='Menu' data-sidebar-toggle="">
-                <i class="fas fa-bars"></i>
-              </a>
-            </span>
-            <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
-            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
-              <meta itemprop="itemListOrder" content="Descending" />
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="4" /><a itemprop="item" href="../../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../../howtos/"><span itemprop="name">How-to Guides</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../../howtos/simulation/"><span itemprop="name">Simulation</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../../howtos/simulation/export/" aria-disabled="true"><span itemprop="name">Export data</span></a></li>
-            </ol>
-          </div>
-            <div class="progress">
-              <div class="wrapper">
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#export-data-as-csv">Export data as CSV</a>
-      <ul>
-        <li><a href="#examples">Examples</a></li>
-      </ul>
-    </li>
-    <li><a href="#export-data-to-a-mongodb-instance">Export data to a MongoDB instance</a>
-      <ul>
-        <li><a href="#examples-1">Examples</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-              </div>
-            </div>
-        </div></div>
-        <div id="head-tags">
-<div class="tags">
-  <a class="tag-link" href="../../../tags/data">data</a>
-  <a class="tag-link" href="../../../tags/export">export</a>
-  <a class="tag-link" href="../../../tags/csv">csv</a>
-  <a class="tag-link" href="../../../tags/mongodb">mongodb</a>
-  <a class="tag-link" href="../../../tags/data-analysis">data analysis</a>
-</div>
-        </div>
-        <main id="body-inner">
-          <h1>Export data</h1>
-
-<p>The simulator provides tools for exporting data automatically.
-An  export section on the simulation file instructs which data is considered interesting,
-and should be thus exported with the selected sampling frequency.
-Data can be exported separately for each node, or can be aggregated on the fly using any
-univariate statistic function (e.g., mean, sum, product, percentile, median&hellip;).
-The treatment of missing or non-finite values can be specified as well. Results
-are exported in comma-separated values files, easily importable in a variety of
-data analysis tools.</p>
-<p>Data export is realized by
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.export/-exporter/"><code>Exporter</code></a>s.
-Exporters are defined in the <a href="../../../reference/yaml#export"><code>export</code></a> section of the configuration,
-by specifying their <a href="../../../reference/yaml/#exportertype"><code>type</code></a>,
-their constructor <a href="../../../reference/yaml/#parameters"><code>parameters</code></a>,
-and the <a href="../../../reference/yaml/#data"><code>data</code></a> they should export.
-The elements under <a href="../../../reference/yaml/#data"><code>data</code></a> must be instanceable implementations of
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.export/-extractor/"><code>Extractor</code></a>.</p>
-<h2 id="export-data-as-csv">Export data as CSV</h2>
-<p>Alchemist can export data to a custom comma-separated-values format.
-This is the classic way data is exported from the simulator, and relies on
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.export.exporters/-c-s-v-exporter/"><code>CSVExporter</code></a>.</p>
-<h3 id="examples">Examples</h3>
-<ul>
-<li>Export of the output of a Protelis program every 3 simulated seconds:
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
-<span style="color:#ff6ac1">export</span>:
-  - <span style="color:#ff6ac1">type</span>: CSVExporter
-    <span style="color:#ff6ac1">parameters</span>:
-      <span style="color:#ff6ac1">fileNameRoot</span>: <span style="color:#5af78e">&#34;test_export_interval&#34;</span>
-      <span style="color:#ff6ac1">interval</span>: <span style="color:#ff9f43">3.0</span>
-    <span style="color:#ff6ac1">data</span>:
-      - time
-      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
-</code></pre></div></div>
-    </div></li>
-<li>Export data to both a csv file and a MongoDB instance:
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
-<span style="color:#ff6ac1">export</span>:
-  - <span style="color:#ff6ac1">type</span>: CSVExporter
-    <span style="color:#ff6ac1">parameters</span>:
-      <span style="color:#ff6ac1">fileNameRoot</span>: <span style="color:#5af78e">&#34;test_exporters_loading&#34;</span>
-      <span style="color:#ff6ac1">interval</span>: <span style="color:#ff9f43">2.0</span>
-    <span style="color:#ff6ac1">data</span>:
-      - time
-      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
-
-  - <span style="color:#ff6ac1">type</span>: MongoDBExporter
-    <span style="color:#ff6ac1">parameters</span>:
-      <span style="color:#ff6ac1">uri</span>: <span style="color:#5af78e">&#34;mongodb://localhost:27017/&#34;</span>
-      <span style="color:#ff6ac1">dbName</span>: <span style="color:#5af78e">&#34;test&#34;</span>
-      <span style="color:#ff6ac1">interval</span>: <span style="color:#ff9f43">2.5</span>
-    <span style="color:#ff6ac1">data</span>:
-      - time
-</code></pre></div></div>
-    </div></li>
-<li>Export of the <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.export.extractors/-mean-squared-error/"><code>MeanSquaredError</code></a> of some custom properties:
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
-<span style="color:#ff6ac1">export</span>:
-  - <span style="color:#ff6ac1">type</span>: CSVExporter
-    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;test-custom-export&#34;</span>]
-    <span style="color:#ff6ac1">data</span>:
-      - <span style="color:#ff6ac1">type</span>: MeanSquaredError
-        <span style="color:#ff6ac1">parameters</span>: [ <span style="color:#5af78e">&#34;A&#34;</span>, <span style="color:#5af78e">&#34;A&#34;</span>, product, &#34;A&#34;, &#34;A&#34; ]
-</code></pre></div></div>
-    </div></li>
-<li>Export of the output of a Protelis program, values generated from nodes get accumulated into mean, max, min, variance, and median:
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
-<span style="color:#ff6ac1">variables</span>:
-  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
-    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span>
-  <span style="color:#ff6ac1">image_name</span>: { <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;&#39;chiaravalle.png&#39;&#34;</span> }
-  <span style="color:#ff6ac1">image_path</span>: <span style="color:#78787e">&amp;image_path</span>
-    <span style="color:#ff6ac1">language</span>: kotlin
-    <span style="color:#ff6ac1">formula</span>: &gt;<span style="color:#5af78e">
-</span><span style="color:#5af78e">      import java.io.File
-</span><span style="color:#5af78e">      File(&#34;../..&#34;).walkTopDown().find { image_name in it.name }?.absolutePath ?: image_name</span>      
-  <span style="color:#ff6ac1">walking_speed</span>: <span style="color:#78787e">&amp;walk-speed</span> { <span style="color:#ff6ac1">default: 1.4, min: 1, max: 2, step</span>: <span style="color:#ff9f43">0.1</span> }
-  <span style="color:#ff6ac1">seed</span>: <span style="color:#78787e">&amp;seed</span> { <span style="color:#ff6ac1">default: 0, min: 0, max: 99, step</span>: <span style="color:#ff9f43">1</span> }
-  <span style="color:#ff6ac1">scenario_seed</span>: <span style="color:#78787e">&amp;scenario_seed</span> { <span style="color:#ff6ac1">formula</span>: (seed + 31) * seed }
-  <span style="color:#ff6ac1">people_count</span>: <span style="color:#78787e">&amp;people_count</span>
-    <span style="color:#ff6ac1">type</span>: GeometricVariable
-    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">500</span>, <span style="color:#ff9f43">9</span>]
-<span style="color:#ff6ac1">seeds</span>: { <span style="color:#ff6ac1">simulation: *seed, scenario</span>: <span style="color:#78787e">*scenario_seed}</span>
-<span style="color:#ff6ac1">export</span>:
-  - <span style="color:#ff6ac1">type</span>: CSVExporter
-    <span style="color:#ff6ac1">parameters</span>:
-      <span style="color:#ff6ac1">fileNameRoot</span>: <span style="color:#5af78e">&#34;00-testing_csv_export&#34;</span>
-    <span style="color:#ff6ac1">data</span>:
-      - time
-      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
-        <span style="color:#ff6ac1">aggregators</span>: [ mean, max, min, variance, median ]
-        <span style="color:#ff6ac1">value-filter</span>: onlyfinite
-<span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type: ImageEnvironment, parameters</span>: [<span style="color:#78787e">*image_path,</span> <span style="color:#78787e">*zoom]</span> }
-<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ObstaclesBreakConnection, parameters</span>: [<span style="color:#ff9f43">50</span>] }
-<span style="color:#ff6ac1">deployments</span>:
-  <span style="color:#ff6ac1">type</span>: Rectangle
-  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*people_count,</span> <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
-  <span style="color:#ff6ac1">programs</span>:
-    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
-      <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
-</span><span style="color:#5af78e">        import protelis:coord:spreading
-</span><span style="color:#5af78e">        let source = [110, 325]
-</span><span style="color:#5af78e">        let vector = self.getCoordinates() - source
-</span><span style="color:#5af78e">        let distance = hypot(vector.get(0), vector.get(1))
-</span><span style="color:#5af78e">        distanceTo(distance &lt; 50)</span>        
-    - <span style="color:#ff6ac1">program</span>: send
-    - { <span style="color:#ff6ac1">type: Event, time-distribution: 1, actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
-
-<span style="color:#ff6ac1">terminate</span>:
-  - <span style="color:#ff6ac1">type</span>: AfterTime
-    <span style="color:#ff6ac1">parameters</span>: <span style="color:#ff9f43">10</span></code></pre></div></div>
-    </div></li>
-</ul>
-<h2 id="export-data-to-a-mongodb-instance">Export data to a MongoDB instance</h2>
-<p>Alchemist can send data directly to a pre-existing MongoDB instance through its
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.export.exporters/-mongo-d-b-exporter/"><code>MongoDBExporter</code></a>.</p>
-<h3 id="examples-1">Examples</h3>
-<ul>
-<li>Export data to both a csv file and a MongoDB instance:
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
-<span style="color:#ff6ac1">export</span>:
-  - <span style="color:#ff6ac1">type</span>: CSVExporter
-    <span style="color:#ff6ac1">parameters</span>:
-      <span style="color:#ff6ac1">fileNameRoot</span>: <span style="color:#5af78e">&#34;test_exporters_loading&#34;</span>
-      <span style="color:#ff6ac1">interval</span>: <span style="color:#ff9f43">2.0</span>
-    <span style="color:#ff6ac1">data</span>:
-      - time
-      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
-
-  - <span style="color:#ff6ac1">type</span>: MongoDBExporter
-    <span style="color:#ff6ac1">parameters</span>:
-      <span style="color:#ff6ac1">uri</span>: <span style="color:#5af78e">&#34;mongodb://localhost:27017/&#34;</span>
-      <span style="color:#ff6ac1">dbName</span>: <span style="color:#5af78e">&#34;test&#34;</span>
-      <span style="color:#ff6ac1">interval</span>: <span style="color:#ff9f43">2.5</span>
-    <span style="color:#ff6ac1">data</span>:
-      - time
-</code></pre></div></div>
-    </div></li>
-<li>Export of the output of a Protelis program, values generated from nodes get accumulated into mean, max, min, variance, and median:
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
-<span style="color:#ff6ac1">variables</span>:
-  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
-    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span>
-  <span style="color:#ff6ac1">image_name</span>: { <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;&#39;chiaravalle.png&#39;&#34;</span> }
-  <span style="color:#ff6ac1">image_path</span>: <span style="color:#78787e">&amp;image_path</span>
-    <span style="color:#ff6ac1">language</span>: kotlin
-    <span style="color:#ff6ac1">formula</span>: &gt;<span style="color:#5af78e">
-</span><span style="color:#5af78e">      import java.io.File
-</span><span style="color:#5af78e">      File(&#34;../..&#34;).walkTopDown().find { image_name in it.name }?.absolutePath ?: image_name</span>      
-  <span style="color:#ff6ac1">walking_speed</span>: <span style="color:#78787e">&amp;walk-speed</span> { <span style="color:#ff6ac1">default: 1.4, min: 1, max: 2, step</span>: <span style="color:#ff9f43">0.1</span> }
-  <span style="color:#ff6ac1">seed</span>: <span style="color:#78787e">&amp;seed</span> { <span style="color:#ff6ac1">default: 0, min: 0, max: 99, step</span>: <span style="color:#ff9f43">1</span> }
-  <span style="color:#ff6ac1">scenario_seed</span>: <span style="color:#78787e">&amp;scenario_seed</span> { <span style="color:#ff6ac1">formula</span>: (seed + 31) * seed }
-  <span style="color:#ff6ac1">people_count</span>: <span style="color:#78787e">&amp;people_count</span>
-    <span style="color:#ff6ac1">type</span>: GeometricVariable
-    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">500</span>, <span style="color:#ff9f43">9</span>]
-<span style="color:#ff6ac1">seeds</span>: { <span style="color:#ff6ac1">simulation: *seed, scenario</span>: <span style="color:#78787e">*scenario_seed}</span>
-<span style="color:#ff6ac1">export</span>:
-  - <span style="color:#ff6ac1">type</span>: MongoDBExporter
-    <span style="color:#ff6ac1">parameters</span>:
-      <span style="color:#ff6ac1">uri</span>: <span style="color:#5af78e">&#34;mongodb://localhost:27017/&#34;</span>
-      <span style="color:#ff6ac1">dbName</span>: <span style="color:#5af78e">&#34;test&#34;</span>
-      <span style="color:#ff6ac1">interval</span>: <span style="color:#ff9f43">2.0</span>
-    <span style="color:#ff6ac1">data</span>:
-      - time
-      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
-        <span style="color:#ff6ac1">aggregators</span>: [ mean, max, min, variance, median ]
-        <span style="color:#ff6ac1">value-filter</span>: onlyfinite
-<span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type: ImageEnvironment, parameters</span>: [<span style="color:#78787e">*image_path,</span> <span style="color:#78787e">*zoom]</span> }
-<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ObstaclesBreakConnection, parameters</span>: [<span style="color:#ff9f43">50</span>] }
-<span style="color:#ff6ac1">deployments</span>:
-  <span style="color:#ff6ac1">type</span>: Rectangle
-  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*people_count,</span> <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
-  <span style="color:#ff6ac1">programs</span>:
-    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
-      <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
-</span><span style="color:#5af78e">        import protelis:coord:spreading
-</span><span style="color:#5af78e">        let source = [110, 325]
-</span><span style="color:#5af78e">        let vector = self.getCoordinates() - source
-</span><span style="color:#5af78e">        let distance = hypot(vector.get(0), vector.get(1))
-</span><span style="color:#5af78e">        distanceTo(distance &lt; 50)</span>        
-    - <span style="color:#ff6ac1">program</span>: send
-    - { <span style="color:#ff6ac1">type: Event, time-distribution: 1, actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
-
-<span style="color:#ff6ac1">terminate</span>:
-  - <span style="color:#ff6ac1">type</span>: AfterTime
-    <span style="color:#ff6ac1">parameters</span>: <span style="color:#ff9f43">3</span>
-</code></pre></div></div>
-    </div></li>
-</ul>
-
-          <footer class=" footline">
-          </footer>
-        </main>
-      </div>
-      <div id="navigation">
-        <a class="nav nav-prev default-animation" href="../../../howtos/simulation/deploy/graph/" title="Graphs"><i class="fa fa-chevron-left"></i></a>
-        <a class="nav nav-next default-animation" href="../../../howtos/simulation/program/" title="Program Nodes"><i class="fa fa-chevron-right"></i></a>
-      </div>
-    </div>
-    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
-      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
-    </div>
-    <script src="../../../js/clipboard.min.js?1644940503"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1644940503"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1644940503"></script>
-    <script src="../../../js/jquery.svg.pan.zoom.js?1644940503"></script>
-    <script src="../../../js/featherlight.min.js?1644940503"></script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1644940503"></script>
-    <script src="../../../js/mermaid.min.js?1644940503"></script>
+    </aside>
+    <script src="../../../js/clipboard.min.js?1646584824"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1646584824"></script>
+    <script src="../../../js/jquery.svg.pan.zoom.js?1646584824"></script>
+    <script src="../../../js/featherlight.min.js?1646584824"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1646584824"></script>
+    <script src="../../../js/mermaid.min.js?1646584824"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script src="../../../js/relearn.js?1644940503"></script>
+    <script>
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+    </script>
+    <script src="../../../js/theme.js?1646584824"></script>
   </body>
 </html>

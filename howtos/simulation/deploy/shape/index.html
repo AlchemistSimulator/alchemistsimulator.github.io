@@ -2,76 +2,149 @@
 <html lang="en" class="js csstransforms3d">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.92.2" />
-    <meta name="generator" content="Relearn 2.9.6">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.93.2" />
+    <meta name="generator" content="Relearn 3.0.4&#43;tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <title>Nodes inside shapes :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../../../howtos/simulation/deploy/shape/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../../../images/logo.svg?1644940503" type="image/svg+xml">
-    <link href="../../../../css/nucleus.css?1644940503" rel="stylesheet">
-    <link href="../../../../css/fontawesome-all.min.css?1644940503" rel="stylesheet">
-    <link href="../../../../css/featherlight.min.css?1644940503" rel="stylesheet">
-    <link href="../../../../css/perfect-scrollbar.min.css?1644940503" rel="stylesheet">
-    <link href="../../../../css/auto-complete.css?1644940503" rel="stylesheet">
-    <link href="../../../../css/theme.css?1644940503" rel="stylesheet">
-    <link id="variant-style" href="../../../../css/theme-relearn.css?1644940503" rel="stylesheet">
-    <link href="../../../../css/variant.css?1644940503" rel="stylesheet">
-    <link href="../../../../css/print.css?1644940503" rel="stylesheet" media="print">
+    <link rel="icon" href="../../../../images/logo.svg?1646584824" type="image/svg+xml">
+    <link href="../../../../css/nucleus.css?1646584824" rel="stylesheet">
+    <link href="../../../../css/fontawesome-all.min.css?1646584824" rel="stylesheet">
+    <link href="../../../../css/featherlight.min.css?1646584824" rel="stylesheet">
+    <link href="../../../../css/perfect-scrollbar.min.css?1646584824" rel="stylesheet">
+    <link href="../../../../css/auto-complete.css?1646584824" rel="stylesheet">
+    <link href="../../../../css/theme.css?1646584824" rel="stylesheet">
+    <link id="variant-style" href="../../../../css/theme-relearn.css?1646584824" rel="stylesheet">
+    <link href="../../../../css/variant.css?1646584824" rel="stylesheet">
+    <link href="../../../../css/theme-relearn-light.css?1646584824" rel="stylesheet" media="print">
+    <link href="../../../../css/print.css?1646584824" rel="stylesheet" media="print">
     <style>
     </style>
+    <script src="../../../../js/variant.js?1646584824"></script>
     <script>
-      // we need to define this script in the head to avoid flickering
-      // on page load if the user has selected a non default variant
-      var theme = window.localStorage.getItem( 'theme' );
-      changeTheme( theme );
-      function getTheme(){
-        var link = document.querySelector( '#variant-style' );
-        if( !link ){
-          return;
-        }
-        var path = link.getAttribute( 'href' );
-        var theme = path.match(/^.*\/theme-(.*?)\.css.*$/)[ 1 ];
-        return theme;
-      }
-      function markTheme( theme ){
-        var select = document.querySelector( '#select-theme' );
-        if( !select ){
-          return;
-        }
-        select.value = theme;
-      }
-      function changeTheme( theme ){
-        var themes = [ "relearn" ];
-        if( themes.indexOf( theme ) < 0 ){
-          theme = themes.length ? themes[ 0 ] : null;
-        }
-        if( !theme ){
-          return;
-        }
-        var link = document.querySelector( '#variant-style' );
-        if( !link ){
-          return;
-        }
-        var old_path = link.getAttribute( 'href' );
-        var new_path = old_path.replace( /^(.*\/theme-).*?(\.css.*)$/, '$1' + theme + '$2' );
-        if( old_path != new_path ){
-          window.localStorage.setItem( 'theme', theme );
-          link.setAttribute( 'href', new_path );
-          markTheme( theme );
-          // remove selection, because if some uses an arrow navigation
-          // by pressing the left or right cursor key, we will automatically
-          // select a different style
-          if( document.activeElement ){
-            document.activeElement.blur();
-          }
-        }
-      }
+      variants.init( [ "relearn" ] );
     </script>
-    <script src="../../../../js/jquery.min.js?1644940503"></script>
+    <script src="../../../../js/jquery.min.js?1646584824"></script>
   </head>
   <body class="default-animation" data-url="../../../../howtos/simulation/deploy/shape/">
+    <div id="body" class="default-animation">
+      <div id="sidebar-overlay"></div>
+      <div id="toc-overlay"></div>
+      <nav id="topbar" class="highlightable">
+        <div>
+          <div class="navigation">
+              <a class="nav nav-next" href="../../../../howtos/simulation/deploy/gps/" title="GPS Traces"><i class="fas fa-chevron-right fa-fw"></i></a>
+          </div>
+          <div class="navigation">
+              <a class="nav nav-prev" href="../../../../howtos/simulation/deploy/grid/" title="(Irregular) Grids"><i class="fas fa-chevron-left fa-fw"></i></a>
+          </div>
+          <div id="top-github-link">
+            <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/howtos/simulation/deploy/shape/_index.md" target="blank">
+              <i class="fas fa-pen fa-fw"></i>
+            </a>
+          </div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" title='Menu'><i class="fas fa-bars fa-fw"></i></a>
+            </span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <meta itemprop="itemListOrder" content="Descending" />
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="5" /><a itemprop="item" href="../../../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="4" /><a itemprop="item" href="../../../../howtos/"><span itemprop="name">How-to Guides</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../../../howtos/simulation/"><span itemprop="name">Simulation</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../../../howtos/simulation/deploy/"><span itemprop="name">Deploy Nodes</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../../../howtos/simulation/deploy/shape/" aria-disabled="true"><span itemprop="name">Nodes inside shapes</span></a></li>
+            </ol>
+          </div>
+        </div>
+      </nav>
+      <main id="body-inner" class="highlightable ">
+        <div class="flex-block-wrapper">
+          <div id="head-tags">
+<div class="tags">
+  <a class="tag-link" href="../../../../tags/deployment">deployment</a>
+  <a class="tag-link" href="../../../../tags/node">node</a>
+  <a class="tag-link" href="../../../../tags/nodes">nodes</a>
+  <a class="tag-link" href="../../../../tags/random">random</a>
+  <a class="tag-link" href="../../../../tags/shape">shape</a>
+</div>
+          </div>
+          <h1>Nodes inside shapes</h1>
+
+<p>Sometimes it is useful to deploy a bunch of nodes randomly inside some area marked by a shape.
+Circles and polygons are first-class citizens,
+but of course users may create their own deployments by implementing
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-deployment/"><code>Deployment</code></a>.</p>
+<p>This example places 1000 nodes randomly in a
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-circle/"><code>Circle</code></a>
+with center in (0, 0) and radius 10.</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Circle
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1000</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>]
+</span></span></code></pre></div></div>
+    </div>
+<p>In the following example, they are instead deployed randomly within a 10x20
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-rectangle/"><code>Rectangle</code></a>
+originating in (0,0).</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Rectangle
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1000</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">20</span>]
+</span></span></code></pre></div></div>
+    </div>
+<p><a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-polygon/"><code>Polygon</code></a>s
+can be specified by providing all vertices.
+In the following example, we deploy some nodes within the Venice lagoon.</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type</span>: OSMEnvironment }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">1000</span>] }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_venice_lagoon</span>: <span style="color:#78787e">&amp;lagoon</span>
+</span></span><span style="display:flex;"><span>  [[<span style="color:#ff9f43">45.2038121</span>, <span style="color:#ff9f43">12.2504425</span>], [<span style="color:#ff9f43">45.2207426</span>, <span style="color:#ff9f43">12.2641754</span>], [<span style="color:#ff9f43">45.2381516</span>, <span style="color:#ff9f43">12.2806549</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.2570053</span>, <span style="color:#ff9f43">12.2895813</span>], [<span style="color:#ff9f43">45.276336</span>, <span style="color:#ff9f43">12.2957611</span>], [<span style="color:#ff9f43">45.3029049</span>, <span style="color:#ff9f43">12.2991943</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3212544</span>, <span style="color:#ff9f43">12.3046875</span>], [<span style="color:#ff9f43">45.331875</span>, <span style="color:#ff9f43">12.3040009</span>], [<span style="color:#ff9f43">45.3453893</span>, <span style="color:#ff9f43">12.3040009</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3502151</span>, <span style="color:#ff9f43">12.3156738</span>], [<span style="color:#ff9f43">45.3622776</span>, <span style="color:#ff9f43">12.3232269</span>], [<span style="color:#ff9f43">45.3719259</span>, <span style="color:#ff9f43">12.3300934</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3830193</span>, <span style="color:#ff9f43">12.3348999</span>], [<span style="color:#ff9f43">45.395557</span>, <span style="color:#ff9f43">12.3445129</span>], [<span style="color:#ff9f43">45.3998964</span>, <span style="color:#ff9f43">12.3300934</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.4018249</span>, <span style="color:#ff9f43">12.3136139</span>], [<span style="color:#ff9f43">45.4105023</span>, <span style="color:#ff9f43">12.3122406</span>], [<span style="color:#ff9f43">45.4167685</span>, <span style="color:#ff9f43">12.311554</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.4278531</span>, <span style="color:#ff9f43">12.3012543</span>], [<span style="color:#ff9f43">45.4408627</span>, <span style="color:#ff9f43">12.2902679</span>], [<span style="color:#ff9f43">45.4355628</span>, <span style="color:#ff9f43">12.2772217</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.4206242</span>, <span style="color:#ff9f43">12.2703552</span>], [<span style="color:#ff9f43">45.3994143</span>, <span style="color:#ff9f43">12.2744751</span>], [<span style="color:#ff9f43">45.3738553</span>, <span style="color:#ff9f43">12.2676086</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3579354</span>, <span style="color:#ff9f43">12.2614288</span>], [<span style="color:#ff9f43">45.3429763</span>, <span style="color:#ff9f43">12.2497559</span>], [<span style="color:#ff9f43">45.3198059</span>, <span style="color:#ff9f43">12.2408295</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.2975921</span>, <span style="color:#ff9f43">12.2346497</span>], [<span style="color:#ff9f43">45.2802014</span>, <span style="color:#ff9f43">12.2408295</span>], [<span style="color:#ff9f43">45.257972</span>, <span style="color:#ff9f43">12.233963</span>],
+</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.2038121</span>, <span style="color:#ff9f43">12.2504425</span>]]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Polygon
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">500</span>, <span style="color:#78787e">*lagoon]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">10</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: Event
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">actions</span>: { <span style="color:#ff6ac1">type: BrownianMove, parameters</span>: [<span style="color:#ff9f43">0.0005</span>]}
+</span></span></code></pre></div></div>
+    </div>
+          <footer class="footline">
+          </footer>
+        </div>
+      </main>
+    </div>
     <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
     <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
     <script>
@@ -79,7 +152,7 @@
       var root_url="../../../../";
       var baseUri=root_url.replace(/\/$/, '');
     </script>
-    <nav id="sidebar" class="default-animation showVisitedLinks">
+    <aside id="sidebar" class="default-animation showVisitedLinks">
       <div id="header-wrapper" class="default-animation">
         <div id="header" class="default-animation">
 <div style="white-space: nowrap;">
@@ -94,9 +167,9 @@
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../../../js/lunr.min.js?1644940503"></script>
-        <script src="../../../../js/auto-complete.js?1644940503"></script>
-        <script src="../../../../js/search.js?1644940503"></script>
+        <script src="../../../../js/lunr.min.js?1646584824"></script>
+        <script src="../../../../js/auto-complete.js?1646584824"></script>
+        <script src="../../../../js/search.js?1646584824"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -176,14 +249,38 @@
             <li><a class="padding" href="../../../../tags/"><i class='fas fa-fw fa-tags'></i> Tags</a></li>
           </ul>
         </div>
-        <div class="footermargin"></div>
-        <hr class="default-animation"/>
-        <div id="prefooter">
+        <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"></div>
+        <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"/>
+        <div id="prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks showVisitedLinks">
           <ul>
-            <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+            <li id="select-language-container" class="footerLangSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-language fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-language" onchange="location = baseUri + this.value;">
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+            </li>
+            <li id="select-variant-container" class="footerVariantSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-paint-brush fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-variant" onchange="variants.changeVariant( this.value );">
+                    <option id="relearn" value="relearn" selected>Relearn</option>
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+              <script>variants.markSelectedVariant();</script>
+            </li>
+            <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer"><div><strong>Alchemist Simulator 13.0.2</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.3</strong></div>
 <br>
 <a
     class="github-button"
@@ -215,142 +312,24 @@ Fork
 
         </div>
       </div>
-    </nav>
-    <div id="body" class="default-animation">
-      <div id="overlay"></div>
-      <div class="padding highlightable">
-        <div id="top-bar"><div>
-          <div id="top-github-link">
-            <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/howtos/simulation/deploy/shape/_index.md" target="blank">
-              <i class="fas fa-pencil"></i>
-            </a>
-          </div>
-          <div id="breadcrumbs">
-            <span id="sidebar-toggle-span">
-              <a href="#" id="sidebar-toggle" title='Menu' data-sidebar-toggle="">
-                <i class="fas fa-bars"></i>
-              </a>
-            </span>
-            <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
-            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
-              <meta itemprop="itemListOrder" content="Descending" />
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="5" /><a itemprop="item" href="../../../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="4" /><a itemprop="item" href="../../../../howtos/"><span itemprop="name">How-to Guides</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../../../howtos/simulation/"><span itemprop="name">Simulation</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../../../howtos/simulation/deploy/"><span itemprop="name">Deploy Nodes</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../../../howtos/simulation/deploy/shape/" aria-disabled="true"><span itemprop="name">Nodes inside shapes</span></a></li>
-            </ol>
-          </div>
-            <div class="progress">
-              <div class="wrapper">
-<nav id="TableOfContents"></nav>
-              </div>
-            </div>
-        </div></div>
-        <div id="head-tags">
-<div class="tags">
-  <a class="tag-link" href="../../../../tags/deployment">deployment</a>
-  <a class="tag-link" href="../../../../tags/node">node</a>
-  <a class="tag-link" href="../../../../tags/nodes">nodes</a>
-  <a class="tag-link" href="../../../../tags/shape">shape</a>
-  <a class="tag-link" href="../../../../tags/random">random</a>
-</div>
-        </div>
-        <main id="body-inner">
-          <h1>Nodes inside shapes</h1>
-
-<p>Sometimes it is useful to deploy a bunch of nodes randomly inside some area marked by a shape.
-Circles and polygons are first-class citizens,
-but of course users may create their own deployments by implementing
-<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-deployment/"><code>Deployment</code></a>.</p>
-<p>This example places 1000 nodes randomly in a
-<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-circle/"><code>Circle</code></a>
-with center in (0, 0) and radius 10.</p>
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
-<span style="color:#ff6ac1">deployments</span>:
-  <span style="color:#ff6ac1">type</span>: Circle
-  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1000</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>]
-</code></pre></div></div>
-    </div>
-<p>In the following example, they are instead deployed randomly within a 10x20
-<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-rectangle/"><code>Rectangle</code></a>
-originating in (0,0).</p>
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
-<span style="color:#ff6ac1">deployments</span>:
-  <span style="color:#ff6ac1">type</span>: Rectangle
-  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1000</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">20</span>]
-</code></pre></div></div>
-    </div>
-<p><a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.deployments/-polygon/"><code>Polygon</code></a>s
-can be specified by providing all vertices.
-In the following example, we deploy some nodes within the Venice lagoon.</p>
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
-<span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type</span>: OSMEnvironment }
-<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">1000</span>] }
-<span style="color:#ff6ac1">_venice_lagoon</span>: <span style="color:#78787e">&amp;lagoon</span>
-  [[<span style="color:#ff9f43">45.2038121</span>, <span style="color:#ff9f43">12.2504425</span>], [<span style="color:#ff9f43">45.2207426</span>, <span style="color:#ff9f43">12.2641754</span>], [<span style="color:#ff9f43">45.2381516</span>, <span style="color:#ff9f43">12.2806549</span>],
-   [<span style="color:#ff9f43">45.2570053</span>, <span style="color:#ff9f43">12.2895813</span>], [<span style="color:#ff9f43">45.276336</span>, <span style="color:#ff9f43">12.2957611</span>], [<span style="color:#ff9f43">45.3029049</span>, <span style="color:#ff9f43">12.2991943</span>],
-   [<span style="color:#ff9f43">45.3212544</span>, <span style="color:#ff9f43">12.3046875</span>], [<span style="color:#ff9f43">45.331875</span>, <span style="color:#ff9f43">12.3040009</span>], [<span style="color:#ff9f43">45.3453893</span>, <span style="color:#ff9f43">12.3040009</span>],
-   [<span style="color:#ff9f43">45.3502151</span>, <span style="color:#ff9f43">12.3156738</span>], [<span style="color:#ff9f43">45.3622776</span>, <span style="color:#ff9f43">12.3232269</span>], [<span style="color:#ff9f43">45.3719259</span>, <span style="color:#ff9f43">12.3300934</span>],
-   [<span style="color:#ff9f43">45.3830193</span>, <span style="color:#ff9f43">12.3348999</span>], [<span style="color:#ff9f43">45.395557</span>, <span style="color:#ff9f43">12.3445129</span>], [<span style="color:#ff9f43">45.3998964</span>, <span style="color:#ff9f43">12.3300934</span>],
-   [<span style="color:#ff9f43">45.4018249</span>, <span style="color:#ff9f43">12.3136139</span>], [<span style="color:#ff9f43">45.4105023</span>, <span style="color:#ff9f43">12.3122406</span>], [<span style="color:#ff9f43">45.4167685</span>, <span style="color:#ff9f43">12.311554</span>],
-   [<span style="color:#ff9f43">45.4278531</span>, <span style="color:#ff9f43">12.3012543</span>], [<span style="color:#ff9f43">45.4408627</span>, <span style="color:#ff9f43">12.2902679</span>], [<span style="color:#ff9f43">45.4355628</span>, <span style="color:#ff9f43">12.2772217</span>],
-   [<span style="color:#ff9f43">45.4206242</span>, <span style="color:#ff9f43">12.2703552</span>], [<span style="color:#ff9f43">45.3994143</span>, <span style="color:#ff9f43">12.2744751</span>], [<span style="color:#ff9f43">45.3738553</span>, <span style="color:#ff9f43">12.2676086</span>],
-   [<span style="color:#ff9f43">45.3579354</span>, <span style="color:#ff9f43">12.2614288</span>], [<span style="color:#ff9f43">45.3429763</span>, <span style="color:#ff9f43">12.2497559</span>], [<span style="color:#ff9f43">45.3198059</span>, <span style="color:#ff9f43">12.2408295</span>],
-   [<span style="color:#ff9f43">45.2975921</span>, <span style="color:#ff9f43">12.2346497</span>], [<span style="color:#ff9f43">45.2802014</span>, <span style="color:#ff9f43">12.2408295</span>], [<span style="color:#ff9f43">45.257972</span>, <span style="color:#ff9f43">12.233963</span>],
-   [<span style="color:#ff9f43">45.2038121</span>, <span style="color:#ff9f43">12.2504425</span>]]
-<span style="color:#ff6ac1">deployments</span>:
-  <span style="color:#ff6ac1">type</span>: Polygon
-  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">500</span>, <span style="color:#78787e">*lagoon]</span>
-  <span style="color:#ff6ac1">programs</span>:
-    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">10</span>
-      <span style="color:#ff6ac1">type</span>: Event
-      <span style="color:#ff6ac1">actions</span>: { <span style="color:#ff6ac1">type: BrownianMove, parameters</span>: [<span style="color:#ff9f43">0.0005</span>]}
-</code></pre></div></div>
-    </div>
-
-          <footer class=" footline">
-          </footer>
-        </main>
-      </div>
-      <div id="navigation">
-        <a class="nav nav-prev default-animation" href="../../../../howtos/simulation/deploy/grid/" title="(Irregular) Grids"><i class="fa fa-chevron-left"></i></a>
-        <a class="nav nav-next default-animation" href="../../../../howtos/simulation/deploy/gps/" title="GPS Traces"><i class="fa fa-chevron-right"></i></a>
-      </div>
-    </div>
-    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
-      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
-    </div>
-    <script src="../../../../js/clipboard.min.js?1644940503"></script>
-    <script src="../../../../js/perfect-scrollbar.min.js?1644940503"></script>
-    <script src="../../../../js/perfect-scrollbar.jquery.min.js?1644940503"></script>
-    <script src="../../../../js/jquery.svg.pan.zoom.js?1644940503"></script>
-    <script src="../../../../js/featherlight.min.js?1644940503"></script>
-    <script src="../../../../js/modernizr.custom-3.6.0.js?1644940503"></script>
-    <script src="../../../../js/mermaid.min.js?1644940503"></script>
+    </aside>
+    <script src="../../../../js/clipboard.min.js?1646584824"></script>
+    <script src="../../../../js/perfect-scrollbar.min.js?1646584824"></script>
+    <script src="../../../../js/jquery.svg.pan.zoom.js?1646584824"></script>
+    <script src="../../../../js/featherlight.min.js?1646584824"></script>
+    <script src="../../../../js/modernizr.custom-3.6.0.js?1646584824"></script>
+    <script src="../../../../js/mermaid.min.js?1646584824"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script src="../../../../js/relearn.js?1644940503"></script>
+    <script>
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+    </script>
+    <script src="../../../../js/theme.js?1646584824"></script>
   </body>
 </html>

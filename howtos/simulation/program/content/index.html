@@ -2,76 +2,152 @@
 <html lang="en" class="js csstransforms3d">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.92.2" />
-    <meta name="generator" content="Relearn 2.9.6">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.93.2" />
+    <meta name="generator" content="Relearn 3.0.4&#43;tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <title>Node contents :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../../../howtos/simulation/program/content/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../../../images/logo.svg?1644940503" type="image/svg+xml">
-    <link href="../../../../css/nucleus.css?1644940503" rel="stylesheet">
-    <link href="../../../../css/fontawesome-all.min.css?1644940503" rel="stylesheet">
-    <link href="../../../../css/featherlight.min.css?1644940503" rel="stylesheet">
-    <link href="../../../../css/perfect-scrollbar.min.css?1644940503" rel="stylesheet">
-    <link href="../../../../css/auto-complete.css?1644940503" rel="stylesheet">
-    <link href="../../../../css/theme.css?1644940503" rel="stylesheet">
-    <link id="variant-style" href="../../../../css/theme-relearn.css?1644940503" rel="stylesheet">
-    <link href="../../../../css/variant.css?1644940503" rel="stylesheet">
-    <link href="../../../../css/print.css?1644940503" rel="stylesheet" media="print">
+    <link rel="icon" href="../../../../images/logo.svg?1646584824" type="image/svg+xml">
+    <link href="../../../../css/nucleus.css?1646584824" rel="stylesheet">
+    <link href="../../../../css/fontawesome-all.min.css?1646584824" rel="stylesheet">
+    <link href="../../../../css/featherlight.min.css?1646584824" rel="stylesheet">
+    <link href="../../../../css/perfect-scrollbar.min.css?1646584824" rel="stylesheet">
+    <link href="../../../../css/auto-complete.css?1646584824" rel="stylesheet">
+    <link href="../../../../css/theme.css?1646584824" rel="stylesheet">
+    <link id="variant-style" href="../../../../css/theme-relearn.css?1646584824" rel="stylesheet">
+    <link href="../../../../css/variant.css?1646584824" rel="stylesheet">
+    <link href="../../../../css/theme-relearn-light.css?1646584824" rel="stylesheet" media="print">
+    <link href="../../../../css/print.css?1646584824" rel="stylesheet" media="print">
     <style>
     </style>
+    <script src="../../../../js/variant.js?1646584824"></script>
     <script>
-      // we need to define this script in the head to avoid flickering
-      // on page load if the user has selected a non default variant
-      var theme = window.localStorage.getItem( 'theme' );
-      changeTheme( theme );
-      function getTheme(){
-        var link = document.querySelector( '#variant-style' );
-        if( !link ){
-          return;
-        }
-        var path = link.getAttribute( 'href' );
-        var theme = path.match(/^.*\/theme-(.*?)\.css.*$/)[ 1 ];
-        return theme;
-      }
-      function markTheme( theme ){
-        var select = document.querySelector( '#select-theme' );
-        if( !select ){
-          return;
-        }
-        select.value = theme;
-      }
-      function changeTheme( theme ){
-        var themes = [ "relearn" ];
-        if( themes.indexOf( theme ) < 0 ){
-          theme = themes.length ? themes[ 0 ] : null;
-        }
-        if( !theme ){
-          return;
-        }
-        var link = document.querySelector( '#variant-style' );
-        if( !link ){
-          return;
-        }
-        var old_path = link.getAttribute( 'href' );
-        var new_path = old_path.replace( /^(.*\/theme-).*?(\.css.*)$/, '$1' + theme + '$2' );
-        if( old_path != new_path ){
-          window.localStorage.setItem( 'theme', theme );
-          link.setAttribute( 'href', new_path );
-          markTheme( theme );
-          // remove selection, because if some uses an arrow navigation
-          // by pressing the left or right cursor key, we will automatically
-          // select a different style
-          if( document.activeElement ){
-            document.activeElement.blur();
-          }
-        }
-      }
+      variants.init( [ "relearn" ] );
     </script>
-    <script src="../../../../js/jquery.min.js?1644940503"></script>
+    <script src="../../../../js/jquery.min.js?1646584824"></script>
   </head>
   <body class="default-animation" data-url="../../../../howtos/simulation/program/content/">
+    <div id="body" class="default-animation">
+      <div id="sidebar-overlay"></div>
+      <div id="toc-overlay"></div>
+      <nav id="topbar" class="highlightable">
+        <div>
+          <div class="navigation">
+              <a class="nav nav-next" href="../../../../howtos/simulation/smartcam/" title="Smart cameras and drones"><i class="fas fa-chevron-right fa-fw"></i></a>
+          </div>
+          <div class="navigation">
+              <a class="nav nav-prev" href="../../../../howtos/simulation/program/move-on-maps/" title="Move nodes on maps"><i class="fas fa-chevron-left fa-fw"></i></a>
+          </div>
+          <div id="top-github-link">
+            <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/howtos/simulation/program/content/_index.md" target="blank">
+              <i class="fas fa-pen fa-fw"></i>
+            </a>
+          </div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" title='Menu'><i class="fas fa-bars fa-fw"></i></a>
+            </span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <meta itemprop="itemListOrder" content="Descending" />
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="5" /><a itemprop="item" href="../../../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="4" /><a itemprop="item" href="../../../../howtos/"><span itemprop="name">How-to Guides</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../../../howtos/simulation/"><span itemprop="name">Simulation</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../../../howtos/simulation/program/"><span itemprop="name">Program Nodes</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../../../howtos/simulation/program/content/" aria-disabled="true"><span itemprop="name">Node contents</span></a></li>
+            </ol>
+          </div>
+        </div>
+      </nav>
+      <main id="body-inner" class="highlightable ">
+        <div class="flex-block-wrapper">
+          <div id="head-tags">
+<div class="tags">
+  <a class="tag-link" href="../../../../tags/concentration">concentration</a>
+  <a class="tag-link" href="../../../../tags/content">content</a>
+  <a class="tag-link" href="../../../../tags/deployment">deployment</a>
+  <a class="tag-link" href="../../../../tags/molecule">molecule</a>
+  <a class="tag-link" href="../../../../tags/node">node</a>
+  <a class="tag-link" href="../../../../tags/nodes">nodes</a>
+</div>
+          </div>
+          <h1>Node contents</h1>
+
+<p>It is possible to set the content of the nodes in a deployment.
+Node contents are defined in terms of molecules and their corresponding concentration.
+As such, they depend on the specific <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/"><code>Incarnation</code></a> in use.</p>
+<p>This is done by listing the contents under <a href="../../../../reference/yaml/#deploymentcontents"><code>deployments.contents</code></a>,
+specifying a <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a> name and its <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-concentration/"><code>Concentration</code></a>.</p>
+<p>Unless the <a href="../../../../reference/yaml/#arbitrary-class-loading-system">type/parameter syntax</a> is used, the data is gets processed by the <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/"><code>Incarnation</code></a>
+through the <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-molecule.html"><code>Incarnation.createMolecule</code></a> and <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-concentration.html"><code>Incarnation.createConcentration</code></a> methods, respectively.</p>
+<p>In the following example, three molecules are created and injected into all nodes deployed in the scenario:</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">7</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_gradient</span>: <span style="color:#78787e">&amp;gradient</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: Event
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">actions</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: RunProtelisProgram
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [distanceTo, 1.01]
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">program</span>: send
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>,<span style="color:#ff9f43">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">contents</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: source
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff6ac1">false</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: enabled
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff6ac1">true</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: data
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff9f43">1</span> / 0
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*gradient</span>
+</span></span></code></pre></div></div>
+    </div>
+<p>By default, all nodes in the deployment will be injected with the required contents.
+It is possible, though, to select only a subset of them through the <a href="../../../../reference/yaml/#contentin"><code>in</code></a> keyword,
+which expects enough information to be able to build a <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.shapes/-shape/"><code>Shape</code></a>
+through the <a href="../../../../reference/yaml/#arbitrary-class-loading-system">arbitrary class loading system</a>.</p>
+<p>In the following example, only molecules located inside a <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.shapes/-rectangle/"><code>Rectangle</code></a>
+get the <code>ball</code> molecule:</p>
+<div class="expand">
+        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
+            <span class="fas fa-chevron-down"></span>
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Grid
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.1</span>, <span style="color:#ff9f43">0.1</span>] <span style="color:#78787e"># A perturbed grid of devices</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">contents</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;{hit, 0}&#34;</span> <span style="color:#78787e"># Everywhere, no one has been hit</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">in</span>: { <span style="color:#ff6ac1">type: Rectangle, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, -<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>] } <span style="color:#78787e"># Inside this shape...</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">molecule</span>: ball <span style="color:#78787e"># ...every node has a ball</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span> <span style="color:#78787e"># This is a frequency, time distribution type is left to the incarnation</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#78787e"># &#39;program&#39; specs are passed down to the incarnation for being interpreted as reactions</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{ball} {hit, N} --&gt; {hit, N + 1} {launching}&#34;</span> <span style="color:#78787e"># If hit, count the hit</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{launching} --&gt; +{ball}&#34;</span> <span style="color:#78787e"># As soon as possible, throw the ball to a neighbor</span>
+</span></span></code></pre></div></div>
+    </div>
+          <footer class="footline">
+          </footer>
+        </div>
+      </main>
+    </div>
     <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
     <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
     <script>
@@ -79,7 +155,7 @@
       var root_url="../../../../";
       var baseUri=root_url.replace(/\/$/, '');
     </script>
-    <nav id="sidebar" class="default-animation showVisitedLinks">
+    <aside id="sidebar" class="default-animation showVisitedLinks">
       <div id="header-wrapper" class="default-animation">
         <div id="header" class="default-animation">
 <div style="white-space: nowrap;">
@@ -94,9 +170,9 @@
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../../../js/lunr.min.js?1644940503"></script>
-        <script src="../../../../js/auto-complete.js?1644940503"></script>
-        <script src="../../../../js/search.js?1644940503"></script>
+        <script src="../../../../js/lunr.min.js?1646584824"></script>
+        <script src="../../../../js/auto-complete.js?1646584824"></script>
+        <script src="../../../../js/search.js?1646584824"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -176,14 +252,38 @@
             <li><a class="padding" href="../../../../tags/"><i class='fas fa-fw fa-tags'></i> Tags</a></li>
           </ul>
         </div>
-        <div class="footermargin"></div>
-        <hr class="default-animation"/>
-        <div id="prefooter">
+        <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"></div>
+        <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"/>
+        <div id="prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks showVisitedLinks">
           <ul>
-            <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+            <li id="select-language-container" class="footerLangSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-language fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-language" onchange="location = baseUri + this.value;">
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+            </li>
+            <li id="select-variant-container" class="footerVariantSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-paint-brush fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-variant" onchange="variants.changeVariant( this.value );">
+                    <option id="relearn" value="relearn" selected>Relearn</option>
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+              <script>variants.markSelectedVariant();</script>
+            </li>
+            <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer"><div><strong>Alchemist Simulator 13.0.2</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.3</strong></div>
 <br>
 <a
     class="github-button"
@@ -215,145 +315,24 @@ Fork
 
         </div>
       </div>
-    </nav>
-    <div id="body" class="default-animation">
-      <div id="overlay"></div>
-      <div class="padding highlightable">
-        <div id="top-bar"><div>
-          <div id="top-github-link">
-            <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/howtos/simulation/program/content/_index.md" target="blank">
-              <i class="fas fa-pencil"></i>
-            </a>
-          </div>
-          <div id="breadcrumbs">
-            <span id="sidebar-toggle-span">
-              <a href="#" id="sidebar-toggle" title='Menu' data-sidebar-toggle="">
-                <i class="fas fa-bars"></i>
-              </a>
-            </span>
-            <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
-            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
-              <meta itemprop="itemListOrder" content="Descending" />
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="5" /><a itemprop="item" href="../../../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="4" /><a itemprop="item" href="../../../../howtos/"><span itemprop="name">How-to Guides</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../../../howtos/simulation/"><span itemprop="name">Simulation</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../../../howtos/simulation/program/"><span itemprop="name">Program Nodes</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../../../howtos/simulation/program/content/" aria-disabled="true"><span itemprop="name">Node contents</span></a></li>
-            </ol>
-          </div>
-            <div class="progress">
-              <div class="wrapper">
-<nav id="TableOfContents"></nav>
-              </div>
-            </div>
-        </div></div>
-        <div id="head-tags">
-<div class="tags">
-  <a class="tag-link" href="../../../../tags/deployment">deployment</a>
-  <a class="tag-link" href="../../../../tags/node">node</a>
-  <a class="tag-link" href="../../../../tags/nodes">nodes</a>
-  <a class="tag-link" href="../../../../tags/content">content</a>
-  <a class="tag-link" href="../../../../tags/molecule">molecule</a>
-  <a class="tag-link" href="../../../../tags/concentration">concentration</a>
-</div>
-        </div>
-        <main id="body-inner">
-          <h1>Node contents</h1>
-
-<p>It is possible to set the content of the nodes in a deployment.
-Node contents are defined in terms of molecules and their corresponding concentration.
-As such, they depend on the specific <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/"><code>Incarnation</code></a> in use.</p>
-<p>This is done by listing the contents under <a href="../../../../reference/yaml/#deploymentcontents"><code>deployments.contents</code></a>,
-specifying a <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a> name and its <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-concentration/"><code>Concentration</code></a>.</p>
-<p>Unless the <a href="../../../../reference/yaml/#arbitrary-class-loading-system">type/parameter syntax</a> is used, the data is gets processed by the <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/"><code>Incarnation</code></a>
-through the <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-molecule.html"><code>Incarnation.createMolecule</code></a> and <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-concentration.html"><code>Incarnation.createConcentration</code></a> methods, respectively.</p>
-<p>In the following example, three molecules are created and injected into all nodes deployed in the scenario:</p>
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: protelis
-
-<span style="color:#ff6ac1">network-model</span>:
-  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance
-  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">7</span>]
-
-<span style="color:#ff6ac1">_gradient</span>: <span style="color:#78787e">&amp;gradient</span>
-  - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
-    <span style="color:#ff6ac1">type</span>: Event
-    <span style="color:#ff6ac1">actions</span>:
-      - <span style="color:#ff6ac1">type</span>: RunProtelisProgram
-        <span style="color:#ff6ac1">parameters</span>: [distanceTo, 1.01]
-  - <span style="color:#ff6ac1">program</span>: send
-
-<span style="color:#ff6ac1">deployments</span>:
-  - <span style="color:#ff6ac1">type</span>: Point
-    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>,<span style="color:#ff9f43">0</span>]
-    <span style="color:#ff6ac1">contents</span>:
-      - <span style="color:#ff6ac1">molecule</span>: source
-        <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff6ac1">false</span>
-      - <span style="color:#ff6ac1">molecule</span>: enabled
-        <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff6ac1">true</span>
-      - <span style="color:#ff6ac1">molecule</span>: data
-        <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff9f43">1</span> / 0
-    <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*gradient</span>
-</code></pre></div></div>
-    </div>
-<p>By default, all nodes in the deployment will be injected with the required contents.
-It is possible, though, to select only a subset of them through the <a href="../../../../reference/yaml/#contentin"><code>in</code></a> keyword,
-which expects enough information to be able to build a <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.shapes/-shape/"><code>Shape</code></a>
-through the <a href="../../../../reference/yaml/#arbitrary-class-loading-system">arbitrary class loading system</a>.</p>
-<p>In the following example, only molecules located inside a <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.shapes/-rectangle/"><code>Rectangle</code></a>
-get the <code>ball</code> molecule:</p>
-<div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff6ac1">incarnation</span>: sapere
-<span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type: ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
-<span style="color:#ff6ac1">deployments</span>:
-  <span style="color:#ff6ac1">type</span>: Grid
-  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.1</span>, <span style="color:#ff9f43">0.1</span>] <span style="color:#78787e"># A perturbed grid of devices</span>
-  <span style="color:#ff6ac1">contents</span>:
-    - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;{hit, 0}&#34;</span> <span style="color:#78787e"># Everywhere, no one has been hit</span>
-    - <span style="color:#ff6ac1">in</span>: { <span style="color:#ff6ac1">type: Rectangle, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, -<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>] } <span style="color:#78787e"># Inside this shape...</span>
-      <span style="color:#ff6ac1">molecule</span>: ball <span style="color:#78787e"># ...every node has a ball</span>
-  <span style="color:#ff6ac1">programs</span>:
-    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span> <span style="color:#78787e"># This is a frequency, time distribution type is left to the incarnation</span>
-      <span style="color:#78787e"># &#39;program&#39; specs are passed down to the incarnation for being interpreted as reactions</span>
-      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{ball} {hit, N} --&gt; {hit, N + 1} {launching}&#34;</span> <span style="color:#78787e"># If hit, count the hit</span>
-    - <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{launching} --&gt; +{ball}&#34;</span> <span style="color:#78787e"># As soon as possible, throw the ball to a neighbor</span>
-</code></pre></div></div>
-    </div>
-
-          <footer class=" footline">
-          </footer>
-        </main>
-      </div>
-      <div id="navigation">
-        <a class="nav nav-prev default-animation" href="../../../../howtos/simulation/program/move-on-maps/" title="Move nodes on maps"><i class="fa fa-chevron-left"></i></a>
-        <a class="nav nav-next default-animation" href="../../../../howtos/simulation/smartcam/" title="Smart cameras and drones"><i class="fa fa-chevron-right"></i></a>
-      </div>
-    </div>
-    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
-      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
-    </div>
-    <script src="../../../../js/clipboard.min.js?1644940503"></script>
-    <script src="../../../../js/perfect-scrollbar.min.js?1644940503"></script>
-    <script src="../../../../js/perfect-scrollbar.jquery.min.js?1644940503"></script>
-    <script src="../../../../js/jquery.svg.pan.zoom.js?1644940503"></script>
-    <script src="../../../../js/featherlight.min.js?1644940503"></script>
-    <script src="../../../../js/modernizr.custom-3.6.0.js?1644940503"></script>
-    <script src="../../../../js/mermaid.min.js?1644940503"></script>
+    </aside>
+    <script src="../../../../js/clipboard.min.js?1646584824"></script>
+    <script src="../../../../js/perfect-scrollbar.min.js?1646584824"></script>
+    <script src="../../../../js/jquery.svg.pan.zoom.js?1646584824"></script>
+    <script src="../../../../js/featherlight.min.js?1646584824"></script>
+    <script src="../../../../js/modernizr.custom-3.6.0.js?1646584824"></script>
+    <script src="../../../../js/mermaid.min.js?1646584824"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script src="../../../../js/relearn.js?1644940503"></script>
+    <script>
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+    </script>
+    <script src="../../../../js/theme.js?1646584824"></script>
   </body>
 </html>

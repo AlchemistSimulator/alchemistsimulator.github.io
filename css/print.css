@@ -1,3 +1,9 @@
+#sidebar {
+    display: none;
+}
+#body {
+    margin-left: 0;
+}
 #body #navigation {
     display: none;
 }
@@ -5,14 +11,13 @@ html,
 body #body{
     font-size: 8.9pt;
 }
+body {
+    background-color: white;
+}
 pre code {
     font-size: 8.3pt;
 }
-#body .padding {
-    /* remove page padding - this can be set exactly in the print setup */
-    padding: 0;
-}
-code.copy-to-clipboard-inline {
+code.copy-to-clipboard-code {
     border-bottom-right-radius: 2px;
     border-top-right-radius: 2px;
     border-right-width: 1px;
@@ -20,13 +25,14 @@ code.copy-to-clipboard-inline {
 pre {
     border: 1px solid #ccc;
 }
-#body #top-bar{
+#body #topbar{
     background-color: #fff; /* avoid background bleeding*/
     border-bottom: 1px solid #ddd;
     border-radius: 0;
     padding-left: 0; /* for print, we want to align with the footer to ease the layout */
     color: #777;
 }
+.navigation,
 #top-github-link {
     /* we don't need this while printing */
     display: none;
@@ -37,7 +43,7 @@ pre {
 #body #breadcrumbs .links {
     overflow-x: hidden;
 }
-.copy-to-clipboard {
+.copy-to-clipboard-button {
     display: none;
 }
 
@@ -54,11 +60,16 @@ pre {
     /* better contrast for colored elements */
     color: black;
 }
+#body pre,
+#body code {
+    background-color: white;
+    border-color: #ddd;
+}
 
 hr{
     border-bottom: 1px solid #ddd;
 }
-#chapter h1 {
+#body-inner.chapter h1 {
     border-bottom: 1px solid #ddd;
 }
 .footline {
@@ -86,12 +97,9 @@ hr{
 #breadcrumbs .links {
     display: inline;
 }
-#top-bar{
+#topbar{
     /* the header is sticky which is not suitable for print; */
     position: inherit; /* IE11 doesn't know "initial" here */
-}
-#top-bar.is-sticky {
-    box-shadow: initial;
 }
 #body .tab-nav-button:not(.active) {
     opacity: .5;
@@ -105,4 +113,22 @@ mark {
 }
 .mermaid > svg:hover {
     border-color: transparent;
+}
+div.box {
+    border: 1px solid #ddd;
+}
+div.box > .box-content {
+    background-color: white;
+}
+.btn-default,
+#body .tab-nav-button {
+    color: black !important;
+}
+#body .tab-nav-button.active {
+    background-color: white !important;
+    border-bottom-color: white !important;
+    color: black;
+}
+#body .tab-nav-button:not(.active) {
+    opacity: 1;
 }

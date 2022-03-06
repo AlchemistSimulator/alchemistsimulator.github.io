@@ -2,76 +2,179 @@
 <html lang="en" class="js csstransforms3d">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.92.2" />
-    <meta name="generator" content="Relearn 2.9.6">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.93.2" />
+    <meta name="generator" content="Relearn 3.0.4&#43;tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <title>Smart cameras and drones :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../../howtos/simulation/smartcam/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../../images/logo.svg?1644940503" type="image/svg+xml">
-    <link href="../../../css/nucleus.css?1644940503" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1644940503" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1644940503" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1644940503" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1644940503" rel="stylesheet">
-    <link href="../../../css/theme.css?1644940503" rel="stylesheet">
-    <link id="variant-style" href="../../../css/theme-relearn.css?1644940503" rel="stylesheet">
-    <link href="../../../css/variant.css?1644940503" rel="stylesheet">
-    <link href="../../../css/print.css?1644940503" rel="stylesheet" media="print">
+    <link rel="icon" href="../../../images/logo.svg?1646584824" type="image/svg+xml">
+    <link href="../../../css/nucleus.css?1646584824" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1646584824" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1646584824" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1646584824" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1646584824" rel="stylesheet">
+    <link href="../../../css/theme.css?1646584824" rel="stylesheet">
+    <link id="variant-style" href="../../../css/theme-relearn.css?1646584824" rel="stylesheet">
+    <link href="../../../css/variant.css?1646584824" rel="stylesheet">
+    <link href="../../../css/theme-relearn-light.css?1646584824" rel="stylesheet" media="print">
+    <link href="../../../css/print.css?1646584824" rel="stylesheet" media="print">
     <style>
     </style>
+    <script src="../../../js/variant.js?1646584824"></script>
     <script>
-      // we need to define this script in the head to avoid flickering
-      // on page load if the user has selected a non default variant
-      var theme = window.localStorage.getItem( 'theme' );
-      changeTheme( theme );
-      function getTheme(){
-        var link = document.querySelector( '#variant-style' );
-        if( !link ){
-          return;
-        }
-        var path = link.getAttribute( 'href' );
-        var theme = path.match(/^.*\/theme-(.*?)\.css.*$/)[ 1 ];
-        return theme;
-      }
-      function markTheme( theme ){
-        var select = document.querySelector( '#select-theme' );
-        if( !select ){
-          return;
-        }
-        select.value = theme;
-      }
-      function changeTheme( theme ){
-        var themes = [ "relearn" ];
-        if( themes.indexOf( theme ) < 0 ){
-          theme = themes.length ? themes[ 0 ] : null;
-        }
-        if( !theme ){
-          return;
-        }
-        var link = document.querySelector( '#variant-style' );
-        if( !link ){
-          return;
-        }
-        var old_path = link.getAttribute( 'href' );
-        var new_path = old_path.replace( /^(.*\/theme-).*?(\.css.*)$/, '$1' + theme + '$2' );
-        if( old_path != new_path ){
-          window.localStorage.setItem( 'theme', theme );
-          link.setAttribute( 'href', new_path );
-          markTheme( theme );
-          // remove selection, because if some uses an arrow navigation
-          // by pressing the left or right cursor key, we will automatically
-          // select a different style
-          if( document.activeElement ){
-            document.activeElement.blur();
-          }
-        }
-      }
+      variants.init( [ "relearn" ] );
     </script>
-    <script src="../../../js/jquery.min.js?1644940503"></script>
+    <script src="../../../js/jquery.min.js?1646584824"></script>
   </head>
   <body class="default-animation" data-url="../../../howtos/simulation/smartcam/">
+    <div id="body" class="default-animation">
+      <div id="sidebar-overlay"></div>
+      <div id="toc-overlay"></div>
+      <nav id="topbar" class="highlightable">
+        <div>
+          <div class="navigation">
+              <a class="nav nav-next" href="../../../howtos/execution/" title="Execution"><i class="fas fa-chevron-right fa-fw"></i></a>
+          </div>
+          <div class="navigation">
+              <a class="nav nav-prev" href="../../../howtos/simulation/program/content/" title="Node contents"><i class="fas fa-chevron-left fa-fw"></i></a>
+          </div>
+          <div id="top-github-link">
+            <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/howtos/simulation/smartcam/_index.md" target="blank">
+              <i class="fas fa-pen fa-fw"></i>
+            </a>
+          </div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" title='Menu'><i class="fas fa-bars fa-fw"></i></a>
+            </span>
+            <span id="toc-menu" title='Table of Contents'><i class="fas fa-list-alt fa-fw"></i></span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <meta itemprop="itemListOrder" content="Descending" />
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="4" /><a itemprop="item" href="../../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../../howtos/"><span itemprop="name">How-to Guides</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../../howtos/simulation/"><span itemprop="name">Simulation</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../../howtos/simulation/smartcam/" aria-disabled="true"><span itemprop="name">Smart cameras and drones</span></a></li>
+            </ol>
+          </div>
+            <div class="progress">
+              <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#smartcam">Smartcam</a>
+      <ul>
+        <li><a href="#vision">Vision</a></li>
+        <li><a href="#movement">Movement</a></li>
+        <li><a href="#rotation">Rotation</a></li>
+        <li><a href="#other-behavior">Other behavior</a></li>
+        <li><a href="#further-references">Further references</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+        </div>
+      </nav>
+      <main id="body-inner" class="highlightable ">
+        <div class="flex-block-wrapper">
+          <div id="head-tags">
+<div class="tags">
+  <a class="tag-link" href="../../../tags/drone">drone</a>
+  <a class="tag-link" href="../../../tags/smart-camera">smart camera</a>
+</div>
+          </div>
+          <h1>Smart cameras and drones</h1>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/yuaY_8Vr3oc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This guide assumes you already know
+<a href="../../../explanation/metamodel">the Alchemist metamodel</a>
+and that you keep the <a href="../../../reference/yaml">YAML reference</a> at your fingertips.</p>
+<h2 id="smartcam">Smartcam</h2>
+<p>A smartcam is a camera able to detect objects of interest and to communicate with other smartcameras.
+In many cases it is also assumed to be mounted on a drone as to be able to freely move around in the environment.
+In Alchemist, smartcams are simulated as
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-node/"><code>Node</code></a>s
+equipped with specific
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-reaction/"><code>Reaction</code></a>s
+defining their capabilities and behaviour.
+Single capabilities are expressed as
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-action/"><code>Action</code></a>s.</p>
+<h3 id="vision">Vision</h3>
+<p>The most basic example of a camera is a
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-node/"><code>Node</code></a>
+containing a
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-reaction/"><code>Reaction</code></a>
+with the
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-camera-see/"><code>CameraSee</code></a>
+action.</p>
+
+<div class="box notices warning">
+    <div class="box-label">Warning</div>
+    <div class="box-content">
+<p>Note: the
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-camera-see/"><code>CameraSee</code></a>
+action currently
+only works in 2D environments supporting euclidean geometry,
+for example
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a>.</p>
+
+    </div>
+</div>
+<p><a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-camera-see/"><code>CameraSee</code></a>
+requires the following parameters:</p>
+<ol>
+<li>the distance of the field of view,</li>
+<li>its angle in degrees, and</li>
+<li>the name of the <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a> which will contain the ouput,
+namely, the list of nodes contained in the field of view,
+which is updated every time the action is triggered,</li>
+<li>optionally, a fourth parameter can be defined in order to filter the output,
+such parameter is expected to be the name of a <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a>
+which has to be contained in a <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-node/"><code>Node</code></a> for it to be visible,
+e.g., if it is <code>wanted</code> then only nodes containing a molecule named <code>wanted</code> will be seen.</li>
+</ol>
+<h3 id="movement">Movement</h3>
+<p>The ability to move can be defined using movement actions such as
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-move-to-target/"><code>MoveToTarget</code></a>
+or
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-follow-at-distance/"><code>FollowAtDistance</code></a>.</p>
+<p><a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-move-to-target/"><code>MoveToTarget</code></a>
+expects 2 parameters:</p>
+<ol>
+<li>the name of the molecule containing the target&rsquo;s position, and</li>
+<li>the movement speed.</li>
+</ol>
+<p><a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-follow-at-distance/"><code>FollowAtDistance</code></a> requires:</p>
+<ol>
+<li>the name of the molecule containing the target&rsquo;s position,</li>
+<li>the distance to mantain from the target, and</li>
+<li>the movement speed.</li>
+</ol>
+<h3 id="rotation">Rotation</h3>
+<p><a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-head-toward-target/"><code>HeadTowardTarget</code></a>
+can be used to instruct cameras to always face the specified target.</p>
+<p><a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-spin/"><code>Spin</code></a>
+only requires the angular speed and will make the camera spin around itself like a radar.</p>
+<h3 id="other-behavior">Other behavior</h3>
+<p>Without defining an algorithm the cameras wouldn&rsquo;t do anything interesting.
+Algorithms can be definied in a moltitude of different ways, depending on the incarnation.
+Usually, camera readings are used as sensors that get read by,
+e.g., Protelis or Scafi programs.</p>
+<h3 id="further-references">Further references</h3>
+<p><a href="https://doi.org/10.1145/3131885.3131909">Lukas Esterle, Peter R. Lewis<br>
+Online Multi-object k-coverage with Mobile Smart Cameras<br>
+In Proceedings of the International Conference on Distributed Smart Cameras (ICDSC). Nominated for best paper. 2017.</a></p>
+          <footer class="footline">
+          </footer>
+        </div>
+      </main>
+    </div>
     <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
     <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
     <script>
@@ -79,7 +182,7 @@
       var root_url="../../../";
       var baseUri=root_url.replace(/\/$/, '');
     </script>
-    <nav id="sidebar" class="default-animation showVisitedLinks">
+    <aside id="sidebar" class="default-animation showVisitedLinks">
       <div id="header-wrapper" class="default-animation">
         <div id="header" class="default-animation">
 <div style="white-space: nowrap;">
@@ -94,9 +197,9 @@
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../../js/lunr.min.js?1644940503"></script>
-        <script src="../../../js/auto-complete.js?1644940503"></script>
-        <script src="../../../js/search.js?1644940503"></script>
+        <script src="../../../js/lunr.min.js?1646584824"></script>
+        <script src="../../../js/auto-complete.js?1646584824"></script>
+        <script src="../../../js/search.js?1646584824"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -176,14 +279,38 @@
             <li><a class="padding" href="../../../tags/"><i class='fas fa-fw fa-tags'></i> Tags</a></li>
           </ul>
         </div>
-        <div class="footermargin"></div>
-        <hr class="default-animation"/>
-        <div id="prefooter">
+        <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"></div>
+        <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"/>
+        <div id="prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks showVisitedLinks">
           <ul>
-            <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+            <li id="select-language-container" class="footerLangSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-language fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-language" onchange="location = baseUri + this.value;">
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+            </li>
+            <li id="select-variant-container" class="footerVariantSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-paint-brush fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-variant" onchange="variants.changeVariant( this.value );">
+                    <option id="relearn" value="relearn" selected>Relearn</option>
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+              <script>variants.markSelectedVariant();</script>
+            </li>
+            <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer"><div><strong>Alchemist Simulator 13.0.2</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.3</strong></div>
 <br>
 <a
     class="github-button"
@@ -215,163 +342,24 @@ Fork
 
         </div>
       </div>
-    </nav>
-    <div id="body" class="default-animation">
-      <div id="overlay"></div>
-      <div class="padding highlightable">
-        <div id="top-bar"><div>
-          <div id="top-github-link">
-            <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/howtos/simulation/smartcam/_index.md" target="blank">
-              <i class="fas fa-pencil"></i>
-            </a>
-          </div>
-          <div id="breadcrumbs">
-            <span id="sidebar-toggle-span">
-              <a href="#" id="sidebar-toggle" title='Menu' data-sidebar-toggle="">
-                <i class="fas fa-bars"></i>
-              </a>
-            </span>
-            <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
-            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
-              <meta itemprop="itemListOrder" content="Descending" />
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="4" /><a itemprop="item" href="../../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../../howtos/"><span itemprop="name">How-to Guides</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../../howtos/simulation/"><span itemprop="name">Simulation</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../../howtos/simulation/smartcam/" aria-disabled="true"><span itemprop="name">Smart cameras and drones</span></a></li>
-            </ol>
-          </div>
-            <div class="progress">
-              <div class="wrapper">
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#prerequisites">Prerequisites</a></li>
-    <li><a href="#smartcam">Smartcam</a>
-      <ul>
-        <li><a href="#vision">Vision</a></li>
-        <li><a href="#movement">Movement</a></li>
-        <li><a href="#rotation">Rotation</a></li>
-        <li><a href="#other-behavior">Other behavior</a></li>
-        <li><a href="#further-references">Further references</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-              </div>
-            </div>
-        </div></div>
-        <div id="head-tags">
-<div class="tags">
-  <a class="tag-link" href="../../../tags/drone">drone</a>
-  <a class="tag-link" href="../../../tags/smart-camera">smart camera</a>
-</div>
-        </div>
-        <main id="body-inner">
-          <h1>Smart cameras and drones</h1>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/yuaY_8Vr3oc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-<h2 id="prerequisites">Prerequisites</h2>
-<p>This guide assumes you already know
-<a href="../../../explanation/metamodel">the Alchemist metamodel</a>
-and that you keep the <a href="../../../reference/yaml">YAML reference</a> at your fingertips.</p>
-<h2 id="smartcam">Smartcam</h2>
-<p>A smartcam is a camera able to detect objects of interest and to communicate with other smartcameras.
-In many cases it is also assumed to be mounted on a drone as to be able to freely move around in the environment.
-In Alchemist, smartcams are simulated as
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-node/"><code>Node</code></a>s
-equipped with specific
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-reaction/"><code>Reaction</code></a>s
-defining their capabilities and behaviour.
-Single capabilities are expressed as
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-action/"><code>Action</code></a>s.</p>
-<h3 id="vision">Vision</h3>
-<p>The most basic example of a camera is a
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-node/"><code>Node</code></a>
-containing a
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-reaction/"><code>Reaction</code></a>
-with the
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-camera-see/"><code>CameraSee</code></a>
-action.</p>
-
-<div class="notices warning">
-    <div class="label">Warning</div>
-<p>Note: the
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-camera-see/"><code>CameraSee</code></a>
-action currently
-only works in 2D environments supporting euclidean geometry,
-for example
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a>.</p>
-</div>
-<p><a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-camera-see/"><code>CameraSee</code></a>
-requires the following parameters:</p>
-<ol>
-<li>the distance of the field of view,</li>
-<li>its angle in degrees, and</li>
-<li>the name of the <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a> which will contain the ouput,
-namely, the list of nodes contained in the field of view,
-which is updated every time the action is triggered,</li>
-<li>optionally, a fourth parameter can be defined in order to filter the output,
-such parameter is expected to be the name of a <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a>
-which has to be contained in a <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-node/"><code>Node</code></a> for it to be visible,
-e.g., if it is <code>wanted</code> then only nodes containing a molecule named <code>wanted</code> will be seen.</li>
-</ol>
-<h3 id="movement">Movement</h3>
-<p>The ability to move can be defined using movement actions such as
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-move-to-target/"><code>MoveToTarget</code></a>
-or
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-follow-at-distance/"><code>FollowAtDistance</code></a>.</p>
-<p><a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-move-to-target/"><code>MoveToTarget</code></a>
-expects 2 parameters:</p>
-<ol>
-<li>the name of the molecule containing the target&rsquo;s position, and</li>
-<li>the movement speed.</li>
-</ol>
-<p><a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-follow-at-distance/"><code>FollowAtDistance</code></a> requires:</p>
-<ol>
-<li>the name of the molecule containing the target&rsquo;s position,</li>
-<li>the distance to mantain from the target, and</li>
-<li>the movement speed.</li>
-</ol>
-<h3 id="rotation">Rotation</h3>
-<p><a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-head-toward-target/"><code>HeadTowardTarget</code></a>
-can be used to instruct cameras to always face the specified target.</p>
-<p><a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-spin/"><code>Spin</code></a>
-only requires the angular speed and will make the camera spin around itself like a radar.</p>
-<h3 id="other-behavior">Other behavior</h3>
-<p>Without defining an algorithm the cameras wouldn&rsquo;t do anything interesting.
-Algorithms can be definied in a moltitude of different ways, depending on the incarnation.
-Usually, camera readings are used as sensors that get read by,
-e.g., Protelis or Scafi programs.</p>
-<h3 id="further-references">Further references</h3>
-<p><a href="https://doi.org/10.1145/3131885.3131909">Lukas Esterle, Peter R. Lewis<br>
-Online Multi-object k-coverage with Mobile Smart Cameras<br>
-In Proceedings of the International Conference on Distributed Smart Cameras (ICDSC). Nominated for best paper. 2017.</a></p>
-
-          <footer class=" footline">
-          </footer>
-        </main>
-      </div>
-      <div id="navigation">
-        <a class="nav nav-prev default-animation" href="../../../howtos/simulation/program/content/" title="Node contents"><i class="fa fa-chevron-left"></i></a>
-        <a class="nav nav-next default-animation" href="../../../howtos/execution/" title="Execution"><i class="fa fa-chevron-right"></i></a>
-      </div>
-    </div>
-    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
-      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
-    </div>
-    <script src="../../../js/clipboard.min.js?1644940503"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1644940503"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1644940503"></script>
-    <script src="../../../js/jquery.svg.pan.zoom.js?1644940503"></script>
-    <script src="../../../js/featherlight.min.js?1644940503"></script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1644940503"></script>
-    <script src="../../../js/mermaid.min.js?1644940503"></script>
+    </aside>
+    <script src="../../../js/clipboard.min.js?1646584824"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1646584824"></script>
+    <script src="../../../js/jquery.svg.pan.zoom.js?1646584824"></script>
+    <script src="../../../js/featherlight.min.js?1646584824"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1646584824"></script>
+    <script src="../../../js/mermaid.min.js?1646584824"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script src="../../../js/relearn.js?1644940503"></script>
+    <script>
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+    </script>
+    <script src="../../../js/theme.js?1646584824"></script>
   </body>
 </html>

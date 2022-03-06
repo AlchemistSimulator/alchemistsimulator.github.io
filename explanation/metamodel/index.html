@@ -2,76 +2,217 @@
 <html lang="en" class="js csstransforms3d">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.92.2" />
-    <meta name="generator" content="Relearn 2.9.6">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.93.2" />
+    <meta name="generator" content="Relearn 3.0.4&#43;tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <title>The Alchemist Meta-Model :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../explanation/metamodel/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../images/logo.svg?1644940502" type="image/svg+xml">
-    <link href="../../css/nucleus.css?1644940502" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1644940502" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1644940502" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1644940502" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1644940502" rel="stylesheet">
-    <link href="../../css/theme.css?1644940502" rel="stylesheet">
-    <link id="variant-style" href="../../css/theme-relearn.css?1644940502" rel="stylesheet">
-    <link href="../../css/variant.css?1644940502" rel="stylesheet">
-    <link href="../../css/print.css?1644940502" rel="stylesheet" media="print">
+    <link rel="icon" href="../../images/logo.svg?1646584823" type="image/svg+xml">
+    <link href="../../css/nucleus.css?1646584823" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1646584823" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1646584823" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1646584823" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1646584823" rel="stylesheet">
+    <link href="../../css/theme.css?1646584823" rel="stylesheet">
+    <link id="variant-style" href="../../css/theme-relearn.css?1646584823" rel="stylesheet">
+    <link href="../../css/variant.css?1646584823" rel="stylesheet">
+    <link href="../../css/theme-relearn-light.css?1646584823" rel="stylesheet" media="print">
+    <link href="../../css/print.css?1646584823" rel="stylesheet" media="print">
     <style>
     </style>
+    <script src="../../js/variant.js?1646584823"></script>
     <script>
-      // we need to define this script in the head to avoid flickering
-      // on page load if the user has selected a non default variant
-      var theme = window.localStorage.getItem( 'theme' );
-      changeTheme( theme );
-      function getTheme(){
-        var link = document.querySelector( '#variant-style' );
-        if( !link ){
-          return;
-        }
-        var path = link.getAttribute( 'href' );
-        var theme = path.match(/^.*\/theme-(.*?)\.css.*$/)[ 1 ];
-        return theme;
-      }
-      function markTheme( theme ){
-        var select = document.querySelector( '#select-theme' );
-        if( !select ){
-          return;
-        }
-        select.value = theme;
-      }
-      function changeTheme( theme ){
-        var themes = [ "relearn" ];
-        if( themes.indexOf( theme ) < 0 ){
-          theme = themes.length ? themes[ 0 ] : null;
-        }
-        if( !theme ){
-          return;
-        }
-        var link = document.querySelector( '#variant-style' );
-        if( !link ){
-          return;
-        }
-        var old_path = link.getAttribute( 'href' );
-        var new_path = old_path.replace( /^(.*\/theme-).*?(\.css.*)$/, '$1' + theme + '$2' );
-        if( old_path != new_path ){
-          window.localStorage.setItem( 'theme', theme );
-          link.setAttribute( 'href', new_path );
-          markTheme( theme );
-          // remove selection, because if some uses an arrow navigation
-          // by pressing the left or right cursor key, we will automatically
-          // select a different style
-          if( document.activeElement ){
-            document.activeElement.blur();
-          }
-        }
-      }
+      variants.init( [ "relearn" ] );
     </script>
-    <script src="../../js/jquery.min.js?1644940502"></script>
+    <script src="../../js/jquery.min.js?1646584823"></script>
   </head>
   <body class="default-animation" data-url="../../explanation/metamodel/">
+    <div id="body" class="default-animation">
+      <div id="sidebar-overlay"></div>
+      <div id="toc-overlay"></div>
+      <nav id="topbar" class="highlightable">
+        <div>
+          <div class="navigation">
+              <a class="nav nav-next" href="../../explanation/engine/" title="The Alchemist Simulation Engine"><i class="fas fa-chevron-right fa-fw"></i></a>
+          </div>
+          <div class="navigation">
+              <a class="nav nav-prev" href="../../explanation/" title="Explanation"><i class="fas fa-chevron-left fa-fw"></i></a>
+          </div>
+          <div id="top-github-link">
+            <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/explanation/metamodel/_index.md" target="blank">
+              <i class="fas fa-pen fa-fw"></i>
+            </a>
+          </div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" title='Menu'><i class="fas fa-bars fa-fw"></i></a>
+            </span>
+            <span id="toc-menu" title='Table of Contents'><i class="fas fa-list-alt fa-fw"></i></span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <meta itemprop="itemListOrder" content="Descending" />
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../explanation/"><span itemprop="name">Explanation</span></a> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../explanation/metamodel/" aria-disabled="true"><span itemprop="name">The Alchemist Meta-Model</span></a></li>
+            </ol>
+          </div>
+            <div class="progress">
+              <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#the-model">The model</a></li>
+        <li><a href="#incarnations">Incarnations</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+        </div>
+      </nav>
+      <main id="body-inner" class="highlightable ">
+        <div class="flex-block-wrapper">
+          <div id="head-tags">
+<div class="tags">
+  <a class="tag-link" href="../../tags/action">action</a>
+  <a class="tag-link" href="../../tags/concentration">concentration</a>
+  <a class="tag-link" href="../../tags/condition">condition</a>
+  <a class="tag-link" href="../../tags/environment">environment</a>
+  <a class="tag-link" href="../../tags/linking-rule">linking rule</a>
+  <a class="tag-link" href="../../tags/metamodel">metamodel</a>
+  <a class="tag-link" href="../../tags/model">model</a>
+  <a class="tag-link" href="../../tags/molecule">molecule</a>
+  <a class="tag-link" href="../../tags/neighborhood">neighborhood</a>
+  <a class="tag-link" href="../../tags/node">node</a>
+  <a class="tag-link" href="../../tags/reaction">reaction</a>
+  <a class="tag-link" href="../../tags/understand">understand</a>
+</div>
+          </div>
+          <h1>The Alchemist Meta-Model</h1>
+
+<p>The first step to take in order to use the simulator, is to answer the question</p>
+<blockquote>
+<p>what does Alchemist simulate?</p>
+</blockquote>
+<p>A broad introduction is provided in form of introductory video from the <a href="http://www.discotec.org/2021/dais.html">DAIS 2021</a>
+conference tutorial.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/zF-LHHQjdOg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="the-model">The model</h3>
+<p>The world of Alchemist is composed of the following entities:</p>
+<ul>
+<li><strong>Molecule</strong>
+<ul>
+<li>The name of a data item</li>
+<li>If Alchemist were an imperative programming language, a <em>molecule</em> would be the concept of <em>variable name</em></li>
+</ul>
+</li>
+<li><strong>Concentration</strong>
+<ul>
+<li>The value associated to a particular <em>molecule</em></li>
+<li>If Alchemist were an imperative programming language, a <em>concentration</em> would be the concept of <em>value associated to a variable</em></li>
+</ul>
+</li>
+<li><strong>Node</strong>
+<ul>
+<li>A container of <em>molecules</em> and <em>reactions</em>, living inside an <em>environment</em></li>
+</ul>
+</li>
+<li><strong>Environment</strong>
+<ul>
+<li>The Alchemist abstration for the space. It is a container for <em>nodes</em>, and it is able to tell:
+<ol>
+<li>Where the nodes are in the space - i.e. their <em>position</em></li>
+<li>The distance between two <em>nodes</em></li>
+<li>Optionally, support for moving <em>nodes</em></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>Linking rule&rsquo;, &lsquo;LinkingRule</strong>
+<ul>
+<li>A function of the current status of the environment that associates to each <em>node</em> a <em>neighborhood</em></li>
+</ul>
+</li>
+<li><strong>Neighborhood</strong>
+<ul>
+<li>An entity composed by a <em>node</em> (centre) and a set of <em>nodes</em> (neighbors)</li>
+</ul>
+</li>
+<li><strong>Reaction</strong>
+<ul>
+<li>Any event that can change the status of the <em>{{ anchor(&rsquo;environment&rsquo;, &lsquo;Environment&rsquo;) }}</em></li>
+<li>Each <em>node</em> has a possibly empty set of <em>reactions</em></li>
+<li>Each reaction is defined by a possibly empty list of <em>conditions</em>, one or more <em>actions</em> and a <em>{{ anchor(&rsquo;time distribution&rsquo;, &lsquo;TimeDistribution&rsquo;) }}</em></li>
+<li>The frequency at which it happens depends on:
+<ol>
+<li>A static &ldquo;rate&rdquo; parameter</li>
+<li>The value of each <em>condition</em></li>
+<li>A &ldquo;rate equation&rdquo;, that combines the static rate and the value of conditions, giving back an &ldquo;instantaneous rate&rdquo;</li>
+<li>A <em>time distribution</em></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>Condition</strong>
+<ul>
+<li>A function that takes the current <em>environment</em> as input and outputs a boolean and a number</li>
+<li>If the <em>condition</em> does not hold (i.e. its current output is <code>false</code>), the <em>reaction</em> to which it is associated cannot run</li>
+<li>The outputed number may or may not influence the <em>reaction</em> speed (i.e. the average number of times the <em>reaction</em> &ldquo;happens&rdquo; per time unit), depending on the <em>reaction</em> and its <em>time distribution</em>.</li>
+</ul>
+</li>
+<li><strong>Action</strong>
+<ul>
+<li>Models a change in the environment.</li>
+</ul>
+</li>
+</ul>
+<p>The following image is a visualization of such model:</p>
+<p><img src="../../images/simulator/model.svg" alt="Alchemist model"></p>
+<p>The behavior of the system is described in terms of reactions. As such, here&rsquo;s a pictorial representation of a reaction:</p>
+<p><img src="../../images/simulator/reaction.svg" alt="Alchemist reaction"></p>
+<h3 id="incarnations">Incarnations</h3>
+<p>As you can see, names are given after classical chemistry terms.
+This is mostly for historical reasons: Alchemist has been initially conceived as a chemical-oriented multi-compartment
+stochastic simulation engine, able to support compartment (node) mobility while still retaining high performance.</p>
+<p>However, Alchemist is not limited to that. The key of its extensibility is in the very loose interpretation of
+<strong>molecule</strong> and <strong>concentration</strong>. These two terms have a very precise definition in chemistry, but in Alchemist they
+are respectively</p>
+<ol>
+<li>a generic identifier, and</li>
+<li>a piece of data of some <strong>type</strong></li>
+</ol>
+<p>An <strong>incarnation</strong> of Alchemist includes a <strong>type</strong> definition of <strong>concentration</strong>,
+and possibly a set of specific conditions, actions and (rarely) environments and reactions that operate on such types.
+In other words, an incarnation is a concrete instance of the Alchemist meta-model.
+In addition, a proper Alchemist incarnation&rsquo;, &lsquo;Incarnation must also define:</p>
+<ul>
+<li>Means for translating strings into named entities (molecules)</li>
+<li>Means for obtaining a number when given a node, a molecule and a string representing a property</li>
+<li>Means for building incarnation-specific model entities given an appropriate context and a parameter String</li>
+</ul>
+<p>These functionalities are required in order to support a uniform access to different incarnations.</p>
+<p>Different Incarnations can model completely different universes.
+For instance, if the concentration is defined as a positive integer and proper actions and conditions are provided,
+Alchemist becomes a stochastic simulator for chemistry featuring interconnected and mobile compartments.</p>
+<p>The standalone distribution comes with:</p>
+<ul>
+<li><a href="http://protelis.org">Protelis Incarnation</a></li>
+<li><a href="http://dx.doi.org/10.1016/j.pmcj.2014.12.002">SAPERE Incarnation</a></li>
+<li>Biochemistry Incarnation</li>
+<li><a href="https://scafi.github.io/">Scafi incarnation</a></li>
+</ul>
+          <footer class="footline">
+          </footer>
+        </div>
+      </main>
+    </div>
     <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
     <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
     <script>
@@ -79,7 +220,7 @@
       var root_url="../../";
       var baseUri=root_url.replace(/\/$/, '');
     </script>
-    <nav id="sidebar" class="default-animation showVisitedLinks">
+    <aside id="sidebar" class="default-animation showVisitedLinks">
       <div id="header-wrapper" class="default-animation">
         <div id="header" class="default-animation">
 <div style="white-space: nowrap;">
@@ -94,9 +235,9 @@
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../js/lunr.min.js?1644940502"></script>
-        <script src="../../js/auto-complete.js?1644940502"></script>
-        <script src="../../js/search.js?1644940502"></script>
+        <script src="../../js/lunr.min.js?1646584823"></script>
+        <script src="../../js/auto-complete.js?1646584823"></script>
+        <script src="../../js/search.js?1646584823"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -176,14 +317,38 @@
             <li><a class="padding" href="../../tags/"><i class='fas fa-fw fa-tags'></i> Tags</a></li>
           </ul>
         </div>
-        <div class="footermargin"></div>
-        <hr class="default-animation"/>
-        <div id="prefooter">
+        <div class="footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"></div>
+        <hr class="default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"/>
+        <div id="prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks showVisitedLinks">
           <ul>
-            <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+            <li id="select-language-container" class="footerLangSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-language fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-language" onchange="location = baseUri + this.value;">
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+            </li>
+            <li id="select-variant-container" class="footerVariantSwitch">
+              <a class="padding select-container">
+                <i class="fas fa-paint-brush fa-fw"></i>
+                <span>&nbsp;</span>
+                <div class="select-style">
+                  <select id="select-variant" onchange="variants.changeVariant( this.value );">
+                    <option id="relearn" value="relearn" selected>Relearn</option>
+                  </select>
+                </div>
+                <div class="select-clear"></div>
+              </a>
+              <script>variants.markSelectedVariant();</script>
+            </li>
+            <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer"><div><strong>Alchemist Simulator 13.0.2</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.3</strong></div>
 <br>
 <a
     class="github-button"
@@ -215,204 +380,24 @@ Fork
 
         </div>
       </div>
-    </nav>
-    <div id="body" class="default-animation">
-      <div id="overlay"></div>
-      <div class="padding highlightable">
-        <div id="top-bar"><div>
-          <div id="top-github-link">
-            <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/explanation/metamodel/_index.md" target="blank">
-              <i class="fas fa-pencil"></i>
-            </a>
-          </div>
-          <div id="breadcrumbs">
-            <span id="sidebar-toggle-span">
-              <a href="#" id="sidebar-toggle" title='Menu' data-sidebar-toggle="">
-                <i class="fas fa-bars"></i>
-              </a>
-            </span>
-            <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
-            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
-              <meta itemprop="itemListOrder" content="Descending" />
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="3" /><a itemprop="item" href="../../"><span itemprop="name">The Alchemist Simulator</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="2" /><a itemprop="item" href="../../explanation/"><span itemprop="name">Explanation</span></a> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../explanation/metamodel/" aria-disabled="true"><span itemprop="name">The Alchemist Meta-Model</span></a></li>
-            </ol>
-          </div>
-            <div class="progress">
-              <div class="wrapper">
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#the-model">The model</a></li>
-        <li><a href="#incarnations">Incarnations</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-              </div>
-            </div>
-        </div></div>
-        <div id="head-tags">
-<div class="tags">
-  <a class="tag-link" href="../../tags/model">model</a>
-  <a class="tag-link" href="../../tags/metamodel">metamodel</a>
-  <a class="tag-link" href="../../tags/understand">understand</a>
-  <a class="tag-link" href="../../tags/molecule">molecule</a>
-  <a class="tag-link" href="../../tags/concentration">concentration</a>
-  <a class="tag-link" href="../../tags/node">node</a>
-  <a class="tag-link" href="../../tags/environment">environment</a>
-  <a class="tag-link" href="../../tags/linking-rule">linking rule</a>
-  <a class="tag-link" href="../../tags/neighborhood">neighborhood</a>
-  <a class="tag-link" href="../../tags/reaction">reaction</a>
-  <a class="tag-link" href="../../tags/condition">condition</a>
-  <a class="tag-link" href="../../tags/action">action</a>
-</div>
-        </div>
-        <main id="body-inner">
-          <h1>The Alchemist Meta-Model</h1>
-
-<p>The first step to take in order to use the simulator, is to answer the question</p>
-<blockquote>
-<p>what does Alchemist simulate?</p>
-</blockquote>
-<p>A broad introduction is provided in form of introductory video from the <a href="http://www.discotec.org/2021/dais.html">DAIS 2021</a>
-conference tutorial.</p>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/zF-LHHQjdOg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-<h3 id="the-model">The model</h3>
-<p>The world of Alchemist is composed of the following entities:</p>
-<ul>
-<li><strong>Molecule</strong>
-<ul>
-<li>The name of a data item</li>
-<li>If Alchemist were an imperative programming language, a <em>molecule</em> would be the concept of <em>variable name</em></li>
-</ul>
-</li>
-<li><strong>Concentration</strong>
-<ul>
-<li>The value associated to a particular <em>molecule</em></li>
-<li>If Alchemist were an imperative programming language, a <em>concentration</em> would be the concept of <em>value associated to a variable</em></li>
-</ul>
-</li>
-<li><strong>Node</strong>
-<ul>
-<li>A container of <em>molecules</em> and <em>reactions</em>, living inside an <em>environment</em></li>
-</ul>
-</li>
-<li><strong>Environment</strong>
-<ul>
-<li>The Alchemist abstration for the space. It is a container for <em>nodes</em>, and it is able to tell:
-<ol>
-<li>Where the nodes are in the space - i.e. their <em>position</em></li>
-<li>The distance between two <em>nodes</em></li>
-<li>Optionally, support for moving <em>nodes</em></li>
-</ol>
-</li>
-</ul>
-</li>
-<li><strong>Linking rule', &lsquo;LinkingRule</strong>
-<ul>
-<li>A function of the current status of the environment that associates to each <em>node</em> a <em>neighborhood</em></li>
-</ul>
-</li>
-<li><strong>Neighborhood</strong>
-<ul>
-<li>An entity composed by a <em>node</em> (centre) and a set of <em>nodes</em> (neighbors)</li>
-</ul>
-</li>
-<li><strong>Reaction</strong>
-<ul>
-<li>Any event that can change the status of the <em>{{ anchor(&lsquo;environment&rsquo;, &lsquo;Environment&rsquo;) }}</em></li>
-<li>Each <em>node</em> has a possibly empty set of <em>reactions</em></li>
-<li>Each reaction is defined by a possibly empty list of <em>conditions</em>, one or more <em>actions</em> and a <em>{{ anchor(&lsquo;time distribution&rsquo;, &lsquo;TimeDistribution&rsquo;) }}</em></li>
-<li>The frequency at which it happens depends on:
-<ol>
-<li>A static &ldquo;rate&rdquo; parameter</li>
-<li>The value of each <em>condition</em></li>
-<li>A &ldquo;rate equation&rdquo;, that combines the static rate and the value of conditions, giving back an &ldquo;instantaneous rate&rdquo;</li>
-<li>A <em>time distribution</em></li>
-</ol>
-</li>
-</ul>
-</li>
-<li><strong>Condition</strong>
-<ul>
-<li>A function that takes the current <em>environment</em> as input and outputs a boolean and a number</li>
-<li>If the <em>condition</em> does not hold (i.e. its current output is <code>false</code>), the <em>reaction</em> to which it is associated cannot run</li>
-<li>The outputed number may or may not influence the <em>reaction</em> speed (i.e. the average number of times the <em>reaction</em> &ldquo;happens&rdquo; per time unit), depending on the <em>reaction</em> and its <em>time distribution</em>.</li>
-</ul>
-</li>
-<li><strong>Action</strong>
-<ul>
-<li>Models a change in the environment.</li>
-</ul>
-</li>
-</ul>
-<p>The following image is a visualization of such model:</p>
-<p><img src="../../images/simulator/model.svg" alt="Alchemist model"></p>
-<p>The behavior of the system is described in terms of reactions. As such, here&rsquo;s a pictorial representation of a reaction:</p>
-<p><img src="../../images/simulator/reaction.svg" alt="Alchemist reaction"></p>
-<h3 id="incarnations">Incarnations</h3>
-<p>As you can see, names are given after classical chemistry terms.
-This is mostly for historical reasons: Alchemist has been initially conceived as a chemical-oriented multi-compartment
-stochastic simulation engine, able to support compartment (node) mobility while still retaining high performance.</p>
-<p>However, Alchemist is not limited to that. The key of its extensibility is in the very loose interpretation of
-<strong>molecule</strong> and <strong>concentration</strong>. These two terms have a very precise definition in chemistry, but in Alchemist they
-are respectively</p>
-<ol>
-<li>a generic identifier, and</li>
-<li>a piece of data of some <strong>type</strong></li>
-</ol>
-<p>An <strong>incarnation</strong> of Alchemist includes a <strong>type</strong> definition of <strong>concentration</strong>,
-and possibly a set of specific conditions, actions and (rarely) environments and reactions that operate on such types.
-In other words, an incarnation is a concrete instance of the Alchemist meta-model.
-In addition, a proper Alchemist incarnation&rsquo;, &lsquo;Incarnation must also define:</p>
-<ul>
-<li>Means for translating strings into named entities (molecules)</li>
-<li>Means for obtaining a number when given a node, a molecule and a string representing a property</li>
-<li>Means for building incarnation-specific model entities given an appropriate context and a parameter String</li>
-</ul>
-<p>These functionalities are required in order to support a uniform access to different incarnations.</p>
-<p>Different Incarnations can model completely different universes.
-For instance, if the concentration is defined as a positive integer and proper actions and conditions are provided,
-Alchemist becomes a stochastic simulator for chemistry featuring interconnected and mobile compartments.</p>
-<p>The standalone distribution comes with:</p>
-<ul>
-<li><a href="http://protelis.org">Protelis Incarnation</a></li>
-<li><a href="http://dx.doi.org/10.1016/j.pmcj.2014.12.002">SAPERE Incarnation</a></li>
-<li>Biochemistry Incarnation</li>
-<li><a href="https://scafi.github.io/">Scafi incarnation</a></li>
-</ul>
-
-          <footer class=" footline">
-          </footer>
-        </main>
-      </div>
-      <div id="navigation">
-        <a class="nav nav-prev default-animation" href="../../explanation/" title="Explanation"><i class="fa fa-chevron-left"></i></a>
-        <a class="nav nav-next default-animation" href="../../explanation/engine/" title="The Alchemist Simulation Engine"><i class="fa fa-chevron-right"></i></a>
-      </div>
-    </div>
-    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
-      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
-    </div>
-    <script src="../../js/clipboard.min.js?1644940502"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1644940502"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1644940502"></script>
-    <script src="../../js/jquery.svg.pan.zoom.js?1644940502"></script>
-    <script src="../../js/featherlight.min.js?1644940502"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1644940502"></script>
-    <script src="../../js/mermaid.min.js?1644940502"></script>
+    </aside>
+    <script src="../../js/clipboard.min.js?1646584823"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1646584823"></script>
+    <script src="../../js/jquery.svg.pan.zoom.js?1646584823"></script>
+    <script src="../../js/featherlight.min.js?1646584823"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1646584823"></script>
+    <script src="../../js/mermaid.min.js?1646584823"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script src="../../js/relearn.js?1644940502"></script>
+    <script>
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+    </script>
+    <script src="../../js/theme.js?1646584823"></script>
   </body>
 </html>
