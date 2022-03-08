@@ -9,24 +9,34 @@
     <meta name="author" content="Danilo Pianini">
     <title>Memory leaks under Linux :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../../howtos/workarounds/max-map-count/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../../images/logo.svg?1646687175" type="image/svg+xml">
-    <link href="../../../css/nucleus.css?1646687175" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1646687175" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1646687175" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1646687175" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1646687175" rel="stylesheet">
-    <link href="../../../css/theme.css?1646687175" rel="stylesheet">
-    <link id="variant-style" href="../../../css/theme-relearn.css?1646687175" rel="stylesheet">
-    <link href="../../../css/variant.css?1646687175" rel="stylesheet">
-    <link href="../../../css/theme-relearn-light.css?1646687175" rel="stylesheet" media="print">
-    <link href="../../../css/print.css?1646687175" rel="stylesheet" media="print">
-    <style>
-    </style>
-    <script src="../../../js/variant.js?1646687175"></script>
+    <link rel="icon" href="../../../images/logo.svg?1646718846" type="image/svg+xml">
+    <link href="../../../css/nucleus.css?1646718846" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1646718846" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1646718846" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1646718846" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1646718846" rel="stylesheet">
+    <link href="../../../css/theme.css?1646718846" rel="stylesheet">
+    <link id="variant-style" href="../../../css/theme-relearn.css?1646718846" rel="stylesheet">
+    <link href="../../../css/variant.css?1646718846" rel="stylesheet">
+    <link href="../../../css/theme-relearn-light.css?1646718846" rel="stylesheet" media="print">
+    <link href="../../../css/print.css?1646718846" rel="stylesheet" media="print">
+    <script src="../../../js/variant.js?1646718846"></script>
     <script>
-      variants.init( [ "relearn" ] );
+      // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
+      // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
+      var index_url="../../../index.json";
+      var root_url="../../../";
+      var baseUri=root_url.replace(/\/$/, '');
+      // translations
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+      // some further base stuff
+      var baseUriFull='https:\/\/alchemistsimulator.github.io/';
+      variants.init( [ 'relearn' ] );
     </script>
-    <script src="../../../js/jquery.min.js?1646687175"></script>
+    <script src="../../../js/jquery.min.js?1646718846"></script>
   </head>
   <body class="default-animation" data-url="../../../howtos/workarounds/max-map-count/">
     <div id="body" class="default-animation">
@@ -35,10 +45,10 @@
       <nav id="topbar" class="highlightable">
         <div>
           <div class="navigation">
-              <a class="nav nav-next" href="../../../howtos/extensions/" title="Experiment-specific extensions"><i class="fas fa-chevron-right fa-fw"></i></a>
+             <a class="nav nav-next" href="../../../howtos/extensions/" title="Experiment-specific extensions"><i class="fas fa-chevron-right fa-fw"></i></a>
           </div>
           <div class="navigation">
-              <a class="nav nav-prev" href="../../../howtos/workarounds/swing-glitch/" title="Graphical Glitches in Swing"><i class="fas fa-chevron-left fa-fw"></i></a>
+             <a class="nav nav-prev" href="../../../howtos/workarounds/swing-glitch/" title="Graphical Glitches in Swing"><i class="fas fa-chevron-left fa-fw"></i></a>
           </div>
           <div id="top-github-link">
             <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/howtos/workarounds/max-map-count/_index.md" target="blank">
@@ -58,8 +68,8 @@
               <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../../howtos/workarounds/max-map-count/" aria-disabled="true"><span itemprop="name">Memory leaks under Linux</span></a></li>
             </ol>
           </div>
-            <div class="progress">
-              <div class="wrapper">
+          <div class="progress">
+            <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
     <li><a href="#symptoms">Symptoms</a></li>
@@ -70,8 +80,8 @@
     </li>
   </ul>
 </nav>
-              </div>
             </div>
+          </div>
         </div>
       </nav>
       <main id="body-inner" class="highlightable ">
@@ -91,7 +101,7 @@
 additional configuration might be required.</p>
 
 <div class="box notices info">
-    <div class="box-label">Info</div>
+    <div class="box-label"><i class="fas fa-info-circle fa-fw"></i> Info</div>
     <div class="box-content">
 <p>These problems have more to do with the way memory allocation on Linux and the JVM works than with Alchemist itself.
 They are not memory leaks in Alchemist (hence the reason why they do not happen with smaller memory sizes).</p>
@@ -112,7 +122,7 @@ They are not memory leaks in Alchemist (hence the reason why they do not happen 
 </code></pre><h2 id="solution">Solution</h2>
 
 <div class="box notices warning">
-    <div class="box-label">Warning</div>
+    <div class="box-label"><i class="fas fa-exclamation-triangle fa-fw"></i> Warning</div>
     <div class="box-content">
 <p>The file <code>/proc/sys/vm/max_map_count</code> could be changed manually, but these changes won&rsquo;t persist reboots.</p>
 
@@ -128,7 +138,7 @@ This can be done on a <strong>root</strong> shell via:</p>
 </span></span><span style="display:flex;"><span>sudo sysctl --system
 </span></span></code></pre></div>
 <div class="box notices tip">
-    <div class="box-label">Computing a &#34;good&#34; value for max_map_count</div>
+    <div class="box-label"><i class="fas fa-lightbulb fa-fw"></i> Computing a &#34;good&#34; value for max_map_count</div>
     <div class="box-content">
 <p>A reasonable estimation of the value is <strong>four times the amount of system RAM expressed in Megabytes</strong>
 (for instance vm.max_map_count=524288 for a system with 128GB RAM).</p>
@@ -158,13 +168,6 @@ This can be done on a <strong>root</strong> shell via:</p>
         </div>
       </main>
     </div>
-    <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
-    <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
-    <script>
-      var index_url="../../../index.json";
-      var root_url="../../../";
-      var baseUri=root_url.replace(/\/$/, '');
-    </script>
     <aside id="sidebar" class="default-animation showVisitedLinks">
       <div id="header-wrapper" class="default-animation">
         <div id="header" class="default-animation">
@@ -180,9 +183,9 @@ This can be done on a <strong>root</strong> shell via:</p>
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../../js/lunr.min.js?1646687175"></script>
-        <script src="../../../js/auto-complete.js?1646687175"></script>
-        <script src="../../../js/search.js?1646687175"></script>
+        <script src="../../../js/lunr.min.js?1646718846"></script>
+        <script src="../../../js/auto-complete.js?1646718846"></script>
+        <script src="../../../js/search.js?1646718846"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -293,7 +296,7 @@ This can be done on a <strong>root</strong> shell via:</p>
             <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.4</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.5</strong></div>
 <br>
 <a
     class="github-button"
@@ -326,22 +329,16 @@ Fork
         </div>
       </div>
     </aside>
-    <script src="../../../js/clipboard.min.js?1646687175"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1646687175"></script>
-    <script src="../../../js/jquery.svg.pan.zoom.js?1646687175"></script>
-    <script src="../../../js/featherlight.min.js?1646687175"></script>
-    <script src="../../../js/mermaid.min.js?1646687175"></script>
+    <script src="../../../js/clipboard.min.js?1646718846"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1646718846"></script>
+    <script src="../../../js/jquery.svg.pan.zoom.js?1646718846"></script>
+    <script src="../../../js/featherlight.min.js?1646718846"></script>
+    <script src="../../../js/mermaid.min.js?1646718846"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script>
-      window.T_Copy_to_clipboard = 'Copy to clipboard';
-      window.T_Copied_to_clipboard = 'Copied to clipboard!';
-      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
-      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
-    </script>
-    <script src="../../../js/theme.js?1646687175"></script>
+    <script src="../../../js/theme.js?1646718846"></script>
   </body>
 </html>

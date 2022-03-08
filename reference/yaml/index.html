@@ -9,24 +9,34 @@
     <meta name="author" content="Danilo Pianini">
     <title>YAML simulation specification :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../reference/yaml/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../images/logo.svg?1646687176" type="image/svg+xml">
-    <link href="../../css/nucleus.css?1646687176" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1646687176" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1646687176" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1646687176" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1646687176" rel="stylesheet">
-    <link href="../../css/theme.css?1646687176" rel="stylesheet">
-    <link id="variant-style" href="../../css/theme-relearn.css?1646687176" rel="stylesheet">
-    <link href="../../css/variant.css?1646687176" rel="stylesheet">
-    <link href="../../css/theme-relearn-light.css?1646687176" rel="stylesheet" media="print">
-    <link href="../../css/print.css?1646687176" rel="stylesheet" media="print">
-    <style>
-    </style>
-    <script src="../../js/variant.js?1646687176"></script>
+    <link rel="icon" href="../../images/logo.svg?1646718846" type="image/svg+xml">
+    <link href="../../css/nucleus.css?1646718846" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1646718846" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1646718846" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1646718846" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1646718846" rel="stylesheet">
+    <link href="../../css/theme.css?1646718846" rel="stylesheet">
+    <link id="variant-style" href="../../css/theme-relearn.css?1646718846" rel="stylesheet">
+    <link href="../../css/variant.css?1646718846" rel="stylesheet">
+    <link href="../../css/theme-relearn-light.css?1646718846" rel="stylesheet" media="print">
+    <link href="../../css/print.css?1646718846" rel="stylesheet" media="print">
+    <script src="../../js/variant.js?1646718846"></script>
     <script>
-      variants.init( [ "relearn" ] );
+      // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
+      // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
+      var index_url="../../index.json";
+      var root_url="../../";
+      var baseUri=root_url.replace(/\/$/, '');
+      // translations
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+      // some further base stuff
+      var baseUriFull='https:\/\/alchemistsimulator.github.io/';
+      variants.init( [ 'relearn' ] );
     </script>
-    <script src="../../js/jquery.min.js?1646687176"></script>
+    <script src="../../js/jquery.min.js?1646718846"></script>
   </head>
   <body class="default-animation" data-url="../../reference/yaml/">
     <div id="body" class="default-animation">
@@ -35,10 +45,10 @@
       <nav id="topbar" class="highlightable">
         <div>
           <div class="navigation">
-              <a class="nav nav-next" href="../../reference/organization/" title="Project organization"><i class="fas fa-chevron-right fa-fw"></i></a>
+             <a class="nav nav-next" href="../../reference/organization/" title="Project organization"><i class="fas fa-chevron-right fa-fw"></i></a>
           </div>
           <div class="navigation">
-              <a class="nav nav-prev" href="../../reference/" title="Reference"><i class="fas fa-chevron-left fa-fw"></i></a>
+             <a class="nav nav-prev" href="../../reference/" title="Reference"><i class="fas fa-chevron-left fa-fw"></i></a>
           </div>
           <div id="top-github-link">
             <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/reference/yaml/_index.md" target="blank">
@@ -57,8 +67,8 @@
               <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../reference/yaml/" aria-disabled="true"><span itemprop="name">YAML simulation specification</span></a></li>
             </ol>
           </div>
-            <div class="progress">
-              <div class="wrapper">
+          <div class="progress">
+            <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
     <li><a href="#simulation-document-structure">Simulation document structure</a>
@@ -130,8 +140,8 @@
     </li>
   </ul>
 </nav>
-              </div>
             </div>
+          </div>
         </div>
       </nav>
       <main id="body-inner" class="highlightable ">
@@ -150,7 +160,7 @@
 
 
 <div class="box notices warning">
-    <div class="box-label">Warning</div>
+    <div class="box-label"><i class="fas fa-exclamation-triangle fa-fw"></i> Warning</div>
     <div class="box-content">
 <p>This reference guide assumes that the reader knows the basics of <a href="https://yaml.org/">YAML</a>.
 A good resource to learn it quickly is  <a href="https://learnxinyminutes.com/docs/yaml/">Learn X in Y minutes where X = YAML</a></p>
@@ -159,7 +169,7 @@ A good resource to learn it quickly is  <a href="https://learnxinyminutes.com/do
 </div>
 
 <div class="box notices info">
-    <div class="box-label">Reading this document</div>
+    <div class="box-label"><i class="fas fa-info-circle fa-fw"></i> Reading this document</div>
     <div class="box-content">
 <p>The key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>,
 <strong>RECOMMENDED</strong>,  <strong>MAY</strong>, and <strong>OPTIONAL</strong> in this document are to be interpreted as described in
@@ -1647,13 +1657,6 @@ Defaults to 1000ms.</p>
         </div>
       </main>
     </div>
-    <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
-    <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
-    <script>
-      var index_url="../../index.json";
-      var root_url="../../";
-      var baseUri=root_url.replace(/\/$/, '');
-    </script>
     <aside id="sidebar" class="default-animation showVisitedLinks">
       <div id="header-wrapper" class="default-animation">
         <div id="header" class="default-animation">
@@ -1669,9 +1672,9 @@ Defaults to 1000ms.</p>
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../js/lunr.min.js?1646687176"></script>
-        <script src="../../js/auto-complete.js?1646687176"></script>
-        <script src="../../js/search.js?1646687176"></script>
+        <script src="../../js/lunr.min.js?1646718846"></script>
+        <script src="../../js/auto-complete.js?1646718846"></script>
+        <script src="../../js/search.js?1646718846"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -1782,7 +1785,7 @@ Defaults to 1000ms.</p>
             <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.4</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.5</strong></div>
 <br>
 <a
     class="github-button"
@@ -1815,22 +1818,16 @@ Fork
         </div>
       </div>
     </aside>
-    <script src="../../js/clipboard.min.js?1646687176"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1646687176"></script>
-    <script src="../../js/jquery.svg.pan.zoom.js?1646687176"></script>
-    <script src="../../js/featherlight.min.js?1646687176"></script>
-    <script src="../../js/mermaid.min.js?1646687176"></script>
+    <script src="../../js/clipboard.min.js?1646718846"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1646718846"></script>
+    <script src="../../js/jquery.svg.pan.zoom.js?1646718846"></script>
+    <script src="../../js/featherlight.min.js?1646718846"></script>
+    <script src="../../js/mermaid.min.js?1646718846"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script>
-      window.T_Copy_to_clipboard = 'Copy to clipboard';
-      window.T_Copied_to_clipboard = 'Copied to clipboard!';
-      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
-      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
-    </script>
-    <script src="../../js/theme.js?1646687176"></script>
+    <script src="../../js/theme.js?1646718846"></script>
   </body>
 </html>

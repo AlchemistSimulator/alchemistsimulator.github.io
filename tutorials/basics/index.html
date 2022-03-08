@@ -9,24 +9,34 @@
     <meta name="author" content="Danilo Pianini">
     <title>Step-by-step tutorial :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../tutorials/basics/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../images/logo.svg?1646687185" type="image/svg+xml">
-    <link href="../../css/nucleus.css?1646687185" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1646687185" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1646687185" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1646687185" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1646687185" rel="stylesheet">
-    <link href="../../css/theme.css?1646687185" rel="stylesheet">
-    <link id="variant-style" href="../../css/theme-relearn.css?1646687185" rel="stylesheet">
-    <link href="../../css/variant.css?1646687185" rel="stylesheet">
-    <link href="../../css/theme-relearn-light.css?1646687185" rel="stylesheet" media="print">
-    <link href="../../css/print.css?1646687185" rel="stylesheet" media="print">
-    <style>
-    </style>
-    <script src="../../js/variant.js?1646687185"></script>
+    <link rel="icon" href="../../images/logo.svg?1646718856" type="image/svg+xml">
+    <link href="../../css/nucleus.css?1646718856" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1646718856" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1646718856" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1646718856" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1646718856" rel="stylesheet">
+    <link href="../../css/theme.css?1646718856" rel="stylesheet">
+    <link id="variant-style" href="../../css/theme-relearn.css?1646718856" rel="stylesheet">
+    <link href="../../css/variant.css?1646718856" rel="stylesheet">
+    <link href="../../css/theme-relearn-light.css?1646718856" rel="stylesheet" media="print">
+    <link href="../../css/print.css?1646718856" rel="stylesheet" media="print">
+    <script src="../../js/variant.js?1646718856"></script>
     <script>
-      variants.init( [ "relearn" ] );
+      // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
+      // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
+      var index_url="../../index.json";
+      var root_url="../../";
+      var baseUri=root_url.replace(/\/$/, '');
+      // translations
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+      // some further base stuff
+      var baseUriFull='https:\/\/alchemistsimulator.github.io/';
+      variants.init( [ 'relearn' ] );
     </script>
-    <script src="../../js/jquery.min.js?1646687185"></script>
+    <script src="../../js/jquery.min.js?1646718856"></script>
   </head>
   <body class="default-animation" data-url="../../tutorials/basics/">
     <div id="body" class="default-animation">
@@ -35,10 +45,10 @@
       <nav id="topbar" class="highlightable">
         <div>
           <div class="navigation">
-              <a class="nav nav-next" href="../../tutorials/protelis/" title="Protelis Incarnation Tutorial"><i class="fas fa-chevron-right fa-fw"></i></a>
+             <a class="nav nav-next" href="../../tutorials/protelis/" title="Protelis Incarnation Tutorial"><i class="fas fa-chevron-right fa-fw"></i></a>
           </div>
           <div class="navigation">
-              <a class="nav nav-prev" href="../../tutorials/quickstart/" title="Quickstart"><i class="fas fa-chevron-left fa-fw"></i></a>
+             <a class="nav nav-prev" href="../../tutorials/quickstart/" title="Quickstart"><i class="fas fa-chevron-left fa-fw"></i></a>
           </div>
           <div id="top-github-link">
             <a class="github-link" title='Edit' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/src/main/hugo/content/tutorials/basics/_index.md" target="blank">
@@ -57,8 +67,8 @@
               <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><meta itemprop="position" content="1" /><a itemprop="item" href="../../tutorials/basics/" aria-disabled="true"><span itemprop="name">Step-by-step tutorial</span></a></li>
             </ol>
           </div>
-            <div class="progress">
-              <div class="wrapper">
+          <div class="progress">
+            <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
     <li><a href="#import-the-infrastructure">Import the infrastructure</a></li>
@@ -79,8 +89,8 @@
     </li>
   </ul>
 </nav>
-              </div>
             </div>
+          </div>
         </div>
       </nav>
       <main id="body-inner" class="highlightable ">
@@ -106,7 +116,7 @@
 <p>This tutorial features some companion videos, embedded in this page.</p>
 
 <div class="box notices info">
-    <div class="box-label">Info</div>
+    <div class="box-label"><i class="fas fa-info-circle fa-fw"></i> Info</div>
     <div class="box-content">
 <p>The tutorial is also available as a scientific document: <a href="https://doi.org/10.1007/978-3-030-78198-9_10">Pianini, D. (2021). Simulation of Large Scale Computational Ecosystems with Alchemist: A Tutorial. Lecture Notes in Computer Science, 145–161. <a href="https://doi.org/10.1007/978-3-030-78198-9_10">https://doi.org/10.1007/978-3-030-78198-9_10</a></a></p>
 
@@ -114,7 +124,7 @@
 </div>
 
 <div class="box notices info">
-    <div class="box-label">Info</div>
+    <div class="box-label"><i class="fas fa-info-circle fa-fw"></i> Info</div>
     <div class="box-content">
 <p>All code has been open-sourced and it is being actively maintained on <a href="https://github.com/DanySK/DisCoTec-2021-Tutorial">GitHub</a></p>
 
@@ -122,7 +132,7 @@
 </div>
 
 <div class="box notices warning">
-    <div class="box-label">Warning</div>
+    <div class="box-label"><i class="fas fa-exclamation-triangle fa-fw"></i> Warning</div>
     <div class="box-content">
 <p>Snapshots presented here are from the Java Swing GUI module that was the main UI at the time the tutorial was written,
 and may or may not reflect the current graphical appearance of the examples
@@ -132,7 +142,7 @@ and may or may not reflect the current graphical appearance of the examples
 </div>
 
 <div class="box notices tip">
-    <div class="box-label">Tip</div>
+    <div class="box-label"><i class="fas fa-lightbulb fa-fw"></i> Tip</div>
     <div class="box-content">
 <p>Simulations in alchemist are written in <a href="https://yaml.org/">YAML</a>.
 YAML is pretty intuitive, it can be learnt quickly through
@@ -145,7 +155,7 @@ should provide enough information.</p>
 <h2 id="import-the-infrastructure">Import the infrastructure</h2>
 
 <div class="box notices warning">
-    <div class="box-label">Warning</div>
+    <div class="box-label"><i class="fas fa-exclamation-triangle fa-fw"></i> Warning</div>
     <div class="box-content">
 <p>You need to be able to import an existing Gradle project from GitHub.
 If you have no idea of what I&rsquo;m talking about,
@@ -166,7 +176,7 @@ If you have no idea of what I&rsquo;m talking about,
 <p>The shell should begin to work, download the required components, and pop a graphical interface in front of you.</p>
 
 <div class="box notices note">
-    <div class="box-label">Note</div>
+    <div class="box-label"><i class="fas fa-exclamation-circle fa-fw"></i> Note</div>
     <div class="box-content">
 <p>If something went wrong, let us know by <strong><a href="https://github.com/DanySK/DisCoTec-2021-Tutorial/issues/new/choose">opening an issue</a></strong>!</p>
 <p>The build system is <em>continuous-integration sensitive</em>.
@@ -185,7 +195,7 @@ make sure that you do not have a <code>CI</code> environment variable set to <co
 </ol>
 
 <div class="box notices note">
-    <div class="box-label">Note</div>
+    <div class="box-label"><i class="fas fa-exclamation-circle fa-fw"></i> Note</div>
     <div class="box-content">
 <p>This is actually the <strong>second</strong> video of the tutorial.
 The first presents introductory information on the simulator and its meta-model,
@@ -203,7 +213,7 @@ updated to execute with the latest version of the simulator.
 You will find this code in the current version of the tutorial.</p>
 
 <div class="box notices tip">
-    <div class="box-label">Tip</div>
+    <div class="box-label"><i class="fas fa-lightbulb fa-fw"></i> Tip</div>
     <div class="box-content">
 <p>Make changes to the existing configuration files and see what happens!</p>
 
@@ -543,7 +553,7 @@ the example of a gradient in an indoor environment presented previously with:</p
     </div>
 
 <div class="box notices info">
-    <div class="box-label">Info</div>
+    <div class="box-label"><i class="fas fa-info-circle fa-fw"></i> Info</div>
     <div class="box-content">
 <p>This example:</p>
 <ul>
@@ -570,13 +580,6 @@ the example of a gradient in an indoor environment presented previously with:</p
         </div>
       </main>
     </div>
-    <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
-    <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
-    <script>
-      var index_url="../../index.json";
-      var root_url="../../";
-      var baseUri=root_url.replace(/\/$/, '');
-    </script>
     <aside id="sidebar" class="default-animation showVisitedLinks">
       <div id="header-wrapper" class="default-animation">
         <div id="header" class="default-animation">
@@ -592,9 +595,9 @@ the example of a gradient in an indoor environment presented previously with:</p
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../js/lunr.min.js?1646687185"></script>
-        <script src="../../js/auto-complete.js?1646687185"></script>
-        <script src="../../js/search.js?1646687185"></script>
+        <script src="../../js/lunr.min.js?1646718856"></script>
+        <script src="../../js/auto-complete.js?1646718856"></script>
+        <script src="../../js/search.js?1646718856"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -705,7 +708,7 @@ the example of a gradient in an indoor environment presented previously with:</p
             <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.4</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.5</strong></div>
 <br>
 <a
     class="github-button"
@@ -738,22 +741,16 @@ Fork
         </div>
       </div>
     </aside>
-    <script src="../../js/clipboard.min.js?1646687185"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1646687185"></script>
-    <script src="../../js/jquery.svg.pan.zoom.js?1646687185"></script>
-    <script src="../../js/featherlight.min.js?1646687185"></script>
-    <script src="../../js/mermaid.min.js?1646687185"></script>
+    <script src="../../js/clipboard.min.js?1646718856"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1646718856"></script>
+    <script src="../../js/jquery.svg.pan.zoom.js?1646718856"></script>
+    <script src="../../js/featherlight.min.js?1646718856"></script>
+    <script src="../../js/mermaid.min.js?1646718856"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script>
-      window.T_Copy_to_clipboard = 'Copy to clipboard';
-      window.T_Copied_to_clipboard = 'Copied to clipboard!';
-      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
-      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
-    </script>
-    <script src="../../js/theme.js?1646687185"></script>
+    <script src="../../js/theme.js?1646718856"></script>
   </body>
 </html>

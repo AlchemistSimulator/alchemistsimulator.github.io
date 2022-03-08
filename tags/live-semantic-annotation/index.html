@@ -9,24 +9,34 @@
     <meta name="author" content="Danilo Pianini">
     <title>live semantic annotation :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../tags/live-semantic-annotation/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../images/logo.svg?1646687186" type="image/svg+xml">
-    <link href="../../css/nucleus.css?1646687186" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1646687186" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1646687186" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1646687186" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1646687186" rel="stylesheet">
-    <link href="../../css/theme.css?1646687186" rel="stylesheet">
-    <link id="variant-style" href="../../css/theme-relearn.css?1646687186" rel="stylesheet">
-    <link href="../../css/variant.css?1646687186" rel="stylesheet">
-    <link href="../../css/theme-relearn-light.css?1646687186" rel="stylesheet" media="print">
-    <link href="../../css/print.css?1646687186" rel="stylesheet" media="print">
-    <style>
-    </style>
-    <script src="../../js/variant.js?1646687186"></script>
+    <link rel="icon" href="../../images/logo.svg?1646718857" type="image/svg+xml">
+    <link href="../../css/nucleus.css?1646718857" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1646718857" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1646718857" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1646718857" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1646718857" rel="stylesheet">
+    <link href="../../css/theme.css?1646718857" rel="stylesheet">
+    <link id="variant-style" href="../../css/theme-relearn.css?1646718857" rel="stylesheet">
+    <link href="../../css/variant.css?1646718857" rel="stylesheet">
+    <link href="../../css/theme-relearn-light.css?1646718857" rel="stylesheet" media="print">
+    <link href="../../css/print.css?1646718857" rel="stylesheet" media="print">
+    <script src="../../js/variant.js?1646718857"></script>
     <script>
-      variants.init( [ "relearn" ] );
+      // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
+      // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
+      var index_url="../../index.json";
+      var root_url="../../";
+      var baseUri=root_url.replace(/\/$/, '');
+      // translations
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+      // some further base stuff
+      var baseUriFull='https:\/\/alchemistsimulator.github.io/';
+      variants.init( [ 'relearn' ] );
     </script>
-    <script src="../../js/jquery.min.js?1646687186"></script>
+    <script src="../../js/jquery.min.js?1646718857"></script>
   </head>
   <body class="default-animation" data-url="../../tags/live-semantic-annotation/">
     <div id="body" class="default-animation">
@@ -35,10 +45,10 @@
       <nav id="topbar" class="highlightable">
         <div>
           <div class="navigation">
-              <span class="nav nav-next"><i class="fa fa-chevron-right fa-fw"></i></span>
+             <span class="nav nav-next"><i class="fa fa-chevron-right fa-fw"></i></span>
           </div>
           <div class="navigation">
-              <a class="nav nav-prev" href="../../reference/javadoc/" title="Javadoc API"><i class="fas fa-chevron-left fa-fw"></i></a>
+             <a class="nav nav-prev" href="../../reference/javadoc/" title="Javadoc API"><i class="fas fa-chevron-left fa-fw"></i></a>
           </div>
           <div id="breadcrumbs">
             <span id="sidebar-toggle-span">
@@ -66,13 +76,6 @@
         </div>
       </main>
     </div>
-    <!-- hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic: -->
-    <!-- https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72 -->
-    <script>
-      var index_url="../../index.json";
-      var root_url="../../";
-      var baseUri=root_url.replace(/\/$/, '');
-    </script>
     <aside id="sidebar" class="default-animation showVisitedLinks">
       <div id="header-wrapper" class="default-animation">
         <div id="header" class="default-animation">
@@ -88,9 +91,9 @@
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../js/lunr.min.js?1646687186"></script>
-        <script src="../../js/auto-complete.js?1646687186"></script>
-        <script src="../../js/search.js?1646687186"></script>
+        <script src="../../js/lunr.min.js?1646718857"></script>
+        <script src="../../js/auto-complete.js?1646718857"></script>
+        <script src="../../js/search.js?1646718857"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -201,7 +204,7 @@
             <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.4</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.5</strong></div>
 <br>
 <a
     class="github-button"
@@ -234,22 +237,16 @@ Fork
         </div>
       </div>
     </aside>
-    <script src="../../js/clipboard.min.js?1646687186"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1646687186"></script>
-    <script src="../../js/jquery.svg.pan.zoom.js?1646687186"></script>
-    <script src="../../js/featherlight.min.js?1646687186"></script>
-    <script src="../../js/mermaid.min.js?1646687186"></script>
+    <script src="../../js/clipboard.min.js?1646718857"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1646718857"></script>
+    <script src="../../js/jquery.svg.pan.zoom.js?1646718857"></script>
+    <script src="../../js/featherlight.min.js?1646718857"></script>
+    <script src="../../js/mermaid.min.js?1646718857"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script>
-      window.T_Copy_to_clipboard = 'Copy to clipboard';
-      window.T_Copied_to_clipboard = 'Copied to clipboard!';
-      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
-      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
-    </script>
-    <script src="../../js/theme.js?1646687186"></script>
+    <script src="../../js/theme.js?1646718857"></script>
   </body>
 </html>
