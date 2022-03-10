@@ -209,7 +209,7 @@ extends <a href=AbstractMoveNode.html>AbstractMoveNode</a>&lt;<a href=AbstractSt
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#AbstractSteeringAction(Environment,Reaction,Pedestrian)">AbstractSteeringAction</a></span>(<a href=../../interfaces/Environment.html>Environment</a>&lt;<a href=AbstractSteeringAction.html>T</a>, <a href=AbstractSteeringAction.html>P</a>&gt; env, <a href=../../interfaces/Reaction.html>Reaction</a>&lt;<a href=AbstractSteeringAction.html>T</a>&gt; reaction, <a href=../../interfaces/Pedestrian.html>Pedestrian</a>&lt;<a href=AbstractSteeringAction.html>T</a>, <a href=AbstractSteeringAction.html>P</a>, <a href=AbstractSteeringAction.html>A</a>&gt; pedestrian)</code></th>
+                                                        href="#AbstractSteeringAction(Environment,Reaction,Node)">AbstractSteeringAction</a></span>(<a href=../../interfaces/Environment.html>Environment</a>&lt;<a href=AbstractSteeringAction.html>T</a>, <a href=AbstractSteeringAction.html>P</a>&gt; environment, <a href=../../interfaces/Reaction.html>Reaction</a>&lt;<a href=AbstractSteeringAction.html>T</a>&gt; reaction, <a href=../../interfaces/Node.html>Node</a>&lt;<a href=AbstractSteeringAction.html>T</a>&gt; node)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -279,11 +279,11 @@ extends <a href=AbstractMoveNode.html>AbstractMoveNode</a>&lt;<a href=AbstractSt
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code><a href=../../interfaces/Action.html>Action</a>&lt;<a href=AbstractSteeringAction.html>T</a>&gt;</code>
+                                            <td class="colFirst"><code>abstract <a href=AbstractSteeringAction.html>AbstractSteeringAction</a>&lt;<a href=AbstractSteeringAction.html>T</a>, <a href=AbstractSteeringAction.html>P</a>, <a href=AbstractSteeringAction.html>A</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=AbstractSteeringAction.html#cloneAction(Node,Reaction)>cloneAction</a>(<a href=../../interfaces/Node.html>Node</a>&lt;<a href=AbstractSteeringAction.html>T</a>&gt; node, <a href=../../interfaces/Reaction.html>Reaction</a>&lt;<a href=AbstractSteeringAction.html>T</a>&gt; reaction) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">This method allows to clone this action on a new node.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -295,7 +295,7 @@ extends <a href=AbstractMoveNode.html>AbstractMoveNode</a>&lt;<a href=AbstractSt
                                             <!--   -->
                                         </a>
                                             <h3>Methods inherited from class&nbsp;it.unibo.alchemist.model.implementations.actions.AbstractMoveNode</h3>
-                                            <code>declareDependencyTo, getConcentration, getOutboundDependencies, nodeContains, removeConcentration, setConcentration, toString</code></li>
+                                            <code>declareDependencyTo, getConcentration, getNode, getOutboundDependencies, nodeContains, removeConcentration, setConcentration, toString</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.it.unibo.alchemist.model.implementations.actions.AbstractSteeringAction">
                                             <!--   -->
@@ -329,11 +329,11 @@ extends <a href=AbstractMoveNode.html>AbstractMoveNode</a>&lt;<a href=AbstractSt
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="AbstractSteeringAction(Environment,Reaction,Pedestrian)"></a>
+                                <a name="AbstractSteeringAction(Environment,Reaction,Node)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>AbstractSteeringAction</h4>
-                                        <pre>AbstractSteeringAction(<a href=../../interfaces/Environment.html>Environment</a>&lt;<a href=AbstractSteeringAction.html>T</a>, <a href=AbstractSteeringAction.html>P</a>&gt; env, <a href=../../interfaces/Reaction.html>Reaction</a>&lt;<a href=AbstractSteeringAction.html>T</a>&gt; reaction, <a href=../../interfaces/Pedestrian.html>Pedestrian</a>&lt;<a href=AbstractSteeringAction.html>T</a>, <a href=AbstractSteeringAction.html>P</a>, <a href=AbstractSteeringAction.html>A</a>&gt; pedestrian)</pre>
+                                        <pre>AbstractSteeringAction(<a href=../../interfaces/Environment.html>Environment</a>&lt;<a href=AbstractSteeringAction.html>T</a>, <a href=AbstractSteeringAction.html>P</a>&gt; environment, <a href=../../interfaces/Reaction.html>Reaction</a>&lt;<a href=AbstractSteeringAction.html>T</a>&gt; reaction, <a href=../../interfaces/Node.html>Node</a>&lt;<a href=AbstractSteeringAction.html>T</a>&gt; node)</pre>
                                         <div class="block"></div>
                                         
                                     </li>
@@ -390,8 +390,21 @@ extends <a href=AbstractMoveNode.html>AbstractMoveNode</a>&lt;<a href=AbstractSt
                                           >
                                     <li class="blockList">
                                         <h4>cloneAction</h4>
-                                        <pre class="methodSignature"> <a href=../../interfaces/Action.html>Action</a>&lt;<a href=AbstractSteeringAction.html>T</a>&gt; <a href=AbstractSteeringAction.html#cloneAction(Node,Reaction)>cloneAction</a>(<a href=../../interfaces/Node.html>Node</a>&lt;<a href=AbstractSteeringAction.html>T</a>&gt; node, <a href=../../interfaces/Reaction.html>Reaction</a>&lt;<a href=AbstractSteeringAction.html>T</a>&gt; reaction)</pre>
-                                        <div class="block"></div>
+                                        <pre class="methodSignature"> abstract <a href=AbstractSteeringAction.html>AbstractSteeringAction</a>&lt;<a href=AbstractSteeringAction.html>T</a>, <a href=AbstractSteeringAction.html>P</a>, <a href=AbstractSteeringAction.html>A</a>&gt; <a href=AbstractSteeringAction.html#cloneAction(Node,Reaction)>cloneAction</a>(<a href=../../interfaces/Node.html>Node</a>&lt;<a href=AbstractSteeringAction.html>T</a>&gt; node, <a href=../../interfaces/Reaction.html>Reaction</a>&lt;<a href=AbstractSteeringAction.html>T</a>&gt; reaction)</pre>
+                                        <div class="block"><p>This method allows to clone this action on a new node. It may result useful to support runtime creation of nodes with the same reaction programming, e.g. for morphogenesis.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>node</code> - <pre><code>    The node where to clone this {@link Action}</code></pre></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>reaction</code> - <pre><code>    The reaction to which the CURRENT action is assigned</code></pre></dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

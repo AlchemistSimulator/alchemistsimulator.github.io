@@ -3,24 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.93.2" />
+    <meta name="generator" content="Hugo 0.93.3" />
     <meta name="generator" content="Relearn 3.0.4&#43;tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <title>Cognitive Agents :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../../howtos/simulation/cognitive/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../../images/logo.svg?1646746641" type="image/svg+xml">
-    <link href="../../../css/nucleus.css?1646746641" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1646746641" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1646746641" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1646746641" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1646746641" rel="stylesheet">
-    <link href="../../../css/theme.css?1646746641" rel="stylesheet">
-    <link id="variant-style" href="../../../css/theme-relearn.css?1646746641" rel="stylesheet">
-    <link href="../../../css/variant.css?1646746641" rel="stylesheet">
-    <link href="../../../css/theme-relearn-light.css?1646746641" rel="stylesheet" media="print">
-    <link href="../../../css/print.css?1646746641" rel="stylesheet" media="print">
-    <script src="../../../js/variant.js?1646746641"></script>
+    <link rel="icon" href="../../../images/logo.svg?1646917466" type="image/svg+xml">
+    <link href="../../../css/nucleus.css?1646917466" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1646917466" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1646917466" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1646917466" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1646917466" rel="stylesheet">
+    <link href="../../../css/theme.css?1646917466" rel="stylesheet">
+    <link id="variant-style" href="../../../css/theme-relearn.css?1646917466" rel="stylesheet">
+    <link href="../../../css/variant.css?1646917466" rel="stylesheet">
+    <link href="../../../css/theme-relearn-light.css?1646917466" rel="stylesheet" media="print">
+    <link href="../../../css/print.css?1646917466" rel="stylesheet" media="print">
+    <script src="../../../js/variant.js?1646917466"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
@@ -36,7 +36,7 @@
       var baseUriFull='https:\/\/alchemistsimulator.github.io/';
       variants.init( [ 'relearn' ] );
     </script>
-    <script src="../../../js/jquery.min.js?1646746641"></script>
+    <script src="../../../js/jquery.min.js?1646917466"></script>
   </head>
   <body class="default-animation" data-url="../../../howtos/simulation/cognitive/">
     <div id="body" class="default-animation">
@@ -106,7 +106,17 @@
 
 <p>We recommend to read our <a href="../../../explanation/cognitive">explanation of the cognitive agents</a>
 to better understand the contents of this how-to.</p>
+<p>Different kinds of pedestrians are obtainable by attaching
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-node-property/"><code>NodeProperty</code></a>s
+to nodes (e.g <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.nodes/-generic-node/"><code>GenericNode</code></a>).
+Common properties concern abilities such as perceiving other nodes
+(<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces.properties/-perceptive-property/"><code>PerceptiveProperty</code></a>)
+and occuping space in an environment
+(<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces.properties/-occupies-space-property/"><code>OccupiesSpaceProperty</code></a>).</p>
 <h2 id="homogeneous-pedestrian">Homogeneous Pedestrian</h2>
+<p>As shown in the example below, this kind of pedestrian is obtained by attaching the
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.properties/-pedestrian/"><code>Pedestrian</code></a>
+property.</p>
 <div class="expand">
         <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
             <span class="fas fa-chevron-down"></span>
@@ -118,13 +128,22 @@ to better understand the contents of this how-to.</p>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousPedestrian2D</span></span></code></pre></div></div>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social</span></span></code></pre></div></div>
     </div>
 <h2 id="heterogeneous-pedestrian">Heterogeneous Pedestrian</h2>
-<p>The age groups available are: <em>child</em>, <em>adult</em>, <em>elderly</em>;
-alternatively you can specify the exact age.
-The genders available are: <em>male</em>, <em>female</em>.</p>
+<p>The age groups available are: <em>child</em>, <em>adult</em>, and <em>elderly</em>;
+alternatively, if the exact age is specified,
+they are assigned to one of the aforementioned groups automatically.
+The genders available are: <em>male</em> and <em>female</em>.
+This informations is included in the
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.properties/-human/"><code>Human</code></a>
+property and it is used by the
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.properties/-heterogeneous-pedestrian/"><code>HeterogeneousPedestrian</code></a>
+property, along with the age.</p>
 <div class="expand">
         <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
             <span class="fas fa-chevron-down"></span>
@@ -136,18 +155,30 @@ The genders available are: <em>male</em>, <em>female</em>.</p>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HeterogeneousPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;elderly&#34;</span>, <span style="color:#5af78e">&#34;female&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Human
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;elderly&#34;</span>, <span style="color:#5af78e">&#34;female&#34;</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: HeterogeneousPedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HeterogeneousPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;child&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]</span></span></code></pre></div></div>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Human
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;child&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: HeterogeneousPedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea</span></span></code></pre></div></div>
     </div>
 <h2 id="cognitive-pedestrian">Cognitive Pedestrian</h2>
-<p>Cognitive pedestrians are heterogeneous pedestrians with cognitive capabilities.
-They have an emotional state and are able to influence and be influenced by others with the same capabilities. As an example, cognitive pedestrians can perceive fear via social contagion (e.g. seeing other people fleeing may cause them flee as well despite they haven&rsquo;t directly seen the danger).</p>
+<p>Cognitive pedestrians are heterogeneous pedestrians with cognitive capabilities given by a
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces.properties/-cognitive-property/"><code>CognitiveProperty</code></a>.
+They have an emotional state and are able to influence and be influenced by others with the same capabilities.
+As an example, cognitive pedestrians can perceive fear via social contagion
+(e.g. seeing other people fleeing may cause them flee as well despite they haven&rsquo;t directly seen the danger).
+To express how a cognitive pedestrians move, based on their emotional state, attach the
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.properties/-cognitive-pedestrian/"><code>CognitivePedestrian</code></a>
+property.</p>
 <div class="expand">
         <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
             <span class="fas fa-chevron-down"></span>
@@ -165,16 +196,24 @@ They have an emotional state and are able to influence and be influenced by othe
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: CognitivePedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Human
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CognitivePedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Cognitive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span>
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: CognitivePedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;female&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Human
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;female&#34;</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CognitivePedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Cognitive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span></span></span></code></pre></div></div>
     </div>
@@ -189,7 +228,9 @@ and even pedestrians with the same knowledge degree can be different as each one
 can be familiar with different portions of the environment.
 Be also aware that orienting pedestrians can only be placed in an
 <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces.environments/-environment-with-graph/"><code>EnvironmentWithGraph</code></a>
-which is a type of environment providing a navigation graph.</p>
+which is a type of environment providing a navigation graph.
+In order to give a node orienting capabilities enhance a node with an
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces.properties/-orienting-property/"><code>OrientingProperty</code></a>.</p>
 <div class="expand">
         <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
             <span class="fas fa-chevron-down"></span>
@@ -207,14 +248,15 @@ which is a type of environment providing a navigation graph.</p>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousOrientingPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Orienting2D
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>]
 </span></span></code></pre></div></div>
     </div>
 <h2 id="cognitive-orienting-pedestrian">Cognitive orienting pedestrian</h2>
-<p>These are cognitive pedestrians equipable with a given knowledge degree of the environment.
-Cognitive orienting pedestrians can be instanced providing their knowledge degree as first parameter.</p>
+<p>These are cognitive pedestrians equipable with a given knowledge degree of the environment.</p>
 <div class="expand">
         <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
             <span class="fas fa-chevron-down"></span>
@@ -238,9 +280,14 @@ Cognitive orienting pedestrians can be instanced providing their knowledge degre
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: CognitiveOrientingPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>, <span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Human
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CognitivePedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Cognitive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Orienting2D
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>]
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span></span></span></code></pre></div></div>
     </div>
@@ -278,14 +325,20 @@ one having 10 members and the other 15.</p>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*group1]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*group1]</span>
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*group2]</span></span></span></code></pre></div></div>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*group2]</span></span></span></code></pre></div></div>
     </div>
 <h2 id="steering-actions">Steering Actions</h2>
 <p>Steering actions are
@@ -335,8 +388,11 @@ if they are approaching an obstacle, they avoid it.</p>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">25</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousPedestrian2D
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span></span></span></code></pre></div></div>
     </div>
@@ -379,8 +435,11 @@ can result in unpredictable behaviors, so pay attention.</p>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousPedestrian2D
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span></span></span></code></pre></div></div>
     </div>
@@ -434,9 +493,13 @@ there is a potential danger.</p>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">50</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: CognitivePedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;female&#34;</span>, <span style="color:#78787e">*danger]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Human
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;female&#34;</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CognitivePedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Cognitive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span></span></span></code></pre></div></div>
     </div>
@@ -480,16 +543,9 @@ there is a potential danger.</p>
 </table>
 <h3 id="physical-pedestrians">Physical pedestrians</h3>
 <p>Physical pedestrians are capable of pushing and bumping into each other.
-Similarly to Orienting Pedestrians,
-we have
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.nodes/-homogeneous-physical-pedestrian2-d/"><code>HomogeneousPhysicalPedestrian2D</code></a>,
-and
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.nodes/-cognitive-physical-pedestrian2-d/"><code>CognitivePhysicalPedestrian2D</code></a>.</p>
-<p>Whatsmore, you can have a physical pedestrian capable of orienting as well:
-there are
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.nodes/-homogeneous-orienting-physical-pedestrian2-d/"><code>HomogeneousOrientingPhysicalPedestrian2D</code></a>
-and
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.nodes/-cognitive-orienting-physical-pedestrian2-d/"><code>CognitiveOrientingPhysicalPedestrian2D</code></a>.</p>
+To express those physical interactions use a
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces.properties/-physical-pedestrian/"><code>PhysicalPedestrian</code></a>
+property.</p>
 <h3 id="physical-steering-strategies">Physical steering strategies</h3>
 <p>In order to work properly,
 physical pedestrians should be equipped with physical steering strategies.
@@ -501,8 +557,7 @@ At present, only
 and
 <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.reactions/-navigation-prioritised-steering-with-physics/"><code>NavigationPrioritisedSteeringWithPhysics</code></a>
 are available.</p>
-<p>Here&rsquo;s a simple code for loading a
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.nodes/-homogeneous-physical-pedestrian2-d/"><code>HomogeneousPhysicalPedestrian2D</code></a>
+<p>Here&rsquo;s a simple code for loading a homogeneous pedestrian with physical properties
 with
 <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-cognitive-agent-seek/"><code>CognitiveAgentSeek</code></a>
 and
@@ -535,8 +590,12 @@ and
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousPhysicalPedestrian2D
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: PhysicalPedestrian2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span></span></span></code></pre></div></div>
     </div>
@@ -560,9 +619,9 @@ and
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../../js/lunr.min.js?1646746641"></script>
-        <script src="../../../js/auto-complete.js?1646746641"></script>
-        <script src="../../../js/search.js?1646746641"></script>
+        <script src="../../../js/lunr.min.js?1646917466"></script>
+        <script src="../../../js/auto-complete.js?1646917466"></script>
+        <script src="../../../js/search.js?1646917466"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -673,7 +732,7 @@ and
             <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.6</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 14.0.0</strong></div>
 <br>
 <a
     class="github-button"
@@ -706,16 +765,16 @@ Fork
         </div>
       </div>
     </aside>
-    <script src="../../../js/clipboard.min.js?1646746641"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1646746641"></script>
-    <script src="../../../js/jquery.svg.pan.zoom.js?1646746641"></script>
-    <script src="../../../js/featherlight.min.js?1646746641"></script>
-    <script src="../../../js/mermaid.min.js?1646746641"></script>
+    <script src="../../../js/clipboard.min.js?1646917466"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1646917466"></script>
+    <script src="../../../js/jquery.svg.pan.zoom.js?1646917466"></script>
+    <script src="../../../js/featherlight.min.js?1646917466"></script>
+    <script src="../../../js/mermaid.min.js?1646917466"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script src="../../../js/theme.js?1646746641"></script>
+    <script src="../../../js/theme.js?1646917466"></script>
   </body>
 </html>

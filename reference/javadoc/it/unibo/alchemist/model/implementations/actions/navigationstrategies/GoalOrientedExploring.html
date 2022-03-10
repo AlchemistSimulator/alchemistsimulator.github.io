@@ -120,7 +120,7 @@ var pathtoroot = "../../../../../../../";
 public class <span class="typeNameLabel"><a href=GoalOrientedExploring.html>GoalOrientedExploring</a>&lt;T extends <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>, L extends <a href=../../../interfaces/geometry/ConvexGeometricShape.html>ConvexGeometricShape</a>&lt;<a href=../../positions/Euclidean2DPosition.html>Euclidean2DPosition</a>, <a href=../../../interfaces/geometry/euclidean2d/Euclidean2DTransformation.html>Euclidean2DTransformation</a>&gt;, R extends <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt;</span>
 extends <a href=Exploring.html>Exploring</a>&lt;<a href=GoalOrientedExploring.html>T</a>, <a href=GoalOrientedExploring.html>L</a>, <a href=GoalOrientedExploring.html>R</a>&gt;
                     </pre>
-                    <div class="block"><p>A <a href=../../../interfaces/NavigationStrategy.html>NavigationStrategy</a> allowing to explore the environment looking for something specific whose position is unknown. The client can specify a list of unknownDestinations: these can be recognized once they're in sight, but the pedestrian doesn't know their position until that moment (think e.g. of exits in an evacuation scenario). More specifically, unknown destinations can be detected if located in a room adjacent to the room the pedestrian is into. Once a destination is detected, the pedestrian will reach it and stop.</p></div>
+                    <div class="block"><p>A <a href=../../../interfaces/NavigationStrategy.html>NavigationStrategy</a> allowing to explore the environment looking for something specific whose position is unknown. The client can specify a list of unknownDestinations: these can be recognized once they're in sight, but the node doesn't know their position until that moment (think e.g. of exits in an evacuation scenario). More specifically, unknown destinations can be detected if located in a room adjacent to the room the node is into. Once a destination is detected, the node will reach it and stop.</p></div>
                 </li>
             </ul>
         </div>
@@ -170,6 +170,12 @@ extends <a href=Exploring.html>Exploring</a>&lt;<a href=GoalOrientedExploring.ht
                                         <tr class="altColor">
                                             <td class="colFirst"><code>private final <a href=../../../interfaces/NavigationAction.html>NavigationAction</a>&lt;<a href=GoalOrientedExploring.html>T</a>, <a href=../../positions/Euclidean2DPosition.html>Euclidean2DPosition</a>, <a href=../../../interfaces/geometry/euclidean2d/Euclidean2DTransformation.html>Euclidean2DTransformation</a>, <a href=GoalOrientedExploring.html>L</a>, <a href=GoalOrientedExploring.html>R</a>, <a href=../../../interfaces/geometry/euclidean2d/ConvexPolygon.html>ConvexPolygon</a>, <a href=../../../interfaces/geometry/euclidean2d/graph/Euclidean2DPassage.html>Euclidean2DPassage</a>&gt;</code></td>
                                             <th class="colSecond" scope="row"><code><a href=RouteFollowing.html#action>action</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private final <a href=../../../interfaces/properties/OrientingProperty.html>OrientingProperty</a>&lt;<a href=GoalOrientedExploring.html>T</a>, <a href=../../positions/Euclidean2DPosition.html>Euclidean2DPosition</a>, <a href=../../../interfaces/geometry/euclidean2d/Euclidean2DTransformation.html>Euclidean2DTransformation</a>, <a href=GoalOrientedExploring.html>L</a>, <a href=../../../interfaces/geometry/euclidean2d/ConvexPolygon.html>ConvexPolygon</a>, <a href=../../../interfaces/geometry/euclidean2d/graph/Euclidean2DPassage.html>Euclidean2DPassage</a>&gt;</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=RouteFollowing.html#orientingCapability>orientingCapability</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -261,11 +267,19 @@ extends <a href=Exploring.html>Exploring</a>&lt;<a href=GoalOrientedExploring.ht
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code><a href=../../../interfaces/properties/OrientingProperty.html>OrientingProperty</a>&lt;<a href=GoalOrientedExploring.html>T</a>, <a href=../../positions/Euclidean2DPosition.html>Euclidean2DPosition</a>, <a href=../../../interfaces/geometry/euclidean2d/Euclidean2DTransformation.html>Euclidean2DTransformation</a>, <a href=GoalOrientedExploring.html>L</a>, <a href=../../../interfaces/geometry/euclidean2d/ConvexPolygon.html>ConvexPolygon</a>, <a href=../../../interfaces/geometry/euclidean2d/graph/Euclidean2DPassage.html>Euclidean2DPassage</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=GoalOrientedExploring.html#getOrientingCapability()>getOrientingCapability</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
                                             <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=GoalOrientedExploring.html#inNewRoom(ConvexPolygon)>inNewRoom</a>(<a href=../../../interfaces/geometry/euclidean2d/ConvexPolygon.html>ConvexPolygon</a> newRoom) </code>
                                             </th>
-                                            <td class="colLast">This is called whenever the pedestrian enters a new room.</td>
+                                            <td class="colLast">This is called whenever the node enters a new room.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -343,6 +357,21 @@ extends <a href=Exploring.html>Exploring</a>&lt;<a href=GoalOrientedExploring.ht
                                     </li>
                                 </ul>
                                 
+                                <a id="getOrientingCapability()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getOrientingCapability</h4>
+                                        <pre class="methodSignature"> <a href=../../../interfaces/properties/OrientingProperty.html>OrientingProperty</a>&lt;<a href=GoalOrientedExploring.html>T</a>, <a href=../../positions/Euclidean2DPosition.html>Euclidean2DPosition</a>, <a href=../../../interfaces/geometry/euclidean2d/Euclidean2DTransformation.html>Euclidean2DTransformation</a>, <a href=GoalOrientedExploring.html>L</a>, <a href=../../../interfaces/geometry/euclidean2d/ConvexPolygon.html>ConvexPolygon</a>, <a href=../../../interfaces/geometry/euclidean2d/graph/Euclidean2DPassage.html>Euclidean2DPassage</a>&gt; <a href=GoalOrientedExploring.html#getOrientingCapability()>getOrientingCapability</a>()</pre>
+                                        <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
                                 <a id="inNewRoom(ConvexPolygon)">
                                     <!--   -->
                                 </a>
@@ -352,7 +381,7 @@ extends <a href=Exploring.html>Exploring</a>&lt;<a href=GoalOrientedExploring.ht
                                     <li class="blockList">
                                         <h4>inNewRoom</h4>
                                         <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=GoalOrientedExploring.html#inNewRoom(ConvexPolygon)>inNewRoom</a>(<a href=../../../interfaces/geometry/euclidean2d/ConvexPolygon.html>ConvexPolygon</a> newRoom)</pre>
-                                        <div class="block"><p>This is called whenever the pedestrian enters a new room.</p></div>
+                                        <div class="block"><p>This is called whenever the node enters a new room.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

@@ -135,6 +135,11 @@ var pathtoroot = "../../../../../../";
                             
                             <code>java.lang.Iterable</code>
                             
+                            ,
+                            
+                            
+                            <code>kotlin.jvm.internal.markers.KMappedMarker</code>
+                            
                             
                         </dd>
                     </dl>
@@ -143,9 +148,9 @@ var pathtoroot = "../../../../../../";
                     <pre class="wrap-overflow">
 
 public final class <span class="typeNameLabel"><a href=EnvironmentNodeImpl.html>EnvironmentNodeImpl</a></span>
-extends <a href=DoubleNode.html>DoubleNode</a> implements <a href=../../interfaces/EnvironmentNode.html>EnvironmentNode</a>
+extends <a href=GenericNode.html>GenericNode</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a>&gt; implements <a href=../../interfaces/EnvironmentNode.html>EnvironmentNode</a>
                     </pre>
-                    <div class="block"></div>
+                    <div class="block"><p>A node with non-negative concentration.</p></div>
                 </li>
             </ul>
         </div>
@@ -218,7 +223,13 @@ extends <a href=DoubleNode.html>DoubleNode</a> implements <a href=../../interfac
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#EnvironmentNodeImpl(Environment)">EnvironmentNodeImpl</a></span>(<a href=../../interfaces/Environment.html>Environment</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a>, out <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt; env)</code></th>
+                                                        href="#EnvironmentNodeImpl(Incarnation,Environment)">EnvironmentNodeImpl</a></span>(<a href=../../interfaces/Incarnation.html>Incarnation</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a>, out <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt; incarnation, <a href=../../interfaces/Environment.html>Environment</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a>, out <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt; environment)</code></th>
+                                                <td class="colLast">Create a new environment node.</td>
+                                            </tr>
+                                        
+                                            <tr class="rowColor">
+                                                <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
+                                                        href="#EnvironmentNodeImpl(Environment)">EnvironmentNodeImpl</a></span>(<a href=../../interfaces/Environment.html>Environment</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a>, out <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt; environment)</code></th>
                                                 <td class="colLast">Create a new environment node.</td>
                                             </tr>
                                         
@@ -274,7 +285,7 @@ extends <a href=DoubleNode.html>DoubleNode</a> implements <a href=../../interfac
                                         <tr id="i0" class="altColor">
                                             <td class="colFirst"><code>void</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=EnvironmentNodeImpl.html#setConcentration(Molecule,Double)>setConcentration</a>(<a href=../../interfaces/Molecule.html>Molecule</a> mol, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a> c) </code>
+                                            <th class="colSecond" scope="row"><code><a href=EnvironmentNodeImpl.html#setConcentration(Molecule,Double)>setConcentration</a>(@Nonnull() <a href=../../interfaces/Molecule.html>Molecule</a> molecule, @Nonnull() <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a> concentration) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -284,17 +295,17 @@ extends <a href=DoubleNode.html>DoubleNode</a> implements <a href=../../interfac
                                 </div>
                                 <ul class="blockList">
                                 
-                                    <li class="blockList"><a id="methods.inherited.from.class.it.unibo.alchemist.model.implementations.nodes.AbstractNode">
+                                    <li class="blockList"><a id="methods.inherited.from.class.it.unibo.alchemist.model.implementations.nodes.GenericNode">
                                             <!--   -->
                                         </a>
-                                            <h3>Methods inherited from class&nbsp;it.unibo.alchemist.model.implementations.nodes.AbstractNode</h3>
-                                            <code>addReaction, cloneNode, compareTo, contains, equals, forEach, getConcentration, getContents, getId, getMoleculeCount, getReactions, hashCode, iterator, removeConcentration, removeReaction, spliterator, toString</code></li>
+                                            <h3>Methods inherited from class&nbsp;it.unibo.alchemist.model.implementations.nodes.GenericNode</h3>
+                                            <code>addProperty, addReaction, cloneNode, compareTo, contains, equals, forEach, getCapabilities, getConcentration, getContents, getEnvironment, getId, getIncarnation, getMoleculeCount, getMolecules, getReactions, hashCode, iterator, removeConcentration, removeReaction, spliterator, toString</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.it.unibo.alchemist.model.interfaces.Node">
                                             <!--   -->
                                         </a>
                                             <h3>Methods inherited from class&nbsp;it.unibo.alchemist.model.interfaces.Node</h3>
-                                            <code>cloneNode</code></li>
+                                            <code>asProperty, asPropertyOrNull</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.java.lang.Iterable">
                                             <!--   -->
@@ -328,18 +339,41 @@ extends <a href=DoubleNode.html>DoubleNode</a> implements <a href=../../interfac
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="EnvironmentNodeImpl(Environment)"></a>
+                                <a name="EnvironmentNodeImpl(Incarnation,Environment)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>EnvironmentNodeImpl</h4>
-                                        <pre>EnvironmentNodeImpl(<a href=../../interfaces/Environment.html>Environment</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a>, out <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt; env)</pre>
+                                        <pre>EnvironmentNodeImpl(<a href=../../interfaces/Incarnation.html>Incarnation</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a>, out <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt; incarnation, <a href=../../interfaces/Environment.html>Environment</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a>, out <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt; environment)</pre>
                                         <div class="block">Create a new environment node.</div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
-                                            <dd><code>env</code> - the environment</dd>
+                                            <dd><code>incarnation</code> - the simulation incarnation</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>environment</code> - the environment</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                    </li>
+                                </ul>
+                                
+                                <a name="EnvironmentNodeImpl(Environment)"></a>
+                                <ul class="blockList">
+                                    <li class="blockList">
+                                        <h4>EnvironmentNodeImpl</h4>
+                                        <pre>EnvironmentNodeImpl(<a href=../../interfaces/Environment.html>Environment</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a>, out <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt; environment)</pre>
+                                        <div class="block">Create a new environment node.</div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>environment</code> - the environment</dd>
                                             
                                             
                                         </dl>
@@ -368,7 +402,7 @@ extends <a href=DoubleNode.html>DoubleNode</a> implements <a href=../../interfac
                                           >
                                     <li class="blockList">
                                         <h4>setConcentration</h4>
-                                        <pre class="methodSignature"> void <a href=EnvironmentNodeImpl.html#setConcentration(Molecule,Double)>setConcentration</a>(<a href=../../interfaces/Molecule.html>Molecule</a> mol, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a> c)</pre>
+                                        <pre class="methodSignature"> void <a href=EnvironmentNodeImpl.html#setConcentration(Molecule,Double)>setConcentration</a>(@Nonnull() <a href=../../interfaces/Molecule.html>Molecule</a> molecule, @Nonnull() <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a> concentration)</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->

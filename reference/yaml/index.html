@@ -3,24 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.93.2" />
+    <meta name="generator" content="Hugo 0.93.3" />
     <meta name="generator" content="Relearn 3.0.4&#43;tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <title>YAML simulation specification :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../reference/yaml/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../images/logo.svg?1646746642" type="image/svg+xml">
-    <link href="../../css/nucleus.css?1646746642" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1646746642" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1646746642" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1646746642" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1646746642" rel="stylesheet">
-    <link href="../../css/theme.css?1646746642" rel="stylesheet">
-    <link id="variant-style" href="../../css/theme-relearn.css?1646746642" rel="stylesheet">
-    <link href="../../css/variant.css?1646746642" rel="stylesheet">
-    <link href="../../css/theme-relearn-light.css?1646746642" rel="stylesheet" media="print">
-    <link href="../../css/print.css?1646746642" rel="stylesheet" media="print">
-    <script src="../../js/variant.js?1646746642"></script>
+    <link rel="icon" href="../../images/logo.svg?1646917467" type="image/svg+xml">
+    <link href="../../css/nucleus.css?1646917467" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1646917467" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1646917467" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1646917467" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1646917467" rel="stylesheet">
+    <link href="../../css/theme.css?1646917467" rel="stylesheet">
+    <link id="variant-style" href="../../css/theme-relearn.css?1646917467" rel="stylesheet">
+    <link href="../../css/variant.css?1646917467" rel="stylesheet">
+    <link href="../../css/theme-relearn-light.css?1646917467" rel="stylesheet" media="print">
+    <link href="../../css/print.css?1646917467" rel="stylesheet" media="print">
+    <script src="../../js/variant.js?1646917467"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
@@ -36,7 +36,7 @@
       var baseUriFull='https:\/\/alchemistsimulator.github.io/';
       variants.init( [ 'relearn' ] );
     </script>
-    <script src="../../js/jquery.min.js?1646746642"></script>
+    <script src="../../js/jquery.min.js?1646917467"></script>
   </head>
   <body class="default-animation" data-url="../../reference/yaml/">
     <div id="body" class="default-animation">
@@ -88,11 +88,16 @@
         <li><a href="#deploymentparameters"><code>deployment.parameters</code></a></li>
         <li><a href="#deploymentcontents"><code>deployment.contents</code></a></li>
         <li><a href="#deploymentnodes"><code>deployment.nodes</code></a></li>
+        <li><a href="#deploymentproperties"><code>deployment.properties</code></a></li>
         <li><a href="#deploymentprograms"><code>deployment.programs</code></a></li>
         <li><a href="#content"><code>content</code></a></li>
         <li><a href="#contentmolecule"><code>content.molecule</code></a></li>
-        <li><a href="#content-1"><code>content</code></a></li>
+        <li><a href="#contentconcentration"><code>content.concentration</code></a></li>
         <li><a href="#contentin"><code>content.in</code></a></li>
+        <li><a href="#property"><code>property</code></a></li>
+        <li><a href="#propertytype"><code>property.type</code></a></li>
+        <li><a href="#propertyparameters"><code>property.parameters</code></a></li>
+        <li><a href="#propertyin"><code>property.in</code></a></li>
         <li><a href="#environment"><code>environment</code></a></li>
         <li><a href="#export"><code>export</code></a></li>
         <li><a href="#exporter"><code>exporter</code></a></li>
@@ -114,12 +119,13 @@
         <li><a href="#program"><code>program</code></a></li>
         <li><a href="#programtype"><code>program.type</code></a></li>
         <li><a href="#programprogram"><code>program.program</code></a></li>
+        <li><a href="#programin"><code>program.in</code></a></li>
         <li><a href="#programactions"><code>program.actions</code></a></li>
         <li><a href="#programconditions"><code>program.conditions</code></a></li>
         <li><a href="#programparameters"><code>program.parameters</code></a></li>
         <li><a href="#programtime-distribution"><code>program.time-distribution</code></a></li>
         <li><a href="#remote-dependencies"><code>remote-dependencies</code></a></li>
-        <li><a href="#shape"><code>shape</code></a></li>
+        <li><a href="#shapefilter"><code>shapeFilter</code></a></li>
         <li><a href="#seeds"><code>seeds</code></a></li>
         <li><a href="#seedsscenario"><code>seeds.scenario</code></a></li>
         <li><a href="#seedssimulation"><code>seeds.simulation</code></a></li>
@@ -230,22 +236,44 @@ in form of Kotlin code as follows:</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Deployment</span> : SyntaxElement {
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> contents <span style="color:#ff6ac1">by</span> OwnName()
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> nodes <span style="color:#ff6ac1">by</span> OwnName()
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> properties <span style="color:#ff6ac1">by</span> OwnName()
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> programs <span style="color:#ff6ac1">by</span> OwnName()
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
 </span></span><span style="display:flex;"><span>            validDescriptor {
 </span></span><span style="display:flex;"><span>                mandatory(JavaType.type)
-</span></span><span style="display:flex;"><span>                optional(JavaType.parameters, contents, nodes, programs)
-</span></span><span style="display:flex;"><span>                forbidden(Contents.shapes)
+</span></span><span style="display:flex;"><span>                optional(JavaType.parameters, contents, properties, nodes, programs)
+</span></span><span style="display:flex;"><span>                forbidden(Filter.filter)
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">         * in:
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">         *   - type: FilterType
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">         *     parameters: [...]
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">         */</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Filter</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> filter = <span style="color:#5af78e">&#34;in&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
+</span></span><span style="display:flex;"><span>                validDescriptor {
+</span></span><span style="display:flex;"><span>                    mandatory(JavaType.type)
+</span></span><span style="display:flex;"><span>                    optional(JavaType.parameters)
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Property</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
+</span></span><span style="display:flex;"><span>                validDescriptor {
+</span></span><span style="display:flex;"><span>                    mandatory(JavaType.type)
+</span></span><span style="display:flex;"><span>                    optional(JavaType.parameters, Filter.filter)
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Contents</span> : SyntaxElement {
 </span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> molecule <span style="color:#ff6ac1">by</span> OwnName()
 </span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> concentration <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> shapes = <span style="color:#5af78e">&#34;in&#34;</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
 </span></span><span style="display:flex;"><span>                validDescriptor {
 </span></span><span style="display:flex;"><span>                    mandatory(molecule, concentration)
-</span></span><span style="display:flex;"><span>                    optional(shapes)
+</span></span><span style="display:flex;"><span>                    optional(Filter.filter)
 </span></span><span style="display:flex;"><span>                }
 </span></span><span style="display:flex;"><span>            )
 </span></span><span style="display:flex;"><span>        }
@@ -257,11 +285,11 @@ in form of Kotlin code as follows:</p>
 </span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
 </span></span><span style="display:flex;"><span>                validDescriptor {
 </span></span><span style="display:flex;"><span>                    mandatory(JavaType.type)
-</span></span><span style="display:flex;"><span>                    optional(JavaType.parameters, conditions, timeDistribution, actions)
+</span></span><span style="display:flex;"><span>                    optional(JavaType.parameters, Filter.filter, conditions, timeDistribution, actions)
 </span></span><span style="display:flex;"><span>                },
 </span></span><span style="display:flex;"><span>                validDescriptor {
 </span></span><span style="display:flex;"><span>                    mandatory(program)
-</span></span><span style="display:flex;"><span>                    optional(timeDistribution)
+</span></span><span style="display:flex;"><span>                    optional(timeDistribution, Filter.filter)
 </span></span><span style="display:flex;"><span>                }
 </span></span><span style="display:flex;"><span>            )
 </span></span><span style="display:flex;"><span>        }
@@ -842,16 +870,26 @@ If left unspecified, nodes get created through
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HeterogeneousPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;elderly&#34;</span>, <span style="color:#5af78e">&#34;female&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Human
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;elderly&#34;</span>, <span style="color:#5af78e">&#34;female&#34;</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: HeterogeneousPedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HeterogeneousPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;child&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]</span></span></code></pre></div></div>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Human
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;child&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: HeterogeneousPedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social</span></span></code></pre></div></div>
     </div></li>
 </ul>
+<h3 id="deploymentproperties"><code>deployment.properties</code></h3>
+<p><strong>Type</strong>: Traversable of <a href="#property"><code>property</code></a></p>
 <h3 id="deploymentprograms"><code>deployment.programs</code></h3>
 <p><strong>Type</strong>: Traversable of <a href="#program"><code>program</code></a></p>
 <hr>
@@ -909,7 +947,7 @@ If left unspecified, nodes get created through
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*gradient</span>
 </span></span></code></pre></div></div>
     </div></li>
-<li>Injection of a molecule only in those nodes located inside a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.shapes/-rectangle/"><code>Rectangle</code></a>
+<li>Injection of a molecule only in those nodes located inside a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.filters/-rectangle/"><code>Rectangle</code></a>
 <div class="expand">
         <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
             <span class="fas fa-chevron-down"></span>
@@ -938,13 +976,36 @@ If left unspecified, nodes get created through
 <p>The name of the molecule to be injected.
 If a String is provided, then it is created via <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-molecule.html"><code>Incarnation.createMolecule</code></a>.
 Otherwise, the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a> <strong>SHOULD</strong> be used.</p>
-<h3 id="content-1"><code>content</code></h3>
+<h3 id="contentconcentration"><code>content.concentration</code></h3>
 <p><strong>Type</strong>: String</p>
 <p>The concentration of the molecule to be injected.
 If a String is provided, then it is created via <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-concentration.html"><code>Incarnation.createConcentration</code></a>.
 Otherwise, the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a> <strong>SHOULD</strong> be used.</p>
 <h3 id="contentin"><code>content.in</code></h3>
-<p><strong>Type</strong>: Traversable of Shape</p>
+<p><strong>Type</strong>: Traversable of <a href="#shapefilter">shapeFilter</a></p>
+<h3 id="property"><code>property</code></h3>
+<p><strong>Type</strong>: SpecMap</p>
+<p><strong>(Multi)Spec</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mandatory keys</th>
+<th>Optional keys</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>parameters</code>, <code>in</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="propertytype"><code>property.type</code></h3>
+<p>Same as <a href="#type">type</a></p>
+<h3 id="propertyparameters"><code>property.parameters</code></h3>
+<p>Same as <a href="#parameters">parameters</a></p>
+<h3 id="propertyin"><code>property.in</code></h3>
+<p><strong>Type</strong>: Traversable of <a href="#shapefilter">shapeFilter</a></p>
 <hr>
 <h3 id="environment"><code>environment</code></h3>
 <p><strong>Type</strong>: SpecMap</p>
@@ -1184,12 +1245,14 @@ using the <a href="#arbitrary-class-loading-system">arbitrary class loading syst
 </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: HeadTowardRandomDirection
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_nodes</span>: <span style="color:#78787e">&amp;nodes</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: CognitivePedestrian2D
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">age</span>: <span style="color:#5af78e">&#34;adult&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">gender</span>: <span style="color:#5af78e">&#34;male&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">danger</span>: <span style="color:#78787e">*danger</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Human
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [ <span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span> ]
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: CognitivePedestrian
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Cognitive2D
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [ <span style="color:#78787e">*danger</span> ]
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: CircularArea
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*behavior</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
@@ -1279,12 +1342,14 @@ using the <a href="#arbitrary-class-loading-system">arbitrary class loading syst
 </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: HeadTowardRandomDirection
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_nodes</span>: <span style="color:#78787e">&amp;nodes</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: CognitivePedestrian2D
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">age</span>: <span style="color:#5af78e">&#34;adult&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">gender</span>: <span style="color:#5af78e">&#34;male&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">danger</span>: <span style="color:#78787e">*danger</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Human
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [ <span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span> ]
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: CognitivePedestrian
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Cognitive2D
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [ <span style="color:#78787e">*danger</span> ]
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: CircularArea
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*behavior</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
@@ -1353,6 +1418,8 @@ and no nodes will have any neighbor.</p>
 <h3 id="programprogram"><code>program.program</code></h3>
 <p><strong>Type</strong>: String</p>
 <p>Passed to <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-reaction.html"><code>Incarnation.createReaction</code></a> to be interepreted and</p>
+<h3 id="programin"><code>program.in</code></h3>
+<p><strong>Type</strong>: Traversable of <a href="#shapefilter">shapeFilter</a></p>
 <h3 id="programactions"><code>program.actions</code></h3>
 <p><strong>Type</strong>: Traversable of <a href="#action"><code>action</code></a></p>
 <h3 id="programconditions"><code>program.conditions</code></h3>
@@ -1367,13 +1434,13 @@ Otherwise, the <a href="#arbitrary-class-loading-system">arbitrary class loading
 <hr>
 <h3 id="remote-dependencies"><code>remote-dependencies</code></h3>
 <hr>
-<h3 id="shape"><code>shape</code></h3>
+<h3 id="shapefilter"><code>shapeFilter</code></h3>
 <p><strong>Type</strong>: SpecMap</p>
-<p>Builds a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.shapes/-shape/"><code>Shape</code></a>
+<p>Builds a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.filters/-filter/"><code>Filter</code></a>
 using the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.</p>
 <h4 id="examples-10">Examples</h4>
 <ul>
-<li>Injection of a molecule only in those nodes located inside a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.shapes/-rectangle/"><code>Rectangle</code></a>
+<li>Injection of a molecule only in those nodes located inside a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.loader.filters/-rectangle/"><code>Rectangle</code></a>
 <div class="expand">
         <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
             <span class="fas fa-chevron-down"></span>
@@ -1672,9 +1739,9 @@ Defaults to 1000ms.</p>
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../js/lunr.min.js?1646746642"></script>
-        <script src="../../js/auto-complete.js?1646746642"></script>
-        <script src="../../js/search.js?1646746642"></script>
+        <script src="../../js/lunr.min.js?1646917467"></script>
+        <script src="../../js/auto-complete.js?1646917467"></script>
+        <script src="../../js/search.js?1646917467"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -1785,7 +1852,7 @@ Defaults to 1000ms.</p>
             <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.6</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 14.0.0</strong></div>
 <br>
 <a
     class="github-button"
@@ -1818,16 +1885,16 @@ Fork
         </div>
       </div>
     </aside>
-    <script src="../../js/clipboard.min.js?1646746642"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1646746642"></script>
-    <script src="../../js/jquery.svg.pan.zoom.js?1646746642"></script>
-    <script src="../../js/featherlight.min.js?1646746642"></script>
-    <script src="../../js/mermaid.min.js?1646746642"></script>
+    <script src="../../js/clipboard.min.js?1646917467"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1646917467"></script>
+    <script src="../../js/jquery.svg.pan.zoom.js?1646917467"></script>
+    <script src="../../js/featherlight.min.js?1646917467"></script>
+    <script src="../../js/mermaid.min.js?1646917467"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script src="../../js/theme.js?1646746642"></script>
+    <script src="../../js/theme.js?1646917467"></script>
   </body>
 </html>

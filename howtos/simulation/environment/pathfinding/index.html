@@ -3,24 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.93.2" />
+    <meta name="generator" content="Hugo 0.93.3" />
     <meta name="generator" content="Relearn 3.0.4&#43;tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <title>Find paths indoors :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../../../howtos/simulation/environment/pathfinding/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../../../images/logo.svg?1646746641" type="image/svg+xml">
-    <link href="../../../../css/nucleus.css?1646746641" rel="stylesheet">
-    <link href="../../../../css/fontawesome-all.min.css?1646746641" rel="stylesheet">
-    <link href="../../../../css/featherlight.min.css?1646746641" rel="stylesheet">
-    <link href="../../../../css/perfect-scrollbar.min.css?1646746641" rel="stylesheet">
-    <link href="../../../../css/auto-complete.css?1646746641" rel="stylesheet">
-    <link href="../../../../css/theme.css?1646746641" rel="stylesheet">
-    <link id="variant-style" href="../../../../css/theme-relearn.css?1646746641" rel="stylesheet">
-    <link href="../../../../css/variant.css?1646746641" rel="stylesheet">
-    <link href="../../../../css/theme-relearn-light.css?1646746641" rel="stylesheet" media="print">
-    <link href="../../../../css/print.css?1646746641" rel="stylesheet" media="print">
-    <script src="../../../../js/variant.js?1646746641"></script>
+    <link rel="icon" href="../../../../images/logo.svg?1646917467" type="image/svg+xml">
+    <link href="../../../../css/nucleus.css?1646917467" rel="stylesheet">
+    <link href="../../../../css/fontawesome-all.min.css?1646917467" rel="stylesheet">
+    <link href="../../../../css/featherlight.min.css?1646917467" rel="stylesheet">
+    <link href="../../../../css/perfect-scrollbar.min.css?1646917467" rel="stylesheet">
+    <link href="../../../../css/auto-complete.css?1646917467" rel="stylesheet">
+    <link href="../../../../css/theme.css?1646917467" rel="stylesheet">
+    <link id="variant-style" href="../../../../css/theme-relearn.css?1646917467" rel="stylesheet">
+    <link href="../../../../css/variant.css?1646917467" rel="stylesheet">
+    <link href="../../../../css/theme-relearn-light.css?1646917467" rel="stylesheet" media="print">
+    <link href="../../../../css/print.css?1646917467" rel="stylesheet" media="print">
+    <script src="../../../../js/variant.js?1646917467"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
@@ -36,7 +36,7 @@
       var baseUriFull='https:\/\/alchemistsimulator.github.io/';
       variants.init( [ 'relearn' ] );
     </script>
-    <script src="../../../../js/jquery.min.js?1646746641"></script>
+    <script src="../../../../js/jquery.min.js?1646917467"></script>
   </head>
   <body class="default-animation" data-url="../../../../howtos/simulation/environment/pathfinding/">
     <div id="body" class="default-animation">
@@ -137,9 +137,12 @@ This will read your image, extract the positions you marked blue and pass them t
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">15</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousOrientingPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1.0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Orienting2D
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1.0</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span>
 </span></span></code></pre></div></div>
@@ -172,19 +175,28 @@ This will read your image, extract the positions you marked blue and pass them t
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">70</span>, <span style="color:#ff9f43">50</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousOrientingPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1.0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Orienting2D
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1.0</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span>
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Grid
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">27</span>, <span style="color:#ff9f43">52</span>, <span style="color:#ff9f43">56</span>, <span style="color:#ff9f43">58</span>, <span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.3</span>, <span style="color:#ff9f43">0.3</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousPedestrian2D
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Grid
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">30</span>, <span style="color:#ff9f43">40</span>, <span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">45</span>, <span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.3</span>, <span style="color:#ff9f43">0.3</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousPedestrian2D
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
 </span></span></code></pre></div></div>
     </div>
 <div class="expand">
@@ -214,9 +226,12 @@ This will read your image, extract the positions you marked blue and pass them t
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">15</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousOrientingPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Orienting2D
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.0</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span>
 </span></span></code></pre></div></div>
@@ -249,9 +264,12 @@ This will read your image, extract the positions you marked blue and pass them t
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">15</span>]
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: HomogeneousOrientingPedestrian2D
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.0</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Orienting2D
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.0</span>]
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*behavior</span>
 </span></span></code></pre></div></div>
     </div>
@@ -324,9 +342,12 @@ This will read your image, extract the positions you marked blue and pass them t
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">108</span>, <span style="color:#ff9f43">88</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousOrientingPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Orienting2D
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.0</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span>
 </span></span></code></pre></div></div>
@@ -360,9 +381,12 @@ This will read your image, extract the positions you marked blue and pass them t
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">15</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousOrientingPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Orienting2D
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.0</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span>
 </span></span></code></pre></div></div>
@@ -395,9 +419,12 @@ This will read your image, extract the positions you marked blue and pass them t
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">15</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousOrientingPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.3</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Orienting2D
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.3</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span>
 </span></span></code></pre></div></div>
@@ -431,9 +458,12 @@ This will read your image, extract the positions you marked blue and pass them t
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">15</span>]
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: HomogeneousOrientingPedestrian2D
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.0</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Orienting2D
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.0</span>]
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*behavior</span>
 </span></span></code></pre></div></div>
     </div>
@@ -466,9 +496,12 @@ This will read your image, extract the positions you marked blue and pass them t
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">15</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousOrientingPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.4</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Orienting2D
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.4</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span>
 </span></span></code></pre></div></div>
@@ -496,9 +529,14 @@ This will read your image, extract the positions you marked blue and pass them t
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: CognitiveOrientingPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>, <span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Human
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CognitivePedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Cognitive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Orienting2D
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>]
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span></span></span></code></pre></div></div>
     </div>
@@ -519,9 +557,11 @@ This will read your image, extract the positions you marked blue and pass them t
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousOrientingPedestrian2D
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Orienting2D
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>]
 </span></span></code></pre></div></div>
     </div>
 <div class="expand">
@@ -552,8 +592,12 @@ This will read your image, extract the positions you marked blue and pass them t
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodes</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: HomogeneousPhysicalPedestrian2D
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Pedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: PhysicalPedestrian2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span></span></span></code></pre></div></div>
     </div></p>
@@ -577,9 +621,9 @@ This will read your image, extract the positions you marked blue and pass them t
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../../../js/lunr.min.js?1646746641"></script>
-        <script src="../../../../js/auto-complete.js?1646746641"></script>
-        <script src="../../../../js/search.js?1646746641"></script>
+        <script src="../../../../js/lunr.min.js?1646917467"></script>
+        <script src="../../../../js/auto-complete.js?1646917467"></script>
+        <script src="../../../../js/search.js?1646917467"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -690,7 +734,7 @@ This will read your image, extract the positions you marked blue and pass them t
             <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.6</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 14.0.0</strong></div>
 <br>
 <a
     class="github-button"
@@ -723,16 +767,16 @@ Fork
         </div>
       </div>
     </aside>
-    <script src="../../../../js/clipboard.min.js?1646746641"></script>
-    <script src="../../../../js/perfect-scrollbar.min.js?1646746641"></script>
-    <script src="../../../../js/jquery.svg.pan.zoom.js?1646746641"></script>
-    <script src="../../../../js/featherlight.min.js?1646746641"></script>
-    <script src="../../../../js/mermaid.min.js?1646746641"></script>
+    <script src="../../../../js/clipboard.min.js?1646917467"></script>
+    <script src="../../../../js/perfect-scrollbar.min.js?1646917467"></script>
+    <script src="../../../../js/jquery.svg.pan.zoom.js?1646917467"></script>
+    <script src="../../../../js/featherlight.min.js?1646917467"></script>
+    <script src="../../../../js/mermaid.min.js?1646917467"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script src="../../../../js/theme.js?1646746641"></script>
+    <script src="../../../../js/theme.js?1646917467"></script>
   </body>
 </html>

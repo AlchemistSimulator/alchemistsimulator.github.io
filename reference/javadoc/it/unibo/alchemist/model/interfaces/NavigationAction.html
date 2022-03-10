@@ -130,7 +130,7 @@ var pathtoroot = "../../../../../";
 public interface <span class="typeNameLabel"><a href=NavigationAction.html>NavigationAction</a>&lt;T extends <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>, P extends <a href=Position.html>Position</a>&lt;<a href=NavigationAction.html>P</a>&gt;, <a href=geometry/Vector.html>Vector</a>&lt;<a href=NavigationAction.html>P</a>&gt;, A extends <a href=geometry/GeometricTransformation.html>GeometricTransformation</a>&lt;<a href=NavigationAction.html>P</a>&gt;, L extends <a href=geometry/ConvexGeometricShape.html>ConvexGeometricShape</a>&lt;<a href=NavigationAction.html>P</a>, <a href=NavigationAction.html>A</a>&gt;, R extends <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>, N extends <a href=geometry/ConvexGeometricShape.html>ConvexGeometricShape</a>&lt;<a href=NavigationAction.html>P</a>, <a href=NavigationAction.html>A</a>&gt;, E extends <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt;</span>
  implements <a href=SteeringAction.html>SteeringAction</a>&lt;<a href=NavigationAction.html>T</a>, <a href=NavigationAction.html>P</a>&gt;
                     </pre>
-                    <div class="block"><p>A <a href=SteeringAction.html>SteeringAction</a> allowing a pedestrian to navigate an environment consciously (e.g. without getting stuck in U-shaped obstacles). Names are inspired to indoor environments, but this interface works for outdoor ones as well.</p></div>
+                    <div class="block"><p>A <a href=SteeringAction.html>SteeringAction</a> allowing a node to navigate an environment consciously (e.g. without getting stuck in U-shaped obstacles). Names are inspired to indoor environments, but this interface works for outdoor ones as well.</p></div>
                 </li>
             </ul>
         </div>
@@ -263,7 +263,7 @@ public interface <span class="typeNameLabel"><a href=NavigationAction.html>Navig
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=NavigationAction.html#crossDoor(E)>crossDoor</a>(<a href=NavigationAction.html>E</a> door) </code>
                                             </th>
-                                            <td class="colLast">Moves the pedestrian across the provided <a href=NavigationAction.html#crossDoor(E)>door</a>, which must be among <a href=NavigationAction.html#doorsInSight()>doorsInSight</a>.</td>
+                                            <td class="colLast">Moves the node across the provided <a href=NavigationAction.html#crossDoor(E)>door</a>, which must be among <a href=NavigationAction.html#doorsInSight()>doorsInSight</a>.</td>
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
@@ -271,7 +271,7 @@ public interface <span class="typeNameLabel"><a href=NavigationAction.html>Navig
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=NavigationAction.html#moveToFinal(P)>moveToFinal</a>(<a href=NavigationAction.html>P</a> destination) </code>
                                             </th>
-                                            <td class="colLast">Moves the pedestrian to the given final <a href=NavigationAction.html#moveToFinal(P)>destination</a>, which must be inside currentRoom.</td>
+                                            <td class="colLast">Moves the node to the given final <a href=NavigationAction.html#moveToFinal(P)>destination</a>, which must be inside currentRoom.</td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
@@ -279,39 +279,47 @@ public interface <span class="typeNameLabel"><a href=NavigationAction.html>Navig
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=NavigationAction.html#stop()>stop</a>() </code>
                                             </th>
-                                            <td class="colLast">Stops moving the pedestrian.</td>
+                                            <td class="colLast">Stops moving the node.</td>
                                         </tr>
                                         
                                         <tr id="i4" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=OrientingPedestrian.html>OrientingPedestrian</a>&lt;<a href=NavigationAction.html>T</a>, <a href=NavigationAction.html>P</a>, <a href=NavigationAction.html>A</a>, <a href=NavigationAction.html>L</a>, <a href=NavigationAction.html>R</a>&gt;</code>
+                                            <td class="colFirst"><code>abstract <a href=Node.html>Node</a>&lt;<a href=NavigationAction.html>T</a>&gt;</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=NavigationAction.html#getPedestrian()>getPedestrian</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=NavigationAction.html#getNavigatingNode()>getNavigatingNode</a>() </code>
                                             </th>
-                                            <td class="colLast">The pedestrian to move.</td>
+                                            <td class="colLast">The owner of this action.</td>
                                         </tr>
                                         
                                         <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code><a href=properties/OrientingProperty.html>OrientingProperty</a>&lt;<a href=NavigationAction.html>T</a>, <a href=NavigationAction.html>P</a>, <a href=NavigationAction.html>A</a>, <a href=NavigationAction.html>L</a>, <a href=NavigationAction.html>N</a>, <a href=NavigationAction.html>E</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=NavigationAction.html#getOrientingProperty()>getOrientingProperty</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i6" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=environments/EnvironmentWithGraph.html>EnvironmentWithGraph</a>&lt;?, <a href=NavigationAction.html>T</a>, <a href=NavigationAction.html>P</a>, <a href=NavigationAction.html>A</a>, <a href=NavigationAction.html>N</a>, <a href=NavigationAction.html>E</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=NavigationAction.html#getEnvironment()>getEnvironment</a>() </code>
                                             </th>
-                                            <td class="colLast">The environment the pedestrian is into.</td>
+                                            <td class="colLast">The environment the navigatingNode is into.</td>
                                         </tr>
                                         
-                                        <tr id="i6" class="altColor">
+                                        <tr id="i7" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=NavigationAction.html>P</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=NavigationAction.html#getPedestrianPosition()>getPedestrianPosition</a>() </code>
                                             </th>
-                                            <td class="colLast">The position of the pedestrian in the environment.</td>
+                                            <td class="colLast">The position of the navigatingNode in the environment.</td>
                                         </tr>
                                         
-                                        <tr id="i7" class="rowColor">
+                                        <tr id="i8" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=NavigationAction.html>N</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=NavigationAction.html#getCurrentRoom()>getCurrentRoom</a>() </code>
                                             </th>
-                                            <td class="colLast">The room (= environment's area) the pedestrian is into.</td>
+                                            <td class="colLast">The room (= environment's area) the navigatingNode is into.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -394,7 +402,7 @@ public interface <span class="typeNameLabel"><a href=NavigationAction.html>Navig
                                     <li class="blockList">
                                         <h4>crossDoor</h4>
                                         <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=NavigationAction.html#crossDoor(E)>crossDoor</a>(<a href=NavigationAction.html>E</a> door)</pre>
-                                        <div class="block"><p>Moves the pedestrian across the provided <a href=NavigationAction.html#crossDoor(E)>door</a>, which must be among <a href=NavigationAction.html#doorsInSight()>doorsInSight</a>.</p></div>
+                                        <div class="block"><p>Moves the node across the provided <a href=NavigationAction.html#crossDoor(E)>door</a>, which must be among <a href=NavigationAction.html#doorsInSight()>doorsInSight</a>.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -409,7 +417,7 @@ public interface <span class="typeNameLabel"><a href=NavigationAction.html>Navig
                                     <li class="blockList">
                                         <h4>moveToFinal</h4>
                                         <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=NavigationAction.html#moveToFinal(P)>moveToFinal</a>(<a href=NavigationAction.html>P</a> destination)</pre>
-                                        <div class="block"><p>Moves the pedestrian to the given final <a href=NavigationAction.html#moveToFinal(P)>destination</a>, which must be inside currentRoom.</p></div>
+                                        <div class="block"><p>Moves the node to the given final <a href=NavigationAction.html#moveToFinal(P)>destination</a>, which must be inside currentRoom.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -424,22 +432,37 @@ public interface <span class="typeNameLabel"><a href=NavigationAction.html>Navig
                                     <li class="blockList">
                                         <h4>stop</h4>
                                         <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=NavigationAction.html#stop()>stop</a>()</pre>
-                                        <div class="block"><p>Stops moving the pedestrian.</p></div>
+                                        <div class="block"><p>Stops moving the node.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
                                 
-                                <a id="getPedestrian()">
+                                <a id="getNavigatingNode()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>getPedestrian</h4>
-                                        <pre class="methodSignature"> abstract <a href=OrientingPedestrian.html>OrientingPedestrian</a>&lt;<a href=NavigationAction.html>T</a>, <a href=NavigationAction.html>P</a>, <a href=NavigationAction.html>A</a>, <a href=NavigationAction.html>L</a>, <a href=NavigationAction.html>R</a>&gt; <a href=NavigationAction.html#getPedestrian()>getPedestrian</a>()</pre>
-                                        <div class="block"><p>The pedestrian to move.</p></div>
+                                        <h4>getNavigatingNode</h4>
+                                        <pre class="methodSignature"> abstract <a href=Node.html>Node</a>&lt;<a href=NavigationAction.html>T</a>&gt; <a href=NavigationAction.html#getNavigatingNode()>getNavigatingNode</a>()</pre>
+                                        <div class="block"><p>The owner of this action.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getOrientingProperty()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getOrientingProperty</h4>
+                                        <pre class="methodSignature"> <a href=properties/OrientingProperty.html>OrientingProperty</a>&lt;<a href=NavigationAction.html>T</a>, <a href=NavigationAction.html>P</a>, <a href=NavigationAction.html>A</a>, <a href=NavigationAction.html>L</a>, <a href=NavigationAction.html>N</a>, <a href=NavigationAction.html>E</a>&gt; <a href=NavigationAction.html#getOrientingProperty()>getOrientingProperty</a>()</pre>
+                                        <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -454,7 +477,7 @@ public interface <span class="typeNameLabel"><a href=NavigationAction.html>Navig
                                     <li class="blockList">
                                         <h4>getEnvironment</h4>
                                         <pre class="methodSignature"> abstract <a href=environments/EnvironmentWithGraph.html>EnvironmentWithGraph</a>&lt;?, <a href=NavigationAction.html>T</a>, <a href=NavigationAction.html>P</a>, <a href=NavigationAction.html>A</a>, <a href=NavigationAction.html>N</a>, <a href=NavigationAction.html>E</a>&gt; <a href=NavigationAction.html#getEnvironment()>getEnvironment</a>()</pre>
-                                        <div class="block"><p>The environment the pedestrian is into.</p></div>
+                                        <div class="block"><p>The environment the navigatingNode is into.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -469,7 +492,7 @@ public interface <span class="typeNameLabel"><a href=NavigationAction.html>Navig
                                     <li class="blockList">
                                         <h4>getPedestrianPosition</h4>
                                         <pre class="methodSignature"> abstract <a href=NavigationAction.html>P</a> <a href=NavigationAction.html#getPedestrianPosition()>getPedestrianPosition</a>()</pre>
-                                        <div class="block"><p>The position of the pedestrian in the environment.</p></div>
+                                        <div class="block"><p>The position of the navigatingNode in the environment.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -484,7 +507,7 @@ public interface <span class="typeNameLabel"><a href=NavigationAction.html>Navig
                                     <li class="blockList">
                                         <h4>getCurrentRoom</h4>
                                         <pre class="methodSignature"> abstract <a href=NavigationAction.html>N</a> <a href=NavigationAction.html#getCurrentRoom()>getCurrentRoom</a>()</pre>
-                                        <div class="block"><p>The room (= environment's area) the pedestrian is into.</p></div>
+                                        <div class="block"><p>The room (= environment's area) the navigatingNode is into.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

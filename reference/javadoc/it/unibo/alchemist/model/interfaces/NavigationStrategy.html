@@ -117,7 +117,7 @@ var pathtoroot = "../../../../../";
 public interface <span class="typeNameLabel"><a href=NavigationStrategy.html>NavigationStrategy</a>&lt;T extends <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>, P extends <a href=Position.html>Position</a>&lt;<a href=NavigationStrategy.html>P</a>&gt;, <a href=geometry/Vector.html>Vector</a>&lt;<a href=NavigationStrategy.html>P</a>&gt;, A extends <a href=geometry/GeometricTransformation.html>GeometricTransformation</a>&lt;<a href=NavigationStrategy.html>P</a>&gt;, L extends <a href=geometry/ConvexGeometricShape.html>ConvexGeometricShape</a>&lt;<a href=NavigationStrategy.html>P</a>, <a href=NavigationStrategy.html>A</a>&gt;, R extends <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>, N extends <a href=geometry/ConvexGeometricShape.html>ConvexGeometricShape</a>&lt;<a href=NavigationStrategy.html>P</a>, <a href=NavigationStrategy.html>A</a>&gt;, E extends <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt;</span>
 
                     </pre>
-                    <div class="block"><p>Defines what a pedestrian should do when in a new room (= environment's area), this is designed to be used jointly with a <a href=NavigationAction.html>NavigationAction</a>: the latter defines how to properly move the pedestrian, while delegating the decision on where to move it to a <a href=NavigationStrategy.html>NavigationStrategy</a>.</p></div>
+                    <div class="block"><p>Defines what a node should do when in a new room (= environment's area), this is designed to be used jointly with a <a href=NavigationAction.html>NavigationAction</a>: the latter defines how to properly move the node, while delegating the decision on where to move it to a <a href=NavigationStrategy.html>NavigationStrategy</a>.</p></div>
                 </li>
             </ul>
         </div>
@@ -242,7 +242,7 @@ public interface <span class="typeNameLabel"><a href=NavigationStrategy.html>Nav
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=NavigationStrategy.html#inNewRoom(N)>inNewRoom</a>(<a href=NavigationStrategy.html>N</a> newRoom) </code>
                                             </th>
-                                            <td class="colLast">This is called whenever the pedestrian enters a new room.</td>
+                                            <td class="colLast">This is called whenever the node enters a new room.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
@@ -250,7 +250,7 @@ public interface <span class="typeNameLabel"><a href=NavigationStrategy.html>Nav
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=NavigationStrategy.html#inUnexpectedNewRoom(N,N,N)>inUnexpectedNewRoom</a>(<a href=NavigationStrategy.html>N</a> previousRoom, <a href=NavigationStrategy.html>N</a> expectedNewRoom, <a href=NavigationStrategy.html>N</a> actualNewRoom) </code>
                                             </th>
-                                            <td class="colLast">This is called in place of <a href=NavigationStrategy.html#inNewRoom(N)>inNewRoom</a> when the pedestrian ends up in an unexpected room while moving.</td>
+                                            <td class="colLast">This is called in place of <a href=NavigationStrategy.html#inNewRoom(N)>inNewRoom</a> when the node ends up in an unexpected room while moving.</td>
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
@@ -259,6 +259,14 @@ public interface <span class="typeNameLabel"><a href=NavigationStrategy.html>Nav
                                             <th class="colSecond" scope="row"><code><a href=NavigationStrategy.html#getAction()>getAction</a>() </code>
                                             </th>
                                             <td class="colLast">The <a href=NavigationAction.html>NavigationAction</a> used to navigate the environment.</td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code><a href=properties/OrientingProperty.html>OrientingProperty</a>&lt;<a href=NavigationStrategy.html>T</a>, <a href=NavigationStrategy.html>P</a>, <a href=NavigationStrategy.html>A</a>, <a href=NavigationStrategy.html>L</a>, <a href=NavigationStrategy.html>N</a>, <a href=NavigationStrategy.html>E</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=NavigationStrategy.html#getOrientingCapability()>getOrientingCapability</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         </tbody>
@@ -314,7 +322,7 @@ public interface <span class="typeNameLabel"><a href=NavigationStrategy.html>Nav
                                     <li class="blockList">
                                         <h4>inNewRoom</h4>
                                         <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=NavigationStrategy.html#inNewRoom(N)>inNewRoom</a>(<a href=NavigationStrategy.html>N</a> newRoom)</pre>
-                                        <div class="block"><p>This is called whenever the pedestrian enters a new room.</p></div>
+                                        <div class="block"><p>This is called whenever the node enters a new room.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -329,7 +337,7 @@ public interface <span class="typeNameLabel"><a href=NavigationStrategy.html>Nav
                                     <li class="blockList">
                                         <h4>inUnexpectedNewRoom</h4>
                                         <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=NavigationStrategy.html#inUnexpectedNewRoom(N,N,N)>inUnexpectedNewRoom</a>(<a href=NavigationStrategy.html>N</a> previousRoom, <a href=NavigationStrategy.html>N</a> expectedNewRoom, <a href=NavigationStrategy.html>N</a> actualNewRoom)</pre>
-                                        <div class="block"><p>This is called in place of <a href=NavigationStrategy.html#inNewRoom(N)>inNewRoom</a> when the pedestrian ends up in an unexpected room while moving. By default, unexpected rooms are treated just like expected ones.</p></div>
+                                        <div class="block"><p>This is called in place of <a href=NavigationStrategy.html#inNewRoom(N)>inNewRoom</a> when the node ends up in an unexpected room while moving. By default, unexpected rooms are treated just like expected ones.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -339,12 +347,27 @@ public interface <span class="typeNameLabel"><a href=NavigationStrategy.html>Nav
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getAction</h4>
                                         <pre class="methodSignature"> abstract <a href=NavigationAction.html>NavigationAction</a>&lt;<a href=NavigationStrategy.html>T</a>, <a href=NavigationStrategy.html>P</a>, <a href=NavigationStrategy.html>A</a>, <a href=NavigationStrategy.html>L</a>, <a href=NavigationStrategy.html>R</a>, <a href=NavigationStrategy.html>N</a>, <a href=NavigationStrategy.html>E</a>&gt; <a href=NavigationStrategy.html#getAction()>getAction</a>()</pre>
                                         <div class="block"><p>The <a href=NavigationAction.html>NavigationAction</a> used to navigate the environment.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getOrientingCapability()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getOrientingCapability</h4>
+                                        <pre class="methodSignature"> <a href=properties/OrientingProperty.html>OrientingProperty</a>&lt;<a href=NavigationStrategy.html>T</a>, <a href=NavigationStrategy.html>P</a>, <a href=NavigationStrategy.html>A</a>, <a href=NavigationStrategy.html>L</a>, <a href=NavigationStrategy.html>N</a>, <a href=NavigationStrategy.html>E</a>&gt; <a href=NavigationStrategy.html#getOrientingCapability()>getOrientingCapability</a>()</pre>
+                                        <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

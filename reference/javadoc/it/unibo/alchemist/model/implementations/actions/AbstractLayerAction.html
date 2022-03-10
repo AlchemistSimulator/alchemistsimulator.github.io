@@ -209,7 +209,7 @@ extends <a href=AbstractSteeringAction.html>AbstractSteeringAction</a>&lt;<a hre
                                         
                                             <tr class="altColor">
                                                 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a
-                                                        href="#AbstractLayerAction(Euclidean2DEnvironment,Reaction,Pedestrian2D,Molecule)">AbstractLayerAction</a></span>(<a href=../../interfaces/environments/Euclidean2DEnvironment.html>Euclidean2DEnvironment</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; environment, <a href=../../interfaces/Reaction.html>Reaction</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; reaction, <a href=../../interfaces/Pedestrian2D.html>Pedestrian2D</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; pedestrian, <a href=../../interfaces/Molecule.html>Molecule</a> targetMolecule)</code></th>
+                                                        href="#AbstractLayerAction(Euclidean2DEnvironment,Reaction,Node,Molecule)">AbstractLayerAction</a></span>(<a href=../../interfaces/environments/Euclidean2DEnvironment.html>Euclidean2DEnvironment</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; environment, <a href=../../interfaces/Reaction.html>Reaction</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; reaction, <a href=../../interfaces/Node.html>Node</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; node, <a href=../../interfaces/Molecule.html>Molecule</a> targetMolecule)</code></th>
                                                 <td class="colLast"></td>
                                             </tr>
                                         
@@ -270,6 +270,14 @@ extends <a href=AbstractSteeringAction.html>AbstractSteeringAction</a>&lt;<a hre
                                             <td class="colLast"></td>
                                         </tr>
                                         
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=AbstractLayerAction.html>AbstractLayerAction</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=AbstractLayerAction.html#cloneAction(Node,Reaction)>cloneAction</a>(<a href=../../interfaces/Node.html>Node</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; node, <a href=../../interfaces/Reaction.html>Reaction</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; reaction) </code>
+                                            </th>
+                                            <td class="colLast">This method allows to clone this action on a new node.</td>
+                                        </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -279,13 +287,13 @@ extends <a href=AbstractSteeringAction.html>AbstractSteeringAction</a>&lt;<a hre
                                             <!--   -->
                                         </a>
                                             <h3>Methods inherited from class&nbsp;it.unibo.alchemist.model.implementations.actions.AbstractLayerAction</h3>
-                                            <code>cloneAction, getNextPosition</code></li>
+                                            <code>getNextPosition</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.it.unibo.alchemist.model.implementations.actions.AbstractMoveNode">
                                             <!--   -->
                                         </a>
                                             <h3>Methods inherited from class&nbsp;it.unibo.alchemist.model.implementations.actions.AbstractMoveNode</h3>
-                                            <code>declareDependencyTo, getConcentration, getOutboundDependencies, nodeContains, removeConcentration, setConcentration, toString</code></li>
+                                            <code>declareDependencyTo, getConcentration, getNode, getOutboundDependencies, nodeContains, removeConcentration, setConcentration, toString</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.it.unibo.alchemist.model.implementations.actions.AbstractSteeringAction">
                                             <!--   -->
@@ -319,18 +327,18 @@ extends <a href=AbstractSteeringAction.html>AbstractSteeringAction</a>&lt;<a hre
                             </a>
                                 <h3>Constructor Detail</h3>
                                 
-                                <a name="AbstractLayerAction(Euclidean2DEnvironment,Reaction,Pedestrian2D,Molecule)"></a>
+                                <a name="AbstractLayerAction(Euclidean2DEnvironment,Reaction,Node,Molecule)"></a>
                                 <ul class="blockList">
                                     <li class="blockList">
                                         <h4>AbstractLayerAction</h4>
-                                        <pre>AbstractLayerAction(<a href=../../interfaces/environments/Euclidean2DEnvironment.html>Euclidean2DEnvironment</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; environment, <a href=../../interfaces/Reaction.html>Reaction</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; reaction, <a href=../../interfaces/Pedestrian2D.html>Pedestrian2D</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; pedestrian, <a href=../../interfaces/Molecule.html>Molecule</a> targetMolecule)</pre>
+                                        <pre>AbstractLayerAction(<a href=../../interfaces/environments/Euclidean2DEnvironment.html>Euclidean2DEnvironment</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; environment, <a href=../../interfaces/Reaction.html>Reaction</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; reaction, <a href=../../interfaces/Node.html>Node</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; node, <a href=../../interfaces/Molecule.html>Molecule</a> targetMolecule)</pre>
                                         <div class="block"></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
-                                            <dd><code>environment</code> - <pre><code>    the environment inside which the pedestrian moves.</code></pre></dd>
+                                            <dd><code>environment</code> - <pre><code>    the environment inside which the node moves.</code></pre></dd>
                                             
                                             
                                             
@@ -338,7 +346,7 @@ extends <a href=AbstractSteeringAction.html>AbstractSteeringAction</a>&lt;<a hre
                                             
                                             
                                             
-                                            <dd><code>pedestrian</code> - <pre><code>    the owner of this action.</code></pre></dd>
+                                            <dd><code>node</code> - <pre><code>    the owner of this action.</code></pre></dd>
                                             
                                             
                                             
@@ -367,12 +375,40 @@ extends <a href=AbstractSteeringAction.html>AbstractSteeringAction</a>&lt;<a hre
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getMaxWalk</h4>
                                         <pre class="methodSignature"> <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a> <a href=AbstractLayerAction.html#getMaxWalk()>getMaxWalk</a>()</pre>
                                         <div class="block"></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="cloneAction(Node,Reaction)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>cloneAction</h4>
+                                        <pre class="methodSignature"> abstract <a href=AbstractLayerAction.html>AbstractLayerAction</a> <a href=AbstractLayerAction.html#cloneAction(Node,Reaction)>cloneAction</a>(<a href=../../interfaces/Node.html>Node</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; node, <a href=../../interfaces/Reaction.html>Reaction</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; reaction)</pre>
+                                        <div class="block"><p>This method allows to clone this action on a new node. It may result useful to support runtime creation of nodes with the same reaction programming, e.g. for morphogenesis.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>node</code> - <pre><code>    The node where to clone this {@link Action}</code></pre></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>reaction</code> - <pre><code>    The reaction to which the CURRENT action is assigned</code></pre></dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>

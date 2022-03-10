@@ -3,24 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.93.2" />
+    <meta name="generator" content="Hugo 0.93.3" />
     <meta name="generator" content="Relearn 3.0.4&#43;tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <title>Node contents :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../../../howtos/simulation/program/content/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../../../images/logo.svg?1646746641" type="image/svg+xml">
-    <link href="../../../../css/nucleus.css?1646746641" rel="stylesheet">
-    <link href="../../../../css/fontawesome-all.min.css?1646746641" rel="stylesheet">
-    <link href="../../../../css/featherlight.min.css?1646746641" rel="stylesheet">
-    <link href="../../../../css/perfect-scrollbar.min.css?1646746641" rel="stylesheet">
-    <link href="../../../../css/auto-complete.css?1646746641" rel="stylesheet">
-    <link href="../../../../css/theme.css?1646746641" rel="stylesheet">
-    <link id="variant-style" href="../../../../css/theme-relearn.css?1646746641" rel="stylesheet">
-    <link href="../../../../css/variant.css?1646746641" rel="stylesheet">
-    <link href="../../../../css/theme-relearn-light.css?1646746641" rel="stylesheet" media="print">
-    <link href="../../../../css/print.css?1646746641" rel="stylesheet" media="print">
-    <script src="../../../../js/variant.js?1646746641"></script>
+    <link rel="icon" href="../../../../images/logo.svg?1646917467" type="image/svg+xml">
+    <link href="../../../../css/nucleus.css?1646917467" rel="stylesheet">
+    <link href="../../../../css/fontawesome-all.min.css?1646917467" rel="stylesheet">
+    <link href="../../../../css/featherlight.min.css?1646917467" rel="stylesheet">
+    <link href="../../../../css/perfect-scrollbar.min.css?1646917467" rel="stylesheet">
+    <link href="../../../../css/auto-complete.css?1646917467" rel="stylesheet">
+    <link href="../../../../css/theme.css?1646917467" rel="stylesheet">
+    <link id="variant-style" href="../../../../css/theme-relearn.css?1646917467" rel="stylesheet">
+    <link href="../../../../css/variant.css?1646917467" rel="stylesheet">
+    <link href="../../../../css/theme-relearn-light.css?1646917467" rel="stylesheet" media="print">
+    <link href="../../../../css/print.css?1646917467" rel="stylesheet" media="print">
+    <script src="../../../../js/variant.js?1646917467"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
@@ -36,7 +36,7 @@
       var baseUriFull='https:\/\/alchemistsimulator.github.io/';
       variants.init( [ 'relearn' ] );
     </script>
-    <script src="../../../../js/jquery.min.js?1646746641"></script>
+    <script src="../../../../js/jquery.min.js?1646917467"></script>
   </head>
   <body class="default-animation" data-url="../../../../howtos/simulation/program/content/">
     <div id="body" class="default-animation">
@@ -89,8 +89,14 @@ Node contents are defined in terms of molecules and their corresponding concentr
 As such, they depend on the specific <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/"><code>Incarnation</code></a> in use.</p>
 <p>This is done by listing the contents under <a href="../../../../reference/yaml/#deploymentcontents"><code>deployments.contents</code></a>,
 specifying a <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a> name and its <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-concentration/"><code>Concentration</code></a>.</p>
-<p>Unless the <a href="../../../../reference/yaml/#arbitrary-class-loading-system">type/parameter syntax</a> is used, the data is gets processed by the <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/"><code>Incarnation</code></a>
-through the <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-molecule.html"><code>Incarnation.createMolecule</code></a> and <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-concentration.html"><code>Incarnation.createConcentration</code></a> methods, respectively.</p>
+<p>Unless the <a href="../../../../reference/yaml/#arbitrary-class-loading-system">type/parameter syntax</a> is used, the data gets processed
+by the
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/"><code>Incarnation</code></a>
+through the
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-molecule.html"><code>Incarnation.createMolecule</code></a>
+and
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-concentration.html"><code>Incarnation.createConcentration</code></a>
+methods, respectively.</p>
 <p>In the following example, three molecules are created and injected into all nodes deployed in the scenario:</p>
 <div class="expand">
         <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
@@ -127,9 +133,11 @@ through the <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.mod
     </div>
 <p>By default, all nodes in the deployment will be injected with the required contents.
 It is possible, though, to select only a subset of them through the <a href="../../../../reference/yaml/#contentin"><code>in</code></a> keyword,
-which expects enough information to be able to build a <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.shapes/-shape/"><code>Shape</code></a>
+which expects enough information to be able to build a
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.filters/-filter/"><code>Filter</code></a>
 through the <a href="../../../../reference/yaml/#arbitrary-class-loading-system">arbitrary class loading system</a>.</p>
-<p>In the following example, only molecules located inside a <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.shapes/-rectangle/"><code>Rectangle</code></a>
+<p>In the following example, only molecules located inside a
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.filters/-rectangle/"><code>Rectangle</code></a>
 get the <code>ball</code> molecule:</p>
 <div class="expand">
         <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
@@ -173,9 +181,9 @@ get the <code>ball</code> molecule:</p>
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../../../js/lunr.min.js?1646746641"></script>
-        <script src="../../../../js/auto-complete.js?1646746641"></script>
-        <script src="../../../../js/search.js?1646746641"></script>
+        <script src="../../../../js/lunr.min.js?1646917467"></script>
+        <script src="../../../../js/auto-complete.js?1646917467"></script>
+        <script src="../../../../js/search.js?1646917467"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -286,7 +294,7 @@ get the <code>ball</code> molecule:</p>
             <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 13.0.6</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 14.0.0</strong></div>
 <br>
 <a
     class="github-button"
@@ -319,16 +327,16 @@ Fork
         </div>
       </div>
     </aside>
-    <script src="../../../../js/clipboard.min.js?1646746641"></script>
-    <script src="../../../../js/perfect-scrollbar.min.js?1646746641"></script>
-    <script src="../../../../js/jquery.svg.pan.zoom.js?1646746641"></script>
-    <script src="../../../../js/featherlight.min.js?1646746641"></script>
-    <script src="../../../../js/mermaid.min.js?1646746641"></script>
+    <script src="../../../../js/clipboard.min.js?1646917467"></script>
+    <script src="../../../../js/perfect-scrollbar.min.js?1646917467"></script>
+    <script src="../../../../js/jquery.svg.pan.zoom.js?1646917467"></script>
+    <script src="../../../../js/featherlight.min.js?1646917467"></script>
+    <script src="../../../../js/mermaid.min.js?1646917467"></script>
     <script>
       if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
       }
     </script>
-    <script src="../../../../js/theme.js?1646746641"></script>
+    <script src="../../../../js/theme.js?1646917467"></script>
   </body>
 </html>
