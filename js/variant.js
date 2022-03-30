@@ -4,6 +4,7 @@ var variants = {
 	variant: '',
 	variants: [],
 	customvariantname: 'my-custom-variant',
+	isstylesheetloaded: true,
 
 	init: function( variants ){
 		this.variants = variants;
@@ -25,6 +26,10 @@ var variants = {
 		window.localStorage.setItem( baseUriFull+'variant', variant );
 	},
 
+	isVariantLoaded: function(){
+		return window.theme && this.isstylesheetloaded;
+	},
+
 	markSelectedVariant: function(){
 		var variant = this.getVariant();
 		var select = document.querySelector( '#select-variant' );
@@ -35,6 +40,13 @@ var variants = {
 		if( variant && select.value != variant ){
 			select.value = variant;
 		}
+		var interval_id = setInterval( function(){
+			if( this.isVariantLoaded() ){
+				clearInterval( interval_id );
+				initMermaid( true );
+				initSwagger( true );
+			}
+		}.bind( this ), 25 );
 		// remove selection, because if some uses an arrow navigation"
 		// by pressing the left or right cursor key, we will automatically
 		// select a different style
@@ -121,7 +133,6 @@ var variants = {
 				this.saveCustomVariant();
 			}
 		}.bind( this ), 25 );
-
 	},
 
 	resetVariant: function(){
@@ -136,6 +147,10 @@ var variants = {
 		}
 	},
 
+	onLoadStylesheet: function(){
+		variants.isstylesheetloaded = true;
+	},
+
 	switchStylesheet: function( variant, without_check ){
 		var link = document.querySelector( '#variant-style' );
 		if( !link ){
@@ -143,7 +158,15 @@ var variants = {
 		}
 		var old_path = link.getAttribute( 'href' );
 		var new_path = this.generateVariantPath( variant, old_path );
-		link.setAttribute( 'href', new_path );
+		this.isstylesheetloaded = false;
+
+		// Chrome needs a new element to trigger the load callback again
+		var new_link = document.createElement( 'link' );
+		new_link.id = 'variant-style';
+		new_link.rel = 'stylesheet';
+		new_link.onload = this.onLoadStylesheet;
+		new_link.setAttribute( 'href', new_path );
+		link.parentNode.replaceChild( new_link, link );
 	},
 
 	changeVariant: function( variant ){
@@ -370,6 +393,7 @@ var variants = {
 		this.styleGraphGroup( '#mainheadings', 'MAIN-BG-color' );
 		this.styleGraphGroup( '#inlinecode', 'CODE-INLINE-BG-color' );
 		this.styleGraphGroup( '#blockcode', 'CODE-BLOCK-BG-color' );
+		this.styleGraphGroup( '#thirdparty', 'MAIN-BG-color' );
 		this.styleGraphGroup( '#coloredboxes', 'BOX-BG-color' );
 		this.styleGraphGroup( '#menu', 'MENU-SECTIONS-BG-color' );
 		this.styleGraphGroup( '#menuheader', 'MENU-HEADER-BG-color' );
@@ -433,6 +457,10 @@ var variants = {
 			'      direction LR\n' +
 					g_groups[ 'code blocks' ].reduce( function( a, e ){ return a + '      ' + this.generateGraphGroupedEdge( e ) + '\n'; }.bind( this ), '' ) +
 			'    end\n' +
+			'    subgraph thirdparty["3rd party"]\n' +
+			'      direction LR\n' +
+					g_groups[ '3rd party' ].reduce( function( a, e ){ return a + '      ' + this.generateGraphGroupedEdge( e ) + '\n'; }.bind( this ), '' ) +
+			'    end\n' +
 			'    subgraph coloredboxes["colored boxes"]\n' +
 			'      direction LR\n' +
 					g_groups[ 'colored boxes' ].reduce( function( a, e ){ return a + '      ' + this.generateGraphGroupedEdge( e ) + '\n'; }.bind( this ), '' ) +
@@ -461,6 +489,16 @@ var variants = {
 		{ name: 'MAIN-TITLES-H5-color',                  group: 'headings',      fallback: 'MAIN-TITLES-H4-color',        tooltip: 'text color of h5-h6 titles', },
 		{ name: 'MAIN-TITLES-H6-color',                  group: 'headings',      fallback: 'MAIN-TITLES-H5-color',        tooltip: 'text color of h6 titles', },
 
+		{ name: 'MAIN-font',                             group: 'content',        default: '"Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif', tooltip: 'text font of content and h1 titles', },
+
+		{ name: 'MAIN-TITLES-TEXT-font',                 group: 'headings',      fallback: 'MAIN-font',                   tooltip: 'text font of h2-h6 titles and transparent box titles', },
+		{ name: 'MAIN-TITLES-H1-font',                   group: 'headings',      fallback: 'MAIN-font',                   tooltip: 'text font of h1 titles', },
+		{ name: 'MAIN-TITLES-H2-font',                   group: 'headings',      fallback: 'MAIN-TITLES-TEXT-font',       tooltip: 'text font of h2-h6 titles', },
+		{ name: 'MAIN-TITLES-H3-font',                   group: 'headings',      fallback: 'MAIN-TITLES-H2-font',         tooltip: 'text font of h3-h6 titles', },
+		{ name: 'MAIN-TITLES-H4-font',                   group: 'headings',      fallback: 'MAIN-TITLES-H3-font',         tooltip: 'text font of h4-h6 titles', },
+		{ name: 'MAIN-TITLES-H5-font',                   group: 'headings',      fallback: 'MAIN-TITLES-H4-font',         tooltip: 'text font of h5-h6 titles', },
+		{ name: 'MAIN-TITLES-H6-font',                   group: 'headings',      fallback: 'MAIN-TITLES-H5-font',         tooltip: 'text font of h6 titles', },
+
 		{ name: 'CODE-BLOCK-color',                      group: 'code blocks',    default: '#000000',                     tooltip: 'fallback text color of block code; should be adjusted to your selected chroma style', },
 		{ name: 'CODE-BLOCK-BG-color',                   group: 'code blocks',    default: '#f8f8f8',                     tooltip: 'fallback background color of block code; should be adjusted to your selected chroma style', },
 		{ name: 'CODE-BLOCK-BORDER-color',               group: 'code blocks',   fallback: 'CODE-BLOCK-BG-color',         tooltip: 'border color of block code', },
@@ -468,6 +506,11 @@ var variants = {
 		{ name: 'CODE-INLINE-color',                     group: 'inline code',    default: '#5e5e5e',                     tooltip: 'text color of inline code', },
 		{ name: 'CODE-INLINE-BG-color',                  group: 'inline code',    default: '#fffae9',                     tooltip: 'background color of inline code', },
 		{ name: 'CODE-INLINE-BORDER-color',              group: 'inline code',    default: '#fbf0cb',                     tooltip: 'border color of inline code', },
+
+		{ name: 'CODE-font',                             group: 'content',        default: '"Consolas", menlo, monospace', tooltip: 'text font of code', },
+
+		{ name: 'MERMAID-theme',                         group: '3rd party',      default: 'default',                     tooltip: 'name of the default Mermaid theme for this variant, can be overridden in config.toml', },
+		{ name: 'SWAGGER-theme',                         group: '3rd party',      default: 'default',                     tooltip: 'name of the default Swagger theme for this variant, can be overridden in config.toml', },
 
 		{ name: 'MENU-HEADER-BG-color',                  group: 'header',         default: '#7dc903',                     tooltip: 'background color of menu header', },
 		{ name: 'MENU-HEADER-BORDER-color',              group: 'header',        fallback: 'MENU-HEADER-BG-color',        tooltip: 'separator color of menu header', },

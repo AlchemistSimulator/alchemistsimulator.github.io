@@ -3,6 +3,9 @@
 }
 #body {
     margin-left: 0;
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
 }
 #body #navigation {
     display: none;
@@ -69,8 +72,15 @@ pre {
 hr{
     border-bottom: 1px solid #ddd;
 }
+body,
+#body,
+#body-inner {
+    overflow: visible !important; /* turn off limitations for perfect scrollbar */
+}
 #body-inner.chapter h1 {
     border-bottom: 1px solid #ddd;
+    margin-bottom: 2rem;
+    padding-bottom: .75rem;
 }
 .footline {
     /* in print mode show footer line to signal reader the end of document */
@@ -101,6 +111,9 @@ hr{
     /* the header is sticky which is not suitable for print; */
     position: inherit; /* IE11 doesn't know "initial" here */
 }
+#topbar > div {
+    background-color: #ffffff; /* IE11 doesn't know "initial" here */
+}
 #body .tab-nav-button:not(.active) {
     opacity: .5;
 }
@@ -119,6 +132,12 @@ div.box {
 }
 div.box > .box-content {
     background-color: white;
+}
+rapi-doc{
+    /* adjust rapi-doc internals to fill out available space */
+    font-size: 4pt;
+    margin-left: -12px;
+    width: calc( 100% + 12px + 8px );
 }
 .btn-default,
 #body .tab-nav-button {

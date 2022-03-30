@@ -3,24 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.94.2" />
-    <meta name="generator" content="Relearn 3.1.0&#43;tip">
+    <meta name="generator" content="Hugo 0.96.0" />
+    <meta name="generator" content="Relearn 3.3.0&#43;tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <title>gps :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../tags/gps/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../images/logo.svg?1647432180" type="image/svg+xml">
-    <link href="../../css/nucleus.css?1647432180" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1647432180" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1647432180" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1647432180" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1647432180" rel="stylesheet">
-    <link href="../../css/theme.css?1647432180" rel="stylesheet">
-    <link id="variant-style" href="../../css/theme-relearn.css?1647432180" rel="stylesheet">
-    <link href="../../css/variant.css?1647432180" rel="stylesheet">
-    <link href="../../css/theme-relearn-light.css?1647432180" rel="stylesheet" media="print">
-    <link href="../../css/print.css?1647432180" rel="stylesheet" media="print">
-    <script src="../../js/variant.js?1647432180"></script>
+    <link rel="icon" href="../../images/logo.svg?1648647352" type="image/svg+xml">
+    <link href="../../css/nucleus.css?1648647352" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1648647352" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1648647352" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1648647352" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1648647352" rel="stylesheet">
+    <link href="../../css/theme.css?1648647352" rel="stylesheet">
+    <link href="../../css/theme-relearn.css?1648647352" rel="stylesheet" id="variant-style">
+    <link href="../../css/variant.css?1648647352" rel="stylesheet">
+    <link href="../../css/theme-relearn-light.css?1648647352" rel="stylesheet" media="print">
+    <link href="../../css/print.css?1648647352" rel="stylesheet" media="print">
+    <script src="../../js/variant.js?1648647352"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
@@ -36,7 +36,7 @@
       var baseUriFull='https:\/\/alchemistsimulator.github.io/';
       variants.init( [ 'relearn' ] );
     </script>
-    <script src="../../js/jquery.min.js?1647432180"></script>
+    <script src="../../js/jquery.min.js?1648647352"></script>
   </head>
   <body class="mobile-support" data-url="../../tags/gps/">
     <div id="body" class="default-animation">
@@ -92,9 +92,9 @@
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../js/lunr.min.js?1647432180"></script>
-        <script src="../../js/auto-complete.js?1647432180"></script>
-        <script src="../../js/search.js?1647432180"></script>
+        <script src="../../js/lunr.min.js?1648647352"></script>
+        <script src="../../js/auto-complete.js?1648647352"></script>
+        <script src="../../js/search.js?1648647352"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -205,7 +205,7 @@
             <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 14.0.2</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 14.1.0</strong></div>
 <br>
 <a
     class="github-button"
@@ -238,16 +238,23 @@ Fork
         </div>
       </div>
     </aside>
-    <script src="../../js/clipboard.min.js?1647432180"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1647432180"></script>
-    <script src="../../js/jquery.svg.pan.zoom.js?1647432180"></script>
-    <script src="../../js/featherlight.min.js?1647432180"></script>
-    <script src="../../js/mermaid.min.js?1647432180"></script>
+    <script src="../../js/clipboard.min.js?1648647352"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1648647352"></script>
+    <script src="../../js/featherlight.min.js?1648647352"></script>
+    <script src="../../js/jquery.svg.pan.zoom.js?1648647352"></script>
+    <script src="../../js/mermaid.min.js?1648647352"></script>
     <script>
-      if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
-        mermaid.mermaidAPI.initialize( Object.assign( { "securityLevel": "antiscript" }, JSON.parse("{ \"startOnLoad\": true }"), { startOnLoad: false } ) );
+      function useMermaid( config ){
+        if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
+          mermaid.initialize( Object.assign( { "securityLevel": "antiscript", "startOnLoad": false  }, config ) );
+          if( config.theme ){
+            var write_style = variants.findLoadedStylesheet( 'variant-style' );
+            write_style.setProperty( '--CONFIG-MERMAID-theme', config.theme );
+          }
+        }
       }
+      useMermaid( JSON.parse("{}") );
     </script>
-    <script src="../../js/theme.js?1647432180"></script>
+    <script src="../../js/theme.js?1648647352"></script>
   </body>
 </html>
