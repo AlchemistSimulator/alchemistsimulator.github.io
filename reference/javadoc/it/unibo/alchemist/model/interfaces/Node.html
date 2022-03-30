@@ -342,7 +342,7 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Node.html#asPropertyOrNull(Class)>asPropertyOrNull</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html>Class</a>&lt;in <a href=Node.html#asPropertyOrNull(Class)>C</a>&gt; superType) </code>
                                             </th>
-                                            <td class="colLast">returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asPropertyOrNull(Class)>type</a>.</td>
+                                            <td class="colLast">returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asPropertyOrNull(Class)>superType</a>.</td>
                                         </tr>
                                         
                                         <tr id="i11" class="rowColor">
@@ -350,7 +350,7 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Node.html#asPropertyOrNull(KClass)>asPropertyOrNull</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html>KClass</a>&lt;in <a href=Node.html#asPropertyOrNull(KClass)>C</a>&gt; superType) </code>
                                             </th>
-                                            <td class="colLast">returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asPropertyOrNull(KClass)>type</a>.</td>
+                                            <td class="colLast">returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asPropertyOrNull(KClass)>superType</a>.</td>
                                         </tr>
                                         
                                         <tr id="i12" class="altColor">
@@ -358,7 +358,7 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Node.html#asProperty(KClass)>asProperty</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html>KClass</a>&lt;<a href=Node.html#asProperty(KClass)>C</a>&gt; superType) </code>
                                             </th>
-                                            <td class="colLast">returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asProperty(KClass)>type</a>.</td>
+                                            <td class="colLast">returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asProperty(KClass)>superType</a>.</td>
                                         </tr>
                                         
                                         <tr id="i13" class="rowColor">
@@ -366,7 +366,7 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Node.html#asProperty(Class)>asProperty</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html>Class</a>&lt;<a href=Node.html#asProperty(Class)>C</a>&gt; superType) </code>
                                             </th>
-                                            <td class="colLast">returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asProperty(Class)>type</a>.</td>
+                                            <td class="colLast">returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asProperty(Class)>superType</a>.</td>
                                         </tr>
                                         
                                         <tr id="i14" class="altColor">
@@ -396,7 +396,7 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                         <tr id="i17" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=NodeProperty.html>NodeProperty</a>&lt;<a href=Node.html>T</a>&gt;&gt;</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Node.html#getCapabilities()>getCapabilities</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=Node.html#getProperties()>getProperties</a>() </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -468,7 +468,16 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                     <li class="blockList">
                                         <h4>addReaction</h4>
                                         <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=Node.html#addReaction(Reaction)>addReaction</a>(<a href=Reaction.html>Reaction</a>&lt;<a href=Node.html>T</a>&gt; reactionToAdd)</pre>
-                                        <div class="block"><p>Adds a reaction to this node. The reaction is added only in the node, but not in the Simulation scheduler, so it will never be executed. To add the reaction also in the scheduler (and start to execute it), you have to call also the method Simulation.reactionAdded.</p></div>
+                                        <div class="block"><p>Adds a reaction to this node. The reaction is added only in the node, but not in the <a href=../../core/interfaces/Simulation.html>it.unibo.alchemist.core.interfaces.Simulation</a> scheduler, so it will never be executed. To add the reaction also in the scheduler (and start to execute it), you have to call also the method it.unibo.alchemist.core.interfaces.Simulation.reactionAdded.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>reactionToAdd</code> - the reaction to be added</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -509,6 +518,15 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=Node.html#contains(Molecule)>contains</a>(<a href=Molecule.html>Molecule</a> molecule)</pre>
                                         <div class="block"><p>Tests whether a node contains a <a href=Molecule.html>Molecule</a>.</p></div>
                                         
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>molecule</code> - the molecule to check</dd>
+                                            
+                                            
+                                        </dl>
+                                        
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
@@ -523,6 +541,15 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                         <h4>getConcentration</h4>
                                         <pre class="methodSignature"> abstract <a href=Node.html>T</a> <a href=Node.html#getConcentration(Molecule)>getConcentration</a>(<a href=Molecule.html>Molecule</a> molecule)</pre>
                                         <div class="block"><p>Calculates the concentration of a molecule.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>molecule</code> - the molecule whose concentration will be returned</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -569,6 +596,15 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                         <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=Node.html#removeConcentration(Molecule)>removeConcentration</a>(<a href=Molecule.html>Molecule</a> moleculeToRemove)</pre>
                                         <div class="block"></div>
                                         
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>moleculeToRemove</code> - the molecule that should be removed</dd>
+                                            
+                                            
+                                        </dl>
+                                        
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
@@ -582,7 +618,16 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                     <li class="blockList">
                                         <h4>removeReaction</h4>
                                         <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=Node.html#removeReaction(Reaction)>removeReaction</a>(<a href=Reaction.html>Reaction</a>&lt;<a href=Node.html>T</a>&gt; reactionToRemove)</pre>
-                                        <div class="block"><p>Removes a reaction from this node. The reaction is removed only in the node, but not in the Simulation scheduler, so the scheduler will continue to execute the reaction. To remove the reaction also in the scheduler (and stop to execute it), you have to call also the method Simulation.reactionRemoved.</p></div>
+                                        <div class="block"><p>Removes a reaction from this node. The reaction is removed only in the node, but not in the <a href=../../core/interfaces/Simulation.html>it.unibo.alchemist.core.interfaces.Simulation</a> scheduler, so the scheduler will continue to execute the reaction. To remove the reaction also in the scheduler (and stop to execute it), you have to call also the method it.unibo.alchemist.core.interfaces.Simulation.reactionRemoved.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>reactionToRemove</code> - the reaction to be removed</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -598,6 +643,19 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                         <h4>setConcentration</h4>
                                         <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=Node.html#setConcentration(Molecule,T)>setConcentration</a>(<a href=Molecule.html>Molecule</a> molecule, <a href=Node.html>T</a> concentration)</pre>
                                         <div class="block"><p>Sets the concentration of mol to c.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>molecule</code> - the molecule you want to set the concentration</dd>
+                                            
+                                            
+                                            
+                                            <dd><code>concentration</code> - the concentration you want for mol</dd>
+                                            
+                                            
+                                        </dl>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -636,7 +694,7 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                     <li class="blockList">
                                         <h4>asPropertyOrNull</h4>
                                         <pre class="methodSignature"> &lt;C extends <a href=NodeProperty.html>NodeProperty</a>&lt;<a href=Node.html>T</a>&gt;&gt; <a href=Node.html#asPropertyOrNull(Class)>C</a> <a href=Node.html#asPropertyOrNull(Class)>asPropertyOrNull</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html>Class</a>&lt;in <a href=Node.html#asPropertyOrNull(Class)>C</a>&gt; superType)</pre>
-                                        <div class="block"><p>returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asPropertyOrNull(Class)>type</a>.</p></div>
+                                        <div class="block"><p>returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asPropertyOrNull(Class)>superType</a>.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
@@ -660,7 +718,7 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                     <li class="blockList">
                                         <h4>asPropertyOrNull</h4>
                                         <pre class="methodSignature"> &lt;C extends <a href=NodeProperty.html>NodeProperty</a>&lt;<a href=Node.html>T</a>&gt;&gt; <a href=Node.html#asPropertyOrNull(KClass)>C</a> <a href=Node.html#asPropertyOrNull(KClass)>asPropertyOrNull</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html>KClass</a>&lt;in <a href=Node.html#asPropertyOrNull(KClass)>C</a>&gt; superType)</pre>
-                                        <div class="block"><p>returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asPropertyOrNull(KClass)>type</a>.</p></div>
+                                        <div class="block"><p>returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asPropertyOrNull(KClass)>superType</a>.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
@@ -684,7 +742,7 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                     <li class="blockList">
                                         <h4>asProperty</h4>
                                         <pre class="methodSignature"> &lt;C extends <a href=NodeProperty.html>NodeProperty</a>&lt;<a href=Node.html>T</a>&gt;&gt; <a href=Node.html#asProperty(KClass)>C</a> <a href=Node.html#asProperty(KClass)>asProperty</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html>KClass</a>&lt;<a href=Node.html#asProperty(KClass)>C</a>&gt; superType)</pre>
-                                        <div class="block"><p>returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asProperty(KClass)>type</a>.</p></div>
+                                        <div class="block"><p>returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asProperty(KClass)>superType</a>.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
@@ -708,7 +766,7 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                     <li class="blockList">
                                         <h4>asProperty</h4>
                                         <pre class="methodSignature"> &lt;C extends <a href=NodeProperty.html>NodeProperty</a>&lt;<a href=Node.html>T</a>&gt;&gt; <a href=Node.html#asProperty(Class)>C</a> <a href=Node.html#asProperty(Class)>asProperty</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html>Class</a>&lt;<a href=Node.html#asProperty(Class)>C</a>&gt; superType)</pre>
-                                        <div class="block"><p>returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asProperty(Class)>type</a>.</p></div>
+                                        <div class="block"><p>returns a <a href=NodeProperty.html>NodeProperty</a> of the provided <a href=Node.html#asProperty(Class)>superType</a>.</p></div>
                                         
                                         <dl>
                                             <dt><span class="paramLabel">Parameters:</span></dt>
@@ -768,15 +826,15 @@ public interface <span class="typeNameLabel"><a href=Node.html>Node</a>&lt;T ext
                                     </li>
                                 </ul>
                                 
-                                <a id="getCapabilities()">
+                                <a id="getProperties()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>getCapabilities</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=NodeProperty.html>NodeProperty</a>&lt;<a href=Node.html>T</a>&gt;&gt; <a href=Node.html#getCapabilities()>getCapabilities</a>()</pre>
+                                        <h4>getProperties</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=NodeProperty.html>NodeProperty</a>&lt;<a href=Node.html>T</a>&gt;&gt; <a href=Node.html#getProperties()>getProperties</a>()</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
