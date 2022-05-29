@@ -251,14 +251,70 @@ public interface <span class="typeNameLabel"><a href=PhysicalPedestrian.html>Phy
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=PhysicalPedestrian.html#checkAndPossiblyFall()>checkAndPossiblyFall</a>() </code>
+                                            </th>
+                                            <td class="colLast">Turn this node into a fallen pedestrian if it <a href=PhysicalPedestrian.html#shouldFall(List)>shouldFall</a>.</td>
+                                        </tr>
+                                        
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=PhysicalPedestrian.html#shouldFall(List)>shouldFall</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=PhysicalPedestrian.html>P</a>&gt; pushingForces) </code>
+                                            </th>
+                                            <td class="colLast">Determines if this pedestrian subject to <a href=PhysicalPedestrian.html#shouldFall(List)>pushingForces</a> should fall.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=PhysicalPedestrian.html>P</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=PhysicalPedestrian.html#repulsionForce(Node)>repulsionForce</a>(<a href=../Node.html>Node</a>&lt;<a href=PhysicalPedestrian.html>T</a>&gt; other) </code>
+                                            <th class="colSecond" scope="row"><code><a href=PhysicalPedestrian.html#repulse(Node)>repulse</a>(<a href=../Node.html>Node</a>&lt;<a href=PhysicalPedestrian.html>T</a>&gt; other) </code>
                                             </th>
                                             <td class="colLast">Computes the repulsion force caused by a node that entered the comfortArea.</td>
                                         </tr>
                                         
-                                        <tr id="i1" class="rowColor">
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=PhysicalPedestrian.html>P</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=PhysicalPedestrian.html#avoid(Node)>avoid</a>(<a href=../Node.html>Node</a>&lt;<a href=PhysicalPedestrian.html>T</a>&gt; other) </code>
+                                            </th>
+                                            <td class="colLast">Computes the repulsion force caused by a node that entered the rectangleOfInfluence.</td>
+                                        </tr>
+                                        
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=PhysicalPedestrian.html>P</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=PhysicalPedestrian.html#repulsionForces()>repulsionForces</a>() </code>
+                                            </th>
+                                            <td class="colLast">Computes the total repulsion force this node is subject to.</td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=PhysicalPedestrian.html>P</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=PhysicalPedestrian.html#avoidanceForces()>avoidanceForces</a>() </code>
+                                            </th>
+                                            <td class="colLast">Computes the total avoidance force this node is subject to.</td>
+                                        </tr>
+                                        
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=PhysicalPedestrian.html>P</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=PhysicalPedestrian.html#fallenAgentAvoidanceForces()>fallenAgentAvoidanceForces</a>() </code>
+                                            </th>
+                                            <td class="colLast">Computes the avoidance force from a fallen pedestrian.</td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=PhysicalPedestrian.html#isFallen()>isFallen</a>() </code>
+                                            </th>
+                                            <td class="colLast">Whether the pedestrian has fallen and it is thus an obstacle.</td>
+                                        </tr>
+                                        
+                                        <tr id="i8" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=PhysicalPedestrian.html#getComfortRay()>getComfortRay</a>() </code>
@@ -266,7 +322,7 @@ public interface <span class="typeNameLabel"><a href=PhysicalPedestrian.html>Phy
                                             <td class="colLast">The comfort ray of this pedestrian, this is added to the radius of its shape to obtain the comfortArea.</td>
                                         </tr>
                                         
-                                        <tr id="i2" class="altColor">
+                                        <tr id="i9" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=../geometry/GeometricShape.html>GeometricShape</a>&lt;<a href=PhysicalPedestrian.html>P</a>, <a href=PhysicalPedestrian.html>A</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=PhysicalPedestrian.html#getComfortArea()>getComfortArea</a>() </code>
@@ -274,7 +330,15 @@ public interface <span class="typeNameLabel"><a href=PhysicalPedestrian.html>Phy
                                             <td class="colLast">The comfort area of this pedestrian, it's a circle of radius shape.</td>
                                         </tr>
                                         
-                                        <tr id="i3" class="rowColor">
+                                        <tr id="i10" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=../geometry/GeometricShape.html>GeometricShape</a>&lt;<a href=PhysicalPedestrian.html>P</a>, <a href=PhysicalPedestrian.html>A</a>&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=PhysicalPedestrian.html#getRectangleOfInfluence()>getRectangleOfInfluence</a>() </code>
+                                            </th>
+                                            <td class="colLast">Rectangle of influence.</td>
+                                        </tr>
+                                        
+                                        <tr id="i11" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=../Node.html>Node</a>&lt;<a href=PhysicalPedestrian.html>T</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=PhysicalPedestrian.html#getNode()>getNode</a>() </code>
@@ -338,16 +402,121 @@ public interface <span class="typeNameLabel"><a href=PhysicalPedestrian.html>Phy
                             </a>
                                 <h3>Method Detail</h3>
                                 
-                                <a id="repulsionForce(Node)">
+                                <a id="checkAndPossiblyFall()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>repulsionForce</h4>
-                                        <pre class="methodSignature"> abstract <a href=PhysicalPedestrian.html>P</a> <a href=PhysicalPedestrian.html#repulsionForce(Node)>repulsionForce</a>(<a href=../Node.html>Node</a>&lt;<a href=PhysicalPedestrian.html>T</a>&gt; other)</pre>
+                                        <h4>checkAndPossiblyFall</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=PhysicalPedestrian.html#checkAndPossiblyFall()>checkAndPossiblyFall</a>()</pre>
+                                        <div class="block"><p>Turn this node into a fallen pedestrian if it <a href=PhysicalPedestrian.html#shouldFall(List)>shouldFall</a>.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="shouldFall(List)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>shouldFall</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=PhysicalPedestrian.html#shouldFall(List)>shouldFall</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=PhysicalPedestrian.html>P</a>&gt; pushingForces)</pre>
+                                        <div class="block"><p>Determines if this pedestrian subject to <a href=PhysicalPedestrian.html#shouldFall(List)>pushingForces</a> should fall. According to the work of <a href=https://bit.ly/3e3C7Tb.html>Pelechano et al</a> this should happen when the majority of pushing forces affecting one individual are approximately in the same direction and the sum of forces have a magnitude high enough to make it lose equilibrium.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="repulse(Node)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>repulse</h4>
+                                        <pre class="methodSignature"> abstract <a href=PhysicalPedestrian.html>P</a> <a href=PhysicalPedestrian.html#repulse(Node)>repulse</a>(<a href=../Node.html>Node</a>&lt;<a href=PhysicalPedestrian.html>T</a>&gt; other)</pre>
                                         <div class="block"><p>Computes the repulsion force caused by a node that entered the comfortArea. This is derived from the work of <a href=https://bit.ly/3e3C7Tb.html>Pelechano et al</a>.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="avoid(Node)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>avoid</h4>
+                                        <pre class="methodSignature"> abstract <a href=PhysicalPedestrian.html>P</a> <a href=PhysicalPedestrian.html#avoid(Node)>avoid</a>(<a href=../Node.html>Node</a>&lt;<a href=PhysicalPedestrian.html>T</a>&gt; other)</pre>
+                                        <div class="block"><p>Computes the repulsion force caused by a node that entered the rectangleOfInfluence. This is derived from the work of <a href=https://bit.ly/3e3C7Tb.html>Pelechano et al</a>.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="repulsionForces()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>repulsionForces</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=PhysicalPedestrian.html>P</a>&gt; <a href=PhysicalPedestrian.html#repulsionForces()>repulsionForces</a>()</pre>
+                                        <div class="block"><p>Computes the total repulsion force this node is subject to.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="avoidanceForces()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>avoidanceForces</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=PhysicalPedestrian.html>P</a>&gt; <a href=PhysicalPedestrian.html#avoidanceForces()>avoidanceForces</a>()</pre>
+                                        <div class="block"><p>Computes the total avoidance force this node is subject to.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="fallenAgentAvoidanceForces()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>fallenAgentAvoidanceForces</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=PhysicalPedestrian.html>P</a>&gt; <a href=PhysicalPedestrian.html#fallenAgentAvoidanceForces()>fallenAgentAvoidanceForces</a>()</pre>
+                                        <div class="block"><p>Computes the avoidance force from a fallen pedestrian.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="isFallen()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isFallen</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=PhysicalPedestrian.html#isFallen()>isFallen</a>()</pre>
+                                        <div class="block"><p>Whether the pedestrian has fallen and it is thus an obstacle.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -378,6 +547,21 @@ public interface <span class="typeNameLabel"><a href=PhysicalPedestrian.html>Phy
                                         <h4>getComfortArea</h4>
                                         <pre class="methodSignature"> abstract <a href=../geometry/GeometricShape.html>GeometricShape</a>&lt;<a href=PhysicalPedestrian.html>P</a>, <a href=PhysicalPedestrian.html>A</a>&gt; <a href=PhysicalPedestrian.html#getComfortArea()>getComfortArea</a>()</pre>
                                         <div class="block"><p>The comfort area of this pedestrian, it's a circle of radius shape.radius + comfortRay.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getRectangleOfInfluence()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getRectangleOfInfluence</h4>
+                                        <pre class="methodSignature"> abstract <a href=../geometry/GeometricShape.html>GeometricShape</a>&lt;<a href=PhysicalPedestrian.html>P</a>, <a href=PhysicalPedestrian.html>A</a>&gt; <a href=PhysicalPedestrian.html#getRectangleOfInfluence()>getRectangleOfInfluence</a>()</pre>
+                                        <div class="block"><p>Rectangle of influence. When a pedestrian enters this area, the node could experience a tangential avoidance force. See <a href=PhysicalPedestrian.html#avoid(Node)>avoid</a>.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
