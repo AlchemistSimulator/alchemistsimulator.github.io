@@ -9,17 +9,18 @@
     <meta name="author" content="Danilo Pianini">
     <title>Memory leaks under Linux :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../../howtos/workarounds/max-map-count/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../../images/logo.svg?1653846856" type="image/svg+xml">
-    <link href="../../../css/nucleus.css?1653846856" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1653846856" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1653846856" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1653846856" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1653846856" rel="stylesheet">
-    <link href="../../../css/theme.css?1653846856" rel="stylesheet">
-    <link href="../../../css/theme-relearn.css?1653846856" rel="stylesheet" id="variant-style">
-    <link href="../../../css/variant.css?1653846856" rel="stylesheet">
-    <link href="../../../css/print.css?1653846856" rel="stylesheet" media="print">
-    <script src="../../../js/variant.js?1653846856"></script>
+    <link rel="icon" href="../../../images/logo.svg?1653923207" type="image/svg+xml">
+    <link href="../../../css/nucleus.css?1653923207" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1653923207" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1653923207" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1653923207" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1653923207" rel="stylesheet">
+    <link href="../../../css/theme.css?1653923207" rel="stylesheet">
+    <link href="../../../css/theme-relearn.css?1653923207" rel="stylesheet" id="variant-style">
+    <link href="../../../css/ie.css?1653923207" rel="stylesheet">
+    <link href="../../../css/variant.css?1653923207" rel="stylesheet">
+    <link href="../../../css/print.css?1653923207" rel="stylesheet" media="print">
+    <script src="../../../js/variant.js?1653923207"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
@@ -35,7 +36,7 @@
       var baseUriFull='https:\/\/alchemistsimulator.github.io/';
       variants.init( [ 'relearn' ] );
     </script>
-    <script src="../../../js/jquery.min.js?1653846856"></script>
+    <script src="../../../js/jquery.min.js?1653923207"></script>
   </head>
   <body class="mobile-support" data-url="../../../howtos/workarounds/max-map-count/">
     <div id="body" class="default-animation">
@@ -100,8 +101,8 @@
 <p>When Alchemist is used on computers with a large amount of memory and parallelism,
 additional configuration might be required.</p>
 
-<div class="box notices info">
-    <div class="box-label"><i class="fas fa-info-circle fa-fw"></i> Info</div>
+<div class="box notices cstyle info">
+    <div class="box-label"><i class="fa-fw fas fa-info-circle"></i> Info</div>
     <div class="box-content">
 <p>These problems have more to do with the way memory allocation on Linux and the JVM works than with Alchemist itself.
 They are not memory leaks in Alchemist (hence the reason why they do not happen with smaller memory sizes).</p>
@@ -120,8 +121,8 @@ They are not memory leaks in Alchemist (hence the reason why they do not happen 
 [warning][gc] limit could lead to a premature OutOfMemoryError being thrown, due to failure to map memory.
 </code></pre><h2 id="solution">Solution</h2>
 
-<div class="box notices warning">
-    <div class="box-label"><i class="fas fa-exclamation-triangle fa-fw"></i> Warning</div>
+<div class="box notices cstyle warning">
+    <div class="box-label"><i class="fa-fw fas fa-exclamation-triangle"></i> Warning</div>
     <div class="box-content">
 <p>The file <code>/proc/sys/vm/max_map_count</code> could be changed manually, but these changes won&rsquo;t persist reboots.</p>
     </div>
@@ -135,8 +136,8 @@ This can be done on a <strong>root</strong> shell via:</p>
 </span></span><span style="display:flex;"><span>sudo sh -c <span style="color:#5af78e">&#39;echo &#34;vm.max_map_count=&lt;custom max_map_count&gt;&#34; &gt; /etc/sysctl.d/99-vm-max-map-count.conf&#39;</span>
 </span></span><span style="display:flex;"><span>sudo sysctl --system
 </span></span></code></pre></div>
-<div class="box notices tip">
-    <div class="box-label"><i class="fas fa-lightbulb fa-fw"></i> Computing a &#34;good&#34; value for max_map_count</div>
+<div class="box notices cstyle tip">
+    <div class="box-label"><i class="fa-fw fas fa-lightbulb"></i> Computing a &#34;good&#34; value for max_map_count</div>
     <div class="box-content">
 <p>A reasonable estimation of the value is <strong>four times the amount of system RAM expressed in Megabytes</strong>
 (for instance vm.max_map_count=524288 for a system with 128GB RAM).</p>
@@ -182,9 +183,9 @@ This can be done on a <strong>root</strong> shell via:</p>
           <input data-search-input id="search-by" type="search" placeholder="Search...">
           <span data-search-clear=""><i class="fas fa-times"></i></span>
         </div>
-        <script src="../../../js/lunr.min.js?1653846856"></script>
-        <script src="../../../js/auto-complete.js?1653846856"></script>
-        <script src="../../../js/search.js?1653846856"></script>
+        <script src="../../../js/lunr.min.js?1653923207"></script>
+        <script src="../../../js/auto-complete.js?1653923207"></script>
+        <script src="../../../js/search.js?1653923207"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -295,7 +296,7 @@ This can be done on a <strong>root</strong> shell via:</p>
             <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 20.0.0</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 20.0.1</strong></div>
 <br>
 <a
     class="github-button"
@@ -328,11 +329,11 @@ Fork
         </div>
       </div>
     </aside>
-    <script src="../../../js/clipboard.min.js?1653846856"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1653846856"></script>
-    <script src="../../../js/featherlight.min.js?1653846856"></script>
-    <script src="../../../js/jquery.svg.pan.zoom.js?1653846856"></script>
-    <script src="../../../js/mermaid.min.js?1653846856"></script>
+    <script src="../../../js/clipboard.min.js?1653923207"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1653923207"></script>
+    <script src="../../../js/featherlight.min.js?1653923207"></script>
+    <script src="../../../js/jquery.svg.pan.zoom.js?1653923207"></script>
+    <script src="../../../js/mermaid.min.js?1653923207"></script>
     <script>
       function useMermaid( config ){
         if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
@@ -345,6 +346,6 @@ Fork
       }
       useMermaid( JSON.parse("{}") );
     </script>
-    <script src="../../../js/theme.js?1653846856"></script>
+    <script src="../../../js/theme.js?1653923207"></script>
   </body>
 </html>
