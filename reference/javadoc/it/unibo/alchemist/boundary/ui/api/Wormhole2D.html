@@ -1,0 +1,788 @@
+<!DOCTYPE HTML>
+<!-- NewPage -->
+<html lang="en"><head>
+    <title>Wormhole2D </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="dc.created" content="2020-03-25">
+    <link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
+    <link rel="stylesheet" type="text/css" href="../../../../../../dokka-javadoc-stylesheet.css" title="Style">
+    <link rel="stylesheet" type="text/css" href="../../../../../../jquery/jquery-ui.css" title="Style">
+    <script type="text/javascript" src="../../../../../../jquery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../../../../../../jquery/jquery-migrate-3.0.1.js"></script>
+    <script type="text/javascript" src="../../../../../../jquery/jquery-ui.js"></script>
+
+    <script type="text/javascript" src="../../../../../../search.js"></script>
+    <script async type="text/javascript" src="../../../../../../module-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../../package-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../../type-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../../member-search-index.js"></script>
+    <script async type="text/javascript" src="../../../../../../tag-search-index.js"></script>
+</head><body>
+<script type="text/javascript">
+var pathtoroot = "../../../../../../";
+</script>
+<noscript>
+    <div>JavaScript is disabled on your browser.</div>
+</noscript><header role="banner">
+    <nav role="navigation">
+        <div class="fixedNav">
+            <!-- ========= START OF TOP NAVBAR ======= -->
+            <div class="topNav"><a id="navbar.top">
+                <!--   -->
+            </a>
+                <div class="skipNav"><a href="#skip.navbar.top" title="Skip navigation links">Skip navigation links</a>
+                </div>
+                <a id="navbar.top.firstrow">
+                    <!--   -->
+                </a>
+                <ul class="navList" title="Navigation">
+    <li><a href="../../../../../../index.html">Overview</a></li>
+    
+    <li><a href="package-summary.html">Package</a></li>
+    
+    <li>Class</li>
+    
+    <li><a href="package-tree.html">Tree</a></li>
+    
+    <li><a href="../../../../../../deprecated.html">Deprecated</a></li>
+    <li><a href="../../../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
+</ul></div>
+            <div class="subNav">
+<ul class="navList" id="allclasses_navbar_top" style="display: block;">
+    <li><a href="../../../../../../allclasses.html">All&nbsp;Classes</a></li>
+</ul>
+
+<ul class="navListSearch">
+<li><label for="search">SEARCH:</label>
+<input type="text" id="search" value="search" class="ui-autocomplete-input" autocomplete="off" placeholder="Search">
+<input type="reset" id="reset" value="reset">
+</li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+</div>
+<a id="skip.navbar.top">
+<!--   -->
+</a></div><!-- ========= END OF TOP NAVBAR ========= -->
+        </div>
+        <div class="navPadding">&nbsp;</div>
+        <script type="text/javascript"><!--
+        $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
+        //-->
+        </script>
+    </nav>
+</header>
+
+<main role="main">
+    <div class="header">
+        <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html"></a></div>
+        <h2 title="Interface Wormhole2D" class="title">Interface Wormhole2D</h2>
+    </div>
+    <div class="contentContainer">
+        <!-- <ul class="inheritance">
+            <li>java.lang.Object</li>
+            <li>
+                <ul class="inheritance">
+                    <li>adaptation.Adaptation</li>
+                </ul>
+            </li>
+        </ul> TODO inheritance tree -->
+        <div class="description">
+            <ul class="blockList">
+                <li class="blockList">
+                    
+                    <dl>
+                        <dt>All Implemented Interfaces:</dt>
+                        <dd>
+                            
+                        </dd>
+                    </dl>
+                    
+                    <hr>
+                    <pre class="wrap-overflow">
+
+public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D</a>&lt;P extends <a href=../../../model/interfaces/Position2D.html>Position2D</a>&lt;out <a href=Wormhole2D.html>P</a>&gt;&gt;</span>
+
+                    </pre>
+                    <div class="block"><p>A Wormhole (in this context) is an entity that &quot;connects&quot; two worlds: the &quot;environment&quot; and the &quot;view&quot;. Above all it provides services to convert coordinates from the &quot;environment-space&quot; to the &quot;view-space&quot;. <code>IWormhole2D</code> is the type of a wormhole whose both environment and view are bi-dimensional spaces. Terminology: - &quot;Environment&quot; is the 'rectangle' we need to render ON the view. - &quot;View&quot; is a 'window' that let us see the environment. - &quot;Environment-space&quot; is the algebraic space on which 'lies' the environment. - &quot;View-space&quot; is the algebraic space on which 'lies' the view. - &quot;Env&quot; before a point's name =&gt; it refers to a point into the environment-space. - &quot;View&quot; before a point's name =&gt; it refers to a point into the view-space. - &quot;Position&quot; is the point of the view-space every transformation applied to the environment refers to: e.g. if I want to move the environment, I have to change the position; it is also the point the environment rotates around. - &quot;EnvOffset&quot; is the vector from (0; 0) into env-space to the left-bottom corner of the part of the environment we want to render. E.g. if I am representing a map with Earth-coordinates (16; 48), the intersection between the prime meridian and the equator is (0; 0), so I have to set the envOffset to (16; 48) in order to see the &quot;beginning&quot; of the map on the left-bottom corner of the view.</p></div>
+                </li>
+            </ul>
+        </div>
+        <div class="summary">
+            <ul class="blockList">
+                <li class="blockList">
+                <!-- ======== NESTED CLASS SUMMARY ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="nested.class.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Nested Class Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Class</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>public enum</code></td>
+                                            <th class="colSecond" scope="row"><code><a href="Wormhole2D.Mode.html">Wormhole2D.Mode</a></span></code>
+                                            </th>
+                                            <td class="colLast"><p>Wormhole mode.</p></td>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- =========== FIELD SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="field.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Field Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Field</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- ======== CONSTRUCTOR SUMMARY ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="constructor.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Constructor Summary</h3>
+                                <div class="memberSummary">
+                                    <table>
+                                        <caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+                                        <tbody>
+                                        <tr>
+                                            <th class="colFirst" scope="col">Constructor</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+
+                                        
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- =========== ENUM CONSTANT SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="enum.constant.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Enum Constant Summary</h3>
+                                <table class="memberSummary">
+                                    <caption><span>Enum Constants</span><span class="tabEnd">&nbsp;</span></caption>
+                                    <tr>
+                                        <th class="colFirst" scope="col">Enum Constant</th>
+                                        <th class="colLast" scope="col">Description</th>
+                                    </tr>
+                                    
+                                </table>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- ========== METHOD SUMMARY =========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="method.summary">
+                                <!--   -->
+                            </a>
+                                <h3>Method Summary</h3>
+                                <div class="memberSummary">
+                                    <div role="tablist" aria-orientation="horizontal">
+                                        <button role="tab" aria-selected="true" aria-controls="memberSummary_tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="activeTableTab">All Methods</button>
+                                        <!-- TODO: Instance and Concrete Methods #1118 -->
+                                    </div>
+                                    <div id="memberSummary_tabpanel" role="tabpanel">
+                                    <table aria-labelledby="t0">
+                                        <tr>
+                                            <th class="colFirst" scope="col">Modifier and Type</th>
+                                            <th class="colSecond" scope="col">Method</th>
+                                            <th class="colLast" scope="col">Description</th>
+                                        </tr>
+                                        
+                                        <tr id="i0" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=Wormhole2D.html>P</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Wormhole2D.html#getEnvPoint(Point)>getEnvPoint</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> viewPoint) </code>
+                                            </th>
+                                            <td class="colLast">Converts a point from the view-space to the env-space.</td>
+                                        </tr>
+                                        
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=Wormhole2D.Mode.html>Wormhole2D.Mode</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Wormhole2D.html#getMode()>getMode</a>() </code>
+                                            </th>
+                                            <td class="colLast">Gets the rendering mode.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Wormhole2D.html#getViewPoint(P)>getViewPoint</a>(<a href=Wormhole2D.html>P</a> envPoint) </code>
+                                            </th>
+                                            <td class="colLast">Converts a point from the env-space to the view-space.</td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Wormhole2D.html#getViewPosition()>getViewPosition</a>() </code>
+                                            </th>
+                                            <td class="colLast">Gets the Position.</td>
+                                        </tr>
+                                        
+                                        <tr id="i4" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/geom/Dimension2D.html>Dimension2D</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Wormhole2D.html#getViewSize()>getViewSize</a>() </code>
+                                            </th>
+                                            <td class="colLast">Gets the view's size.</td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code>abstract double</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Wormhole2D.html#getZoom()>getZoom</a>() </code>
+                                            </th>
+                                            <td class="colLast">Gets the zoom factor.</td>
+                                        </tr>
+                                        
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>abstract boolean</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Wormhole2D.html#isInsideView(Point)>isInsideView</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> viewPoint) </code>
+                                            </th>
+                                            <td class="colLast">Check if a point of the view-space is &quot;visible&quot;, i.e.</td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Wormhole2D.html#rotateAroundPoint(Point,double)>rotateAroundPoint</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> p, double a) </code>
+                                            </th>
+                                            <td class="colLast">Rotates around a point into the view-space.</td>
+                                        </tr>
+                                        
+                                        <tr id="i8" class="altColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Wormhole2D.html#setEnvPosition(P)>setEnvPosition</a>(<a href=Wormhole2D.html>P</a> envPoint) </code>
+                                            </th>
+                                            <td class="colLast">Sets the position to the view-point corresponding to <code>envPoint</code>.</td>
+                                        </tr>
+                                        
+                                        <tr id="i9" class="rowColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Wormhole2D.html#optimalZoom()>optimalZoom</a>() </code>
+                                            </th>
+                                            <td class="colLast">Automatically sets the zoom rate in order to make the environment entirely visible on the view.</td>
+                                        </tr>
+                                        
+                                        <tr id="i10" class="altColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Wormhole2D.html#setRotation(double)>setRotation</a>(double rad) </code>
+                                            </th>
+                                            <td class="colLast">Rotates the environment around the Position.</td>
+                                        </tr>
+                                        
+                                        <tr id="i11" class="rowColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Wormhole2D.html#setViewPosition(Point)>setViewPosition</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> viewPoint) </code>
+                                            </th>
+                                            <td class="colLast">Sets the Position to <code>viewPoint</code>.</td>
+                                        </tr>
+                                        
+                                        <tr id="i12" class="altColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Wormhole2D.html#setZoom(double)>setZoom</a>(double value) </code>
+                                            </th>
+                                            <td class="colLast">Changes the zoom factor.</td>
+                                        </tr>
+                                        
+                                        <tr id="i13" class="rowColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Wormhole2D.html#zoomOnPoint(Point,double)>zoomOnPoint</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> p, double z) </code>
+                                            </th>
+                                            <td class="colLast">Zooms on a point into the view-space.</td>
+                                        </tr>
+                                        
+                                        <tr id="i14" class="altColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Wormhole2D.html#center()>center</a>() </code>
+                                            </th>
+                                            <td class="colLast">Points the center of the view on the center of the environment.</td>
+                                        </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <ul class="blockList">
+                                
+                                    <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
+                                        <!--   -->
+                                    </a>
+                                        <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
+                                        <code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString,
+                                            wait, wait, wait</code></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                </li>
+            </ul>
+        </div>
+        <div class="details">
+            <ul class="blockList">
+                <li class="blockList">
+                    <!-- ========= CONSTRUCTOR DETAIL ======== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="constructor.detail">
+                                <!--   -->
+                            </a>
+                                <h3>Constructor Detail</h3>
+                                
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <!-- ============ METHOD DETAIL ========== -->
+                    
+                    <section role="region">
+                        <ul class="blockList">
+                            <li class="blockList"><a id="method.detail">
+                                <!--   -->
+                            </a>
+                                <h3>Method Detail</h3>
+                                
+                                <a id="getEnvPoint(Point)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getEnvPoint</h4>
+                                        <pre class="methodSignature"> abstract <a href=Wormhole2D.html>P</a> <a href=Wormhole2D.html#getEnvPoint(Point)>getEnvPoint</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> viewPoint)</pre>
+                                        <div class="block"><p>Converts a point from the view-space to the env-space.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>viewPoint</code> - is the <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> object whose coordinates are from view-space</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getMode()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getMode</h4>
+                                        <pre class="methodSignature"> abstract <a href=Wormhole2D.Mode.html>Wormhole2D.Mode</a> <a href=Wormhole2D.html#getMode()>getMode</a>()</pre>
+                                        <div class="block"><p>Gets the rendering mode.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getViewPoint(P)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getViewPoint</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> <a href=Wormhole2D.html#getViewPoint(P)>getViewPoint</a>(<a href=Wormhole2D.html>P</a> envPoint)</pre>
+                                        <div class="block"><p>Converts a point from the env-space to the view-space.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>envPoint</code> - is the <a href=../../../model/interfaces/Position2D.html>Position2D</a> object whose coordinates are from env-space</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getViewPosition()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getViewPosition</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> <a href=Wormhole2D.html#getViewPosition()>getViewPosition</a>()</pre>
+                                        <div class="block"><p>Gets the Position.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getViewSize()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getViewSize</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/geom/Dimension2D.html>Dimension2D</a> <a href=Wormhole2D.html#getViewSize()>getViewSize</a>()</pre>
+                                        <div class="block"><p>Gets the view's size.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getZoom()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getZoom</h4>
+                                        <pre class="methodSignature"> abstract double <a href=Wormhole2D.html#getZoom()>getZoom</a>()</pre>
+                                        <div class="block"><p>Gets the zoom factor.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="isInsideView(Point)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>isInsideView</h4>
+                                        <pre class="methodSignature"> abstract boolean <a href=Wormhole2D.html#isInsideView(Point)>isInsideView</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> viewPoint)</pre>
+                                        <div class="block"><p>Check if a point of the view-space is &quot;visible&quot;, i.e. it is inside the view.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>viewPoint</code> - is the <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> to check</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="rotateAroundPoint(Point,double)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>rotateAroundPoint</h4>
+                                        <pre class="methodSignature"> abstract void <a href=Wormhole2D.html#rotateAroundPoint(Point,double)>rotateAroundPoint</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> p, double a)</pre>
+                                        <div class="block"><p>Rotates around a point into the view-space.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>p</code> - is the <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>a</code> - is the absolute angle (in radians)</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setEnvPosition(P)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setEnvPosition</h4>
+                                        <pre class="methodSignature"> abstract void <a href=Wormhole2D.html#setEnvPosition(P)>setEnvPosition</a>(<a href=Wormhole2D.html>P</a> envPoint)</pre>
+                                        <div class="block"><p>Sets the position to the view-point corresponding to <code>envPoint</code>.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>envPoint</code> - is the <a href=../../../model/interfaces/Position2D.html>Position2D</a> object representing the new position with env-coordinates</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="optimalZoom()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>optimalZoom</h4>
+                                        <pre class="methodSignature"> abstract void <a href=Wormhole2D.html#optimalZoom()>optimalZoom</a>()</pre>
+                                        <div class="block"><p>Automatically sets the zoom rate in order to make the environment entirely visible on the view.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setRotation(double)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setRotation</h4>
+                                        <pre class="methodSignature"> abstract void <a href=Wormhole2D.html#setRotation(double)>setRotation</a>(double rad)</pre>
+                                        <div class="block"><p>Rotates the environment around the Position.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>rad</code> - is the <code>double</code> value representing the angle expressed with radians</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setViewPosition(Point)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setViewPosition</h4>
+                                        <pre class="methodSignature"> abstract void <a href=Wormhole2D.html#setViewPosition(Point)>setViewPosition</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> viewPoint)</pre>
+                                        <div class="block"><p>Sets the Position to <code>viewPoint</code>.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>viewPoint</code> - is the <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> object representing the new position with view-coordinates</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setZoom(double)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setZoom</h4>
+                                        <pre class="methodSignature"> abstract void <a href=Wormhole2D.html#setZoom(double)>setZoom</a>(double value)</pre>
+                                        <div class="block"><p>Changes the zoom factor.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>value</code> - is the <code>double</code> value representing the new zoom</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="zoomOnPoint(Point,double)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>zoomOnPoint</h4>
+                                        <pre class="methodSignature"> abstract void <a href=Wormhole2D.html#zoomOnPoint(Point,double)>zoomOnPoint</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> p, double z)</pre>
+                                        <div class="block"><p>Zooms on a point into the view-space.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>p</code> - is the <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a></dd>
+                                            
+                                            
+                                            
+                                            <dd><code>z</code> - is the absolute zoom rate</dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="center()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>center</h4>
+                                        <pre class="methodSignature"> abstract void <a href=Wormhole2D.html#center()>center</a>()</pre>
+                                        <div class="block"><p>Points the center of the view on the center of the environment.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                            </li>
+                        </ul>
+                    </section>
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+<footer role="contentinfo">
+    <nav role="navigation">
+        <!-- ======= START OF BOTTOM NAVBAR ====== -->
+        <div class="bottomNav"><a id="navbar.bottom">
+            <!--   -->
+        </a>
+            <div class="skipNav"><a href="#skip.navbar.bottom" title="Skip navigation links">Skip navigation links</a>
+            </div>
+            <a id="navbar.bottom.firstrow">
+                <!--   -->
+            </a>
+            <ul class="navList" title="Navigation">
+    <li><a href="../../../../../../index.html">Overview</a></li>
+    
+    <li><a href="package-summary.html">Package</a></li>
+    
+    <li>Class</li>
+    
+    <li><a href="package-tree.html">Tree</a></li>
+    
+    <li><a href="../../../../../../deprecated.html">Deprecated</a></li>
+    <li><a href="../../../../../../index-files/index-1.html">Index</a></li>
+    <li>Help</li>
+</ul></div>
+        <a id="skip.navbar.bottom">
+            <!--   -->
+        </a>
+        <div class="subNav">
+<ul class="navList" id="allclasses_navbar_top" style="display: block;">
+    <li><a href="../../../../../../allclasses.html">All&nbsp;Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+</div>
+<a id="skip.navbar.top">
+<!--   -->
+</a></div><!-- ======== END OF BOTTOM NAVBAR ======= -->
+    </nav>
+</footer><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0"
+    style="display: none;"></ul>
+<span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span>
+</body>
+</html>
