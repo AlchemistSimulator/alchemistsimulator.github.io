@@ -4,23 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.101.0" />
-    <meta name="generator" content="Relearn 4.1.1&#43;tip">
+    <meta name="generator" content="Relearn 4.2.5&#43;tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <title>Scafi Incarnation Tutorial :: Documentation for the Alchemist Simulator</title>
     <link rel="alternate" type="application/rss&#43;xml" href="../../tutorials/scafi/index.xml" title="Documentation for the Alchemist Simulator" />
-    <link rel="icon" href="../../images/logo.svg?1655830378" type="image/svg+xml">
-    <link href="../../css/nucleus.css?1655830378" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1655830378" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1655830378" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1655830378" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1655830378" rel="stylesheet">
-    <link href="../../css/theme.css?1655830378" rel="stylesheet">
-    <link href="../../css/theme-relearn.css?1655830378" rel="stylesheet" id="variant-style">
-    <link href="../../css/ie.css?1655830378" rel="stylesheet">
-    <link href="../../css/variant.css?1655830378" rel="stylesheet">
-    <link href="../../css/print.css?1655830378" rel="stylesheet" media="print">
-    <script src="../../js/variant.js?1655830378"></script>
+    <link rel="icon" href="../../images/logo.svg?1656073031" type="image/svg+xml">
+    <link href="../../css/nucleus.css?1656073031" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1656073031" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1656073031" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1656073031" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1656073031" rel="stylesheet">
+    <link href="../../css/theme.css?1656073031" rel="stylesheet">
+    <link href="../../css/theme-relearn.css?1656073031" rel="stylesheet" id="variant-style">
+    <link href="../../css/ie.css?1656073031" rel="stylesheet">
+    <link href="../../css/variant.css?1656073031" rel="stylesheet">
+    <link href="../../css/print.css?1656073031" rel="stylesheet" media="print">
+    <script src="../../js/variant.js?1656073031"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
@@ -36,7 +36,7 @@
       var baseUriFull='https:\/\/alchemistsimulator.github.io/';
       variants.init( [ 'relearn' ] );
     </script>
-    <script src="../../js/jquery.min.js?1655830378"></script>
+    <script src="../../js/jquery.min.js?1656073031"></script>
   </head>
   <body class="mobile-support" data-url="../../tutorials/scafi/">
     <div id="body" class="default-animation">
@@ -73,6 +73,16 @@
   <ul>
     <li><a href="#how-to-use-scafi-with-alchemist">How to use ScaFi with Alchemist</a></li>
   </ul>
+
+  <ul>
+    <li><a href="#alchemist">Alchemist</a>
+      <ul>
+        <li><a href="#conceptual-model">Conceptual model</a></li>
+        <li><a href="#running-simulations">Running simulations</a></li>
+        <li><a href="#scafi">Scafi</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
             </div>
           </div>
@@ -107,14 +117,6 @@ with Alchemist.</p>
 focused on the Scafi incarnation.</p>
 <p>The tutorial can be found on <a href="https://github.com/scafi/learning-scafi-alchemist">GitHub</a>.
 The <code>README.md</code> file of the project explains the use and the steps to follow.</p>
-
-<div class="expand">
-    <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-        <i class="fas fa-chevron-down"></i>
-        <i class="fas fa-chevron-right"></i>
-        Show README.md
-    </a>
-    <div class="expand-content" style="display: none;">
 <h1 id="learning-simulations-with-scafi-alchemist">Learning simulations with ScaFi-Alchemist</h1>
 <ul>
 <li><a href="https://scafi.github.io">ScaFi</a> is an aggregate programming framework</li>
@@ -146,7 +148,7 @@ neighborhood
 <li>Conditions, time distribution, static rate, and rate equation affect the <strong>frequency</strong> of the reaction</li>
 </ul>
 </li>
-<li>Alchemist implements an optimised version (NRM) of Gillespie&rsquo;s Stochastic Simulation Algorithm (SSA)</li>
+<li>Alchemist implements an optimised version (NRM) of Gillespie's Stochastic Simulation Algorithm (SSA)</li>
 </ul>
 <p>So</p>
 <ul>
@@ -160,35 +162,31 @@ neighborhood
 </ul>
 <h3 id="running-simulations">Running simulations</h3>
 <p>Use task configured in <code>build.gradle.kts</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ./gradlew hello
-</span></span></code></pre></div><p>Basically, all you need to do to launch a simulation (batch) is running <code>it.unibo.alchemist.Alchemist</code>
-with your simulation&rsquo;s descriptor. So, another approach is the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew fatJar <span style="color:#78787e"># or shadowJar</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>java -Xmx2524m -cp <span style="color:#5af78e">&#34;build/libs/&lt;MYFATJAR&gt;.jar&#34;</span> <span style="color:#5af78e">\
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e"></span>  it.unibo.alchemist.Alchemist <span style="color:#5af78e">\
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e"></span>  -b -var random <span style="color:#5af78e">\
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e"></span>  -y &lt;path-to-yaml&gt; -e data/20191004-test <span style="color:#5af78e">\
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e"></span>  -t <span style="color:#ff9f43">100</span> -p <span style="color:#ff9f43">1</span> -v &amp;&gt; exec.txt &amp;
-</span></span></code></pre></div><p>You can also use some IDE (such as Eclipse or IntelliJ Idea).
-In IntelliJ, you can create a run configuration of type <code>Application</code>
-that looks like the following.</p>
-<p><img src="assets/imgs/intellij-run-configuration.png" alt=""></p>
-<p>You basically have to pass arguments to the Java program that
-leverages main class <code>it.unibo.alchemist.Alchemist</code>.
-Your project must be properly imported and synchronised via Gradle;
-the Scala SDK must be properly set up, as well as the JDK Runtime.
-If everything works ok, you should be able to see the following simulation,
-which shows a gradient computation on a simulated network situated in the map of Vienna.</p>
-<p><img src="assets/imgs/gradient-vienna.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ./gradlew runHelloScafi
+</span></span></code></pre></div><p>To run all the (graphic) simulations defined in src/main/yaml type:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ./gradlew runAll
+</span></span></code></pre></div><p>To run the simulation in batch (e.g, to produce data for plots) you can type:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ./gradlew runAll -Pbatch<span style="color:#ff6ac1">=</span><span style="color:#ff5c57">true</span> -Pvariables<span style="color:#ff6ac1">=</span>random
+</span></span></code></pre></div><p>Finally, you can produce plots from the data generated by Alchemist simulation.
+This repository contains a highly configurable script (please look to the configuration defined in <a href="https://github.com/scafi/learning-scafi-alchemist/tree/master/plots">plots</a>.</p>
+<p>To run the script, you should run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python plotter.py plots/helloworld.yml ./build/exports/helloScafi &amp;<span style="color:#78787e">#34;.*&amp;#34; &amp;#34;result&amp;#34; plots/ </span>
+</span></span></code></pre></div><p>Where:</p>
+<ul>
+<li>the first argument is the plot configuration (expressed using a yaml file)</li>
+<li>the second argument is where the files are located</li>
+<li>the third argument is a regex used to select the simulations file</li>
+<li>the fourth argument defines the initial names of the plot</li>
+<li>the last argument devises the folder in which the plots will be stored</li>
+</ul>
 <h3 id="scafi">Scafi</h3>
 <p>The simulation descriptor must indicate <code>incarnation: scafi</code>
 and configure a <code>RunScafiProgram</code> action
 pointing to the class of some class implementing <code>AggregateProgram</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: scafi
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">pools</span>:
-</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">pool</span>: <span style="color:#78787e">&amp;program</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_reactions</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">program</span>: <span style="color:#78787e">&amp;amp;program</span>
 </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">type</span>: ExponentialTime
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1</span>]
@@ -206,29 +204,17 @@ pointing to the class of some class implementing <code>AggregateProgram</code>.<
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">HelloWorld</span> <span style="color:#ff6ac1">extends</span> <span style="color:#f3f99d">AggregateProgram</span> <span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">StandardSensors</span> <span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">ScafiAlchemistSupport</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">Gradients</span> <span style="color:#ff6ac1">{</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">def</span> main<span style="color:#ff6ac1">()</span><span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">Any</span> <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// Access to node state through &#34;molecule&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>    <span style="color:#ff6ac1">val</span> x <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">if</span><span style="color:#ff6ac1">(</span>node<span style="color:#ff6ac1">.</span>has<span style="color:#ff6ac1">(</span><span style="color:#5af78e">&#34;prova&#34;</span><span style="color:#ff6ac1">))</span> node<span style="color:#ff6ac1">.</span>get<span style="color:#ff6ac1">[</span><span style="color:#9aedfe">Int</span><span style="color:#ff6ac1">](</span><span style="color:#5af78e">&#34;prova&#34;</span><span style="color:#ff6ac1">)</span> <span style="color:#ff6ac1">else</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">// Access to node state through &amp;#34;molecule&amp;#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>    <span style="color:#ff6ac1">val</span> source <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">if</span><span style="color:#ff6ac1">(</span>node<span style="color:#ff6ac1">.</span>has<span style="color:#ff6ac1">(&amp;</span><span style="color:#ff6ac1">#</span><span style="color:#ff9f43">34</span><span style="color:#ff6ac1">;</span>test<span style="color:#ff6ac1">&amp;</span><span style="color:#ff6ac1">#</span><span style="color:#ff9f43">34</span><span style="color:#ff6ac1">;))</span> node<span style="color:#ff6ac1">.</span>get<span style="color:#ff6ac1">[</span><span style="color:#9aedfe">Int</span><span style="color:#ff6ac1">](&amp;</span><span style="color:#ff6ac1">#</span><span style="color:#ff9f43">34</span><span style="color:#ff6ac1">;</span>test<span style="color:#ff6ac1">&amp;</span><span style="color:#ff6ac1">#</span><span style="color:#ff9f43">34</span><span style="color:#ff6ac1">;)</span> <span style="color:#ff6ac1">else</span> <span style="color:#ff9f43">1</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e">// An aggregate operation
-</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>    <span style="color:#ff6ac1">val</span> g <span style="color:#ff6ac1">=</span> classicGradient<span style="color:#ff6ac1">(</span>mid<span style="color:#ff6ac1">==</span><span style="color:#ff9f43">100</span><span style="color:#ff6ac1">)</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>    <span style="color:#ff6ac1">val</span> g <span style="color:#ff6ac1">=</span> classicGradient<span style="color:#ff6ac1">(</span>mid <span style="color:#ff6ac1">==</span> program<span style="color:#ff6ac1">)</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e">// Write access to node state
-</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>    node<span style="color:#ff6ac1">.</span>put<span style="color:#ff6ac1">(</span><span style="color:#5af78e">&#34;g&#34;</span><span style="color:#ff6ac1">,</span> g<span style="color:#ff6ac1">)</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>    node<span style="color:#ff6ac1">.</span>put<span style="color:#ff6ac1">(&amp;</span><span style="color:#ff6ac1">#</span><span style="color:#ff9f43">34</span><span style="color:#ff6ac1">;</span>g<span style="color:#ff6ac1">&amp;</span><span style="color:#ff6ac1">#</span><span style="color:#ff9f43">34</span><span style="color:#ff6ac1">;,</span> g<span style="color:#ff6ac1">)</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e">// Return value of the program
 </span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>    g
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">}</span>
-</span></span></code></pre></div><h2 id="on-this-version-and-past-versions">On this version and past versions</h2>
-<p>I will try to keep this repository aligned with the latest versions of scafi and Alchemist.</p>
-<p>However, I have also set up different branches to &ldquo;freeze&rdquo; particular project configurations that have proven to work.
-These can be checked out through the usual git branch mechanism, e.g.:</p>
-<p><code>git checkout scafi-0.3.2-alchemist-9.2.1</code></p>
-<p>Available branches/configurations:</p>
-<ul>
-<li><code>scafi-0.3.2-alchemist-9.2.1</code></li>
-</ul>
-
-    </div>
-</div>
-
+</span></span></code></pre></div>
 <div class="box notices cstyle note">
     <div class="box-label"><i class="fa-fw fas fa-exclamation-circle"></i> Note</div>
     <div class="box-content">
@@ -262,12 +248,12 @@ and we&rsquo;ll get back to you.</p>
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../../js/auto-complete.js?1655830378"></script>
-        <script src="../../js/lunr.min.js?1655830378"></script>
-        <script src="../../js/lunr.stemmer.support.min.js?1655830378"></script>
-        <script src="../../js/lunr.multi.min.js?1655830378"></script>
-        <script src="../../js/lunr.en.min.js?1655830378"></script>
-        <script src="../../js/search.js?1655830378"></script>
+        <script src="../../js/auto-complete.js?1656073031"></script>
+        <script src="../../js/lunr.min.js?1656073031"></script>
+        <script src="../../js/lunr.stemmer.support.min.js?1656073031"></script>
+        <script src="../../js/lunr.multi.min.js?1656073031"></script>
+        <script src="../../js/lunr.en.min.js?1656073031"></script>
+        <script src="../../js/search.js?1656073031"></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -378,7 +364,7 @@ and we&rsquo;ll get back to you.</p>
             <li class="footerVisitedLinks showVisitedLinks"><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
           </ul>
         </div>
-        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 21.0.4</strong></div>
+        <div id="footer" class="footerFooter showFooter"><div><strong>Alchemist Simulator 21.0.5</strong></div>
 <br>
 <a
     class="github-button"
@@ -411,11 +397,11 @@ Fork
         </div>
       </div>
     </aside>
-    <script src="../../js/clipboard.min.js?1655830378"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1655830378"></script>
-    <script src="../../js/featherlight.min.js?1655830378"></script>
-    <script src="../../js/jquery.svg.pan.zoom.js?1655830378"></script>
-    <script src="../../js/mermaid.min.js?1655830378"></script>
+    <script src="../../js/clipboard.min.js?1656073031"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1656073031"></script>
+    <script src="../../js/featherlight.min.js?1656073031"></script>
+    <script src="../../js/jquery.svg.pan.zoom.js?1656073031"></script>
+    <script src="../../js/mermaid.min.js?1656073031"></script>
     <script>
       function useMermaid( config ){
         if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
@@ -428,6 +414,6 @@ Fork
       }
       useMermaid( JSON.parse("{}") );
     </script>
-    <script src="../../js/theme.js?1655830378"></script>
+    <script src="../../js/theme.js?1656073031"></script>
   </body>
 </html>
