@@ -248,7 +248,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                         <tr id="i0" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Environment.html#addLayer(Molecule,Layer)>addLayer</a>(<a href=Molecule.html>Molecule</a> m, <a href=Layer.html>Layer</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; l) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Environment.html#addLayer(Molecule,Layer)>addLayer</a>(<a href=Molecule.html>Molecule</a> m, <a href=Layer.html>Layer</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; l) </code>
                                             </th>
                                             <td class="colLast">Add a <a href=Layer.html>Layer</a> to the <a href=Environment.html>Environment</a>.</td>
                                         </tr>
@@ -256,20 +256,36 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                         <tr id="i1" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Environment.html#addNode(Node,P)>addNode</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; node, <a href=../../core/interfaces/Simulation.html>P</a> p) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Environment.html#addGlobalReaction(GlobalReaction)>addGlobalReaction</a>(<a href=GlobalReaction.html>GlobalReaction</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; reaction) </code>
+                                            </th>
+                                            <td class="colLast">Add a <a href=Actionable.html>Actionable</a> to the <a href=Environment.html>Environment</a>.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>abstract ListSet&lt;<a href=GlobalReaction.html>GlobalReaction</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt;&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Environment.html#getGlobalReactions()>getGlobalReactions</a>() </code>
+                                            </th>
+                                            <td class="colLast">Get the <a href=Environment.html>Environment</a>'s <a href=Actionable.html>Actionable</a>s.</td>
+                                        </tr>
+                                        
+                                        <tr id="i3" class="rowColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Environment.html#addNode(Node,P)>addNode</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; node, <a href=../../core/interfaces/Simulation.html>P</a> p) </code>
                                             </th>
                                             <td class="colLast">This method allows to add a new node to this environment.</td>
                                         </tr>
                                         
-                                        <tr id="i2" class="altColor">
+                                        <tr id="i4" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Environment.html#addTerminator(Predicate)>addTerminator</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/function/Predicate.html>Predicate</a>&lt;<a href=Environment.html>Environment</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;&gt; terminator) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Environment.html#addTerminator(Predicate)>addTerminator</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/function/Predicate.html>Predicate</a>&lt;<a href=Environment.html>Environment</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;&gt; terminator) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i3" class="rowColor">
+                                        <tr id="i5" class="rowColor">
                                             <td class="colFirst"><code>abstract int</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Environment.html#getDimensions()>getDimensions</a>() </code>
@@ -277,71 +293,71 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                             <td class="colLast">The number of dimensions of this environment.</td>
                                         </tr>
                                         
-                                        <tr id="i4" class="altColor">
+                                        <tr id="i6" class="altColor">
                                             <td class="colFirst"><code>abstract double</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Environment.html#getDistanceBetweenNodes(Node,Node)>getDistanceBetweenNodes</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; n1, <a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; n2) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Environment.html#getDistanceBetweenNodes(Node,Node)>getDistanceBetweenNodes</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; n1, <a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; n2) </code>
                                             </th>
                                             <td class="colLast">Measures the distance between two nodes in the environment.</td>
                                         </tr>
                                         
-                                        <tr id="i5" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=Incarnation.html>Incarnation</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;</code>
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=Incarnation.html>Incarnation</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Environment.html#getIncarnation()>getIncarnation</a>() </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i6" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html>Optional</a>&lt;<a href=Layer.html>Layer</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;&gt;</code>
+                                        <tr id="i8" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html>Optional</a>&lt;<a href=Layer.html>Layer</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Environment.html#getLayer(Molecule)>getLayer</a>(<a href=Molecule.html>Molecule</a> m) </code>
                                             </th>
                                             <td class="colLast">Get the layer associate to the given molecule.</td>
                                         </tr>
                                         
-                                        <tr id="i7" class="rowColor">
-                                            <td class="colFirst"><code>abstract ListSet&lt;<a href=Layer.html>Layer</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;&gt;</code>
+                                        <tr id="i9" class="rowColor">
+                                            <td class="colFirst"><code>abstract ListSet&lt;<a href=Layer.html>Layer</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Environment.html#getLayers()>getLayers</a>() </code>
                                             </th>
                                             <td class="colLast">Return all the Layers in this <a href=Environment.html>Environment</a>.</td>
                                         </tr>
                                         
-                                        <tr id="i8" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=LinkingRule.html>LinkingRule</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;</code>
+                                        <tr id="i10" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=LinkingRule.html>LinkingRule</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Environment.html#getLinkingRule()>getLinkingRule</a>() </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i9" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=Neighborhood.html>Neighborhood</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;</code>
+                                        <tr id="i11" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=Neighborhood.html>Neighborhood</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt;</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Environment.html#getNeighborhood(Node)>getNeighborhood</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; center) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Environment.html#getNeighborhood(Node)>getNeighborhood</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; center) </code>
                                             </th>
                                             <td class="colLast">Given a node, this method returns its neighborhood.</td>
                                         </tr>
                                         
-                                        <tr id="i10" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;</code>
+                                        <tr id="i12" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Environment.html#getNodeByID(int)>getNodeByID</a>(int id) </code>
                                             </th>
                                             <td class="colLast">Allows to access a node known its id.</td>
                                         </tr>
                                         
-                                        <tr id="i11" class="rowColor">
-                                            <td class="colFirst"><code>abstract ListSet&lt;<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;&gt;</code>
+                                        <tr id="i13" class="rowColor">
+                                            <td class="colFirst"><code>abstract ListSet&lt;<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt;&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Environment.html#getNodes()>getNodes</a>() </code>
                                             </th>
                                             <td class="colLast">All the nodes that exist in current environment.</td>
                                         </tr>
                                         
-                                        <tr id="i12" class="altColor">
+                                        <tr id="i14" class="altColor">
                                             <td class="colFirst"><code>abstract int</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Environment.html#getNodeCount()>getNodeCount</a>() </code>
@@ -349,23 +365,23 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i13" class="rowColor">
-                                            <td class="colFirst"><code>abstract ListSet&lt;<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;&gt;</code>
+                                        <tr id="i15" class="rowColor">
+                                            <td class="colFirst"><code>abstract ListSet&lt;<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt;&gt;</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Environment.html#getNodesWithinRange(Node,double)>getNodesWithinRange</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; center, double range) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Environment.html#getNodesWithinRange(Node,double)>getNodesWithinRange</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; center, double range) </code>
                                             </th>
                                             <td class="colLast">Given a node (center) this method returns a list of all the surroundings nodes within the given range.</td>
                                         </tr>
                                         
-                                        <tr id="i14" class="altColor">
-                                            <td class="colFirst"><code>abstract ListSet&lt;<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;&gt;</code>
+                                        <tr id="i16" class="altColor">
+                                            <td class="colFirst"><code>abstract ListSet&lt;<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt;&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Environment.html#getNodesWithinRange(P,double)>getNodesWithinRange</a>(<a href=../../core/interfaces/Simulation.html>P</a> center, double range) </code>
                                             </th>
                                             <td class="colLast">Given a <a href=Position.html>Position</a>(center) this method returns a list of all the surroundings nodes within the given range.</td>
                                         </tr>
                                         
-                                        <tr id="i15" class="rowColor">
+                                        <tr id="i17" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;double&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Environment.html#getOffset()>getOffset</a>() </code>
@@ -373,23 +389,23 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                             <td class="colLast">This method allows to know which are the smallest coordinates represented.</td>
                                         </tr>
                                         
-                                        <tr id="i16" class="altColor">
+                                        <tr id="i18" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=../../core/interfaces/Simulation.html>P</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Environment.html#getPosition(Node)>getPosition</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; node) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Environment.html#getPosition(Node)>getPosition</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; node) </code>
                                             </th>
                                             <td class="colLast">Calculates the position of a node.</td>
                                         </tr>
                                         
-                                        <tr id="i17" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=../../core/interfaces/Simulation.html>Simulation</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;</code>
+                                        <tr id="i19" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=../../core/interfaces/Simulation.html>Simulation</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Environment.html#getSimulation()>getSimulation</a>() </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i18" class="altColor">
+                                        <tr id="i20" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;double&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Environment.html#getSize()>getSize</a>() </code>
@@ -397,7 +413,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                             <td class="colLast">This method returns the size of the environment as an array of length <a href=Environment.html#getDimensions()>getDimensions</a>.</td>
                                         </tr>
                                         
-                                        <tr id="i19" class="rowColor">
+                                        <tr id="i21" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;double&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Environment.html#getSizeInDistanceUnits()>getSizeInDistanceUnits</a>() </code>
@@ -405,7 +421,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                             <td class="colLast">This method returns the size of the environment as an array of length <a href=Environment.html#getDimensions()>getDimensions</a>.</td>
                                         </tr>
                                         
-                                        <tr id="i20" class="altColor">
+                                        <tr id="i22" class="altColor">
                                             <td class="colFirst"><code>abstract boolean</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Environment.html#isTerminated()>isTerminated</a>() </code>
@@ -413,7 +429,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i21" class="rowColor">
+                                        <tr id="i23" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=../../core/interfaces/Simulation.html>P</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Environment.html#makePosition(Array)>makePosition</a>(<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html>Array</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Number.html>Number</a>&gt; coordinates) </code>
@@ -421,34 +437,34 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i22" class="altColor">
-                                            <td class="colFirst"><code>abstract void</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=Environment.html#moveNodeToPosition(Node,P)>moveNodeToPosition</a>(@Nonnull() <a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; node, @Nonnull() <a href=../../core/interfaces/Simulation.html>P</a> position) </code>
-                                            </th>
-                                            <td class="colLast">This method moves a node in the environment to some position.</td>
-                                        </tr>
-                                        
-                                        <tr id="i23" class="rowColor">
-                                            <td class="colFirst"><code>abstract void</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=Environment.html#removeNode(Node)>removeNode</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; node) </code>
-                                            </th>
-                                            <td class="colLast">This method allows to remove a node.</td>
-                                        </tr>
-                                        
                                         <tr id="i24" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Environment.html#setLinkingRule(LinkingRule)>setLinkingRule</a>(<a href=LinkingRule.html>LinkingRule</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; rule) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Environment.html#moveNodeToPosition(Node,P)>moveNodeToPosition</a>(@Nonnull() <a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; node, @Nonnull() <a href=../../core/interfaces/Simulation.html>P</a> position) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">This method moves a node in the environment to some position.</td>
                                         </tr>
                                         
                                         <tr id="i25" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Environment.html#setSimulation(Simulation)>setSimulation</a>(<a href=../../core/interfaces/Simulation.html>Simulation</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; s) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Environment.html#removeNode(Node)>removeNode</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; node) </code>
+                                            </th>
+                                            <td class="colLast">This method allows to remove a node.</td>
+                                        </tr>
+                                        
+                                        <tr id="i26" class="altColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Environment.html#setLinkingRule(LinkingRule)>setLinkingRule</a>(<a href=LinkingRule.html>LinkingRule</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; rule) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i27" class="rowColor">
+                                            <td class="colFirst"><code>abstract void</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Environment.html#setSimulation(Simulation)>setSimulation</a>(<a href=../../core/interfaces/Simulation.html>Simulation</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; s) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -511,7 +527,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>addLayer</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Environment.html#addLayer(Molecule,Layer)>addLayer</a>(<a href=Molecule.html>Molecule</a> m, <a href=Layer.html>Layer</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; l)</pre>
+                                        <pre class="methodSignature"> abstract void <a href=Environment.html#addLayer(Molecule,Layer)>addLayer</a>(<a href=Molecule.html>Molecule</a> m, <a href=Layer.html>Layer</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; l)</pre>
                                         <div class="block"><p>Add a <a href=Layer.html>Layer</a> to the <a href=Environment.html>Environment</a>.</p></div>
                                         
                                         <dl>
@@ -531,6 +547,45 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                     </li>
                                 </ul>
                                 
+                                <a id="addGlobalReaction(GlobalReaction)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>addGlobalReaction</h4>
+                                        <pre class="methodSignature"> abstract void <a href=Environment.html#addGlobalReaction(GlobalReaction)>addGlobalReaction</a>(<a href=GlobalReaction.html>GlobalReaction</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; reaction)</pre>
+                                        <div class="block"><p>Add a <a href=Actionable.html>Actionable</a> to the <a href=Environment.html>Environment</a>.</p></div>
+                                        
+                                        <dl>
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>reaction</code> - the <a href=Actionable.html>Actionable</a></dd>
+                                            
+                                            
+                                        </dl>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getGlobalReactions()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getGlobalReactions</h4>
+                                        <pre class="methodSignature"> abstract ListSet&lt;<a href=GlobalReaction.html>GlobalReaction</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt;&gt; <a href=Environment.html#getGlobalReactions()>getGlobalReactions</a>()</pre>
+                                        <div class="block"><p>Get the <a href=Environment.html>Environment</a>'s <a href=Actionable.html>Actionable</a>s.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
                                 <a id="addNode(Node,P)">
                                     <!--   -->
                                 </a>
@@ -539,7 +594,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>addNode</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Environment.html#addNode(Node,P)>addNode</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; node, <a href=../../core/interfaces/Simulation.html>P</a> p)</pre>
+                                        <pre class="methodSignature"> abstract void <a href=Environment.html#addNode(Node,P)>addNode</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; node, <a href=../../core/interfaces/Simulation.html>P</a> p)</pre>
                                         <div class="block"><p>This method allows to add a new node to this environment. The environment is responsible to call the right method of the simulation in order to ensure that the reaction is properly scheduled.</p></div>
                                         
                                         <dl>
@@ -567,7 +622,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>addTerminator</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Environment.html#addTerminator(Predicate)>addTerminator</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/function/Predicate.html>Predicate</a>&lt;<a href=Environment.html>Environment</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;&gt; terminator)</pre>
+                                        <pre class="methodSignature"> abstract void <a href=Environment.html#addTerminator(Predicate)>addTerminator</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/function/Predicate.html>Predicate</a>&lt;<a href=Environment.html>Environment</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;&gt; terminator)</pre>
                                         <div class="block"></div>
                                         
                                         <dl>
@@ -606,7 +661,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>getDistanceBetweenNodes</h4>
-                                        <pre class="methodSignature"> abstract double <a href=Environment.html#getDistanceBetweenNodes(Node,Node)>getDistanceBetweenNodes</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; n1, <a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; n2)</pre>
+                                        <pre class="methodSignature"> abstract double <a href=Environment.html#getDistanceBetweenNodes(Node,Node)>getDistanceBetweenNodes</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; n1, <a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; n2)</pre>
                                         <div class="block"><p>Measures the distance between two nodes in the environment.</p></div>
                                         
                                         <dl>
@@ -634,7 +689,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>getIncarnation</h4>
-                                        <pre class="methodSignature">@Nonnull() abstract <a href=Incarnation.html>Incarnation</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; <a href=Environment.html#getIncarnation()>getIncarnation</a>()</pre>
+                                        <pre class="methodSignature">@Nonnull() abstract <a href=Incarnation.html>Incarnation</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; <a href=Environment.html#getIncarnation()>getIncarnation</a>()</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -649,7 +704,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>getLayer</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html>Optional</a>&lt;<a href=Layer.html>Layer</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;&gt; <a href=Environment.html#getLayer(Molecule)>getLayer</a>(<a href=Molecule.html>Molecule</a> m)</pre>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html>Optional</a>&lt;<a href=Layer.html>Layer</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;&gt; <a href=Environment.html#getLayer(Molecule)>getLayer</a>(<a href=Molecule.html>Molecule</a> m)</pre>
                                         <div class="block"><p>Get the layer associate to the given molecule. If no Layer is associated with the given molecule, return an empty optional.</p></div>
                                         
                                         <dl>
@@ -673,7 +728,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>getLayers</h4>
-                                        <pre class="methodSignature"> abstract ListSet&lt;<a href=Layer.html>Layer</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;&gt; <a href=Environment.html#getLayers()>getLayers</a>()</pre>
+                                        <pre class="methodSignature"> abstract ListSet&lt;<a href=Layer.html>Layer</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt;&gt; <a href=Environment.html#getLayers()>getLayers</a>()</pre>
                                         <div class="block"><p>Return all the Layers in this <a href=Environment.html>Environment</a>.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -688,7 +743,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>getLinkingRule</h4>
-                                        <pre class="methodSignature"> abstract <a href=LinkingRule.html>LinkingRule</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; <a href=Environment.html#getLinkingRule()>getLinkingRule</a>()</pre>
+                                        <pre class="methodSignature"> abstract <a href=LinkingRule.html>LinkingRule</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; <a href=Environment.html#getLinkingRule()>getLinkingRule</a>()</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -703,7 +758,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>getNeighborhood</h4>
-                                        <pre class="methodSignature"> abstract <a href=Neighborhood.html>Neighborhood</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; <a href=Environment.html#getNeighborhood(Node)>getNeighborhood</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; center)</pre>
+                                        <pre class="methodSignature"> abstract <a href=Neighborhood.html>Neighborhood</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; <a href=Environment.html#getNeighborhood(Node)>getNeighborhood</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; center)</pre>
                                         <div class="block"><p>Given a node, this method returns its neighborhood.</p></div>
                                         
                                         <dl>
@@ -727,7 +782,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>getNodeByID</h4>
-                                        <pre class="methodSignature"> abstract <a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; <a href=Environment.html#getNodeByID(int)>getNodeByID</a>(int id)</pre>
+                                        <pre class="methodSignature"> abstract <a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; <a href=Environment.html#getNodeByID(int)>getNodeByID</a>(int id)</pre>
                                         <div class="block"><p>Allows to access a node known its id. Depending on the implementation, this method may or not be optimized (namely, id could run in constant or linear time with the number of nodes).</p></div>
                                         
                                         <dl>
@@ -751,7 +806,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>getNodes</h4>
-                                        <pre class="methodSignature"> abstract ListSet&lt;<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;&gt; <a href=Environment.html#getNodes()>getNodes</a>()</pre>
+                                        <pre class="methodSignature"> abstract ListSet&lt;<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt;&gt; <a href=Environment.html#getNodes()>getNodes</a>()</pre>
                                         <div class="block"><p>All the nodes that exist in current environment.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -781,7 +836,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>getNodesWithinRange</h4>
-                                        <pre class="methodSignature"> abstract ListSet&lt;<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;&gt; <a href=Environment.html#getNodesWithinRange(Node,double)>getNodesWithinRange</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; center, double range)</pre>
+                                        <pre class="methodSignature"> abstract ListSet&lt;<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt;&gt; <a href=Environment.html#getNodesWithinRange(Node,double)>getNodesWithinRange</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; center, double range)</pre>
                                         <div class="block"><p>Given a node (center) this method returns a list of all the surroundings nodes within the given range. Note that this method (depending on the implementation) might be not optimized and it's consequently much better to use <a href=Environment.html#getNeighborhood(Node)>getNeighborhood</a> and filter the neighborhood if you are sure that all the nodes within the range are connected to the center.</p></div>
                                         
                                         <dl>
@@ -809,7 +864,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>getNodesWithinRange</h4>
-                                        <pre class="methodSignature"> abstract ListSet&lt;<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;&gt; <a href=Environment.html#getNodesWithinRange(P,double)>getNodesWithinRange</a>(<a href=../../core/interfaces/Simulation.html>P</a> center, double range)</pre>
+                                        <pre class="methodSignature"> abstract ListSet&lt;<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt;&gt; <a href=Environment.html#getNodesWithinRange(P,double)>getNodesWithinRange</a>(<a href=../../core/interfaces/Simulation.html>P</a> center, double range)</pre>
                                         <div class="block"><p>Given a <a href=Position.html>Position</a>(center) this method returns a list of all the surroundings nodes within the given range. Note that this method (depending on the implementation) might be not optimized.</p></div>
                                         
                                         <dl>
@@ -852,7 +907,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>getPosition</h4>
-                                        <pre class="methodSignature">@Nonnull() abstract <a href=../../core/interfaces/Simulation.html>P</a> <a href=Environment.html#getPosition(Node)>getPosition</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; node)</pre>
+                                        <pre class="methodSignature">@Nonnull() abstract <a href=../../core/interfaces/Simulation.html>P</a> <a href=Environment.html#getPosition(Node)>getPosition</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; node)</pre>
                                         <div class="block"><p>Calculates the position of a node.</p></div>
                                         
                                         <dl>
@@ -876,7 +931,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>getSimulation</h4>
-                                        <pre class="methodSignature"> abstract <a href=../../core/interfaces/Simulation.html>Simulation</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; <a href=Environment.html#getSimulation()>getSimulation</a>()</pre>
+                                        <pre class="methodSignature"> abstract <a href=../../core/interfaces/Simulation.html>Simulation</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; <a href=Environment.html#getSimulation()>getSimulation</a>()</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -960,7 +1015,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>moveNodeToPosition</h4>
-                                        <pre class="methodSignature">@Nonnull() abstract void <a href=Environment.html#moveNodeToPosition(Node,P)>moveNodeToPosition</a>(@Nonnull() <a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; node, @Nonnull() <a href=../../core/interfaces/Simulation.html>P</a> position)</pre>
+                                        <pre class="methodSignature">@Nonnull() abstract void <a href=Environment.html#moveNodeToPosition(Node,P)>moveNodeToPosition</a>(@Nonnull() <a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; node, @Nonnull() <a href=../../core/interfaces/Simulation.html>P</a> position)</pre>
                                         <div class="block"><p>This method moves a node in the environment to some position. If node move is unsupported, it does nothing.</p></div>
                                         
                                         <dl>
@@ -988,7 +1043,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>removeNode</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Environment.html#removeNode(Node)>removeNode</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; node)</pre>
+                                        <pre class="methodSignature"> abstract void <a href=Environment.html#removeNode(Node)>removeNode</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>&gt; node)</pre>
                                         <div class="block"><p>This method allows to remove a node. If node removal is unsupported, it does nothing.</p></div>
                                         
                                         <dl>
@@ -1012,7 +1067,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>setLinkingRule</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Environment.html#setLinkingRule(LinkingRule)>setLinkingRule</a>(<a href=LinkingRule.html>LinkingRule</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; rule)</pre>
+                                        <pre class="methodSignature"> abstract void <a href=Environment.html#setLinkingRule(LinkingRule)>setLinkingRule</a>(<a href=LinkingRule.html>LinkingRule</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; rule)</pre>
                                         <div class="block"></div>
                                         
                                         <dl>
@@ -1036,7 +1091,7 @@ public interface <span class="typeNameLabel"><a href=Environment.html>Environmen
                                           >
                                     <li class="blockList">
                                         <h4>setSimulation</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Environment.html#setSimulation(Simulation)>setSimulation</a>(<a href=../../core/interfaces/Simulation.html>Simulation</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; s)</pre>
+                                        <pre class="methodSignature"> abstract void <a href=Environment.html#setSimulation(Simulation)>setSimulation</a>(<a href=../../core/interfaces/Simulation.html>Simulation</a>&lt;<a href=../../core/interfaces/Simulation.html>T</a>, <a href=../../core/interfaces/Simulation.html>P</a>&gt; s)</pre>
                                         <div class="block"></div>
                                         
                                         <dl>

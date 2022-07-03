@@ -108,12 +108,17 @@ var pathtoroot = "../../../../../";
                         <dt>All Implemented Interfaces:</dt>
                         <dd>
                             
+                            <code>it.unibo.alchemist.model.interfaces.Actionable</code>
+                            
+                            ,
+                            
+                            
                             <code>java.io.Serializable</code>
                             
                             ,
                             
                             
-                            <code>java.lang.Comparable</code>
+                            <code>kotlin.Comparable</code>
                             
                             
                         </dd>
@@ -122,8 +127,8 @@ var pathtoroot = "../../../../../";
                     <hr>
                     <pre class="wrap-overflow">
 
-public interface <span class="typeNameLabel"><a href=Reaction.html>Reaction</a>&lt;T&gt;</span>
- implements <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Comparable.html>Comparable</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Comparable.html>T</a>&gt;, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Serializable.html>Serializable</a>
+public interface <span class="typeNameLabel"><a href=Reaction.html>Reaction</a>&lt;T extends <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt;</span>
+ implements <a href=Actionable.html>Actionable</a>&lt;<a href=Reaction.html>T</a>&gt;
                     </pre>
                     <div class="block"></div>
                 </li>
@@ -246,54 +251,70 @@ public interface <span class="typeNameLabel"><a href=Reaction.html>Reaction</a>&
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code>abstract boolean</code>
+                                            <td class="colFirst"><code>abstract <a href=Reaction.html>Reaction</a>&lt;<a href=Reaction.html>T</a>&gt;</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#canExecute()>canExecute</a>() </code>
-                                            </th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=Reaction.html>Reaction</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#cloneOnNewNode(Node,Time)>cloneOnNewNode</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; node, <a href=Time.html>Time</a> currentTime) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#cloneOnNewNode(Node,Time)>cloneOnNewNode</a>(<a href=Node.html>Node</a>&lt;<a href=Reaction.html>T</a>&gt; node, <a href=Time.html>Time</a> currentTime) </code>
                                             </th>
                                             <td class="colLast">This method allows to clone this reaction on a new node.</td>
                                         </tr>
                                         
-                                        <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code>abstract void</code>
+                                        <tr id="i1" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=Context.html>Context</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#execute()>execute</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#getInputContext()>getInputContext</a>() </code>
                                             </th>
-                                            <td class="colLast">Executes the reactions.</td>
+                                            <td class="colLast">The widest <a href=Context.html>Context</a> among <a href=Condition.html>Condition</a>s, namely the smallest <a href=Context.html>Context</a> in which the <a href=Reaction.html>Reaction</a> can read informations.</td>
+                                        </tr>
+                                        
+                                        <tr id="i2" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=Context.html>Context</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#getOutputContext()>getOutputContext</a>() </code>
+                                            </th>
+                                            <td class="colLast">The widest <a href=Context.html>Context</a> among <a href=Action.html>Action</a>s, namely the smallest context in which the <a href=Reaction.html>Reaction</a> can do modifications.</td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
-                                            <td class="colFirst"><code>abstract void</code>
+                                            <td class="colFirst"><code>abstract <a href=Node.html>Node</a>&lt;<a href=Reaction.html>T</a>&gt;</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#initializationComplete(Time,Environment)>initializationComplete</a>(<a href=Time.html>Time</a> atTime, <a href=Environment.html>Environment</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, out <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt; environment) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#getNode()>getNode</a>() </code>
                                             </th>
-                                            <td class="colLast">This method is called when the environment has completed its initialization.</td>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i4" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Action.html>Action</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;&gt;</code>
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Action.html>Action</a>&lt;<a href=Reaction.html>T</a>&gt;&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Reaction.html#getActions()>getActions</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">The list of <a href=Action.html>Action</a>s of the <a href=Reaction.html>Reaction</a>.</td>
                                         </tr>
                                         
                                         <tr id="i5" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Condition.html>Condition</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;&gt;</code>
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#getConditions()>getConditions</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#setActions(List)>setActions</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Action.html>Action</a>&lt;<a href=Reaction.html>T</a>&gt;&gt; actions) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">The list of <a href=Action.html>Action</a>s of the <a href=Reaction.html>Reaction</a>.</td>
                                         </tr>
                                         
                                         <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Condition.html>Condition</a>&lt;<a href=Reaction.html>T</a>&gt;&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#getConditions()>getConditions</a>() </code>
+                                            </th>
+                                            <td class="colLast">The list of <a href=Condition.html>Condition</a>s of the <a href=Reaction.html>Reaction</a>.</td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#setConditions(List)>setConditions</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Condition.html>Condition</a>&lt;<a href=Reaction.html>T</a>&gt;&gt; conditions) </code>
+                                            </th>
+                                            <td class="colLast">The list of <a href=Condition.html>Condition</a>s of the <a href=Reaction.html>Reaction</a>.</td>
+                                        </tr>
+                                        
+                                        <tr id="i8" class="altColor">
                                             <td class="colFirst"><code>abstract ListSet&lt;out <a href=Dependency.html>Dependency</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Reaction.html#getOutboundDependencies()>getOutboundDependencies</a>() </code>
@@ -301,7 +322,7 @@ public interface <span class="typeNameLabel"><a href=Reaction.html>Reaction</a>&
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i7" class="rowColor">
+                                        <tr id="i9" class="rowColor">
                                             <td class="colFirst"><code>abstract ListSet&lt;out <a href=Dependency.html>Dependency</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Reaction.html#getInboundDependencies()>getInboundDependencies</a>() </code>
@@ -309,76 +330,28 @@ public interface <span class="typeNameLabel"><a href=Reaction.html>Reaction</a>&
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i8" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=Context.html>Context</a></code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#getInputContext()>getInputContext</a>() </code>
-                                            </th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr id="i9" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#getNode()>getNode</a>() </code>
-                                            </th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
                                         <tr id="i10" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=Context.html>Context</a></code>
+                                            <td class="colFirst"><code><a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#getOutputContext()>getOutputContext</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#getRate()>getRate</a>() </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i11" class="rowColor">
-                                            <td class="colFirst"><code>abstract double</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#getRate()>getRate</a>() </code>
-                                            </th>
-                                            <td class="colLast">Returns the speed of this <a href=Reaction.html>Reaction</a>.</td>
-                                        </tr>
-                                        
-                                        <tr id="i12" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=Time.html>Time</a></code>
+                                            <td class="colFirst"><code><a href=Time.html>Time</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Reaction.html#getTau()>getTau</a>() </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i13" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=TimeDistribution.html>TimeDistribution</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;</code>
+                                        <tr id="i12" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=TimeDistribution.html>TimeDistribution</a>&lt;<a href=Reaction.html>T</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Reaction.html#getTimeDistribution()>getTimeDistribution</a>() </code>
                                             </th>
                                             <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr id="i14" class="altColor">
-                                            <td class="colFirst"><code>abstract void</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#setActions(List)>setActions</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Action.html>Action</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;&gt; actions) </code>
-                                            </th>
-                                            <td class="colLast">Sets the <a href=Action.html>Action</a>s list.</td>
-                                        </tr>
-                                        
-                                        <tr id="i15" class="rowColor">
-                                            <td class="colFirst"><code>abstract void</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#setConditions(List)>setConditions</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Condition.html>Condition</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;&gt; conditions) </code>
-                                            </th>
-                                            <td class="colLast">Sets the <a href=Condition.html>Condition</a>s list.</td>
-                                        </tr>
-                                        
-                                        <tr id="i16" class="altColor">
-                                            <td class="colFirst"><code>abstract void</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=Reaction.html#update(Time,boolean,Environment)>update</a>(<a href=Time.html>Time</a> currentTime, boolean hasBeenExecuted, <a href=Environment.html>Environment</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, out <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt; environment) </code>
-                                            </th>
-                                            <td class="colLast">Updates the scheduling of this reaction.</td>
                                         </tr>
                                         
                                         </tbody>
@@ -386,10 +359,16 @@ public interface <span class="typeNameLabel"><a href=Reaction.html>Reaction</a>&
                                 </div>
                                 <ul class="blockList">
                                 
-                                    <li class="blockList"><a id="methods.inherited.from.class.java.lang.Comparable">
+                                    <li class="blockList"><a id="methods.inherited.from.class.it.unibo.alchemist.model.interfaces.Reaction">
                                             <!--   -->
                                         </a>
-                                            <h3>Methods inherited from class&nbsp;java.lang.Comparable</h3>
+                                            <h3>Methods inherited from class&nbsp;it.unibo.alchemist.model.interfaces.Reaction</h3>
+                                            <code>canExecute, execute, initializationComplete, update</code></li>
+                                 
+                                    <li class="blockList"><a id="methods.inherited.from.class.it.unibo.alchemist.model.interfaces.Actionable">
+                                            <!--   -->
+                                        </a>
+                                            <h3>Methods inherited from class&nbsp;it.unibo.alchemist.model.interfaces.Actionable</h3>
                                             <code>compareTo</code></li>
                                  
                                     <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
@@ -431,21 +410,6 @@ public interface <span class="typeNameLabel"><a href=Reaction.html>Reaction</a>&
                             </a>
                                 <h3>Method Detail</h3>
                                 
-                                <a id="canExecute()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>canExecute</h4>
-                                        <pre class="methodSignature"> abstract boolean <a href=Reaction.html#canExecute()>canExecute</a>()</pre>
-                                        <div class="block"></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
                                 <a id="cloneOnNewNode(Node,Time)">
                                     <!--   -->
                                 </a>
@@ -454,7 +418,7 @@ public interface <span class="typeNameLabel"><a href=Reaction.html>Reaction</a>&
                                           >
                                     <li class="blockList">
                                         <h4>cloneOnNewNode</h4>
-                                        <pre class="methodSignature"> abstract <a href=Reaction.html>Reaction</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; <a href=Reaction.html#cloneOnNewNode(Node,Time)>cloneOnNewNode</a>(<a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; node, <a href=Time.html>Time</a> currentTime)</pre>
+                                        <pre class="methodSignature"> abstract <a href=Reaction.html>Reaction</a>&lt;<a href=Reaction.html>T</a>&gt; <a href=Reaction.html#cloneOnNewNode(Node,Time)>cloneOnNewNode</a>(<a href=Node.html>Node</a>&lt;<a href=Reaction.html>T</a>&gt; node, <a href=Time.html>Time</a> currentTime)</pre>
                                         <div class="block"><p>This method allows to clone this reaction on a new node. It may result useful to support runtime creation of nodes with the same reaction programming, e.g. for morphogenesis.</p></div>
                                         
                                         <dl>
@@ -474,44 +438,46 @@ public interface <span class="typeNameLabel"><a href=Reaction.html>Reaction</a>&
                                     </li>
                                 </ul>
                                 
-                                <a id="execute()">
+                                <a id="getInputContext()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>execute</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Reaction.html#execute()>execute</a>()</pre>
-                                        <div class="block"><p>Executes the reactions.</p></div>
+                                        <h4>getInputContext</h4>
+                                        <pre class="methodSignature"> abstract <a href=Context.html>Context</a> <a href=Reaction.html#getInputContext()>getInputContext</a>()</pre>
+                                        <div class="block"><p>The widest <a href=Context.html>Context</a> among <a href=Condition.html>Condition</a>s, namely the smallest <a href=Context.html>Context</a> in which the <a href=Reaction.html>Reaction</a> can read informations.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
                                 </ul>
                                 
-                                <a id="initializationComplete(Time,Environment)">
+                                <a id="getOutputContext()">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockList"
                                           >
                                     <li class="blockList">
-                                        <h4>initializationComplete</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Reaction.html#initializationComplete(Time,Environment)>initializationComplete</a>(<a href=Time.html>Time</a> atTime, <a href=Environment.html>Environment</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, out <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt; environment)</pre>
-                                        <div class="block"><p>This method is called when the environment has completed its initialization. Can be used by this reaction to compute its next execution time - in case such computation requires an inspection of the environment.</p></div>
+                                        <h4>getOutputContext</h4>
+                                        <pre class="methodSignature"> abstract <a href=Context.html>Context</a> <a href=Reaction.html#getOutputContext()>getOutputContext</a>()</pre>
+                                        <div class="block"><p>The widest <a href=Context.html>Context</a> among <a href=Action.html>Action</a>s, namely the smallest context in which the <a href=Reaction.html>Reaction</a> can do modifications.</p></div>
                                         
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>atTime</code> - the time at which the initialization of this reaction was accomplished</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>environment</code> - the environment</dd>
-                                            
-                                            
-                                        </dl>
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="getNode()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getNode</h4>
+                                        <pre class="methodSignature"> abstract <a href=Node.html>Node</a>&lt;<a href=Reaction.html>T</a>&gt; <a href=Reaction.html#getNode()>getNode</a>()</pre>
+                                        <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -525,8 +491,23 @@ public interface <span class="typeNameLabel"><a href=Reaction.html>Reaction</a>&
                                           >
                                     <li class="blockList">
                                         <h4>getActions</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Action.html>Action</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;&gt; <a href=Reaction.html#getActions()>getActions</a>()</pre>
-                                        <div class="block"></div>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Action.html>Action</a>&lt;<a href=Reaction.html>T</a>&gt;&gt; <a href=Reaction.html#getActions()>getActions</a>()</pre>
+                                        <div class="block"><p>The list of <a href=Action.html>Action</a>s of the <a href=Reaction.html>Reaction</a>. Please be careful when you modify this list.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setActions(List)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setActions</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=Reaction.html#setActions(List)>setActions</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Action.html>Action</a>&lt;<a href=Reaction.html>T</a>&gt;&gt; actions)</pre>
+                                        <div class="block"><p>The list of <a href=Action.html>Action</a>s of the <a href=Reaction.html>Reaction</a>. Please be careful when you modify this list.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -540,8 +521,23 @@ public interface <span class="typeNameLabel"><a href=Reaction.html>Reaction</a>&
                                           >
                                     <li class="blockList">
                                         <h4>getConditions</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Condition.html>Condition</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;&gt; <a href=Reaction.html#getConditions()>getConditions</a>()</pre>
-                                        <div class="block"></div>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Condition.html>Condition</a>&lt;<a href=Reaction.html>T</a>&gt;&gt; <a href=Reaction.html#getConditions()>getConditions</a>()</pre>
+                                        <div class="block"><p>The list of <a href=Condition.html>Condition</a>s of the <a href=Reaction.html>Reaction</a>. Please be careful when you modify this list.</p></div>
+                                        
+                                        <!-- TODO missing return annotation -->
+                                    </li>
+                                </ul>
+                                
+                                <a id="setConditions(List)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setConditions</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=Reaction.html#setConditions(List)>setConditions</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Condition.html>Condition</a>&lt;<a href=Reaction.html>T</a>&gt;&gt; conditions)</pre>
+                                        <div class="block"><p>The list of <a href=Condition.html>Condition</a>s of the <a href=Reaction.html>Reaction</a>. Please be careful when you modify this list.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -577,51 +573,6 @@ public interface <span class="typeNameLabel"><a href=Reaction.html>Reaction</a>&
                                     </li>
                                 </ul>
                                 
-                                <a id="getInputContext()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>getInputContext</h4>
-                                        <pre class="methodSignature"> abstract <a href=Context.html>Context</a> <a href=Reaction.html#getInputContext()>getInputContext</a>()</pre>
-                                        <div class="block"></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="getNode()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>getNode</h4>
-                                        <pre class="methodSignature"> abstract <a href=Node.html>Node</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; <a href=Reaction.html#getNode()>getNode</a>()</pre>
-                                        <div class="block"></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="getOutputContext()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>getOutputContext</h4>
-                                        <pre class="methodSignature"> abstract <a href=Context.html>Context</a> <a href=Reaction.html#getOutputContext()>getOutputContext</a>()</pre>
-                                        <div class="block"></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
                                 <a id="getRate()">
                                     <!--   -->
                                 </a>
@@ -630,8 +581,8 @@ public interface <span class="typeNameLabel"><a href=Reaction.html>Reaction</a>&
                                           >
                                     <li class="blockList">
                                         <h4>getRate</h4>
-                                        <pre class="methodSignature"> abstract double <a href=Reaction.html#getRate()>getRate</a>()</pre>
-                                        <div class="block"><p>Returns the speed of this <a href=Reaction.html>Reaction</a>. It is an average number, and can potentially change during the simulation, depending on the implementation.</p></div>
+                                        <pre class="methodSignature"> <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html>Double</a> <a href=Reaction.html#getRate()>getRate</a>()</pre>
+                                        <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
@@ -645,7 +596,7 @@ public interface <span class="typeNameLabel"><a href=Reaction.html>Reaction</a>&
                                           >
                                     <li class="blockList">
                                         <h4>getTau</h4>
-                                        <pre class="methodSignature"> abstract <a href=Time.html>Time</a> <a href=Reaction.html#getTau()>getTau</a>()</pre>
+                                        <pre class="methodSignature"> <a href=Time.html>Time</a> <a href=Reaction.html#getTau()>getTau</a>()</pre>
                                         <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -656,92 +607,12 @@ public interface <span class="typeNameLabel"><a href=Reaction.html>Reaction</a>&
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>getTimeDistribution</h4>
-                                        <pre class="methodSignature"> abstract <a href=TimeDistribution.html>TimeDistribution</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt; <a href=Reaction.html#getTimeDistribution()>getTimeDistribution</a>()</pre>
-                                        <div class="block"></div>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="setActions(List)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>setActions</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Reaction.html#setActions(List)>setActions</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Action.html>Action</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;&gt; actions)</pre>
-                                        <div class="block"><p>Sets the <a href=Action.html>Action</a>s list. Some implementations may not allow to change it at runtime.</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>actions</code> - the list of actions for this reaction</dd>
-                                            
-                                            
-                                        </dl>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="setConditions(List)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>setConditions</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Reaction.html#setConditions(List)>setConditions</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=Condition.html>Condition</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>&gt;&gt; conditions)</pre>
-                                        <div class="block"><p>Sets the <a href=Condition.html>Condition</a>s list. Some implementations may not allow to change it at runtime.</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>conditions</code> - the list of conditions for this action</dd>
-                                            
-                                            
-                                        </dl>
-                                        
-                                        <!-- TODO missing return annotation -->
-                                    </li>
-                                </ul>
-                                
-                                <a id="update(Time,boolean,Environment)">
-                                    <!--   -->
-                                </a>
-                                <ul class=
                                               "blockListLast"
                                           >
                                     <li class="blockList">
-                                        <h4>update</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Reaction.html#update(Time,boolean,Environment)>update</a>(<a href=Time.html>Time</a> currentTime, boolean hasBeenExecuted, <a href=Environment.html>Environment</a>&lt;<a href=../../core/interfaces/Scheduler.html>T</a>, out <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html>Object</a>&gt; environment)</pre>
-                                        <div class="block"><p>Updates the scheduling of this reaction.</p></div>
-                                        
-                                        <dl>
-                                            <dt><span class="paramLabel">Parameters:</span></dt>
-                                            
-                                            
-                                            <dd><code>currentTime</code> - the current <a href=Time.html>Time</a> of execution.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>hasBeenExecuted</code> - true if the reaction have just been executed.</dd>
-                                            
-                                            
-                                            
-                                            <dd><code>environment</code> - the current environment</dd>
-                                            
-                                            
-                                        </dl>
+                                        <h4>getTimeDistribution</h4>
+                                        <pre class="methodSignature"> abstract <a href=TimeDistribution.html>TimeDistribution</a>&lt;<a href=Reaction.html>T</a>&gt; <a href=Reaction.html#getTimeDistribution()>getTimeDistribution</a>()</pre>
+                                        <div class="block"></div>
                                         
                                         <!-- TODO missing return annotation -->
                                     </li>
