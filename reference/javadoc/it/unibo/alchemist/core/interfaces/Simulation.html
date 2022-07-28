@@ -117,7 +117,7 @@ var pathtoroot = "../../../../../";
                     <hr>
                     <pre class="wrap-overflow">
 
-public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation</a>&lt;T, P extends <a href=../../model/interfaces/Position.html>Position</a>&lt;out <a href=../../model/interfaces/Layer.html>P</a>&gt;&gt;</span>
+public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation</a>&lt;T, P extends <a href=../../model/interfaces/Position.html>Position</a>&lt;out <a href=../../model/interfaces/LinkingRule.html>P</a>&gt;&gt;</span>
  implements <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Runnable.html>Runnable</a>
                     </pre>
                     <div class="block"><p>This interface forces simulations to be independent threads, and make them controllable from an external console.</p></div>
@@ -243,13 +243,13 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                         <tr id="i0" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#addOutputMonitor(OutputMonitor)>addOutputMonitor</a>(<a href=../../boundary/interfaces/OutputMonitor.html>OutputMonitor</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>, <a href=../../model/interfaces/Layer.html>P</a>&gt; op) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#addOutputMonitor(OutputMonitor)>addOutputMonitor</a>(<a href=../../boundary/interfaces/OutputMonitor.html>OutputMonitor</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>, <a href=../../model/interfaces/LinkingRule.html>P</a>&gt; op) </code>
                                             </th>
                                             <td class="colLast">Adds an <a href=../../boundary/interfaces/OutputMonitor.html>OutputMonitor</a> to this simulation.</td>
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=../../model/interfaces/Environment.html>Environment</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>, <a href=../../model/interfaces/Layer.html>P</a>&gt;</code>
+                                            <td class="colFirst"><code>abstract <a href=../../model/interfaces/Environment.html>Environment</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>, <a href=../../model/interfaces/LinkingRule.html>P</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=../implementations/Engine.html#getEnvironment()>getEnvironment</a>() </code>
                                             </th>
@@ -323,7 +323,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                         <tr id="i10" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#neighborAdded(Node,Node)>neighborAdded</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; node, <a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; n) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#neighborAdded(Node,Node)>neighborAdded</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; node, <a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; n) </code>
                                             </th>
                                             <td class="colLast">This method must get called in case a a communication link connecting two nodes gets created during the simulation.</td>
                                         </tr>
@@ -331,7 +331,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                         <tr id="i11" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#neighborRemoved(Node,Node)>neighborRemoved</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; node, <a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; n) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#neighborRemoved(Node,Node)>neighborRemoved</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; node, <a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; n) </code>
                                             </th>
                                             <td class="colLast">This method must get called in case a a communication link connecting two nodes gets broken during the simulation.</td>
                                         </tr>
@@ -339,7 +339,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                         <tr id="i12" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#nodeAdded(Node)>nodeAdded</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; node) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#nodeAdded(Node)>nodeAdded</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; node) </code>
                                             </th>
                                             <td class="colLast">This method must get called in case a node is added to the environment during the simulation and after its neighborhood has been computed (or can be consistently computed by the simulated environment).</td>
                                         </tr>
@@ -347,7 +347,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                         <tr id="i13" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#nodeMoved(Node)>nodeMoved</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; node) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#nodeMoved(Node)>nodeMoved</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; node) </code>
                                             </th>
                                             <td class="colLast">This method must get called in case a node is moved in the environment during the simulation and after its neighborhood has been computed (or can be consistently computed by the simulated environment).</td>
                                         </tr>
@@ -355,7 +355,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                         <tr id="i14" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#nodeRemoved(Node,Neighborhood)>nodeRemoved</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; node, <a href=../../model/interfaces/Neighborhood.html>Neighborhood</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; oldNeighborhood) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#nodeRemoved(Node,Neighborhood)>nodeRemoved</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; node, <a href=../../model/interfaces/Neighborhood.html>Neighborhood</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; oldNeighborhood) </code>
                                             </th>
                                             <td class="colLast">This method must get called in case a node is removed from the environment during the simulation and after its neighborhood has been computed (or can be consistently computed by the simulated environment).</td>
                                         </tr>
@@ -379,7 +379,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                         <tr id="i17" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#reactionAdded(Actionable)>reactionAdded</a>(<a href=../../model/interfaces/Actionable.html>Actionable</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; reactionToAdd) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#reactionAdded(Actionable)>reactionAdded</a>(<a href=../../model/interfaces/Actionable.html>Actionable</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; reactionToAdd) </code>
                                             </th>
                                             <td class="colLast">Adds a reaction during the simulation to the scheduler and start to execute it.</td>
                                         </tr>
@@ -387,7 +387,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                         <tr id="i18" class="altColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#reactionRemoved(Actionable)>reactionRemoved</a>(<a href=../../model/interfaces/Actionable.html>Actionable</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; reactionToRemove) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#reactionRemoved(Actionable)>reactionRemoved</a>(<a href=../../model/interfaces/Actionable.html>Actionable</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; reactionToRemove) </code>
                                             </th>
                                             <td class="colLast">Removes a reaction during the simulation from the scheduler and stop to execute it.</td>
                                         </tr>
@@ -395,7 +395,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                         <tr id="i19" class="rowColor">
                                             <td class="colFirst"><code>abstract void</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#removeOutputMonitor(OutputMonitor)>removeOutputMonitor</a>(<a href=../../boundary/interfaces/OutputMonitor.html>OutputMonitor</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>, <a href=../../model/interfaces/Layer.html>P</a>&gt; op) </code>
+                                            <th class="colSecond" scope="row"><code><a href=Simulation.html#removeOutputMonitor(OutputMonitor)>removeOutputMonitor</a>(<a href=../../boundary/interfaces/OutputMonitor.html>OutputMonitor</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>, <a href=../../model/interfaces/LinkingRule.html>P</a>&gt; op) </code>
                                             </th>
                                             <td class="colLast">Removes an <a href=../../boundary/interfaces/OutputMonitor.html>OutputMonitor</a> to this simulation.</td>
                                         </tr>
@@ -482,7 +482,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                           >
                                     <li class="blockList">
                                         <h4>addOutputMonitor</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#addOutputMonitor(OutputMonitor)>addOutputMonitor</a>(<a href=../../boundary/interfaces/OutputMonitor.html>OutputMonitor</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>, <a href=../../model/interfaces/Layer.html>P</a>&gt; op)</pre>
+                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#addOutputMonitor(OutputMonitor)>addOutputMonitor</a>(<a href=../../boundary/interfaces/OutputMonitor.html>OutputMonitor</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>, <a href=../../model/interfaces/LinkingRule.html>P</a>&gt; op)</pre>
                                         <div class="block"><p>Adds an <a href=../../boundary/interfaces/OutputMonitor.html>OutputMonitor</a> to this simulation.</p></div>
                                         
                                         <dl>
@@ -506,7 +506,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                           >
                                     <li class="blockList">
                                         <h4>getEnvironment</h4>
-                                        <pre class="methodSignature"> abstract <a href=../../model/interfaces/Environment.html>Environment</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>, <a href=../../model/interfaces/Layer.html>P</a>&gt; <a href=../implementations/Engine.html#getEnvironment()>getEnvironment</a>()</pre>
+                                        <pre class="methodSignature"> abstract <a href=../../model/interfaces/Environment.html>Environment</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>, <a href=../../model/interfaces/LinkingRule.html>P</a>&gt; <a href=../implementations/Engine.html#getEnvironment()>getEnvironment</a>()</pre>
                                         <div class="block"><p>Allows to access the current environment.</p></div>
                                         
                                         <!-- TODO missing return annotation -->
@@ -659,7 +659,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                           >
                                     <li class="blockList">
                                         <h4>neighborAdded</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#neighborAdded(Node,Node)>neighborAdded</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; node, <a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; n)</pre>
+                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#neighborAdded(Node,Node)>neighborAdded</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; node, <a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; n)</pre>
                                         <div class="block"><p>This method must get called in case a a communication link connecting two nodes gets created during the simulation. This method provides dependency and scheduling times re-computation for all the reactions interested by such change.</p></div>
                                         
                                         <dl>
@@ -687,7 +687,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                           >
                                     <li class="blockList">
                                         <h4>neighborRemoved</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#neighborRemoved(Node,Node)>neighborRemoved</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; node, <a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; n)</pre>
+                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#neighborRemoved(Node,Node)>neighborRemoved</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; node, <a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; n)</pre>
                                         <div class="block"><p>This method must get called in case a a communication link connecting two nodes gets broken during the simulation. This method provides dependency and scheduling times re-computation for all the reactions interested by such change.</p></div>
                                         
                                         <dl>
@@ -715,7 +715,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                           >
                                     <li class="blockList">
                                         <h4>nodeAdded</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#nodeAdded(Node)>nodeAdded</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; node)</pre>
+                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#nodeAdded(Node)>nodeAdded</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; node)</pre>
                                         <div class="block"><p>This method must get called in case a node is added to the environment during the simulation and after its neighborhood has been computed (or can be consistently computed by the simulated environment). This method provides dependency computation and is responsible of correctly scheduling the Node's new reactions.</p></div>
                                         
                                         <dl>
@@ -739,7 +739,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                           >
                                     <li class="blockList">
                                         <h4>nodeMoved</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#nodeMoved(Node)>nodeMoved</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; node)</pre>
+                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#nodeMoved(Node)>nodeMoved</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; node)</pre>
                                         <div class="block"><p>This method must get called in case a node is moved in the environment during the simulation and after its neighborhood has been computed (or can be consistently computed by the simulated environment). This method provides dependency computation and is responsible of correctly scheduling the Node's reactions.</p></div>
                                         
                                         <dl>
@@ -763,7 +763,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                           >
                                     <li class="blockList">
                                         <h4>nodeRemoved</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#nodeRemoved(Node,Neighborhood)>nodeRemoved</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; node, <a href=../../model/interfaces/Neighborhood.html>Neighborhood</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; oldNeighborhood)</pre>
+                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#nodeRemoved(Node,Neighborhood)>nodeRemoved</a>(<a href=../../model/interfaces/Node.html>Node</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; node, <a href=../../model/interfaces/Neighborhood.html>Neighborhood</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; oldNeighborhood)</pre>
                                         <div class="block"><p>This method must get called in case a node is removed from the environment during the simulation and after its neighborhood has been computed (or can be consistently computed by the simulated environment). This method provides dependency computation and is responsible of correctly removing the Node's reactions from the scheduler.</p></div>
                                         
                                         <dl>
@@ -821,7 +821,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                           >
                                     <li class="blockList">
                                         <h4>reactionAdded</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#reactionAdded(Actionable)>reactionAdded</a>(<a href=../../model/interfaces/Actionable.html>Actionable</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; reactionToAdd)</pre>
+                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#reactionAdded(Actionable)>reactionAdded</a>(<a href=../../model/interfaces/Actionable.html>Actionable</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; reactionToAdd)</pre>
                                         <div class="block"><p>Adds a reaction during the simulation to the scheduler and start to execute it. The reaction addition is not propagated in the <a href=../../model/interfaces/Node.html>Node</a> entity. To do that call also the method addReaction.</p></div>
                                         
                                         <dl>
@@ -845,7 +845,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                           >
                                     <li class="blockList">
                                         <h4>reactionRemoved</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#reactionRemoved(Actionable)>reactionRemoved</a>(<a href=../../model/interfaces/Actionable.html>Actionable</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>&gt; reactionToRemove)</pre>
+                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#reactionRemoved(Actionable)>reactionRemoved</a>(<a href=../../model/interfaces/Actionable.html>Actionable</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>&gt; reactionToRemove)</pre>
                                         <div class="block"><p>Removes a reaction during the simulation from the scheduler and stop to execute it. The reaction removal is not propagated in the <a href=../../model/interfaces/Node.html>Node</a> entity. To do that call also the method removeReaction.</p></div>
                                         
                                         <dl>
@@ -869,7 +869,7 @@ public interface <span class="typeNameLabel"><a href=Simulation.html>Simulation<
                                           >
                                     <li class="blockList">
                                         <h4>removeOutputMonitor</h4>
-                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#removeOutputMonitor(OutputMonitor)>removeOutputMonitor</a>(<a href=../../boundary/interfaces/OutputMonitor.html>OutputMonitor</a>&lt;<a href=../../model/interfaces/Concentration.html>T</a>, <a href=../../model/interfaces/Layer.html>P</a>&gt; op)</pre>
+                                        <pre class="methodSignature"> abstract void <a href=Simulation.html#removeOutputMonitor(OutputMonitor)>removeOutputMonitor</a>(<a href=../../boundary/interfaces/OutputMonitor.html>OutputMonitor</a>&lt;<a href=../../model/interfaces/LinkingRule.html>T</a>, <a href=../../model/interfaces/LinkingRule.html>P</a>&gt; op)</pre>
                                         <div class="block"><p>Removes an <a href=../../boundary/interfaces/OutputMonitor.html>OutputMonitor</a> to this simulation. If the <a href=../../boundary/interfaces/OutputMonitor.html>OutputMonitor</a> was not among those already added, this method does nothing.</p></div>
                                         
                                         <dl>
