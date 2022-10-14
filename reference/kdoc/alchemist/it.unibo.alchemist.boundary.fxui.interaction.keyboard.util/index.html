@@ -6,10 +6,18 @@
     <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
     <script>var pathToRoot = "../../";</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-const savedDarkMode = storage ? JSON.parse(storage) : false
-if(savedDarkMode === true){
-    document.getElementsByTagName("html")[0].classList.add("theme-dark")
-}</script>
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../styles/style.css" rel="Stylesheet">
 <link href="../../styles/jetbrains-mono.css" rel="Stylesheet">
@@ -21,6 +29,7 @@ if(savedDarkMode === true){
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
 <div class="navigation-wrapper" id="navigation-wrapper">
@@ -43,9 +52,9 @@ if(savedDarkMode === true){
     </div>
     <div id="main">
 <div class="main-content" id="content" pageIds="alchemist::it.unibo.alchemist.boundary.fxui.interaction.keyboard.util////PointingToDeclaration//106703059">
-  <div class="breadcrumbs"><a href="../../index.html">alchemist</a><span class="delimiter">/</span><a href="index.html">it.unibo.alchemist.boundary.fxui.interaction.keyboard.util</a></div>
+  <div class="breadcrumbs"><a href="../../index.html">alchemist</a><span class="delimiter">/</span><span class="current">it.unibo.alchemist.boundary.fxui.interaction.keyboard.util</span></div>
   <div class="cover ">
-    <h1 class="cover"><span>Package it.</span><wbr></wbr><span>unibo.</span><wbr></wbr><span>alchemist.</span><wbr></wbr><span>boundary.</span><wbr></wbr><span>fxui.</span><wbr></wbr><span>interaction.</span><wbr></wbr><span>keyboard.</span><wbr></wbr><span>util</span></h1>
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button></div>
@@ -61,7 +70,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-action-from-key/index.html">ActionFromKey</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-action-from-key/index.html">ActionFromKey</a><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Actions which can be bound to a key on the keyboard.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-action-from-key/index.html">ActionFromKey</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-action-from-key/index.html">ActionFromKey</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Actions which can be bound to a key on the keyboard.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -76,7 +85,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-keybinds/index.html">Keybinds</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Reads and writes a configuration of key bindings to a JSON file.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-keybinds/index.html">Keybinds</a></div><div class="brief "><p class="paragraph">Reads and writes a configuration of key bindings to a JSON file.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -91,7 +100,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-keybinds-serializer/index.html">KeybindsSerializer</a> : <a href="https://javadoc.io/doc/com.google.code.gson/gson/2.9.1/com.google.gson/com/google/gson/JsonSerializer.html">JsonSerializer</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-action-from-key/index.html">ActionFromKey</a><span class="token punctuation">, </span><span class="token keyword"></span><span data-unresolved-link="javafx.scene.input/KeyCode///PointingToDeclaration/">KeyCode</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Serializer for keybinds that serializes <a href="-action-from-key/index.html">ActionFromKey</a> by using the enum values' names instead of <a href="-action-from-key/to-string.html">ActionFromKey.toString</a>.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-keybinds-serializer/index.html">KeybindsSerializer</a> : <a href="https://javadoc.io/doc/com.google.code.gson/gson/2.9.1/com.google.gson/com/google/gson/JsonSerializer.html">JsonSerializer</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-action-from-key/index.html">ActionFromKey</a><span class="token punctuation">, </span><span class="token keyword"></span><span data-unresolved-link="javafx.scene.input/KeyCode///PointingToDeclaration/">KeyCode</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Serializer for keybinds that serializes <a href="-action-from-key/index.html">ActionFromKey</a> by using the enum values' names instead of <a href="-action-from-key/to-string.html">ActionFromKey.toString</a>.</p></div></div></div>
               </div>
             </div>
           </div>

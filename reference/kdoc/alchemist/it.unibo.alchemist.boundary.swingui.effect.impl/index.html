@@ -6,10 +6,18 @@
     <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
     <script>var pathToRoot = "../../";</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-const savedDarkMode = storage ? JSON.parse(storage) : false
-if(savedDarkMode === true){
-    document.getElementsByTagName("html")[0].classList.add("theme-dark")
-}</script>
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../styles/style.css" rel="Stylesheet">
 <link href="../../styles/jetbrains-mono.css" rel="Stylesheet">
@@ -21,6 +29,7 @@ if(savedDarkMode === true){
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
 <div class="navigation-wrapper" id="navigation-wrapper">
@@ -43,9 +52,9 @@ if(savedDarkMode === true){
     </div>
     <div id="main">
 <div class="main-content" id="content" pageIds="alchemist::it.unibo.alchemist.boundary.swingui.effect.impl////PointingToDeclaration//106703059">
-  <div class="breadcrumbs"><a href="../../index.html">alchemist</a><span class="delimiter">/</span><a href="index.html">it.unibo.alchemist.boundary.swingui.effect.impl</a></div>
+  <div class="breadcrumbs"><a href="../../index.html">alchemist</a><span class="delimiter">/</span><span class="current">it.unibo.alchemist.boundary.swingui.effect.impl</span></div>
   <div class="cover ">
-    <h1 class="cover"><span>Package it.</span><wbr></wbr><span>unibo.</span><wbr></wbr><span>alchemist.</span><wbr></wbr><span>boundary.</span><wbr></wbr><span>swingui.</span><wbr></wbr><span>effect.</span><wbr></wbr><span>impl</span></h1>
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button></div>
@@ -61,7 +70,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-abstract-draw-layers/index.html">AbstractDrawLayers</a> : <a href="-abstract-draw-once/index.html">AbstractDrawOnce</a>, <a href="../it.unibo.alchemist.boundary.swingui.effect.api/-draw-layers/index.html">DrawLayers</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">This class collects the following responsibilities: - it manages to draw layers only when necessary (as the apply method will be called for every node).</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-abstract-draw-layers/index.html">AbstractDrawLayers</a> : <a href="-abstract-draw-once/index.html">AbstractDrawOnce</a>, <a href="../it.unibo.alchemist.boundary.swingui.effect.api/-draw-layers/index.html">DrawLayers</a></div><div class="brief ">This class collects the following responsibilities: - it manages to draw layers only when necessary (as the apply method will be called for every node).</div></div></div>
               </div>
             </div>
           </div>
@@ -76,7 +85,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-abstract-draw-once/index.html">AbstractDrawOnce</a> : <a href="../it.unibo.alchemist.boundary.swingui.effect.api/-effect/index.html">Effect</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Effects are normally applied for each node, this is a base class for effects that do not need to be redrawn for each node.</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-abstract-draw-once/index.html">AbstractDrawOnce</a> : <a href="../it.unibo.alchemist.boundary.swingui.effect.api/-effect/index.html">Effect</a></div><div class="brief ">Effects are normally applied for each node, this is a base class for effects that do not need to be redrawn for each node.</div></div></div>
               </div>
             </div>
           </div>
@@ -91,7 +100,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-bidimensional-gaussian-layers-mapper/index.html">BidimensionalGaussianLayersMapper</a> : <a href="../it.unibo.alchemist.boundary.swingui.effect.api/-layer-to-function-mapper/index.html">LayerToFunctionMapper</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Maps <a href="../it.unibo.alchemist.model.implementations.layers/-bidimensional-gaussian-layer/index.html">BidimensionalGaussianLayer</a>s, it ignores any other layer.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-bidimensional-gaussian-layers-mapper/index.html">BidimensionalGaussianLayersMapper</a> : <a href="../it.unibo.alchemist.boundary.swingui.effect.api/-layer-to-function-mapper/index.html">LayerToFunctionMapper</a></div><div class="brief "><p class="paragraph">Maps <a href="../it.unibo.alchemist.model.implementations.layers/-bidimensional-gaussian-layer/index.html">BidimensionalGaussianLayer</a>s, it ignores any other layer.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -106,7 +115,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-draw-bidimensional-gaussian-layers-gradient/index.html">DrawBidimensionalGaussianLayersGradient</a> : <a href="-draw-layers-gradient/index.html">DrawLayersGradient</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Draw a gradient in the background of the gui for <a href="../it.unibo.alchemist.model.implementations.layers/-bidimensional-gaussian-layer/index.html">it.unibo.alchemist.model.implementations.layers.BidimensionalGaussianLayer</a>s values.</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-draw-bidimensional-gaussian-layers-gradient/index.html">DrawBidimensionalGaussianLayersGradient</a> : <a href="-draw-layers-gradient/index.html">DrawLayersGradient</a></div><div class="brief ">Draw a gradient in the background of the gui for <a href="../it.unibo.alchemist.model.implementations.layers/-bidimensional-gaussian-layer/index.html">it.unibo.alchemist.model.implementations.layers.BidimensionalGaussianLayer</a>s values.</div></div></div>
               </div>
             </div>
           </div>
@@ -121,7 +130,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-draw-bidimensional-gaussian-layers-isolines/index.html">DrawBidimensionalGaussianLayersIsolines</a> : <a href="-draw-layers-isolines/index.html">DrawLayersIsolines</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Draw isolines for <a href="../it.unibo.alchemist.model.implementations.layers/-bidimensional-gaussian-layer/index.html">it.unibo.alchemist.model.implementations.layers.BidimensionalGaussianLayer</a>s.</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-draw-bidimensional-gaussian-layers-isolines/index.html">DrawBidimensionalGaussianLayersIsolines</a> : <a href="-draw-layers-isolines/index.html">DrawLayersIsolines</a></div><div class="brief ">Draw isolines for <a href="../it.unibo.alchemist.model.implementations.layers/-bidimensional-gaussian-layer/index.html">it.unibo.alchemist.model.implementations.layers.BidimensionalGaussianLayer</a>s.</div></div></div>
               </div>
             </div>
           </div>
@@ -136,7 +145,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-draw-cognitive-map/index.html">DrawCognitiveMap</a> : <a href="-abstract-draw-once/index.html">AbstractDrawOnce</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Draws an orienting node's cognitive map.</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-draw-cognitive-map/index.html">DrawCognitiveMap</a> : <a href="-abstract-draw-once/index.html">AbstractDrawOnce</a></div><div class="brief ">Draws an orienting node's cognitive map.</div></div></div>
               </div>
             </div>
           </div>
@@ -151,7 +160,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-draw-layers-gradient/index.html">DrawLayersGradient</a> : <a href="-draw-layers-values/index.html">DrawLayersValues</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Draw layers values as background in the gui.</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-draw-layers-gradient/index.html">DrawLayersGradient</a> : <a href="-draw-layers-values/index.html">DrawLayersValues</a></div><div class="brief ">Draw layers values as background in the gui.</div></div></div>
               </div>
             </div>
           </div>
@@ -166,7 +175,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-draw-layers-isolines/index.html">DrawLayersIsolines</a> : <a href="-draw-layers-values/index.html">DrawLayersValues</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Draw layers isolines.</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-draw-layers-isolines/index.html">DrawLayersIsolines</a> : <a href="-draw-layers-values/index.html">DrawLayersValues</a></div><div class="brief ">Draw layers isolines.</div></div></div>
               </div>
             </div>
           </div>
@@ -181,7 +190,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-draw-layers-values/index.html">DrawLayersValues</a> : <a href="-abstract-draw-layers/index.html">AbstractDrawLayers</a>, <a href="../it.unibo.alchemist.boundary.swingui.effect.api/-function-drawer/index.html">FunctionDrawer</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">This is a basic class for all the effects meant to draw <a href="../it.unibo.alchemist.model.interfaces/-layer/index.html">it.unibo.alchemist.model.interfaces.Layer</a>s values in different points of the view.</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-draw-layers-values/index.html">DrawLayersValues</a> : <a href="-abstract-draw-layers/index.html">AbstractDrawLayers</a>, <a href="../it.unibo.alchemist.boundary.swingui.effect.api/-function-drawer/index.html">FunctionDrawer</a></div><div class="brief ">This is a basic class for all the effects meant to draw <a href="../it.unibo.alchemist.model.interfaces/-layer/index.html">it.unibo.alchemist.model.interfaces.Layer</a>s values in different points of the view.</div></div></div>
               </div>
             </div>
           </div>
@@ -196,7 +205,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-draw-navigation-graph/index.html">DrawNavigationGraph</a> : <a href="-abstract-draw-once/index.html">AbstractDrawOnce</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Draws the navigation graph of an <a href="../it.unibo.alchemist.model.implementations.environments/-image-environment-with-graph/index.html">ImageEnvironmentWithGraph</a>.</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-draw-navigation-graph/index.html">DrawNavigationGraph</a> : <a href="-abstract-draw-once/index.html">AbstractDrawOnce</a></div><div class="brief ">Draws the navigation graph of an <a href="../it.unibo.alchemist.model.implementations.environments/-image-environment-with-graph/index.html">ImageEnvironmentWithGraph</a>.</div></div></div>
               </div>
             </div>
           </div>
@@ -211,7 +220,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-draw-pedestrian-path/index.html">DrawPedestrianPath</a> : <a href="-abstract-draw-once/index.html">AbstractDrawOnce</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Draws the paths took by pedestrians.</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-draw-pedestrian-path/index.html">DrawPedestrianPath</a> : <a href="-abstract-draw-once/index.html">AbstractDrawOnce</a></div><div class="brief ">Draws the paths took by pedestrians.</div></div></div>
               </div>
             </div>
           </div>
@@ -226,7 +235,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace strikethrough"><div class="block"><div class="block"><span class="token annotation">@</span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Deprecated.html"><span class="token annotation">Deprecated</span></a></div></div><strike><span class="token keyword">class </span></strike><a href="-draw-shape/index.html"><strike>DrawShape</strike></a><strike> : </strike><a href="../it.unibo.alchemist.boundary.swingui.effect.api/-effect/index.html"><strike>Effect</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-draw-shape/index.html"><strike>DrawShape</strike></a> : <a href="../it.unibo.alchemist.boundary.swingui.effect.api/-effect/index.html">Effect</a></div></div></div>
               </div>
             </div>
           </div>
@@ -241,7 +250,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-draw-smartcam/index.html">DrawSmartcam</a> : <a href="../it.unibo.alchemist.boundary.swingui.effect.api/-effect/index.html">Effect</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Draws node's shapes and cameras' fields of view.</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-draw-smartcam/index.html">DrawSmartcam</a> : <a href="../it.unibo.alchemist.boundary.swingui.effect.api/-effect/index.html">Effect</a></div><div class="brief ">Draws node's shapes and cameras' fields of view.</div></div></div>
               </div>
             </div>
           </div>
@@ -256,7 +265,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace strikethrough"><div class="block"><div class="block"><span class="token annotation">@</span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Deprecated.html"><span class="token annotation">Deprecated</span></a></div></div><strike><span class="token keyword">class </span></strike><a href="-effect-builder/index.html"><strike>EffectBuilder</strike></a><strike> : </strike><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/javax/swing/JFrame.html"><strike>JFrame</strike></a><strike>, </strike><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/event/ActionListener.html"><strike>ActionListener</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-effect-builder/index.html"><strike>EffectBuilder</strike></a> : <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/javax/swing/JFrame.html">JFrame</a>, <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/event/ActionListener.html">ActionListener</a></div></div></div>
               </div>
             </div>
           </div>
@@ -271,7 +280,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace strikethrough"><div class="block"><div class="block"><span class="token annotation">@</span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Deprecated.html"><span class="token annotation">Deprecated</span></a></div></div><strike><span class="token keyword">class </span></strike><a href="-effect-factory/index.html"><strike>EffectFactory</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-effect-factory/index.html"><strike>EffectFactory</strike></a></div></div></div>
               </div>
             </div>
           </div>
@@ -286,7 +295,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace strikethrough"><div class="block"><div class="block"><span class="token annotation">@</span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Deprecated.html"><span class="token annotation">Deprecated</span></a></div></div><strike><span class="token keyword">class </span></strike><a href="-effect-serialization-factory/index.html"><strike>EffectSerializationFactory</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Serialize Alchemist effects from/to file in human readable format.</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-effect-serialization-factory/index.html"><strike>EffectSerializationFactory</strike></a></div><div class="brief ">Serialize Alchemist effects from/to file in human readable format.</div></div></div>
               </div>
             </div>
           </div>

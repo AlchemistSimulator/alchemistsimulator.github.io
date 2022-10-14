@@ -6,10 +6,18 @@
     <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
     <script>var pathToRoot = "../../";</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-const savedDarkMode = storage ? JSON.parse(storage) : false
-if(savedDarkMode === true){
-    document.getElementsByTagName("html")[0].classList.add("theme-dark")
-}</script>
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../styles/style.css" rel="Stylesheet">
 <link href="../../styles/jetbrains-mono.css" rel="Stylesheet">
@@ -21,6 +29,7 @@ if(savedDarkMode === true){
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
 <div class="navigation-wrapper" id="navigation-wrapper">
@@ -43,9 +52,9 @@ if(savedDarkMode === true){
     </div>
     <div id="main">
 <div class="main-content" id="content" pageIds="alchemist::it.unibo.alchemist.model.implementations.routingservices////PointingToDeclaration//106703059">
-  <div class="breadcrumbs"><a href="../../index.html">alchemist</a><span class="delimiter">/</span><a href="index.html">it.unibo.alchemist.model.implementations.routingservices</a></div>
+  <div class="breadcrumbs"><a href="../../index.html">alchemist</a><span class="delimiter">/</span><span class="current">it.unibo.alchemist.model.implementations.routingservices</span></div>
   <div class="cover ">
-    <h1 class="cover"><span>Package it.</span><wbr></wbr><span>unibo.</span><wbr></wbr><span>alchemist.</span><wbr></wbr><span>model.</span><wbr></wbr><span>implementations.</span><wbr></wbr><span><span>routingservices</span></span></h1>
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button></div>
@@ -61,7 +70,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-graph-hopper-options/index.html">GraphHopperOptions</a> : <a href="../it.unibo.alchemist.model.interfaces/-routing-service-options/index.html">RoutingServiceOptions</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-graph-hopper-options/index.html">GraphHopperOptions</a><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Available configuration options for routing through GraphHopper. GraphHopper expects a valid <a href="-graph-hopper-options/profile.html">profile</a> (including information about vehicle and graph-weighting strategy) and the selction of an <a href="-graph-hopper-options/algorithm.html">algorithm</a>.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-graph-hopper-options/index.html">GraphHopperOptions</a> : <a href="../it.unibo.alchemist.model.interfaces/-routing-service-options/index.html">RoutingServiceOptions</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-graph-hopper-options/index.html">GraphHopperOptions</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Available configuration options for routing through GraphHopper. GraphHopper expects a valid <a href="-graph-hopper-options/profile.html">profile</a> (including information about vehicle and graph-weighting strategy) and the selction of an <a href="-graph-hopper-options/algorithm.html">algorithm</a>.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -76,7 +85,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-graph-hopper-routing-service/index.html">GraphHopperRoutingService</a> <span><span class="token annotation">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;map<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/URL.html">URL</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;workingDirectory<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/File.html">File</a><span class="token operator"> = </span>defaultWorkingDirectory(map.openStream())<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>defaultOptions<span class="token operator">: </span><a href="-graph-hopper-options/index.html">GraphHopperOptions</a><span class="token operator"> = </span>Companion.defaultOptions</span></span><span class="token punctuation">)</span> : <a href="../it.unibo.alchemist.model.interfaces/-routing-service/index.html">RoutingService</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../it.unibo.alchemist.model.interfaces/-geo-position/index.html">GeoPosition</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="-graph-hopper-options/index.html">GraphHopperOptions</a><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph"><a href="../it.unibo.alchemist.model.interfaces/-routing-service/index.html">RoutingService</a> implementation based on GraphHopper.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-graph-hopper-routing-service/index.html">GraphHopperRoutingService</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">map<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/URL.html">URL</a><span class="token punctuation">, </span></span><span class="parameter ">workingDirectory<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/File.html">File</a><span class="token operator"> = </span>defaultWorkingDirectory(map.openStream())<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>defaultOptions<span class="token operator">: </span><a href="-graph-hopper-options/index.html">GraphHopperOptions</a><span class="token operator"> = </span>Companion.defaultOptions</span></span><span class="token punctuation">)</span> : <a href="../it.unibo.alchemist.model.interfaces/-routing-service/index.html">RoutingService</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../it.unibo.alchemist.model.interfaces/-geo-position/index.html">GeoPosition</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="-graph-hopper-options/index.html">GraphHopperOptions</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph"><a href="../it.unibo.alchemist.model.interfaces/-routing-service/index.html">RoutingService</a> implementation based on GraphHopper.</p></div></div></div>
               </div>
             </div>
           </div>

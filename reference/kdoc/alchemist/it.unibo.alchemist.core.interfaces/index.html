@@ -6,10 +6,18 @@
     <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
     <script>var pathToRoot = "../../";</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-const savedDarkMode = storage ? JSON.parse(storage) : false
-if(savedDarkMode === true){
-    document.getElementsByTagName("html")[0].classList.add("theme-dark")
-}</script>
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../styles/style.css" rel="Stylesheet">
 <link href="../../styles/jetbrains-mono.css" rel="Stylesheet">
@@ -21,6 +29,7 @@ if(savedDarkMode === true){
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
 <div class="navigation-wrapper" id="navigation-wrapper">
@@ -43,10 +52,10 @@ if(savedDarkMode === true){
     </div>
     <div id="main">
 <div class="main-content" id="content" pageIds="alchemist::it.unibo.alchemist.core.interfaces////PointingToDeclaration//106703059">
-  <div class="breadcrumbs"><a href="../../index.html">alchemist</a><span class="delimiter">/</span><a href="index.html">it.unibo.alchemist.core.interfaces</a></div>
+  <div class="breadcrumbs"><a href="../../index.html">alchemist</a><span class="delimiter">/</span><span class="current">it.unibo.alchemist.core.interfaces</span></div>
   <div class="cover ">
-    <h1 class="cover"><span>Package it.</span><wbr></wbr><span>unibo.</span><wbr></wbr><span>alchemist.</span><wbr></wbr><span>core.</span><wbr></wbr><span>interfaces</span></h1>
-    <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><p class="paragraph">This package contains the interfaces to implement in order to create an engine.</p></div></div>
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+    <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><p class="paragraph">This package contains the interfaces to implement in order to create an engine.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button></div>
@@ -62,7 +71,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-dependency-graph/index.html">DependencyGraph</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-dependency-graph/index.html">T</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">This interface allows to separate the usage of a dependency graph from its implementation.</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-dependency-graph/index.html">DependencyGraph</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-dependency-graph/index.html">T</a><span class="token operator">&gt;</span></div><div class="brief ">This interface allows to separate the usage of a dependency graph from its implementation.</div></div></div>
               </div>
             </div>
           </div>
@@ -77,7 +86,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-scheduler/index.html">Scheduler</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-scheduler/index.html">T</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">The type which describes the concentration of a molecule This interface is meant to be implemented by the data structure(s) which must manage the reactions.</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-scheduler/index.html">Scheduler</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-scheduler/index.html">T</a><span class="token operator">&gt;</span></div><div class="brief ">The type which describes the concentration of a molecule This interface is meant to be implemented by the data structure(s) which must manage the reactions.</div></div></div>
               </div>
             </div>
           </div>
@@ -92,7 +101,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-simulation/index.html">Simulation</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-simulation/index.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="-simulation/index.html">P</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.interfaces/-position/index.html">Position</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="../it.unibo.alchemist.boundary.interfaces/-output-monitor/index.html">P</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator">&gt;</span> : <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Runnable.html">Runnable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">This interface forces simulations to be independent threads, and make them controllable from an external console.</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-simulation/index.html">Simulation</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-simulation/index.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="-simulation/index.html">P</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.interfaces/-position/index.html">Position</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-simulation/index.html">P</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator">&gt;</span> : <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Runnable.html">Runnable</a></div><div class="brief ">This interface forces simulations to be independent threads, and make them controllable from an external console.</div></div></div>
               </div>
             </div>
           </div>
@@ -107,7 +116,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-status/index.html">Status</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">This enum represents the possible states in which a Simulation could be.</div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-status/index.html">Status</a></div><div class="brief ">This enum represents the possible states in which a Simulation could be.</div></div></div>
               </div>
             </div>
           </div>
