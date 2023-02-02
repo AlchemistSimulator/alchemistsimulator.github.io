@@ -55,9 +55,15 @@ function adjustContentWidth(){
 }
 
 function switchTab(tabGroup, tabId) {
-    var tabs = jQuery(".tab-panel").has("[data-tab-group='"+tabGroup+"'][data-tab-item='"+tabId+"']");
-    var allTabItems = tabs.find("[data-tab-group='"+tabGroup+"']");
-    var targetTabItems = tabs.find("[data-tab-group='"+tabGroup+"'][data-tab-item='"+tabId+"']");
+    var tabs = Array.from( document.querySelectorAll( '.tab-panel[data-tab-group="'+tabGroup+'"]' ) ).filter( function( e ){
+        return !!e.querySelector( '[data-tab-item="'+tabId+'"]' );
+    });
+    var allTabItems = tabs && tabs.reduce( function( a, e ){
+        return a.concat( Array.from( e.querySelectorAll( '.tab-nav-button, .tab-item' ) ) );
+    }, [] );
+    var targetTabItems = tabs && tabs.reduce( function( a, e ){
+        return a.concat( Array.from( e.querySelectorAll( '[data-tab-item="'+tabId+'"]' ) ) );
+    }, [] );
 
     // if event is undefined then switchTab was called from restoreTabSelection
     // so it's not a button event and we don't need to safe the selction or
@@ -69,8 +75,8 @@ function switchTab(tabGroup, tabId) {
       var yposButton = event.target.getBoundingClientRect().top;
     }
 
-    allTabItems.removeClass("active");
-    targetTabItems.addClass("active");
+    allTabItems && allTabItems.forEach( function( e ){ e.classList.remove( 'active' ); });
+    targetTabItems && targetTabItems.forEach( function( e ){ e.classList.add( 'active' ); });
 
     if(isButtonEvent){
       // reset screen to the same position relative to clicked button to prevent page jump
@@ -359,14 +365,10 @@ function initArrowNav(){
     }
 
     // button navigation
-    jQuery(function() {
-        jQuery('a.nav-prev').click(function(){
-            location.href = jQuery(this).attr('href');
-        });
-        jQuery('a.nav-next').click(function() {
-            location.href = jQuery(this).attr('href');
-        });
-    });
+    var e = document.querySelector( 'a.nav-prev' );
+    e && e.addEventListener( 'click', navPrev );
+    e = document.querySelector( 'a.nav-next' );
+    e && e.addEventListener( 'click', navNext );
 
     // keyboard navigation
     // avoid prev/next navigation if we are not at the start/end of the
@@ -378,7 +380,7 @@ function initArrowNav(){
         if( !event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey ){
             if( event.which == '37' ){
                 if( !scrollLeft && el.scrollLeft <= 0 ){
-                    jQuery('a.nav-prev').click();
+                    navPrev();
                 }
                 else if( scrollLeft != -1 ){
                     clearTimeout( scrollLeft );
@@ -387,7 +389,7 @@ function initArrowNav(){
             }
             if( event.which == '39' ){
                 if( !scrollRight && el.scrollLeft + el.clientWidth >= el.scrollWidth ){
-                    jQuery('a.nav-next').click();
+                    navNext();
                 }
                 else if( scrollRight != -1 ){
                     clearTimeout( scrollRight );
@@ -413,10 +415,12 @@ function initArrowNav(){
     });
 
     // avoid keyboard navigation for input fields
-    jQuery(formelements).keydown(function (e) {
-        if (e.which == '37' || e.which == '39') {
-            e.stopPropagation();
-        }
+    document.querySelectorAll( formelements ).forEach( function( e ){
+        e.addEventListener( 'keydown', function( event ){
+            if( event.which == 37 || event.which == 39 ){
+                event.stopPropagation();
+            }
+        });
     });
 }
 
@@ -624,6 +628,16 @@ function showPrint(){
     }
 }
 
+function navPrev(){
+    var e = document.querySelector( 'a.nav-prev' );
+    location.href = e && e.getAttribute( 'href' );
+};
+
+function navNext(){
+    var e = document.querySelector( 'a.nav-next' );
+    location.href = e && e.getAttribute( 'href' );
+};
+
 function initToc(){
     if( isPrint ){
         return;
@@ -708,14 +722,16 @@ function clearHistory() {
             // in case we have `relativeURLs=true` we have to strip the
             // relative path to root
             url = url.replace( /\.\.\//g, '/' ).replace( /^\/+\//, '/' );
-            jQuery('[data-nav-id="' + url + '"]').removeClass('visited');
+            document.querySelectorAll( '[data-nav-id="'+url+'"]' ).forEach( function( e ){
+                e.classList.remove( 'visited' );
+            });
         }
     }
 }
 
 function initHistory() {
     var visitedItem = baseUriFull + 'visited-url/'
-    sessionStorage.setItem(visitedItem+jQuery('body').data('url'), 1);
+    sessionStorage.setItem( visitedItem+document.querySelector( 'body' ).dataset.url, 1);
 
     // loop through the sessionStorage and see if something should be marked as visited
     for( var item in sessionStorage ){
@@ -724,7 +740,9 @@ function initHistory() {
             // in case we have `relativeURLs=true` we have to strip the
             // relative path to root
             url = url.replace( /\.\.\//g, '/' ).replace( /^\/+\//, '/' );
-            jQuery('[data-nav-id="' + url + '"]').addClass('visited');
+            document.querySelectorAll( '[data-nav-id="'+url+'"]' ).forEach( function( e ){
+                e.classList.add( 'visited' );
+            });
         }
     }
 }
@@ -754,97 +772,227 @@ function scrollToFragment() {
     }, 10);
 }
 
-function mark(){
-    // mark some additonal stuff as searchable
-    $('#topbar a:not(:has(img)):not(.btn)').addClass('highlight');
-    $('#body-inner a:not(:has(img)):not(.btn):not(a[rel="footnote"])').addClass('highlight');
+function mark() {
+	// mark some additional stuff as searchable
+	var topbarLinks = document.querySelectorAll( '#topbar a:not(:has(img)):not(.btn)' );
+	for( var i = 0; i < topbarLinks.length; i++ ){
+		topbarLinks[i].classList.add( 'highlight' );
+	}
 
-    var value = sessionStorage.getItem(baseUriFull+'search-value');
-    $(".highlightable").highlight(value, { element: 'mark' });
-    $("mark").parents(".expand").addClass("expand-marked");
-    $("mark").parents("li").each( function(){
-        var i = jQuery(this).children("input.toggle:not(.menu-marked)");
-        if( i.length ){
-            e = jQuery(i[0]);
-            e.attr("data-checked", (e.prop('checked')?"true":"false")).addClass("menu-marked");
-            i[0].checked = true;
-        }
-    });
+	var bodyInnerLinks = document.querySelectorAll( '#body-inner a:not(:has(img)):not(.btn):not(.lightbox):not(a[rel="footnote"])' );
+	for( var i = 0; i < bodyInnerLinks.length; i++ ){
+		bodyInnerLinks[i].classList.add( 'highlight' );
+	}
+
+	var value = sessionStorage.getItem( baseUriFull + 'search-value' );
+    var highlightableElements = document.querySelectorAll( '.highlightable' );
+    highlight( highlightableElements, value, { element: 'mark' } );
+
+	var markedElements = document.querySelectorAll( 'mark' );
+	for( var i = 0; i < markedElements.length; i++ ){
+		var parent = markedElements[i].parentNode;
+		while( parent && parent.classList ){
+			if( parent.classList.contains( 'expand' ) ){
+				parent.classList.add( 'expand-marked' );
+			}
+			if( parent.tagName.toLowerCase() === 'li' ){
+				var toggleInputs = parent.querySelectorAll( 'input.toggle:not(.menu-marked)' );
+				if( i.length ){
+					toggleInputs[0].classList.add( 'menu-marked' );
+					toggleInputs[0].dataset.checked = toggleInputs[0].checked ? 'true' : 'false';
+					toggleInputs[0].checked = true;
+				}
+			}
+			parent = parent.parentNode;
+		}
+	}
     psm && psm.update();
 }
 window.relearn.markSearch = mark;
 
-function unmark(){
-    sessionStorage.removeItem(baseUriFull+'search-value');
-    $("mark").parents("li").each( function(){
-        var i = jQuery(this).children("input.toggle.menu-marked");
-        if( i.length ){
-            e = jQuery(i[0]);
-            i[0].checked = (e.attr("data-checked")=="true");
-            e.attr("data-checked", null).removeClass("menu-marked");
-        }
+function highlight( es, words, options ){
+    var settings = {
+        className: 'highlight',
+        element: 'span',
+        caseSensitive: false,
+        wordsOnly: false
+    };
+    Object.assign( settings, options );
+
+    if( !words ){ return; }
+    if( words.constructor === String ){
+        words = [ words ];
+    }
+    words = words.filter( function( word, i ){
+        return word != '';
     });
-    $("mark").parents(".expand-marked").removeClass("expand-marked");
-    $(".highlightable").unhighlight({ element: 'mark' })
+    words = words.map( function( word, i ){
+        return word.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+    });
+    if( words.length == 0 ){ return this; }
+
+    var flag = settings.caseSensitive ? '' : 'i';
+    var pattern = "(" + words.join( '|' ) + ')';
+    if( settings.wordsOnly ){
+        pattern = '\\b' + pattern + '\\b';
+    }
+    var re = new RegExp( pattern, flag );
+
+	for( var i = 0; i < es.length; i++ ){
+        highlightNode( es[i], re, settings.element, settings.className );
+	}
+};
+
+function highlightNode( node, re, nodeName, className ){
+    if( node.nodeType === 3 && node.parentElement && node.parentElement.namespaceURI == 'http://www.w3.org/1999/xhtml' ) { // text nodes
+        var match = node.data.match( re );
+        if( match ){
+            var highlight = document.createElement( nodeName || 'span' );
+            highlight.className = className || 'highlight';
+            var wordNode = node.splitText( match.index );
+            wordNode.splitText( match[0].length );
+            var wordClone = wordNode.cloneNode( true );
+            highlight.appendChild( wordClone );
+            wordNode.parentNode.replaceChild( highlight, wordNode );
+            return 1; //skip added node in parent
+        }
+    } else if( (node.nodeType === 1 && node.childNodes) && // only element nodes that have children
+        !/(script|style)/i.test(node.tagName) && // ignore script and style nodes
+        !(node.tagName === nodeName.toUpperCase() && node.className === className) ){ // skip if already highlighted
+        for( var i = 0; i < node.childNodes.length; i++ ){
+            i += highlightNode( node.childNodes[i], re, nodeName, className );
+        }
+    }
+    return 0;
+};
+
+function unmark() {
+	sessionStorage.removeItem( baseUriFull + 'search-value' );
+	var markedElements = document.querySelectorAll( 'mark' );
+	for( var i = 0; i < markedElements.length; i++ ){
+		var parent = markedElements[i].parentNode;
+		while( parent && parent.classList ){
+			if( parent.tagName.toLowerCase() === 'li' ){
+				var toggleInputs = parent.querySelectorAll( 'input.toggle.menu-marked' );
+				if( i.length ){
+					toggleInputs[0].checked = toggleInputs[0].dataset.checked === 'true';
+					toggleInputs[0].dataset.checked = null;
+					toggleInputs[0].classList.remove( 'menu-marked' );
+								}
+			}
+			if( parent.classList.contains( 'expand-marked' ) ){
+				parent.classList.remove( 'expand-marked' );
+			}
+			parent = parent.parentNode;
+		}
+	}
+
+	var highlighted = document.querySelectorAll( '.highlightable' );
+    unhighlight( highlighted, { element: 'mark' } );
     psm && psm.update();
 }
 
-function searchInputHandler(value) {
+function unhighlight( es, options ){
+    var settings = {
+        className: 'highlight',
+        element: 'span'
+    };
+    Object.assign( settings, options );
+
+	for( var i = 0; i < es.length; i++ ){
+        var highlightedElements = es[i].querySelectorAll( settings.element + '.' + settings.className );
+        for( var j = 0; j < highlightedElements.length; j++ ){
+            var parent = highlightedElements[j].parentNode;
+            parent.replaceChild( highlightedElements[j].firstChild, highlightedElements[j] );
+            parent.normalize();
+        }
+	}
+};
+
+
+// replace jQuery.createPseudo with https://stackoverflow.com/a/66318392
+function elementContains( txt, e ){
+    var regex = RegExp( txt, 'i' );
+    var nodes = [];
+    if( e ){
+        var tree = document.createTreeWalker( e, 4 /* NodeFilter.SHOW_TEXT */, function( node ){
+            return regex.test( node.data );
+        });
+        var node = null;
+        while( node = tree.nextNode() ){
+            nodes.push( node.parentElement );
+        }
+    }
+    return nodes;
+}
+
+function searchInputHandler( value ){
     unmark();
-    if (value.length) {
-        sessionStorage.setItem(baseUriFull+'search-value', value);
+    if( value.length ){
+        sessionStorage.setItem( baseUriFull+'search-value', value );
         mark();
     }
 }
 
 function initSearch() {
     // sync input/escape between searchbox and searchdetail
-    jQuery('input.search-by').on('keydown', function(event) {
-        if (event.key == "Escape") {
-            var input = jQuery(this);
-            input.blur();
-            searchInputHandler( '' );
-            jQuery('input.search-by').val('');
-            documentFocus();
-        }
-    });
-    jQuery('input.search-by').on('input', function() {
-        var input = jQuery(this);
-        var value = input.val();
-        searchInputHandler( value );
-        jQuery('input.search-by').not(this).val($(this).val());
+    var inputs = document.querySelectorAll( 'input.search-by' );
+    inputs.forEach( function( e ){
+        e.addEventListener( 'keydown', function( event ){
+            if( event.key == 'Escape' ){
+                var input = event.target;
+                input.blur();
+                searchInputHandler( '' );
+                inputs.forEach( function( e ){
+                    e.value = '';
+                });
+                documentFocus();
+            }
+        });
+        e.addEventListener( 'input', function( event ){
+            var input = event.target;
+            var value = input.value;
+            searchInputHandler( value );
+            inputs.forEach( function( e ){
+                if( e != input ){
+                    e.value = value;
+                }
+            });
+        });
     });
 
-    jQuery('[data-search-clear]').on('click', function() {
-        jQuery('[data-search-input]').val('').trigger('input');
-        unmark();
+    document.querySelectorAll( '[data-search-clear]' ).forEach( function( e ){
+        e.addEventListener( 'click', function(){
+            inputs.forEach( function( e ){
+                e.value = '';
+                e.dispatchEvent( new Event( 'input' ) );
+            });
+            unmark();
+        });
     });
 
-    var urlParams = new URLSearchParams(window.location.search);
-    var value = urlParams.get('search-by');
+    var urlParams = new URLSearchParams( window.location.search );
+    var value = urlParams.get( 'search-by' );
     if( value ){
-        sessionStorage.setItem(baseUriFull+'search-value', value);
+        sessionStorage.setItem( baseUriFull+'search-value', value );
     }
     mark();
 
-    // custom sizzle case insensitive "contains" pseudo selector
-    $.expr[":"].contains = $.expr.createPseudo(function(arg) {
-        return function( elem ) {
-            return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
-        };
-    });
-
     // set initial search value on page load
-    if (sessionStorage.getItem(baseUriFull+'search-value')) {
-        var searchValue = sessionStorage.getItem(baseUriFull+'search-value')
-        $('[data-search-input]').val(searchValue);
-        $('[data-search-input]').trigger('input');
-        var searchedElem = $('#body-inner').find(':contains(' + searchValue + ')').get(0);
-        if (searchedElem) {
-            searchedElem.scrollIntoView(true);
+    if( sessionStorage.getItem( baseUriFull+'search-value' ) ){
+        var searchValue = sessionStorage.getItem( baseUriFull+'search-value' );
+        inputs.forEach( function( e ){
+            e.value = searchValue;
+            e.dispatchEvent( new Event( 'input' ) );
+        });
+
+        var found = elementContains( searchValue, document.querySelector( '#body-inner' ) );
+        var searchedElem = found.length && found[ 0 ];
+        if( searchedElem ){
+            searchedElem.scrollIntoView( true );
             var scrolledY = window.scrollY;
-            if(scrolledY){
-                window.scroll(0, scrolledY - 125);
+            if( scrolledY ){
+                window.scroll( 0, scrolledY - 125 );
             }
         }
     }
@@ -852,35 +1000,6 @@ function initSearch() {
     window.relearn.isSearchInit = true;
     window.relearn.runInitialSearch && window.relearn.runInitialSearch();
 }
-
-// debouncing function from John Hann
-// http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
-(function($, sr) {
-
-    var debounce = function(func, threshold, execAsap) {
-        var timeout;
-
-        return function debounced() {
-            var obj = this, args = arguments;
-
-            function delayed() {
-                if (!execAsap)
-                    func.apply(obj, args);
-                timeout = null;
-            };
-
-            if (timeout)
-                clearTimeout(timeout);
-            else if (execAsap)
-                func.apply(obj, args);
-
-            timeout = setTimeout(delayed, threshold || 100);
-        };
-    }
-    // smartresize
-    jQuery.fn[sr] = function(fn) { return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
-
-})(jQuery, 'smartresize');
 
 jQuery(function() {
     initArrowNav();
@@ -897,80 +1016,6 @@ jQuery(function() {
     initHistory();
     initSearch();
 });
-
-jQuery.extend({
-    highlight: function(node, re, nodeName, className) {
-        if (node.nodeType === 3 && node.parentElement && node.parentElement.namespaceURI == 'http://www.w3.org/1999/xhtml') { // text nodes
-            var match = node.data.match(re);
-            if (match) {
-                var highlight = document.createElement(nodeName || 'span');
-                highlight.className = className || 'highlight';
-                var wordNode = node.splitText(match.index);
-                wordNode.splitText(match[0].length);
-                var wordClone = wordNode.cloneNode(true);
-                highlight.appendChild(wordClone);
-                wordNode.parentNode.replaceChild(highlight, wordNode);
-                return 1; //skip added node in parent
-            }
-        } else if ((node.nodeType === 1 && node.childNodes) && // only element nodes that have children
-            !/(script|style)/i.test(node.tagName) && // ignore script and style nodes
-            !(node.tagName === nodeName.toUpperCase() && node.className === className)) { // skip if already highlighted
-            for (var i = 0; i < node.childNodes.length; i++) {
-                i += jQuery.highlight(node.childNodes[i], re, nodeName, className);
-            }
-        }
-        return 0;
-    }
-});
-
-jQuery.fn.unhighlight = function(options) {
-    var settings = {
-        className: 'highlight',
-        element: 'span'
-    };
-    jQuery.extend(settings, options);
-
-    return this.find(settings.element + "." + settings.className).each(function() {
-        var parent = this.parentNode;
-        parent.replaceChild(this.firstChild, this);
-        parent.normalize();
-    }).end();
-};
-
-jQuery.fn.highlight = function(words, options) {
-    var settings = {
-        className: 'highlight',
-        element: 'span',
-        caseSensitive: false,
-        wordsOnly: false
-    };
-    jQuery.extend(settings, options);
-
-    if (!words) { return; }
-
-    if (words.constructor === String) {
-        words = [words];
-    }
-    words = jQuery.grep(words, function(word, i) {
-        return word != '';
-    });
-    words = jQuery.map(words, function(word, i) {
-        return word.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-    });
-    if (words.length == 0) { return this; }
-    ;
-
-    var flag = settings.caseSensitive ? "" : "i";
-    var pattern = "(" + words.join("|") + ")";
-    if (settings.wordsOnly) {
-        pattern = "\\b" + pattern + "\\b";
-    }
-    var re = new RegExp(pattern, flag);
-
-    return this.each(function() {
-        jQuery.highlight(this, re, settings.element, settings.className);
-    });
-};
 
 function useMermaid( config ){
     if( !Object.assign ){
