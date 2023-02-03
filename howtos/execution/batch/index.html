@@ -7,8 +7,8 @@
     <meta name="generator" content="Relearn 5.10.2+tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
-    <title>Create a network :: Documentation for the Alchemist Simulator</title>
-    <link href="../../../howtos/simulation/link/index.xml" rel="alternate" type="application/rss+xml" title="Create a network :: Documentation for the Alchemist Simulator">
+    <title>Parameter Sweeping with simulation batches :: Documentation for the Alchemist Simulator</title>
+    <link href="../../../howtos/execution/batch/index.xml" rel="alternate" type="application/rss+xml" title="Parameter Sweeping with simulation batches :: Documentation for the Alchemist Simulator">
     <link href="../../../images/logo.svg?1675446331" rel="icon" type="image/svg+xml">
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
     <link href="../../../css/fontawesome-all.min.css?1675446331" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fontawesome-all.min.css?1675446331" rel="stylesheet"></noscript>
@@ -42,20 +42,20 @@
     </script>
     <script src="../../../js/jquery.min.js?1675446331" defer></script>
   </head>
-  <body class="mobile-support html" data-url="../../../howtos/simulation/link/index.html">
+  <body class="mobile-support html" data-url="../../../howtos/execution/batch/index.html">
     <div id="body" class="default-animation">
       <div id="sidebar-overlay"></div>
       <div id="toc-overlay"></div>
       <nav id="topbar" class="highlightable" dir="ltr">
         <div>
           <div class="navigation">
-            <a class="nav nav-next" href="../../../howtos/simulation/layers/index.html" title="Create Layers (&#129106;)"><i class="fas fa-chevron-right fa-fw"></i></a>
+            <a class="nav nav-next" href="../../../howtos/workarounds/index.html" title="Workarounds (&#129106;)"><i class="fas fa-chevron-right fa-fw"></i></a>
           </div>
           <div class="navigation">
-            <a class="nav nav-prev" href="../../../howtos/simulation/cognitive/index.html" title="Cognitive Agents (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
+            <a class="nav nav-prev" href="../../../howtos/execution/termination/index.html" title="Define the termination criteria (&#129104;)"><i class="fas fa-chevron-left fa-fw"></i></a>
           </div>
           <div id="top-github-link">
-            <a class="github-link" title='Edit (CTRL+ALT+w)' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/site/content/howtos/simulation/link/_index.md" target="_blank">
+            <a class="github-link" title='Edit (CTRL+ALT+w)' href="https://github.com/AlchemistSimulator/Alchemist/edit/master/site/content/howtos/execution/batch/_index.md" target="_blank">
               <i class="fas fa-pen fa-fw"></i>
             </a>
           </div>
@@ -67,15 +67,15 @@
             <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
               <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="../../../index.html"><span itemprop="name">The Alchemist Simulator</span></a><meta itemprop="position" content="1"> > </li>
               <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="../../../howtos/index.html"><span itemprop="name">How-to Guides</span></a><meta itemprop="position" content="2"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="../../../howtos/simulation/index.html"><span itemprop="name">Simulation</span></a><meta itemprop="position" content="3"> > </li>
-              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Create a network</span><meta itemprop="position" content="4"></li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="../../../howtos/execution/index.html"><span itemprop="name">Execution</span></a><meta itemprop="position" content="3"> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Parameter Sweeping with simulation batches</span><meta itemprop="position" content="4"></li>
             </ol>
           </div>
           <div class="default-animation progress">
             <div class="toc-wrapper" dir="ltr">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#linking-nodes-based-on-their-respective-distance">Linking nodes based on their respective distance</a></li>
+    <li><a href="#launching-batch-simulations">Launching batch simulations</a></li>
   </ul>
 </nav>
             </div>
@@ -86,45 +86,30 @@
         <div class="flex-block-wrapper">
           <div id="head-tags">
 <div class="tags">
-  <a class="tag-link" href="../../../tags/connect/index.html">connect</a>
-  <a class="tag-link" href="../../../tags/connection/index.html">connection</a>
-  <a class="tag-link" href="../../../tags/linking-rule/index.html">linking rule</a>
-  <a class="tag-link" href="../../../tags/neighborhood/index.html">neighborhood</a>
-  <a class="tag-link" href="../../../tags/network/index.html">network</a>
-  <a class="tag-link" href="../../../tags/network-model/index.html">network model</a>
+  <a class="tag-link" href="../../../tags/batch/index.html">batch</a>
+  <a class="tag-link" href="../../../tags/dry/index.html">dry</a>
+  <a class="tag-link" href="../../../tags/variables/index.html">variables</a>
 </div>
           </div>
           <article class="default">
-<h1 id="create-a-network">Create a network</h1>
+<h1 id="parameter-sweeping-with-simulation-batches">Parameter Sweeping with simulation batches</h1>
 
-<p>Alchemist nodes can connect to each other and form a network.</p>
-<p>The <a href="../../../reference/yaml/#network-model"><code>network-model</code></a> key is used to load the implementation of
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-linking-rule/"><code>LinkingRule</code></a>
-to be used in the simulation,
-which determines the neighborhood of every node.</p>
-<p>The key is optional, but defaults to <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.linkingrules/-no-links/"><code>NoLinks</code></a>,
-so, if unspecified, nodes in the environment don&rsquo;t get connected.</p>
-<p>Omitting the key is equivalent to writing any of the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: NoLinks
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: it.unibo.alchemist.model.implementations.linkingrules.NoLinks
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: []
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: NoLinks
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: []
-</span></span></code></pre></div><h2 id="linking-nodes-based-on-their-respective-distance">Linking nodes based on their respective distance</h2>
-<p>One of the most common ways of linking nodes is to connect those which are close enough to each other.
-To do so, you can use <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.linkingrules/-connect-within-distance/"><code>ConnectWithinDistance</code></a>,
-passing a parameter representing the maximum connection distance.</p>
-<p>Note that such distance depends on the environment: while the definition of distance is straightforward for euclidean spaces,
-it&rsquo;s not so for <a href="https://en.wikipedia.org/wiki/Riemannian_geometry" target="_blank">Riemannian manifolds</a>,
-which is a fancy name to define manifolds such as the one typical of a urban map
-(you can roughly interpret it as a euclidean space &ldquo;with holes&rdquo;).</p>
-<p>For instance, in case of environments using
-<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.interfaces/-geo-position/"><code>GeoPosition</code></a>, the distance is computed in meters, so the
-distance between <code>[44.133254, 12.237770]</code> and <code>[44.146680, 12.258627]</code> is about <code>2240</code> (meters).</p>
-<p>In the following example, nodes are connected when closer than a threshold:
+<p>In some cases you may need to test the same simulation configuration
+with different <em>parameters</em>. Suppose for example that you want to see what
+happens when you place a bunch of pedestrian in a circle
+(for sake of semplicity we&rsquo;ll ignore their behavior).
+You may want to
+observe the scenario with 50 pedestrians placed in a 5 meters radius circle.
+Then you may like to observe it with 100 pedestrian and perhaps by changing
+the circle radius also. Instead of re-writing the configuration file over-and-over
+for each parameter combination, Alchemist offers the possibility to write the
+configuration once, and it will then derive a batch of simulations.the same configuration</p>
+<h2 id="launching-batch-simulations">Launching batch simulations</h2>
+<p>To exploit this mechanism, you must declare the &ldquo;parameters&rdquo;
+as <strong>variables</strong>. In our example, they would be the <em>number of pedestrian</em> and
+the <em>radius of the circle</em> where to place them. Let&rsquo;s write the configuration file,
+specifing that we want to test the simulation with 10, 30, 50, 70, 90 pedestrians
+and a 5, 10, 15 meters circle radius:</p>
 
 
 <div class="expand">
@@ -133,17 +118,62 @@ distance between <code>[44.133254, 12.237770]</code> and <code>[44.146680, 12.25
             <span class="fas fa-chevron-right"></span>
             <strong>Click to show / hide code</strong>
         </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere <span style="color:#78787e"># The incarnation is always mandatory</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance <span style="color:#78787e"># Loads a class with this name implementing LinkingRule</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>] <span style="color:#78787e"># Connection radius (parameter of a ConnectWithinDistance&#39;s constructor)</span>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">pedestrianNumber</span>: <span style="color:#78787e">&amp;pedestrianNumber</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: LinearVariable
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">10</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">circleRadius</span>: <span style="color:#78787e">&amp;cicleRadius</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: LinearVariable
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">5</span>]
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
-</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point <span style="color:#78787e"># Loads a class with this name implementing Deployment</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>] <span style="color:#78787e"># Coordinates</span>
-</span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type: Point, parameters</span>: [<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
-</span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type: Point, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*pedestrianNumber,</span> <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#78787e">*cicleRadius]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Human
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CognitivePedestrian
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Cognitive2D
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">time-distribution</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">type</span>: DiracComb
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">parameters</span>: [ <span style="color:#ff9f43">1.0</span> ]
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">type</span>: BlendedSteering
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">export</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: CSVExporter
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">fileNameRoot</span>: <span style="color:#5af78e">&#34;time_export&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">interval</span>: <span style="color:#ff9f43">1.5</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
+</span></span><span style="display:flex;"><span>      - time
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">terminate</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: StableForSteps
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">30</span>, <span style="color:#ff9f43">25</span>]
 </span></span></code></pre></div></div>
-    </div></p>
+    </div>
+
+<div class="box notices cstyle info">
+  <div class="box-label"><i class="fa-fw fas fa-info-circle"></i> Info</div>
+  <div class="box-content">
+<p>To understand how variables work refer to <a href="../../../howtos/simulation/variables/">this page</a>.
+You may also want to learn how to <a href="../../../howtos/simulation/export/">export data</a>
+and specifying <a href="../../../howtos/execution/termination/">termination criteria</a>.</p>
+  </div>
+</div>
+<p>Now we can launch the batch of simulations by providing the simulator the following command-line arguments:</p>
+<ul>
+<li><code>-b</code>: enable batch mode</li>
+<li><code>-var pedestrianNumber</code>: all values of variable <code>pedestrianNumber</code> will be tested</li>
+<li><code>-var circleRadius</code>: all values of variable <code>circleRadius</code> will be tested</li>
+</ul>
+<p>Under the hood, the simulator will compute the cartesian product of the all possible values of the variables selected with the <code>-var</code> option.
+Variables not selected for the batch will have their default value.</p>
 
             <footer class="footline">
             </footer>
@@ -170,12 +200,12 @@ distance between <code>[44.133254, 12.237770]</code> and <code>[44.146680, 12.25
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../../../js/auto-complete.js?1675446333" defer></script>
-        <script src="../../../js/lunr/lunr.min.js?1675446333" defer></script>
-        <script src="../../../js/lunr/lunr.stemmer.support.min.js?1675446333" defer></script>
-        <script src="../../../js/lunr/lunr.multi.min.js?1675446333" defer></script>
-        <script src="../../../js/lunr/lunr.en.min.js?1675446333" defer></script>
-        <script src="../../../js/search.js?1675446333" defer></script>
+        <script src="../../../js/auto-complete.js?1675446332" defer></script>
+        <script src="../../../js/lunr/lunr.min.js?1675446332" defer></script>
+        <script src="../../../js/lunr/lunr.stemmer.support.min.js?1675446332" defer></script>
+        <script src="../../../js/lunr/lunr.multi.min.js?1675446332" defer></script>
+        <script src="../../../js/lunr/lunr.en.min.js?1675446332" defer></script>
+        <script src="../../../js/search.js?1675446332" defer></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -194,11 +224,11 @@ distance between <code>[44.133254, 12.237770]</code> and <code>[44.146680, 12.25
           <li data-nav-id="/howtos/preparation/index.html" class="dd-item alwaysopen"><a href="../../../howtos/preparation/index.html">Preparation<i class="fas fa-check read-icon"></i></a><ul id="subsections-b37a03515095c013889ed6b357fe9793">
           <li data-nav-id="/howtos/preparation/jar/index.html" class="dd-item"><a href="../../../howtos/preparation/jar/index.html">Alchemist stand-alone<i class="fas fa-check read-icon"></i></a></li>
           <li data-nav-id="/howtos/preparation/gradle/index.html" class="dd-item"><a href="../../../howtos/preparation/gradle/index.html">Alchemist via Gradle<i class="fas fa-check read-icon"></i></a></li></ul></li>
-          <li data-nav-id="/howtos/simulation/index.html" class="dd-item parent alwaysopen"><a href="../../../howtos/simulation/index.html">Simulation<i class="fas fa-check read-icon"></i></a><ul id="subsections-f68016a8ccfd1f6483e3009c53111064">
+          <li data-nav-id="/howtos/simulation/index.html" class="dd-item alwaysopen"><a href="../../../howtos/simulation/index.html">Simulation<i class="fas fa-check read-icon"></i></a><ul id="subsections-f68016a8ccfd1f6483e3009c53111064">
           <li data-nav-id="/howtos/simulation/variables/index.html" class="dd-item"><a href="../../../howtos/simulation/variables/index.html">Create reusable variables<i class="fas fa-check read-icon"></i></a></li>
           <li data-nav-id="/howtos/simulation/repeatability/index.html" class="dd-item"><a href="../../../howtos/simulation/repeatability/index.html">Ensure repeatability<i class="fas fa-check read-icon"></i></a></li>
           <li data-nav-id="/howtos/simulation/cognitive/index.html" class="dd-item"><a href="../../../howtos/simulation/cognitive/index.html">Cognitive Agents<i class="fas fa-check read-icon"></i></a></li>
-          <li data-nav-id="/howtos/simulation/link/index.html" class="dd-item active"><a href="../../../howtos/simulation/link/index.html">Create a network<i class="fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/howtos/simulation/link/index.html" class="dd-item"><a href="../../../howtos/simulation/link/index.html">Create a network<i class="fas fa-check read-icon"></i></a></li>
           <li data-nav-id="/howtos/simulation/layers/index.html" class="dd-item"><a href="../../../howtos/simulation/layers/index.html">Create Layers<i class="fas fa-check read-icon"></i></a></li>
           <li data-nav-id="/howtos/simulation/environment/index.html" class="dd-item alwaysopen"><a href="../../../howtos/simulation/environment/index.html">Create rich environments<i class="fas fa-check read-icon"></i></a><ul id="subsections-506c1af08dd4ae8f1ff471556102ad10">
           <li data-nav-id="/howtos/simulation/environment/pathfinding/index.html" class="dd-item"><a href="../../../howtos/simulation/environment/pathfinding/index.html">Find paths indoors<i class="fas fa-check read-icon"></i></a></li>
@@ -215,10 +245,10 @@ distance between <code>[44.133254, 12.237770]</code> and <code>[44.146680, 12.25
           <li data-nav-id="/howtos/simulation/program/move-on-maps/index.html" class="dd-item"><a href="../../../howtos/simulation/program/move-on-maps/index.html">Move nodes on maps<i class="fas fa-check read-icon"></i></a></li>
           <li data-nav-id="/howtos/simulation/program/content/index.html" class="dd-item"><a href="../../../howtos/simulation/program/content/index.html">Node contents<i class="fas fa-check read-icon"></i></a></li></ul></li>
           <li data-nav-id="/howtos/simulation/smartcam/index.html" class="dd-item"><a href="../../../howtos/simulation/smartcam/index.html">Smart cameras and drones<i class="fas fa-check read-icon"></i></a></li></ul></li>
-          <li data-nav-id="/howtos/execution/index.html" class="dd-item alwaysopen"><a href="../../../howtos/execution/index.html">Execution<i class="fas fa-check read-icon"></i></a><ul id="subsections-18ce8c751a9ebb99c5c3c34e42988d90">
+          <li data-nav-id="/howtos/execution/index.html" class="dd-item parent alwaysopen"><a href="../../../howtos/execution/index.html">Execution<i class="fas fa-check read-icon"></i></a><ul id="subsections-18ce8c751a9ebb99c5c3c34e42988d90">
           <li data-nav-id="/howtos/execution/swing-effects/index.html" class="dd-item"><a href="../../../howtos/execution/swing-effects/index.html">Customize the Swing GUI<i class="fas fa-check read-icon"></i></a></li>
           <li data-nav-id="/howtos/execution/termination/index.html" class="dd-item"><a href="../../../howtos/execution/termination/index.html">Define the termination criteria<i class="fas fa-check read-icon"></i></a></li>
-          <li data-nav-id="/howtos/execution/batch/index.html" class="dd-item"><a href="../../../howtos/execution/batch/index.html">Parameter Sweeping with simulation batches<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/howtos/execution/batch/index.html" class="dd-item active"><a href="../../../howtos/execution/batch/index.html">Parameter Sweeping with simulation batches<i class="fas fa-check read-icon"></i></a></li></ul></li>
           <li data-nav-id="/howtos/workarounds/index.html" class="dd-item alwaysopen"><a href="../../../howtos/workarounds/index.html">Workarounds<i class="fas fa-check read-icon"></i></a><ul id="subsections-5c62e7df883f31acbb0ab6f2f8f4e025">
           <li data-nav-id="/howtos/workarounds/swing-glitch/index.html" class="dd-item"><a href="../../../howtos/workarounds/swing-glitch/index.html">Graphical Glitches in Swing<i class="fas fa-check read-icon"></i></a></li>
           <li data-nav-id="/howtos/workarounds/max-map-count/index.html" class="dd-item"><a href="../../../howtos/workarounds/max-map-count/index.html">Memory leaks under Linux<i class="fas fa-check read-icon"></i></a></li></ul></li>
@@ -322,13 +352,13 @@ distance between <code>[44.133254, 12.237770]</code> and <code>[44.146680, 12.25
         </div>
       </div>
     </aside>
-    <script src="../../../js/clipboard.min.js?1675446333" defer></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1675446333" defer></script>
-    <script src="../../../js/jquery.svg.pan.zoom.js?1675446333" defer></script>
-    <script src="../../../js/mermaid.min.js?1675446333" defer></script>
+    <script src="../../../js/clipboard.min.js?1675446332" defer></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1675446332" defer></script>
+    <script src="../../../js/jquery.svg.pan.zoom.js?1675446332" defer></script>
+    <script src="../../../js/mermaid.min.js?1675446332" defer></script>
     <script>
       window.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../../js/theme.js?1675446333" defer></script>
+    <script src="../../../js/theme.js?1675446332" defer></script>
   </body>
 </html>
