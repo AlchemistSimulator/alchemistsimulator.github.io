@@ -59,17 +59,20 @@ function switchTab(tabGroup, tabId) {
         return !!e.querySelector( '[data-tab-item="'+tabId+'"]' );
     });
     var allTabItems = tabs && tabs.reduce( function( a, e ){
-        return a.concat( Array.from( e.querySelectorAll( '.tab-nav-button, .tab-item' ) ) );
+        return a.concat( Array.from( e.querySelectorAll( '[data-tab-item]' ) ).filter( function( es ){
+            return es.parentNode.parentNode == e;
+        }) );
     }, [] );
     var targetTabItems = tabs && tabs.reduce( function( a, e ){
-        return a.concat( Array.from( e.querySelectorAll( '[data-tab-item="'+tabId+'"]' ) ) );
+        return a.concat( Array.from( e.querySelectorAll( '[data-tab-item="'+tabId+'"]' ) ).filter( function( es ){
+            return es.parentNode.parentNode == e;
+        }) );
     }, [] );
 
     // if event is undefined then switchTab was called from restoreTabSelection
     // so it's not a button event and we don't need to safe the selction or
     // prevent page jump
-    var isButtonEvent = event != undefined;
-
+    var isButtonEvent = event && event.target && event.target.getBoundingClientRect;
     if(isButtonEvent){
       // save button position relative to viewport
       var yposButton = event.target.getBoundingClientRect().top;
@@ -216,10 +219,31 @@ function initMermaid( update, attrs ) {
     attrs = attrs || {
         'theme': variants.getColorValue( 'MERMAID-theme' ),
     };
+
+    var search;
+    if( update ){
+        search = sessionStorage.getItem( baseUriFull+'search-value' );
+        unmark();
+    }
     var is_initialized = ( update ? update_func( attrs ) : init_func( attrs ) );
     if( is_initialized ){
         mermaid.init();
-        $(".mermaid svg").svgPanZoom({});
+        // zoom for Mermaid
+        // https://github.com/mermaid-js/mermaid/issues/1860#issuecomment-1345440607
+        var svgs = d3.selectAll( '.mermaid.zoom svg' );
+        svgs.each( function(){
+            var svg = d3.select( this );
+            svg.html( '<g>' + svg.html() + '</g>' );
+            var inner = svg.select( 'g' );
+            var zoom = d3.zoom().on( 'zoom', function( e ){
+                inner.attr( 'transform', e.transform);
+            });
+            svg.call( zoom );
+        });
+    }
+    if( update && search && search.length ){
+        sessionStorage.setItem( baseUriFull+'search-value', search );
+        mark();
     }
 }
 
@@ -268,7 +292,7 @@ function initSwagger( update, attrs ){
 function initAnchorClipboard(){
     document.querySelectorAll( 'h1~h2,h1~h3,h1~h4,h1~h5,h1~h6').forEach( function( element ){
         var url = encodeURI(document.location.origin + document.location.pathname);
-        var link = url + "#"+element.id;
+        var link = url + "#" + element.id;
         var new_element = document.createElement( 'span' );
         new_element.classList.add( 'anchor' );
         new_element.setAttribute( 'title', window.T_Copy_link_to_clipboard );
@@ -277,23 +301,27 @@ function initAnchorClipboard(){
         element.appendChild( new_element );
     });
 
-    $(".anchor").on('mouseleave', function(e) {
-        $(this).attr('aria-label', null).removeClass('tooltipped tooltipped-se tooltipped-sw');
-    });
+    var anchors = document.querySelectorAll( '.anchor' );
+    for( var i = 0; i < anchors.length; i++ ) {
+      anchors[i].addEventListener( 'mouseleave', function( e ){
+        this.removeAttribute( 'aria-label' );
+        this.classList.remove( 'tooltipped', 'tooltipped-se', 'tooltipped-sw' );
+      });
+    }
 
-    var clip = new ClipboardJS('.anchor');
-    clip.on('success', function(e) {
+    var clip = new ClipboardJS( '.anchor' );
+    clip.on( 'success', function( e ){
         e.clearSelection();
-        var rtl = $(e.trigger).closest('*[dir]').attr('dir') == 'rtl';
-        $(e.trigger).attr('aria-label', window.T_Link_copied_to_clipboard).addClass('tooltipped tooltipped-s'+(rtl?'e':'w') );
+        var rtl = e.trigger.closest( '*[dir]' ).getAttribute( 'dir' ) == 'rtl';
+        e.trigger.setAttribute( 'aria-label', window.T_Link_copied_to_clipboard );
+        e.trigger.classList.add( 'tooltipped', 'tooltipped-s'+(rtl?'e':'w') );
     });
 }
 
 function initCodeClipboard(){
-    function fallbackMessage(action) {
+    function fallbackMessage( action ){
         var actionMsg = '';
         var actionKey = (action === 'cut' ? 'X' : 'C');
-
         if (/iPhone|iPad/i.test(navigator.userAgent)) {
             actionMsg = 'No support :(';
         }
@@ -303,60 +331,74 @@ function initCodeClipboard(){
         else {
             actionMsg = 'Press Ctrl-' + actionKey + ' to ' + action;
         }
-
         return actionMsg;
     }
 
-    $('code').each(function() {
-        var code = $(this);
-        var text = code.text();
-        var parent = code.parent();
-        var inPre = parent.prop('tagName') == 'PRE';
+	var codeElements = document.querySelectorAll( 'code' );
+	for( var i = 0; i < codeElements.length; i++ ){
+        var code = codeElements[i];
+        var text = code.textContent;
+        var inPre = code.parentNode.tagName.toLowerCase() == 'pre';
 
-        if (inPre || text.length > 5) {
-            var clip = new ClipboardJS('.copy-to-clipboard-button', {
-                text: function(trigger) {
-                    var text = $(trigger).prev('code').text();
+        if( inPre || text.length > 5 ){
+            var clip = new ClipboardJS( '.copy-to-clipboard-button', {
+                text: function( trigger ){
+                    var text = trigger.previousElementSibling && trigger.previousElementSibling.matches( 'code' ) && trigger.previousElementSibling.textContent;
                     // remove a trailing line break, this may most likely
                     // come from the browser / Hugo transformation
-                    text = text.replace(/\n$/, '');
+                    text = text.replace( /\n$/, '' );
                     // removes leading $ signs from text in an assumption
                     // that this has to be the unix prompt marker - weird
-                    return text.replace(/^\$\s/gm, '');
+                    return text.replace( /^\$\s/gm, '' );
                 }
             });
 
-            clip.on('success', function(e) {
+            clip.on( 'success', function( e ){
                 e.clearSelection();
-                var inPre = $(e.trigger).parent().prop('tagName') == 'PRE';
-                var rtl = $(e.trigger).closest('*[dir]').attr('dir') == 'rtl';
-                $(e.trigger).attr('aria-label', window.T_Copied_to_clipboard).addClass('tooltipped tooltipped-' + (inPre ? 'w' : 's'+(rtl?'e':'w')));
+                var inPre = e.trigger.parentNode.tagName.toLowerCase() == 'pre';
+                var rtl = e.trigger.closest( '*[dir]' ).getAttribute( 'dir' ) == 'rtl';
+                e.trigger.setAttribute( 'aria-label', window.T_Copied_to_clipboard );
+                e.trigger.classList.add( 'tooltipped', 'tooltipped-' + (inPre ? 'w' : 's'+(rtl?'e':'w')) );
             });
 
-            clip.on('error', function(e) {
-                var inPre = $(e.trigger).parent().prop('tagName') == 'PRE';
-                var rtl = $(this).closest('*[dir]').attr('dir') == 'rtl';
-                $(e.trigger).attr('aria-label', fallbackMessage(e.action)).addClass('tooltipped tooltipped-' + (inPre ? 'w' : 's'+(rtl?'e':'w')));
-                $(document).one('copy', function(){
-                    $(e.trigger).attr('aria-label', window.T_Copied_to_clipboard).addClass('tooltipped tooltipped-' + (inPre ? 'w' : 's'+(rtl?'e':'w')));
-                });
+            clip.on( 'error', function( e ){
+                var inPre = e.trigger.parentNode.tagName.toLowerCase() == 'pre';
+                var rtl = e.trigger.closest( '*[dir]' ).getAttribute( 'dir' ) == 'rtl';
+                e.trigger.setAttribute( 'aria-label', fallbackMessage(e.action) );
+                e.trigger.classList.add( 'tooltipped', 'tooltipped-' + (inPre ? 'w' : 's'+(rtl?'e':'w')) );
+                var f = function(){
+                    e.trigger.setAttribute( 'aria-label', window.T_Copied_to_clipboard );
+                    e.trigger.classList.add( 'tooltipped', 'tooltipped-' + (inPre ? 'w' : 's'+(rtl?'e':'w')) );
+                    document.removeEventListener( 'copy', f );
+                };
+                document.addEventListener( 'copy', f );
             });
 
-            code.addClass('copy-to-clipboard-code');
+            code.classList.add( 'copy-to-clipboard-code' );
             if( inPre ){
-                parent.addClass( 'copy-to-clipboard' ).addClass( 'pre-code' );
+                code.classList.add( 'copy-to-clipboard' );
+                code.classList.add( 'pre-code' );
             }
             else{
-                code.replaceWith($('<span/>', {'class': 'copy-to-clipboard'}).append(code.clone() ));
-                code = parent.children('.copy-to-clipboard').last().children('.copy-to-clipboard-code');
+                var clone = code.cloneNode( true );
+                var span = document.createElement( 'span' );
+                span.classList.add( 'copy-to-clipboard' );
+                span.appendChild( clone );
+                code.parentNode.replaceChild( span, code );
+                code = clone;
             }
-            code.after( $('<span>').addClass("copy-to-clipboard-button").attr("title", window.T_Copy_to_clipboard).append("<i class='fas fa-copy'></i>") );
-            code.next('.copy-to-clipboard-button').on('mouseleave', function() {
-                var rtl = $(this).closest('*[dir]').attr('dir') == 'rtl';
-                $(this).attr('aria-label', null).removeClass('tooltipped tooltipped-w tooltipped-se tooltipped-sw');
+            var button = document.createElement( 'span' );
+            button.classList.add( 'copy-to-clipboard-button' );
+            button.setAttribute( 'title', window.T_Copy_to_clipboard );
+            button.innerHTML = '<i class="fas fa-copy"></i>';
+            button.addEventListener( 'mouseleave', function() {
+                var rtl = this.closest( '*[dir]' ).getAttribute( 'dir' ) == 'rtl';
+                this.removeAttribute( 'aria-label' );
+                this.classList.remove( 'tooltipped', 'tooltipped-w', 'tooltipped-se', 'tooltipped-sw' );
             });
+            code.parentNode.insertBefore( button, code.nextSibling );
         }
-    });
+    }
 }
 
 function initArrowNav(){
@@ -365,10 +407,10 @@ function initArrowNav(){
     }
 
     // button navigation
-    var e = document.querySelector( 'a.nav-prev' );
-    e && e.addEventListener( 'click', navPrev );
-    e = document.querySelector( 'a.nav-next' );
-    e && e.addEventListener( 'click', navNext );
+    var prev = document.querySelector( 'a.nav-prev' );
+    prev && prev.addEventListener( 'click', navPrev );
+    var next = document.querySelector( 'a.nav-next' );
+    next && next.addEventListener( 'click', navNext );
 
     // keyboard navigation
     // avoid prev/next navigation if we are not at the start/end of the
@@ -379,8 +421,8 @@ function initArrowNav(){
     document.addEventListener('keydown', function(event){
         if( !event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey ){
             if( event.which == '37' ){
-                if( !scrollLeft && el.scrollLeft <= 0 ){
-                    navPrev();
+                if( !scrollLeft && +el.scrollLeft.toFixed() <= 0 ){
+                    prev && prev.click();
                 }
                 else if( scrollLeft != -1 ){
                     clearTimeout( scrollLeft );
@@ -388,8 +430,8 @@ function initArrowNav(){
                 scrollLeft = -1;
             }
             if( event.which == '39' ){
-                if( !scrollRight && el.scrollLeft + el.clientWidth >= el.scrollWidth ){
-                    navNext();
+                if( !scrollRight && +el.scrollLeft.toFixed() + +el.clientWidth.toFixed() >= +el.scrollWidth.toFixed() ){
+                    next && next.click();
                 }
                 else if( scrollRight != -1 ){
                     clearTimeout( scrollRight );
@@ -507,6 +549,13 @@ function initMenuScrollbar(){
     // finally, we want to adjust the contents right padding if there is a scrollbar visible
     window.addEventListener('resize', adjustContentWidth );
     adjustContentWidth();
+}
+
+function imageEscapeHandler( event ){
+    if( event.key == "Escape" ){
+        var image = event.target;
+        image.click();
+    }
 }
 
 function sidebarEscapeHandler( event ){
@@ -713,6 +762,10 @@ function initSwipeHandler(){
     document.querySelectorAll( '#sidebar *' ).forEach( function(e){ e.addEventListener("touchend", handleEndX); }, false);
 }
 
+function initImage(){
+    document.querySelectorAll( '.lightbox' ).forEach( function(e){ e.addEventListener("keydown", imageEscapeHandler); }, false);
+}
+
 function clearHistory() {
     var visitedItem = baseUriFull + 'visited-url/'
     for( var item in sessionStorage ){
@@ -763,23 +816,25 @@ function scrollToFragment() {
         return;
     }
     window.setTimeout(function(){
-        var e = document.querySelector( window.location.hash );
-        if( e && e.scrollIntoView ){
-            e.scrollIntoView({
-                block: 'start',
-            });
-        }
+        try{
+            var e = document.querySelector( window.location.hash );
+            if( e && e.scrollIntoView ){
+                e.scrollIntoView({
+                    block: 'start',
+                });
+            }
+        } catch( e ){}
     }, 10);
 }
 
 function mark() {
 	// mark some additional stuff as searchable
-	var topbarLinks = document.querySelectorAll( '#topbar a:not(:has(img)):not(.btn)' );
+	var topbarLinks = document.querySelectorAll( '#topbar a:not(.topbar-link):not(.btn)' );
 	for( var i = 0; i < topbarLinks.length; i++ ){
 		topbarLinks[i].classList.add( 'highlight' );
 	}
 
-	var bodyInnerLinks = document.querySelectorAll( '#body-inner a:not(:has(img)):not(.btn):not(.lightbox):not(a[rel="footnote"])' );
+	var bodyInnerLinks = document.querySelectorAll( '#body-inner a:not(.lightbox-link):not(.btn):not(.lightbox)' );
 	for( var i = 0; i < bodyInnerLinks.length; i++ ){
 		bodyInnerLinks[i].classList.add( 'highlight' );
 	}
@@ -926,7 +981,7 @@ function elementContains( txt, e ){
     if( e ){
         var tree = document.createTreeWalker( e, 4 /* NodeFilter.SHOW_TEXT */, function( node ){
             return regex.test( node.data );
-        });
+        }, false );
         var node = null;
         while( node = tree.nextNode() ){
             nodes.push( node.parentElement );
@@ -950,12 +1005,17 @@ function initSearch() {
         e.addEventListener( 'keydown', function( event ){
             if( event.key == 'Escape' ){
                 var input = event.target;
-                input.blur();
+                var search = sessionStorage.getItem( baseUriFull+'search-value' );
+                if( !search || !search.length ){
+                    input.blur();
+                }
                 searchInputHandler( '' );
                 inputs.forEach( function( e ){
                     e.value = '';
                 });
-                documentFocus();
+                if( !search || !search.length ){
+                    documentFocus();
+                }
             }
         });
         e.addEventListener( 'input', function( event ){
@@ -974,7 +1034,9 @@ function initSearch() {
         e.addEventListener( 'click', function(){
             inputs.forEach( function( e ){
                 e.value = '';
-                e.dispatchEvent( new Event( 'input' ) );
+                var event = document.createEvent( 'Event' );
+                event.initEvent( 'input', false, false );
+                e.dispatchEvent( event );
             });
             unmark();
         });
@@ -992,7 +1054,9 @@ function initSearch() {
         var searchValue = sessionStorage.getItem( baseUriFull+'search-value' );
         inputs.forEach( function( e ){
             e.value = searchValue;
-            e.dispatchEvent( new Event( 'input' ) );
+            var event = document.createEvent( 'Event' );
+            event.initEvent( 'input', false, false );
+            e.dispatchEvent( event );
         });
 
         var found = elementContains( searchValue, document.querySelector( '#body-inner' ) );
@@ -1010,7 +1074,7 @@ function initSearch() {
     window.relearn.runInitialSearch && window.relearn.runInitialSearch();
 }
 
-jQuery(function() {
+ready( function(){
     initArrowNav();
     initMermaid();
     initSwagger();
@@ -1024,6 +1088,7 @@ jQuery(function() {
     initSwipeHandler();
     initHistory();
     initSearch();
+    initImage();
 });
 
 function useMermaid( config ){
