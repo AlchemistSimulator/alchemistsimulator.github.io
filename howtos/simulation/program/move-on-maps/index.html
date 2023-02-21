@@ -9,20 +9,20 @@
     <meta name="author" content="Danilo Pianini">
     <title>Move nodes on maps :: Documentation for the Alchemist Simulator</title>
     <link href="../../../../howtos/simulation/program/move-on-maps/index.xml" rel="alternate" type="application/rss+xml" title="Move nodes on maps :: Documentation for the Alchemist Simulator">
-    <link href="../../../../images/logo.svg?1676630660" rel="icon" type="image/svg+xml">
+    <link href="../../../../images/logo.svg?1676967276" rel="icon" type="image/svg+xml">
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
-    <link href="../../../../css/fontawesome-all.min.css?1676630660" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/fontawesome-all.min.css?1676630660" rel="stylesheet"></noscript>
-    <link href="../../../../css/nucleus.css?1676630660" rel="stylesheet">
-    <link href="../../../../css/auto-complete.css?1676630660" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/auto-complete.css?1676630660" rel="stylesheet"></noscript>
-    <link href="../../../../css/perfect-scrollbar.min.css?1676630660" rel="stylesheet">
-    <link href="../../../../css/fonts.css?1676630660" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/fonts.css?1676630660" rel="stylesheet"></noscript>
-    <link href="../../../../css/theme.css?1676630660" rel="stylesheet">
-    <link href="../../../../css/theme-relearn.css?1676630660" rel="stylesheet" id="variant-style">
-    <link href="../../../../css/variant.css?1676630660" rel="stylesheet">
-    <link href="../../../../css/print.css?1676630660" rel="stylesheet" media="print">
-    <link href="../../../../css/ie.css?1676630660" rel="stylesheet">
-    <script src="../../../../js/url.js?1676630660"></script>
-    <script src="../../../../js/variant.js?1676630660"></script>
+    <link href="../../../../css/fontawesome-all.min.css?1676967276" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/fontawesome-all.min.css?1676967276" rel="stylesheet"></noscript>
+    <link href="../../../../css/nucleus.css?1676967276" rel="stylesheet">
+    <link href="../../../../css/auto-complete.css?1676967276" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/auto-complete.css?1676967276" rel="stylesheet"></noscript>
+    <link href="../../../../css/perfect-scrollbar.min.css?1676967276" rel="stylesheet">
+    <link href="../../../../css/fonts.css?1676967276" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/fonts.css?1676967276" rel="stylesheet"></noscript>
+    <link href="../../../../css/theme.css?1676967276" rel="stylesheet">
+    <link href="../../../../css/theme-relearn.css?1676967276" rel="stylesheet" id="variant-style">
+    <link href="../../../../css/variant.css?1676967276" rel="stylesheet">
+    <link href="../../../../css/print.css?1676967276" rel="stylesheet" media="print">
+    <link href="../../../../css/ie.css?1676967276" rel="stylesheet">
+    <script src="../../../../js/url.js?1676967276"></script>
+    <script src="../../../../js/variant.js?1676967276"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
@@ -39,7 +39,7 @@
       // some further base stuff
       var baseUriFull='https:\/\/alchemistsimulator.github.io/';
       window.variants && variants.init( [ 'relearn' ] );
-    </script>
+    </script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   </head>
   <body class="mobile-support html" data-url="../../../../howtos/simulation/program/move-on-maps/index.html">
     <div id="body" class="default-animation">
@@ -111,10 +111,10 @@
 <p>There are several possibilities to move nodes in gep-spatial environment.</p>
 <h2 id="ignore-geo-spatial-information">Ignore geo-spatial information</h2>
 <p>
-<a href="#image-d5f75d5ad328dd67d0f405d3ad079229" class="lightbox-link">
+<a href="#image-6a0f1e629d14df5112d522ad68b3625c" class="lightbox-link">
 <img src="../../../../howtos/simulation/program/move-on-maps/no_map_information.png" alt="orthodromes" style="height: auto; width: auto;" loading="lazy">
 </a>
-<a href="javascript:history.back();" class="lightbox" id="image-d5f75d5ad328dd67d0f405d3ad079229">
+<a href="javascript:history.back();" class="lightbox" id="image-6a0f1e629d14df5112d522ad68b3625c">
 <img src="../../../../howtos/simulation/program/move-on-maps/no_map_information.png" alt="orthodromes" class="lightbox-image" loading="lazy">
 </a></p>
 <p>This is of course the easiest way:
@@ -128,14 +128,29 @@ There is no need of <a href="../../environment/maps">importing actual map data</
 <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-move-to-target/"><code>MoveToTarget</code></a>.</p>
 <h3 id="examples">Examples</h3>
 
+<script>
 
+
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">seed</span>: <span style="color:#78787e">&amp;seed</span> <span style="color:#78787e"># You can give the anchor any name, assigning the name of the variable is convenient, though</span>
 </span></span><span style="display:flex;"><span>    {<span style="color:#ff6ac1">min: 0, max: 1, step: 1, default</span>: <span style="color:#ff9f43">0</span>} <span style="color:#78787e"># This variable ranges in [0, 9], steps of 1, defaulting to 0</span>
@@ -150,16 +165,31 @@ There is no need of <a href="../../environment/maps">importing actual map data</
 </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">actions</span>: { <span style="color:#ff6ac1">type: MoveToTarget, parameters</span>: [destination, 1] }
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>: { <span style="color:#ff6ac1">type: Circle, parameters: [500, 0, 0, 50], programs</span>: [<span style="color:#78787e">*gradient,</span> <span style="color:#78787e">*move]</span> }
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">time</span>: <span style="color:#78787e">&amp;time</span>
@@ -244,15 +274,15 @@ There is no need of <a href="../../environment/maps">importing actual map data</
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*program</span>
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*move</span>
 </span></span></code></pre></div></div>
-    </div>
+</div>
 <p><strong>From the showcase</strong></p>
 <p><a href="../../../../showcase/2020-jcee">Optimal resilient distributed data collection in mobile edge environments</a></p>
 <h2 id="navigate-along-the-streets">Navigate along the streets</h2>
 <p>
-<a href="#image-931548a408139c94af126995cf026892" class="lightbox-link">
+<a href="#image-edf7e54f0211451c13a59631accffd3b" class="lightbox-link">
 <img src="../../../../howtos/simulation/program/move-on-maps/use_map_information.png" alt="navigate along the streets" style="height: auto; width: auto;" loading="lazy">
 </a>
-<a href="javascript:history.back();" class="lightbox" id="image-931548a408139c94af126995cf026892">
+<a href="javascript:history.back();" class="lightbox" id="image-edf7e54f0211451c13a59631accffd3b">
 <img src="../../../../howtos/simulation/program/move-on-maps/use_map_information.png" alt="navigate along the streets" class="lightbox-image" loading="lazy">
 </a></p>
 <p>Moves along the available paths, depending on the specific vehicle being used.
@@ -261,10 +291,10 @@ Requires actual geo-spatial information.</p>
 <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.implementations.actions/-target-map-walker/"><code>TargetMapWalker</code></a>.</p>
 <h2 id="reproduce-a-gps-trace">Reproduce a GPS Trace</h2>
 <p>
-<a href="#image-d530a60f72dbedf5f979f7b3b0644f8e" class="lightbox-link">
+<a href="#image-0f425ec4ce51cb1568216321003d9ccd" class="lightbox-link">
 <img src="../../../../howtos/simulation/program/move-on-maps/reproduce_gps_trace.png" alt="reproduce a GPS trace" style="height: auto; width: auto;" loading="lazy">
 </a>
-<a href="javascript:history.back();" class="lightbox" id="image-d530a60f72dbedf5f979f7b3b0644f8e">
+<a href="javascript:history.back();" class="lightbox" id="image-0f425ec4ce51cb1568216321003d9ccd">
 <img src="../../../../howtos/simulation/program/move-on-maps/reproduce_gps_trace.png" alt="reproduce a GPS trace" class="lightbox-image" loading="lazy">
 </a></p>
 <p>Ignores the map geospatial information and relies on a GPS trace instead,
@@ -293,14 +323,29 @@ the same alignment system used for importing traces is used for using them durin
 </div>
 <h3 id="examples-1">Examples</h3>
 
+<script>
 
+
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: OSMEnvironment
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;vcm.pbf&#34;</span>, <span style="color:#ff6ac1">false</span>]
 </span></span><span style="display:flex;"><span>
@@ -320,13 +365,13 @@ the same alignment system used for importing traces is used for using them durin
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*move</span>
 </span></span></code></pre></div></div>
-    </div>
+</div>
 <h3 id="interpolate-gps-traces-with-street-data">Interpolate GPS traces with street data</h3>
 <p>
-<a href="#image-7185c6c69db235ea1d8557b84f1d85c3" class="lightbox-link">
+<a href="#image-e37f197107f0a0068227323c9f80e390" class="lightbox-link">
 <img src="../../../../howtos/simulation/program/move-on-maps/interpolate_gps_trace_with_street_data.png" alt="interpolate GPS traces" style="height: auto; width: auto;" loading="lazy">
 </a>
-<a href="javascript:history.back();" class="lightbox" id="image-7185c6c69db235ea1d8557b84f1d85c3">
+<a href="javascript:history.back();" class="lightbox" id="image-e37f197107f0a0068227323c9f80e390">
 <img src="../../../../howtos/simulation/program/move-on-maps/interpolate_gps_trace_with_street_data.png" alt="interpolate GPS traces" class="lightbox-image" loading="lazy">
 </a></p>
 <p>Navigates along a GPS trace, but computes the point-to-point distance using the navigation system,
@@ -359,12 +404,12 @@ rather than &ldquo;straight lines&rdquo; (<a href="https://en.wikipedia.org/wiki
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../../../../js/auto-complete.js?1676630661" defer></script>
-        <script src="../../../../js/lunr/lunr.min.js?1676630661" defer></script>
-        <script src="../../../../js/lunr/lunr.stemmer.support.min.js?1676630661" defer></script>
-        <script src="../../../../js/lunr/lunr.multi.min.js?1676630661" defer></script>
-        <script src="../../../../js/lunr/lunr.en.min.js?1676630661" defer></script>
-        <script src="../../../../js/search.js?1676630661" defer></script>
+        <script src="../../../../js/auto-complete.js?1676967277" defer></script>
+        <script src="../../../../js/lunr/lunr.min.js?1676967277" defer></script>
+        <script src="../../../../js/lunr/lunr.stemmer.support.min.js?1676967277" defer></script>
+        <script src="../../../../js/lunr/lunr.multi.min.js?1676967277" defer></script>
+        <script src="../../../../js/lunr/lunr.en.min.js?1676967277" defer></script>
+        <script src="../../../../js/search.js?1676967277" defer></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -478,7 +523,7 @@ rather than &ldquo;straight lines&rdquo; (<a href="https://en.wikipedia.org/wiki
           </ul>
         </div>
         <div id="footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 25.13.0</strong></div>
+    <div><strong>Alchemist Simulator 25.13.1</strong></div>
     <br>
     <a
         class="github-button"
@@ -511,21 +556,21 @@ rather than &ldquo;straight lines&rdquo; (<a href="https://en.wikipedia.org/wiki
         </div>
       </div>
     </aside>
-    <script src="../../../../js/clipboard.min.js?1676630661" defer></script>
-    <script src="../../../../js/perfect-scrollbar.min.js?1676630661" defer></script>
-    <script src="../../../../js/d3/d3-color.min.js?1676630661" defer></script>
-    <script src="../../../../js/d3/d3-dispatch.min.js?1676630661" defer></script>
-    <script src="../../../../js/d3/d3-drag.min.js?1676630661" defer></script>
-    <script src="../../../../js/d3/d3-ease.min.js?1676630661" defer></script>
-    <script src="../../../../js/d3/d3-interpolate.min.js?1676630661" defer></script>
-    <script src="../../../../js/d3/d3-selection.min.js?1676630661" defer></script>
-    <script src="../../../../js/d3/d3-timer.min.js?1676630661" defer></script>
-    <script src="../../../../js/d3/d3-transition.min.js?1676630661" defer></script>
-    <script src="../../../../js/d3/d3-zoom.min.js?1676630661" defer></script>
-    <script src="../../../../js/mermaid.min.js?1676630661" defer></script>
+    <script src="../../../../js/clipboard.min.js?1676967277" defer></script>
+    <script src="../../../../js/perfect-scrollbar.min.js?1676967277" defer></script>
+    <script src="../../../../js/d3/d3-color.min.js?1676967277" defer></script>
+    <script src="../../../../js/d3/d3-dispatch.min.js?1676967277" defer></script>
+    <script src="../../../../js/d3/d3-drag.min.js?1676967277" defer></script>
+    <script src="../../../../js/d3/d3-ease.min.js?1676967277" defer></script>
+    <script src="../../../../js/d3/d3-interpolate.min.js?1676967277" defer></script>
+    <script src="../../../../js/d3/d3-selection.min.js?1676967277" defer></script>
+    <script src="../../../../js/d3/d3-timer.min.js?1676967277" defer></script>
+    <script src="../../../../js/d3/d3-transition.min.js?1676967277" defer></script>
+    <script src="../../../../js/d3/d3-zoom.min.js?1676967277" defer></script>
+    <script src="../../../../js/mermaid.min.js?1676967277" defer></script>
     <script>
       window.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../../../js/theme.js?1676630661" defer></script>
+    <script src="../../../../js/theme.js?1676967277" defer></script>
   </body>
 </html>

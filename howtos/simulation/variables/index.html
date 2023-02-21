@@ -9,20 +9,20 @@
     <meta name="author" content="Danilo Pianini">
     <title>Create reusable variables :: Documentation for the Alchemist Simulator</title>
     <link href="../../../howtos/simulation/variables/index.xml" rel="alternate" type="application/rss+xml" title="Create reusable variables :: Documentation for the Alchemist Simulator">
-    <link href="../../../images/logo.svg?1676630660" rel="icon" type="image/svg+xml">
+    <link href="../../../images/logo.svg?1676967276" rel="icon" type="image/svg+xml">
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
-    <link href="../../../css/fontawesome-all.min.css?1676630660" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fontawesome-all.min.css?1676630660" rel="stylesheet"></noscript>
-    <link href="../../../css/nucleus.css?1676630660" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1676630660" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/auto-complete.css?1676630660" rel="stylesheet"></noscript>
-    <link href="../../../css/perfect-scrollbar.min.css?1676630660" rel="stylesheet">
-    <link href="../../../css/fonts.css?1676630660" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fonts.css?1676630660" rel="stylesheet"></noscript>
-    <link href="../../../css/theme.css?1676630660" rel="stylesheet">
-    <link href="../../../css/theme-relearn.css?1676630660" rel="stylesheet" id="variant-style">
-    <link href="../../../css/variant.css?1676630660" rel="stylesheet">
-    <link href="../../../css/print.css?1676630660" rel="stylesheet" media="print">
-    <link href="../../../css/ie.css?1676630660" rel="stylesheet">
-    <script src="../../../js/url.js?1676630660"></script>
-    <script src="../../../js/variant.js?1676630660"></script>
+    <link href="../../../css/fontawesome-all.min.css?1676967276" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fontawesome-all.min.css?1676967276" rel="stylesheet"></noscript>
+    <link href="../../../css/nucleus.css?1676967276" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1676967276" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/auto-complete.css?1676967276" rel="stylesheet"></noscript>
+    <link href="../../../css/perfect-scrollbar.min.css?1676967276" rel="stylesheet">
+    <link href="../../../css/fonts.css?1676967276" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fonts.css?1676967276" rel="stylesheet"></noscript>
+    <link href="../../../css/theme.css?1676967276" rel="stylesheet">
+    <link href="../../../css/theme-relearn.css?1676967276" rel="stylesheet" id="variant-style">
+    <link href="../../../css/variant.css?1676967276" rel="stylesheet">
+    <link href="../../../css/print.css?1676967276" rel="stylesheet" media="print">
+    <link href="../../../css/ie.css?1676967276" rel="stylesheet">
+    <script src="../../../js/url.js?1676967276"></script>
+    <script src="../../../js/variant.js?1676967276"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
@@ -39,7 +39,7 @@
       // some further base stuff
       var baseUriFull='https:\/\/alchemistsimulator.github.io/';
       window.variants && variants.init( [ 'relearn' ] );
-    </script>
+    </script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   </head>
   <body class="mobile-support html" data-url="../../../howtos/simulation/variables/index.html">
     <div id="body" class="default-animation">
@@ -129,30 +129,60 @@ If the simulation is not executed as batch, then the default value is used.</p>
 Represented by <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.variables/-linear-variable/"><code>LinearVariable</code></a>.</p>
 <h4 id="examples">Examples</h4>
 <p>
+<script>
 
+
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">myvar</span>: <span style="color:#78787e">&amp;myvar</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: LinearVariable
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0.2</span>]
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">rate</span>: <span style="color:#78787e">&amp;rate</span>
@@ -187,16 +217,31 @@ Represented by <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loa
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: token, 0, []
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*grad</span>
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span> <span style="color:#78787e"># Must be a valid Groovy snippet</span>
@@ -242,16 +287,31 @@ Represented by <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loa
 </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: send
 </span></span><span style="display:flex;"><span>    - { <span style="color:#ff6ac1">type: Event, time-distribution: 1, actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">seed</span>: <span style="color:#78787e">&amp;seed</span> <span style="color:#78787e"># You can give the anchor any name, assigning the name of the variable is convenient, though</span>
 </span></span><span style="display:flex;"><span>    {<span style="color:#ff6ac1">min: 0, max: 1, step: 1, default</span>: <span style="color:#ff9f43">0</span>} <span style="color:#78787e"># This variable ranges in [0, 9], steps of 1, defaulting to 0</span>
@@ -266,16 +326,31 @@ Represented by <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loa
 </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">actions</span>: { <span style="color:#ff6ac1">type: MoveToTarget, parameters</span>: [destination, 1] }
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>: { <span style="color:#ff6ac1">type: Circle, parameters: [500, 0, 0, 50], programs</span>: [<span style="color:#78787e">*gradient,</span> <span style="color:#78787e">*move]</span> }
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">testVar</span>: <span style="color:#78787e">&amp;testVar</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">min</span>: <span style="color:#ff9f43">0</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">max</span>: <span style="color:#ff9f43">10</span>
@@ -338,16 +413,31 @@ Represented by <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loa
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*program</span>
 </span></span><span style="display:flex;"><span>      </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">time</span>: <span style="color:#78787e">&amp;time</span>
@@ -432,16 +522,31 @@ Represented by <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loa
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*program</span>
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*move</span>
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">category</span>:
@@ -463,16 +568,31 @@ Represented by <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loa
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">mydepvar</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">10</span> / myvar
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">rate</span>: <span style="color:#78787e">&amp;rate</span>
@@ -528,16 +648,31 @@ Represented by <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loa
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*grad</span>
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*move</span>
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance
@@ -566,37 +701,67 @@ Represented by <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loa
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">tolerance</span>: <span style="color:#78787e">&amp;tolerance</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: algorithm[1]
 </span></span></code></pre></div></div>
-    </div></p>
+</div></p>
 <h3 id="geometric-variables">Geometric variables</h3>
 <p>A variable generating geometrically-distributed samples across a range.
 Ideal for exploring non-linear phenomena, or for exploring very large ranges of values whose effect is unknown.
 Implemented as <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.variables/-geometric-variable/"><code>GeometricVariable</code></a>.</p>
 <h4 id="examples-1">Examples</h4>
 <p>
+<script>
 
+
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">var0</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: GeometricVariable
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>]
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span> <span style="color:#78787e"># Must be a valid Groovy snippet</span>
@@ -642,16 +807,31 @@ Implemented as <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loa
 </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: send
 </span></span><span style="display:flex;"><span>    - { <span style="color:#ff6ac1">type: Event, time-distribution: 1, actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">rate</span>: <span style="color:#78787e">&amp;rate</span>
@@ -686,16 +866,31 @@ Implemented as <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loa
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: token, 0, []
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*grad</span>
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">rate</span>: <span style="color:#78787e">&amp;rate</span>
@@ -751,19 +946,34 @@ Implemented as <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loa
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*grad</span>
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*move</span>
 </span></span></code></pre></div></div>
-    </div></p>
+</div></p>
 <h3 id="arbitrary-valued-variables">Arbitrary-valued variables</h3>
 <p>Generates an <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.variables/-arbitrary-variable/"><code>ArbitraryVariable</code></a> spanning on an arbitrary set of values.</p>
 <h4 id="examples-2">Examples</h4>
 <p>
+<script>
 
+
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">foo</span>: <span style="color:#78787e">&amp;foo</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">1</span>
@@ -776,16 +986,31 @@ Implemented as <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loa
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: ArbitraryVariable
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, [<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>, <span style="color:#ff9f43">5</span>]]
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance
@@ -814,7 +1039,7 @@ Implemented as <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loa
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">tolerance</span>: <span style="color:#78787e">&amp;tolerance</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: algorithm[1]
 </span></span></code></pre></div></div>
-    </div></p>
+</div></p>
 <h2 id="dependent-variables">Dependent variables</h2>
 <p>Some variables are combination of other variables.
 Let&rsquo;s suppose that we want to deploy on a circle,
@@ -864,14 +1089,29 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
 </div>
 <h4 id="examples-3">Examples</h4>
 <p>
+<script>
 
+
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance
@@ -900,16 +1140,31 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">tolerance</span>: <span style="color:#78787e">&amp;tolerance</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: algorithm[1]
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">var0</span>:
@@ -936,16 +1191,31 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>    - <span style="color:#78787e">*program</span>
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">var</span>: <span style="color:#78787e">&amp;var</span>
@@ -960,16 +1230,31 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*var,</span> <span style="color:#78787e">*var2]</span>
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">a</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">22</span> + 1
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kts
@@ -989,16 +1274,31 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: test + test2
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">myvar</span>: <span style="color:#78787e">&amp;myvar</span>
@@ -1014,32 +1314,62 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: it.unibo.alchemist.test.util.DummyRule
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [[<span style="color:#78787e">*myvar,</span> <span style="color:#78787e">*myvar2],</span> [<span style="color:#78787e">*myvar,</span> <span style="color:#78787e">*myvar2]]</span>
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">var0</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">2</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">var1</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">2</span></span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span> <span style="color:#78787e"># Must be a valid Groovy snippet</span>
@@ -1085,16 +1415,31 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
 </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: send
 </span></span><span style="display:flex;"><span>    - { <span style="color:#ff6ac1">type: Event, time-distribution: 1, actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">group1</span>: <span style="color:#78787e">&amp;group1</span>
@@ -1121,16 +1466,31 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
 </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
 </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*group2]</span></span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">danger</span>: <span style="color:#78787e">&amp;danger</span>
@@ -1165,16 +1525,31 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
 </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span></span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">initial_latitude</span>: <span style="color:#78787e">&amp;initial_latitude</span>
@@ -1220,16 +1595,31 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">molecule</span>: source
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff6ac1">true</span>
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">category</span>:
@@ -1251,16 +1641,31 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">mydepvar</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">10</span> / myvar
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">rate</span>: <span style="color:#78787e">&amp;rate</span>
@@ -1295,16 +1700,31 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: token, 0, []
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*grad</span>
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">rate</span>: <span style="color:#78787e">&amp;rate</span>
@@ -1360,16 +1780,31 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*grad</span>
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*move</span>
 </span></span></code></pre></div></div>
-    </div>
+</div>
+
+<script>
 
 
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
 <div class="expand">
-        <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-            <span class="fas fa-chevron-down"></span>
-            <span class="fas fa-chevron-right"></span>
-            <strong>Click to show / hide code</strong>
-        </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span> <span style="color:#78787e"># Must be a valid Groovy snippet</span>
@@ -1415,7 +1850,7 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
 </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: send
 </span></span><span style="display:flex;"><span>    - { <span style="color:#ff6ac1">type: Event, time-distribution: 1, actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
 </span></span></code></pre></div></div>
-    </div></p>
+</div></p>
 
             <footer class="footline">
             </footer>
@@ -1442,12 +1877,12 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../../../js/auto-complete.js?1676630661" defer></script>
-        <script src="../../../js/lunr/lunr.min.js?1676630661" defer></script>
-        <script src="../../../js/lunr/lunr.stemmer.support.min.js?1676630661" defer></script>
-        <script src="../../../js/lunr/lunr.multi.min.js?1676630661" defer></script>
-        <script src="../../../js/lunr/lunr.en.min.js?1676630661" defer></script>
-        <script src="../../../js/search.js?1676630661" defer></script>
+        <script src="../../../js/auto-complete.js?1676967277" defer></script>
+        <script src="../../../js/lunr/lunr.min.js?1676967277" defer></script>
+        <script src="../../../js/lunr/lunr.stemmer.support.min.js?1676967277" defer></script>
+        <script src="../../../js/lunr/lunr.multi.min.js?1676967277" defer></script>
+        <script src="../../../js/lunr/lunr.en.min.js?1676967277" defer></script>
+        <script src="../../../js/search.js?1676967277" defer></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -1561,7 +1996,7 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
           </ul>
         </div>
         <div id="footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 25.13.0</strong></div>
+    <div><strong>Alchemist Simulator 25.13.1</strong></div>
     <br>
     <a
         class="github-button"
@@ -1594,21 +2029,21 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
         </div>
       </div>
     </aside>
-    <script src="../../../js/clipboard.min.js?1676630661" defer></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1676630661" defer></script>
-    <script src="../../../js/d3/d3-color.min.js?1676630661" defer></script>
-    <script src="../../../js/d3/d3-dispatch.min.js?1676630661" defer></script>
-    <script src="../../../js/d3/d3-drag.min.js?1676630661" defer></script>
-    <script src="../../../js/d3/d3-ease.min.js?1676630661" defer></script>
-    <script src="../../../js/d3/d3-interpolate.min.js?1676630661" defer></script>
-    <script src="../../../js/d3/d3-selection.min.js?1676630661" defer></script>
-    <script src="../../../js/d3/d3-timer.min.js?1676630661" defer></script>
-    <script src="../../../js/d3/d3-transition.min.js?1676630661" defer></script>
-    <script src="../../../js/d3/d3-zoom.min.js?1676630661" defer></script>
-    <script src="../../../js/mermaid.min.js?1676630661" defer></script>
+    <script src="../../../js/clipboard.min.js?1676967277" defer></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-color.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-dispatch.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-drag.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-ease.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-interpolate.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-selection.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-timer.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-transition.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-zoom.min.js?1676967277" defer></script>
+    <script src="../../../js/mermaid.min.js?1676967277" defer></script>
     <script>
       window.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../../js/theme.js?1676630661" defer></script>
+    <script src="../../../js/theme.js?1676967277" defer></script>
   </body>
 </html>

@@ -9,20 +9,20 @@
     <meta name="author" content="Danilo Pianini">
     <title>Export data :: Documentation for the Alchemist Simulator</title>
     <link href="../../../howtos/simulation/export/index.xml" rel="alternate" type="application/rss+xml" title="Export data :: Documentation for the Alchemist Simulator">
-    <link href="../../../images/logo.svg?1676630660" rel="icon" type="image/svg+xml">
+    <link href="../../../images/logo.svg?1676967276" rel="icon" type="image/svg+xml">
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
-    <link href="../../../css/fontawesome-all.min.css?1676630660" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fontawesome-all.min.css?1676630660" rel="stylesheet"></noscript>
-    <link href="../../../css/nucleus.css?1676630660" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1676630660" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/auto-complete.css?1676630660" rel="stylesheet"></noscript>
-    <link href="../../../css/perfect-scrollbar.min.css?1676630660" rel="stylesheet">
-    <link href="../../../css/fonts.css?1676630660" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fonts.css?1676630660" rel="stylesheet"></noscript>
-    <link href="../../../css/theme.css?1676630660" rel="stylesheet">
-    <link href="../../../css/theme-relearn.css?1676630660" rel="stylesheet" id="variant-style">
-    <link href="../../../css/variant.css?1676630660" rel="stylesheet">
-    <link href="../../../css/print.css?1676630660" rel="stylesheet" media="print">
-    <link href="../../../css/ie.css?1676630660" rel="stylesheet">
-    <script src="../../../js/url.js?1676630660"></script>
-    <script src="../../../js/variant.js?1676630660"></script>
+    <link href="../../../css/fontawesome-all.min.css?1676967276" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fontawesome-all.min.css?1676967276" rel="stylesheet"></noscript>
+    <link href="../../../css/nucleus.css?1676967276" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1676967276" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/auto-complete.css?1676967276" rel="stylesheet"></noscript>
+    <link href="../../../css/perfect-scrollbar.min.css?1676967276" rel="stylesheet">
+    <link href="../../../css/fonts.css?1676967276" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fonts.css?1676967276" rel="stylesheet"></noscript>
+    <link href="../../../css/theme.css?1676967276" rel="stylesheet">
+    <link href="../../../css/theme-relearn.css?1676967276" rel="stylesheet" id="variant-style">
+    <link href="../../../css/variant.css?1676967276" rel="stylesheet">
+    <link href="../../../css/print.css?1676967276" rel="stylesheet" media="print">
+    <link href="../../../css/ie.css?1676967276" rel="stylesheet">
+    <script src="../../../js/url.js?1676967276"></script>
+    <script src="../../../js/variant.js?1676967276"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
@@ -39,7 +39,7 @@
       // some further base stuff
       var baseUriFull='https:\/\/alchemistsimulator.github.io/';
       window.variants && variants.init( [ 'relearn' ] );
-    </script>
+    </script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   </head>
   <body class="mobile-support html" data-url="../../../howtos/simulation/export/index.html">
     <div id="body" class="default-animation">
@@ -127,14 +127,29 @@ This is the classic way data is exported from the simulator, and relies on
 <ul>
 <li>Export of the output of a Protelis program every 3 simulated seconds:
 
+  <script>
   
+  
+  function onClick(element) {
+      var content = $(element).parent().find(".expand-content");
+      var chevron = $(element).find(".fas");
+      if (content.css("display") === "none") {
+          chevron.removeClass("fa-chevron-right");
+          chevron.addClass("fa-chevron-down");
+          content.slideDown(100);
+      } else {
+          chevron.removeClass("fa-chevron-down");
+          chevron.addClass("fa-chevron-right");
+          content.slideUp(100);
+      }
+  }
+  </script>
   <div class="expand">
-          <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-              <span class="fas fa-chevron-down"></span>
-              <span class="fas fa-chevron-right"></span>
-              <strong>Click to show / hide code</strong>
-          </a>
-          <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+      <a class="expand-label" onclick="onClick(this)"> 
+          <span class="fas fa-chevron-right"></span>
+          <strong>Click to show / hide code</strong>
+      </a>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
   </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">export</span>:
   </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: CSVExporter
   </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
@@ -144,17 +159,32 @@ This is the classic way data is exported from the simulator, and relies on
   </span></span><span style="display:flex;"><span>      - time
   </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
   </span></span></code></pre></div></div>
-      </div></li>
+  </div></li>
 <li>Export data to both a csv file and a MongoDB instance:
 
+  <script>
   
+  
+  function onClick(element) {
+      var content = $(element).parent().find(".expand-content");
+      var chevron = $(element).find(".fas");
+      if (content.css("display") === "none") {
+          chevron.removeClass("fa-chevron-right");
+          chevron.addClass("fa-chevron-down");
+          content.slideDown(100);
+      } else {
+          chevron.removeClass("fa-chevron-down");
+          chevron.addClass("fa-chevron-right");
+          content.slideUp(100);
+      }
+  }
+  </script>
   <div class="expand">
-          <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-              <span class="fas fa-chevron-down"></span>
-              <span class="fas fa-chevron-right"></span>
-              <strong>Click to show / hide code</strong>
-          </a>
-          <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+      <a class="expand-label" onclick="onClick(this)"> 
+          <span class="fas fa-chevron-right"></span>
+          <strong>Click to show / hide code</strong>
+      </a>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
   </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">export</span>:
   </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: CSVExporter
   </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
@@ -172,17 +202,32 @@ This is the classic way data is exported from the simulator, and relies on
   </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
   </span></span><span style="display:flex;"><span>      - time
   </span></span></code></pre></div></div>
-      </div></li>
+  </div></li>
 <li>Export of the <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.loader.export.extractors/-mean-squared-error/"><code>MeanSquaredError</code></a> of some custom properties:
 
+    <script>
     
+    
+    function onClick(element) {
+        var content = $(element).parent().find(".expand-content");
+        var chevron = $(element).find(".fas");
+        if (content.css("display") === "none") {
+            chevron.removeClass("fa-chevron-right");
+            chevron.addClass("fa-chevron-down");
+            content.slideDown(100);
+        } else {
+            chevron.removeClass("fa-chevron-down");
+            chevron.addClass("fa-chevron-right");
+            content.slideUp(100);
+        }
+    }
+    </script>
     <div class="expand">
-            <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-                <span class="fas fa-chevron-down"></span>
-                <span class="fas fa-chevron-right"></span>
-                <strong>Click to show / hide code</strong>
-            </a>
-            <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+        <a class="expand-label" onclick="onClick(this)"> 
+            <span class="fas fa-chevron-right"></span>
+            <strong>Click to show / hide code</strong>
+        </a>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
     </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">export</span>:
     </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: CSVExporter
     </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;test-custom-export&#34;</span>]
@@ -190,17 +235,32 @@ This is the classic way data is exported from the simulator, and relies on
     </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: MeanSquaredError
     </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [ <span style="color:#5af78e">&#34;A&#34;</span>, <span style="color:#5af78e">&#34;A&#34;</span>, product, &#34;A&#34;, &#34;A&#34; ]
     </span></span></code></pre></div></div>
-        </div></li>
+    </div></li>
 <li>Export of the output of a Protelis program, values generated from nodes get accumulated into mean, max, min, variance, and median:
 
+  <script>
   
+  
+  function onClick(element) {
+      var content = $(element).parent().find(".expand-content");
+      var chevron = $(element).find(".fas");
+      if (content.css("display") === "none") {
+          chevron.removeClass("fa-chevron-right");
+          chevron.addClass("fa-chevron-down");
+          content.slideDown(100);
+      } else {
+          chevron.removeClass("fa-chevron-down");
+          chevron.addClass("fa-chevron-right");
+          content.slideUp(100);
+      }
+  }
+  </script>
   <div class="expand">
-          <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-              <span class="fas fa-chevron-down"></span>
-              <span class="fas fa-chevron-right"></span>
-              <strong>Click to show / hide code</strong>
-          </a>
-          <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+      <a class="expand-label" onclick="onClick(this)"> 
+          <span class="fas fa-chevron-right"></span>
+          <strong>Click to show / hide code</strong>
+      </a>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
   </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
   </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
   </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span>
@@ -257,7 +317,7 @@ This is the classic way data is exported from the simulator, and relies on
   </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">terminate</span>:
   </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: AfterTime
   </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: <span style="color:#ff9f43">10</span></span></span></code></pre></div></div>
-      </div></li>
+  </div></li>
 </ul>
 <h2 id="export-data-to-a-mongodb-instance">Export data to a MongoDB instance</h2>
 <p>Alchemist can send data directly to a pre-existing MongoDB instance through its
@@ -266,14 +326,29 @@ This is the classic way data is exported from the simulator, and relies on
 <ul>
 <li>Export data to both a csv file and a MongoDB instance:
 
+  <script>
   
+  
+  function onClick(element) {
+      var content = $(element).parent().find(".expand-content");
+      var chevron = $(element).find(".fas");
+      if (content.css("display") === "none") {
+          chevron.removeClass("fa-chevron-right");
+          chevron.addClass("fa-chevron-down");
+          content.slideDown(100);
+      } else {
+          chevron.removeClass("fa-chevron-down");
+          chevron.addClass("fa-chevron-right");
+          content.slideUp(100);
+      }
+  }
+  </script>
   <div class="expand">
-          <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-              <span class="fas fa-chevron-down"></span>
-              <span class="fas fa-chevron-right"></span>
-              <strong>Click to show / hide code</strong>
-          </a>
-          <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+      <a class="expand-label" onclick="onClick(this)"> 
+          <span class="fas fa-chevron-right"></span>
+          <strong>Click to show / hide code</strong>
+      </a>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
   </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">export</span>:
   </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: CSVExporter
   </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
@@ -291,17 +366,32 @@ This is the classic way data is exported from the simulator, and relies on
   </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
   </span></span><span style="display:flex;"><span>      - time
   </span></span></code></pre></div></div>
-      </div></li>
+  </div></li>
 <li>Export of the output of a Protelis program, values generated from nodes get accumulated into mean, max, min, variance, and median:
 
+  <script>
   
+  
+  function onClick(element) {
+      var content = $(element).parent().find(".expand-content");
+      var chevron = $(element).find(".fas");
+      if (content.css("display") === "none") {
+          chevron.removeClass("fa-chevron-right");
+          chevron.addClass("fa-chevron-down");
+          content.slideDown(100);
+      } else {
+          chevron.removeClass("fa-chevron-down");
+          chevron.addClass("fa-chevron-right");
+          content.slideUp(100);
+      }
+  }
+  </script>
   <div class="expand">
-          <a class="expand-label" onclick="$t=$(this); if($t.parent('.expand-expanded.expand-marked').length){ $t.next().css('display','none') }else if($t.parent('.expand-marked').length){ $t.next().css('display','block') }else{ $t.next('.expand-content').slideToggle(100); } $t.parent().toggleClass('expand-expanded');">
-              <span class="fas fa-chevron-down"></span>
-              <span class="fas fa-chevron-right"></span>
-              <strong>Click to show / hide code</strong>
-          </a>
-          <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+      <a class="expand-label" onclick="onClick(this)"> 
+          <span class="fas fa-chevron-right"></span>
+          <strong>Click to show / hide code</strong>
+      </a>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
   </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
   </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
   </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span>
@@ -349,7 +439,7 @@ This is the classic way data is exported from the simulator, and relies on
   </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: AfterTime
   </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: <span style="color:#ff9f43">3</span>
   </span></span></code></pre></div></div>
-      </div></li>
+  </div></li>
 </ul>
 
             <footer class="footline">
@@ -377,12 +467,12 @@ This is the classic way data is exported from the simulator, and relies on
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../../../js/auto-complete.js?1676630660" defer></script>
-        <script src="../../../js/lunr/lunr.min.js?1676630660" defer></script>
-        <script src="../../../js/lunr/lunr.stemmer.support.min.js?1676630660" defer></script>
-        <script src="../../../js/lunr/lunr.multi.min.js?1676630660" defer></script>
-        <script src="../../../js/lunr/lunr.en.min.js?1676630660" defer></script>
-        <script src="../../../js/search.js?1676630660" defer></script>
+        <script src="../../../js/auto-complete.js?1676967277" defer></script>
+        <script src="../../../js/lunr/lunr.min.js?1676967277" defer></script>
+        <script src="../../../js/lunr/lunr.stemmer.support.min.js?1676967277" defer></script>
+        <script src="../../../js/lunr/lunr.multi.min.js?1676967277" defer></script>
+        <script src="../../../js/lunr/lunr.en.min.js?1676967277" defer></script>
+        <script src="../../../js/search.js?1676967277" defer></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -496,7 +586,7 @@ This is the classic way data is exported from the simulator, and relies on
           </ul>
         </div>
         <div id="footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 25.13.0</strong></div>
+    <div><strong>Alchemist Simulator 25.13.1</strong></div>
     <br>
     <a
         class="github-button"
@@ -529,21 +619,21 @@ This is the classic way data is exported from the simulator, and relies on
         </div>
       </div>
     </aside>
-    <script src="../../../js/clipboard.min.js?1676630660" defer></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1676630660" defer></script>
-    <script src="../../../js/d3/d3-color.min.js?1676630660" defer></script>
-    <script src="../../../js/d3/d3-dispatch.min.js?1676630660" defer></script>
-    <script src="../../../js/d3/d3-drag.min.js?1676630660" defer></script>
-    <script src="../../../js/d3/d3-ease.min.js?1676630660" defer></script>
-    <script src="../../../js/d3/d3-interpolate.min.js?1676630660" defer></script>
-    <script src="../../../js/d3/d3-selection.min.js?1676630660" defer></script>
-    <script src="../../../js/d3/d3-timer.min.js?1676630660" defer></script>
-    <script src="../../../js/d3/d3-transition.min.js?1676630660" defer></script>
-    <script src="../../../js/d3/d3-zoom.min.js?1676630660" defer></script>
-    <script src="../../../js/mermaid.min.js?1676630660" defer></script>
+    <script src="../../../js/clipboard.min.js?1676967277" defer></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-color.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-dispatch.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-drag.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-ease.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-interpolate.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-selection.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-timer.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-transition.min.js?1676967277" defer></script>
+    <script src="../../../js/d3/d3-zoom.min.js?1676967277" defer></script>
+    <script src="../../../js/mermaid.min.js?1676967277" defer></script>
     <script>
       window.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../../js/theme.js?1676630660" defer></script>
+    <script src="../../../js/theme.js?1676967277" defer></script>
   </body>
 </html>
