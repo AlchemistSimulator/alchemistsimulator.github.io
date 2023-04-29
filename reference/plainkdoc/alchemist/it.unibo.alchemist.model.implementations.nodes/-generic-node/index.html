@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>GenericNode</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>alchemist</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button>
+        </div>
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="alchemist::it.unibo.alchemist.model.implementations.nodes/GenericNode///PointingToDeclaration//987342573">
+  <div class="breadcrumbs"><a href="../../../index.html">alchemist</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.implementations.nodes</a><span class="delimiter">/</span><span class="current">GenericNode</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Generic</span><wbr></wbr><span><span>Node</span></span></h1>
+    <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">GenericNode</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>incarnation<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-incarnation/index.html">Incarnation</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-environment/index.html">Environment</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>id<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>idFromEnv(environment)<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>reactions<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>ArrayList()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>molecules<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-molecule/index.html">Molecule</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>LinkedHashMap()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>properties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>ArrayList()</span></span><span class="token punctuation">)</span> : <a href="../../it.unibo.alchemist.model.interfaces/-node/index.html">Node</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt; </span></div><p class="paragraph">This class realizes an abstract node. You may extend it to realize your own nodes.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u></u></div></span></div><div><div class="title"><T> concentration type
+</T></div></div></div></div></div></div>    </div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,FUNCTION,PROPERTY">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,FUNCTION,PROPERTY,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1213072717%2FConstructors%2F987342573" anchor-label="GenericNode" id="1213072717%2FConstructors%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-generic-node.html"><span>Generic</span><wbr></wbr><span><span>Node</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1213072717%2FConstructors%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-environment/index.html">Environment</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">incarnation<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-incarnation/index.html">Incarnation</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-environment/index.html">Environment</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">id<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>idFromEnv(environment)<span class="token punctuation">, </span></span><span class="parameter ">reactions<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>ArrayList()<span class="token punctuation">, </span></span><span class="parameter ">molecules<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-molecule/index.html">Molecule</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>LinkedHashMap()<span class="token punctuation">, </span></span><span class="parameter ">properties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>ArrayList()</span></span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-851250918%2FClasslikes%2F987342573" anchor-label="Companion" id="-851250918%2FClasslikes%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-851250918%2FClasslikes%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1113079431%2FFunctions%2F987342573" anchor-label="addProperty" id="1113079431%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-property.html"><span>add</span><wbr></wbr><span><span>Property</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1113079431%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">fun </span><a href="add-property.html"><span class="token function">addProperty</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">nodeProperty<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="985086861%2FFunctions%2F987342573" anchor-label="addReaction" id="985086861%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-reaction.html"><span>add</span><wbr></wbr><span><span>Reaction</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="985086861%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">fun </span><a href="add-reaction.html"><span class="token function">addReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">reactionToAdd<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="561297737%2FFunctions%2F987342573" anchor-label="asProperty" id="561297737%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property.html"><span>as</span><wbr></wbr><span><span>Property</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="561297737%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property.html">C</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model.interfaces/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property.html"><span class="token function">asProperty</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">superType<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html">Class</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property.html">C</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property.html">C</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property.html">C</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model.interfaces/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property.html"><span class="token function">asProperty</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">superType<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property.html">C</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property.html">C</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-239234904%2FFunctions%2F987342573" anchor-label="asProperty" id="-239234904%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property.html"><span>as</span><wbr></wbr><span><span>Property</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-239234904%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property.html">C</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model.interfaces/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="../../it.unibo.alchemist.model.interfaces/-node/index.html">Node</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property.html"><span class="token function">asProperty</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property.html">C</a></div><div class="brief "><p class="paragraph">returns a <a href="../../it.unibo.alchemist.model.interfaces/-node-property/index.html">NodeProperty</a> of the provided type <a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property.html">C</a>.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1074857909%2FFunctions%2F987342573" anchor-label="asPropertyOrNull" id="1074857909%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property-or-null.html"><span>as</span><wbr></wbr><span>Property</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1074857909%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property-or-null.html">C</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model.interfaces/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property-or-null.html"><span class="token function">asPropertyOrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">superType<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Class.html">Class</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property-or-null.html">C</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property-or-null.html">C</a><span class="token operator">?</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property-or-null.html">C</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model.interfaces/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property-or-null.html"><span class="token function">asPropertyOrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">superType<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property-or-null.html">C</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-node/as-property-or-null.html">C</a><span class="token operator">?</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="890142674%2FFunctions%2F987342573" anchor-label="asPropertyOrNull" id="890142674%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property-or-null.html"><span>as</span><wbr></wbr><span>Property</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="890142674%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property-or-null.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property-or-null.html">C</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model.interfaces/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property-or-null.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="../../it.unibo.alchemist.model.interfaces/-node/index.html">Node</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property-or-null.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property-or-null.html"><span class="token function">asPropertyOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property-or-null.html">C</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">returns a <a href="../../it.unibo.alchemist.model.interfaces/-node-property/index.html">NodeProperty</a> of the provided type <a href="../../it.unibo.alchemist.model.interfaces/-node/-companion/as-property-or-null.html">C</a> or null if the node does not have a compatible property.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-94320888%2FFunctions%2F987342573" anchor-label="cloneNode" id="-94320888%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clone-node.html"><span>clone</span><wbr></wbr><span><span>Node</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-94320888%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="clone-node.html"><span class="token function">cloneNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">currentTime<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-time/index.html">Time</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-node/index.html">Node</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1741899068%2FFunctions%2F987342573" anchor-label="compareTo" id="1741899068%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="compare-to.html"><span>compare</span><wbr></wbr><span><span>To</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1741899068%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="compare-to.html"><span class="token function">compareTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span><span class="token annotation builtin">@</span><a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Nonnull.html"><span class="token annotation builtin">Nonnull</span></a> </span>other<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-node/index.html">Node</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1944513757%2FFunctions%2F987342573" anchor-label="contains" id="-1944513757%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="contains.html"><span><span>contains</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1944513757%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">molecule<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-molecule/index.html">Molecule</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1387875718%2FFunctions%2F987342573" anchor-label="equals" id="-1387875718%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="equals.html"><span><span>equals</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1387875718%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="equals.html"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1175870231%2FFunctions%2F987342573" anchor-label="forEach" id="-1175870231%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="for-each.html"><span>for</span><wbr></wbr><span><span>Each</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1175870231%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">fun </span><a href="for-each.html"><span class="token function">forEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/function/Consumer.html">Consumer</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="../../it.unibo.alchemist.model.interfaces/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Performs an <a href="for-each.html">action</a> for every reaction.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1147878795%2FFunctions%2F987342573" anchor-label="getConcentration" id="1147878795%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-concentration.html"><span>get</span><wbr></wbr><span><span>Concentration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1147878795%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="get-concentration.html"><span class="token function">getConcentration</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">molecule<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-molecule/index.html">Molecule</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2035672364%2FFunctions%2F987342573" anchor-label="hashCode" id="2035672364%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="hash-code.html"><span>hash</span><wbr></wbr><span><span>Code</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2035672364%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">fun </span><a href="hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="247266361%2FFunctions%2F987342573" anchor-label="iterator" id="247266361%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="iterator.html"><span><span>iterator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="247266361%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="iterator.html"><span class="token function">iterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator/index.html">Iterator</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="136857508%2FFunctions%2F987342573" anchor-label="randomElement" id="136857508%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.util/-iterable-extension/random-element.html"><span>random</span><wbr></wbr><span><span>Element</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="136857508%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.util/-iterable-extension/random-element.html">R</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.util/-iterable-extension/random-element.html">R</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.model.util/-iterable-extension/random-element.html"><span class="token function">randomElement</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">randomGenerator<span class="token operator">: </span><a href="https://javadoc.io/doc/org.apache.commons/commons-math3/3.6.1/org/apache/commons/math3/random/RandomGenerator.html">RandomGenerator</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.util/-iterable-extension/random-element.html">R</a></div><div class="brief "><p class="paragraph">Returns a random element of the Iterable using the provided <a href="../../it.unibo.alchemist.model.util/-iterable-extension/random-element.html">randomGenerator</a>.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-699855195%2FFunctions%2F987342573" anchor-label="removeConcentration" id="-699855195%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remove-concentration.html"><span>remove</span><wbr></wbr><span><span>Concentration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-699855195%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">fun </span><a href="remove-concentration.html"><span class="token function">removeConcentration</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">moleculeToRemove<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-molecule/index.html">Molecule</a></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="739982236%2FFunctions%2F987342573" anchor-label="removeReaction" id="739982236%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remove-reaction.html"><span>remove</span><wbr></wbr><span><span>Reaction</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="739982236%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">fun </span><a href="remove-reaction.html"><span class="token function">removeReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">reactionToRemove<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-394732746%2FFunctions%2F987342573" anchor-label="setConcentration" id="-394732746%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-concentration.html"><span>set</span><wbr></wbr><span><span>Concentration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-394732746%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="set-concentration.html"><span class="token function">setConcentration</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">molecule<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-molecule/index.html">Molecule</a><span class="token punctuation">, </span></span><span class="parameter ">concentration<span class="token operator">: </span><a href="index.html">T</a></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="233453802%2FFunctions%2F987342573" anchor-label="shuffled" id="233453802%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.util/-iterable-extension/shuffled.html"><span><span>shuffled</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="233453802%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.util/-iterable-extension/shuffled.html">R</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.util/-iterable-extension/shuffled.html">R</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.model.util/-iterable-extension/shuffled.html"><span class="token function">shuffled</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">randomGenerator<span class="token operator">: </span><a href="https://javadoc.io/doc/org.apache.commons/commons-math3/3.6.1/org/apache/commons/math3/random/RandomGenerator.html">RandomGenerator</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.util/-iterable-extension/shuffled.html">R</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Fisher–Yates shuffle algorithm using a <a href="https://javadoc.io/doc/org.apache.commons/commons-math3/3.6.1/org/apache/commons/math3/random/RandomGenerator.html">RandomGenerator</a>. More information <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">on Wikipedia</a>.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1766386218%2FFunctions%2F987342573" anchor-label="spliterator" id="-1766386218%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="spliterator.html"><span><span>spliterator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1766386218%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">fun </span><a href="spliterator.html"><span class="token function">spliterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Spliterator.html">Spliterator</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns the <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Spliterator.html">reactions</a>.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2084154065%2FFunctions%2F987342573" anchor-label="toNodeSurrogate" id="-2084154065%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html"><span>to</span><wbr></wbr><span>Node</span><wbr></wbr><span><span>Surrogate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2084154065%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html">P</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model.interfaces/-position/index.html">Position</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><span class="token keyword"></span><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html">TS</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html">PS</a><span class="token operator"> : </span><span data-unresolved-link="it.unibo.alchemist.common.model.surrogate/PositionSurrogate///PointingToDeclaration/">PositionSurrogate</span><span class="token operator">&gt; </span><a href="../../it.unibo.alchemist.model.interfaces/-node/index.html">Node</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html"><span class="token function">toNodeSurrogate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-environment/index.html">Environment</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">toConcentrationSurrogate<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html">TS</a><span class="token punctuation">, </span></span><span class="parameter ">toPositionSurrogate<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html">P</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html">PS</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="it.unibo.alchemist.common.model.surrogate/NodeSurrogate///PointingToDeclaration/">NodeSurrogate</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html">TS</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="../../it.unibo.alchemist.server.surrogates.utility/to-node-surrogate.html">PS</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A function that maps a <a href="../../it.unibo.alchemist.model.interfaces/-node/index.html">it.unibo.alchemist.model.interfaces.Node</a> to its surrogate class it.unibo.alchemist.model.surrogate.NodeSurrogate.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1857506299%2FFunctions%2F987342573" anchor-label="toString" id="1857506299%2FFunctions%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1857506299%2FFunctions%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1359856397%2FProperties%2F987342573" anchor-label="contents" id="1359856397%2FProperties%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="contents.html"><span><span>contents</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1359856397%2FProperties%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="contents.html">contents</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-molecule/index.html">Molecule</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="749972384%2FProperties%2F987342573" anchor-label="environment" id="749972384%2FProperties%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="environment.html"><span><span>environment</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="749972384%2FProperties%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="environment.html">environment</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-environment/index.html">Environment</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The environment in which the node is places.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1857768364%2FProperties%2F987342573" anchor-label="id" id="1857768364%2FProperties%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="id.html"><span><span>id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1857768364%2FProperties%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="id.html">id</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2056657533%2FProperties%2F987342573" anchor-label="incarnation" id="2056657533%2FProperties%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="incarnation.html"><span><span>incarnation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2056657533%2FProperties%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="incarnation.html">incarnation</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.interfaces/-incarnation/index.html">Incarnation</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">simulation incarnation.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-12653878%2FProperties%2F987342573" anchor-label="moleculeCount" id="-12653878%2FProperties%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="molecule-count.html"><span>molecule</span><wbr></wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-12653878%2FProperties%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="molecule-count.html">moleculeCount</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1105332794%2FProperties%2F987342573" anchor-label="molecules" id="-1105332794%2FProperties%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="molecules.html"><span><span>molecules</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1105332794%2FProperties%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="molecules.html">molecules</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-molecule/index.html">Molecule</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The node's molecules.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1247851372%2FProperties%2F987342573" anchor-label="properties" id="-1247851372%2FProperties%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="properties.html"><span><span>properties</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1247851372%2FProperties%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="properties.html">properties</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-210731095%2FProperties%2F987342573" anchor-label="reactions" id="-210731095%2FProperties%2F987342573" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="reactions.html"><span><span>reactions</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-210731095%2FProperties%2F987342573"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-web-renderer:dokkaHtml/jvmMain" data-filterable-set=":alchemist-web-renderer:dokkaHtml/jvmMain" data-active="" data-toggle=":alchemist-web-renderer:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-web-renderer:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="reactions.html">reactions</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.model.interfaces/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>
