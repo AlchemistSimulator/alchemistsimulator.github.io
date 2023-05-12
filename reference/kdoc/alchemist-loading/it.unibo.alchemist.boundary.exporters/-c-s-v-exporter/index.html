@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>CSVExporter</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+<a href="../../../index.html">
+<span>alchemist</span>            </a>    </div>
+    <div>25.16.2-dev07+9016c4150
+    </div>
+    <div class="pull-right d-flex">
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-loading:dokkaHtmlPartial/main">jvm</button>
+        </div>
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-loading::it.unibo.alchemist.boundary.exporters/CSVExporter///PointingToDeclaration//-104114183">
+  <div class="breadcrumbs"><a href="../../index.html">alchemist-loading</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.boundary.exporters</a><span class="delimiter">/</span><span class="current">CSVExporter</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>CSVExporter</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">CSVExporter</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">P</a><span class="token operator"> : </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-position/index.html">Position</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span>&nbsp;<span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fileNameRoot<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>interval<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>DEFAULT_INTERVAL<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>exportPath<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>createTempDirectory("alchemist-export").absolutePathString()
+        .also { logger.warn("No output folder specified but export required. Alchemist will export data in $it") }<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileExtension<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">"csv"</span><span class="token punctuation">, </span></span><span class="parameter ">appendTime<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span> : <a href="../-abstract-exporter/index.html">AbstractExporter</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">P</a><span class="token operator">&gt; </span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/9016c4150eede75d1b90e3827b2c1456d86b85da/alchemist-loading/src/main/kotlin/it/unibo/alchemist/boundary/exporters/CSVExporter.kt#L40">source</a>)</span></span></div><p class="paragraph">Writes on file data provided by a number of {@link Extractor}s. Produces a CSV with '#' as comment character.e</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>file</span><wbr><span>Name</span><wbr><span><span>Root</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the starting name of the file to export data to.</p></div></div></div></div><div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>interval</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the sampling time, defaults to <a href="../-abstract-exporter/-companion/-d-e-f-a-u-l-t_-i-n-t-e-r-v-a-l.html">AbstractExporter.DEFAULT_INTERVAL</a>.</p></div></div></div></div><div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>export</span><wbr><span><span>Path</span></span></u></div></span></div><div><div class="title"><p class="paragraph">if no path is specified it will generate the file inside a temporary folder.</p></div></div></div></div><div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>append</span><wbr><span><span>Time</span></span></u></div></span></div><div><div class="title"><p class="paragraph">if true it will always generate a new file, false to overwrite.</p></div></div></div></div><div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>file</span><wbr><span><span>Extension</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the extension for the exported files, by default 'csv'</p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,FUNCTION,PROPERTY">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-1906573952%2FConstructors%2F-104114183" anchor-label="CSVExporter" id="-1906573952%2FConstructors%2F-104114183" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-c-s-v-exporter.html"><span><span>CSVExporter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1906573952%2FConstructors%2F-104114183"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fileNameRoot<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span><span class="token punctuation">, </span></span><span class="parameter ">interval<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>DEFAULT_INTERVAL<span class="token punctuation">, </span></span><span class="parameter ">exportPath<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>createTempDirectory("alchemist-export").absolutePathString()
+        .also { logger.warn("No output folder specified but export required. Alchemist will export data in $it") }<span class="token punctuation">, </span></span><span class="parameter ">fileExtension<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">"csv"</span><span class="token punctuation">, </span></span><span class="parameter ">appendTime<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="971488093%2FClasslikes%2F-104114183" anchor-label="Companion" id="971488093%2FClasslikes%2F-104114183" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="971488093%2FClasslikes%2F-104114183"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-31386642%2FFunctions%2F-104114183" anchor-label="bindDataExtractors" id="-31386642%2FFunctions%2F-104114183" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-abstract-exporter/bind-data-extractors.html"><span>bind</span><wbr><span>Data</span><wbr><span><span>Extractors</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-31386642%2FFunctions%2F-104114183"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-abstract-exporter/bind-data-extractors.html"><span class="token function">bindDataExtractors</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dataExtractors<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.boundary/-extractor/index.html">Extractor</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Assign the list of <a href="../-abstract-exporter/bind-data-extractors.html">dataExtractors</a> to the selected <a href="../../it.unibo.alchemist.boundary/-exporter/index.html">Exporter</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1947060350%2FFunctions%2F-104114183" anchor-label="bindVariables" id="1947060350%2FFunctions%2F-104114183" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-abstract-exporter/bind-variables.html"><span>bind</span><wbr><span><span>Variables</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1947060350%2FFunctions%2F-104114183"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-abstract-exporter/bind-variables.html"><span class="token function">bindVariables</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">variables<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Assign the map of <a href="../-abstract-exporter/bind-variables.html">variables</a> to the selected <a href="../../it.unibo.alchemist.boundary/-exporter/index.html">Exporter</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-162825967%2FFunctions%2F-104114183" anchor-label="close" id="-162825967%2FFunctions%2F-104114183" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="close.html"><span><span>close</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-162825967%2FFunctions%2F-104114183"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="close.html"><span class="token function">close</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">time<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-time/index.html">Time</a><span class="token punctuation">, </span></span><span class="parameter ">step<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Close the export environment. This method is called when the simulation finishes.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-376803156%2FFunctions%2F-104114183" anchor-label="exportData" id="-376803156%2FFunctions%2F-104114183" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="export-data.html"><span>export</span><wbr><span><span>Data</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-376803156%2FFunctions%2F-104114183"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="export-data.html"><span class="token function">exportData</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">reaction<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-actionable/index.html">Actionable</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">time<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-time/index.html">Time</a><span class="token punctuation">, </span></span><span class="parameter ">step<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Delegates the concrete implementation of this method to his subclasses.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1549182993%2FFunctions%2F-104114183" anchor-label="setup" id="1549182993%2FFunctions%2F-104114183" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="setup.html"><span><span>setup</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1549182993%2FFunctions%2F-104114183"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="setup.html"><span class="token function">setup</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">P</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Prepare the export environment. This method is called only once upon simulation initialization.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1242373087%2FFunctions%2F-104114183" anchor-label="update" id="1242373087%2FFunctions%2F-104114183" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-abstract-exporter/update.html"><span><span>update</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1242373087%2FFunctions%2F-104114183"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-abstract-exporter/update.html"><span class="token function">update</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">reaction<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-actionable/index.html">Actionable</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">time<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-time/index.html">Time</a><span class="token punctuation">, </span></span><span class="parameter ">step<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Every step of the simulation check if is time to export data depending on the sampling interval. Converts the division of the current time and the interval to Long in order to export data only when the difference between steps is as big as the sampling interval.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1777082601%2FProperties%2F-104114183" anchor-label="dataExtractors" id="1777082601%2FProperties%2F-104114183" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-abstract-exporter/data-extractors.html"><span>data</span><wbr><span><span>Extractors</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1777082601%2FProperties%2F-104114183"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">lateinit override </span><span class="token keyword">var </span><a href="../-abstract-exporter/data-extractors.html">dataExtractors</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../it.unibo.alchemist.boundary/-extractor/index.html">Extractor</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The List of <a href="../../it.unibo.alchemist.boundary/-extractor/index.html">Extractor</a> used to export simulations data.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-646303573%2FProperties%2F-104114183" anchor-label="exportPath" id="-646303573%2FProperties%2F-104114183" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="export-path.html"><span>export</span><wbr><span><span>Path</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-646303573%2FProperties%2F-104114183"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="export-path.html">exportPath</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1259667245%2FProperties%2F-104114183" anchor-label="fileExtension" id="-1259667245%2FProperties%2F-104114183" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="file-extension.html"><span>file</span><wbr><span><span>Extension</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1259667245%2FProperties%2F-104114183"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="file-extension.html">fileExtension</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1658109665%2FProperties%2F-104114183" anchor-label="interval" id="-1658109665%2FProperties%2F-104114183" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-loading:dokkaHtmlPartial/main" data-filterable-set=":alchemist-loading:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="interval.html"><span><span>interval</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1658109665%2FProperties%2F-104114183"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="interval.html">interval</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>
+

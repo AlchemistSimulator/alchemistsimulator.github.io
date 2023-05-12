@@ -9,20 +9,20 @@
     <meta name="author" content="Danilo Pianini">
     <title>YAML simulation specification :: Documentation for the Alchemist Simulator</title>
     <link href="../../reference/yaml/index.xml" rel="alternate" type="application/rss+xml" title="YAML simulation specification :: Documentation for the Alchemist Simulator">
-    <link href="../../images/logo.svg?1683403768" rel="icon" type="image/svg+xml">
+    <link href="../../images/logo.svg?1683902042" rel="icon" type="image/svg+xml">
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
-    <link href="../../css/fontawesome-all.min.css?1683403768" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/fontawesome-all.min.css?1683403768" rel="stylesheet"></noscript>
-    <link href="../../css/nucleus.css?1683403768" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1683403768" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/auto-complete.css?1683403768" rel="stylesheet"></noscript>
-    <link href="../../css/perfect-scrollbar.min.css?1683403768" rel="stylesheet">
-    <link href="../../css/fonts.css?1683403768" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/fonts.css?1683403768" rel="stylesheet"></noscript>
-    <link href="../../css/theme.css?1683403768" rel="stylesheet">
-    <link href="../../css/theme-relearn.css?1683403768" rel="stylesheet" id="variant-style">
-    <link href="../../css/variant.css?1683403768" rel="stylesheet">
-    <link href="../../css/print.css?1683403768" rel="stylesheet" media="print">
-    <link href="../../css/ie.css?1683403768" rel="stylesheet">
-    <script src="../../js/url.js?1683403768"></script>
-    <script src="../../js/variant.js?1683403768"></script>
+    <link href="../../css/fontawesome-all.min.css?1683902042" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/fontawesome-all.min.css?1683902042" rel="stylesheet"></noscript>
+    <link href="../../css/nucleus.css?1683902042" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1683902042" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/auto-complete.css?1683902042" rel="stylesheet"></noscript>
+    <link href="../../css/perfect-scrollbar.min.css?1683902042" rel="stylesheet">
+    <link href="../../css/fonts.css?1683902042" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/fonts.css?1683902042" rel="stylesheet"></noscript>
+    <link href="../../css/theme.css?1683902042" rel="stylesheet">
+    <link href="../../css/theme-relearn.css?1683902042" rel="stylesheet" id="variant-style">
+    <link href="../../css/variant.css?1683902042" rel="stylesheet">
+    <link href="../../css/print.css?1683902042" rel="stylesheet" media="print">
+    <link href="../../css/ie.css?1683902042" rel="stylesheet">
+    <script src="../../js/url.js?1683902042"></script>
+    <script src="../../js/variant.js?1683902042"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
@@ -215,198 +215,7 @@ function onClick(element) {
         <span class="fas fa-chevron-right"></span>
         <strong>Click to show / hide code</strong>
     </a>
-    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#78787e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#78787e"> * Copyright (C) 2010-2022, Danilo Pianini and contributors
-</span></span></span><span style="display:flex;"><span><span style="color:#78787e"> * listed, for each module, in the respective subproject&#39;s build.gradle.kts file.
-</span></span></span><span style="display:flex;"><span><span style="color:#78787e"> *
-</span></span></span><span style="display:flex;"><span><span style="color:#78787e"> * This file is part of Alchemist, and is distributed under the terms of the
-</span></span></span><span style="display:flex;"><span><span style="color:#78787e"> * GNU General Public License, with a linking exception,
-</span></span></span><span style="display:flex;"><span><span style="color:#78787e"> * as described in the file LICENSE in the Alchemist distribution&#39;s top directory.
-</span></span></span><span style="display:flex;"><span><span style="color:#78787e"> */</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">package</span> it.unibo.alchemist.loader.m2m.syntax
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> kotlin.reflect.KProperty
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">internal</span> <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">DocumentRoot</span> : SyntaxElement {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">JavaType</span> : SyntaxElement {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> type <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> parameters <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
-</span></span><span style="display:flex;"><span>            validDescriptor {
-</span></span><span style="display:flex;"><span>                mandatory(type)
-</span></span><span style="display:flex;"><span>                optional(parameters)
-</span></span><span style="display:flex;"><span>            },
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">DependentVariable</span> : SyntaxElement {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> language <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> formula <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> timeout <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = <span style="color:#f3f99d">JavaType</span>.validDescriptors + setOf(
-</span></span><span style="display:flex;"><span>            validDescriptor {
-</span></span><span style="display:flex;"><span>                mandatory(formula)
-</span></span><span style="display:flex;"><span>                optional(language)
-</span></span><span style="display:flex;"><span>                optional(timeout)
-</span></span><span style="display:flex;"><span>            },
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Deployment</span> : SyntaxElement {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> contents <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> nodes <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> properties <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> programs <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
-</span></span><span style="display:flex;"><span>            validDescriptor {
-</span></span><span style="display:flex;"><span>                mandatory(<span style="color:#f3f99d">JavaType</span>.type)
-</span></span><span style="display:flex;"><span>                optional(<span style="color:#f3f99d">JavaType</span>.parameters, contents, properties, nodes, programs)
-</span></span><span style="display:flex;"><span>                forbidden(<span style="color:#f3f99d">Filter</span>.filter)
-</span></span><span style="display:flex;"><span>            },
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#78787e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#78787e">         * in:
-</span></span></span><span style="display:flex;"><span><span style="color:#78787e">         *   - type: FilterType
-</span></span></span><span style="display:flex;"><span><span style="color:#78787e">         *     parameters: [...]
-</span></span></span><span style="display:flex;"><span><span style="color:#78787e">         */</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Filter</span> : SyntaxElement {
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> filter = <span style="color:#5af78e">&#34;in&#34;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
-</span></span><span style="display:flex;"><span>                validDescriptor {
-</span></span><span style="display:flex;"><span>                    mandatory(<span style="color:#f3f99d">JavaType</span>.type)
-</span></span><span style="display:flex;"><span>                    optional(<span style="color:#f3f99d">JavaType</span>.parameters)
-</span></span><span style="display:flex;"><span>                },
-</span></span><span style="display:flex;"><span>            )
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Property</span> : SyntaxElement {
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
-</span></span><span style="display:flex;"><span>                validDescriptor {
-</span></span><span style="display:flex;"><span>                    mandatory(<span style="color:#f3f99d">JavaType</span>.type)
-</span></span><span style="display:flex;"><span>                    optional(<span style="color:#f3f99d">JavaType</span>.parameters, <span style="color:#f3f99d">Filter</span>.filter)
-</span></span><span style="display:flex;"><span>                },
-</span></span><span style="display:flex;"><span>            )
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Contents</span> : SyntaxElement {
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> molecule <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> concentration <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
-</span></span><span style="display:flex;"><span>                validDescriptor {
-</span></span><span style="display:flex;"><span>                    mandatory(molecule, concentration)
-</span></span><span style="display:flex;"><span>                    optional(<span style="color:#f3f99d">Filter</span>.filter)
-</span></span><span style="display:flex;"><span>                },
-</span></span><span style="display:flex;"><span>            )
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Program</span> : SyntaxElement {
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> program <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> actions <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> conditions <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> timeDistribution = <span style="color:#5af78e">&#34;time-distribution&#34;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
-</span></span><span style="display:flex;"><span>                validDescriptor {
-</span></span><span style="display:flex;"><span>                    mandatory(<span style="color:#f3f99d">JavaType</span>.type)
-</span></span><span style="display:flex;"><span>                    optional(<span style="color:#f3f99d">JavaType</span>.parameters, <span style="color:#f3f99d">Filter</span>.filter, conditions, timeDistribution, actions)
-</span></span><span style="display:flex;"><span>                },
-</span></span><span style="display:flex;"><span>                validDescriptor {
-</span></span><span style="display:flex;"><span>                    mandatory(program)
-</span></span><span style="display:flex;"><span>                    optional(timeDistribution, <span style="color:#f3f99d">Filter</span>.filter)
-</span></span><span style="display:flex;"><span>                },
-</span></span><span style="display:flex;"><span>            )
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Export</span> : SyntaxElement {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> data <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
-</span></span><span style="display:flex;"><span>            validDescriptor { mandatory(<span style="color:#f3f99d">JavaType</span>.type, <span style="color:#f3f99d">JavaType</span>.parameters, <span style="color:#ff6ac1">data</span>) },
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Data</span> : SyntaxElement {
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> time <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> molecule <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> property <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> aggregators <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> precision <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> valueFilter = <span style="color:#5af78e">&#34;value-filter&#34;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = <span style="color:#f3f99d">JavaType</span>.validDescriptors + setOf(
-</span></span><span style="display:flex;"><span>                validDescriptor {
-</span></span><span style="display:flex;"><span>                    mandatory(time)
-</span></span><span style="display:flex;"><span>                    optional(precision)
-</span></span><span style="display:flex;"><span>                },
-</span></span><span style="display:flex;"><span>                validDescriptor {
-</span></span><span style="display:flex;"><span>                    mandatory(molecule)
-</span></span><span style="display:flex;"><span>                    optional(<span style="color:#ff6ac1">property</span>, aggregators, precision, valueFilter)
-</span></span><span style="display:flex;"><span>                },
-</span></span><span style="display:flex;"><span>            )
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Environment</span> : SyntaxElement {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> globalPrograms = <span style="color:#5af78e">&#34;global-programs&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">GlobalProgram</span> : SyntaxElement {
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> actions <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> conditions <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> timeDistribution = <span style="color:#5af78e">&#34;time-distribution&#34;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
-</span></span><span style="display:flex;"><span>                validDescriptor {
-</span></span><span style="display:flex;"><span>                    mandatory(<span style="color:#f3f99d">JavaType</span>.type)
-</span></span><span style="display:flex;"><span>                    optional(<span style="color:#f3f99d">JavaType</span>.parameters, actions, conditions, timeDistribution)
-</span></span><span style="display:flex;"><span>                },
-</span></span><span style="display:flex;"><span>            )
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">fun</span> <span style="color:#57c7ff">toString</span>(): String = <span style="color:#ff6ac1">this</span><span style="color:#ff6ac1">::</span><span style="color:#ff6ac1">class</span>.simpleName <span style="color:#ff6ac1">?:</span> <span style="color:#ff6ac1">this</span>.javaClass.canonicalName
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
-</span></span><span style="display:flex;"><span>            validDescriptor {
-</span></span><span style="display:flex;"><span>                optional(<span style="color:#f3f99d">JavaType</span>.parameters, globalPrograms)
-</span></span><span style="display:flex;"><span>            },
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Layer</span> : SyntaxElement {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> molecule <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
-</span></span><span style="display:flex;"><span>            validDescriptor {
-</span></span><span style="display:flex;"><span>                mandatory(<span style="color:#f3f99d">JavaType</span>.type, molecule)
-</span></span><span style="display:flex;"><span>                optional(<span style="color:#f3f99d">JavaType</span>.parameters)
-</span></span><span style="display:flex;"><span>            },
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Seeds</span> : SyntaxElement {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> scenario <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> simulation <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
-</span></span><span style="display:flex;"><span>            validDescriptor { optional(simulation, scenario) },
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Variable</span> : SyntaxElement {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> min <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> max <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> default <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> step <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = <span style="color:#f3f99d">JavaType</span>.validDescriptors + setOf(
-</span></span><span style="display:flex;"><span>            validDescriptor { mandatory(min, max, default, step) },
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> deployments <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> environment <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> export <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> incarnation <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> layers <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> linkingRule = <span style="color:#5af78e">&#34;network-model&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> remoteDependencies = <span style="color:#5af78e">&#34;remote-dependencies&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> seeds <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> terminate <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> variables <span style="color:#ff6ac1">by</span> OwnName()
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors = setOf(
-</span></span><span style="display:flex;"><span>        validDescriptor {
-</span></span><span style="display:flex;"><span>            mandatory(incarnation)
-</span></span><span style="display:flex;"><span>            optional(*validKeys.toTypedArray())
-</span></span><span style="display:flex;"><span>        },
-</span></span><span style="display:flex;"><span>    )
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">internal</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">OwnName</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">operator</span> <span style="color:#ff6ac1">fun</span> <span style="color:#57c7ff">getValue</span>(thisRef: Any?, <span style="color:#ff6ac1">property</span>: KProperty&lt;*&gt;): String = <span style="color:#ff6ac1">property</span>.name.lowercase()
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">private</span> <span style="color:#ff6ac1">fun</span> <span style="color:#57c7ff">validDescriptor</span>(configuration: <span style="color:#f3f99d">DescriptorBuilder</span>.() <span style="color:#ff6ac1">-&gt;</span> Unit): <span style="color:#f3f99d">SyntaxElement</span>.ValidDescriptor =
-</span></span><span style="display:flex;"><span>    DescriptorBuilder().apply(configuration).build()
-</span></span></code></pre></div></div>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"></code></pre></div></div>
 </div>
 <h3 id="types-of-entries">Types of entries</h3>
 <table>
@@ -490,20 +299,20 @@ default alchemist implementations of the same interface live.</p>
 <p>If a name includes a <code>.</code>, it is interpreted as a fully qualified name.
 Otherwise, it is interpreted as a simple name.
 Provided types <strong>SHOULD NOT</strong> be located in the default package.</p>
-<p>For instance, if the expected type is an <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-action/"><code>Action</code></a> and the concrete type <code>FooAction</code>,
-<code>FooAction</code> <strong>SHOULD</strong> be located into package <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.implementations.actions/"><code>it.unibo.alchemist.model.implementations.actions</code></a>.</p>
+<p>For instance, if the expected type is an <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-action/"><code>Action</code></a> and the concrete type <code>FooAction</code>,
+<code>FooAction</code> <strong>SHOULD</strong> be located into package <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.actions/"><code>it.unibo.alchemist.model.actions</code></a>.</p>
 <h4 id="parameters"><code>parameters</code></h4>
 <p><strong>Type</strong>: List or Map</p>
 <p>The list of parameters the constructor of <a href="#type">type</a> should be passed.
 Alchemist automatically provides <em>contextual</em> information to the constructors:
-for instance, if an <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-action/"><code>Action</code></a> is being built,
+for instance, if an <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-action/"><code>Action</code></a> is being built,
 the loading system is aware of the current
 <code>RandomGenerator</code>,
-<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/"><code>Incarnation</code></a>,
-<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-environment/"><code>Environment</code></a>,
-<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.deployments/-deployment/"><code>Deployment</code></a>,
-<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-node/"><code>Node</code></a>, <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-time-distribution/"><code>TimeDistribution</code></a>, and
-<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-reaction/"><code>Reaction</code></a>,
+<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-incarnation/"><code>Incarnation</code></a>,
+<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-environment/"><code>Environment</code></a>,
+<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-deployment/"><code>Deployment</code></a>,
+<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-node/"><code>Node</code></a>, <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-time-distribution/"><code>TimeDistribution</code></a>, and
+<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-reaction/"><code>Reaction</code></a>,
 as the action requires all of them.
 Consequently, all parameters of these types <strong>SHOULD NOT</strong> be manually specified
 (on the other hand, the syntax is built to make it very difficult to do by mistake).
@@ -525,7 +334,7 @@ works, only a (reasonable) subset of all possible overloads gets generated, and 
 <p>Instantiation is delegated to the <a href="https://github.com/DanySK/jirf/" target="_blank">Java Implicit Reflective Factory</a>.</p>
 <h4 id="examples">Examples</h4>
 <ul>
-<li>Construction of a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.deployments/-point/"><code>Point</code></a>
+<li>Construction of a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.deployments/-point/"><code>Point</code></a>
 
     <script>
     
@@ -598,7 +407,7 @@ works, only a (reasonable) subset of all possible overloads gets generated, and 
 <h4 id="counter-examples">Counter-examples</h4>
 <ul>
 <li>The following simulation <strong>fails on loading</strong>, as
-<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.implementations.layers/-bidimensional-gaussian-layer/"><code>BidimensionalGaussianLayer</code></a>
+<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.layers/-bidimensional-gaussian-layer/"><code>BidimensionalGaussianLayer</code></a>
 has the <em>first</em> and <em>last</em> parameters marked as optional:
 in order to provide the latter, the designer must also provide the former.
 
@@ -653,7 +462,7 @@ in order to provide the latter, the designer must also provide the former.
 <h3 id="document-root">Document root</h3>
 <p><strong>Type</strong>: SpecMap</p>
 <p>The document contents at the root of the file. Builds an
-<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader/-initialized-environment/"><code>InitializedEnvironment</code></a>.</p>
+<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.boundary/-initialized-environment/"><code>InitializedEnvironment</code></a>.</p>
 <p><strong>(Multi)Spec</strong></p>
 <table>
 <thead>
@@ -849,11 +658,11 @@ in order to provide the latter, the designer must also provide the former.
 </ul>
 <hr>
 <h2 id="action"><code>action</code></h2>
-<p>Builds an <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-action/"><code>Action</code></a>
+<p>Builds an <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-action/"><code>Action</code></a>
 using the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.</p>
 <hr>
 <h2 id="condition"><code>condition</code></h2>
-<p>Builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-condition/"><code>Condition</code></a>
+<p>Builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-condition/"><code>Condition</code></a>
 using the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.</p>
 <hr>
 <h3 id="deployments"><code>deployments</code></h3>
@@ -863,7 +672,7 @@ using the <a href="#arbitrary-class-loading-system">arbitrary class loading syst
 <p><strong>Type</strong>: SpecMap</p>
 <p>Definition of the positions of a set of nodes.
 Builds a
-<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.deployments/-deployment/"><code>Deployment</code></a>
+<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-deployment/"><code>Deployment</code></a>
 using the same syntax of <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>,
 with additional keys.</p>
 <p><strong>(Multi)Spec</strong></p>
@@ -984,7 +793,7 @@ with additional keys.</p>
   </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>]
   </span></span></code></pre></div></div>
   </div></li>
-<li>Deployment of three nodes through <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.deployments/-specific-positions/"><code>SpecificPositions</code></a>.
+<li>Deployment of three nodes through <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.deployments/-specific-positions/"><code>SpecificPositions</code></a>.
 
   <script>
   
@@ -1014,7 +823,7 @@ with additional keys.</p>
   </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [[<span style="color:#ff9f43">0</span>,<span style="color:#ff9f43">1</span>],[<span style="color:#ff9f43">2</span>,<span style="color:#ff9f43">2</span>],[<span style="color:#ff9f43">3</span>,<span style="color:#ff9f43">4</span>]]
   </span></span></code></pre></div></div>
   </div></li>
-<li><a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.deployments/-grid/"><code>Grid</code></a> centered in <code>(0, 0)</code>, with nodes distanced of <code>0.25</code> both horizontally and vertically.
+<li><a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.deployments/-grid/"><code>Grid</code></a> centered in <code>(0, 0)</code>, with nodes distanced of <code>0.25</code> both horizontally and vertically.
 
   <script>
   
@@ -1044,7 +853,7 @@ with additional keys.</p>
   </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>]
   </span></span></code></pre></div></div>
   </div></li>
-<li>Irregular <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.deployments/-grid/"><code>Grid</code></a> centered in <code>(0, 0)</code>, with nodes distanced of <code>0.25</code> both horizontally and vertically, randomly perturbed of (±<code>0.1</code> distance units).
+<li>Irregular <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.deployments/-grid/"><code>Grid</code></a> centered in <code>(0, 0)</code>, with nodes distanced of <code>0.25</code> both horizontally and vertically, randomly perturbed of (±<code>0.1</code> distance units).
 
   <script>
   
@@ -1074,7 +883,7 @@ with additional keys.</p>
   </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.1</span>, <span style="color:#ff9f43">0.1</span>]
   </span></span></code></pre></div></div>
   </div></li>
-<li>Nodes located randomly inside a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.deployments/-circle/"><code>Circle</code></a>
+<li>Nodes located randomly inside a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.deployments/-circle/"><code>Circle</code></a>
 
   <script>
   
@@ -1104,7 +913,7 @@ with additional keys.</p>
   </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1000</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>]
   </span></span></code></pre></div></div>
   </div></li>
-<li>Nodes located randomly inside a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.deployments/-rectangle/"><code>Rectangle</code></a>
+<li>Nodes located randomly inside a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.deployments/-rectangle/"><code>Rectangle</code></a>
 
   <script>
   
@@ -1134,7 +943,7 @@ with additional keys.</p>
   </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1000</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">20</span>]
   </span></span></code></pre></div></div>
   </div></li>
-<li>Nodes located randomly inside a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.deployments/-polygon/"><code>Polygon</code></a> delimiting the Venice Lagoon
+<li>Nodes located randomly inside a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.deployments/-polygon/"><code>Polygon</code></a> delimiting the Venice Lagoon
 
   <script>
   
@@ -1192,10 +1001,10 @@ with additional keys.</p>
 <p><strong>Type</strong>: Traversable of <a href="#content"><code>content</code></a></p>
 <h3 id="deploymentnodes"><code>deployment.nodes</code></h3>
 <p><strong>Type</strong>: SpecMap</p>
-<p>Forces the type of <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-node/"><code>Node</code></a>, building concrete types through
+<p>Forces the type of <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-node/"><code>Node</code></a>, building concrete types through
 the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.
 If left unspecified, nodes get created through
-<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-node.html"><code>Incarnation.createNode</code></a>.</p>
+<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-incarnation/create-node.html"><code>Incarnation.createNode</code></a>.</p>
 <h4 id="examples-4">Examples</h4>
 <ul>
 <li>Creation of heterogeneous pedestrians
@@ -1225,7 +1034,7 @@ If left unspecified, nodes get created through
       <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
   </span></span><span style="display:flex;"><span>
   </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
-  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ContinuousPhysics2DEnvironment
   </span></span><span style="display:flex;"><span>
   </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">seeds</span>:
   </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">scenario</span>: <span style="color:#ff9f43">0</span>
@@ -1259,7 +1068,7 @@ If left unspecified, nodes get created through
 <hr>
 <h3 id="content"><code>content</code></h3>
 <p><strong>Type</strong>: SpecMap</p>
-<p>Definition of the contents (<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a>s and <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-concentration/"><code>Concentration</code></a>s) of a group of nodes.</p>
+<p>Definition of the contents (<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-molecule/"><code>Molecule</code></a>s and <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-concentration/"><code>Concentration</code></a>s) of a group of nodes.</p>
 <p><strong>(Multi)Spec</strong></p>
 <table>
 <thead>
@@ -1328,7 +1137,7 @@ If left unspecified, nodes get created through
     </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*gradient</span>
     </span></span></code></pre></div></div>
     </div></li>
-<li>Injection of a molecule only in those nodes located inside a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.filters/-rectangle/"><code>Rectangle</code></a>
+<li>Injection of a molecule only in those nodes located inside a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.positionfilters/-rectangle/"><code>Rectangle</code></a>
 
     <script>
     
@@ -1372,12 +1181,12 @@ If left unspecified, nodes get created through
 <h3 id="contentmolecule"><code>content.molecule</code></h3>
 <p><strong>Type</strong>: String or SpecMap</p>
 <p>The name of the molecule to be injected.
-If a String is provided, then it is created via <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-molecule.html"><code>Incarnation.createMolecule</code></a>.
+If a String is provided, then it is created via <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-incarnation/create-molecule.html"><code>Incarnation.createMolecule</code></a>.
 Otherwise, the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a> <strong>SHOULD</strong> be used.</p>
 <h3 id="contentconcentration"><code>content.concentration</code></h3>
 <p><strong>Type</strong>: String</p>
 <p>The concentration of the molecule to be injected.
-If a String is provided, then it is created via <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-concentration.html"><code>Incarnation.createConcentration</code></a>.
+If a String is provided, then it is created via <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-incarnation/create-concentration.html"><code>Incarnation.createConcentration</code></a>.
 Otherwise, the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a> <strong>SHOULD</strong> be used.</p>
 <h3 id="contentin"><code>content.in</code></h3>
 <p><strong>Type</strong>: Traversable of <a href="#shapefilter">shapeFilter</a></p>
@@ -1407,10 +1216,10 @@ Otherwise, the <a href="#arbitrary-class-loading-system">arbitrary class loading
 <hr>
 <h3 id="environment"><code>environment</code></h3>
 <p><strong>Type</strong>: SpecMap</p>
-<p>Builds an <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-environment/"><code>Environment</code></a>
+<p>Builds an <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-environment/"><code>Environment</code></a>
 using the same syntax of <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.</p>
 <p>If left unspecified, defaults to a bidimensional Euclidean manifold:
-<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.implementations.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a>.</p>
+<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a>.</p>
 <p><strong>Type</strong>: SpecMap</p>
 <h4 id="examples-6">Examples</h4>
 <ul>
@@ -1441,7 +1250,7 @@ using the same syntax of <a href="#arbitrary-class-loading-system">arbitrary cla
         <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
     </span></span></code></pre></div></div>
     </div></li>
-<li>Explicitly builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.implementations.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a> solely with the contextual parameters
+<li>Explicitly builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a> solely with the contextual parameters
 
   <script>
   
@@ -1470,7 +1279,7 @@ using the same syntax of <a href="#arbitrary-class-loading-system">arbitrary cla
   </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
   </span></span></code></pre></div></div>
   </div></li>
-<li>Explicitly builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.implementations.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a> using the qualified type name using only the contextual parameters
+<li>Explicitly builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a> using the qualified type name using only the contextual parameters
 
   <script>
   
@@ -1496,10 +1305,10 @@ using the same syntax of <a href="#arbitrary-class-loading-system">arbitrary cla
       </a>
       <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
   </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
-  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: it.unibo.alchemist.model.implementations.environments.Continuous2DEnvironment
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: it.unibo.alchemist.model.environments.Continuous2DEnvironment
   </span></span></code></pre></div></div>
   </div></li>
-<li>Explicitly builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.implementations.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a> explicitly specifying that no parameters but the contextual ones should be used
+<li>Explicitly builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a> explicitly specifying that no parameters but the contextual ones should be used
 
   <script>
   
@@ -1536,7 +1345,7 @@ using the same syntax of <a href="#arbitrary-class-loading-system">arbitrary cla
 <hr>
 <h3 id="exporter"><code>exporter</code></h3>
 <p><strong>Type</strong>: SpecMap</p>
-<p>Definition of the contents (<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a>s and <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-concentration/"><code>Concentration</code></a>s) of a group of nodes.</p>
+<p>Definition of the contents (<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-molecule/"><code>Molecule</code></a>s and <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-concentration/"><code>Concentration</code></a>s) of a group of nodes.</p>
 <p><strong>(Multi)Spec</strong></p>
 <table>
 <thead>
@@ -1563,7 +1372,7 @@ using the same syntax of <a href="#arbitrary-class-loading-system">arbitrary cla
 <p><strong>Type</strong>: String or SpecMap</p>
 <p>The only supported String is <code>&quot;time&quot;</code>.
 Otherwise, a SpecMap <strong>MUST</strong> be provided.</p>
-<p>Creates instances of <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.export/-extractor/"><code>Extractor</code></a>.</p>
+<p>Creates instances of <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.boundary/-extractor/"><code>Extractor</code></a>.</p>
 <p><strong>(Multi)Spec</strong></p>
 <table>
 <thead>
@@ -1589,13 +1398,13 @@ Otherwise, a SpecMap <strong>MUST</strong> be provided.</p>
 <p>Same as <a href="#parameters">parameters</a></p>
 <h3 id="extractormolecule"><code>extractor.molecule</code></h3>
 <p><strong>Type</strong>: String</p>
-<p>Name of a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a> to be read from nodes and exported.
-The String is passed down to <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-molecule.html"><code>Incarnation.createMolecule</code></a>.
+<p>Name of a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-molecule/"><code>Molecule</code></a> to be read from nodes and exported.
+The String is passed down to <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-incarnation/create-molecule.html"><code>Incarnation.createMolecule</code></a>.
 The created molecule is read from every node.</p>
 <h3 id="extractorproperty"><code>extractor.property</code></h3>
 <p><strong>Type</strong>: String</p>
-<p>Name of a property to be extracted from the selected <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a>.
-The Molecule and the String are passed down to <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/get-property.html"><code>Incarnation.getProperty</code></a>.
+<p>Name of a property to be extracted from the selected <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-molecule/"><code>Molecule</code></a>.
+The Molecule and the String are passed down to <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-incarnation/get-property.html"><code>Incarnation.getProperty</code></a>.
 The obtained value is added to the exports.</p>
 <h3 id="extractoraggregators"><code>extractor.aggregators</code></h3>
 <p><strong>Type</strong>: String or List of Strings</p>
@@ -1609,10 +1418,10 @@ they get loaded transparently as far as their package matches the one of Apache 
 instead of one value for each node.</p>
 <h3 id="extractorvalue-filter"><code>extractor.value-filter</code></h3>
 <p><strong>Type</strong>: String or SpecMap</p>
-<p>Builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.export/-filtering-policy/"><code>FilteringPolicy</code></a>,
+<p>Builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.boundary/-export-filter/"><code>ExportFilter</code></a>,
 to be applied to raw data before being processed by the <code>aggregators</code>(#extractoraggregators),
 if present.
-If a String is provided, then it is used to load a policy from <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.export.filters/-common-filters/"><code>CommonFilters</code></a>.
+If a String is provided, then it is used to load a policy from <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.boundary.exportfilters/-common-filters/"><code>CommonFilters</code></a>.
 Otherwise, the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a> <strong>MUST</strong> be used.</p>
 <table>
 <thead>
@@ -1635,11 +1444,11 @@ Otherwise, the <a href="#arbitrary-class-loading-system">arbitrary class loading
 <hr>
 <h3 id="layer"><code>layer</code></h3>
 <p><strong>Type</strong>: SpecMap</p>
-<p>Builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-layer/"><code>Layer</code></a>
+<p>Builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-layer/"><code>Layer</code></a>
 using the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.</p>
 <h4 id="examples-7">Examples</h4>
 <ul>
-<li>Creation of two <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-layer/"><code>Layer</code></a>s
+<li>Creation of two <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-layer/"><code>Layer</code></a>s
 
     <script>
     
@@ -1678,7 +1487,7 @@ using the <a href="#arbitrary-class-loading-system">arbitrary class loading syst
     </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: B
     </span></span></code></pre></div></div>
     </div></li>
-<li>Creation of two <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.implementations.layers/-bidimensional-gaussian-layer/"><code>BidimensionalGaussianLayer</code></a>s:
+<li>Creation of two <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.layers/-bidimensional-gaussian-layer/"><code>BidimensionalGaussianLayer</code></a>s:
 
     <script>
     
@@ -1711,7 +1520,7 @@ using the <a href="#arbitrary-class-loading-system">arbitrary class loading syst
     </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;\&#34;target\&#34;&#34;</span>
     </span></span><span style="display:flex;"><span>
     </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
-    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ContinuousPhysics2DEnvironment
     </span></span><span style="display:flex;"><span>
     </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">layers</span>:
     </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: BidimensionalGaussianLayer
@@ -1770,7 +1579,7 @@ using the <a href="#arbitrary-class-loading-system">arbitrary class loading syst
 <p><strong>Type</strong>: Traversable of <a href="#layer"><code>layer</code></a></p>
 <h4 id="examples-8">Examples</h4>
 <ul>
-<li>Creation of two <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-layer/"><code>Layer</code></a>s
+<li>Creation of two <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-layer/"><code>Layer</code></a>s
 
     <script>
     
@@ -1809,7 +1618,7 @@ using the <a href="#arbitrary-class-loading-system">arbitrary class loading syst
     </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: B
     </span></span></code></pre></div></div>
     </div></li>
-<li>Creation of two <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.implementations.layers/-bidimensional-gaussian-layer/"><code>BidimensionalGaussianLayer</code></a>s:
+<li>Creation of two <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.layers/-bidimensional-gaussian-layer/"><code>BidimensionalGaussianLayer</code></a>s:
 
     <script>
     
@@ -1842,7 +1651,7 @@ using the <a href="#arbitrary-class-loading-system">arbitrary class loading syst
     </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;\&#34;target\&#34;&#34;</span>
     </span></span><span style="display:flex;"><span>
     </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
-    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ContinuousPhysics2DEnvironment
     </span></span><span style="display:flex;"><span>
     </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">layers</span>:
     </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: BidimensionalGaussianLayer
@@ -1899,9 +1708,9 @@ using the <a href="#arbitrary-class-loading-system">arbitrary class loading syst
 <hr>
 <h3 id="network-model"><code>network-model</code></h3>
 <p><strong>Type</strong>: SpecMap</p>
-<p>Builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-linking-rule/"><code>LinkingRule</code></a>
+<p>Builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-linking-rule/"><code>LinkingRule</code></a>
 using the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.
-If unspecified, defaults to <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.implementations.linkingrules/-no-links/"><code>NoLinks</code></a>,
+If unspecified, defaults to <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.linkingrules/-no-links/"><code>NoLinks</code></a>,
 and no nodes will have any neighbor.</p>
 <h4 id="examples-9">Examples</h4>
 <ul>
@@ -1944,7 +1753,7 @@ and no nodes will have any neighbor.</p>
 <hr>
 <h3 id="program"><code>program</code></h3>
 <p><strong>Type</strong>: SpecMap</p>
-<p>Definition of the contents (<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-molecule/"><code>Molecule</code></a>s and <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-concentration/"><code>Concentration</code></a>s) of a group of nodes.</p>
+<p>Definition of the contents (<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-molecule/"><code>Molecule</code></a>s and <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-concentration/"><code>Concentration</code></a>s) of a group of nodes.</p>
 <p><strong>(Multi)Spec</strong></p>
 <table>
 <thead>
@@ -1968,7 +1777,7 @@ and no nodes will have any neighbor.</p>
 <p>Same as <a href="#type">type</a></p>
 <h3 id="programprogram"><code>program.program</code></h3>
 <p><strong>Type</strong>: String</p>
-<p>Passed to <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-reaction.html"><code>Incarnation.createReaction</code></a> to be interepreted and</p>
+<p>Passed to <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-incarnation/create-reaction.html"><code>Incarnation.createReaction</code></a> to be interepreted and</p>
 <h3 id="programin"><code>program.in</code></h3>
 <p><strong>Type</strong>: Traversable of <a href="#shapefilter">shapeFilter</a></p>
 <h3 id="programactions"><code>program.actions</code></h3>
@@ -1979,19 +1788,19 @@ and no nodes will have any neighbor.</p>
 <p>Same as <a href="#parameters">parameters</a></p>
 <h3 id="programtime-distribution"><code>program.time-distribution</code></h3>
 <p><strong>Type</strong>: String or SpecMap</p>
-<p>Builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-time-distribution/"><code>TimeDistribution</code></a>.
-If a String is provided, then it is created via <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.interfaces/-incarnation/create-time-distribution.html"><code>Incarnation.createTimeDistribution</code></a>.
+<p>Builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-time-distribution/"><code>TimeDistribution</code></a>.
+If a String is provided, then it is created via <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-incarnation/create-time-distribution.html"><code>Incarnation.createTimeDistribution</code></a>.
 Otherwise, the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a> <strong>SHOULD</strong> be used.</p>
 <hr>
 <h3 id="remote-dependencies"><code>remote-dependencies</code></h3>
 <hr>
 <h3 id="shapefilter"><code>shapeFilter</code></h3>
 <p><strong>Type</strong>: SpecMap</p>
-<p>Builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.filters/-filter/"><code>Filter</code></a>
+<p>Builds a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-position-based-filter/"><code>PositionBasedFilter</code></a>
 using the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>.</p>
 <h4 id="examples-10">Examples</h4>
 <ul>
-<li>Injection of a molecule only in those nodes located inside a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.filters/-rectangle/"><code>Rectangle</code></a>
+<li>Injection of a molecule only in those nodes located inside a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.positionfilters/-rectangle/"><code>Rectangle</code></a>
 
   <script>
   
@@ -2307,12 +2116,12 @@ and <a href="../../howtos/simulation/variables/#dependent-variables">dependent</
 <p>Variables can be created in three ways:</p>
 <ul>
 <li>Using the <a href="#arbitrary-class-loading-system">arbitrary class loading system</a>
-to produce an instance of <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.variables/-variable/"><code>Variable</code></a> or
-<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.variables/-dependent-variable/"><code>DependentVariable</code></a>;</li>
-<li>specifying the parameters of a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.variables/-linear-variable/"><code>LinearVariable</code></a>
+to produce an instance of <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.boundary/-variable/"><code>Variable</code></a> or
+<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.boundary/-dependent-variable/"><code>DependentVariable</code></a>;</li>
+<li>specifying the parameters of a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.boundary.variables/-linear-variable/"><code>LinearVariable</code></a>
 (minimum and maximum values, incrementation step, and default value);</li>
 <li>writing an expression that can be interpreted by some JSR-223-compatible language whose interpreter is in the
-classpath, possibly specifying a timeout. Produces a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.variables/-dependent-variable/"><code>DependentVariable</code></a>.</li>
+classpath, possibly specifying a timeout. Produces a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.boundary/-dependent-variable/"><code>DependentVariable</code></a>.</li>
 </ul>
 <h3 id="variabletype"><code>variable.type</code></h3>
 <p>Same as <a href="#type">type</a></p>
@@ -2320,29 +2129,29 @@ classpath, possibly specifying a timeout. Produces a <a href="../../reference/pl
 <p>Same as <a href="#parameters">parameters</a></p>
 <h3 id="variabledefault"><code>variable.default</code></h3>
 <p><strong>Type</strong>: Number</p>
-<p>Default value for a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.variables/-linear-variable/"><code>LinearVariable</code></a>,
+<p>Default value for a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.boundary.variables/-linear-variable/"><code>LinearVariable</code></a>,
 to be selected if the variable is not among those generating the batch.</p>
 <h3 id="variablemax"><code>variable.max</code></h3>
 <p><strong>Type</strong>: Number</p>
-<p>Maximum value for a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.variables/-linear-variable/"><code>LinearVariable</code></a></p>
+<p>Maximum value for a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.boundary.variables/-linear-variable/"><code>LinearVariable</code></a></p>
 <h3 id="variablemin"><code>variable.min</code></h3>
 <p><strong>Type</strong>: Number</p>
-<p>Minimum value for a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.variables/-linear-variable/"><code>LinearVariable</code></a></p>
+<p>Minimum value for a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.boundary.variables/-linear-variable/"><code>LinearVariable</code></a></p>
 <h3 id="variablestep"><code>variable.step</code></h3>
 <p><strong>Type</strong>: Number</p>
-<p>Size of the incremental step of a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.variables/-linear-variable/"><code>LinearVariable</code></a></p>
+<p>Size of the incremental step of a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.boundary.variables/-linear-variable/"><code>LinearVariable</code></a></p>
 <h3 id="variableformula"><code>variable.formula</code></h3>
 <p><strong>Type</strong>: String</p>
-<p>Code that can be interpreted by a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.variables/-j-s-r223-variable/"><code>JSR223Variable</code></a>.</p>
+<p>Code that can be interpreted by a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.boundary.variables/-j-s-r223-variable/"><code>JSR223Variable</code></a>.</p>
 <h3 id="variablelanguage"><code>variable.language</code></h3>
 <p><strong>Type</strong>: String</p>
-<p>Language to be used by a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.variables/-j-s-r223-variable/"><code>JSR223Variable</code></a>.
+<p>Language to be used by a <a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.boundary.variables/-j-s-r223-variable/"><code>JSR223Variable</code></a>.
 The language must be available in the classpath.
 Groovy (default), Kotlin (<code>kotlin</code> or <code>kts</code>), and Scala (<code>scala</code>) are supported natively.</p>
 <h3 id="variabletimeout"><code>variable.timeout</code></h3>
 <p><strong>Type</strong>: Int</p>
 <p>Time in milliseconds after which the interpreter of the
-<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.loader.variables/-j-s-r223-variable/"><code>JSR223Variable</code></a>
+<a href="../../reference/plainkdoc/alchemist/it.unibo.alchemist.boundary.variables/-j-s-r223-variable/"><code>JSR223Variable</code></a>
 is considered stuck or in livelock.
 The interpreter gets interrupted and the simulation loading fails to prevent unresponsive simulations.
 Defaults to 1000ms.</p>
@@ -2376,12 +2185,12 @@ Defaults to 1000ms.</p>
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../../js/auto-complete.js?1683403769" defer></script>
-        <script src="../../js/lunr/lunr.min.js?1683403769" defer></script>
-        <script src="../../js/lunr/lunr.stemmer.support.min.js?1683403769" defer></script>
-        <script src="../../js/lunr/lunr.multi.min.js?1683403769" defer></script>
-        <script src="../../js/lunr/lunr.en.min.js?1683403769" defer></script>
-        <script src="../../js/search.js?1683403769" defer></script>
+        <script src="../../js/auto-complete.js?1683902044" defer></script>
+        <script src="../../js/lunr/lunr.min.js?1683902044" defer></script>
+        <script src="../../js/lunr/lunr.stemmer.support.min.js?1683902044" defer></script>
+        <script src="../../js/lunr/lunr.multi.min.js?1683902044" defer></script>
+        <script src="../../js/lunr/lunr.en.min.js?1683902044" defer></script>
+        <script src="../../js/search.js?1683902044" defer></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -2410,7 +2219,7 @@ Defaults to 1000ms.</p>
           <li data-nav-id="/howtos/simulation/environment/pathfinding/index.html" class=""><a class="padding" href="../../howtos/simulation/environment/pathfinding/index.html">Find paths indoors<i class="fas fa-check read-icon"></i></a></li>
           <li data-nav-id="/howtos/simulation/environment/maps/index.html" class=""><a class="padding" href="../../howtos/simulation/environment/maps/index.html">Maps and GPS traces<i class="fas fa-check read-icon"></i></a></li>
           <li data-nav-id="/howtos/simulation/environment/indoor/index.html" class=""><a class="padding" href="../../howtos/simulation/environment/indoor/index.html">Simulate indoor<i class="fas fa-check read-icon"></i></a></li>
-          <li data-nav-id="/howtos/simulation/environment/physics/index.html" class=""><a class="padding" href="../../howtos/simulation/environment/physics/index.html">Simulate Physical Interactions<i class="fas fa-check read-icon"></i></a></li></ul></li>
+          <li data-nav-id="/howtos/simulation/environment/cognitive-physics/index.html" class=""><a class="padding" href="../../howtos/simulation/environment/cognitive-physics/index.html">Simulate physical interactions among pedestrians<i class="fas fa-check read-icon"></i></a></li></ul></li>
           <li data-nav-id="/howtos/simulation/deploy/index.html" class="alwaysopen"><a class="padding" href="../../howtos/simulation/deploy/index.html">Deploy Nodes<i class="fas fa-check read-icon"></i></a><ul id="subsections-7c8f900c4cd87baea80cccbacb6e4c7b" class="morespace">
           <li data-nav-id="/howtos/simulation/deploy/grid/index.html" class=""><a class="padding" href="../../howtos/simulation/deploy/grid/index.html">(Irregular) Grids<i class="fas fa-check read-icon"></i></a></li>
           <li data-nav-id="/howtos/simulation/deploy/shape/index.html" class=""><a class="padding" href="../../howtos/simulation/deploy/shape/index.html">Nodes inside shapes<i class="fas fa-check read-icon"></i></a></li>
@@ -2497,7 +2306,7 @@ Defaults to 1000ms.</p>
           </ul>
         </div>
         <div id="footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 25.16.1-dev0f+c529994b6</strong></div>
+    <div><strong>Alchemist Simulator 25.16.2-dev07+9016c4150</strong></div>
     <br>
     <a
         class="github-button"
@@ -2530,21 +2339,21 @@ Defaults to 1000ms.</p>
         </div>
       </div>
     </aside>
-    <script src="../../js/clipboard.min.js?1683403769" defer></script>
-    <script src="../../js/perfect-scrollbar.min.js?1683403769" defer></script>
-    <script src="../../js/d3/d3-color.min.js?1683403769" defer></script>
-    <script src="../../js/d3/d3-dispatch.min.js?1683403769" defer></script>
-    <script src="../../js/d3/d3-drag.min.js?1683403769" defer></script>
-    <script src="../../js/d3/d3-ease.min.js?1683403769" defer></script>
-    <script src="../../js/d3/d3-interpolate.min.js?1683403769" defer></script>
-    <script src="../../js/d3/d3-selection.min.js?1683403769" defer></script>
-    <script src="../../js/d3/d3-timer.min.js?1683403769" defer></script>
-    <script src="../../js/d3/d3-transition.min.js?1683403769" defer></script>
-    <script src="../../js/d3/d3-zoom.min.js?1683403769" defer></script>
-    <script src="../../js/mermaid.min.js?1683403769" defer></script>
+    <script src="../../js/clipboard.min.js?1683902044" defer></script>
+    <script src="../../js/perfect-scrollbar.min.js?1683902044" defer></script>
+    <script src="../../js/d3/d3-color.min.js?1683902044" defer></script>
+    <script src="../../js/d3/d3-dispatch.min.js?1683902044" defer></script>
+    <script src="../../js/d3/d3-drag.min.js?1683902044" defer></script>
+    <script src="../../js/d3/d3-ease.min.js?1683902044" defer></script>
+    <script src="../../js/d3/d3-interpolate.min.js?1683902044" defer></script>
+    <script src="../../js/d3/d3-selection.min.js?1683902044" defer></script>
+    <script src="../../js/d3/d3-timer.min.js?1683902044" defer></script>
+    <script src="../../js/d3/d3-transition.min.js?1683902044" defer></script>
+    <script src="../../js/d3/d3-zoom.min.js?1683902044" defer></script>
+    <script src="../../js/mermaid.min.js?1683902044" defer></script>
     <script>
       window.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../js/theme.js?1683403769" defer></script>
+    <script src="../../js/theme.js?1683902044" defer></script>
   </body>
 </html>
