@@ -65,6 +65,27 @@ function adjustContentWidth(){
     elc.style[ dir_padding_end ] = '' + end + 'px';
 }
 
+function fixCodeTabs(){
+    /* if only a single code block is contained in the tab and no style was selected, treat it like style=code */
+    var codeTabPanels = Array.from( document.querySelectorAll( '.tab-content.tab-panel-style' ) ).filter( function( tabPanel ){
+        return tabPanel.querySelector( '.tab-content-text > div.highlight:only-child, .tab-content-text > pre.pre-code:only-child');
+    });
+
+    codeTabPanels.forEach( function( tabPanel ){
+        var p = tabPanel.parentNode.parentNode;
+        var tabId = tabPanel.dataset.tabItem;
+        var tabButton = p.querySelector( '.tab-nav-button.tab-panel-style[data-tab-item="'+tabId+'"]' );
+        if( tabPanel.classList.contains( 'initial' ) ){
+            tabButton.classList.remove( 'initial' );
+            tabButton.classList.add( 'code' );
+            tabPanel.classList.remove( 'initial' );
+            tabPanel.classList.add( 'code' );
+        }
+        // mark code blocks for FF without :has()
+        tabPanel.classList.add( 'codify' );
+    });
+}
+
 function switchTab(tabGroup, tabId) {
     var tabs = Array.from( document.querySelectorAll( '.tab-panel[data-tab-group="'+tabGroup+'"]' ) ).filter( function( e ){
         return !!e.querySelector( '[data-tab-item="'+tabId+'"]' );
@@ -1251,6 +1272,7 @@ ready( function(){
     initToc();
     initAnchorClipboard();
     initCodeClipboard();
+    fixCodeTabs();
     restoreTabSelections();
     initSwipeHandler();
     initHistory();
