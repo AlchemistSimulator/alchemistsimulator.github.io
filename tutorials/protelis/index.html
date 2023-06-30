@@ -3,29 +3,29 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.113.0">
-    <meta name="generator" content="Relearn 5.15.2+tip">
+    <meta name="generator" content="Hugo 0.115.0">
+    <meta name="generator" content="Relearn 5.17.1+tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <title>Protelis Incarnation Tutorial :: Documentation for the Alchemist Simulator</title>
     <link href="../../tutorials/protelis/index.xml" rel="alternate" type="application/rss+xml" title="Protelis Incarnation Tutorial :: Documentation for the Alchemist Simulator">
-    <link href="../../images/logo.svg?1686291733" rel="icon" type="image/svg+xml">
+    <link href="../../images/logo.svg?1688086346" rel="icon" type="image/svg+xml">
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
-    <link href="../../css/fontawesome-all.min.css?1686291733" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/fontawesome-all.min.css?1686291733" rel="stylesheet"></noscript>
-    <link href="../../css/nucleus.css?1686291733" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1686291733" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/auto-complete.css?1686291733" rel="stylesheet"></noscript>
-    <link href="../../css/perfect-scrollbar.min.css?1686291733" rel="stylesheet">
-    <link href="../../css/fonts.css?1686291733" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/fonts.css?1686291733" rel="stylesheet"></noscript>
-    <link href="../../css/theme.css?1686291733" rel="stylesheet">
-    <link href="../../css/theme-relearn.css?1686291733" rel="stylesheet" id="variant-style">
-    <link href="../../css/variant.css?1686291733" rel="stylesheet">
-    <link href="../../css/print.css?1686291733" rel="stylesheet" media="print">
-    <link href="../../css/ie.css?1686291733" rel="stylesheet">
-    <script src="../../js/url.js?1686291733"></script>
-    <script src="../../js/variant.js?1686291733"></script>
+    <link href="../../css/fontawesome-all.min.css?1688086346" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/fontawesome-all.min.css?1688086346" rel="stylesheet"></noscript>
+    <link href="../../css/nucleus.css?1688086346" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1688086346" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/auto-complete.css?1688086346" rel="stylesheet"></noscript>
+    <link href="../../css/perfect-scrollbar.min.css?1688086346" rel="stylesheet">
+    <link href="../../css/fonts.css?1688086346" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/fonts.css?1688086346" rel="stylesheet"></noscript>
+    <link href="../../css/theme.css?1688086346" rel="stylesheet">
+    <link href="../../css/theme-relearn.css?1688086346" rel="stylesheet" id="variant-style">
+    <link href="../../css/variant.css?1688086346" rel="stylesheet">
+    <link href="../../css/print.css?1688086346" rel="stylesheet" media="print">
+    <link href="../../css/ie.css?1688086346" rel="stylesheet">
+    <script src="../../js/url.js?1688086346"></script>
+    <script src="../../js/variant.js?1688086346"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
-      // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
+      // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72""
       window.index_json_url="../../index.json";
       var root_url="../../";
       var baseUri=root_url.replace(/\/$/, '');
@@ -154,7 +154,7 @@ It will automatically download all the required libraries, set up the environmen
 <p>Gradle has been preconfigured in this repository for executing available Alchemist simulations inside <code>src/main/yaml/</code>.
 For each such file, one Gradle task is generated.
 By executing <code>./gradlew tasks</code>, these tasks will be displayed in the <code>Run Alchemist tasks</code> category, similar to (this may change):</p>
-<pre tabindex="0"><code>Run Alchemist tasks
+<div class="wrap-code highlight"><pre tabindex="0"><code>Run Alchemist tasks
 -------------------
 run00-minimal - Launches simulation 00-minimal
 run01-nodes - Launches simulation 01-nodes
@@ -164,33 +164,26 @@ run04-perturb-grid - Launches simulation 04-perturb-grid
 run05-content - Launches simulation 05-content
 run06-program - Launches simulation 06-program
 run07-gradient - Launches simulation 07-gradient
-runAll - Launches all simulations
-</code></pre><p>Alchemist uses JSON files for modelling effects with the classic Swing UI.
+runAll - Launches all simulations</code></pre></div><p>Alchemist uses JSON files for modelling effects with the classic Swing UI.
 If an effect file with the same name of the YAML simulation file is found in the <code>effects</code> folder,
 it will be loaded as default graphics file.
 If none is found, Alchemist will be started with the default effects set
 (you can always fiddle with the rendering from within the simulator).</p>
 <p>As first step, use <code>git</code> to locally clone this repository.</p>
 <p>In order to launch all simulations, open a terminal and move to the project root folder, then on UNIX:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew runAll
-</span></span></code></pre></div><p>On Windows:</p>
-<pre tabindex="0"><code>gradlew.bat runAll
-</code></pre><p>Note that the first launch will be rather slow, since Gradle will download all the required files.
+<div class="wrap-code highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew runAll</span></span></code></pre></div><p>On Windows:</p>
+<div class="wrap-code highlight"><pre tabindex="0"><code>gradlew.bat runAll</code></pre></div><p>Note that the first launch will be rather slow, since Gradle will download all the required files.
 They will get cached in the user&rsquo;s home folder (as per Gradle normal behavior).</p>
 <h3 id="using-the-redistributable-jar-file">Using the redistributable jar file</h3>
 <p>If you got the redistributable, runnable Alchemist jar file (download it <a href="https://github.com/AlchemistSimulator/Alchemist/releases" target="_blank">here</a>, you can use the alchemist command line to execute the provided simulations.</p>
 <p>To learn which commands the alchemist CLI offers, use:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar alchemist-redist-VERSION.jar --help
-</span></span></code></pre></div><p>(remember to substitute VERSION with the alchemist version you actually have downloaded)</p>
+<div class="wrap-code highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar alchemist-redist-VERSION.jar --help</span></span></code></pre></div><p>(remember to substitute VERSION with the alchemist version you actually have downloaded)</p>
 <p>Suppose that you have copied such jar in the project root folder, and you want to launch the file <code>foo.yml</code> located in <code>src/main/yaml</code> using the effects file <code>effects/bar.aes</code>. You can do so by running:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar alchemist-redist-VERSION.jar -y src/main/yaml/foo.yml -g effects/bar.aes
-</span></span></code></pre></div><p>If your YAML simulation file refers to an external protelis resource, that should be located in the classpath to get correctly loaded.
+<div class="wrap-code highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar alchemist-redist-VERSION.jar -y src/main/yaml/foo.yml -g effects/bar.aes</span></span></code></pre></div><p>If your YAML simulation file refers to an external protelis resource, that should be located in the classpath to get correctly loaded.
 In this case, you may want to manually control the classpath to make sure everything is correctly considered.
 Let&rsquo;s suppose that you store your Protelis modules structure in a <code>src/main/protelis</code> folder located in the root project folder. In this case you may want to issue:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -cp alchemist-redist-VERSION.jar:src/main/protelis it.unibo.alchemist.Alchemist -y src/main/yaml/foo.yml -g effects/bar.aes
-</span></span></code></pre></div><p>If you are running Alchemist on Windows and using the DOS command interpreter, be wary that that the colon must get substituted by a semicolon:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -cp alchemist-redist-VERSION.jar;src/main/protelis it.unibo.alchemist.Alchemist -y src/main/yaml/foo.yml -g effects/bar.aes
-</span></span></code></pre></div><h2 id="graphical-interface-shortcuts">Graphical interface shortcuts</h2>
+<div class="wrap-code highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -cp alchemist-redist-VERSION.jar:src/main/protelis it.unibo.alchemist.Alchemist -y src/main/yaml/foo.yml -g effects/bar.aes</span></span></code></pre></div><p>If you are running Alchemist on Windows and using the DOS command interpreter, be wary that that the colon must get substituted by a semicolon:</p>
+<div class="wrap-code highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -cp alchemist-redist-VERSION.jar;src/main/protelis it.unibo.alchemist.Alchemist -y src/main/yaml/foo.yml -g effects/bar.aes</span></span></code></pre></div><h2 id="graphical-interface-shortcuts">Graphical interface shortcuts</h2>
 <p>The graphical interface that pops up when Alchemist is executed providing a YAML file on the command line is a stripped-down version of the one that shows when the simulator is invoked by <code>java -jar</code> or by double clicking.</p>
 <p>In order to use such interface, consider the following command list:</p>
 <table>
@@ -300,12 +293,12 @@ Use File -&gt; Import -&gt; Git -&gt; Import project from Git and paste the addr
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../../js/auto-complete.js?1686291749" defer></script>
-        <script src="../../js/lunr/lunr.min.js?1686291749" defer></script>
-        <script src="../../js/lunr/lunr.stemmer.support.min.js?1686291749" defer></script>
-        <script src="../../js/lunr/lunr.multi.min.js?1686291749" defer></script>
-        <script src="../../js/lunr/lunr.en.min.js?1686291749" defer></script>
-        <script src="../../js/search.js?1686291749" defer></script>
+        <script src="../../js/auto-complete.js?1688086359" defer></script>
+        <script src="../../js/lunr/lunr.min.js?1688086359" defer></script>
+        <script src="../../js/lunr/lunr.stemmer.support.min.js?1688086359" defer></script>
+        <script src="../../js/lunr/lunr.multi.min.js?1688086359" defer></script>
+        <script src="../../js/lunr/lunr.en.min.js?1688086359" defer></script>
+        <script src="../../js/search.js?1688086359" defer></script>
       </div>
       <div id="homelinks" class="default-animation">
         <ul>
@@ -421,7 +414,7 @@ Use File -&gt; Import -&gt; Git -&gt; Import project from Git and paste the addr
           </ul>
         </div>
         <div id="footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 26.0.4-dev1a+32d4c16de</strong></div>
+    <div><strong>Alchemist Simulator 26.0.5-dev1h+b33810c56</strong></div>
     <br>
     <a
         class="github-button"
@@ -454,21 +447,21 @@ Use File -&gt; Import -&gt; Git -&gt; Import project from Git and paste the addr
         </div>
       </div>
     </aside>
-    <script src="../../js/clipboard.min.js?1686291749" defer></script>
-    <script src="../../js/perfect-scrollbar.min.js?1686291749" defer></script>
-    <script src="../../js/d3/d3-color.min.js?1686291749" defer></script>
-    <script src="../../js/d3/d3-dispatch.min.js?1686291749" defer></script>
-    <script src="../../js/d3/d3-drag.min.js?1686291749" defer></script>
-    <script src="../../js/d3/d3-ease.min.js?1686291749" defer></script>
-    <script src="../../js/d3/d3-interpolate.min.js?1686291749" defer></script>
-    <script src="../../js/d3/d3-selection.min.js?1686291749" defer></script>
-    <script src="../../js/d3/d3-timer.min.js?1686291749" defer></script>
-    <script src="../../js/d3/d3-transition.min.js?1686291749" defer></script>
-    <script src="../../js/d3/d3-zoom.min.js?1686291749" defer></script>
-    <script src="../../js/mermaid.min.js?1686291749" defer></script>
+    <script src="../../js/clipboard.min.js?1688086359" defer></script>
+    <script src="../../js/perfect-scrollbar.min.js?1688086359" defer></script>
+    <script src="../../js/d3/d3-color.min.js?1688086359" defer></script>
+    <script src="../../js/d3/d3-dispatch.min.js?1688086359" defer></script>
+    <script src="../../js/d3/d3-drag.min.js?1688086359" defer></script>
+    <script src="../../js/d3/d3-ease.min.js?1688086359" defer></script>
+    <script src="../../js/d3/d3-interpolate.min.js?1688086359" defer></script>
+    <script src="../../js/d3/d3-selection.min.js?1688086359" defer></script>
+    <script src="../../js/d3/d3-timer.min.js?1688086359" defer></script>
+    <script src="../../js/d3/d3-transition.min.js?1688086359" defer></script>
+    <script src="../../js/d3/d3-zoom.min.js?1688086359" defer></script>
+    <script src="../../js/mermaid.min.js?1688086359" defer></script>
     <script>
       window.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../js/theme.js?1686291749" defer></script>
+    <script src="../../js/theme.js?1688086359" defer></script>
   </body>
 </html>
