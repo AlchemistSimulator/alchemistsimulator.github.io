@@ -118,6 +118,14 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
 
                     </pre>
                     <div class="block"><p>A Wormhole (in this context) is an entity that &quot;connects&quot; two worlds: the &quot;environment&quot; and the &quot;view&quot;. Above all it provides services to convert coordinates from the &quot;environment-space&quot; to the &quot;view-space&quot;. <code>IWormhole2D</code> is the type of a wormhole whose both environment and view are bi-dimensional spaces. Terminology: - &quot;Environment&quot; is the 'rectangle' we need to render ON the view. - &quot;View&quot; is a 'window' that let us see the environment. - &quot;Environment-space&quot; is the algebraic space on which 'lies' the environment. - &quot;View-space&quot; is the algebraic space on which 'lies' the view. - &quot;Env&quot; before a point's name =&gt; it refers to a point into the environment-space. - &quot;View&quot; before a point's name =&gt; it refers to a point into the view-space. - &quot;Position&quot; is the point of the view-space every transformation applied to the environment refers to: e.g. if I want to move the environment, I have to change the position; it is also the point the environment rotates around. - &quot;EnvOffset&quot; is the vector from (0; 0) into env-space to the left-bottom corner of the part of the environment we want to render. E.g. if I am representing a map with Earth-coordinates (16; 48), the intersection between the prime meridian and the equator is (0; 0), so I have to set the envOffset to (16; 48) in order to see the &quot;beginning&quot; of the map on the left-bottom corner of the view.</p></div>
+
+                    <dl>
+
+                    
+
+                    
+
+                    </dl>
                 </li>
             </ul>
         </div>
@@ -418,17 +426,26 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                         <h4>getEnvPoint</h4>
                                         <pre class="methodSignature"> abstract <a href=Wormhole2D.html>P</a> <a href=Wormhole2D.html#getEnvPoint(java.awt.Point)>getEnvPoint</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> viewPoint)</pre>
                                         <div class="block"><p>Converts a point from the view-space to the env-space.</p></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
                                             <dd><code>viewPoint</code> - is the <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> object whose coordinates are from view-space</dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>a <a href=../../../model/Position2D.html>Position2D</a> object whose coordinates are from env-space</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -442,8 +459,19 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                         <h4>getMode</h4>
                                         <pre class="methodSignature"> abstract <a href=Wormhole2D.Mode.html>Wormhole2D.Mode</a> <a href=Wormhole2D.html#getMode()>getMode</a>()</pre>
                                         <div class="block"><p>Gets the rendering mode.</p></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>a <a href=Wormhole2D.Mode.html>Wormhole2D.Mode</a> value</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -457,17 +485,26 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                         <h4>getViewPoint</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> <a href=Wormhole2D.html#getViewPoint(P)>getViewPoint</a>(<a href=Wormhole2D.html>P</a> envPoint)</pre>
                                         <div class="block"><p>Converts a point from the env-space to the view-space.</p></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
                                             <dd><code>envPoint</code> - is the <a href=../../../model/Position2D.html>Position2D</a> object whose coordinates are from env-space</dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>a <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> object whose coordinates are from view-space</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -481,8 +518,19 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                         <h4>getViewPosition</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> <a href=Wormhole2D.html#getViewPosition()>getViewPosition</a>()</pre>
                                         <div class="block"><p>Gets the Position.</p></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>a <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> object representing the Position</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -496,8 +544,19 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                         <h4>getViewSize</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/geom/Dimension2D.html>Dimension2D</a> <a href=Wormhole2D.html#getViewSize()>getViewSize</a>()</pre>
                                         <div class="block"><p>Gets the view's size.</p></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>a tuple containing the view's width and height</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -511,8 +570,19 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                         <h4>getZoom</h4>
                                         <pre class="methodSignature"> abstract double <a href=Wormhole2D.html#getZoom()>getZoom</a>()</pre>
                                         <div class="block"><p>Gets the zoom factor.</p></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>a <code>double</code> representing the zoom factor</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -526,17 +596,26 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                         <h4>isInsideView</h4>
                                         <pre class="methodSignature"> abstract boolean <a href=Wormhole2D.html#isInsideView(java.awt.Point)>isInsideView</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> viewPoint)</pre>
                                         <div class="block"><p>Check if a point of the view-space is &quot;visible&quot;, i.e. it is inside the view.</p></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
                                             <dd><code>viewPoint</code> - is the <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> to check</dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p><code>true</code> if it is visible, <code>false</code> instead</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -550,8 +629,10 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                         <h4>rotateAroundPoint</h4>
                                         <pre class="methodSignature"> abstract void <a href=Wormhole2D.html#rotateAroundPoint(java.awt.Point,double)>rotateAroundPoint</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> p, double a)</pre>
                                         <div class="block"><p>Rotates around a point into the view-space.</p></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
@@ -562,9 +643,13 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                             <dd><code>a</code> - is the absolute angle (in radians)</dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -578,17 +663,23 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                         <h4>setEnvPosition</h4>
                                         <pre class="methodSignature"> abstract void <a href=Wormhole2D.html#setEnvPosition(P)>setEnvPosition</a>(<a href=Wormhole2D.html>P</a> envPoint)</pre>
                                         <div class="block"><p>Sets the position to the view-point corresponding to <code>envPoint</code>.</p></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
                                             <dd><code>envPoint</code> - is the <a href=../../../model/Position2D.html>Position2D</a> object representing the new position with env-coordinates</dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -602,8 +693,16 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                         <h4>optimalZoom</h4>
                                         <pre class="methodSignature"> abstract void <a href=Wormhole2D.html#optimalZoom()>optimalZoom</a>()</pre>
                                         <div class="block"><p>Automatically sets the zoom rate in order to make the environment entirely visible on the view.</p></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -617,17 +716,23 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                         <h4>setRotation</h4>
                                         <pre class="methodSignature"> abstract void <a href=../impl/AbstractWormhole2D.html#setRotation(double)>setRotation</a>(double rad)</pre>
                                         <div class="block"><p>Rotates the environment around the Position.</p></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
                                             <dd><code>rad</code> - is the <code>double</code> value representing the angle expressed with radians</dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -641,17 +746,23 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                         <h4>setViewPosition</h4>
                                         <pre class="methodSignature"> abstract void <a href=Wormhole2D.html#setViewPosition(java.awt.Point)>setViewPosition</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> viewPoint)</pre>
                                         <div class="block"><p>Sets the Position to <code>viewPoint</code>.</p></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
                                             <dd><code>viewPoint</code> - is the <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> object representing the new position with view-coordinates</dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -665,17 +776,23 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                         <h4>setZoom</h4>
                                         <pre class="methodSignature"> abstract void <a href=../impl/AbstractWormhole2D.html#setZoom(double)>setZoom</a>(double value)</pre>
                                         <div class="block"><p>Changes the zoom factor.</p></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
                                             <dd><code>value</code> - is the <code>double</code> value representing the new zoom</dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -689,8 +806,10 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                         <h4>zoomOnPoint</h4>
                                         <pre class="methodSignature"> abstract void <a href=Wormhole2D.html#zoomOnPoint(java.awt.Point,double)>zoomOnPoint</a>(<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/java/awt/Point.html>Point</a> p, double z)</pre>
                                         <div class="block"><p>Zooms on a point into the view-space.</p></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
@@ -701,9 +820,13 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                             <dd><code>z</code> - is the absolute zoom rate</dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -717,8 +840,16 @@ public interface <span class="typeNameLabel"><a href=Wormhole2D.html>Wormhole2D<
                                         <h4>center</h4>
                                         <pre class="methodSignature"> abstract void <a href=Wormhole2D.html#center()>center</a>()</pre>
                                         <div class="block"><p>Points the center of the view on the center of the environment.</p></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 

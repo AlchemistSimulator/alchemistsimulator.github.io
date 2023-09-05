@@ -118,6 +118,14 @@ public final class <span class="typeNameLabel"><a href=Euclidean2DPassage.html>E
 
                     </pre>
                     <div class="block"><p>Defines a passage between two <a href=../ConvexPolygon.html>ConvexPolygon</a>s in an euclidean bidimensional space. The passage is oriented, which means it connects <a href=Euclidean2DPassage.html#tail>tail</a> to <a href=Euclidean2DPassage.html#head>head</a>, but the opposite is not necessarily true. <a href=Euclidean2DPassage.html#tail>tail</a> and <a href=Euclidean2DPassage.html#head>head</a> can be non-adjacent (there can be some distance between them), this introduces navigation issues as agents may not know which direction to follow when crossing a passage. <a href=Euclidean2DPassage.html#passageShapeOnTail>passageShapeOnTail</a> is a <a href=../Segment2D.html>Segment2D</a> representing the shape of the passage on <a href=Euclidean2DPassage.html#tail>tail</a>'s boundary (e.g. in indoor environments, the segment should represent the shape of the door between two rooms). <a href=Euclidean2DPassage.html#passageShapeOnTail>passageShapeOnTail</a> must be determined so as to guarantee that <a href=Euclidean2DPassage.html#head>head</a> is reachable by throwing a ray from any point of the segment in its normal direction. This solves navigation issues as it provides agents with a direction to follow when crossing <a href=Euclidean2DPassage.html>Euclidean2DPassage</a>s (namely, the normal direction to <a href=Euclidean2DPassage.html#passageShapeOnTail>passageShapeOnTail</a>).</p></div>
+
+                    <dl>
+
+                    
+
+                    
+
+                    </dl>
                 </li>
             </ul>
         </div>
@@ -373,8 +381,16 @@ public final class <span class="typeNameLabel"><a href=Euclidean2DPassage.html>E
                                         <h4>getTail</h4>
                                         <pre class="methodSignature"> final <a href=../ConvexPolygon.html>ConvexPolygon</a> <a href=Euclidean2DPassage.html#getTail()>getTail</a>()</pre>
                                         <div class="block"></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -388,8 +404,16 @@ public final class <span class="typeNameLabel"><a href=Euclidean2DPassage.html>E
                                         <h4>getHead</h4>
                                         <pre class="methodSignature"> final <a href=../ConvexPolygon.html>ConvexPolygon</a> <a href=Euclidean2DPassage.html#getHead()>getHead</a>()</pre>
                                         <div class="block"></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -403,8 +427,16 @@ public final class <span class="typeNameLabel"><a href=Euclidean2DPassage.html>E
                                         <h4>getPassageShapeOnTail</h4>
                                         <pre class="methodSignature"> final <a href=../Segment2D.html>Segment2D</a>&lt;<a href=../../positions/Euclidean2DPosition.html>Euclidean2DPosition</a>&gt; <a href=Euclidean2DPassage.html#getPassageShapeOnTail()>getPassageShapeOnTail</a>()</pre>
                                         <div class="block"></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -418,8 +450,16 @@ public final class <span class="typeNameLabel"><a href=Euclidean2DPassage.html>E
                                         <h4>crossingPointOnTail</h4>
                                         <pre class="methodSignature"> final <a href=../../positions/Euclidean2DPosition.html>Euclidean2DPosition</a> <a href=Euclidean2DPassage.html#crossingPointOnTail(it.unibo.alchemist.model.positions.Euclidean2DPosition)>crossingPointOnTail</a>(<a href=../../positions/Euclidean2DPosition.html>Euclidean2DPosition</a> position)</pre>
                                         <div class="block"><p>Provided the <a href=Euclidean2DPassage.html#crossingPointOnTail(it.unibo.alchemist.model.positions.Euclidean2DPosition)>position</a> of an agent that may want to cross this passage, this method computes the point belonging to <a href=Euclidean2DPassage.html#passageShapeOnTail>passageShapeOnTail</a> which is more convenient to cross. Note that the agent must be inside <a href=Euclidean2DPassage.html#tail>tail</a>.</p></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -433,8 +473,16 @@ public final class <span class="typeNameLabel"><a href=Euclidean2DPassage.html>E
                                         <h4>crossingPointOnHead</h4>
                                         <pre class="methodSignature"> final <a href=../../positions/Euclidean2DPosition.html>Euclidean2DPosition</a> <a href=Euclidean2DPassage.html#crossingPointOnHead(it.unibo.alchemist.model.positions.Euclidean2DPosition)>crossingPointOnHead</a>(<a href=../../positions/Euclidean2DPosition.html>Euclidean2DPosition</a> crossingPointOnTail)</pre>
                                         <div class="block"><p>Provided the <a href=Euclidean2DPassage.html#crossingPointOnHead(it.unibo.alchemist.model.positions.Euclidean2DPosition)>crossingPointOnTail</a> that an agent has reached (or will reach), this method computes the point belonging to the boundary of <a href=Euclidean2DPassage.html#head>head</a> that the agent should point towards to cross the passage (i.e. the first point belonging to <a href=Euclidean2DPassage.html#head>head</a>'s boundary that is encountered by throwing a ray from <a href=Euclidean2DPassage.html#crossingPointOnHead(it.unibo.alchemist.model.positions.Euclidean2DPosition)>crossingPointOnTail</a> along <a href=Euclidean2DPassage.html#passageShapeOnTail>passageShapeOnTail</a>'s normal direction). Note that the returned point may not be formally contained in <a href=Euclidean2DPassage.html#head>head</a> depending on the definition of insideness used by <a href=../ConvexPolygon.html#contains(it.unibo.alchemist.model.positions.Euclidean2DPosition)>ConvexPolygon.contains</a>, prefer using <a href=../ConvexPolygon.html#containsBoundaryIncluded(it.unibo.alchemist.model.positions.Euclidean2DPosition)>ConvexPolygon.containsBoundaryIncluded</a>.</p></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -448,8 +496,16 @@ public final class <span class="typeNameLabel"><a href=Euclidean2DPassage.html>E
                                         <h4>crossingPoints</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html>Pair</a>&lt;<a href=../../positions/Euclidean2DPosition.html>Euclidean2DPosition</a>, <a href=../../positions/Euclidean2DPosition.html>Euclidean2DPosition</a>&gt; <a href=Euclidean2DPassage.html#crossingPoints(it.unibo.alchemist.model.positions.Euclidean2DPosition)>crossingPoints</a>(<a href=../../positions/Euclidean2DPosition.html>Euclidean2DPosition</a> position)</pre>
                                         <div class="block"><p>Provided the <a href=Euclidean2DPassage.html#crossingPoints(it.unibo.alchemist.model.positions.Euclidean2DPosition)>position</a> of an agent that may want to cross this passage, this method returns a pair containing both <a href=Euclidean2DPassage.html#crossingPointOnTail(it.unibo.alchemist.model.positions.Euclidean2DPosition)>crossingPointOnTail</a> and <a href=Euclidean2DPassage.html#crossingPointOnHead(it.unibo.alchemist.model.positions.Euclidean2DPosition)>crossingPointOnHead</a>.</p></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 

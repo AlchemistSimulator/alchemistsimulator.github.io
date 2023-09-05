@@ -118,6 +118,14 @@ public interface <span class="typeNameLabel"><a href=Extractor.html>Extractor</a
 
                     </pre>
                     <div class="block"><p>An object that is able to extract numeric informations from an Alchemist {@link Environment}, given the current {@link it.unibo.alchemist.core.Simulation} {@link Time}, the last {@link Reaction} executed and the current simulation step.</p></div>
+
+                    <dl>
+
+                    
+
+                    
+
+                    </dl>
                 </li>
             </ul>
         </div>
@@ -315,8 +323,10 @@ public interface <span class="typeNameLabel"><a href=Extractor.html>Extractor</a
                                         <h4>extractData</h4>
                                         <pre class="methodSignature"> abstract &lt;T extends <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html>Any</a>&gt; <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a>, <a href=Extractor.html>E</a>&gt; <a href=extractors/AbstractDoubleExporter.html#extractData(it.unibo.alchemist.model.Environment,it.unibo.alchemist.model.Actionable,it.unibo.alchemist.model.Time,java.lang.Long)>extractData</a>(<a href=../model/Environment.html>Environment</a>&lt;<a href=extractors/AbstractDoubleExporter.html#extractData(it.unibo.alchemist.model.Environment,it.unibo.alchemist.model.Actionable,it.unibo.alchemist.model.Time,java.lang.Long)>T</a>, ?&gt; environment, <a href=../model/Actionable.html>Actionable</a>&lt;<a href=extractors/AbstractDoubleExporter.html#extractData(it.unibo.alchemist.model.Environment,it.unibo.alchemist.model.Actionable,it.unibo.alchemist.model.Time,java.lang.Long)>T</a>&gt; reaction, <a href=../model/Time.html>Time</a> time, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Long.html>Long</a> step)</pre>
                                         <div class="block"><p>Extracts properties from an environment. The returned map must either:</p><ul><li><p>contain a single element,</p></li><li><p>have the keys matching <a href=extractors/AbstractDoubleExporter.html#columnNames>columnNames</a>, or</p></li><li><p>be iterable in predictable order     (namely, implement SortedMap or extend one of <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-linked-hash-map/index.html>LinkedHashMap</a> or ConcurrentLinkedHashMap).</p></li></ul></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
@@ -335,9 +345,16 @@ public interface <span class="typeNameLabel"><a href=Extractor.html>Extractor</a
                                             <dd><code>step</code> - <pre><code>the simulation step</code></pre></dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>the extracted properties with their names. The returned map must either:     - contain a single element,     - have the keys matching <a href=extractors/AbstractDoubleExporter.html#columnNames>columnNames</a>, or     - be iterable in predictable order     (namely, implement SortedMap or extend <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-linked-hash-map/index.html>LinkedHashMap</a>).</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -351,8 +368,10 @@ public interface <span class="typeNameLabel"><a href=Extractor.html>Extractor</a
                                         <h4>extractDataAsText</h4>
                                         <pre class="methodSignature"> &lt;T extends <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html>Any</a>&gt; <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a>&gt; <a href=extractors/NumberOfNodes.html#extractDataAsText(it.unibo.alchemist.model.Environment,it.unibo.alchemist.model.Actionable,it.unibo.alchemist.model.Time,java.lang.Long)>extractDataAsText</a>(<a href=../model/Environment.html>Environment</a>&lt;<a href=extractors/NumberOfNodes.html#extractDataAsText(it.unibo.alchemist.model.Environment,it.unibo.alchemist.model.Actionable,it.unibo.alchemist.model.Time,java.lang.Long)>T</a>, ?&gt; environment, <a href=../model/Actionable.html>Actionable</a>&lt;<a href=extractors/NumberOfNodes.html#extractDataAsText(it.unibo.alchemist.model.Environment,it.unibo.alchemist.model.Actionable,it.unibo.alchemist.model.Time,java.lang.Long)>T</a>&gt; reaction, <a href=../model/Time.html>Time</a> time, <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Long.html>Long</a> step)</pre>
                                         <div class="block"><p>Same as <a href=extractors/AbstractDoubleExporter.html#extractData(it.unibo.alchemist.model.Environment,it.unibo.alchemist.model.Actionable,it.unibo.alchemist.model.Time,java.lang.Long)>extractData</a>, but specifically meant for textual outputs. Captures <a href=Extractor.html>E</a> to <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html>String</a> conversions. The default implementation just runs a <code>toString()</code> conversion ver <a href=extractors/AbstractDoubleExporter.html#extractData(it.unibo.alchemist.model.Environment,it.unibo.alchemist.model.Actionable,it.unibo.alchemist.model.Time,java.lang.Long)>extractData</a>'s return value's values.</p></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
@@ -371,9 +390,16 @@ public interface <span class="typeNameLabel"><a href=Extractor.html>Extractor</a
                                             <dd><code>step</code> - <pre><code>the simulation step</code></pre></dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>the extracted properties in textual format with their names.</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -387,8 +413,19 @@ public interface <span class="typeNameLabel"><a href=Extractor.html>Extractor</a
                                         <h4>getColumnNames</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a>&gt; <a href=extractors/AbstractDoubleExporter.html#getColumnNames()>getColumnNames</a>()</pre>
                                         <div class="block"></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>the name of the properties that this <a href=Extractor.html>Extractor</a> can provide</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 

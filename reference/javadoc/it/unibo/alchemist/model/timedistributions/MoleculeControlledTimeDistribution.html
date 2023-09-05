@@ -131,6 +131,14 @@ public final class <span class="typeNameLabel"><a href=MoleculeControlledTimeDis
 extends <a href=AnyRealDistribution.html>AnyRealDistribution</a>&lt;<a href=MoleculeControlledTimeDistribution.html>T</a>&gt;
                     </pre>
                     <div class="block"><p>A special TimeDistribution that schedules the reaction after <a href=MoleculeControlledTimeDistribution.html#start>start</a>, according to the value of a <a href=MoleculeControlledTimeDistribution.html#molecule>molecule</a> which contains the delta time. If a <a href=MoleculeControlledTimeDistribution.html#property>property</a> is specified, the value to be interpreted as time delta is read from the incarnation. Otherwise, the <a href=MoleculeControlledTimeDistribution.html#node>node</a> is accessed directly for reading the value.</p><p>It's possible to associate an <a href=MoleculeControlledTimeDistribution.html#errorDistribution>errorDistribution</a> to this time distribution, whose samples will be used to shift the time samples.</p><p>There are some conditions to be satisfied:</p><ul><li><p><a href=MoleculeControlledTimeDistribution.html#molecule>molecule</a> must be modified exclusively by the reaction being scheduled</p></li><li><p><a href=MoleculeControlledTimeDistribution.html#molecule>molecule</a> must exist in the node. If it does not and the environment returns null, it is assumed to be zero</p></li><li><p><a href=MoleculeControlledTimeDistribution.html#molecule>molecule</a> must have a positive or zero value associated.</p></li><li><p><a href=MoleculeControlledTimeDistribution.html#molecule>molecule</a>'s concentration must have a type which is understandable as a positive number (<a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html>Number</a>, <a href=../Time.html>Time</a>, or a parse-able <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html>String</a>).</p></li><li><p>the <a href=MoleculeControlledTimeDistribution.html#errorDistribution>errorDistribution</a>'s samples plus the value of the <a href=MoleculeControlledTimeDistribution.html#molecule>molecule</a> concentration (or property value) must always be greater than zero. It is thus recommended to use an <a href=MoleculeControlledTimeDistribution.html#errorDistribution>errorDistribution</a> whose support lower bound is zero or greater</p></li></ul></div>
+
+                    <dl>
+
+                    
+
+                    
+
+                    </dl>
                 </li>
             </ul>
         </div>
@@ -522,8 +530,16 @@ extends <a href=AnyRealDistribution.html>AnyRealDistribution</a>&lt;<a href=Mole
                                         <h4>getNode</h4>
                                         <pre class="methodSignature"> final <a href=../Node.html>Node</a>&lt;<a href=MoleculeControlledTimeDistribution.html>T</a>&gt; <a href=MoleculeControlledTimeDistribution.html#getNode()>getNode</a>()</pre>
                                         <div class="block"></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -537,8 +553,16 @@ extends <a href=AnyRealDistribution.html>AnyRealDistribution</a>&lt;<a href=Mole
                                         <h4>getMolecule</h4>
                                         <pre class="methodSignature"> final <a href=../Molecule.html>Molecule</a> <a href=MoleculeControlledTimeDistribution.html#getMolecule()>getMolecule</a>()</pre>
                                         <div class="block"></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -552,8 +576,16 @@ extends <a href=AnyRealDistribution.html>AnyRealDistribution</a>&lt;<a href=Mole
                                         <h4>getProperty</h4>
                                         <pre class="methodSignature"> final <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html>String</a> <a href=MoleculeControlledTimeDistribution.html#getProperty()>getProperty</a>()</pre>
                                         <div class="block"></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -567,8 +599,16 @@ extends <a href=AnyRealDistribution.html>AnyRealDistribution</a>&lt;<a href=Mole
                                         <h4>getStart</h4>
                                         <pre class="methodSignature"> final <a href=../Time.html>Time</a> <a href=MoleculeControlledTimeDistribution.html#getStart()>getStart</a>()</pre>
                                         <div class="block"></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -582,8 +622,16 @@ extends <a href=AnyRealDistribution.html>AnyRealDistribution</a>&lt;<a href=Mole
                                         <h4>getErrorDistribution</h4>
                                         <pre class="methodSignature"> final <a href=https://javadoc.io/doc/org.apache.commons/commons-math3/3.6.1/org/apache/commons/math3/distribution/RealDistribution.html>RealDistribution</a> <a href=MoleculeControlledTimeDistribution.html#getErrorDistribution()>getErrorDistribution</a>()</pre>
                                         <div class="block"></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -597,8 +645,16 @@ extends <a href=AnyRealDistribution.html>AnyRealDistribution</a>&lt;<a href=Mole
                                         <h4>cloneOnNewNode</h4>
                                         <pre class="methodSignature"> <a href=MoleculeControlledTimeDistribution.html>MoleculeControlledTimeDistribution</a>&lt;<a href=MoleculeControlledTimeDistribution.html>T</a>&gt; <a href=MoleculeControlledTimeDistribution.html#cloneOnNewNode(it.unibo.alchemist.model.Node,it.unibo.alchemist.model.Time)>cloneOnNewNode</a>(<a href=../Node.html>Node</a>&lt;<a href=MoleculeControlledTimeDistribution.html>T</a>&gt; destination, <a href=../Time.html>Time</a> currentTime)</pre>
                                         <div class="block"></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 

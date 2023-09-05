@@ -141,6 +141,14 @@ public interface <span class="typeNameLabel"><a href=EnvironmentWithObstacles.ht
  implements <a href=EuclideanEnvironment.html>EuclideanEnvironment</a>&lt;<a href=EnvironmentWithObstacles.html>T</a>, <a href=EnvironmentWithObstacles.html>P</a>&gt;
                     </pre>
                     <div class="block"><p>An environment with <a href=Obstacle.html>Obstacle</a>s.</p></div>
+
+                    <dl>
+
+                    
+
+                    
+
+                    </dl>
                 </li>
             </ul>
         </div>
@@ -378,17 +386,23 @@ public interface <span class="typeNameLabel"><a href=EnvironmentWithObstacles.ht
                                         <h4>addObstacle</h4>
                                         <pre class="methodSignature"> abstract <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=EnvironmentWithObstacles.html#addObstacle(W)>addObstacle</a>(<a href=EnvironmentWithObstacles.html>W</a> obstacle)</pre>
                                         <div class="block"><p>Adds an obstacle to this environment.</p></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
                                             <dd><code>obstacle</code> - <pre><code>the obstacle to add</code></pre></dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -402,17 +416,26 @@ public interface <span class="typeNameLabel"><a href=EnvironmentWithObstacles.ht
                                         <h4>removeObstacle</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=EnvironmentWithObstacles.html#removeObstacle(W)>removeObstacle</a>(<a href=EnvironmentWithObstacles.html>W</a> obstacle)</pre>
                                         <div class="block"><p>Removes an obstacle from this environment.</p></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
                                             <dd><code>obstacle</code> - <pre><code>the obstacle to remove</code></pre></dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>true if the obstacle has actually been removed</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -426,8 +449,10 @@ public interface <span class="typeNameLabel"><a href=EnvironmentWithObstacles.ht
                                         <h4>intersectsObstacle</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Boolean.html>Boolean</a> <a href=EnvironmentWithObstacles.html#intersectsObstacle(P,P)>intersectsObstacle</a>(<a href=EnvironmentWithObstacles.html>P</a> start, <a href=EnvironmentWithObstacles.html>P</a> end)</pre>
                                         <div class="block"><p>Checks whether there is at least an obstacle intersecting the line connecting <a href=EnvironmentWithObstacles.html#intersectsObstacle(P,P)>start</a> and <a href=EnvironmentWithObstacles.html#intersectsObstacle(P,P)>end</a>.</p></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
@@ -438,9 +463,16 @@ public interface <span class="typeNameLabel"><a href=EnvironmentWithObstacles.ht
                                             <dd><code>end</code> - <pre><code>end position</code></pre></dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>true if the line connecting start and end touches an obstacle</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -454,8 +486,10 @@ public interface <span class="typeNameLabel"><a href=EnvironmentWithObstacles.ht
                                         <h4>next</h4>
                                         <pre class="methodSignature"> abstract <a href=EnvironmentWithObstacles.html>P</a> <a href=EnvironmentWithObstacles.html#next(P,P)>next</a>(<a href=EnvironmentWithObstacles.html>P</a> current, <a href=EnvironmentWithObstacles.html>P</a> desired)</pre>
                                         <div class="block"><p>This method must calculate the ABSOLUTE next allowed position given the current position and the position in which the node wants to move. For example, if your node is in position 2,3, wants to move to 3,4 but the next allowed position (because, e.g., of physical obstacles) is 2.5,3.5, the result must be a Position containing coordinates 2.5,3.5.</p></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
@@ -466,9 +500,16 @@ public interface <span class="typeNameLabel"><a href=EnvironmentWithObstacles.ht
                                             <dd><code>desired</code> - <pre><code>the desired position</code></pre></dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>the next allowed position, where the node can actually move. This position MUST be considered as a vector whose start point is <a href=EnvironmentWithObstacles.html#next(P,P)>current</a>.</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -482,8 +523,16 @@ public interface <span class="typeNameLabel"><a href=EnvironmentWithObstacles.ht
                                         <h4>getObstacles</h4>
                                         <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=EnvironmentWithObstacles.html>W</a>&gt; <a href=physics/environments/ImageEnvironment.html#getObstacles()>getObstacles</a>()</pre>
                                         <div class="block"><p>A list of all the obstacles in this environment.</p></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 

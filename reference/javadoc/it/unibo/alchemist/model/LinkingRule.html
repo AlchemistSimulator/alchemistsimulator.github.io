@@ -121,6 +121,14 @@ public interface <span class="typeNameLabel"><a href=LinkingRule.html>LinkingRul
  implements <a href=https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Serializable.html>Serializable</a>
                     </pre>
                     <div class="block"><p>An interface that represent an auto-linking logic for nodes within an environment.</p></div>
+
+                    <dl>
+
+                    
+
+                    
+
+                    </dl>
                 </li>
             </ul>
         </div>
@@ -310,8 +318,10 @@ public interface <span class="typeNameLabel"><a href=LinkingRule.html>LinkingRul
                                         <h4>computeNeighborhood</h4>
                                         <pre class="methodSignature"> abstract <a href=Neighborhood.html>Neighborhood</a>&lt;<a href=LinkingRule.html>T</a>&gt; <a href=linkingrules/AdaptiveRange.html#computeNeighborhood(it.unibo.alchemist.model.Node,it.unibo.alchemist.model.Environment)>computeNeighborhood</a>(<a href=Node.html>Node</a>&lt;<a href=LinkingRule.html>T</a>&gt; center, <a href=Environment.html>Environment</a>&lt;<a href=LinkingRule.html>T</a>, <a href=LinkingRule.html>P</a>&gt; environment)</pre>
                                         <div class="block"><p>Produces a new neighborhood for specified node considering its position.</p></div>
-                                        
+
                                         <dl>
+
+                                        
                                             <dt><span class="paramLabel">Parameters:</span></dt>
                                             
                                             
@@ -322,9 +332,16 @@ public interface <span class="typeNameLabel"><a href=LinkingRule.html>LinkingRul
                                             <dd><code>environment</code> - the node's environment</dd>
                                             
                                             
-                                        </dl>
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>a neighborhood</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
@@ -338,8 +355,19 @@ public interface <span class="typeNameLabel"><a href=LinkingRule.html>LinkingRul
                                         <h4>isLocallyConsistent</h4>
                                         <pre class="methodSignature"> abstract boolean <a href=linkingrules/NoLinks.html#isLocallyConsistent()>isLocallyConsistent</a>()</pre>
                                         <div class="block"><p>Some rules may require to be evaluated against multiple nodes until the situations gets consistent. For instance, a rule that connects the closest 10 nodes must be evaluated multiple times to get to the correct result (this is because a change in one neighbor may require a disconnection from another node to maintain exactly 10 connections). Most rules do not need such machinery (e.g., connecting to nodes within some statically defined range).</p></div>
+
+                                        <dl>
+
                                         
-                                        <!-- TODO missing return annotation -->
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>true if this rule does not need to be recursively re-applied to neighbors to ensure global consistency.</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
                                     </li>
                                 </ul>
                                 
