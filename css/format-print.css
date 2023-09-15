@@ -35,18 +35,14 @@ pre {
     padding-left: 0; /* for print, we want to align with the footer to ease the layout */
     padding-right: 0;
 }
-.navigation,
-#top-print-link,
-#top-github-link {
-    /* we don't need this while printing */
+#body .topbar-button {
+    /* we don't need the buttons while printing */
     display: none;
 }
-#body #breadcrumbs {
-    width: 100%;
-}
-#body #breadcrumbs .links {
-    overflow-x: hidden;
-    visibility: visible;
+@media screen and (max-width: 48rem) {
+    #body .topbar-breadcrumbs {
+        visibility: visible;
+    }
 }
 #body .copy-to-clipboard-button {
     display: none;
@@ -122,23 +118,15 @@ body,
     put as HTML into markdown */
     text-decoration-line: underline;
 }
-#toc-menu {
-    /* we don't need this while printing */
-    display: none;
-}
-#body #sidebar-toggle-span {
-    /* we don't need this while printing */
-    display: none;
-}
-#breadcrumbs .links {
-    display: inline;
-}
 #topbar{
     /* the header is sticky which is not suitable for print; */
     position: inherit; /* IE11 doesn't know "initial" here */
 }
 #topbar > div {
     background-color: rgba( 255, 255, 255, 1 ); /* IE11 doesn't know "initial" here */
+}
+#body .topbar-left {
+    border-width: 0;
 }
 .tags {
     display: none;

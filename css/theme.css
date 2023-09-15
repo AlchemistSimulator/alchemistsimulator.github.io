@@ -257,6 +257,27 @@ dd {
     padding: 0 1rem;
 }
 
+.footerFooter {
+    font-size: .8125rem;
+    padding-top: 2rem;
+    padding-bottom: .75rem;
+    text-align: center;
+}
+
+.footerFooter > * {
+    margin: 0 auto;
+}
+
+#footer > hr:first-child {
+    margin-top: 0;
+}
+
+/* increase specifity to override following #content-wrapper hr style */
+#footer > hr:nth-child(n) {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 #sidebar ul {
     list-style: none;
     padding: 0;
@@ -374,15 +395,15 @@ dd {
     }
 }
 
-.links a:hover,
-.links a:active,
-.links a:focus,
-.links a:hover *,
-.links a:active *,
-.links a:focus *,
-.toc-wrapper a:hover,
-.toc-wrapper a:active,
-.toc-wrapper a:focus,
+.topbar-breadcrumbs a:hover,
+.topbar-breadcrumbs a:active,
+.topbar-breadcrumbs a:focus,
+.topbar-breadcrumbs a:hover *,
+.topbar-breadcrumbs a:active *,
+.topbar-breadcrumbs a:focus *,
+.topbar-button-flyout a:hover,
+.topbar-button-flyout a:active,
+.topbar-button-flyout a:focus,
 article a:hover,
 article a:active,
 article a:focus {
@@ -955,101 +976,101 @@ td {
 }
 
 #topbar > div {
+    align-items: center;
     background-color: rgba( 134, 134, 134, .066 );
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: row;
     height: 100%;
 }
 
-.navigation,
-#top-print-link,
-#top-github-link {
-    display: block;
-    float: right;
-}
-html[dir="rtl"] .navigation,
-html[dir="rtl"] #top-print-link,
-html[dir="rtl"] #top-github-link {
-    float: left;
+.topbar-button {
+    display: inline-block;
+    position: relative;
 }
 
-.nav,
-.print-link,
-.github-link {
-    border-inline-start: thin solid rgba( 134, 134, 134, .333 );
+.topbar-button > .topbar-button-control {
+    display: inline-block;
     padding-left: 1rem;
     padding-right: 1rem;
 }
-html[dir="rtl"] .nav i {
-    transform: scaleX(-1);
+.topbar-left .topbar-button > .topbar-button-control {
+    border-inline-end: 1px solid rgba( 134, 134, 134, .333 );
 }
-span.nav i{
+.topbar-right .topbar-button > .topbar-button-control {
+    border-inline-start: 1px solid rgba( 134, 134, 134, .333 );
+}
+
+.topbar-button span i{
     color: rgba( 134, 134, 134, .333 );
 }
-
-.navigation,
-#top-print-link,
-#top-github-link {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+.topbar-button button{
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
 }
 
-#toc-menu{
-    cursor: pointer;
-}
-#toc-menu,
-#sidebar-toggle-span {
-    border-inline-end: thin solid rgba( 134, 134, 134, .333 );
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
-#body #breadcrumbs {
+.topbar-sidebar-divider {
     border-inline-start-style: solid;
     border-inline-start-width: 1px;
-    float: left;
-    height: auto;
-    line-height: 1.2;
-    margin-bottom: 0;
-    overflow: hidden;
-    position: relative;
-    text-overflow: ellipsis;
-    top: 50%;
-    transform: translateY(-50%);
-    white-space: nowrap;
-    width: calc(100% - 5*3.25rem);
+    margin-inline-end: -1px;
+    width: 1px;
 }
-html[dir="rtl"] #body #breadcrumbs {
-    float: right;
+.topbar-sidebar-divider::after {
+    content: "\00a0";
 }
 @media screen and (max-width: 48rem) {
-    #body #breadcrumbs {
+    .topbar-sidebar-divider {
         border-inline-start-color: transparent;
-        text-overflow: unset;
     }
 }
+.topbar-left {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+}
+.topbar-right {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+}
 
-#sidebar-toggle-span {
+html[dir="rtl"] .topbar-prev i,
+html[dir="rtl"] .topbar-next i {
+    transform: scaleX(-1);
+}
+.topbar-sidebar {
     display: none;
 }
-.progress {
-    inset-inline-start: 1rem;
-    top: 1rem;
-}
 @media screen and (max-width: 48rem) {
-    .mobile-support #sidebar-toggle-span {
-        display: inline;
-    }
-    .progress {
-        inset-inline-start: 4.25rem;
+    .mobile-support .topbar-sidebar {
+        display: inline-block;
     }
 }
 
-#body #breadcrumbs .links {
-    display: inline;
-    padding: 0 .75rem;
+.topbar-button-flyout {
+    top: .75rem;
+}
+.topbar-left .topbar-button-flyout {
+    inset-inline-start: 1.5rem;
+}
+.topbar-right .topbar-button-flyout {
+    inset-inline-end: 1.5rem;
+}
+
+.topbar-breadcrumbs {
+    flex-grow: 1;
+    line-height: 1.2;
+    margin: 0;
+    min-width: 0;
+    overflow: hidden;
+    padding: 0 1rem;
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
 }
 @media screen and (max-width: 48rem) {
-    #body #breadcrumbs .links {
+    .topbar-breadcrumbs {
         /* we just hide the breadcrumbs instead of display: none;
         this makes sure that the breadcrumbs are still usable for
         accessability */
@@ -1057,16 +1078,15 @@ html[dir="rtl"] #body #breadcrumbs {
     }
 }
 
-#body #breadcrumbs .links * {
-    display: inline-block;
-    padding: 0;
-}
-
-#body #breadcrumbs .links meta {
+.topbar-breadcrumbs meta {
     display: none;
 }
 
-#body #breadcrumbs .links li:last-of-type {
+.topbar-breadcrumbs li {
+    display: inline-block;
+}
+
+.topbar-breadcrumbs li:last-of-type {
     cursor: text;
 }
 
@@ -1115,10 +1135,11 @@ html[dir="rtl"] #body #breadcrumbs {
         margin-inline-start: 14.375rem;
         overflow: hidden;
     }
-    .mobile-support.sidebar-flyout #sidebar-overlay{
+    .mobile-support.sidebar-flyout #body-overlay{
         background-color: rgba( 134, 134, 134, .5 );
         bottom: 0;
         cursor: pointer;
+        height: 100vh;
         left: 0;
         position: absolute;
         right: 0;
@@ -1339,17 +1360,17 @@ html[dir="rtl"] .expand > .expand-label > i.fa-chevron-right {
 
 /* Table of contents */
 
-.toc-flyout #toc-overlay{
+.topbar-flyout #main-overlay{
     bottom: 0;
     cursor: pointer;
     left: 0;
     position: absolute;
     right: 0;
-    top: 0;
+    top: 3rem;
     z-index: 160;
 }
 
-.progress {
+.topbar-button-flyout {
     border: 0 solid rgba( 134, 134, 134, .166 );
     box-shadow: 1px 2px 5px 1px rgba( 134, 134, 134, .2 );
     height: 0;
@@ -1360,33 +1381,48 @@ html[dir="rtl"] .expand > .expand-label > i.fa-chevron-right {
     z-index: 180;
 }
 
-.toc-flyout .progress {
+.topbar-button.topbar-flyout .topbar-button-flyout {
     border-width: 1px;
     height: auto;
     opacity: 1;
     width: auto;
 }
 
-.progress .toc-wrapper {
+.topbar-button-flyout .topbar-button-flyout-wrapper {
     background-color: rgba( 134, 134, 134, .066 );
 }
 
-.progress ul {
+.topbar-button-flyout-wrapper {
+    --ps-rail-hover-color: rgba( 176, 176, 176, .25 );
+    max-height: 90vh;
+    overflow: hidden;
+    padding: 1rem 1rem;
+    position: relative; /* PS */
+}
+
+#TableOfContents,
+.TableOfContents {
+    font-size: .8125rem;
+}
+#TableOfContents ul,
+.TableOfContents ul {
     list-style: none;
     margin: 0;
     padding: 0 1rem;
 }
 
-#TableOfContents {
-    --ps-rail-hover-color: rgba( 176, 176, 176, .25 );
-    font-size: .8125rem !important;
-    max-height: 90vh;
-    overflow: hidden;
-    padding: 1rem .375rem !important;
-    position: relative; /* PS */
+#TableOfContents > ul,
+.TableOfContents > ul {
+    padding: 0;
 }
 
-#TableOfContents > ul > li > a {
+#TableOfContents li,
+.TableOfContents li {
+    white-space: nowrap;
+}
+
+#TableOfContents > ul > li > a,
+.TableOfContents > ul > li > a {
     font-weight: 500;
 }
 
@@ -1569,12 +1605,6 @@ html[dir="rtl"] .menu-control span {
 .showVisitedLinks,
 .showFooter {
     display: block;
-}
-
-@media screen and (max-width: 48rem) {
-    #breadcrumbs .links {
-        display: none;
-    }
 }
 
 /* clears the 'X' from Chrome's search input */
@@ -2070,6 +2100,7 @@ html[dir="rtl"] #sidebar ul.collapsible-menu > li > label > i.fa-chevron-right {
 }
 
 #header-topbar {
+    border-bottom-color: transparent;
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-inline-end-style: solid;
