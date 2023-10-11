@@ -35,7 +35,7 @@ var formelements = 'button, datalist, fieldset, input, label, legend, meter, opt
 var psc;
 var psm;
 var pst = new Map();
-var elc = document.querySelector('#body-inner');
+var elc = document.querySelector('#R-body-inner');
 
 function regexEscape( s ){
     return s.replace( /[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&' );
@@ -73,7 +73,7 @@ function adjustContentWidth(){
 function fixCodeTabs(){
     /* if only a single code block is contained in the tab and no style was selected, treat it like style=code */
     var codeTabContents = Array.from( document.querySelectorAll( '.tab-content.tab-panel-style' ) ).filter( function( tabContent ){
-        return tabContent.querySelector( '*:scope > .tab-content-text > div.highlight:only-child, *:scope > .tab-content-text > pre.pre-code:only-child');
+        return tabContent.querySelector( '*:scope > .tab-content-text > div.highlight:only-child, *:scope > .tab-content-text > pre:not(.mermaid).pre-code:only-child');
     });
 
     codeTabContents.forEach( function( tabContent ){
@@ -118,9 +118,9 @@ function switchTab(tabGroup, tabId) {
     allTabItems && allTabItems.forEach( function( e ){ e.classList.remove( 'active' ); });
     targetTabItems && targetTabItems.forEach( function( e ){ e.classList.add( 'active' ); });
 
-    initMermaid( true );
-
     if(isButtonEvent){
+      initMermaid( true );
+
       // reset screen to the same position relative to clicked button to prevent page jump
       var yposButtonDiff = event.target.getBoundingClientRect().top - yposButton;
       window.scrollTo(window.scrollX, window.scrollY+yposButtonDiff);
@@ -155,6 +155,9 @@ function restoreTabSelections() {
 }
 
 function initMermaid( update, attrs ) {
+    var doBeside = true;
+    var isImageRtl = false;
+
     // we are either in update or initialization mode;
     // during initialization, we want to edit the DOM;
     // during update we only want to execute if something changed
@@ -220,6 +223,18 @@ function initMermaid( update, attrs ) {
             }
             var new_element = document.createElement( 'div' );
             new_element.classList.add( 'mermaid-container' );
+            if( element.classList.contains( 'align-right' ) ){
+                new_element.classList.add( 'align-right' );
+                element.classList.remove( 'align-right' );
+            }
+            if( element.classList.contains( 'align-center' ) ){
+                new_element.classList.add( 'align-center' );
+                element.classList.remove( 'align-center' );
+            }
+            if( element.classList.contains( 'align-left' ) ){
+                new_element.classList.add( 'align-left' );
+                element.classList.remove( 'align-left' );
+            }
             new_element.innerHTML = '<div class="mermaid-code">' + graph + '</div>' + element.outerHTML;
             element.parentNode.replaceChild( new_element, element );
         });
@@ -296,18 +311,36 @@ function initMermaid( update, attrs ) {
     if( is_initialized ){
         mermaid.initialize( Object.assign( { "securityLevel": "antiscript", "startOnLoad": false }, window.relearn.mermaidConfig, { theme: attrs.theme } ) );
         mermaid.run({
-            postRenderCallback: function(){
+            postRenderCallback: function( id ){
                 // zoom for Mermaid
                 // https://github.com/mermaid-js/mermaid/issues/1860#issuecomment-1345440607
-                var svgs = d3.selectAll( '.mermaid.zoom svg' );
+                var svgs = d3.selectAll( 'body:not(.print) .mermaid.zoom > #' + id );
                 svgs.each( function(){
                     var svg = d3.select( this );
                     svg.html( '<g>' + svg.html() + '</g>' );
                     var inner = svg.select( 'g' );
                     var zoom = d3.zoom().on( 'zoom', function( e ){
-                        inner.attr( 'transform', e.transform);
+                        inner.attr( 'transform', e.transform );
                     });
                     svg.call( zoom );
+                    var parent = this.parentElement;
+                    // we need to copy the maxWidth, otherwise our reset button will not align in the upper right
+                    parent.style.maxWidth = this.style.maxWidth || this.getAttribute( 'width' );
+                    // if no unit is given for the width
+                    parent.style.maxWidth = parent.style.maxWidth || 'calc( ' + this.getAttribute( 'width' ) + 'px + 1rem )';
+                    parent.insertAdjacentHTML( 'beforeend', '<span class="svg-reset-button" title="' + window.T_Reset_view + '"><i class="fas fa-undo-alt"></i></span>' );
+                    var button = parent.querySelector( '.svg-reset-button' );
+                    button.addEventListener( 'click', function( event ){
+                        inner.transition()
+                            .duration( 350 )
+                            .call( zoom.transform, d3.zoomIdentity );
+                        this.setAttribute( 'aria-label', window.T_View_reset );
+                        this.classList.add( 'tooltipped', 'tooltipped-' + (doBeside ? 'w' : 's'+(isImageRtl?'e':'w')) );
+                    });
+                    button.addEventListener( 'mouseleave', function() {
+                        this.removeAttribute( 'aria-label' );
+                        this.classList.remove( 'tooltipped', 'tooltipped-w', 'tooltipped-se', 'tooltipped-sw' );
+                    });
                 });
             },
             querySelector: '.mermaid.mermaid-render',
@@ -356,7 +389,7 @@ function initOpenapi( update, attrs ){
     function renderOpenAPI(oc) {
         var buster = window.themeUseOpenapi.assetsBuster ? '?' + window.themeUseOpenapi.assetsBuster : '';
         var print = isPrint || attrs.isPrintPreview ? "PRINT-" : "";
-		var theme = print ? `${baseUri}/css/theme-relearn-light.css` : document.querySelector( '#variant-style' ).attributes.href.value
+		var theme = print ? `${baseUri}/css/theme-relearn-light.css` : document.querySelector( '#R-variant-style' ).attributes.href.value
         var swagger_theme = variants.getColorValue( print + 'OPENAPI-theme' );
         var swagger_code_theme = variants.getColorValue( print + 'OPENAPI-CODE-theme' );
 
@@ -432,7 +465,7 @@ function initOpenapi( update, attrs ){
                             activated: true,
                             theme: swagger_code_theme,
                         },
-                        url: oc.getAttribute('openapi-url'),
+                        url: oc.dataset.openapiUrl,
                         validatorUrl: 'none',
                     });
                 })
@@ -552,7 +585,7 @@ function initCodeClipboard(){
         var text = getCodeText( code );
         var inPre = code.parentNode.tagName.toLowerCase() == 'pre';
         var inTable = inPre &&
-           code.parentNode.parentNode.tagName.toLowerCase() == 'td';
+            code.parentNode.parentNode.tagName.toLowerCase() == 'td';
         // avoid copy-to-clipboard for highlight shortcode in table lineno mode
         var isFirstLineCell = inTable &&
             code.parentNode.parentNode.parentNode.querySelector( 'td:first-child > pre > code' ) == code;
@@ -569,18 +602,22 @@ function initCodeClipboard(){
 
             clip.on( 'success', function( e ){
                 e.clearSelection();
-                var doBeside = e.trigger.parentNode.tagName.toLowerCase() == 'pre' || (e.trigger.previousElementSibling && e.trigger.previousElementSibling.tagName.toLowerCase() == 'table' );
+                var inPre = e.trigger.previousElementSibling && e.trigger.previousElementSibling.tagName.toLowerCase() == 'pre';
+                var isCodeRtl = !inPre ? isRtl : false;
+                var doBeside = inPre || (e.trigger.previousElementSibling && e.trigger.previousElementSibling.tagName.toLowerCase() == 'table' );
                 e.trigger.setAttribute( 'aria-label', window.T_Copied_to_clipboard );
-                e.trigger.classList.add( 'tooltipped', 'tooltipped-' + (doBeside ? 'w' : 's'+(isRtl?'e':'w')) );
+                e.trigger.classList.add( 'tooltipped', 'tooltipped-' + (doBeside ? 'w' : 's'+(isCodeRtl?'e':'w')) );
             });
 
             clip.on( 'error', function( e ){
-                var doBeside = e.trigger.parentNode.tagName.toLowerCase() == 'pre' || (e.trigger.previousElementSibling && e.trigger.previousElementSibling.tagName.toLowerCase() == 'table' );
+                var inPre = e.trigger.previousElementSibling && e.trigger.previousElementSibling.tagName.toLowerCase() == 'pre';
+                var isCodeRtl = !inPre ? isRtl : false;
+                var doBeside = inPre || (e.trigger.previousElementSibling && e.trigger.previousElementSibling.tagName.toLowerCase() == 'table' );
                 e.trigger.setAttribute( 'aria-label', fallbackMessage(e.action) );
-                e.trigger.classList.add( 'tooltipped', 'tooltipped-' + (doBeside ? 'w' : 's'+(isRtl?'e':'w')) );
+                e.trigger.classList.add( 'tooltipped', 'tooltipped-' + (doBeside ? 'w' : 's'+(isCodeRtl?'e':'w')) );
                 var f = function(){
                     e.trigger.setAttribute( 'aria-label', window.T_Copied_to_clipboard );
-                    e.trigger.classList.add( 'tooltipped', 'tooltipped-' + (doBeside ? 'w' : 's'+(isRtl?'e':'w')) );
+                    e.trigger.classList.add( 'tooltipped', 'tooltipped-' + (doBeside ? 'w' : 's'+(isCodeRtl?'e':'w')) );
                     document.removeEventListener( 'copy', f );
                 };
                 document.addEventListener( 'copy', f );
@@ -602,7 +639,7 @@ function initCodeClipboard(){
             var button = document.createElement( 'span' );
             button.classList.add( 'copy-to-clipboard-button' );
             button.setAttribute( 'title', window.T_Copy_to_clipboard );
-            button.innerHTML = '<i class="fas fa-copy"></i>';
+            button.innerHTML = '<i class="far fa-copy"></i>';
             button.addEventListener( 'mouseleave', function() {
                 this.removeAttribute( 'aria-label' );
                 this.classList.remove( 'tooltipped', 'tooltipped-w', 'tooltipped-se', 'tooltipped-sw' );
@@ -652,7 +689,7 @@ function initArrowNav(){
     // keyboard navigation
     // avoid prev/next navigation if we are not at the start/end of the
     // horizontal area
-    var el = document.querySelector('#body-inner');
+    var el = document.querySelector('#R-body-inner');
     var scrollStart = 0;
     var scrollEnd = 0;
     document.addEventListener('keydown', function(event){
@@ -708,7 +745,7 @@ function initMenuScrollbar(){
         return;
     }
 
-    var elm = document.querySelector('#content-wrapper');
+    var elm = document.querySelector('#R-content-wrapper');
     var elt = document.querySelector('.topbar-button.topbar-flyout .topbar-content-wrapper');
 
     var autofocus = true;
@@ -747,7 +784,7 @@ function initMenuScrollbar(){
                 psm && psm.scrollbarY.focus();
             }
             else{
-                document.querySelector('#body-inner').focus();
+                document.querySelector('#R-body-inner').focus();
                 psc && psc.scrollbarY.focus();
             }
         }
@@ -755,8 +792,8 @@ function initMenuScrollbar(){
     // scrollbars will install their own keyboard handlers
     // that need to be executed inbetween our own handlers
     // PSC removed for #242 #243 #244
-    // psc = elc && new PerfectScrollbar('#body-inner');
-    psm = elm && new PerfectScrollbar('#content-wrapper');
+    // psc = elc && new PerfectScrollbar('#R-body-inner');
+    psm = elm && new PerfectScrollbar('#R-content-wrapper');
     document.querySelectorAll('.topbar-button .topbar-content-wrapper').forEach( function( e ){
         var button = getTopbarButtonParent( e );
         if( !button ){
@@ -790,7 +827,7 @@ function initMenuScrollbar(){
     });
     // now that we may have collapsible menus, we need to call a resize
     // for the menu scrollbar if sections are expanded/collapsed
-    document.querySelectorAll('#sidebar .collapsible-menu input').forEach( function(e){
+    document.querySelectorAll('#R-sidebar .collapsible-menu input').forEach( function(e){
         e.addEventListener('change', function(){
             psm && setTimeout( function(){ psm.update(); }, 10 );
         });
@@ -846,7 +883,7 @@ function printShortcutHandler( event ){
 }
 
 function showSearch(){
-    var s = document.querySelector( '#search-by' );
+    var s = document.querySelector( '#R-search-by' );
     if( !s ){
         return;
     }
@@ -870,7 +907,7 @@ function openNav(){
     b.classList.add( 'sidebar-flyout' );
     psm && setTimeout( function(){ psm.update(); }, 10 );
     psm && psm.scrollbarY.focus();
-    var a = document.querySelector( '#sidebar a' )
+    var a = document.querySelector( '#R-sidebar a' )
     if( a ){
         a.focus();
     }
@@ -1011,11 +1048,11 @@ function initToc(){
     document.addEventListener( 'keydown', navEscapeHandler );
     document.addEventListener( 'keydown', topbarFlyoutEscapeHandler );
 
-    var b = document.querySelector( '#body-overlay' );
+    var b = document.querySelector( '#R-body-overlay' );
     if( b ){
         b.addEventListener( 'click', closeNav );
     }
-    var m = document.querySelector( '#main-overlay' );
+    var m = document.querySelector( '#R-main-overlay' );
     if( m ){
         m.addEventListener( 'click', closeSomeTopbarButtonFlyout );
     }
@@ -1059,16 +1096,16 @@ function initSwipeHandler(){
         return false;
     };
 
-    var s = document.querySelector( '#body-overlay' );
+    var s = document.querySelector( '#R-body-overlay' );
     s && s.addEventListener("touchstart", handleStartX, false);
-    document.querySelector( '#sidebar' ).addEventListener("touchstart", handleStartX, false);
-    document.querySelectorAll( '#sidebar *' ).forEach( function(e){ e.addEventListener("touchstart", handleStartX); }, false);
+    document.querySelector( '#R-sidebar' ).addEventListener("touchstart", handleStartX, false);
+    document.querySelectorAll( '#R-sidebar *' ).forEach( function(e){ e.addEventListener("touchstart", handleStartX); }, false);
     s && s.addEventListener("touchmove", handleMoveX, false);
-    document.querySelector( '#sidebar' ).addEventListener("touchmove", handleMoveX, false);
-    document.querySelectorAll( '#sidebar *' ).forEach( function(e){ e.addEventListener("touchmove", handleMoveX); }, false);
+    document.querySelector( '#R-sidebar' ).addEventListener("touchmove", handleMoveX, false);
+    document.querySelectorAll( '#R-sidebar *' ).forEach( function(e){ e.addEventListener("touchmove", handleMoveX); }, false);
     s && s.addEventListener("touchend", handleEndX, false);
-    document.querySelector( '#sidebar' ).addEventListener("touchend", handleEndX, false);
-    document.querySelectorAll( '#sidebar *' ).forEach( function(e){ e.addEventListener("touchend", handleEndX); }, false);
+    document.querySelector( '#R-sidebar' ).addEventListener("touchend", handleEndX, false);
+    document.querySelectorAll( '#R-sidebar *' ).forEach( function(e){ e.addEventListener("touchend", handleEndX); }, false);
 }
 
 function initImage(){
@@ -1126,7 +1163,7 @@ function initScrollPositionSaver(){
 function scrollToPositions() {
     // show active menu entry
     window.setTimeout( function(){
-        var e = document.querySelector( '#sidebar li.active a' );
+        var e = document.querySelector( '#R-sidebar li.active a' );
         if( e && e.scrollIntoView ){
             e.scrollIntoView({
                 block: 'center',
@@ -1183,7 +1220,7 @@ function scrollToPositions() {
 
 function mark() {
 	// mark some additional stuff as searchable
-	var bodyInnerLinks = document.querySelectorAll( '#body-inner a:not(.lightbox-link):not(.btn):not(.lightbox-back)' );
+	var bodyInnerLinks = document.querySelectorAll( '#R-body-inner a:not(.lightbox-link):not(.btn):not(.lightbox-back)' );
 	for( var i = 0; i < bodyInnerLinks.length; i++ ){
 		bodyInnerLinks[i].classList.add( 'highlight' );
 	}
@@ -1435,7 +1472,7 @@ function useMermaid( config ){
     if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
         mermaid.initialize( Object.assign( { "securityLevel": "antiscript", "startOnLoad": false }, config ) );
         if( config.theme && variants ){
-            var write_style = variants.findLoadedStylesheet( 'variant-style' );
+            var write_style = variants.findLoadedStylesheet( 'R-variant-style' );
             write_style.setProperty( '--CONFIG-MERMAID-theme', config.theme );
         }
     }
@@ -1474,7 +1511,7 @@ ready( function(){
 
 (function(){
     var body = document.querySelector( 'body' );
-    var topbar = document.querySelector( '#topbar' );
+    var topbar = document.querySelector( '#R-topbar' );
     function addTopbarButtonInfos(){
         // initially add some management infos to buttons and areas
         var areas = body.querySelectorAll( '.topbar-area' );
@@ -1599,9 +1636,9 @@ ready( function(){
         moveTopbarButtons();
         adjustEmptyTopbarContents();
     }
-    var mqs = window.matchMedia( 'only screen and (max-width: 48rem)' );
+    var mqs = window.matchMedia( 'only screen and (max-width: 47.999rem)' );
     mqs.addEventListener( 'change', onWidthChange.bind( null, setWidthS ) );
-    var mqm = window.matchMedia( 'only screen and (min-width: 48rem) and (max-width: 60rem)' );
+    var mqm = window.matchMedia( 'only screen and (min-width: 48rem) and (max-width: 59.999rem)' );
     mqm.addEventListener( 'change', onWidthChange.bind( null, setWidthM ) );
     var mql = window.matchMedia( 'only screen and (min-width: 60rem)' );
     mql.addEventListener( 'change', onWidthChange.bind( null, setWidthL ) );
