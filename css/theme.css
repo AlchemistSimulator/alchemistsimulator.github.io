@@ -1175,6 +1175,12 @@ span > .copy-to-clipboard-button {
 div.highlight .copy-to-clipboard-button {
     display: none;
 }
+@media (any-hover: none) {
+    /* if there is at least one input device that does not support hover, we want to force the copy button */
+    div.highlight .copy-to-clipboard-button {
+        display: block;
+    }
+}
 div.highlight:hover .copy-to-clipboard-button {
     display: block;
 }
@@ -1352,6 +1358,12 @@ html[dir="rtl"] .expand > .expand-label > i.fa-chevron-right {
     position: absolute;
     right: 4px;
     top: 4px;
+}
+@media (any-hover: none) {
+    /* if there is at least one input device that does not support hover, we want to force the reset button */
+    .svg-reset-button.zoom {
+        display: block;
+    }
 }
 .mermaid:hover .svg-reset-button {
     display: block;
@@ -1539,6 +1551,12 @@ html[dir="rtl"] .expand > .expand-label > i.fa-chevron-right {
     position: absolute;
     visibility: hidden;
 }
+@media (any-hover: none) {
+    /* if there is at least one input device that does not support hover, we want to force the copy button */
+    .anchor {
+        visibility: visible;
+    }
+}
 
 h2:hover .anchor,
 h3:hover .anchor,
@@ -1700,7 +1718,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     width: 1px;
 }
 
-/* filament style for making action visible on focus - not adepted yet
+/* filament style for making action visible on focus - not adapted yet
 .a11y-only:focus {
     position: fixed;
     height: auto;
@@ -2051,6 +2069,14 @@ html[dir="rtl"] #R-sidebar ul.collapsible-menu > li > label > i.fa-chevron-right
     .columnize{
         column-count: 3;
     }
+}
+
+.columnize > *{
+    break-inside: avoid-column;
+}
+
+.columnize .breadcrumbs{
+    font-size: .859625rem;
 }
 
 #R-body .tab-panel{

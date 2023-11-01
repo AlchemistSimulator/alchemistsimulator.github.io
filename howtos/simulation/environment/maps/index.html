@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.119.0">
-    <meta name="generator" content="Relearn 5.22.1+tip">
+    <meta name="generator" content="Hugo 0.120.2">
+    <meta name="generator" content="Relearn 5.23.1+tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <meta name="twitter:card" content="summary">
@@ -17,20 +17,20 @@
     <meta property="og:site_name" content="Documentation for the Alchemist Simulator">
     <title>Maps and GPS traces :: Documentation for the Alchemist Simulator</title>
     <link href="../../../../howtos/simulation/environment/maps/index.xml" rel="alternate" type="application/rss+xml" title="Maps and GPS traces :: Documentation for the Alchemist Simulator">
-    <link href="../../../../images/logo.svg?1698332201" rel="icon" type="image/svg+xml">
+    <link href="../../../../images/logo.svg?1698850157" rel="icon" type="image/svg+xml">
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
-    <link href="../../../../css/fontawesome-all.min.css?1698332201" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/fontawesome-all.min.css?1698332201" rel="stylesheet"></noscript>
-    <link href="../../../../css/nucleus.css?1698332201" rel="stylesheet">
-    <link href="../../../../css/auto-complete.css?1698332201" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/auto-complete.css?1698332201" rel="stylesheet"></noscript>
-    <link href="../../../../css/perfect-scrollbar.min.css?1698332201" rel="stylesheet">
-    <link href="../../../../css/fonts.css?1698332201" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/fonts.css?1698332201" rel="stylesheet"></noscript>
-    <link href="../../../../css/theme.css?1698332201" rel="stylesheet">
-    <link href="../../../../css/theme-relearn.css?1698332201" rel="stylesheet" id="R-variant-style">
-    <link href="../../../../css/variant.css?1698332201" rel="stylesheet">
-    <link href="../../../../css/print.css?1698332201" rel="stylesheet" media="print">
-    <link href="../../../../css/ie.css?1698332201" rel="stylesheet">
-    <script src="../../../../js/url.js?1698332201"></script>
-    <script src="../../../../js/variant.js?1698332201"></script>
+    <link href="../../../../css/fontawesome-all.min.css?1698850157" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/fontawesome-all.min.css?1698850157" rel="stylesheet"></noscript>
+    <link href="../../../../css/nucleus.css?1698850157" rel="stylesheet">
+    <link href="../../../../css/auto-complete.css?1698850157" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/auto-complete.css?1698850157" rel="stylesheet"></noscript>
+    <link href="../../../../css/perfect-scrollbar.min.css?1698850157" rel="stylesheet">
+    <link href="../../../../css/fonts.css?1698850157" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/fonts.css?1698850157" rel="stylesheet"></noscript>
+    <link href="../../../../css/theme.css?1698850157" rel="stylesheet">
+    <link href="../../../../css/theme-relearn.css?1698850157" rel="stylesheet" id="R-variant-style">
+    <link href="../../../../css/variant.css?1698850157" rel="stylesheet">
+    <link href="../../../../css/print.css?1698850157" rel="stylesheet" media="print">
+    <link href="../../../../css/ie.css?1698850157" rel="stylesheet">
+    <script src="../../../../js/url.js?1698850157"></script>
+    <script src="../../../../js/variant.js?1698850157"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72""
@@ -136,22 +136,17 @@
 <hr>
 <p>Alchemist is equipped with the ability to load and simulate on real-world maps.
 Navigation on maps can be done by using gps traces,
-by moving along roads (Alchemist relies on 
-<a href="https://www.graphhopper.com/" target="_blank">GraphHopper</a> to provide directions),
+by moving along roads (Alchemist relies on <a href="https://www.graphhopper.com/" target="_blank">GraphHopper</a> to provide directions),
 by interpolating gps traces with on-the-road-movements,
 or by ignoring the map information and just move as you would in a continuous space.</p>
 <h2 id="setting-up-a-map-environment">Setting up a map environment</h2>
 <p>In order to run simulations on real world maps, an appropriate environment must be selected, such as
-
 <a href="../../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.maps.environments/-o-s-m-environment/"><code>OSMEnvironment</code></a>.</p>
 <p>If you need map data to perform <em>on-streets routing</em>,
 you need to feed it to the simulator.
-
 <a href="../../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.maps.environments/-o-s-m-environment/"><code>OSMEnvironment</code></a>
-supports 
-<a href="https://www.openstreetmap.org" target="_blank">OpenStreetMap</a> extracts in several formats,
+supports <a href="https://www.openstreetmap.org" target="_blank">OpenStreetMap</a> extracts in several formats,
 we recommend using the
-
 <a href="https://wiki.openstreetmap.org/wiki/PBF_Format" target="_blank">protocol buffer binary format (pbf)</a>
 to save time and space.</p>
 
@@ -160,13 +155,11 @@ to save time and space.</p>
   <div class="box-content">
 
 <p>It is likely that you do not need a simulation that requires navigation capabilities on
-
 <a href="https://planet.openstreetmap.org/" target="_blank">the whole planet</a>,
 especially considering that, even in binary format,
 it contains <strong>more than 50GB of data</strong>.
 We recommend thus to use an <strong>extract</strong> with the data relative to the area you are interested in simulating in.
-One great way to obtain an extract is through 
-<a href="https://extract.bbbike.org/" target="_blank"><strong>BBBike</strong></a>.</p>
+One great way to obtain an extract is through <a href="https://extract.bbbike.org/" target="_blank"><strong>BBBike</strong></a>.</p>
 <p>If you rely on their service, consider donating to the project.</p>
 </div>
 </div>
@@ -175,8 +168,7 @@ One great way to obtain an extract is through
   <div class="box-label"><i class="fa-fw fas fa-lightbulb"></i> Deploying nodes using GPS traces</div>
   <div class="box-content">
 
-<p>We prepared 
-<a href="../../../../howtos/simulation/deploy/gps/index.html">a dedicated page</a> on the argument</p>
+<p>We prepared <a href="../../../../howtos/simulation/deploy/gps/index.html">a dedicated page</a> on the argument</p>
 </div>
 </div>
 
@@ -184,8 +176,7 @@ One great way to obtain an extract is through
   <div class="box-label"><i class="fa-fw fas fa-lightbulb"></i> Navigate nodes in map environment</div>
   <div class="box-content">
 
-<p>We prepared 
-<a href="../../../../howtos/simulation/program/move-on-maps/index.html">a dedicated page</a> on the argument</p>
+<p>We prepared <a href="../../../../howtos/simulation/program/move-on-maps/index.html">a dedicated page</a> on the argument</p>
 </div>
 </div>
 
@@ -215,12 +206,12 @@ One great way to obtain an extract is through
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../../../../js/auto-complete.js?1698332203" defer></script>
-        <script src="../../../../js/lunr/lunr.min.js?1698332203" defer></script>
-        <script src="../../../../js/lunr/lunr.stemmer.support.min.js?1698332203" defer></script>
-        <script src="../../../../js/lunr/lunr.multi.min.js?1698332203" defer></script>
-        <script src="../../../../js/lunr/lunr.en.min.js?1698332203" defer></script>
-        <script src="../../../../js/search.js?1698332203" defer></script>
+        <script src="../../../../js/auto-complete.js?1698850159" defer></script>
+        <script src="../../../../js/lunr/lunr.min.js?1698850159" defer></script>
+        <script src="../../../../js/lunr/lunr.stemmer.support.min.js?1698850159" defer></script>
+        <script src="../../../../js/lunr/lunr.multi.min.js?1698850159" defer></script>
+        <script src="../../../../js/lunr/lunr.en.min.js?1698850159" defer></script>
+        <script src="../../../../js/search.js?1698850159" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -350,7 +341,7 @@ One great way to obtain an extract is through
             </ul>
           </div>
           <div id="R-footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 28.4.3-dev08+925a8f5ed</strong></div>
+    <div><strong>Alchemist Simulator 28.4.4-dev0s+656297dd1</strong></div>
     <br>
     <a
         class="github-button"
@@ -384,22 +375,22 @@ One great way to obtain an extract is through
         </div>
       </div>
     </aside>
-    <script src="../../../../js/clipboard.min.js?1698332203" defer></script>
-    <script src="../../../../js/perfect-scrollbar.min.js?1698332203" defer></script>
-    <script src="../../../../js/d3/d3-color.min.js?1698332203" defer></script>
-    <script src="../../../../js/d3/d3-dispatch.min.js?1698332203" defer></script>
-    <script src="../../../../js/d3/d3-drag.min.js?1698332203" defer></script>
-    <script src="../../../../js/d3/d3-ease.min.js?1698332203" defer></script>
-    <script src="../../../../js/d3/d3-interpolate.min.js?1698332203" defer></script>
-    <script src="../../../../js/d3/d3-selection.min.js?1698332203" defer></script>
-    <script src="../../../../js/d3/d3-timer.min.js?1698332203" defer></script>
-    <script src="../../../../js/d3/d3-transition.min.js?1698332203" defer></script>
-    <script src="../../../../js/d3/d3-zoom.min.js?1698332203" defer></script>
-    <script src="../../../../js/js-yaml.min.js?1698332203" defer></script>
-    <script src="../../../../js/mermaid.min.js?1698332203" defer></script>
+    <script src="../../../../js/clipboard.min.js?1698850159" defer></script>
+    <script src="../../../../js/perfect-scrollbar.min.js?1698850159" defer></script>
+    <script src="../../../../js/d3/d3-color.min.js?1698850159" defer></script>
+    <script src="../../../../js/d3/d3-dispatch.min.js?1698850159" defer></script>
+    <script src="../../../../js/d3/d3-drag.min.js?1698850159" defer></script>
+    <script src="../../../../js/d3/d3-ease.min.js?1698850159" defer></script>
+    <script src="../../../../js/d3/d3-interpolate.min.js?1698850159" defer></script>
+    <script src="../../../../js/d3/d3-selection.min.js?1698850159" defer></script>
+    <script src="../../../../js/d3/d3-timer.min.js?1698850159" defer></script>
+    <script src="../../../../js/d3/d3-transition.min.js?1698850159" defer></script>
+    <script src="../../../../js/d3/d3-zoom.min.js?1698850159" defer></script>
+    <script src="../../../../js/js-yaml.min.js?1698850159" defer></script>
+    <script src="../../../../js/mermaid.min.js?1698850159" defer></script>
     <script>
       window.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../../../js/theme.js?1698332203" defer></script>
+    <script src="../../../../js/theme.js?1698850159" defer></script>
   </body>
 </html>

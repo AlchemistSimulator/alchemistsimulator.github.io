@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.119.0">
-    <meta name="generator" content="Relearn 5.22.1+tip">
+    <meta name="generator" content="Hugo 0.120.2">
+    <meta name="generator" content="Relearn 5.23.1+tip">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <meta name="twitter:card" content="summary">
@@ -17,20 +17,20 @@
     <meta property="og:site_name" content="Documentation for the Alchemist Simulator">
     <title>Create a network :: Documentation for the Alchemist Simulator</title>
     <link href="../../../howtos/simulation/link/index.xml" rel="alternate" type="application/rss+xml" title="Create a network :: Documentation for the Alchemist Simulator">
-    <link href="../../../images/logo.svg?1698332201" rel="icon" type="image/svg+xml">
+    <link href="../../../images/logo.svg?1698850157" rel="icon" type="image/svg+xml">
     <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
-    <link href="../../../css/fontawesome-all.min.css?1698332201" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fontawesome-all.min.css?1698332201" rel="stylesheet"></noscript>
-    <link href="../../../css/nucleus.css?1698332201" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1698332201" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/auto-complete.css?1698332201" rel="stylesheet"></noscript>
-    <link href="../../../css/perfect-scrollbar.min.css?1698332201" rel="stylesheet">
-    <link href="../../../css/fonts.css?1698332201" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fonts.css?1698332201" rel="stylesheet"></noscript>
-    <link href="../../../css/theme.css?1698332201" rel="stylesheet">
-    <link href="../../../css/theme-relearn.css?1698332201" rel="stylesheet" id="R-variant-style">
-    <link href="../../../css/variant.css?1698332201" rel="stylesheet">
-    <link href="../../../css/print.css?1698332201" rel="stylesheet" media="print">
-    <link href="../../../css/ie.css?1698332201" rel="stylesheet">
-    <script src="../../../js/url.js?1698332201"></script>
-    <script src="../../../js/variant.js?1698332201"></script>
+    <link href="../../../css/fontawesome-all.min.css?1698850157" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fontawesome-all.min.css?1698850157" rel="stylesheet"></noscript>
+    <link href="../../../css/nucleus.css?1698850157" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1698850157" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/auto-complete.css?1698850157" rel="stylesheet"></noscript>
+    <link href="../../../css/perfect-scrollbar.min.css?1698850157" rel="stylesheet">
+    <link href="../../../css/fonts.css?1698850157" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fonts.css?1698850157" rel="stylesheet"></noscript>
+    <link href="../../../css/theme.css?1698850157" rel="stylesheet">
+    <link href="../../../css/theme-relearn.css?1698850157" rel="stylesheet" id="R-variant-style">
+    <link href="../../../css/variant.css?1698850157" rel="stylesheet">
+    <link href="../../../css/print.css?1698850157" rel="stylesheet" media="print">
+    <link href="../../../css/ie.css?1698850157" rel="stylesheet">
+    <script src="../../../js/url.js?1698850157"></script>
+    <script src="../../../js/variant.js?1698850157"></script>
     <script>
       // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
       // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72""
@@ -133,14 +133,11 @@
 <h1 id="create-a-network">Create a network</h1>
 
 <p>Alchemist nodes can connect to each other and form a network.</p>
-<p>The 
-<a href="../../../reference/yaml/index.html#network-model"><code>network-model</code></a> key is used to load the implementation of
-
+<p>The <a href="../../../reference/yaml/index.html#network-model"><code>network-model</code></a> key is used to load the implementation of
 <a href="../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-linking-rule/"><code>LinkingRule</code></a>
 to be used in the simulation,
 which determines the neighborhood of every node.</p>
-<p>The key is optional, but defaults to 
-<a href="../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.linkingrules/-no-links/"><code>NoLinks</code></a>,
+<p>The key is optional, but defaults to <a href="../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.linkingrules/-no-links/"><code>NoLinks</code></a>,
 so, if unspecified, nodes in the environment don&rsquo;t get connected.</p>
 <p>Omitting the key is equivalent to writing any of the following:</p>
 <div class="wrap-code highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
@@ -148,16 +145,13 @@ so, if unspecified, nodes in the environment don&rsquo;t get connected.</p>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: NoLinks
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: []</span></span></code></pre></div><h2 id="linking-nodes-based-on-their-respective-distance">Linking nodes based on their respective distance</h2>
 <p>One of the most common ways of linking nodes is to connect those which are close enough to each other.
-To do so, you can use 
-<a href="../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.linkingrules/-connect-within-distance/"><code>ConnectWithinDistance</code></a>,
+To do so, you can use <a href="../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.linkingrules/-connect-within-distance/"><code>ConnectWithinDistance</code></a>,
 passing a parameter representing the maximum connection distance.</p>
 <p>Note that such distance depends on the environment: while the definition of distance is straightforward for euclidean spaces,
-it&rsquo;s not so for 
-<a href="https://en.wikipedia.org/wiki/Riemannian_geometry" target="_blank">Riemannian manifolds</a>,
+it&rsquo;s not so for <a href="https://en.wikipedia.org/wiki/Riemannian_geometry" target="_blank">Riemannian manifolds</a>,
 which is a fancy name to define manifolds such as the one typical of a urban map
 (you can roughly interpret it as a euclidean space &ldquo;with holes&rdquo;).</p>
 <p>For instance, in case of environments using
-
 <a href="../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model/-geo-position/"><code>GeoPosition</code></a>, the distance is computed in meters, so the
 distance between <code>[44.133254, 12.237770]</code> and <code>[44.146680, 12.258627]</code> is about <code>2240</code> (meters).</p>
 <p>In the following example, nodes are connected when closer than a threshold:
@@ -222,12 +216,12 @@ function onClick(element) {
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../../../js/auto-complete.js?1698332203" defer></script>
-        <script src="../../../js/lunr/lunr.min.js?1698332203" defer></script>
-        <script src="../../../js/lunr/lunr.stemmer.support.min.js?1698332203" defer></script>
-        <script src="../../../js/lunr/lunr.multi.min.js?1698332203" defer></script>
-        <script src="../../../js/lunr/lunr.en.min.js?1698332203" defer></script>
-        <script src="../../../js/search.js?1698332203" defer></script>
+        <script src="../../../js/auto-complete.js?1698850159" defer></script>
+        <script src="../../../js/lunr/lunr.min.js?1698850159" defer></script>
+        <script src="../../../js/lunr/lunr.stemmer.support.min.js?1698850159" defer></script>
+        <script src="../../../js/lunr/lunr.multi.min.js?1698850159" defer></script>
+        <script src="../../../js/lunr/lunr.en.min.js?1698850159" defer></script>
+        <script src="../../../js/search.js?1698850159" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -357,7 +351,7 @@ function onClick(element) {
             </ul>
           </div>
           <div id="R-footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 28.4.3-dev08+925a8f5ed</strong></div>
+    <div><strong>Alchemist Simulator 28.4.4-dev0s+656297dd1</strong></div>
     <br>
     <a
         class="github-button"
@@ -391,22 +385,22 @@ function onClick(element) {
         </div>
       </div>
     </aside>
-    <script src="../../../js/clipboard.min.js?1698332203" defer></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1698332203" defer></script>
-    <script src="../../../js/d3/d3-color.min.js?1698332203" defer></script>
-    <script src="../../../js/d3/d3-dispatch.min.js?1698332203" defer></script>
-    <script src="../../../js/d3/d3-drag.min.js?1698332203" defer></script>
-    <script src="../../../js/d3/d3-ease.min.js?1698332203" defer></script>
-    <script src="../../../js/d3/d3-interpolate.min.js?1698332203" defer></script>
-    <script src="../../../js/d3/d3-selection.min.js?1698332203" defer></script>
-    <script src="../../../js/d3/d3-timer.min.js?1698332203" defer></script>
-    <script src="../../../js/d3/d3-transition.min.js?1698332203" defer></script>
-    <script src="../../../js/d3/d3-zoom.min.js?1698332203" defer></script>
-    <script src="../../../js/js-yaml.min.js?1698332203" defer></script>
-    <script src="../../../js/mermaid.min.js?1698332203" defer></script>
+    <script src="../../../js/clipboard.min.js?1698850159" defer></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1698850159" defer></script>
+    <script src="../../../js/d3/d3-color.min.js?1698850159" defer></script>
+    <script src="../../../js/d3/d3-dispatch.min.js?1698850159" defer></script>
+    <script src="../../../js/d3/d3-drag.min.js?1698850159" defer></script>
+    <script src="../../../js/d3/d3-ease.min.js?1698850159" defer></script>
+    <script src="../../../js/d3/d3-interpolate.min.js?1698850159" defer></script>
+    <script src="../../../js/d3/d3-selection.min.js?1698850159" defer></script>
+    <script src="../../../js/d3/d3-timer.min.js?1698850159" defer></script>
+    <script src="../../../js/d3/d3-transition.min.js?1698850159" defer></script>
+    <script src="../../../js/d3/d3-zoom.min.js?1698850159" defer></script>
+    <script src="../../../js/js-yaml.min.js?1698850159" defer></script>
+    <script src="../../../js/mermaid.min.js?1698850159" defer></script>
     <script>
       window.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../../js/theme.js?1698332203" defer></script>
+    <script src="../../../js/theme.js?1698850159" defer></script>
   </body>
 </html>
