@@ -599,38 +599,6 @@ function initCodeClipboard(){
             code.parentNode.parentNode.parentNode.querySelector( 'td:first-child > pre > code' ) == code;
 
         if( !isFirstLineCell && ( inPre || text.length > 5 ) ){
-            var clip = new ClipboardJS( '.copy-to-clipboard-button', {
-                text: function( trigger ){
-                    if( !trigger.previousElementSibling ){
-                        return '';
-                    }
-                    return trigger.previousElementSibling.dataset.code || '';
-                }
-            });
-
-            clip.on( 'success', function( e ){
-                e.clearSelection();
-                var inPre = e.trigger.previousElementSibling && e.trigger.previousElementSibling.tagName.toLowerCase() == 'pre';
-                var isCodeRtl = !inPre ? isRtl : false;
-                var doBeside = inPre || (e.trigger.previousElementSibling && e.trigger.previousElementSibling.tagName.toLowerCase() == 'table' );
-                e.trigger.setAttribute( 'aria-label', window.T_Copied_to_clipboard );
-                e.trigger.classList.add( 'tooltipped', 'tooltipped-' + (doBeside ? 'w' : 's'+(isCodeRtl?'e':'w')) );
-            });
-
-            clip.on( 'error', function( e ){
-                var inPre = e.trigger.previousElementSibling && e.trigger.previousElementSibling.tagName.toLowerCase() == 'pre';
-                var isCodeRtl = !inPre ? isRtl : false;
-                var doBeside = inPre || (e.trigger.previousElementSibling && e.trigger.previousElementSibling.tagName.toLowerCase() == 'table' );
-                e.trigger.setAttribute( 'aria-label', fallbackMessage(e.action) );
-                e.trigger.classList.add( 'tooltipped', 'tooltipped-' + (doBeside ? 'w' : 's'+(isCodeRtl?'e':'w')) );
-                var f = function(){
-                    e.trigger.setAttribute( 'aria-label', window.T_Copied_to_clipboard );
-                    e.trigger.classList.add( 'tooltipped', 'tooltipped-' + (doBeside ? 'w' : 's'+(isCodeRtl?'e':'w')) );
-                    document.removeEventListener( 'copy', f );
-                };
-                document.addEventListener( 'copy', f );
-            });
-
             code.classList.add( 'copy-to-clipboard-code' );
             if( inPre ){
                 code.classList.add( 'copy-to-clipboard' );
@@ -681,6 +649,38 @@ function initCodeClipboard(){
             }
         }
     }
+
+    var clip = new ClipboardJS( '.copy-to-clipboard-button', {
+        text: function( trigger ){
+            if( !trigger.previousElementSibling ){
+                return '';
+            }
+            return trigger.previousElementSibling.dataset.code || '';
+        }
+    });
+
+    clip.on( 'success', function( e ){
+        e.clearSelection();
+        var inPre = e.trigger.previousElementSibling && e.trigger.previousElementSibling.tagName.toLowerCase() == 'pre';
+        var isCodeRtl = !inPre ? isRtl : false;
+        var doBeside = inPre || (e.trigger.previousElementSibling && e.trigger.previousElementSibling.tagName.toLowerCase() == 'table' );
+        e.trigger.setAttribute( 'aria-label', window.T_Copied_to_clipboard );
+        e.trigger.classList.add( 'tooltipped', 'tooltipped-' + (doBeside ? 'w' : 's'+(isCodeRtl?'e':'w')) );
+    });
+
+    clip.on( 'error', function( e ){
+        var inPre = e.trigger.previousElementSibling && e.trigger.previousElementSibling.tagName.toLowerCase() == 'pre';
+        var isCodeRtl = !inPre ? isRtl : false;
+        var doBeside = inPre || (e.trigger.previousElementSibling && e.trigger.previousElementSibling.tagName.toLowerCase() == 'table' );
+        e.trigger.setAttribute( 'aria-label', fallbackMessage(e.action) );
+        e.trigger.classList.add( 'tooltipped', 'tooltipped-' + (doBeside ? 'w' : 's'+(isCodeRtl?'e':'w')) );
+        var f = function(){
+            e.trigger.setAttribute( 'aria-label', window.T_Copied_to_clipboard );
+            e.trigger.classList.add( 'tooltipped', 'tooltipped-' + (doBeside ? 'w' : 's'+(isCodeRtl?'e':'w')) );
+            document.removeEventListener( 'copy', f );
+        };
+        document.addEventListener( 'copy', f );
+    });
 }
 
 function initChroma( update ){
@@ -1087,7 +1087,6 @@ function initSwipeHandler(){
     var handleStartX = function(evt) {
         startx = evt.touches[0].clientX;
         starty = evt.touches[0].clientY;
-        return false;
     };
     var handleMoveX = function(evt) {
         if( startx !== null ){
@@ -1104,24 +1103,22 @@ function initSwipeHandler(){
                 closeNav();
             }
         }
-        return false;
     };
     var handleEndX = function(evt) {
         startx = null;
         starty = null;
-        return false;
     };
 
     var s = document.querySelector( '#R-body-overlay' );
-    s && s.addEventListener("touchstart", handleStartX, false);
-    document.querySelector( '#R-sidebar' ).addEventListener("touchstart", handleStartX, false);
-    document.querySelectorAll( '#R-sidebar *' ).forEach( function(e){ e.addEventListener("touchstart", handleStartX); }, false);
-    s && s.addEventListener("touchmove", handleMoveX, false);
-    document.querySelector( '#R-sidebar' ).addEventListener("touchmove", handleMoveX, false);
-    document.querySelectorAll( '#R-sidebar *' ).forEach( function(e){ e.addEventListener("touchmove", handleMoveX); }, false);
-    s && s.addEventListener("touchend", handleEndX, false);
-    document.querySelector( '#R-sidebar' ).addEventListener("touchend", handleEndX, false);
-    document.querySelectorAll( '#R-sidebar *' ).forEach( function(e){ e.addEventListener("touchend", handleEndX); }, false);
+    s && s.addEventListener("touchstart", handleStartX, { capture: false, passive: true});
+    document.querySelector( '#R-sidebar' ).addEventListener("touchstart", handleStartX, { capture: false, passive: true});
+    document.querySelectorAll( '#R-sidebar *' ).forEach( function(e){ e.addEventListener("touchstart", handleStartX, { capture: false, passive: true}) });
+    s && s.addEventListener("touchmove", handleMoveX, { capture: false, passive: true});
+    document.querySelector( '#R-sidebar' ).addEventListener("touchmove", handleMoveX, { capture: false, passive: true});
+    document.querySelectorAll( '#R-sidebar *' ).forEach( function(e){ e.addEventListener("touchmove", handleMoveX, { capture: false, passive: true}) });
+    s && s.addEventListener("touchend", handleEndX, { capture: false, passive: true});
+    document.querySelector( '#R-sidebar' ).addEventListener("touchend", handleEndX, { capture: false, passive: true});
+    document.querySelectorAll( '#R-sidebar *' ).forEach( function(e){ e.addEventListener("touchend", handleEndX, { capture: false, passive: true}) });
 }
 
 function initImage(){
