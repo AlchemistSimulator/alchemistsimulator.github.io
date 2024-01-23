@@ -1,0 +1,231 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>GraphQLServer</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            alchemist
+                    </a>            </div>
+            <div class="library-version">29.5.2-dev04+666928190
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-graphql:dokkaHtmlPartial/jvmMain">jvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-graphql::it.unibo.alchemist.boundary.launchers/GraphQLServer///PointingToDeclaration//-1746230433">
+  <div class="breadcrumbs"><a href="../../index.html">alchemist-graphql</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.boundary.launchers</a><span class="delimiter">/</span><span class="current">GraphQLServer</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Graph</span><wbr><span><span>QLServer</span></span></h1>
+    <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-active="" data-toggle=":alchemist-graphql:dokkaHtmlPartial/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-graphql:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">GraphQLServer</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">P</a><span class="token operator"> : </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-position/index.html">Position</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span>&nbsp;<span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>environment<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>host<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>DefaultGraphQLSettings.DEFAULT_HOST<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>port<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>DefaultGraphQLSettings.DEFAULT_PORT<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>teardownOnSimulationTermination<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">serverDispatcher<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineDispatcher///PointingToDeclaration/">CoroutineDispatcher</span><span class="token operator"> = </span>Dispatchers.Default</span></span><span class="token punctuation">)</span> : <a href="../../../alchemist-api/it.unibo.alchemist.boundary/-output-monitor/index.html">OutputMonitor</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing.html">Nothing</a><span class="token operator">&gt; </span></div><p class="paragraph">An <a href="../../../alchemist-api/it.unibo.alchemist.boundary/-output-monitor/index.html">OutputMonitor</a> observing the <a href="environment.html">environment</a> through a GraphQL server listening on <a href="host.html">host</a>:<a href="port.html">port</a>. The server is started in a new coroutine on the <a href="../../../alchemist-graphql/it.unibo.alchemist.boundary.launchers/-graph-q-l-server/server-dispatcher.html">serverDispatcher</a> dispatcher. By default, the server is stopped after the simulation terminates. This behavior can be changed by setting <a href="teardown-on-simulation-termination.html">teardownOnSimulationTermination</a> to false.</p></div>    </div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-1088348492%2FConstructors%2F-1746230433" anchor-label="GraphQLServer" id="-1088348492%2FConstructors%2F-1746230433" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-graph-q-l-server.html"><span>Graph</span><wbr><span><span>QLServer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1088348492%2FConstructors%2F-1746230433"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-active="" data-toggle=":alchemist-graphql:dokkaHtmlPartial/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-graphql:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">host<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>DefaultGraphQLSettings.DEFAULT_HOST<span class="token punctuation">, </span></span><span class="parameter ">port<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>DefaultGraphQLSettings.DEFAULT_PORT<span class="token punctuation">, </span></span><span class="parameter ">teardownOnSimulationTermination<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">serverDispatcher<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineDispatcher///PointingToDeclaration/">CoroutineDispatcher</span><span class="token operator"> = </span>Dispatchers.Default</span></span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1532887485%2FProperties%2F-1746230433" anchor-label="environment" id="1532887485%2FProperties%2F-1746230433" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="environment.html"><span><span>environment</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1532887485%2FProperties%2F-1746230433"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-active="" data-toggle=":alchemist-graphql:dokkaHtmlPartial/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-graphql:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="environment.html">environment</a><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">P</a><span class="token operator">&gt;</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-147043902%2FProperties%2F-1746230433" anchor-label="host" id="-147043902%2FProperties%2F-1746230433" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="host.html"><span><span>host</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-147043902%2FProperties%2F-1746230433"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-active="" data-toggle=":alchemist-graphql:dokkaHtmlPartial/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-graphql:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="host.html">host</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="141188361%2FProperties%2F-1746230433" anchor-label="port" id="141188361%2FProperties%2F-1746230433" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="port.html"><span><span>port</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="141188361%2FProperties%2F-1746230433"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-active="" data-toggle=":alchemist-graphql:dokkaHtmlPartial/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-graphql:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="port.html">port</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-14797066%2FProperties%2F-1746230433" anchor-label="teardownOnSimulationTermination" id="-14797066%2FProperties%2F-1746230433" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="teardown-on-simulation-termination.html"><span>teardown</span><wbr><span>On</span><wbr><span>Simulation</span><wbr><span><span>Termination</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-14797066%2FProperties%2F-1746230433"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-active="" data-toggle=":alchemist-graphql:dokkaHtmlPartial/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-graphql:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="teardown-on-simulation-termination.html">teardownOnSimulationTermination</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="318378616%2FFunctions%2F-1746230433" anchor-label="finished" id="318378616%2FFunctions%2F-1746230433" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="finished.html"><span><span>finished</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="318378616%2FFunctions%2F-1746230433"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-active="" data-toggle=":alchemist-graphql:dokkaHtmlPartial/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-graphql:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="finished.html"><span class="token function">finished</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing.html">Nothing</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">time<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-time/index.html">Time</a><span class="token punctuation">, </span></span><span class="parameter ">step<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-271763591%2FFunctions%2F-1746230433" anchor-label="initialized" id="-271763591%2FFunctions%2F-1746230433" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initialized.html"><span><span>initialized</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-271763591%2FFunctions%2F-1746230433"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-active="" data-toggle=":alchemist-graphql:dokkaHtmlPartial/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-graphql:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="initialized.html"><span class="token function">initialized</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing.html">Nothing</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-958961934%2FFunctions%2F-1746230433" anchor-label="stepDone" id="-958961934%2FFunctions%2F-1746230433" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-958961934%2FFunctions%2F-1746230433"><span>step</span><wbr><span><span>Done</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-958961934%2FFunctions%2F-1746230433"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-filterable-set=":alchemist-graphql:dokkaHtmlPartial/jvmMain" data-active="" data-toggle=":alchemist-graphql:dokkaHtmlPartial/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-graphql:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="index.html#-958961934%2FFunctions%2F-1746230433"><span class="token function">stepDone</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p0<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing.html">Nothing</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-actionable/index.html">Actionable</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">p2<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-time/index.html">Time</a><span class="token punctuation">, </span></span><span class="parameter ">p3<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

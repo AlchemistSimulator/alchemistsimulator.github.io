@@ -120,7 +120,7 @@ var pathtoroot = "../../../../";
 public interface <span class="typeNameLabel"><a href=Loader.html>Loader</a></span>
  implements <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Serializable.html>Serializable</a>
                     </pre>
-                    <div class="block"><p>An entity which is able to produce an Alchemist <a href=InitializedEnvironment.html>InitializedEnvironment</a>, resolving user defined variable values.</p></div>
+                    <div class="block"><p>An entity which is able to produce an Alchemist <a href=../core/Simulation.html>Simulation</a>, resolving user defined variable values.</p></div>
 
                     <dl>
 
@@ -249,7 +249,7 @@ public interface <span class="typeNameLabel"><a href=Loader.html>Loader</a></spa
                                         </tr>
                                         
                                         <tr id="i0" class="altColor">
-                                            <td class="colFirst"><code>&lt;T, P extends <a href=../model/Position.html>Position</a>&lt;<a href=Loader.html#getDefault()>P</a>&gt;&gt; <a href=InitializedEnvironment.html>InitializedEnvironment</a>&lt;<a href=Loader.html#getDefault()>T</a>, <a href=Loader.html#getDefault()>P</a>&gt;</code>
+                                            <td class="colFirst"><code>&lt;T extends <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html>Any</a>, P extends <a href=../model/Position.html>Position</a>&lt;<a href=Loader.html#getDefault()>P</a>&gt;&gt; <a href=../core/Simulation.html>Simulation</a>&lt;<a href=Loader.html#getDefault()>T</a>, <a href=Loader.html#getDefault()>P</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Loader.html#getDefault()>getDefault</a>() </code>
                                             </th>
@@ -257,30 +257,22 @@ public interface <span class="typeNameLabel"><a href=Loader.html>Loader</a></spa
                                         </tr>
                                         
                                         <tr id="i1" class="rowColor">
-                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html>String</a>, <a href=DependentVariable.html>DependentVariable</a>&lt;out <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html>Object</a>&gt;&gt;</code>
+                                            <td class="colFirst"><code>abstract &lt;T extends <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html>Any</a>, P extends <a href=../model/Position.html>Position</a>&lt;<a href=Loader.html#getWith(java.util.Map)>P</a>&gt;&gt; <a href=../core/Simulation.html>Simulation</a>&lt;<a href=Loader.html#getWith(java.util.Map)>T</a>, <a href=Loader.html#getWith(java.util.Map)>P</a>&gt;</code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Loader.html#getDependentVariables()>getDependentVariables</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=Loader.html#getWith(java.util.Map)>getWith</a>(<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html>String</a>, ?&gt; values) </code>
                                             </th>
-                                            <td class="colLast">Allows to access the currently defined dependent variable (those variables whose value can be determined given a valid set of values for the free variables).</td>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         <tr id="i2" class="altColor">
-                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html>String</a>, <a href=Variable.html>Variable</a>&lt;out <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html>Object</a>&gt;&gt;</code>
+                                            <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=Loader.html#getVariables()>getVariables</a>() </code>
+                                            <th class="colSecond" scope="row"><code><a href=Loader.html#launch(it.unibo.alchemist.boundary.Launcher)>launch</a>(<a href=Launcher.html>Launcher</a> launcher) </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Launches the simulations as configured by this loader.</td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
-                                            <td class="colFirst"><code>abstract &lt;T, P extends <a href=../model/Position.html>Position</a>&lt;<a href=Loader.html#getWith(java.util.Map)>P</a>&gt;&gt; <a href=InitializedEnvironment.html>InitializedEnvironment</a>&lt;<a href=Loader.html#getWith(java.util.Map)>T</a>, <a href=Loader.html#getWith(java.util.Map)>P</a>&gt;</code>
-                                            </td>
-                                            <th class="colSecond" scope="row"><code><a href=Loader.html#getWith(java.util.Map)>getWith</a>(<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html>String</a>, out <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html>Object</a>&gt; values) </code>
-                                            </th>
-                                            <td class="colLast"></td>
-                                        </tr>
-                                        
-                                        <tr id="i4" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html>String</a>, <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html>Object</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Loader.html#getConstants()>getConstants</a>() </code>
@@ -288,7 +280,7 @@ public interface <span class="typeNameLabel"><a href=Loader.html>Loader</a></spa
                                             <td class="colLast">Allows to access the currently defined constants, namely variables defined in the simulation file whose value is constant and does not depend on the value of any free variable (directly or indirectly).</td>
                                         </tr>
                                         
-                                        <tr id="i5" class="rowColor">
+                                        <tr id="i4" class="altColor">
                                             <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html>List</a>&lt;<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html>String</a>&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Loader.html#getRemoteDependencies()>getRemoteDependencies</a>() </code>
@@ -296,12 +288,28 @@ public interface <span class="typeNameLabel"><a href=Loader.html>Loader</a></spa
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i6" class="altColor">
+                                        <tr id="i5" class="rowColor">
                                             <td class="colFirst"><code>abstract <a href=Launcher.html>Launcher</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=Loader.html#getLauncher()>getLauncher</a>() </code>
                                             </th>
-                                            <td class="colLast">Returns launcher to be used in the simulation.</td>
+                                            <td class="colLast">Returns the launcher to be used in to manage the simulation lifecycle.</td>
+                                        </tr>
+                                        
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html>String</a>, <a href=DependentVariable.html>DependentVariable</a>&lt;?&gt;&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Loader.html#getDependentVariables()>getDependentVariables</a>() </code>
+                                            </th>
+                                            <td class="colLast">Allows to access the currently defined dependent variable (those variables whose value can be determined given a valid set of values for the free variables).</td>
+                                        </tr>
+                                        
+                                        <tr id="i7" class="rowColor">
+                                            <td class="colFirst"><code>abstract <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html>String</a>, <a href=Variable.html>Variable</a>&lt;?&gt;&gt;</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=Loader.html#getVariables()>getVariables</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
                                         </tr>
                                         
                                         </tbody>
@@ -356,7 +364,7 @@ public interface <span class="typeNameLabel"><a href=Loader.html>Loader</a></spa
                                           >
                                     <li class="blockList">
                                         <h4>getDefault</h4>
-                                        <pre class="methodSignature"> &lt;T, P extends <a href=../model/Position.html>Position</a>&lt;<a href=Loader.html#getDefault()>P</a>&gt;&gt; <a href=InitializedEnvironment.html>InitializedEnvironment</a>&lt;<a href=Loader.html#getDefault()>T</a>, <a href=Loader.html#getDefault()>P</a>&gt; <a href=Loader.html#getDefault()>getDefault</a>()</pre>
+                                        <pre class="methodSignature"> &lt;T extends <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html>Any</a>, P extends <a href=../model/Position.html>Position</a>&lt;<a href=Loader.html#getDefault()>P</a>&gt;&gt; <a href=../core/Simulation.html>Simulation</a>&lt;<a href=Loader.html#getDefault()>T</a>, <a href=Loader.html#getDefault()>P</a>&gt; <a href=Loader.html#getDefault()>getDefault</a>()</pre>
                                         <div class="block"></div>
 
                                         <dl>
@@ -365,59 +373,7 @@ public interface <span class="typeNameLabel"><a href=Loader.html>Loader</a></spa
 
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>an <a href=InitializedEnvironment.html>InitializedEnvironment</a> with all the variables set at their default values</p></dd>
-                                        
-
-                                        
-
-                                        </dl>
-                                    </li>
-                                </ul>
-                                
-                                <a id="getDependentVariables()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>getDependentVariables</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html>String</a>, <a href=DependentVariable.html>DependentVariable</a>&lt;out <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html>Object</a>&gt;&gt; <a href=Loader.html#getDependentVariables()>getDependentVariables</a>()</pre>
-                                        <div class="block"><p>Allows to access the currently defined dependent variable (those variables whose value can be determined given a valid set of values for the free variables).</p></div>
-
-                                        <dl>
-
-                                        
-
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>a <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a> between variable names and their actual representation</p></dd>
-                                        
-
-                                        
-
-                                        </dl>
-                                    </li>
-                                </ul>
-                                
-                                <a id="getVariables()">
-                                    <!--   -->
-                                </a>
-                                <ul class=
-                                              "blockList"
-                                          >
-                                    <li class="blockList">
-                                        <h4>getVariables</h4>
-                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html>String</a>, <a href=Variable.html>Variable</a>&lt;out <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html>Object</a>&gt;&gt; <a href=Loader.html#getVariables()>getVariables</a>()</pre>
-                                        <div class="block"></div>
-
-                                        <dl>
-
-                                        
-
-                                        
-                                            <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>a <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a> between variable names and their actual representation</p></dd>
+                                            <dd><p>an <a href=../core/Simulation.html>Simulation</a> with all the variables set at their default values &lt;/P&gt;&lt;/T&gt;</p></dd>
                                         
 
                                         
@@ -434,7 +390,7 @@ public interface <span class="typeNameLabel"><a href=Loader.html>Loader</a></spa
                                           >
                                     <li class="blockList">
                                         <h4>getWith</h4>
-                                        <pre class="methodSignature"> abstract &lt;T, P extends <a href=../model/Position.html>Position</a>&lt;<a href=Loader.html#getWith(java.util.Map)>P</a>&gt;&gt; <a href=InitializedEnvironment.html>InitializedEnvironment</a>&lt;<a href=Loader.html#getWith(java.util.Map)>T</a>, <a href=Loader.html#getWith(java.util.Map)>P</a>&gt; <a href=Loader.html#getWith(java.util.Map)>getWith</a>(<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html>String</a>, out <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html>Object</a>&gt; values)</pre>
+                                        <pre class="methodSignature"> abstract &lt;T extends <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html>Any</a>, P extends <a href=../model/Position.html>Position</a>&lt;<a href=Loader.html#getWith(java.util.Map)>P</a>&gt;&gt; <a href=../core/Simulation.html>Simulation</a>&lt;<a href=Loader.html#getWith(java.util.Map)>T</a>, <a href=Loader.html#getWith(java.util.Map)>P</a>&gt; <a href=Loader.html#getWith(java.util.Map)>getWith</a>(<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html>String</a>, ?&gt; values)</pre>
                                         <div class="block"></div>
 
                                         <dl>
@@ -450,7 +406,37 @@ public interface <span class="typeNameLabel"><a href=Loader.html>Loader</a></spa
 
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>an <a href=InitializedEnvironment.html>InitializedEnvironment</a> with all the variables set at the specified values. If the value is unspecified, the default is used instead</p></dd>
+                                            <dd><p>an <a href=../core/Simulation.html>Simulation</a> with all the variables set at the specified values. If the value is unspecified, the default is used instead &lt;/P&gt;&lt;/T&gt;</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="launch(it.unibo.alchemist.boundary.Launcher)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>launch</h4>
+                                        <pre class="methodSignature"> <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html>Unit</a> <a href=Loader.html#launch(it.unibo.alchemist.boundary.Launcher)>launch</a>(<a href=Launcher.html>Launcher</a> launcher)</pre>
+                                        <div class="block"><p>Launches the simulations as configured by this loader. A custom <a href=Loader.html#launch(it.unibo.alchemist.boundary.Launcher)>launcher</a> can be provided. Blocking, returns when all simulations are completed.</p></div>
+
+                                        <dl>
+
+                                        
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>launcher</code> - the launcher to be used</dd>
+                                            
+                                            
+                                        
+
                                         
 
                                         
@@ -476,7 +462,7 @@ public interface <span class="typeNameLabel"><a href=Loader.html>Loader</a></spa
 
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>a <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a> between variable names and their computed value</p></dd>
+                                            <dd><p>a <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html>Map</a> between variable names and their computed value</p></dd>
                                         
 
                                         
@@ -502,7 +488,7 @@ public interface <span class="typeNameLabel"><a href=Loader.html>Loader</a></spa
 
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
-                                            <dd><p>dependencies files</p></dd>
+                                            <dd><p>remote dependencies files</p></dd>
                                         
 
                                         
@@ -515,12 +501,12 @@ public interface <span class="typeNameLabel"><a href=Loader.html>Loader</a></spa
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getLauncher</h4>
                                         <pre class="methodSignature"> abstract <a href=Launcher.html>Launcher</a> <a href=Loader.html#getLauncher()>getLauncher</a>()</pre>
-                                        <div class="block"><p>Returns launcher to be used in the simulation.</p></div>
+                                        <div class="block"><p>Returns the launcher to be used in to manage the simulation lifecycle.</p></div>
 
                                         <dl>
 
@@ -529,6 +515,58 @@ public interface <span class="typeNameLabel"><a href=Loader.html>Loader</a></spa
                                         
                                             <dt><span class="returnLabel">Returns:</span></dt>
                                             <dd><p>launcher</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getDependentVariables()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getDependentVariables</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html>String</a>, <a href=DependentVariable.html>DependentVariable</a>&lt;?&gt;&gt; <a href=Loader.html#getDependentVariables()>getDependentVariables</a>()</pre>
+                                        <div class="block"><p>Allows to access the currently defined dependent variable (those variables whose value can be determined given a valid set of values for the free variables).</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>a <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html>Map</a> between variable names and their actual representation</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getVariables()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getVariables</h4>
+                                        <pre class="methodSignature"> abstract <a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html>Map</a>&lt;<a href=https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html>String</a>, <a href=Variable.html>Variable</a>&lt;?&gt;&gt; <a href=Loader.html#getVariables()>getVariables</a>()</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>a <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html>Map</a> between variable names and their actual representation</p></dd>
                                         
 
                                         
