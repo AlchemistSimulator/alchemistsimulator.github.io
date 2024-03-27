@@ -1,4 +1,4 @@
-[
+var relearn_search_index = [
   {
     "breadcrumb": "The Alchemist Simulator \u003e How-to Guides \u003e Simulation",
     "content": "Declaring variables The variables section lists variable simulation values. A variable defines some kind of value that can be referenced in the simulation file.\nThere are two kinds of variables: free and dependent variables. Free variables are meant to provide support for running batches of simulations with varying parameters; dependent variables are either single valued or can be computed from the values of other variables (free or dependent), and they are designed to simplify the simulation code.\nFree variables Free variables define a set of values and a default. Their main scope is enabling Alchemist to run a set of simulations with different parameters (values of variables) without the need to duplicate the simulation code. When used in this mode (called “batch mode”), Alchemist by default produces the cartesian product of all the variables values’ selected for the batch, and runs a simulation for each combination. If the simulation is not executed as batch, then the default value is used.\nLinear variables A variable generating values in a range, starting from a minimum value, and increasing by some step. Represented by LinearVariable.\nExamples Click to show / hide code incarnation: sapere variables: myvar: \u0026myvar type: LinearVariable parameters: [0, 0, 1, 0.2] Click to show / hide code incarnation: sapere variables: rate: \u0026rate type: GeometricVariable parameters: [2, 0.1, 10, 9] size: \u0026size type: LinearVariable parameters: [5, 1, 10, 1] mSize: \u0026mSize formula: -size sourceStart: \u0026sourceStart formula: mSize / 10 sourceSize: \u0026sourceSize formula: size / 5 network-model: type: ConnectWithinDistance parameters: [0.5] _send: \u0026grad - time-distribution: *rate program: \"{token, N, L} --\u003e {token, N, L} *{token, N+#D, L add [#NODE;]}\" - program: \u003e {token, N, L}{token, def: N2\u003e=N, L2} --\u003e {token, N, L} deployments: type: Grid parameters: [*mSize, *mSize, *size, *size, 0.25, 0.25, 0.1, 0.1] contents: type: Rectangle parameters: [*sourceStart, *sourceStart, *sourceSize, *sourceSize] molecule: token, 0, [] programs: *grad Click to show / hide code incarnation: protelis variables: zoom: \u0026zoom formula: 0.1 # Must be a valid Groovy snippet image_name: { formula: \"'chiaravalle.png'\" } image_path: \u0026image_path language: kotlin # Pick whatever JSR223 language you like and add it to the classpath formula: | # The following is pure Kotlin code. Other variables can be referenced! import java.io.File fun File.findImage(): String? = walkTopDown().find { image_name in it.name }?.absolutePath fun File.findImageRecursively(): String = findImage() ?: File(this, \"..\").findImageRecursively() File(\".\").findImageRecursively() timeout: 5000 # Linear free variable walking_speed: \u0026walk-speed { default: 1.4, min: 1, max: 2, step: 0.1 } seed: \u0026seed { default: 0, min: 0, max: 99, step: 1 } # 100 samples scenario_seed: \u0026scenario_seed { formula: (seed + 31) * seed } # Variable-dependent people_count: \u0026people_count type: GeometricVariable # A variable scanning a space with geometric segmentation parameters: [300, 50, 500, 9] # default 300, minimum 50, maximum 100, 9 samples seeds: { simulation: *seed, scenario: *scenario_seed} export: type: CSVExporter parameters: fileNameRoot: \"snippet-variables-export\" data: - time - molecule: \"default_module:default_program\" aggregators: [ mean, max, min, variance, median ] # From Apache's UnivariateStatistic value-filter: onlyfinite # discards NaN and Infinity environment: { type: ImageEnvironment, parameters: [*image_path, *zoom] } network-model: { type: ObstaclesBreakConnection, parameters: [50] } deployments: type: Rectangle parameters: [*people_count, 62, 15, 95, 200] programs: - time-distribution: 1 program: \u003e import protelis:coord:spreading let source = [110, 325] let vector = self.getCoordinates() - source let distance = hypot(vector.get(0), vector.get(1)) distanceTo(distance \u003c 50) - program: send - { type: Event, time-distribution: 1, actions: { type: LevyWalk, parameters: [*walk-speed] } } Click to show / hide code incarnation: protelis variables: seed: \u0026seed # You can give the anchor any name, assigning the name of the variable is convenient, though {min: 0, max: 1, step: 1, default: 0} # This variable ranges in [0, 9], steps of 1, defaulting to 0 network-model: { type: ConnectWithinDistance, parameters: [10] } _program-pools: compute-gradient: \u0026gradient - { time-distribution: 1, program: \"advanced:converge\" } - program: send move: \u0026move - time-distribution: { type: ExponentialTime, parameters: [1] } type: Event actions: { type: MoveToTarget, parameters: [destination, 1] } deployments: { type: Circle, parameters: [50, 0, 0, 5], programs: [*gradient, *move] } terminate: { type: AfterTime, parameters: [20] } Click to show / hide code variables: testVar: \u0026testVar min: 0 max: 10 step: 1 default: 2 incarnation: protelis seeds: scenario: 1 simulation: *testVar _molecules: testref: \u0026testRef test network-model: type: ConnectWithinDistance parameters: [1.5] environment: type: Continuous2DEnvironment _pool: \u0026program - time-distribution: *testVar program: test - time-distribution: null program: send - time-distribution: 1 type: Event conditions: [] actions: - type: BrownianMove parameters: [1] - time-distribution: type: Trigger parameters: [1] type: Event conditions: [] actions: - type: BrownianMove parameters: [1] _contents: - source: \u0026content in: type: Rectangle parameters: [-0.2, -0.2, 2.4, 2.4] molecule: source concentration: true - test: \u0026test molecule: *testRef concentration: *testVar deployments: - type: Circle parameters: [100, 0, 0, 2.8] contents: - *content - *test programs: - *program terminate: - type: StepCount parameters: 2000 Click to show / hide code incarnation: protelis variables: time: \u0026time type: Flag parameters: [false] small: \u0026small type: Flag parameters: [false] n: \u0026n formula: 100 range: \u0026range formula: 30 width: \u0026w formula: 200 height: \u0026h formula: 20 freq: \u0026freq formula: 1 sp: formula: 0.1 bp: formula: 0.5 retain: \u0026retain formula: 1 / minfreq fc: formula: \"time ? (small ? sp : bp) : 0\" minfreq: \u0026minfreq formula: \"freq * (1 - fc)\" maxfreq: \u0026maxfreq formula: \"freq * (1 + fc)\" speed: \u0026speed language: kotlin formula: \"if (time as Boolean) 0 else 1\" seed: \u0026seed min: 0 max: 199 step: 1 default: 0 seeds: scenario: *seed simulation: *seed network-model: type: ConnectWithinDistance parameters: [*range] _pools: - pool: \u0026program - time-distribution: type: RandomDiracComb parameters: [*minfreq, *maxfreq] type: Event actions: - type: RunProtelisProgram parameters: [\"1\", *retain] - time-distribution: null program: send - pool: \u0026program2 - time-distribution: 1 program: tomacs - time-distribution: null program: send - pool: \u0026move - time-distribution: 10 type: Event actions: - type: MoveToTarget parameters: [target, *speed] deployments: - type: Rectangle parameters: [*n, 0, 0, *w, *h] contents: - molecule: time concentration: *time - molecule: speed concentration: *speed - molecule: small concentration: *small programs: - *program - *move Click to show / hide code incarnation: sapere variables: category: subcategory: - anothercategory: - three: \u0026three formula: 3 _formula: \u0026formula type: JSR223Variable parameters: [groovy, *three] *three: \u0026max \u003c\u003c: *formula min: \u0026min formula: three * 0 language: kotlin myvar: \u0026myvar type: LinearVariable parameters: [0, *min, *max, 1] mydepvar: formula: 10 / myvar Click to show / hide code incarnation: sapere variables: rate: \u0026rate type: GeometricVariable parameters: [1, 0.1, 10, 9] size: \u0026size min: 1 max: 10 step: 1 default: 5 mSize: \u0026mSize formula: -size sourceStart: \u0026sourceStart formula: mSize / 10 sourceSize: \u0026sourceSize formula: size / 5 network-model: type: ConnectWithinDistance parameters: [0.5] _send: \u0026grad - time-distribution: *rate program: \"{token, N, L} --\u003e {token, N, L} *{token, N+#D, L add [#NODE;]}\" - program: \u003e {token, N, L}{token, def: N2\u003e=N, L2} --\u003e {token, N, L} # Age information - time-distribution: type: DiracComb parameters: [0.1] program: \u003e {token, def: N\u003e0, L} --\u003e {token, N + 1, L} # Cleanup old information - program: \u003e {token, def: N\u003e30, L} --\u003e _move: \u0026move time-distribution: 0.5 type: Event actions: - type: BrownianMove parameters: [0.1] deployments: type: Grid parameters: [*mSize, *mSize, *size, *size, 0.25, 0.25, 0.1, 0.1] contents: in: type: Rectangle parameters: [*sourceStart, *sourceStart, *sourceSize, *sourceSize] molecule: token, 0, [] programs: - *grad - *move Click to show / hide code incarnation: sapere network-model: type: ConnectWithinDistance parameters: [0.4] variables: seed: \u0026seed min: 0 max: 9 step: 1 default: 0 speed: \u0026speed type: ArbitraryVariable parameters: [0.1, [0.1, 0.1, 1]] latencies: formula: \"[0.001, 0.01, 0.1, 1]\" tolerances: formula: \"[0, 0.01, 0.03, 0.1, 0.3, 1, 3]\" controlParameters: \u0026control formula: GroovyCollections.combinations(latencies, tolerances) + [[Double.NaN, Double.NaN]] algorithm: type: ArbitraryVariable parameters: [[0.1, 0.01], *control] network_mean_latency: \u0026network_mean_latency formula: algorithm[0] tolerance: \u0026tolerance formula: algorithm[1] Geometric variables A variable generating geometrically-distributed samples across a range. Ideal for exploring non-linear phenomena, or for exploring very large ranges of values whose effect is unknown. Implemented as GeometricVariable.\nExamples Click to show / hide code incarnation: sapere variables: var0: type: GeometricVariable parameters: [0.5, 1, 1, 1] Click to show / hide code incarnation: protelis variables: zoom: \u0026zoom formula: 0.1 # Must be a valid Groovy snippet image_name: { formula: \"'chiaravalle.png'\" } image_path: \u0026image_path language: kotlin # Pick whatever JSR223 language you like and add it to the classpath formula: | # The following is pure Kotlin code. Other variables can be referenced! import java.io.File fun File.findImage(): String? = walkTopDown().find { image_name in it.name }?.absolutePath fun File.findImageRecursively(): String = findImage() ?: File(this, \"..\").findImageRecursively() File(\".\").findImageRecursively() timeout: 5000 # Linear free variable walking_speed: \u0026walk-speed { default: 1.4, min: 1, max: 2, step: 0.1 } seed: \u0026seed { default: 0, min: 0, max: 99, step: 1 } # 100 samples scenario_seed: \u0026scenario_seed { formula: (seed + 31) * seed } # Variable-dependent people_count: \u0026people_count type: GeometricVariable # A variable scanning a space with geometric segmentation parameters: [300, 50, 500, 9] # default 300, minimum 50, maximum 100, 9 samples seeds: { simulation: *seed, scenario: *scenario_seed} export: type: CSVExporter parameters: fileNameRoot: \"snippet-variables-export\" data: - time - molecule: \"default_module:default_program\" aggregators: [ mean, max, min, variance, median ] # From Apache's UnivariateStatistic value-filter: onlyfinite # discards NaN and Infinity environment: { type: ImageEnvironment, parameters: [*image_path, *zoom] } network-model: { type: ObstaclesBreakConnection, parameters: [50] } deployments: type: Rectangle parameters: [*people_count, 62, 15, 95, 200] programs: - time-distribution: 1 program: \u003e import protelis:coord:spreading let source = [110, 325] let vector = self.getCoordinates() - source let distance = hypot(vector.get(0), vector.get(1)) distanceTo(distance \u003c 50) - program: send - { type: Event, time-distribution: 1, actions: { type: LevyWalk, parameters: [*walk-speed] } } Click to show / hide code incarnation: sapere variables: rate: \u0026rate type: GeometricVariable parameters: [2, 0.1, 10, 9] size: \u0026size type: LinearVariable parameters: [5, 1, 10, 1] mSize: \u0026mSize formula: -size sourceStart: \u0026sourceStart formula: mSize / 10 sourceSize: \u0026sourceSize formula: size / 5 network-model: type: ConnectWithinDistance parameters: [0.5] _send: \u0026grad - time-distribution: *rate program: \"{token, N, L} --\u003e {token, N, L} *{token, N+#D, L add [#NODE;]}\" - program: \u003e {token, N, L}{token, def: N2\u003e=N, L2} --\u003e {token, N, L} deployments: type: Grid parameters: [*mSize, *mSize, *size, *size, 0.25, 0.25, 0.1, 0.1] contents: type: Rectangle parameters: [*sourceStart, *sourceStart, *sourceSize, *sourceSize] molecule: token, 0, [] programs: *grad Click to show / hide code incarnation: sapere variables: rate: \u0026rate type: GeometricVariable parameters: [1, 0.1, 10, 9] size: \u0026size min: 1 max: 10 step: 1 default: 5 mSize: \u0026mSize formula: -size sourceStart: \u0026sourceStart formula: mSize / 10 sourceSize: \u0026sourceSize formula: size / 5 network-model: type: ConnectWithinDistance parameters: [0.5] _send: \u0026grad - time-distribution: *rate program: \"{token, N, L} --\u003e {token, N, L} *{token, N+#D, L add [#NODE;]}\" - program: \u003e {token, N, L}{token, def: N2\u003e=N, L2} --\u003e {token, N, L} # Age information - time-distribution: type: DiracComb parameters: [0.1] program: \u003e {token, def: N\u003e0, L} --\u003e {token, N + 1, L} # Cleanup old information - program: \u003e {token, def: N\u003e30, L} --\u003e _move: \u0026move time-distribution: 0.5 type: Event actions: - type: BrownianMove parameters: [0.1] deployments: type: Grid parameters: [*mSize, *mSize, *size, *size, 0.25, 0.25, 0.1, 0.1] contents: in: type: Rectangle parameters: [*sourceStart, *sourceStart, *sourceSize, *sourceSize] molecule: token, 0, [] programs: - *grad - *move Arbitrary-valued variables Generates an ArbitraryVariable spanning on an arbitrary set of values.\nExamples Click to show / hide code incarnation: protelis variables: foo: \u0026foo formula: 1 bar: \u0026bar formula: 5 * foo baz: type: ArbitraryVariable parameters: [0, [1, 2, 3, 4, 5]] fiz: type: ArbitraryVariable parameters: [0, [1, 2, 3, 4, 5]] Click to show / hide code incarnation: sapere network-model: type: ConnectWithinDistance parameters: [0.4] variables: seed: \u0026seed min: 0 max: 9 step: 1 default: 0 speed: \u0026speed type: ArbitraryVariable parameters: [0.1, [0.1, 0.1, 1]] latencies: formula: \"[0.001, 0.01, 0.1, 1]\" tolerances: formula: \"[0, 0.01, 0.03, 0.1, 0.3, 1, 3]\" controlParameters: \u0026control formula: GroovyCollections.combinations(latencies, tolerances) + [[Double.NaN, Double.NaN]] algorithm: type: ArbitraryVariable parameters: [[0.1, 0.01], *control] network_mean_latency: \u0026network_mean_latency formula: algorithm[0] tolerance: \u0026tolerance formula: algorithm[1] Dependent variables Some variables are combination of other variables. Let’s suppose that we want to deploy on a circle, but for some reason (e.g. because it is required by the constructor of some Action) we need to compute and have available radius and perimeter. We don’t need to control both of them: the perimeter can be computed from the radius (or vice versa).\nTo favor reusability and apply the DRY principle, the simulator allows defining variables whose values possibly depend on values of other variables through JSR223Variable. Their values can be expressed, by default, in Groovy, but any JSR-223-compatible language can be used, in principle. If a compatible JSR-223 implementation of the language is available in the classpath, Alchemist will load and use it transparently. By default, groovy, kotlin (or kts), and scala are available as scripting languages for dependent variables.\nInfo The JSR-223 specification defines mechanisms allowing scripting language programs to access information developed in the Java Platform.\nMany languages (including Groovy, Python (Jython), Kotlin, and Scala provide bindings for JSR-223).\nVariables can be defined in any order. Alchemist figures out the dependencies automatically, as far as there are no cyclic dependencies (e.g. variable a requires b, and b requires a). Please note that the simulator variable dependency resolution system is not designed to solve mathematical systems, so even though the problem has a well-formed mathematical solution, the actual variable resolution may fail; e.g. if a is defined as 2 * b + 1, and b is defined as 4 - a, the system won’t bind a to 3 and b to 1, but will simply fail complaining about circular dependencies.\nMultiline programs Sometimes data manipulation can get tricky and trivial scripting may no longer be enough. In such cases, and especially with modern languages that allow for a reduced usage of cerimonial semicolons (such as Kotlin and Scala), it can be useful to write multiline programs. This can be achieved in YAML by using the pipe | operator, as exemplified in the following snippet:\nmultiline-string: | note that the string needs to be indented. Newlines will be preserved! Examples Click to show / hide code incarnation: sapere network-model: type: ConnectWithinDistance parameters: [0.4] variables: seed: \u0026seed min: 0 max: 9 step: 1 default: 0 speed: \u0026speed type: ArbitraryVariable parameters: [0.1, [0.1, 0.1, 1]] latencies: formula: \"[0.001, 0.01, 0.1, 1]\" tolerances: formula: \"[0, 0.01, 0.03, 0.1, 0.3, 1, 3]\" controlParameters: \u0026control formula: GroovyCollections.combinations(latencies, tolerances) + [[Double.NaN, Double.NaN]] algorithm: type: ArbitraryVariable parameters: [[0.1, 0.01], *control] network_mean_latency: \u0026network_mean_latency formula: algorithm[0] tolerance: \u0026tolerance formula: algorithm[1] Click to show / hide code incarnation: sapere variables: var0: formula: 2 var1: formula: 2 _program: \u0026program - time-distribution: 1 program: \"{A, 1}--\u003e{A, 1}\" deployments: type: Rectangle parameters: [10, 0, 0, 10, 10] contents: - molecule: path concentration: true - molecule: interestThr concentration: 0.2 - molecule: veryInterestThr concentration: 0.5 - molecule: estimationK concentration: 0.5 programs: - *program Click to show / hide code incarnation: sapere variables: var: \u0026var language: scala formula: List(5, 3, 4).min var2: \u0026var2 language: scala formula: List(10, 3, 4).max deployments: - type: Point parameters: [*var, *var2] Click to show / hide code variables: a: formula: 22 + 1 language: kts test: formula: | import it.unibo.alchemist.boundary.Loader import kotlin.collections.listOf val b = 5.5 listOf(bindings[\"a\"], b) language: kotlin test2: formula: | val b = 5.5 listOf(\"a\", b) language: kotlin test3: formula: test + test2 incarnation: sapere Click to show / hide code incarnation: sapere variables: myvar: \u0026myvar formula: 1 myvar2: \u0026myvar2 formula: myvar * 100 environment: type: Continuous2DEnvironment parameters: [] network-model: type: it.unibo.alchemist.test.util.DummyRule parameters: [[*myvar, *myvar2], [*myvar, *myvar2]] Click to show / hide code incarnation: sapere variables: var0: formula: 2 var1: formula: 2 Click to show / hide code incarnation: protelis variables: zoom: \u0026zoom formula: 0.1 # Must be a valid Groovy snippet image_name: { formula: \"'chiaravalle.png'\" } image_path: \u0026image_path language: kotlin # Pick whatever JSR223 language you like and add it to the classpath formula: | # The following is pure Kotlin code. Other variables can be referenced! import java.io.File fun File.findImage(): String? = walkTopDown().find { image_name in it.name }?.absolutePath fun File.findImageRecursively(): String = findImage() ?: File(this, \"..\").findImageRecursively() File(\".\").findImageRecursively() timeout: 5000 # Linear free variable walking_speed: \u0026walk-speed { default: 1.4, min: 1, max: 2, step: 0.1 } seed: \u0026seed { default: 0, min: 0, max: 99, step: 1 } # 100 samples scenario_seed: \u0026scenario_seed { formula: (seed + 31) * seed } # Variable-dependent people_count: \u0026people_count type: GeometricVariable # A variable scanning a space with geometric segmentation parameters: [300, 50, 500, 9] # default 300, minimum 50, maximum 100, 9 samples seeds: { simulation: *seed, scenario: *scenario_seed} export: type: CSVExporter parameters: fileNameRoot: \"snippet-variables-export\" data: - time - molecule: \"default_module:default_program\" aggregators: [ mean, max, min, variance, median ] # From Apache's UnivariateStatistic value-filter: onlyfinite # discards NaN and Infinity environment: { type: ImageEnvironment, parameters: [*image_path, *zoom] } network-model: { type: ObstaclesBreakConnection, parameters: [50] } deployments: type: Rectangle parameters: [*people_count, 62, 15, 95, 200] programs: - time-distribution: 1 program: \u003e import protelis:coord:spreading let source = [110, 325] let vector = self.getCoordinates() - source let distance = hypot(vector.get(0), vector.get(1)) distanceTo(distance \u003c 50) - program: send - { type: Event, time-distribution: 1, actions: { type: LevyWalk, parameters: [*walk-speed] } } Click to show / hide code incarnation: protelis environment: type: ContinuousPhysics2DEnvironment variables: group1: \u0026group1 formula: it.unibo.alchemist.model.cognitive.groups.GroupFactory.friends() language: kotlin group2: \u0026group2 formula: it.unibo.alchemist.model.cognitive.groups.GroupFactory.friends() language: kotlin deployments: - type: Circle parameters: [10, 0, 0, 20] properties: - type: Pedestrian - type: Perceptive2D - type: CircularArea - type: Social parameters: [*group1] - type: Circle parameters: [15, 0, 0, 20] properties: - type: Pedestrian - type: Perceptive2D - type: CircularArea - type: Social parameters: [*group2] Click to show / hide code incarnation: protelis variables: danger: \u0026danger formula: \"\\\"danger\\\"\" environment: type: ContinuousPhysics2DEnvironment layers: - type: BidimensionalGaussianLayer molecule: *danger parameters: [0.0, 0.0, 20.0, 15.0] _reactions: \u0026behavior - time-distribution: type: DiracComb parameters: [1.0] type: CognitiveBehavior actions: - type: CognitiveAgentAvoidLayer parameters: [*danger] deployments: - type: Circle parameters: [100, 0, 0, 50] properties: - type: Human parameters: [\"adult\", \"female\"] - type: Perceptive2D - type: CognitivePedestrian - type: Cognitive2D - type: CircularArea programs: - *behavior Click to show / hide code incarnation: protelis variables: initial_latitude: \u0026initial_latitude formula: 12.613 initial_longitude: \u0026initial_longitude formula: 43.715 final_latitude: formula: 12.663 final_longitude: formula: 43.738 latitude_space: \u0026latitude_space formula: final_latitude - initial_latitude longitude_space: \u0026longitude_space formula: final_longitude - initial_longitude environment: type: OSMEnvironment parameters: - maps/urbino.pbf - true - true network-model: type: ConnectIfInLineOfSigthOnMap parameters: [1000] deployments: - type: Point parameters: [43.719368, 12.623865] - type: Point parameters: [43.718901, 12.623047] - type: Rectangle parameters: - 100 - *initial_longitude - *initial_latitude - *longitude_space - *latitude_space contents: - in: type: Rectangle parameters: [-6, -6, 2, 2] molecule: source concentration: true Click to show / hide code incarnation: sapere variables: category: subcategory: - anothercategory: - three: \u0026three formula: 3 _formula: \u0026formula type: JSR223Variable parameters: [groovy, *three] *three: \u0026max \u003c\u003c: *formula min: \u0026min formula: three * 0 language: kotlin myvar: \u0026myvar type: LinearVariable parameters: [0, *min, *max, 1] mydepvar: formula: 10 / myvar Click to show / hide code incarnation: sapere variables: rate: \u0026rate type: GeometricVariable parameters: [2, 0.1, 10, 9] size: \u0026size type: LinearVariable parameters: [5, 1, 10, 1] mSize: \u0026mSize formula: -size sourceStart: \u0026sourceStart formula: mSize / 10 sourceSize: \u0026sourceSize formula: size / 5 network-model: type: ConnectWithinDistance parameters: [0.5] _send: \u0026grad - time-distribution: *rate program: \"{token, N, L} --\u003e {token, N, L} *{token, N+#D, L add [#NODE;]}\" - program: \u003e {token, N, L}{token, def: N2\u003e=N, L2} --\u003e {token, N, L} deployments: type: Grid parameters: [*mSize, *mSize, *size, *size, 0.25, 0.25, 0.1, 0.1] contents: type: Rectangle parameters: [*sourceStart, *sourceStart, *sourceSize, *sourceSize] molecule: token, 0, [] programs: *grad Click to show / hide code incarnation: sapere variables: rate: \u0026rate type: GeometricVariable parameters: [1, 0.1, 10, 9] size: \u0026size min: 1 max: 10 step: 1 default: 5 mSize: \u0026mSize formula: -size sourceStart: \u0026sourceStart formula: mSize / 10 sourceSize: \u0026sourceSize formula: size / 5 network-model: type: ConnectWithinDistance parameters: [0.5] _send: \u0026grad - time-distribution: *rate program: \"{token, N, L} --\u003e {token, N, L} *{token, N+#D, L add [#NODE;]}\" - program: \u003e {token, N, L}{token, def: N2\u003e=N, L2} --\u003e {token, N, L} # Age information - time-distribution: type: DiracComb parameters: [0.1] program: \u003e {token, def: N\u003e0, L} --\u003e {token, N + 1, L} # Cleanup old information - program: \u003e {token, def: N\u003e30, L} --\u003e _move: \u0026move time-distribution: 0.5 type: Event actions: - type: BrownianMove parameters: [0.1] deployments: type: Grid parameters: [*mSize, *mSize, *size, *size, 0.25, 0.25, 0.1, 0.1] contents: in: type: Rectangle parameters: [*sourceStart, *sourceStart, *sourceSize, *sourceSize] molecule: token, 0, [] programs: - *grad - *move Click to show / hide code incarnation: protelis variables: zoom: \u0026zoom formula: 0.1 # Must be a valid Groovy snippet image_name: { formula: \"'chiaravalle.png'\" } image_path: \u0026image_path language: kotlin # Pick whatever JSR223 language you like and add it to the classpath formula: | # The following is pure Kotlin code. Other variables can be referenced! import java.io.File fun File.findImage(): String? = walkTopDown().find { image_name in it.name }?.absolutePath fun File.findImageRecursively(): String = findImage() ?: File(this, \"..\").findImageRecursively() File(\".\").findImageRecursively() timeout: 5000 # Linear free variable walking_speed: \u0026walk-speed { default: 1.4, min: 1, max: 2, step: 0.1 } seed: \u0026seed { default: 0, min: 0, max: 99, step: 1 } # 100 samples scenario_seed: \u0026scenario_seed { formula: (seed + 31) * seed } # Variable-dependent people_count: \u0026people_count type: GeometricVariable # A variable scanning a space with geometric segmentation parameters: [300, 50, 500, 9] # default 300, minimum 50, maximum 100, 9 samples seeds: { simulation: *seed, scenario: *scenario_seed} export: type: CSVExporter parameters: fileNameRoot: \"snippet-variables-export\" data: - time - molecule: \"default_module:default_program\" aggregators: [ mean, max, min, variance, median ] # From Apache's UnivariateStatistic value-filter: onlyfinite # discards NaN and Infinity environment: { type: ImageEnvironment, parameters: [*image_path, *zoom] } network-model: { type: ObstaclesBreakConnection, parameters: [50] } deployments: type: Rectangle parameters: [*people_count, 62, 15, 95, 200] programs: - time-distribution: 1 program: \u003e import protelis:coord:spreading let source = [110, 325] let vector = self.getCoordinates() - source let distance = hypot(vector.get(0), vector.get(1)) distanceTo(distance \u003c 50) - program: send - { type: Event, time-distribution: 1, actions: { type: LevyWalk, parameters: [*walk-speed] } } ",
@@ -875,7 +875,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: basics",
+    "title": "Tag :: Basics",
     "uri": "/tags/basics/index.html"
   },
   {
@@ -883,7 +883,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: deployment",
+    "title": "Tag :: Deployment",
     "uri": "/tags/deployment/index.html"
   },
   {
@@ -891,7 +891,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: examples",
+    "title": "Tag :: Examples",
     "uri": "/tags/examples/index.html"
   },
   {
@@ -899,7 +899,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: export",
+    "title": "Tag :: Export",
     "uri": "/tags/export/index.html"
   },
   {
@@ -907,7 +907,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: graph",
+    "title": "Tag :: Graph",
     "uri": "/tags/graph/index.html"
   },
   {
@@ -915,7 +915,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: indoor",
+    "title": "Tag :: Indoor",
     "uri": "/tags/indoor/index.html"
   },
   {
@@ -923,7 +923,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: maps",
+    "title": "Tag :: Maps",
     "uri": "/tags/maps/index.html"
   },
   {
@@ -939,7 +939,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: tutorial",
+    "title": "Tag :: Tutorial",
     "uri": "/tags/tutorial/index.html"
   },
   {
@@ -947,7 +947,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: video",
+    "title": "Tag :: Video",
     "uri": "/tags/video/index.html"
   },
   {
@@ -955,7 +955,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: action",
+    "title": "Tag :: Action",
     "uri": "/tags/action/index.html"
   },
   {
@@ -963,7 +963,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: agents",
+    "title": "Tag :: Agents",
     "uri": "/tags/agents/index.html"
   },
   {
@@ -971,7 +971,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: aggregate",
+    "title": "Tag :: Aggregate",
     "uri": "/tags/aggregate/index.html"
   },
   {
@@ -979,7 +979,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: aggregate computing",
+    "title": "Tag :: Aggregate Computing",
     "uri": "/tags/aggregate-computing/index.html"
   },
   {
@@ -987,7 +987,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: aggregate programming",
+    "title": "Tag :: Aggregate Programming",
     "uri": "/tags/aggregate-programming/index.html"
   },
   {
@@ -995,7 +995,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: analysis",
+    "title": "Tag :: Analysis",
     "uri": "/tags/analysis/index.html"
   },
   {
@@ -1003,7 +1003,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: api",
+    "title": "Tag :: Api",
     "uri": "/tags/api/index.html"
   },
   {
@@ -1011,7 +1011,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: api docs",
+    "title": "Tag :: Api Docs",
     "uri": "/tags/api-docs/index.html"
   },
   {
@@ -1019,7 +1019,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: artefacts",
+    "title": "Tag :: Artefacts",
     "uri": "/tags/artefacts/index.html"
   },
   {
@@ -1027,7 +1027,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: batch",
+    "title": "Tag :: Batch",
     "uri": "/tags/batch/index.html"
   },
   {
@@ -1035,7 +1035,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: behavior",
+    "title": "Tag :: Behavior",
     "uri": "/tags/behavior/index.html"
   },
   {
@@ -1043,7 +1043,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: biochemistry",
+    "title": "Tag :: Biochemistry",
     "uri": "/tags/biochemistry/index.html"
   },
   {
@@ -1051,7 +1051,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: build",
+    "title": "Tag :: Build",
     "uri": "/tags/build/index.html"
   },
   {
@@ -1059,7 +1059,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: build system",
+    "title": "Tag :: Build System",
     "uri": "/tags/build-system/index.html"
   },
   {
@@ -1075,7 +1075,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: cli",
+    "title": "Tag :: Cli",
     "uri": "/tags/cli/index.html"
   },
   {
@@ -1083,7 +1083,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: cognitive",
+    "title": "Tag :: Cognitive",
     "uri": "/tags/cognitive/index.html"
   },
   {
@@ -1091,7 +1091,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: command line",
+    "title": "Tag :: Command Line",
     "uri": "/tags/command-line/index.html"
   },
   {
@@ -1099,7 +1099,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: commits",
+    "title": "Tag :: Commits",
     "uri": "/tags/commits/index.html"
   },
   {
@@ -1107,7 +1107,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: concentration",
+    "title": "Tag :: Concentration",
     "uri": "/tags/concentration/index.html"
   },
   {
@@ -1115,7 +1115,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: condition",
+    "title": "Tag :: Condition",
     "uri": "/tags/condition/index.html"
   },
   {
@@ -1123,7 +1123,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: configuration",
+    "title": "Tag :: Configuration",
     "uri": "/tags/configuration/index.html"
   },
   {
@@ -1131,7 +1131,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: connect",
+    "title": "Tag :: Connect",
     "uri": "/tags/connect/index.html"
   },
   {
@@ -1139,7 +1139,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: connection",
+    "title": "Tag :: Connection",
     "uri": "/tags/connection/index.html"
   },
   {
@@ -1147,7 +1147,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: content",
+    "title": "Tag :: Content",
     "uri": "/tags/content/index.html"
   },
   {
@@ -1155,7 +1155,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: contributions",
+    "title": "Tag :: Contributions",
     "uri": "/tags/contributions/index.html"
   },
   {
@@ -1163,7 +1163,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: crowd",
+    "title": "Tag :: Crowd",
     "uri": "/tags/crowd/index.html"
   },
   {
@@ -1171,7 +1171,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: csv",
+    "title": "Tag :: Csv",
     "uri": "/tags/csv/index.html"
   },
   {
@@ -1179,7 +1179,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: data",
+    "title": "Tag :: Data",
     "uri": "/tags/data/index.html"
   },
   {
@@ -1187,7 +1187,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: data analysis",
+    "title": "Tag :: Data Analysis",
     "uri": "/tags/data-analysis/index.html"
   },
   {
@@ -1195,7 +1195,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: development",
+    "title": "Tag :: Development",
     "uri": "/tags/development/index.html"
   },
   {
@@ -1203,7 +1203,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: disaster",
+    "title": "Tag :: Disaster",
     "uri": "/tags/disaster/index.html"
   },
   {
@@ -1211,7 +1211,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: discrete-event simulation",
+    "title": "Tag :: Discrete-Event Simulation",
     "uri": "/tags/discrete-event-simulation/index.html"
   },
   {
@@ -1219,7 +1219,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: dokka",
+    "title": "Tag :: Dokka",
     "uri": "/tags/dokka/index.html"
   },
   {
@@ -1227,7 +1227,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: draw",
+    "title": "Tag :: Draw",
     "uri": "/tags/draw/index.html"
   },
   {
@@ -1235,7 +1235,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: drawing",
+    "title": "Tag :: Drawing",
     "uri": "/tags/drawing/index.html"
   },
   {
@@ -1243,7 +1243,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: driver",
+    "title": "Tag :: Driver",
     "uri": "/tags/driver/index.html"
   },
   {
@@ -1251,7 +1251,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: drone",
+    "title": "Tag :: Drone",
     "uri": "/tags/drone/index.html"
   },
   {
@@ -1259,7 +1259,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: dry",
+    "title": "Tag :: Dry",
     "uri": "/tags/dry/index.html"
   },
   {
@@ -1267,7 +1267,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: effects",
+    "title": "Tag :: Effects",
     "uri": "/tags/effects/index.html"
   },
   {
@@ -1275,7 +1275,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: engine",
+    "title": "Tag :: Engine",
     "uri": "/tags/engine/index.html"
   },
   {
@@ -1283,7 +1283,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: environment",
+    "title": "Tag :: Environment",
     "uri": "/tags/environment/index.html"
   },
   {
@@ -1291,7 +1291,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: example",
+    "title": "Tag :: Example",
     "uri": "/tags/example/index.html"
   },
   {
@@ -1299,7 +1299,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: execution",
+    "title": "Tag :: Execution",
     "uri": "/tags/execution/index.html"
   },
   {
@@ -1307,7 +1307,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: experiment",
+    "title": "Tag :: Experiment",
     "uri": "/tags/experiment/index.html"
   },
   {
@@ -1315,7 +1315,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: extension",
+    "title": "Tag :: Extension",
     "uri": "/tags/extension/index.html"
   },
   {
@@ -1323,7 +1323,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: fatjar",
+    "title": "Tag :: Fatjar",
     "uri": "/tags/fatjar/index.html"
   },
   {
@@ -1331,7 +1331,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: geo-spatial data",
+    "title": "Tag :: Geo-Spatial Data",
     "uri": "/tags/geo-spatial-data/index.html"
   },
   {
@@ -1339,7 +1339,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: geospatial",
+    "title": "Tag :: Geospatial",
     "uri": "/tags/geospatial/index.html"
   },
   {
@@ -1347,7 +1347,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: gibson-bruck",
+    "title": "Tag :: Gibson-Bruck",
     "uri": "/tags/gibson-bruck/index.html"
   },
   {
@@ -1355,7 +1355,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: gillespie",
+    "title": "Tag :: Gillespie",
     "uri": "/tags/gillespie/index.html"
   },
   {
@@ -1363,7 +1363,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: gps",
+    "title": "Tag :: Gps",
     "uri": "/tags/gps/index.html"
   },
   {
@@ -1371,7 +1371,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: gpx",
+    "title": "Tag :: Gpx",
     "uri": "/tags/gpx/index.html"
   },
   {
@@ -1387,7 +1387,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: graphical interface",
+    "title": "Tag :: Graphical Interface",
     "uri": "/tags/graphical-interface/index.html"
   },
   {
@@ -1395,7 +1395,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: graphics",
+    "title": "Tag :: Graphics",
     "uri": "/tags/graphics/index.html"
   },
   {
@@ -1403,7 +1403,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: graphql",
+    "title": "Tag :: Graphql",
     "uri": "/tags/graphql/index.html"
   },
   {
@@ -1411,7 +1411,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: graphstream",
+    "title": "Tag :: Graphstream",
     "uri": "/tags/graphstream/index.html"
   },
   {
@@ -1419,7 +1419,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: grid",
+    "title": "Tag :: Grid",
     "uri": "/tags/grid/index.html"
   },
   {
@@ -1427,7 +1427,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: groovy",
+    "title": "Tag :: Groovy",
     "uri": "/tags/groovy/index.html"
   },
   {
@@ -1435,7 +1435,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: gui",
+    "title": "Tag :: Gui",
     "uri": "/tags/gui/index.html"
   },
   {
@@ -1443,7 +1443,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: hotkeys",
+    "title": "Tag :: Hotkeys",
     "uri": "/tags/hotkeys/index.html"
   },
   {
@@ -1459,7 +1459,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: import",
+    "title": "Tag :: Import",
     "uri": "/tags/import/index.html"
   },
   {
@@ -1467,7 +1467,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: installation",
+    "title": "Tag :: Installation",
     "uri": "/tags/installation/index.html"
   },
   {
@@ -1491,7 +1491,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: interaction",
+    "title": "Tag :: Interaction",
     "uri": "/tags/interaction/index.html"
   },
   {
@@ -1499,7 +1499,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: interpolation",
+    "title": "Tag :: Interpolation",
     "uri": "/tags/interpolation/index.html"
   },
   {
@@ -1507,7 +1507,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: jar",
+    "title": "Tag :: Jar",
     "uri": "/tags/jar/index.html"
   },
   {
@@ -1523,7 +1523,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: jsr223",
+    "title": "Tag :: Jsr223",
     "uri": "/tags/jsr223/index.html"
   },
   {
@@ -1531,7 +1531,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: junction",
+    "title": "Tag :: Junction",
     "uri": "/tags/junction/index.html"
   },
   {
@@ -1539,7 +1539,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: kdoc",
+    "title": "Tag :: Kdoc",
     "uri": "/tags/kdoc/index.html"
   },
   {
@@ -1547,7 +1547,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: key mapping",
+    "title": "Tag :: Key Mapping",
     "uri": "/tags/key-mapping/index.html"
   },
   {
@@ -1555,7 +1555,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: kotlin",
+    "title": "Tag :: Kotlin",
     "uri": "/tags/kotlin/index.html"
   },
   {
@@ -1563,7 +1563,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: language",
+    "title": "Tag :: Language",
     "uri": "/tags/language/index.html"
   },
   {
@@ -1571,7 +1571,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: launch",
+    "title": "Tag :: Launch",
     "uri": "/tags/launch/index.html"
   },
   {
@@ -1579,7 +1579,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: layer",
+    "title": "Tag :: Layer",
     "uri": "/tags/layer/index.html"
   },
   {
@@ -1587,7 +1587,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: layers",
+    "title": "Tag :: Layers",
     "uri": "/tags/layers/index.html"
   },
   {
@@ -1603,7 +1603,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: light",
+    "title": "Tag :: Light",
     "uri": "/tags/light/index.html"
   },
   {
@@ -1611,7 +1611,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: linking rule",
+    "title": "Tag :: Linking Rule",
     "uri": "/tags/linking-rule/index.html"
   },
   {
@@ -1619,7 +1619,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: linux",
+    "title": "Tag :: Linux",
     "uri": "/tags/linux/index.html"
   },
   {
@@ -1627,7 +1627,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: live semantic annotation",
+    "title": "Tag :: Live Semantic Annotation",
     "uri": "/tags/live-semantic-annotation/index.html"
   },
   {
@@ -1635,7 +1635,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: lsa",
+    "title": "Tag :: Lsa",
     "uri": "/tags/lsa/index.html"
   },
   {
@@ -1643,7 +1643,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: mass",
+    "title": "Tag :: Mass",
     "uri": "/tags/mass/index.html"
   },
   {
@@ -1651,7 +1651,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: max_map_count",
+    "title": "Tag :: Max_map_count",
     "uri": "/tags/max_map_count/index.html"
   },
   {
@@ -1659,7 +1659,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: memory leak",
+    "title": "Tag :: Memory Leak",
     "uri": "/tags/memory-leak/index.html"
   },
   {
@@ -1667,7 +1667,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: memory pressure",
+    "title": "Tag :: Memory Pressure",
     "uri": "/tags/memory-pressure/index.html"
   },
   {
@@ -1675,7 +1675,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: metamodel",
+    "title": "Tag :: Metamodel",
     "uri": "/tags/metamodel/index.html"
   },
   {
@@ -1683,7 +1683,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: metric",
+    "title": "Tag :: Metric",
     "uri": "/tags/metric/index.html"
   },
   {
@@ -1691,7 +1691,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: model",
+    "title": "Tag :: Model",
     "uri": "/tags/model/index.html"
   },
   {
@@ -1699,7 +1699,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: molecule",
+    "title": "Tag :: Molecule",
     "uri": "/tags/molecule/index.html"
   },
   {
@@ -1707,7 +1707,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: mongodb",
+    "title": "Tag :: Mongodb",
     "uri": "/tags/mongodb/index.html"
   },
   {
@@ -1715,7 +1715,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: monitors",
+    "title": "Tag :: Monitors",
     "uri": "/tags/monitors/index.html"
   },
   {
@@ -1723,7 +1723,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: multivesta",
+    "title": "Tag :: Multivesta",
     "uri": "/tags/multivesta/index.html"
   },
   {
@@ -1731,7 +1731,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: navigation mesh",
+    "title": "Tag :: Navigation Mesh",
     "uri": "/tags/navigation-mesh/index.html"
   },
   {
@@ -1739,7 +1739,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: neighborhood",
+    "title": "Tag :: Neighborhood",
     "uri": "/tags/neighborhood/index.html"
   },
   {
@@ -1747,7 +1747,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: network",
+    "title": "Tag :: Network",
     "uri": "/tags/network/index.html"
   },
   {
@@ -1755,7 +1755,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: network model",
+    "title": "Tag :: Network Model",
     "uri": "/tags/network-model/index.html"
   },
   {
@@ -1763,7 +1763,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: node",
+    "title": "Tag :: Node",
     "uri": "/tags/node/index.html"
   },
   {
@@ -1771,7 +1771,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: nodes",
+    "title": "Tag :: Nodes",
     "uri": "/tags/nodes/index.html"
   },
   {
@@ -1779,7 +1779,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: opengl",
+    "title": "Tag :: Opengl",
     "uri": "/tags/opengl/index.html"
   },
   {
@@ -1787,7 +1787,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: optimization",
+    "title": "Tag :: Optimization",
     "uri": "/tags/optimization/index.html"
   },
   {
@@ -1795,7 +1795,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: options",
+    "title": "Tag :: Options",
     "uri": "/tags/options/index.html"
   },
   {
@@ -1803,7 +1803,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: output monitors",
+    "title": "Tag :: Output Monitors",
     "uri": "/tags/output-monitors/index.html"
   },
   {
@@ -1811,7 +1811,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: packages",
+    "title": "Tag :: Packages",
     "uri": "/tags/packages/index.html"
   },
   {
@@ -1819,7 +1819,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: parallel",
+    "title": "Tag :: Parallel",
     "uri": "/tags/parallel/index.html"
   },
   {
@@ -1827,7 +1827,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: pathfinding",
+    "title": "Tag :: Pathfinding",
     "uri": "/tags/pathfinding/index.html"
   },
   {
@@ -1835,7 +1835,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: pedestrian",
+    "title": "Tag :: Pedestrian",
     "uri": "/tags/pedestrian/index.html"
   },
   {
@@ -1843,7 +1843,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: physics",
+    "title": "Tag :: Physics",
     "uri": "/tags/physics/index.html"
   },
   {
@@ -1851,7 +1851,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: planimetry",
+    "title": "Tag :: Planimetry",
     "uri": "/tags/planimetry/index.html"
   },
   {
@@ -1859,7 +1859,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: pollution",
+    "title": "Tag :: Pollution",
     "uri": "/tags/pollution/index.html"
   },
   {
@@ -1867,7 +1867,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: program",
+    "title": "Tag :: Program",
     "uri": "/tags/program/index.html"
   },
   {
@@ -1875,7 +1875,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: programming",
+    "title": "Tag :: Programming",
     "uri": "/tags/programming/index.html"
   },
   {
@@ -1883,7 +1883,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: protelis",
+    "title": "Tag :: Protelis",
     "uri": "/tags/protelis/index.html"
   },
   {
@@ -1891,7 +1891,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: quickstart",
+    "title": "Tag :: Quickstart",
     "uri": "/tags/quickstart/index.html"
   },
   {
@@ -1899,7 +1899,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: random",
+    "title": "Tag :: Random",
     "uri": "/tags/random/index.html"
   },
   {
@@ -1907,7 +1907,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: randomness",
+    "title": "Tag :: Randomness",
     "uri": "/tags/randomness/index.html"
   },
   {
@@ -1915,7 +1915,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: reaction",
+    "title": "Tag :: Reaction",
     "uri": "/tags/reaction/index.html"
   },
   {
@@ -1923,7 +1923,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: replicability",
+    "title": "Tag :: Replicability",
     "uri": "/tags/replicability/index.html"
   },
   {
@@ -1931,7 +1931,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: report",
+    "title": "Tag :: Report",
     "uri": "/tags/report/index.html"
   },
   {
@@ -1939,7 +1939,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: reproducibility",
+    "title": "Tag :: Reproducibility",
     "uri": "/tags/reproducibility/index.html"
   },
   {
@@ -1947,7 +1947,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: run",
+    "title": "Tag :: Run",
     "uri": "/tags/run/index.html"
   },
   {
@@ -1955,7 +1955,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: sapere",
+    "title": "Tag :: Sapere",
     "uri": "/tags/sapere/index.html"
   },
   {
@@ -1963,7 +1963,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: scafi",
+    "title": "Tag :: Scafi",
     "uri": "/tags/scafi/index.html"
   },
   {
@@ -1971,7 +1971,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: scala",
+    "title": "Tag :: Scala",
     "uri": "/tags/scala/index.html"
   },
   {
@@ -1979,7 +1979,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: scala fields",
+    "title": "Tag :: Scala Fields",
     "uri": "/tags/scala-fields/index.html"
   },
   {
@@ -1987,7 +1987,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: scale free",
+    "title": "Tag :: Scale Free",
     "uri": "/tags/scale-free/index.html"
   },
   {
@@ -1995,7 +1995,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: seed",
+    "title": "Tag :: Seed",
     "uri": "/tags/seed/index.html"
   },
   {
@@ -2003,7 +2003,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: shadowjar",
+    "title": "Tag :: Shadowjar",
     "uri": "/tags/shadowjar/index.html"
   },
   {
@@ -2011,7 +2011,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: shape",
+    "title": "Tag :: Shape",
     "uri": "/tags/shape/index.html"
   },
   {
@@ -2027,7 +2027,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: simulation",
+    "title": "Tag :: Simulation",
     "uri": "/tags/simulation/index.html"
   },
   {
@@ -2035,7 +2035,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: simulation monitoring",
+    "title": "Tag :: Simulation Monitoring",
     "uri": "/tags/simulation-monitoring/index.html"
   },
   {
@@ -2043,7 +2043,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: simulations",
+    "title": "Tag :: Simulations",
     "uri": "/tags/simulations/index.html"
   },
   {
@@ -2051,7 +2051,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: smart camera",
+    "title": "Tag :: Smart Camera",
     "uri": "/tags/smart-camera/index.html"
   },
   {
@@ -2059,7 +2059,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: specification",
+    "title": "Tag :: Specification",
     "uri": "/tags/specification/index.html"
   },
   {
@@ -2067,7 +2067,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: swing",
+    "title": "Tag :: Swing",
     "uri": "/tags/swing/index.html"
   },
   {
@@ -2075,7 +2075,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: temperature",
+    "title": "Tag :: Temperature",
     "uri": "/tags/temperature/index.html"
   },
   {
@@ -2083,7 +2083,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: termination",
+    "title": "Tag :: Termination",
     "uri": "/tags/termination/index.html"
   },
   {
@@ -2091,7 +2091,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: time",
+    "title": "Tag :: Time",
     "uri": "/tags/time/index.html"
   },
   {
@@ -2099,7 +2099,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: traces",
+    "title": "Tag :: Traces",
     "uri": "/tags/traces/index.html"
   },
   {
@@ -2107,7 +2107,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: tuple",
+    "title": "Tag :: Tuple",
     "uri": "/tags/tuple/index.html"
   },
   {
@@ -2115,7 +2115,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: tuple centre",
+    "title": "Tag :: Tuple Centre",
     "uri": "/tags/tuple-centre/index.html"
   },
   {
@@ -2123,7 +2123,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: tuple space",
+    "title": "Tag :: Tuple Space",
     "uri": "/tags/tuple-space/index.html"
   },
   {
@@ -2131,7 +2131,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: understand",
+    "title": "Tag :: Understand",
     "uri": "/tags/understand/index.html"
   },
   {
@@ -2139,7 +2139,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: variable",
+    "title": "Tag :: Variable",
     "uri": "/tags/variable/index.html"
   },
   {
@@ -2147,7 +2147,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: variables",
+    "title": "Tag :: Variables",
     "uri": "/tags/variables/index.html"
   },
   {
@@ -2155,7 +2155,7 @@
     "content": "",
     "description": "",
     "tags": null,
-    "title": "Tag :: yaml",
+    "title": "Tag :: Yaml",
     "uri": "/tags/yaml/index.html"
   }
 ]
