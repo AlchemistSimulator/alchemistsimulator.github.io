@@ -18,22 +18,22 @@
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Monitor and Control Simulations through GraphQL :: Documentation for the Alchemist Simulator">
     <meta itemprop="description" content="Monitor and Control a Simulation through a set of GraphQL APIs.">
-    <meta itemprop="wordCount" content="483">
+    <meta itemprop="wordCount" content="203">
     <meta itemprop="keywords" content="Api,Graphql">
     <title>Monitor and Control Simulations through GraphQL :: Documentation for the Alchemist Simulator</title>
     <link href="../../../howtos/simulation/graphql/index.xml" rel="alternate" type="application/rss+xml" title="Monitor and Control Simulations through GraphQL :: Documentation for the Alchemist Simulator">
-    <link href="../../../images/logo.svg?1714754475" rel="icon" type="image/svg+xml">
-    <link href="../../../css/fontawesome-all.min.css?1714754476" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fontawesome-all.min.css?1714754476" rel="stylesheet"></noscript>
-    <link href="../../../css/nucleus.css?1714754476" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1714754476" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/auto-complete.css?1714754476" rel="stylesheet"></noscript>
-    <link href="../../../css/perfect-scrollbar.min.css?1714754476" rel="stylesheet">
-    <link href="../../../css/fonts.css?1714754476" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fonts.css?1714754476" rel="stylesheet"></noscript>
-    <link href="../../../css/theme.css?1714754476" rel="stylesheet">
-    <link href="../../../css/theme-relearn.css?1714754476" rel="stylesheet" id="R-variant-style">
-    <link href="../../../css/chroma-relearn-light.css?1714754476" rel="stylesheet" id="R-variant-chroma-style">
-    <link href="../../../css/variant.css?1714754476" rel="stylesheet">
-    <link href="../../../css/print.css?1714754476" rel="stylesheet" media="print">
-    <script src="../../../js/variant.js?1714754476"></script>
+    <link href="../../../images/logo.svg?1714759789" rel="icon" type="image/svg+xml">
+    <link href="../../../css/fontawesome-all.min.css?1714759789" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fontawesome-all.min.css?1714759789" rel="stylesheet"></noscript>
+    <link href="../../../css/nucleus.css?1714759789" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1714759789" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/auto-complete.css?1714759789" rel="stylesheet"></noscript>
+    <link href="../../../css/perfect-scrollbar.min.css?1714759789" rel="stylesheet">
+    <link href="../../../css/fonts.css?1714759789" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fonts.css?1714759789" rel="stylesheet"></noscript>
+    <link href="../../../css/theme.css?1714759789" rel="stylesheet">
+    <link href="../../../css/theme-relearn.css?1714759789" rel="stylesheet" id="R-variant-style">
+    <link href="../../../css/chroma-relearn-light.css?1714759789" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="../../../css/variant.css?1714759789" rel="stylesheet">
+    <link href="../../../css/print.css?1714759789" rel="stylesheet" media="print">
+    <script src="../../../js/variant.js?1714759789"></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..\/..';
@@ -67,10 +67,9 @@
               <div class="topbar-content">
                 <div class="topbar-content-wrapper"><nav class="TableOfContents">
   <ul>
-    <li><a href="#using-graphql-service-inside-alchemist">Using GraphQL service inside Alchemist</a>
+    <li><a href="#use-graphql-service-inside-alchemist">Use GraphQL service inside Alchemist</a>
       <ul>
         <li><a href="#simulations-overview-in-the-web-browser">Simulation&rsquo;s overview in the Web Browser</a></li>
-        <li><a href="#using-graphql-apis-inside-the-jvm">Using GraphQL APIs inside the JVM</a></li>
       </ul>
     </li>
   </ul>
@@ -125,25 +124,16 @@ APIs which provide a standard and flexible way to query the system.</p>
 simple overview of the running simulation thanks to the playground
 <a href="https://github.com/graphql/graphiql" rel="external" target="_blank">GraphiQL</a> with the ability to control the
 simulation, or to develop an Alchemist sub-module that uses the API service.</p>
-<h2 id="using-graphql-service-inside-alchemist">Using GraphQL service inside Alchemist</h2>
+<h2 id="use-graphql-service-inside-alchemist">Use GraphQL service inside Alchemist</h2>
 <p>In order to attach the GraphQL API service to a simulation, you must specify
-the <code>GraphQLSimulationLauncher</code> in the simulation&rsquo;s YAML file, providing the
+the <code>GraphQLMonitor</code> in the simulation&rsquo;s YAML file, providing the
 server&rsquo;s host and port (if not specified, default URL is: <code>127.0.0.1:8081</code>) as
 shown in the following example:</p>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#ff6ac1">launcher</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: GraphQLServerLauncher
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#ff6ac1">monitors</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: GraphQLMonitor
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">host</span>: &lt;my-custom-host&gt;
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">port</span>: &lt;my-custom-port&gt;</span></span></code></pre></div><p>Once the YAML file is ready, the simulation can be started as usual.</p>
-
-<div class="box notices cstyle warning">
-  <div class="box-label"><i class="fa-fw fas fa-exclamation-triangle"></i> Warning</div>
-  <div class="box-content">
-
-<p>Note: At the current state, only one simulation at a time can be launched through the
-GraphQL simulation launcher.</p>
-</div>
-</div>
 <h3 id="simulations-overview-in-the-web-browser">Simulation&rsquo;s overview in the Web Browser</h3>
 <p>Once the simulation is up and running, you can visit on your local web browser
 the URL: <code>http://&lt;my-custom-host&gt;:&lt;my-custom-port&gt;/graphiql</code>. In this GraphiQL
@@ -151,62 +141,7 @@ playground you will be able to lookup all the operations and types structure
 that are defined in the GraphQL schema, thanks to the documentation on the
 sidebar, or execute operations defining the structure of the data that you will
 need.</p>
-<h3 id="using-graphql-apis-inside-the-jvm">Using GraphQL APIs inside the JVM</h3>
-<p>If you plan to use GraphQL APIs for the development of a module inside
-Alchemist, you can do so by using the provided <code>GraphQLClient</code>. This class will
-take care of establishing a connection to the GraphQL server, validate and
-compute operations and give back their results. This component has been
-developed in a multiplatform environment, so that applications can lay on
-platforms like Android, iOS, Kotlin/JS or Kotlin/Native.</p>
-<p>In order to use the GraphQL API service, refer to the following steps:</p>
-<ol>
-<li>
-<p>Include the <code>alchemist-graphql</code> common source set in your project.</p>
-</li>
-<li>
-<p>Define the structure of the data you need when executing one of the provided
-operations, inside a set of files with <code>.graphql</code> extension placed in the
-<code>alchemist-graphql/src/commonMain/resources/graphql/</code> directory.</p>
-</li>
-</ol>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#78787e"># NodeQuery.graphql</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff5c57">query</span> <span style="color:#f3f99d">Node</span>(<span style="color:#ff5c57">$id</span>: <span style="color:#f3f99d">Int</span>!) {
-</span></span><span style="display:flex;"><span>    nodeById(id: <span style="color:#ff5c57">$id</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#f3f99d">contents</span> {
-</span></span><span style="display:flex;"><span>            entries {
-</span></span><span style="display:flex;"><span>                molecule {
-</span></span><span style="display:flex;"><span>                    name
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>                concentration
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
-<div class="box notices cstyle tip">
-  <div class="box-label"><i class="fa-fw fas fa-lightbulb"></i> Use GraphiQL to build client&rsquo;s operations files</div>
-  <div class="box-content">
 
-<p>You can test the structure of the data that you need inside the GraphiQL
-playground, in order to get predicable results when compiling your operations.
-GraphiQL also notices you if you are writing incorrect operations with useful
-explanation about the errors.</p>
-</div>
-</div>
-<ol start="3">
-<li>
-<p>Run the Gradle task <code>./gradlew :alchemist-graphql:generateAlchemist-graphqlApolloSources</code> in order to
-generate Kotlin&rsquo;s source code that represents the results of operations
-called in previously defined files.</p>
-</li>
-<li>
-<p>Use the defined GraphQL compiled operations on top of the <code>GraphQLClient</code>
-to execute them.</p>
-</li>
-</ol>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#ff6ac1">val</span> client: GraphQLClient = <span style="color:#f3f99d">GraphQLClientFactory</span>.basicClient()
-</span></span><span style="display:flex;"><span><span style="color:#78787e">/* `NodeQuery` is the generated code for the
-</span></span></span><span style="display:flex;"><span><span style="color:#78787e">    GraphQL operation defined in the example above */</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">val</span> node: Node? = client.query(NodeQuery(nodeId = <span style="color:#ff9f43">10</span>)).execute().<span style="color:#ff6ac1">data</span></span></span></code></pre></div>
             <footer class="footline">
             </footer>
           </article>
@@ -236,12 +171,12 @@ to execute them.</p>
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../../../js/auto-complete.js?1714754476" defer></script>
-        <script src="../../../js/lunr/lunr.min.js?1714754476" defer></script>
-        <script src="../../../js/lunr/lunr.stemmer.support.min.js?1714754476" defer></script>
-        <script src="../../../js/lunr/lunr.multi.min.js?1714754476" defer></script>
-        <script src="../../../js/lunr/lunr.en.min.js?1714754476" defer></script>
-        <script src="../../../js/search.js?1714754476" defer></script>
+        <script src="../../../js/auto-complete.js?1714759789" defer></script>
+        <script src="../../../js/lunr/lunr.min.js?1714759789" defer></script>
+        <script src="../../../js/lunr/lunr.stemmer.support.min.js?1714759789" defer></script>
+        <script src="../../../js/lunr/lunr.multi.min.js?1714759789" defer></script>
+        <script src="../../../js/lunr/lunr.en.min.js?1714759789" defer></script>
+        <script src="../../../js/search.js?1714759789" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -297,6 +232,7 @@ to execute them.</p>
           <li data-nav-id="/howtos/extensions/index.html" class=""><a class="padding" href="../../../howtos/extensions/index.html">Experiment-specific extensions<i class="fa-fw fas fa-check read-icon"></i></a></li>
           <li data-nav-id="/howtos/development/index.html" class="alwaysopen"><a class="padding" href="../../../howtos/development/index.html">Development<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-397358bf934f2d89ac8941ebbe9f4ea2" class="morespace collapsible-menu">
           <li data-nav-id="/howtos/development/contributions/index.html" class=""><a class="padding" href="../../../howtos/development/contributions/index.html">Developer&#39;s guide<i class="fa-fw fas fa-check read-icon"></i></a></li>
+          <li data-nav-id="/howtos/development/graphql/index.html" class=""><a class="padding" href="../../../howtos/development/graphql/index.html">Enrich the GraphQL API<i class="fa-fw fas fa-check read-icon"></i></a></li>
           <li data-nav-id="/howtos/development/ide-import/index.html" class=""><a class="padding" href="../../../howtos/development/ide-import/index.html">Import Alchemist in an IDE<i class="fa-fw fas fa-check read-icon"></i></a></li>
           <li data-nav-id="/howtos/development/building/index.html" class=""><a class="padding" href="../../../howtos/development/building/index.html">Build and run the QA<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li></ul></li>
           <li data-nav-id="/explanation/index.html" class=""><a class="padding" href="../../../explanation/index.html"><b>3. </b>Explanation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-9e185abcbe3a228f1afbe37bad8b63ae" class="morespace collapsible-menu">
@@ -374,7 +310,7 @@ to execute them.</p>
             </ul>
           </div>
           <div id="R-footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 33.1.2</strong></div>
+    <div><strong>Alchemist Simulator 34.0.0</strong></div>
     <br>
     <a
         class="github-button"
@@ -408,22 +344,22 @@ to execute them.</p>
         </div>
       </div>
     </aside>
-    <script src="../../../js/clipboard.min.js?1714754476" defer></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1714754476" defer></script>
-    <script src="../../../js/d3/d3-color.min.js?1714754476" defer></script>
-    <script src="../../../js/d3/d3-dispatch.min.js?1714754476" defer></script>
-    <script src="../../../js/d3/d3-drag.min.js?1714754476" defer></script>
-    <script src="../../../js/d3/d3-ease.min.js?1714754476" defer></script>
-    <script src="../../../js/d3/d3-interpolate.min.js?1714754476" defer></script>
-    <script src="../../../js/d3/d3-selection.min.js?1714754476" defer></script>
-    <script src="../../../js/d3/d3-timer.min.js?1714754476" defer></script>
-    <script src="../../../js/d3/d3-transition.min.js?1714754476" defer></script>
-    <script src="../../../js/d3/d3-zoom.min.js?1714754476" defer></script>
-    <script src="../../../js/js-yaml.min.js?1714754476" defer></script>
-    <script src="../../../js/mermaid.min.js?1714754476" defer></script>
+    <script src="../../../js/clipboard.min.js?1714759789" defer></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1714759789" defer></script>
+    <script src="../../../js/d3/d3-color.min.js?1714759789" defer></script>
+    <script src="../../../js/d3/d3-dispatch.min.js?1714759789" defer></script>
+    <script src="../../../js/d3/d3-drag.min.js?1714759789" defer></script>
+    <script src="../../../js/d3/d3-ease.min.js?1714759789" defer></script>
+    <script src="../../../js/d3/d3-interpolate.min.js?1714759789" defer></script>
+    <script src="../../../js/d3/d3-selection.min.js?1714759789" defer></script>
+    <script src="../../../js/d3/d3-timer.min.js?1714759789" defer></script>
+    <script src="../../../js/d3/d3-transition.min.js?1714759789" defer></script>
+    <script src="../../../js/d3/d3-zoom.min.js?1714759789" defer></script>
+    <script src="../../../js/js-yaml.min.js?1714759789" defer></script>
+    <script src="../../../js/mermaid.min.js?1714759789" defer></script>
     <script>
       window.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../../js/theme.js?1714754476" defer></script>
+    <script src="../../../js/theme.js?1714759789" defer></script>
   </body>
 </html>
