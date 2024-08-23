@@ -304,6 +304,31 @@ var relearn_search_index = [
     "uri": "/showcase/2022-turin/index.html"
   },
   {
+    "breadcrumb": "The Alchemist Simulator \u003e Showcase",
+    "content": "Simulation and detailed description publicly available at https://github.com/angelacorte/vmc-experiments, related to the paper ``An Aggregate Vascular Morphogenesis Controller for Engineered Self-Organising Spatial Structures’’ presented at ACSOS 2024 (DOI available soon).\nAbstract In the field of evolutionary computing, the concept of Vascular Morphogenesis Controller (VMC) has been proposed in to model the growth of artificial structures over time.\nA thorough analysis of the VMC model revealed some limitations:\nassumes the organization structure is a tree, here intended as a directed acyclic graph with a single root and with a single path connecting the root with each leaf; the model is implicitly synchronous, as it assumes that (i) the evaluation of the nodes must proceed from the leaves to the root (and back), and (ii) the update of the whole tree occurs atomically. Although, depending on the context, these assumptions may be acceptable, in general they may induce (possibly hidden) abstraction gaps when VMC is used to model real-world systems, and, at the same time, limit the applicability of the pattern to engineered morphogenetic systems.\nTo address these limitations, in this work, we propose FieldVMC: a generalisation of the VMC model as a field-based computation, in the spirit of the Aggregate Programming (AP) paradigm.\nExperiment description The experiments want to show the capabilities of the proposed model in generating self-organising spatial structures.\nThe goal of this evaluation is to show that the proposed FieldVMC supports the construction of the same structures of its predecessor, and, in addition, that it can work in scenarios not previously investigated. To this end, we designed a set of five experiments:\noneRoot: self-construction from a single node (growth from seed), cutting: self-repair after disruption (network segmentation) with no regeneration (cutting). The segmentation is performed by removing a part of the structure after 500 simulated seconds, and the nodes are not able to regenerate the missing part; graft: self-integration of multiple FieldVMC systems (grafting). Two distinct structures are created, and after 500 simulated seconds, they are merged into a single structure; graftWithMoreLeaders: self-segmentation of a larger structure (budding). Two distinct structures are created with possibly more than leader each; after 500 simulated seconds, they are merged into a single structure; graftWithSpawning: self-optimization of multiple large structures into a more efficient one (abscission and regrowth). Two distinct structures are created, and after 500 simulated seconds, they are merged into a single structure. During the simulation, nodes are able to spawn new nodes and destroy the ones that are not useful anymore, resulting in an optimized structure. Results In all the experiments, the cyan area represents the resource and the yellow area is the success, with darker shades indicating higher values. Nodes are represented as circles. The root is identified by a dark outer circumference.\nThe size of a circle depends on the amount of resource and success received relative to all other nodes in the system: we fix the maximum possible size $D$, we compute the maximum amount of resource $R$ and the maximum amount of success $S$ across all nodes in the system; then, for each node in the system with success $s$ and resource $r$, we determine its size $d$ proportionally to $D$ as $d=\\frac{D (r + s)}{R + S}$. Their color depends on the amount of resource nodes have and is assigned based on the hue of the HSV color space, with the most resource associated with indigo, and the lowest with red.\nDashed lines are communication channels, solid black lines represent the tree structure, and green (resp. orange) lines depict the resource (resp. success) distribution flows, the thicker they are, the more resource (resp. success) is being transferred.\nSome examples of the generated structures are shown below:\nStarting Structure Self-Organised Structure Structure after cutting a part of it Self-Organised Structure after the cutting The images show the evolution of a structure from a starting configuration to a self-organized structure, after a part of the structure has been removed.\nAs seen in the sequence below, the structure evolves from a single node to a more complex structure. Firstly, the structure results to expand towards the center of the available resources. This happens because the spawned nodes are in a zone with higher resources, used as weight in the leader election phase, thus the newly created node gets elected as the new leader, which results in an expansion towards the center of the resource layer. While the root gains more resources, nodes will spawn children based on their local success, meaning that the nodes which sense more success from the environment have higher probability and capabilities to spawn new children, resulting in an expansion towards the center of the success layer. The structure then stabilizes in what appears to be the optimal configuration, and the structure stops evolving.\nSequence of images showing the evolution in time of the structure in the oneRoot experiment. ",
+    "description": "Simulations related to the generalization of the Vascular Morphogenesis algorithm using the Aggregate Computing paradigm, presented at ACSOS 2024.",
+    "tags": [
+      "Simulation",
+      "Aggregate Computing",
+      "Vascular Morphogenesis"
+    ],
+    "title": "2024: Aggregate Vascular Morphogenesis Controller",
+    "uri": "/showcase/2024-fieldvmc/index.html"
+  },
+  {
+    "breadcrumb": "The Alchemist Simulator \u003e Showcase",
+    "content": "Simulation publicly available at: https://github.com/nicolasfara/experiments-2024-ACSOS-imageonomics-drones\nAbstract One of the best sources of information for biologists and ethologists to study wildlife behavior is video footage; in particular, aerial video footage provides a unique perspective on the behavior of animals in their natural habitat. Numerous wildlife behavioral studies have demonstrated the effectiveness of UAVs for collecting video data of group-living animals. However, in contrast with well-established techniques for static video acquisition, the deployment of UAVs for wildlife video acquisition requires human operators to manually control and coordinate the drones while minimizing disturbance to animals. To scale UAVs missions to obtain sufficient spatiotemporal resolution, reliance on manual operations is impractical. In this paper, we present a decentralized multi-drone coordination system for wildlife video acquisition using UAVs that leverages a novel k-coverage algorithm specifically designed to cover herds. In particular, it is based on a hierarchical clustering approach to find the herds' centroids, then it coordinates multiple drones in a decentralized fashion to cover them from multiple points of view. We introduce a set of metrics to evaluate the effectiveness of the proposed approach via simulation, finding that the proposed approach improves noticeably over the present state of the art.\nSimulation description We evaluate our decentralized multi-drone coordination system for wildlife video acquisition via simulation, comparing it to the current state of the art in the OMOkC problem considering both the quality of the footage and the noise pollution generated by the drones.\nWe chose zebras as target animals, as they are group-living animals known to form herds. Zebras are a common target for wildlife monitoring, and their behavior is well-documented, including recent drone studies.\nWe place UAVs close together in a circular zone with a 200m radius, simulating the mission as starting from a random location in the operation area. The UAVs have a communication range of 1km and move at a maximum speed of 10 m/s. Their FoV is parametrized with R = 100m, B = 18m, β = 80°; these values were selected to match those of a commercially available quadcopter.\nPeriodically, with a frequency of 1Hz, the drones execute a loop of the tracking algorithm to select their target. We compared four tracking algorithms:\nsm_av: selects the target closest to the drone; ff_lin_pro: the current best-performing algorithm for distributed OMOkC, which builds and solves a local optimization problem to attribute targets to UAVs; bc_re_c: an extension to the original bc_re algorithm that selects the targets with the worst coverage, equipped with the clustering mechanisms to work on cluster centroids instead; ff_lin_pro_c: a variant of ff_lin_pro algorithm that includes clustering. We investigate a single video acquisition session with the drones operating for 30 simulated minutes.\nThe performance of various algorithms for wildlife tracking is analyzed, highlighting their effectiveness in different scenarios. The original ff_lin_pro algorithm, known for its success in classic OMOkC scenarios, performs poorly in wildlife tracking. However, when adapted with a problem-specific clustering system (ff_lin_pro_c), it outperforms all other algorithms. Detailed results show that while ff_lin_pro achieves better field-of-view (FoV) distance by focusing on tracked animals, it compromises overall coverage.\nWith herd knowledge added, FoV distance worsens due to a broader inclusion of animals in the scene. The proposed ff_lin_pro_c approach scales well with the number of cameras and performs best for 1- and 3-coverage with sufficient UAVs. Despite higher noise levels from closer UAV positioning, the noise remains within acceptable limits for wildlife monitoring.\nSnapshots ",
+    "description": "Simulation of decentralized multi-drone coordination for wildlife video acquisition.",
+    "tags": [
+      "Simulation",
+      "Imageonomics",
+      "Drones",
+      "Protelis"
+    ],
+    "title": "2024: Decentralized Multi-Drone Coordination for Wildlife Video Acquisition",
+    "uri": "/showcase/2024-acsos-imageonomics/index.html"
+  },
+  {
     "breadcrumb": "The Alchemist Simulator \u003e How-to Guides \u003e Preparation",
     "content": "Although we recommend to run the simulator via Gradle, Alchemist can be executed through the redistributable jar file.\nSuch jar file can be downloaded from the releases section on github.\nObtain the runnable jar of alchemist-full from GitHub, the open a terminal and move to the folder where the jar is located, then issue:\njava -jar alchemist-full-VERSION-all.jar --helpRemember to substitute VERSION with the Alchemist version you actually have downloaded. You can still use alchemist in a modularized form using jars. In this case, use alchemist-VERSION-all.jar and all the jars corresponding to the modules you need. Pass them to the java command as classpath, e.g.:\njava -cp alchemist-VERSION-all.jar:alchemist-incarnation-protelis-VERSION-all.jar:alchemist-swingui-VERSION-all.jar it.unibo.alchemist.Alchemist --helpUnder Windows, the separator is ; in place of :\nThis command will print information on the available command line options.",
     "description": "The recommended way to run the simulator and fetch all the required modules.",
@@ -1271,6 +1296,14 @@ var relearn_search_index = [
     "content": "",
     "description": "",
     "tags": [],
+    "title": "Tag :: Drones",
+    "uri": "/tags/drones/index.html"
+  },
+  {
+    "breadcrumb": "The Alchemist Simulator \u003e Tags",
+    "content": "",
+    "description": "",
+    "tags": [],
     "title": "Tag :: Dry",
     "uri": "/tags/dry/index.html"
   },
@@ -1465,6 +1498,14 @@ var relearn_search_index = [
     "tags": [],
     "title": "Tag :: IDE",
     "uri": "/tags/ide/index.html"
+  },
+  {
+    "breadcrumb": "The Alchemist Simulator \u003e Tags",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Tag :: Imageonomics",
+    "uri": "/tags/imageonomics/index.html"
   },
   {
     "breadcrumb": "The Alchemist Simulator \u003e Tags",
@@ -2036,8 +2077,8 @@ var relearn_search_index = [
   },
   {
     "breadcrumb": "The Alchemist Simulator",
-    "content": "Examples from published papers Showcase Contents 2020: Optimal resilient distributed data collection in mobile edge environmentsSimulation of crowd control with mobile in Turin.\n2022: Dynamic Decentralization Domains for the Internet of ThingsSimulation of collective distributed sensing and acting using Toronto rain gauge’s data.\n2022: Situated recommendation systemSimulation of people attending attractions inside the Mirabilandia amusement park.\n2022: Turin's 2017 stampede in simulationSimulation of Piazza San Carlo crowd disaster",
-    "description": "Examples from published papers Showcase Contents 2020: Optimal resilient distributed data collection in mobile edge environmentsSimulation of crowd control with mobile in Turin.\n2022: Dynamic Decentralization Domains for the Internet of ThingsSimulation of collective distributed sensing and acting using Toronto rain gauge’s data.\n2022: Situated recommendation systemSimulation of people attending attractions inside the Mirabilandia amusement park.\n2022: Turin's 2017 stampede in simulationSimulation of Piazza San Carlo crowd disaster",
+    "content": "Examples from published papers Showcase Contents 2020: Optimal resilient distributed data collection in mobile edge environmentsSimulation of crowd control with mobile in Turin.\n2022: Dynamic Decentralization Domains for the Internet of ThingsSimulation of collective distributed sensing and acting using Toronto rain gauge’s data.\n2022: Situated recommendation systemSimulation of people attending attractions inside the Mirabilandia amusement park.\n2022: Turin's 2017 stampede in simulationSimulation of Piazza San Carlo crowd disaster\n2024: Aggregate Vascular Morphogenesis ControllerSimulations related to the generalization of the Vascular Morphogenesis algorithm using the Aggregate Computing paradigm, presented at ACSOS 2024.\n2024: Decentralized Multi-Drone Coordination for Wildlife Video AcquisitionSimulation of decentralized multi-drone coordination for wildlife video acquisition.",
+    "description": "Examples from published papers Showcase Contents 2020: Optimal resilient distributed data collection in mobile edge environmentsSimulation of crowd control with mobile in Turin.\n2022: Dynamic Decentralization Domains for the Internet of ThingsSimulation of collective distributed sensing and acting using Toronto rain gauge’s data.\n2022: Situated recommendation systemSimulation of people attending attractions inside the Mirabilandia amusement park.\n2022: Turin's 2017 stampede in simulationSimulation of Piazza San Carlo crowd disaster\n2024: Aggregate Vascular Morphogenesis ControllerSimulations related to the generalization of the Vascular Morphogenesis algorithm using the Aggregate Computing paradigm, presented at ACSOS 2024.",
     "tags": [],
     "title": "Showcase",
     "uri": "/showcase/index.html"
@@ -2177,6 +2218,14 @@ var relearn_search_index = [
     "tags": [],
     "title": "Tag :: Variables",
     "uri": "/tags/variables/index.html"
+  },
+  {
+    "breadcrumb": "The Alchemist Simulator \u003e Tags",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Tag :: Vascular Morphogenesis",
+    "uri": "/tags/vascular-morphogenesis/index.html"
   },
   {
     "breadcrumb": "The Alchemist Simulator \u003e Tags",
