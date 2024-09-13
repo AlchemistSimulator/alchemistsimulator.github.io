@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="generator" content="Hugo 0.134.2">
     <meta name="generator" content="Relearn 6.1.1">
     <meta name="description" content="Agents with realistic human behavior.">
     <meta name="author" content="Danilo Pianini">
@@ -22,24 +22,24 @@
     <meta itemprop="keywords" content="Cognitive,Pedestrian,Agents">
     <title>Cognitive Agents :: Documentation for the Alchemist Simulator</title>
     <link href="../../../howtos/simulation/cognitive/index.xml" rel="alternate" type="application/rss+xml" title="Cognitive Agents :: Documentation for the Alchemist Simulator">
-    <link href="../../../images/logo.svg?1725037278" rel="icon" type="image/svg+xml">
-    <link href="../../../css/fontawesome-all.min.css?1725037278" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fontawesome-all.min.css?1725037278" rel="stylesheet"></noscript>
-    <link href="../../../css/nucleus.css?1725037278" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1725037278" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/auto-complete.css?1725037278" rel="stylesheet"></noscript>
-    <link href="../../../css/perfect-scrollbar.min.css?1725037278" rel="stylesheet">
-    <link href="../../../css/fonts.css?1725037278" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fonts.css?1725037278" rel="stylesheet"></noscript>
-    <link href="../../../css/theme.css?1725037278" rel="stylesheet">
-    <link href="../../../css/theme-relearn.css?1725037278" rel="stylesheet" id="R-variant-style">
-    <link href="../../../css/chroma-relearn-light.css?1725037278" rel="stylesheet" id="R-variant-chroma-style">
-    <link href="../../../css/variant.css?1725037278" rel="stylesheet">
-    <link href="../../../css/print.css?1725037278" rel="stylesheet" media="print">
-    <script src="../../../js/variant.js?1725037278"></script>
+    <link href="../../../images/logo.svg?1726234275" rel="icon" type="image/svg+xml">
+    <link href="../../../css/fontawesome-all.min.css?1726234275" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fontawesome-all.min.css?1726234275" rel="stylesheet"></noscript>
+    <link href="../../../css/nucleus.css?1726234275" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1726234275" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/auto-complete.css?1726234275" rel="stylesheet"></noscript>
+    <link href="../../../css/perfect-scrollbar.min.css?1726234275" rel="stylesheet">
+    <link href="../../../css/fonts.css?1726234275" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../css/fonts.css?1726234275" rel="stylesheet"></noscript>
+    <link href="../../../css/theme.css?1726234275" rel="stylesheet">
+    <link href="../../../css/theme-relearn.css?1726234275" rel="stylesheet" id="R-variant-style">
+    <link href="../../../css/chroma-relearn-light.css?1726234275" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="../../../css/variant.css?1726234275" rel="stylesheet">
+    <link href="../../../css/print.css?1726234275" rel="stylesheet" media="print">
+    <script src="../../../js/variant.js?1726234275"></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..';
       window.relearn.absBaseUri='https:\/\/alchemistsimulator.github.io';
-      window.index_js_url="../../../index.search.js?1725037278";
+      window.index_js_url="../../../index.search.js?1726234275";
       // variant stuff
       window.variants && variants.init( [ 'relearn' ] );
       // translations
@@ -696,40 +696,40 @@ function onClick(element) {
 <h3 id="hardcoded-parameters">Hardcoded parameters</h3>
 <p>Here&rsquo;s a list of all the hardcoded parameters.</p>
 <table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>knownImpasseWeight</td>
-<td>10</td>
-<td>Weight assigned to known impasses (= areas with a single door). It&rsquo;s usually a high value, allowing to avoid them.</td>
-</tr>
-<tr>
-<td>toleranceAngle</td>
-<td>45 degrees</td>
-<td>Used by <a href="../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.cognitive.steering/-single-prevalent/"><code>SinglePrevalent</code></a>, that linearly combines multiple steering actions (= multiple forces) assuming one of them is prevalent. Weights for the linear combination are determined so that the resulting force forms with the prevalent one an angle smaller than or equal to the tolerance angle. The prevalent force usually wants to move the pedestrian consciously, whereas other forces are more &ldquo;greedy&rdquo;. The purpose of the tolerance angle is allowing to steer the pedestrian towards the target defined by the prevalent force, while using a trajectory which takes into account other urges as well.</td>
-</tr>
-<tr>
-<td>alpha</td>
-<td>0.5</td>
-<td>Used by <a href="../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.cognitive.steering/-single-prevalent/"><code>SinglePrevalent</code></a>, an exponential smoothing with this alpha is applied to the resulting force in order to reduce oscillatory movements.</td>
-</tr>
-<tr>
-<td>maxWalkRatio</td>
-<td>0.3</td>
-<td>Used by <a href="../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.cognitive.steering/-single-prevalent/"><code>SinglePrevalent</code></a>. When the pedestrian is subject to contrasting forces the resulting one may be small in magnitude, hence a lower bound for such quantity is set to (maximum distance walkable by the pedestrian) * (this parameter) so as to avoid extremely slow movements.</td>
-</tr>
-<tr>
-<td>delta</td>
-<td>0.05</td>
-<td>Used by <a href="../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.cognitive.steering/-single-prevalent/"><code>SinglePrevalent</code></a>. The weight assigned to disturbing forces is set to 1 and then iteratively decreased by delta until the resulting force satisfies the required conditions (see the api). This is similar to a gradient descent.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Name</th>
+          <th style="text-align: left">Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">knownImpasseWeight</td>
+          <td style="text-align: left">10</td>
+          <td style="text-align: left">Weight assigned to known impasses (= areas with a single door). It&rsquo;s usually a high value, allowing to avoid them.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">toleranceAngle</td>
+          <td style="text-align: left">45 degrees</td>
+          <td style="text-align: left">Used by <a href="../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.cognitive.steering/-single-prevalent/"><code>SinglePrevalent</code></a>, that linearly combines multiple steering actions (= multiple forces) assuming one of them is prevalent. Weights for the linear combination are determined so that the resulting force forms with the prevalent one an angle smaller than or equal to the tolerance angle. The prevalent force usually wants to move the pedestrian consciously, whereas other forces are more &ldquo;greedy&rdquo;. The purpose of the tolerance angle is allowing to steer the pedestrian towards the target defined by the prevalent force, while using a trajectory which takes into account other urges as well.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">alpha</td>
+          <td style="text-align: left">0.5</td>
+          <td style="text-align: left">Used by <a href="../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.cognitive.steering/-single-prevalent/"><code>SinglePrevalent</code></a>, an exponential smoothing with this alpha is applied to the resulting force in order to reduce oscillatory movements.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">maxWalkRatio</td>
+          <td style="text-align: left">0.3</td>
+          <td style="text-align: left">Used by <a href="../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.cognitive.steering/-single-prevalent/"><code>SinglePrevalent</code></a>. When the pedestrian is subject to contrasting forces the resulting one may be small in magnitude, hence a lower bound for such quantity is set to (maximum distance walkable by the pedestrian) * (this parameter) so as to avoid extremely slow movements.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">delta</td>
+          <td style="text-align: left">0.05</td>
+          <td style="text-align: left">Used by <a href="../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.cognitive.steering/-single-prevalent/"><code>SinglePrevalent</code></a>. The weight assigned to disturbing forces is set to 1 and then iteratively decreased by delta until the resulting force satisfies the required conditions (see the api). This is similar to a gradient descent.</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="physical-pedestrians">Physical pedestrians</h3>
 <p>Physical pedestrians are capable of pushing and bumping into each other.
@@ -834,12 +834,12 @@ function onClick(element) {
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../../../js/auto-complete.js?1725037278" defer></script>
-        <script src="../../../js/lunr/lunr.min.js?1725037278" defer></script>
-        <script src="../../../js/lunr/lunr.stemmer.support.min.js?1725037278" defer></script>
-        <script src="../../../js/lunr/lunr.multi.min.js?1725037278" defer></script>
-        <script src="../../../js/lunr/lunr.en.min.js?1725037278" defer></script>
-        <script src="../../../js/search.js?1725037278" defer></script>
+        <script src="../../../js/auto-complete.js?1726234275" defer></script>
+        <script src="../../../js/lunr/lunr.min.js?1726234275" defer></script>
+        <script src="../../../js/lunr/lunr.stemmer.support.min.js?1726234275" defer></script>
+        <script src="../../../js/lunr/lunr.multi.min.js?1726234275" defer></script>
+        <script src="../../../js/lunr/lunr.en.min.js?1726234275" defer></script>
+        <script src="../../../js/search.js?1726234275" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -973,7 +973,7 @@ function onClick(element) {
             </ul>
           </div>
           <div id="R-footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 34.1.3</strong></div>
+    <div><strong>Alchemist Simulator 34.1.4</strong></div>
     <br>
     <a
         class="github-button"
@@ -1007,22 +1007,22 @@ function onClick(element) {
         </div>
       </div>
     </aside>
-    <script src="../../../js/clipboard.min.js?1725037278" defer></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1725037278" defer></script>
-    <script src="../../../js/d3/d3-color.min.js?1725037278" defer></script>
-    <script src="../../../js/d3/d3-dispatch.min.js?1725037278" defer></script>
-    <script src="../../../js/d3/d3-drag.min.js?1725037278" defer></script>
-    <script src="../../../js/d3/d3-ease.min.js?1725037278" defer></script>
-    <script src="../../../js/d3/d3-interpolate.min.js?1725037278" defer></script>
-    <script src="../../../js/d3/d3-selection.min.js?1725037278" defer></script>
-    <script src="../../../js/d3/d3-timer.min.js?1725037278" defer></script>
-    <script src="../../../js/d3/d3-transition.min.js?1725037278" defer></script>
-    <script src="../../../js/d3/d3-zoom.min.js?1725037278" defer></script>
-    <script src="../../../js/js-yaml.min.js?1725037278" defer></script>
-    <script src="../../../js/mermaid.min.js?1725037278" defer></script>
+    <script src="../../../js/clipboard.min.js?1726234275" defer></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1726234275" defer></script>
+    <script src="../../../js/d3/d3-color.min.js?1726234275" defer></script>
+    <script src="../../../js/d3/d3-dispatch.min.js?1726234275" defer></script>
+    <script src="../../../js/d3/d3-drag.min.js?1726234275" defer></script>
+    <script src="../../../js/d3/d3-ease.min.js?1726234275" defer></script>
+    <script src="../../../js/d3/d3-interpolate.min.js?1726234275" defer></script>
+    <script src="../../../js/d3/d3-selection.min.js?1726234275" defer></script>
+    <script src="../../../js/d3/d3-timer.min.js?1726234275" defer></script>
+    <script src="../../../js/d3/d3-transition.min.js?1726234275" defer></script>
+    <script src="../../../js/d3/d3-zoom.min.js?1726234275" defer></script>
+    <script src="../../../js/js-yaml.min.js?1726234275" defer></script>
+    <script src="../../../js/mermaid.min.js?1726234275" defer></script>
     <script>
       window.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../../js/theme.js?1725037278" defer></script>
+    <script src="../../../js/theme.js?1726234275" defer></script>
   </body>
 </html>
