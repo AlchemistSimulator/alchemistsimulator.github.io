@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article">
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.139.3">
-    <meta name="generator" content="Relearn 7.1.1">
+    <meta name="generator" content="Hugo 0.139.4">
+    <meta name="generator" content="Relearn 7.2.0">
     <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
     <meta name="description" content="Legal information The Alchemist Simulator License Explanation for humans Alchemist adopts a GNU GPLv3 license with a permissive modification. Alchemist or parts of it can be used in commercial products and closed-source software components, as far as they are not mutated. Namely, the GPLv3 is extended with a linking/classpath exception, so it can be used freely as a library, but modified versions the software must instead be released with a GPLv3 compatible lincesing scheme. There is no requirement for the portion of the program calling Alchemist to be reverse-engineerable (the Alchemist license is more permissive than GNU LGPL). If you use the simulator for academic purposes, then you must refer the appropriate paper.">
     <meta name="author" content="Danilo Pianini">
@@ -22,26 +22,49 @@
     <meta itemprop="wordCount" content="467">
     <title>License :: Documentation for the Alchemist Simulator</title>
     <link href="../license/index.xml" rel="alternate" type="application/rss+xml" title="License :: Documentation for the Alchemist Simulator">
-    <link href="../images/logo.svg?1733597560" rel="icon" type="image/svg+xml">
-    <link href="../css/fontawesome-all.min.css?1733597560" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/fontawesome-all.min.css?1733597560" rel="stylesheet"></noscript>
-    <link href="../css/nucleus.css?1733597560" rel="stylesheet">
-    <link href="../css/auto-complete.css?1733597560" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/auto-complete.css?1733597560" rel="stylesheet"></noscript>
-    <link href="../css/perfect-scrollbar.min.css?1733597560" rel="stylesheet">
-    <link href="../css/fonts.css?1733597560" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/fonts.css?1733597560" rel="stylesheet"></noscript>
-    <link href="../css/theme.css?1733597560" rel="stylesheet">
-    <link href="../css/theme-relearn.css?1733597560" rel="stylesheet" id="R-variant-style">
-    <link href="../css/chroma-relearn-light.css?1733597560" rel="stylesheet" id="R-variant-chroma-style">
-    <link href="../css/print.css?1733597560" rel="stylesheet" media="print">
-    <script src="../js/variant.js?1733597560"></script>
+    <link href="../images/logo.svg?1733773450" rel="icon" type="image/svg+xml">
+    <link href="../css/fontawesome-all.min.css?1733773450" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/fontawesome-all.min.css?1733773450" rel="stylesheet"></noscript>
+    <link href="../css/auto-complete.css?1733773450" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/auto-complete.css?1733773450" rel="stylesheet"></noscript>
+    <link href="../css/perfect-scrollbar.min.css?1733773450" rel="stylesheet">
+    <link href="../css/theme.min.css?1733773450" rel="stylesheet">
+    <link href="../css/format-html.min.css?1733773450" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..';
       window.relearn.relBaseUri='..';
       window.relearn.absBaseUri='https:\/\/alchemistsimulator.github.io';
+      window.relearn.min = `.min`;
       window.relearn.disableAnchorCopy=false;
       window.relearn.disableAnchorScrolling=false;
       // variant stuff
-      window.variants && variants.init( [ 'relearn' ] );
+      window.relearn.themevariants = [ 'relearn' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        var select = document.querySelector("#R-select-variant");
+        if (select) {
+          select.value = variant;
+        }
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
       // translations
       window.T_Copy_to_clipboard = `Copy to clipboard`;
       window.T_Copied_to_clipboard = `Copied to clipboard!`;
@@ -117,10 +140,12 @@
 
 <h3 id="legal-information">Legal information</h3>
 <h1 id="the-alchemist-simulator-license">The Alchemist Simulator License</h1>
-<div class="box notices cstyle info">
-  <div class="box-label">
-    <i class="fa-fw fas fa-info-circle"></i> Explanation for humans
-  </div>
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    Explanation for humans
+  </summary>
   <div class="box-content">
 <p>Alchemist adopts a GNU GPLv3 license with a permissive modification.
 Alchemist or parts of it <em>can be used in commercial products</em> and closed-source software components,
@@ -132,7 +157,7 @@ There is no requirement for the portion of the program calling Alchemist to be r
 (the Alchemist license is <em>more permissive</em> than GNU LGPL).
 If you use the simulator for academic purposes, then you must refer the appropriate paper.</p>
   </div>
-</div>
+</details>
 <h2 id="actual-license">Actual license</h2>
 <p>Alchemist is Copyright (C) 2010-2024, Danilo Pianini and contributors listed in the <code>pom.xml</code> file available for each
 module from &quot;The Central Repository&quot;, reachable from <a href="https://central.sonatype.com/" rel="external" target="_blank">https://central.sonatype.com/</a>.</p>
@@ -173,7 +198,7 @@ the <code>CITATION</code> file that comes with this software distribution.</p>
 
         </div>
         <script>
-          window.index_js_url="../searchindex.en.js?1733597560";
+          window.index_js_url="../searchindex.en.js?1733773450";
         </script>
         <search><form action="../search/index.html" method="get">
           <div class="searchbox default-animation">
@@ -186,12 +211,12 @@ the <code>CITATION</code> file that comes with this software distribution.</p>
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../js/auto-complete.js?1733597560" defer></script>
-        <script src="../js/lunr/lunr.min.js?1733597560" defer></script>
-        <script src="../js/lunr/lunr.stemmer.support.min.js?1733597560" defer></script>
-        <script src="../js/lunr/lunr.multi.min.js?1733597560" defer></script>
-        <script src="../js/lunr/lunr.en.min.js?1733597560" defer></script>
-        <script src="../js/search.js?1733597560" defer></script>
+        <script src="../js/auto-complete.js?1733773450" defer></script>
+        <script src="../js/lunr/lunr.min.js?1733773450" defer></script>
+        <script src="../js/lunr/lunr.stemmer.support.min.js?1733773450" defer></script>
+        <script src="../js/lunr/lunr.multi.min.js?1733773450" defer></script>
+        <script src="../js/lunr/lunr.en.min.js?1733773450" defer></script>
+        <script src="../js/search.js?1733773450" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -243,13 +268,13 @@ the <code>CITATION</code> file that comes with this software distribution.</p>
                   <span>&nbsp;</span>
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-variant">Theme</label>
-                    <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
                       <option id="R-select-variant-relearn" value="relearn" selected>Relearn</option>
                     </select>
                   </div>
                   <div class="clear"></div>
                 </div>
-                <script>window.variants && variants.markSelectedVariant();</script>
+                <script>window.relearn.markVariant();</script>
               </li>
               <li class="footerVisitedLinks showVisitedLinks">
                 <div class="padding menu-control">
@@ -264,7 +289,7 @@ the <code>CITATION</code> file that comes with this software distribution.</p>
             </ul>
           </div>
           <div id="R-footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 36.0.5</strong></div>
+    <div><strong>Alchemist Simulator 36.0.6</strong></div>
     <br>
     <a
         class="github-button"
@@ -298,22 +323,22 @@ the <code>CITATION</code> file that comes with this software distribution.</p>
         </div>
       </div>
     </aside>
-    <script src="../js/clipboard.min.js?1733597560" defer></script>
-    <script src="../js/perfect-scrollbar.min.js?1733597560" defer></script>
-    <script src="../js/d3/d3-color.min.js?1733597560" defer></script>
-    <script src="../js/d3/d3-dispatch.min.js?1733597560" defer></script>
-    <script src="../js/d3/d3-drag.min.js?1733597560" defer></script>
-    <script src="../js/d3/d3-ease.min.js?1733597560" defer></script>
-    <script src="../js/d3/d3-interpolate.min.js?1733597560" defer></script>
-    <script src="../js/d3/d3-selection.min.js?1733597560" defer></script>
-    <script src="../js/d3/d3-timer.min.js?1733597560" defer></script>
-    <script src="../js/d3/d3-transition.min.js?1733597560" defer></script>
-    <script src="../js/d3/d3-zoom.min.js?1733597560" defer></script>
-    <script src="../js/js-yaml.min.js?1733597560" defer></script>
-    <script src="../js/mermaid.min.js?1733597560" defer></script>
+    <script src="../js/clipboard.min.js?1733773450" defer></script>
+    <script src="../js/perfect-scrollbar.min.js?1733773450" defer></script>
+    <script src="../js/d3/d3-color.min.js?1733773450" defer></script>
+    <script src="../js/d3/d3-dispatch.min.js?1733773450" defer></script>
+    <script src="../js/d3/d3-drag.min.js?1733773450" defer></script>
+    <script src="../js/d3/d3-ease.min.js?1733773450" defer></script>
+    <script src="../js/d3/d3-interpolate.min.js?1733773450" defer></script>
+    <script src="../js/d3/d3-selection.min.js?1733773450" defer></script>
+    <script src="../js/d3/d3-timer.min.js?1733773450" defer></script>
+    <script src="../js/d3/d3-transition.min.js?1733773450" defer></script>
+    <script src="../js/d3/d3-zoom.min.js?1733773450" defer></script>
+    <script src="../js/js-yaml.min.js?1733773450" defer></script>
+    <script src="../js/mermaid.min.js?1733773450" defer></script>
     <script>
       window.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../js/theme.js?1733597560" defer></script>
+    <script src="../js/theme.js?1733773450" defer></script>
   </body>
 </html>

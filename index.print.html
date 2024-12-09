@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article">
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="print">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.139.3">
-    <meta name="generator" content="Relearn 7.1.1">
+    <meta name="generator" content="Hugo 0.139.4">
+    <meta name="generator" content="Relearn 7.2.0">
     <meta name="description" content="The Alchemist Simulator">
     <meta name="author" content="Danilo Pianini">
     <meta name="twitter:card" content="summary">
@@ -24,27 +24,49 @@
     <title>The Alchemist Simulator :: Documentation for the Alchemist Simulator</title>
     <link href="https://alchemistsimulator.github.io/index.html" rel="canonical" type="text/html" title="The Alchemist Simulator :: Documentation for the Alchemist Simulator">
     <link href="./index.xml" rel="alternate" type="application/rss+xml" title="The Alchemist Simulator :: Documentation for the Alchemist Simulator">
-    <link href="./images/logo.svg?1733597560" rel="icon" type="image/svg+xml">
-    <link href="./css/fontawesome-all.min.css?1733597560" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="./css/fontawesome-all.min.css?1733597560" rel="stylesheet"></noscript>
-    <link href="./css/nucleus.css?1733597560" rel="stylesheet">
-    <link href="./css/auto-complete.css?1733597560" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="./css/auto-complete.css?1733597560" rel="stylesheet"></noscript>
-    <link href="./css/perfect-scrollbar.min.css?1733597560" rel="stylesheet">
-    <link href="./css/fonts.css?1733597560" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="./css/fonts.css?1733597560" rel="stylesheet"></noscript>
-    <link href="./css/theme.css?1733597560" rel="stylesheet">
-    <link href="./css/theme-relearn.css?1733597560" rel="stylesheet" id="R-variant-style">
-    <link href="./css/chroma-relearn-light.css?1733597560" rel="stylesheet" id="R-variant-chroma-style">
-    <link href="./css/print.css?1733597560" rel="stylesheet" media="print">
-    <link href="./css/format-print.css?1733597560" rel="stylesheet">
-    <script src="./js/variant.js?1733597560"></script>
+    <link href="./images/logo.svg?1733773450" rel="icon" type="image/svg+xml">
+    <link href="./css/fontawesome-all.min.css?1733773450" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="./css/fontawesome-all.min.css?1733773450" rel="stylesheet"></noscript>
+    <link href="./css/auto-complete.css?1733773450" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="./css/auto-complete.css?1733773450" rel="stylesheet"></noscript>
+    <link href="./css/perfect-scrollbar.min.css?1733773450" rel="stylesheet">
+    <link href="./css/theme.min.css?1733773450" rel="stylesheet">
+    <link href="./css/format-print.min.css?1733773450" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='.';
       window.relearn.relBaseUri='.';
       window.relearn.absBaseUri='https:\/\/alchemistsimulator.github.io';
+      window.relearn.min = `.min`;
       window.relearn.disableAnchorCopy=false;
       window.relearn.disableAnchorScrolling=false;
       // variant stuff
-      window.variants && variants.init( [ 'relearn' ] );
+      window.relearn.themevariants = [ 'relearn' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        var select = document.querySelector("#R-select-variant");
+        if (select) {
+          select.value = variant;
+        }
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
       // translations
       window.T_Copy_to_clipboard = `Copy to clipboard`;
       window.T_Copied_to_clipboard = `Copied to clipboard!`;
@@ -113,8 +135,8 @@
 
 <h1 id="the-alchemist-simulator">The Alchemist Simulator</h1>
 
-<h1 id="logoimageslogo-text-pathsvg"><a href="#R-image-72fc22b79ec630e11fadcbbf267b4e9c" class="lightbox-link"><img alt="logo" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="images/logo-text-path.svg" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-72fc22b79ec630e11fadcbbf267b4e9c"><img alt="logo" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="images/logo-text-path.svg"></a></h1>
+<h1 id="logoimageslogo-text-pathsvg"><a href="#R-image-cf5a52bfce51027cf2b26e20cb270565" class="lightbox-link"><img alt="logo" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="images/logo-text-path.svg" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-cf5a52bfce51027cf2b26e20cb270565"><img alt="logo" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="images/logo-text-path.svg"></a></h1>
 <p>This website hosts the documentation of the Alchemist Simulator,
 created towards the end of 2010 as a by-product of the European Project SAPERE,
 and grown ever since into a full-fledged simulation framework.</p>
@@ -286,24 +308,28 @@ please add a reference to the following paper:</p>
 <li>A GUI pops up</li>
 <li>Press the <kbd>P</kbd> button to start the simulation. Other relevant buttons are described <a href="./reference/default-ui/index.html">here</a></li>
 </ol>
-<div class="box notices cstyle note">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-circle"></i> Something went wrong along the line?
-  </div>
+
+<details open class=" box cstyle notices note">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-circle"></i> 
+    Something went wrong along the line?
+  </summary>
   <div class="box-content">
 <p><a href="https://github.com/AlchemistSimulator/Alchemist/issues/new/choose" rel="external" target="_blank">Open an issue</a> and we&rsquo;ll get back to you.</p>
   </div>
-</div>
+</details>
 <p>You are now  ready to proceed with our tutorials!</p>
-<div class="box notices cstyle info">
-  <div class="box-label">
-    <i class="fa-fw fas fa-info-circle"></i> Info
-  </div>
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    Info
+  </summary>
   <div class="box-content">
 <p>If you want to understand right now what is happening under the hood,
 consider learning instead about <a href="./explanation/metamodel/index.html">the Alchemist meta-model</a></p>
   </div>
-</div>
+</details>
 
   <footer class="footline">
   </footer>
@@ -331,10 +357,12 @@ consider learning instead about <a href="./explanation/metamodel/index.html">the
 <a href="https://www.discotec.org/2021/dais.html" rel="external" target="_blank">DAIS 2021</a>
 (one of the three conferences of <a href="https://www.discotec.org/2021/" rel="external" target="_blank">DisCoTec 2021</a>).</p>
 <p>This tutorial features some companion videos, embedded in this page.</p>
-<div class="box notices cstyle info">
-  <div class="box-label">
-    <i class="fa-fw fas fa-info-circle"></i> Info
-  </div>
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    Info
+  </summary>
   <div class="box-content">
 <p>The tutorial is also available as a scientific document: <div id="cite-0c2060b5d5013375" style="font-family:monospace;"></div></p>
 <script>
@@ -343,29 +371,35 @@ consider learning instead about <a href="./explanation/metamodel/index.html">the
     });
 </script>
   </div>
-</div>
-<div class="box notices cstyle info">
-  <div class="box-label">
-    <i class="fa-fw fas fa-info-circle"></i> Info
-  </div>
+</details>
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    Info
+  </summary>
   <div class="box-content">
 <p>All code has been open-sourced and it is being actively maintained on <a href="https://github.com/DanySK/DisCoTec-2021-Tutorial" rel="external" target="_blank">GitHub</a></p>
   </div>
-</div>
-<div class="box notices cstyle warning">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-triangle"></i> Warning
-  </div>
+</details>
+
+<details open class=" box cstyle notices warning">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Warning
+  </summary>
   <div class="box-content">
 <p>Snapshots presented here are from the Java Swing GUI module that was the main UI at the time the tutorial was written,
 and may or may not reflect the current graphical appearance of the examples
 (which can be configured in any case).</p>
   </div>
-</div>
-<div class="box notices cstyle tip">
-  <div class="box-label">
-    <i class="fa-fw fas fa-lightbulb"></i> Tip
-  </div>
+</details>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    Tip
+  </summary>
   <div class="box-content">
 <p>Simulations in alchemist are written in <a href="https://yaml.org/" rel="external" target="_blank">YAML</a>.
 YAML is pretty intuitive, it can be learnt quickly through
@@ -373,18 +407,20 @@ YAML is pretty intuitive, it can be learnt quickly through
 Even without any prior knowledge, looking at the syntax and comparing it with the information in the aforementioned page
 should provide enough information.</p>
   </div>
-</div>
+</details>
 <h2 id="import-the-infrastructure">Import the infrastructure</h2>
-<div class="box notices cstyle warning">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-triangle"></i> Warning
-  </div>
+
+<details open class=" box cstyle notices warning">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Warning
+  </summary>
   <div class="box-content">
 <p>You need to be able to import an existing Gradle project from GitHub.
 If you have no idea of what I&rsquo;m talking about,
 <a href="./tutorials/quickstart/index.html">take a step back and make sure you followed the quickstart</a>.</p>
   </div>
-</div>
+</details>
 <ol>
 <li><code>git clone https://github.com/DanySK/DisCoTec-2021-Tutorial.git</code></li>
 <li><code>cd DisCoTec-2021-Tutorial</code></li>
@@ -396,17 +432,19 @@ If you have no idea of what I&rsquo;m talking about,
 </li>
 </ol>
 <p>The shell should begin to work, download the required components, and pop a graphical interface in front of you.</p>
-<div class="box notices cstyle note">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-circle"></i> Note
-  </div>
+
+<details open class=" box cstyle notices note">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-circle"></i> 
+    Note
+  </summary>
   <div class="box-content">
 <p>If something went wrong, let us know by <strong><a href="https://github.com/DanySK/DisCoTec-2021-Tutorial/issues/new/choose" rel="external" target="_blank">opening an issue</a></strong>!</p>
 <p>The build system is <em>continuous-integration sensitive</em>.
 If a GUI is not displayed but the proces terminates successfully,
 make sure that you do not have a <code>CI</code> environment variable set to <code>true</code>.</p>
   </div>
-</div>
+</details>
 <h2 id="writing-and-launching-simple-simulations">Writing and launching simple simulations</h2>
 <p>In this video you will see how to:</p>
 <ol>
@@ -415,35 +453,36 @@ make sure that you do not have a <code>CI</code> environment variable set to <co
 <li>deploy nodes into a bidimensional space; and</li>
 <li>write programs that perform manipulation of data in form of tuples.</li>
 </ol>
-<div class="box notices cstyle note">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-circle"></i> Note
-  </div>
+
+<details open class=" box cstyle notices note">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-circle"></i> 
+    Note
+  </summary>
   <div class="box-content">
 <p>This is actually the <strong>second</strong> video of the tutorial.
 The first presents introductory information on the simulator and its meta-model,
 it can be found in the <a href="./explanation/index.html">Explanation</a> chapter of the documentation.</p>
   </div>
-</div>
+</details>
 
-
-    
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/nORRuG3VjYU?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/nORRuG3VjYU?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>The examples presented in the video are presented in the following subsections,
 updated to execute with the latest version of the simulator.
 You will find this code in the current version of the tutorial.</p>
-<div class="box notices cstyle tip">
-  <div class="box-label">
-    <i class="fa-fw fas fa-lightbulb"></i> Tip
-  </div>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    Tip
+  </summary>
   <div class="box-content">
 <p>Make changes to the existing configuration files and see what happens!</p>
   </div>
-</div>
+</details>
 <h3 id="three-connected-devices">Three connected devices</h3>
 <p>In this simple example, we simply deploy three nodes in a bidimensional space.
 They do nothing, they are just there.
@@ -486,17 +525,17 @@ function onClick(element) {
 <p>The graphic effect is just to see three dots in the interface.
 If links are displayed (see the <a href="./reference/default-ui/index.html">reference of the graphical interface</a>),
 then the three nodes appear linked.
-<div class="expand">
-  <input type="checkbox" id="R-expand-1d234fc0d4c99aafc96d605c7fa6e673" aria-controls="R-expandcontent-1d234fc0d4c99aafc96d605c7fa6e673">
-  <label class="expand-label" for="R-expand-1d234fc0d4c99aafc96d605c7fa6e673">
-    <i class="expander-icon fa-fw fas fa-chevron-down"></i>
-    <i class="expander-icon fa-fw fas fa-chevron-right"></i> Show snapshot
-  </label>
-  <div id="R-expandcontent-1d234fc0d4c99aafc96d605c7fa6e673" class="expand-content">
-<p><a href="#R-image-fede5e5fd8fc45ca2f017f1ebcfb947c" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/3nodes.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-fede5e5fd8fc45ca2f017f1ebcfb947c"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/3nodes.png"></a></p>
+
+<details class=" box cstyle notices transparent expand">
+  <summary class="box-label">
+    <i class="expander-icon fa-fw fas fa-chevron-right"></i> 
+    Show snapshot
+  </summary>
+  <div class="box-content">
+<p><a href="#R-image-a9d6721575eb8297f1614d513feba28b" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/3nodes.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a9d6721575eb8297f1614d513feba28b"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/3nodes.png"></a></p>
   </div>
-</div></p>
+</details></p>
 <h3 id="a-grid-of-devices-playing-dodgeball">A grid of devices playing dodgeball</h3>
 <p>In this example we create a grid of devices
 and make them play dodgeball. The program to be injected is rather simple:
@@ -547,25 +586,25 @@ function onClick(element) {
 <p>Snapshots of the simulation of the “dodgeball” example follow.
 Devices with a ball are depicted in black. All other devices’ color hue depends on the
 hit count, shifting from red (zero hits) towards blue.</p>
-<div class="expand">
-  <input type="checkbox" id="R-expand-2c0fb9c3b1d7e97d19ec29f577c7f247" aria-controls="R-expandcontent-2c0fb9c3b1d7e97d19ec29f577c7f247">
-  <label class="expand-label" for="R-expand-2c0fb9c3b1d7e97d19ec29f577c7f247">
-    <i class="expander-icon fa-fw fas fa-chevron-down"></i>
-    <i class="expander-icon fa-fw fas fa-chevron-right"></i> Show snapshots
-  </label>
-  <div id="R-expandcontent-2c0fb9c3b1d7e97d19ec29f577c7f247" class="expand-content">
-<p><a href="#R-image-b2b6bd6d2741203086a7e6e24661d8a9" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/dodgeball00.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-b2b6bd6d2741203086a7e6e24661d8a9"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/dodgeball00.png"></a>
-<a href="#R-image-f2f2a95e79c49299cd07ba67c91b4e95" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/dodgeball01.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-f2f2a95e79c49299cd07ba67c91b4e95"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/dodgeball01.png"></a>
-<a href="#R-image-df39370d5764532bf7fa8cdb474db39a" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/dodgeball02.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-df39370d5764532bf7fa8cdb474db39a"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/dodgeball02.png"></a>
-<a href="#R-image-7bf063085dfc8576b9b2a59f901ecd77" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/dodgeball03.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-7bf063085dfc8576b9b2a59f901ecd77"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/dodgeball03.png"></a>
-<a href="#R-image-2bd8a538a50fc88b3be9781175fd929e" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/dodgeball04.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-2bd8a538a50fc88b3be9781175fd929e"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/dodgeball04.png"></a></p>
+
+<details class=" box cstyle notices transparent expand">
+  <summary class="box-label">
+    <i class="expander-icon fa-fw fas fa-chevron-right"></i> 
+    Show snapshots
+  </summary>
+  <div class="box-content">
+<p><a href="#R-image-a9333ce3d9859a186b996ce50298e584" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/dodgeball00.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a9333ce3d9859a186b996ce50298e584"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/dodgeball00.png"></a>
+<a href="#R-image-d1d68bbf1176f9fba131dfb3effac521" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/dodgeball01.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-d1d68bbf1176f9fba131dfb3effac521"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/dodgeball01.png"></a>
+<a href="#R-image-a91ae40d590438712228337200d68656" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/dodgeball02.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a91ae40d590438712228337200d68656"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/dodgeball02.png"></a>
+<a href="#R-image-4219c5f802cd0cb54339d2acbecd384d" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/dodgeball03.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-4219c5f802cd0cb54339d2acbecd384d"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/dodgeball03.png"></a>
+<a href="#R-image-7f58d05b6a1ccc1dfe61e42e023ffff5" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/dodgeball04.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-7f58d05b6a1ccc1dfe61e42e023ffff5"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/dodgeball04.png"></a></p>
   </div>
-</div>
+</details>
 <h3 id="a-gradient-on-a-grid-of-devices">A gradient on a grid of devices</h3>
 <p>In this example, we implement with the SAPERE incarnation a very simple
 specification of a gradient, a pattern that is considered to be the basis of many
@@ -618,21 +657,21 @@ function onClick(element) {
 <p>Here are some snapshots of the simulation of the “gradient” example.
 Source devices have a central black dot. Devices’ color hue depends on the gradient
 value, shifting from red (low) towards blue (high).</p>
-<div class="expand">
-  <input type="checkbox" id="R-expand-547ca9f648a89fda60c3220ca552c3ba" aria-controls="R-expandcontent-547ca9f648a89fda60c3220ca552c3ba">
-  <label class="expand-label" for="R-expand-547ca9f648a89fda60c3220ca552c3ba">
-    <i class="expander-icon fa-fw fas fa-chevron-down"></i>
-    <i class="expander-icon fa-fw fas fa-chevron-right"></i> Show snapshots
-  </label>
-  <div id="R-expandcontent-547ca9f648a89fda60c3220ca552c3ba" class="expand-content">
-<p><a href="#R-image-76b1ea0a64b34c37531f8765765b52f5" class="lightbox-link"><img alt="Gradient" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/gradient00.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-76b1ea0a64b34c37531f8765765b52f5"><img alt="Gradient" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/gradient00.png"></a>
-<a href="#R-image-98e75aeb60d1e1cdca3f3943ba2977d3" class="lightbox-link"><img alt="Gradient" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/gradient01.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-98e75aeb60d1e1cdca3f3943ba2977d3"><img alt="Gradient" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/gradient01.png"></a>
-<a href="#R-image-c1e43a316d584062ff1de90b5958ee57" class="lightbox-link"><img alt="Gradient" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/gradient02.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-c1e43a316d584062ff1de90b5958ee57"><img alt="Gradient" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/gradient02.png"></a></p>
+
+<details class=" box cstyle notices transparent expand">
+  <summary class="box-label">
+    <i class="expander-icon fa-fw fas fa-chevron-right"></i> 
+    Show snapshots
+  </summary>
+  <div class="box-content">
+<p><a href="#R-image-1e5f4eaf2f3906ef0eb79b7feb8fb911" class="lightbox-link"><img alt="Gradient" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/gradient00.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-1e5f4eaf2f3906ef0eb79b7feb8fb911"><img alt="Gradient" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/gradient00.png"></a>
+<a href="#R-image-e9ae0fc7cf5948a1382a306681349499" class="lightbox-link"><img alt="Gradient" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/gradient01.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-e9ae0fc7cf5948a1382a306681349499"><img alt="Gradient" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/gradient01.png"></a>
+<a href="#R-image-1038dffacd57a43f3ae453c0070f9301" class="lightbox-link"><img alt="Gradient" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/gradient02.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-1038dffacd57a43f3ae453c0070f9301"><img alt="Gradient" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/gradient02.png"></a></p>
   </div>
-</div>
+</details>
 <h3 id="arbitrary-network-graphs">Arbitrary network graphs</h3>
 <p>This example showcases some complex deployments made possible by Alchemist via <a href="https://graphstream-project.org/" rel="external" target="_blank">Graphstream</a></p>
 
@@ -668,15 +707,12 @@ function onClick(element) {
 </div>
 <p>The example creates a single environment with three advanced deployments. From left to right: a
 Lobster graph, a banana tree, and a scale-free network with preferential attachment.</p>
-<p><a href="#R-image-19e4f76ad2b97a71269a01c1dacf519f" class="lightbox-link"><img alt="Arbitrary graphs" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./images/simulator/graphstream.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-19e4f76ad2b97a71269a01c1dacf519f"><img alt="Arbitrary graphs" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./images/simulator/graphstream.png"></a></p>
+<p><a href="#R-image-466c1ab64f87f834d589b8ab8f66dbdb" class="lightbox-link"><img alt="Arbitrary graphs" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./images/simulator/graphstream.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-466c1ab64f87f834d589b8ab8f66dbdb"><img alt="Arbitrary graphs" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./images/simulator/graphstream.png"></a></p>
 <h2 id="advanced-examples">Advanced examples</h2>
 
-
-    
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/crZM6Idpg74?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/crZM6Idpg74?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>In this video, we learn how to:</p>
@@ -739,23 +775,23 @@ function onClick(element) {
 </div>
 <p>In the following snapshots, mobile devices progressively explore the location, while measuring the distance from a point of interest
 via gradient (red nodes are closer to the point of interest; purple ones are farther).</p>
-<div class="expand">
-  <input type="checkbox" id="R-expand-1ce0f5067f790533efed3150d7645a6a" aria-controls="R-expandcontent-1ce0f5067f790533efed3150d7645a6a">
-  <label class="expand-label" for="R-expand-1ce0f5067f790533efed3150d7645a6a">
-    <i class="expander-icon fa-fw fas fa-chevron-down"></i>
-    <i class="expander-icon fa-fw fas fa-chevron-right"></i> Show snapshots
-  </label>
-  <div id="R-expandcontent-1ce0f5067f790533efed3150d7645a6a" class="expand-content">
-<p><a href="#R-image-b18a9e03d58f82ca02b87abdd232393d" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/chiaravalle00.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-b18a9e03d58f82ca02b87abdd232393d"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/chiaravalle00.png"></a>
-<a href="#R-image-b62757fc864ac0fa8f808b33bf9d4c31" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/chiaravalle01.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-b62757fc864ac0fa8f808b33bf9d4c31"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/chiaravalle01.png"></a>
-<a href="#R-image-0328b5a3b0517962a93190dc3c9fbae5" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/chiaravalle02.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-0328b5a3b0517962a93190dc3c9fbae5"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/chiaravalle02.png"></a>
-<a href="#R-image-718753dc17aa7521c17a90bc2b8550f2" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/chiaravalle03.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-718753dc17aa7521c17a90bc2b8550f2"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/chiaravalle03.png"></a></p>
+
+<details class=" box cstyle notices transparent expand">
+  <summary class="box-label">
+    <i class="expander-icon fa-fw fas fa-chevron-right"></i> 
+    Show snapshots
+  </summary>
+  <div class="box-content">
+<p><a href="#R-image-a552a4d2726c140ee8e44bbdfa281b08" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/chiaravalle00.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a552a4d2726c140ee8e44bbdfa281b08"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/chiaravalle00.png"></a>
+<a href="#R-image-661cc9d001e238f22a56a86268f5f9ae" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/chiaravalle01.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-661cc9d001e238f22a56a86268f5f9ae"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/chiaravalle01.png"></a>
+<a href="#R-image-8c6cbb092a1262577de41d438ca0a382" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/chiaravalle02.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-8c6cbb092a1262577de41d438ca0a382"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/chiaravalle02.png"></a>
+<a href="#R-image-ce48d28955115675631af9dba9d2a231" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/chiaravalle03.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-ce48d28955115675631af9dba9d2a231"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/chiaravalle03.png"></a></p>
   </div>
-</div>
+</details>
 <h3 id="real-world-maps-and-gps-traces">Real-world maps and GPS traces</h3>
 <p>The simulator can
 load data from OpenStreetMap exports, navigate devices towards a destination
@@ -811,19 +847,19 @@ function onClick(element) {
 </span></span></code></pre></div></div>
 </div>
 <p>The following snapshots depict the simulation in execution.</p>
-<div class="expand">
-  <input type="checkbox" id="R-expand-1e6b9d6e936a82f6a13ec58d879e070b" aria-controls="R-expandcontent-1e6b9d6e936a82f6a13ec58d879e070b">
-  <label class="expand-label" for="R-expand-1e6b9d6e936a82f6a13ec58d879e070b">
-    <i class="expander-icon fa-fw fas fa-chevron-down"></i>
-    <i class="expander-icon fa-fw fas fa-chevron-right"></i> Show snapshots
-  </label>
-  <div id="R-expandcontent-1e6b9d6e936a82f6a13ec58d879e070b" class="expand-content">
-<p><a href="#R-image-840a4dc668d552ca90aeb8c98e8d1119" class="lightbox-link"><img alt="Venice" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/venice.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-840a4dc668d552ca90aeb8c98e8d1119"><img alt="Venice" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/venice.png"></a>
-<a href="#R-image-247f0943be041913813f2f52af870007" class="lightbox-link"><img alt="Venice" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/venice2.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-247f0943be041913813f2f52af870007"><img alt="Venice" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/venice2.png"></a></p>
+
+<details class=" box cstyle notices transparent expand">
+  <summary class="box-label">
+    <i class="expander-icon fa-fw fas fa-chevron-right"></i> 
+    Show snapshots
+  </summary>
+  <div class="box-content">
+<p><a href="#R-image-d914c5402390401b25c3547b65683d5a" class="lightbox-link"><img alt="Venice" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/venice.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-d914c5402390401b25c3547b65683d5a"><img alt="Venice" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/venice.png"></a>
+<a href="#R-image-0afa039cb01df6c4b935b8dda976cde0" class="lightbox-link"><img alt="Venice" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./tutorials/basics/venice2.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-0afa039cb01df6c4b935b8dda976cde0"><img alt="Venice" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./tutorials/basics/venice2.png"></a></p>
   </div>
-</div>
+</details>
 <h3 id="in-depth-analysis-of-simulated-scenarios">In-depth analysis of simulated scenarios</h3>
 <p>The following snippet showcases the aforementioned features by enriching
 the example of a gradient in an indoor environment presented previously with:</p>
@@ -904,10 +940,12 @@ function onClick(element) {
 </span></span><span style="display:flex;"><span>    - { <span style="color:#ff6ac1">type: Event, time-distribution: 1, actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
 </span></span></code></pre></div></div>
 </div>
-<div class="box notices cstyle info">
-  <div class="box-label">
-    <i class="fa-fw fas fa-info-circle"></i> Info
-  </div>
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    Info
+  </summary>
   <div class="box-content">
 <p>This example:</p>
 <ul>
@@ -916,7 +954,7 @@ function onClick(element) {
 <li><a href="./howtos/simulation/export/index.html">uses the data export infrastructure</a></li>
 </ul>
   </div>
-</div>
+</details>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -974,16 +1012,18 @@ and then to deepen your knowledge of Protelis by reading the resources available
 with increasingly rich examples and focused on the Protelis incarnation
 can be found on <a href="https://github.com/AlchemistSimulator/Protelis-Incarnation-tutorial" rel="external" target="_blank">GitHub</a>.
 The <code>README.md</code> file of the project explains the use and the steps to follow.</p>
-<div class="box notices cstyle note">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-circle"></i> Note
-  </div>
+
+<details open class=" box cstyle notices note">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-circle"></i> 
+    Note
+  </summary>
   <div class="box-content">
 <p>Something went wrong along the line? Drop us an
 <a href="https://github.com/AlchemistSimulator/Protelis-Incarnation-tutorial/issues/new/choose" rel="external" target="_blank">issue report</a>
 and we&rsquo;ll get back to you.</p>
   </div>
-</div>
+</details>
 
   <footer class="footline">
   </footer>
@@ -1012,16 +1052,23 @@ Reference descriptions of the SAPERE LSA language inside the simulator are avail
 <p>The tutorial can be found on <a href="https://github.com/AlchemistSimulator/Sapere-Incarnation-tutorial" rel="external" target="_blank">GitHub</a>.
 The <code>README.md</code> file of the project explains the use and the steps to follow.</p>
 
-<div class="box notices cstyle note">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-circle"></i> Note
-  </div>
+<details open class=" box cstyle notices transparent">
+  <summary class="box-label">
+    Show README.md
+  </summary>
+</details>
+
+<details open class=" box cstyle notices note">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-circle"></i> 
+    Note
+  </summary>
   <div class="box-content">
 <p>Something went wrong along the line? Drop us an
 <a href="https://github.com/AlchemistSimulator/Sapere-Incarnation-tutorial/issues/new/choose" rel="external" target="_blank">issue report</a>
 and we&rsquo;ll get back to you.</p>
   </div>
-</div>
+</details>
 <h2 id="lsas">LSAs</h2>
 <p><a href="./reference/sapere/index.html#lsa-syntax">Syntax details are available in the reference</a>.
 The following code creates an irregular grid of devices,
@@ -1140,15 +1187,15 @@ at the end of the process you will be presented
 the Alchemist default GUI
 (<a href="https://alchemistsimulator.github.io/reference/default-ui/" rel="external" target="_blank">here</a> are instructions on how to interact with the simulator).
 At this point, the simulation should be looking like this:
-<a href="#R-image-0335721f12dff7ad3d7bde81ac61b5fb" class="lightbox-link"><img alt="Alchemist simulation start" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175499943-f346221b-9308-4cf0-8402-d90ad3bc56c6.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-0335721f12dff7ad3d7bde81ac61b5fb"><img alt="Alchemist simulation start" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175499943-f346221b-9308-4cf0-8402-d90ad3bc56c6.png"></a></p>
+<a href="#R-image-d41fc846fe0b492ded96416f0a5683ad" class="lightbox-link"><img alt="Alchemist simulation start" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175499943-f346221b-9308-4cf0-8402-d90ad3bc56c6.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-d41fc846fe0b492ded96416f0a5683ad"><img alt="Alchemist simulation start" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175499943-f346221b-9308-4cf0-8402-d90ad3bc56c6.png"></a></p>
 <p>Click <kbd>P</kbd> to start the simulation.
 The nodes will compute the ScaFi program described
 <a href="https://github.com/scafi/learning-scafi-alchemist/blob/master/src/main/scala/it/unibo/scafi/examples/HelloScafi.scala" rel="external" target="_blank">here</a>)
 in rounds,
 producing node colour changes.
-<a href="#R-image-6e9295753bad5924013ecc4b75d3fa04" class="lightbox-link"><img alt="Alchemist simulation evolution" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175502234-a2c5ae1a-c909-4545-ba5e-8cea0441cbd3.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-6e9295753bad5924013ecc4b75d3fa04"><img alt="Alchemist simulation evolution" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175502234-a2c5ae1a-c909-4545-ba5e-8cea0441cbd3.gif"></a></p>
+<a href="#R-image-556f60700ab19f1991b17e05b335b434" class="lightbox-link"><img alt="Alchemist simulation evolution" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175502234-a2c5ae1a-c909-4545-ba5e-8cea0441cbd3.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-556f60700ab19f1991b17e05b335b434"><img alt="Alchemist simulation evolution" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175502234-a2c5ae1a-c909-4545-ba5e-8cea0441cbd3.gif"></a></p>
 <h3 id="what-happened">What happened</h3>
 <p>Issuing the one-liner command, you have:</p>
 <ol>
@@ -1158,8 +1205,8 @@ producing node colour changes.
 </ol>
 <p>The last command produces the execution of the simulation called <code>helloScafi</code> described using a <code>yml</code> <a href="https://github.com/scafi/learning-scafi-alchemist/blob/master/src/main/yaml/helloScafi.yml" rel="external" target="_blank">file</a>.
 Particularly an Alchemist simulation typically consists of a network of devices that could communicate with each other by means of a neighbourhood relationship (you can see the connections by clicking <kbd>L</kbd>)
-<a href="#R-image-306029c917502248b0f8f7fa2c4ef828" class="lightbox-link"><img alt="Alchemist Neibourhood Relationship" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175505269-cb2f6281-d7f2-40ff-9a11-fe7301166092.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-306029c917502248b0f8f7fa2c4ef828"><img alt="Alchemist Neibourhood Relationship" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175505269-cb2f6281-d7f2-40ff-9a11-fe7301166092.png"></a>
+<a href="#R-image-428bd3966335fd748c031e1757a49976" class="lightbox-link"><img alt="Alchemist Neibourhood Relationship" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175505269-cb2f6281-d7f2-40ff-9a11-fe7301166092.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-428bd3966335fd748c031e1757a49976"><img alt="Alchemist Neibourhood Relationship" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175505269-cb2f6281-d7f2-40ff-9a11-fe7301166092.png"></a>
 In this case, the nodes&rsquo; positions are configured through real GPS traces from the Vienna marathon app.
 The simulation effects (i.e., node shapes and colours) are highly configurable through JSON <a href="https://github.com/scafi/learning-scafi-alchemist/blob/master/effects/helloScafi.json" rel="external" target="_blank">configuration</a>. Here the node colour depends on the output of the ScaFi program, which is executed in each device every 1 second. Particularly, the execution of a ScaFi program deals with local computations and interaction among neighbours through a distributed data structure called <em>computational field</em>. This distributed and repeated execution of <em>rounds</em> eventually produces a collective result (you can find more details about the execution model of ScaFi programs in the <a href="https://scafi.github.io/docs/#execution-model" rel="external" target="_blank">documentation</a>).</p>
 <p>In this case, the program consists of the evaluation of the distance from the node with the ID 100 (in Aggregate Computing literature called &ldquo;gradient&rdquo;).</p>
@@ -1282,8 +1329,8 @@ For more details, please check the <a href="http://scafi-docs.surge.sh/it/unibo/
 <div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// Write access to node state (i.e., Actuation =&gt; it changes the node state)
 </span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>node<span style="color:#ff6ac1">.</span>put<span style="color:#ff6ac1">(</span><span style="color:#5af78e">&#34;g&#34;</span><span style="color:#ff6ac1">,</span> g<span style="color:#ff6ac1">)</span></span></span></code></pre></div>
 <p>In the Alchemist default GUI you can inspect the node variables (i.e., molecules) by double-clicking a nodes
-<a href="#R-image-f8ca98020d1e51bc19dd78d1488f0e99" class="lightbox-link"><img alt="Alchemist Molecule panel" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/176140035-dcc4078a-b71d-4eef-a8f2-5cdbc81b0c60.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-f8ca98020d1e51bc19dd78d1488f0e99"><img alt="Alchemist Molecule panel" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/176140035-dcc4078a-b71d-4eef-a8f2-5cdbc81b0c60.gif"></a></p>
+<a href="#R-image-01df91b3ef763e750df37bdf2b4173b0" class="lightbox-link"><img alt="Alchemist Molecule panel" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/176140035-dcc4078a-b71d-4eef-a8f2-5cdbc81b0c60.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-01df91b3ef763e750df37bdf2b4173b0"><img alt="Alchemist Molecule panel" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/176140035-dcc4078a-b71d-4eef-a8f2-5cdbc81b0c60.gif"></a></p>
 <p>Finally, the last instruction of the main is the returned value of the Scafi program (in scala <code>return</code> is optional)</p>
 <!-- embedme ./src/main/scala/it/unibo/scafi/examples/HelloScafi.scala#L17-L18 -->
 <div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// Return value of the program
@@ -1296,8 +1343,8 @@ For more details, please check the <a href="http://scafi-docs.surge.sh/it/unibo/
 <li>start a selection by clicking the mouse left button and dragging it into the environment</li>
 <li>once your selection is over, click <kbd>O</kbd> to enter into move mode</li>
 <li>click over the selection and drag the element into another position
-<a href="#R-image-f0a0ed2b246b11a9c9f6b6959bf3ca6f" class="lightbox-link"><img alt="Alchemist Move elements" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175920712-e193cf6d-6797-46e9-bc02-c0218f3bf583.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-f0a0ed2b246b11a9c9f6b6959bf3ca6f"><img alt="Alchemist Move elements" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175920712-e193cf6d-6797-46e9-bc02-c0218f3bf583.gif"></a></li>
+<a href="#R-image-1a8d245ffb80f25b06caa6f42834dfd9" class="lightbox-link"><img alt="Alchemist Move elements" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175920712-e193cf6d-6797-46e9-bc02-c0218f3bf583.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-1a8d245ffb80f25b06caa6f42834dfd9"><img alt="Alchemist Move elements" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175920712-e193cf6d-6797-46e9-bc02-c0218f3bf583.gif"></a></li>
 </ul>
 </li>
 <li>Try to modify the source node (via yml configuration) and check the program output differences</li>
@@ -1334,8 +1381,8 @@ each one controlled by a <strong>leader</strong> device,
 which collects data from the area members
 and spreads decisions to enact some area-wide policy.
 Particularly, when you launch the command of SCR you will see something like this:</p>
-<p><a href="#R-image-43d6c1ff94facafd13d52c6fac39fc74" class="lightbox-link"><img alt="SCR result" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175658741-08537743-a325-4137-be14-a4dd6532237b.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-43d6c1ff94facafd13d52c6fac39fc74"><img alt="SCR result" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175658741-08537743-a325-4137-be14-a4dd6532237b.gif"></a></p>
+<p><a href="#R-image-0d74dd12d99b1283d144c56c89c1db13" class="lightbox-link"><img alt="SCR result" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175658741-08537743-a325-4137-be14-a4dd6532237b.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-0d74dd12d99b1283d144c56c89c1db13"><img alt="SCR result" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175658741-08537743-a325-4137-be14-a4dd6532237b.gif"></a></p>
 <p>Where the colour denotes the potential field (i.e., the gradient) that starts from the selected leader.
 In this GIF, the leaders are the ones marked with blue colour.</p>
 <h4 id="what-is-inside-1">What is inside</h4>
@@ -1384,8 +1431,8 @@ In this GIF, the leaders are the ones marked with blue colour.</p>
 <li>Try to change the grain (check in the configuration file). It would lead to changes in area formation</li>
 <li>Try to count the number of nodes inside an area and share this information with that area&mdash;suggestion: change phase 3. of the SCR</li>
 <li>As in the previous example, the areas are self-healing. Therefore try to move leaders and see what happens in the leader formation. Try to remove nodes too (see the next clip)
-<a href="#R-image-14afe648e7420aec90cf03e42e2d12a5" class="lightbox-link"><img alt="ezgif com-gif-maker" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/179356424-bd31b95a-e38a-491a-80d3-cc448059e484.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-14afe648e7420aec90cf03e42e2d12a5"><img alt="ezgif com-gif-maker" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/179356424-bd31b95a-e38a-491a-80d3-cc448059e484.gif"></a></li>
+<a href="#R-image-f5711a46101ce407f2636aafc7de282c" class="lightbox-link"><img alt="ezgif com-gif-maker" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/179356424-bd31b95a-e38a-491a-80d3-cc448059e484.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-f5711a46101ce407f2636aafc7de282c"><img alt="ezgif com-gif-maker" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/179356424-bd31b95a-e38a-491a-80d3-cc448059e484.gif"></a></li>
 </ol>
 <h3 id="3-overlapping-computations-in-space-and-time-with-aggregate-processes">3. Overlapping computations in space and time with aggregate processes</h3>
 <div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew runAggregateProcesses</span></span></code></pre></div>
@@ -1393,8 +1440,8 @@ In this GIF, the leaders are the ones marked with blue colour.</p>
 <p>This example shows an application of Aggregate Processes,
 which is s a way to specify a dynamic number of collective
 computations running on dynamic ensembles of devices (more details in <a href="https://www.sciencedirect.com/science/article/abs/pii/S0952197620303389" rel="external" target="_blank">Engineering collective intelligence at the edge with aggregate processes</a>).
-<a href="#R-image-c2c5da3170f901bf7464a4974d550fde" class="lightbox-link"><img alt="Processes API" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175660568-9906a920-d701-48ce-a0de-a0d6fa146425.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-c2c5da3170f901bf7464a4974d550fde"><img alt="Processes API" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175660568-9906a920-d701-48ce-a0de-a0d6fa146425.gif"></a></p>
+<a href="#R-image-a1163a4fee7b135c9049cd17091a2092" class="lightbox-link"><img alt="Processes API" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175660568-9906a920-d701-48ce-a0de-a0d6fa146425.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a1163a4fee7b135c9049cd17091a2092"><img alt="Processes API" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175660568-9906a920-d701-48ce-a0de-a0d6fa146425.gif"></a></p>
 <p>The processes are the bigger circle around the nodes. The colour identifies the process ID. As you can see,
 during the simulation the process starts, shrink and then could disappear.</p>
 <h4 id="what-is-inside-2">What is inside</h4>
@@ -1474,16 +1521,18 @@ during the simulation the process starts, shrink and then could disappear.</p>
 <li>ScaFi documentation: <a href="https://scafi.github.io/docs/" rel="external" target="_blank">https://scafi.github.io/docs/</a></li>
 <li>Main scientific papers about ScaFI (and that use ScaFi): <a href="https://scafi.github.io/papers/" rel="external" target="_blank">https://scafi.github.io/papers/</a></li>
 </ul>
-<div class="box notices cstyle note">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-circle"></i> Note
-  </div>
+
+<details open class=" box cstyle notices note">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-circle"></i> 
+    Note
+  </summary>
   <div class="box-content">
 <p>Something went wrong along the line? Drop us an
 <a href="https://github.com/scafi/learning-scafi-alchemist/issues/new/choose" rel="external" target="_blank">issue report</a>
 and we&rsquo;ll get back to you.</p>
   </div>
-</div>
+</details>
 
   <footer class="footline">
   </footer>
@@ -1618,16 +1667,23 @@ Pass them to the <code>java</code> command as classpath, e.g.:</p>
 <a href="https://github.com/AlchemistSimulator/alchemist-primer" rel="external" target="_blank">Alchemist Primer template repository</a>.</p>
 <p>We report here the README.md file contents as reference</p>
 
-<div class="box notices cstyle info">
-  <div class="box-label">
-    <i class="fa-fw fas fa-info-circle"></i> Info
-  </div>
+<details open class=" box cstyle notices transparent">
+  <summary class="box-label">
+    Alchemist Primer README file
+  </summary>
+</details>
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    Info
+  </summary>
   <div class="box-content">
 <p>Although Alchemist requires Java 11 or above to run,
 Gradle users can rely on <a href="https://docs.gradle.org/current/userguide/compatibility.html" rel="external" target="_blank">any Gradle-compatible Java version</a>
 and leverage the Gradle toolchains to obtain an Alchemist-compatible Java Virtual Machine.</p>
   </div>
-</div>
+</details>
 
   <footer class="footline">
   </footer>
@@ -2641,10 +2697,12 @@ Their values can be expressed, by default, in Groovy, but any JSR-223-compatible
 If a compatible JSR-223 implementation of the language is available in the classpath,
 Alchemist will load and use it transparently.
 By default, <code>groovy</code>, <code>kotlin</code> (or <code>kts</code>), and <code>scala</code> are available as scripting languages for dependent variables.</p>
-<div class="box notices cstyle info">
-  <div class="box-label">
-    <i class="fa-fw fas fa-info-circle"></i> Info
-  </div>
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    Info
+  </summary>
   <div class="box-content">
 <p>The <a href="https://jcp.org/en/jsr/detail?id=223" rel="external" target="_blank">JSR-223 specification</a> defines mechanisms
 allowing scripting language programs to access information developed in the Java Platform.</p>
@@ -2653,17 +2711,19 @@ allowing scripting language programs to access information developed in the Java
 <a href="https://github.com/Kotlin/kotlin-script-examples/blob/master/jvm/jsr223/jsr223.md" rel="external" target="_blank">Kotlin</a>,
 and Scala provide bindings for JSR-223).</p>
   </div>
-</div>
+</details>
 <p>Variables can be defined in any order.
 Alchemist figures out the dependencies automatically, as far as there are no cyclic dependencies (e.g. variable <code>a</code> requires <code>b</code>, and <code>b</code> requires <code>a</code>).
 Please note that the simulator variable dependency resolution system is not designed to solve mathematical systems,
 so even though the problem has a well-formed mathematical solution, the actual variable resolution may fail;
 e.g. if <code>a</code> is defined as <code>2 * b + 1</code>, and <code>b</code> is defined as <code>4 - a</code>, the system <strong>won&rsquo;t</strong> bind <code>a</code> to <code>3</code> and <code>b</code> to <code>1</code>,
 but will simply fail complaining about circular dependencies.</p>
-<div class="box notices cstyle tip">
-  <div class="box-label">
-    <i class="fa-fw fas fa-lightbulb"></i> Multiline programs
-  </div>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    Multiline programs
+  </summary>
   <div class="box-content">
 <p>Sometimes data manipulation can get tricky and trivial scripting may no longer be enough.
 In such cases, and especially with modern languages that allow for a reduced usage of cerimonial semicolons
@@ -2674,7 +2734,7 @@ This can be achieved in YAML by using the pipe <code>|</code> operator, as exemp
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">  needs to be indented.
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">  Newlines will be preserved!</span>  </span></span></code></pre></div>
   </div>
-</div>
+</details>
 <h4 id="examples-3">Examples</h4>
 <p>
 <script>
@@ -4317,8 +4377,8 @@ function onClick(element) {
 
 <h1 id="create-layers">Create Layers</h1>
 
-<p><a href="#R-image-6950e768ed5971943a0b1e0da809380b" class="lightbox-link"><img alt="simulation with layer" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/simulation/layers/layer.jpeg" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-6950e768ed5971943a0b1e0da809380b"><img alt="simulation with layer" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/simulation/layers/layer.jpeg"></a></p>
+<p><a href="#R-image-a14ff356e6982b6cc8d3219fcb9ade40" class="lightbox-link"><img alt="simulation with layer" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/simulation/layers/layer.jpeg" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a14ff356e6982b6cc8d3219fcb9ade40"><img alt="simulation with layer" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/simulation/layers/layer.jpeg"></a></p>
 <p>It is possible to define overlays (layers) of data that can be sensed everywhere in the environment.
 Layers can be used to model physical properties, such as pollution, light, temperature, and so on.
 As opposed to nodes&rsquo; contents, layers have no dependency optimization.
@@ -4545,8 +4605,8 @@ All you have to do is mark the areas of the environment where to plant initial s
 In the image below you can see the generation of a navigation graph.
 The blue regions in the original image indicate where to plant initial seeds.
 These are then grown and crossings are found between them.</p>
-<p><a href="#R-image-5aa29ce1a36e4cb291614c4ee6f33fd5" class="lightbox-link"><img alt="navigation graph generation" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./explanation/pathfinding/navigation-graph-generation.jpeg" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-5aa29ce1a36e4cb291614c4ee6f33fd5"><img alt="navigation graph generation" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./explanation/pathfinding/navigation-graph-generation.jpeg"></a></p>
+<p><a href="#R-image-bc6e9f833c4fc356ef2301ab9694e83d" class="lightbox-link"><img alt="navigation graph generation" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./explanation/pathfinding/navigation-graph-generation.jpeg" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-bc6e9f833c4fc356ef2301ab9694e83d"><img alt="navigation graph generation" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./explanation/pathfinding/navigation-graph-generation.jpeg"></a></p>
 <p>Once you have your image ready for the generation of the navigation graph, you can exploit the
 <a href="./reference/plainkdoc/alchemist/it.unibo.alchemist.model.cognitive.environments/-image-environment-with-graph/"><code>ImageEnvironmentWithGraph</code></a> class to produce it for you.
 This will read your image, extract the positions you marked blue and pass them to the NaviGator algorithm.</p>
@@ -5298,10 +5358,12 @@ supports <a href="https://www.openstreetmap.org" rel="external" target="_blank">
 we recommend using the
 <a href="https://wiki.openstreetmap.org/wiki/PBF_Format" rel="external" target="_blank">protocol buffer binary format (pbf)</a>
 to save time and space.</p>
-<div class="box notices cstyle tip">
-  <div class="box-label">
-    <i class="fa-fw fas fa-lightbulb"></i> OpenStreetMap extracts
-  </div>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    OpenStreetMap extracts
+  </summary>
   <div class="box-content">
 <p>It is likely that you do not need a simulation that requires navigation capabilities on
 <a href="https://planet.openstreetmap.org/" rel="external" target="_blank">the whole planet</a>,
@@ -5311,23 +5373,27 @@ We recommend thus to use an <strong>extract</strong> with the data relative to t
 One great way to obtain an extract is through <a href="https://extract.bbbike.org/" rel="external" target="_blank"><strong>BBBike</strong></a>.</p>
 <p>If you rely on their service, consider donating to the project.</p>
   </div>
-</div>
-<div class="box notices cstyle tip">
-  <div class="box-label">
-    <i class="fa-fw fas fa-lightbulb"></i> Deploying nodes using GPS traces
-  </div>
+</details>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    Deploying nodes using GPS traces
+  </summary>
   <div class="box-content">
 <p>We prepared <a href="./howtos/simulation/deploy/gps/index.html">a dedicated page</a> on the argument</p>
   </div>
-</div>
-<div class="box notices cstyle tip">
-  <div class="box-label">
-    <i class="fa-fw fas fa-lightbulb"></i> Navigate nodes in map environment
-  </div>
+</details>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    Navigate nodes in map environment
+  </summary>
   <div class="box-content">
 <p>We prepared <a href="./howtos/simulation/program/move-on-maps/index.html">a dedicated page</a> on the argument</p>
   </div>
-</div>
+</details>
 
   <footer class="footline">
   </footer>
@@ -5345,8 +5411,8 @@ One great way to obtain an extract is through <a href="https://extract.bbbike.or
 
 <h1 id="simulate-indoor">Simulate indoor</h1>
 
-<p><a href="#R-image-a61d9b6361f1922839070deeef4841e3" class="lightbox-link"><img alt="indoor simulation" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/simulation/environment/indoor/indoor_simulation.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-a61d9b6361f1922839070deeef4841e3"><img alt="indoor simulation" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/simulation/environment/indoor/indoor_simulation.png"></a></p>
+<p><a href="#R-image-ccae03cb82207294f5afbb5a2d0d8ec7" class="lightbox-link"><img alt="indoor simulation" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/simulation/environment/indoor/indoor_simulation.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-ccae03cb82207294f5afbb5a2d0d8ec7"><img alt="indoor simulation" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/simulation/environment/indoor/indoor_simulation.png"></a></p>
 <p>Indoor environments
 (bidimensional spaces with obstacles)
 can be generated from images by leveraging
@@ -5363,8 +5429,8 @@ It is possible to scale up or down the size of the environment by acting on the 
 <a href="./reference/plainkdoc/alchemist/it.unibo.alchemist.model.physics.environments/-image-environment/"><code>ImageEnvironment</code></a>,
 as well as changing the initial coordinates.</p>
 <h2 id="examples">Examples</h2>
-<p><a href="#R-image-e17d09e4f828056aeec263da0bf0d637" class="lightbox-link"><img alt="image from the project repository" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/alchemist-cognitive-agents/src/test/resources/images/multiple-exits.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-e17d09e4f828056aeec263da0bf0d637"><img alt="image from the project repository" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/alchemist-cognitive-agents/src/test/resources/images/multiple-exits.png"></a></p>
+<p><a href="#R-image-c3d45b323d5d211b5f4ebaf77fad14f1" class="lightbox-link"><img alt="image from the project repository" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/alchemist-cognitive-agents/src/test/resources/images/multiple-exits.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-c3d45b323d5d211b5f4ebaf77fad14f1"><img alt="image from the project repository" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/alchemist-cognitive-agents/src/test/resources/images/multiple-exits.png"></a></p>
 
 <script>
 
@@ -5469,8 +5535,8 @@ function onClick(element) {
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span></span></span></code></pre></div></div>
 </div>
 <hr>
-<p><a href="#R-image-d412d7dc50fdf39e36a03aa08eef64b4" class="lightbox-link"><img alt="image from the project repository" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/alchemist-cognitive-agents/src/test/resources/images/obstacles.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-d412d7dc50fdf39e36a03aa08eef64b4"><img alt="image from the project repository" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/alchemist-cognitive-agents/src/test/resources/images/obstacles.png"></a></p>
+<p><a href="#R-image-a02435a259751b2b65fa7721023b64cc" class="lightbox-link"><img alt="image from the project repository" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/alchemist-cognitive-agents/src/test/resources/images/obstacles.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a02435a259751b2b65fa7721023b64cc"><img alt="image from the project repository" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/alchemist-cognitive-agents/src/test/resources/images/obstacles.png"></a></p>
 
 <script>
 
@@ -5549,8 +5615,8 @@ function onClick(element) {
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span></span></span></code></pre></div></div>
 </div>
 <hr>
-<p><a href="#R-image-5a13c8f3ba05e674fde4ada5d6d4702c" class="lightbox-link"><img alt="image from the project repository" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/src/test/resources/planimetry.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-5a13c8f3ba05e674fde4ada5d6d4702c"><img alt="image from the project repository" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/src/test/resources/planimetry.png"></a></p>
+<p><a href="#R-image-f41c9a1ae3a8abfbe0dccd4f819a49c5" class="lightbox-link"><img alt="image from the project repository" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/src/test/resources/planimetry.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-f41c9a1ae3a8abfbe0dccd4f819a49c5"><img alt="image from the project repository" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/src/test/resources/planimetry.png"></a></p>
 
 <script>
 
@@ -5604,8 +5670,8 @@ function onClick(element) {
 </span></span><span style="display:flex;"><span>      - <span style="color:#78787e">*behavior</span></span></span></code></pre></div></div>
 </div>
 <hr>
-<p><a href="#R-image-b224db5074b0240f79b3a4f52d0e0ec1" class="lightbox-link"><img alt="image from the project repository" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/src/test/resources/chiaravalle.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-b224db5074b0240f79b3a4f52d0e0ec1"><img alt="image from the project repository" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/src/test/resources/chiaravalle.png"></a></p>
+<p><a href="#R-image-90d87775cac085844312bc8c9f4546cd" class="lightbox-link"><img alt="image from the project repository" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/src/test/resources/chiaravalle.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-90d87775cac085844312bc8c9f4546cd"><img alt="image from the project repository" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="https://github.com/AlchemistSimulator/Alchemist/raw/master/src/test/resources/chiaravalle.png"></a></p>
 <ul>
 <li>Direct reference to the image
 
@@ -6313,14 +6379,16 @@ function onClick(element) {
 
 <h1 id="gps-traces">GPS Traces</h1>
 
-<div class="box notices cstyle tip">
-  <div class="box-label">
-    <i class="fa-fw fas fa-lightbulb"></i> Importing maps
-  </div>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    Importing maps
+  </summary>
   <div class="box-content">
 <p>GPS traces require a <strong>geospatial environment</strong>. We prepared <a href="./howtos/simulation/environment/maps/index.html">a dedicated page</a> on the topic.</p>
   </div>
-</div>
+</details>
 <p>GPS traces can be used to deploy nodes on a map.
 <a href="./reference/plainkdoc/alchemist/it.unibo.alchemist.model.maps.deployments/-from-g-p-s-trace/"><code>FromGPSTrace</code></a>
 is a <a href="./reference/plainkdoc/alchemist/it.unibo.alchemist.model/-deployment/"><code>Deployment</code></a>
@@ -6376,10 +6444,12 @@ function onClick(element) {
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">checkInterval</span>: <span style="color:#ff9f43">100</span>
 </span></span></code></pre></div></div>
 </div>
-<div class="box notices cstyle tip">
-  <div class="box-label">
-    <i class="fa-fw fas fa-lightbulb"></i> Get GPS data for your experiments
-  </div>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    Get GPS data for your experiments
+  </summary>
   <div class="box-content">
 <p>The great folks at <a href="https://openstreetmap.org" rel="external" target="_blank">OpenStreetMap</a> release GPS data for
 <a href="https://planet.openstreetmap.org/gps/" rel="external" target="_blank">the whole planet</a>.
@@ -6388,7 +6458,7 @@ regional extracts
 are available
 (the full data pack is otherwise larger than 50GB uncompressed).</p>
   </div>
-</div>
+</details>
 <h3 id="alignment-of-time">Alignment of time</h3>
 <p>Often, GPS traces are collected at different points in time.
 When this is the case, a strategy must be concted to &ldquo;align&rdquo; them:
@@ -6570,8 +6640,8 @@ function onClick(element) {
 
 <h1 id="graphs">Graphs</h1>
 
-<p><a href="#R-image-56e2237551d6026ef32c7d547ef77c1b" class="lightbox-link"><img alt="Arbitrary graphs" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./images/simulator/graphstream.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-56e2237551d6026ef32c7d547ef77c1b"><img alt="Arbitrary graphs" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./images/simulator/graphstream.png"></a></p>
+<p><a href="#R-image-1ad39120ca995ca77840ec4409b76119" class="lightbox-link"><img alt="Arbitrary graphs" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./images/simulator/graphstream.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-1ad39120ca995ca77840ec4409b76119"><img alt="Arbitrary graphs" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./images/simulator/graphstream.png"></a></p>
 <p>Alchemist supports <a href="https://graphstream-project.org/" rel="external" target="_blank">Graphstream</a>-based deployments,
 allowing for rich graphs to be used as node deployments.</p>
 <p>Deployments of this kind can be instanced through
@@ -7098,8 +7168,8 @@ Add your custom monitor to the simulation configuration file.</p>
 
 <p>There are several possibilities to move nodes in gep-spatial environment.</p>
 <h2 id="ignore-geo-spatial-information">Ignore geo-spatial information</h2>
-<p><a href="#R-image-84942bdea68d8c7b4f691a810a2ce197" class="lightbox-link"><img alt="orthodromes" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/no_map_information.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-84942bdea68d8c7b4f691a810a2ce197"><img alt="orthodromes" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/no_map_information.png"></a></p>
+<p><a href="#R-image-5b01413441b6728119cbb187d75d5e83" class="lightbox-link"><img alt="orthodromes" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/no_map_information.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-5b01413441b6728119cbb187d75d5e83"><img alt="orthodromes" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/no_map_information.png"></a></p>
 <p>This is of course the easiest way:
 all data about the map is ignored.
 This strategy makes sense if you need a geo-spatial coordinate system,
@@ -7262,41 +7332,45 @@ function onClick(element) {
 <p><strong>From the showcase</strong></p>
 <p><a href="./showcase/2020-jcee/index.html">Optimal resilient distributed data collection in mobile edge environments</a></p>
 <h2 id="navigate-along-the-streets">Navigate along the streets</h2>
-<p><a href="#R-image-adfbdb14a89b136a361db18b92017e0c" class="lightbox-link"><img alt="navigate along the streets" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/use_map_information.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-adfbdb14a89b136a361db18b92017e0c"><img alt="navigate along the streets" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/use_map_information.png"></a></p>
+<p><a href="#R-image-f3eec3894f5d9ab3e1c06dfa988020ae" class="lightbox-link"><img alt="navigate along the streets" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/use_map_information.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-f3eec3894f5d9ab3e1c06dfa988020ae"><img alt="navigate along the streets" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/use_map_information.png"></a></p>
 <p>Moves along the available paths, depending on the specific vehicle being used.
 Requires actual geo-spatial information.</p>
 <p>This kind of navigation can be realized using
 <a href="./reference/plainkdoc/alchemist/it.unibo.alchemist.model.maps.actions/-target-map-walker/"><code>TargetMapWalker</code></a>.</p>
 <h2 id="reproduce-a-gps-trace">Reproduce a GPS Trace</h2>
-<p><a href="#R-image-34cf7f794e23b2ae1738cf873cf1ccf9" class="lightbox-link"><img alt="reproduce a GPS trace" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/reproduce_gps_trace.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-34cf7f794e23b2ae1738cf873cf1ccf9"><img alt="reproduce a GPS trace" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/reproduce_gps_trace.png"></a></p>
+<p><a href="#R-image-715073fe88712eefa36394d1763a45f8" class="lightbox-link"><img alt="reproduce a GPS trace" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/reproduce_gps_trace.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-715073fe88712eefa36394d1763a45f8"><img alt="reproduce a GPS trace" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/reproduce_gps_trace.png"></a></p>
 <p>Ignores the map geospatial information and relies on a GPS trace instead,
 starting from its first position and reaching the last,
 navigating from point to point in &ldquo;straight lines&rdquo;
 (on maps, these are actually <a href="https://en.wikipedia.org/wiki/Great-circle_distance" rel="external" target="_blank">orthodromes</a>).</p>
 <p>This kind of navigation can be realized using
 <a href="./reference/plainkdoc/alchemist/it.unibo.alchemist.model.maps.actions/-reproduce-g-p-s-trace/"><code>ReproduceGPSTrace</code></a>.</p>
-<div class="box notices cstyle tip">
-  <div class="box-label">
-    <i class="fa-fw fas fa-lightbulb"></i> Deploying nodes using GPS traces
-  </div>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    Deploying nodes using GPS traces
+  </summary>
   <div class="box-content">
 <p>You probably want your nodes to <em>start</em> from the position that marks the beggining of a trace.
 We discussed <a href="./howtos/simulation/deploy/gps/index.html">how to do so here</a>.</p>
   </div>
-</div>
-<div class="box notices cstyle warning">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-triangle"></i> Time alignment of GPS traces
-  </div>
+</details>
+
+<details open class=" box cstyle notices warning">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Time alignment of GPS traces
+  </summary>
   <div class="box-content">
 <p>Navigation with GPS traces usually require that they get correctly aligned with time,
 especially if they come from samples taken at different times.
 We discussed the alignment of GPS traces <a href="./howtos/simulation/deploy/gps/index.html#alignment-of-time">here</a>,
 the same alignment system used for importing traces is used for using them during navigation.</p>
   </div>
-</div>
+</details>
 <h3 id="examples-1">Examples</h3>
 
 <script>
@@ -7349,8 +7423,8 @@ function onClick(element) {
 </span></span></code></pre></div></div>
 </div>
 <h3 id="interpolate-gps-traces-with-street-data">Interpolate GPS traces with street data</h3>
-<p><a href="#R-image-69eed22bbe1731db5a4c08f3b991aded" class="lightbox-link"><img alt="interpolate GPS traces" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/interpolate_gps_trace_with_street_data.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-69eed22bbe1731db5a4c08f3b991aded"><img alt="interpolate GPS traces" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/interpolate_gps_trace_with_street_data.png"></a></p>
+<p><a href="#R-image-e8be3d74c071fdeca66f6f58b3e03056" class="lightbox-link"><img alt="interpolate GPS traces" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/interpolate_gps_trace_with_street_data.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-e8be3d74c071fdeca66f6f58b3e03056"><img alt="interpolate GPS traces" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/simulation/program/move-on-maps/interpolate_gps_trace_with_street_data.png"></a></p>
 <p>Navigates along a GPS trace, but computes the point-to-point distance using the navigation system,
 rather than &ldquo;straight lines&rdquo; (<a href="https://en.wikipedia.org/wiki/Great-circle_distance" rel="external" target="_blank">orthodromes</a>).</p>
 <p>This kind of navigation can be realized using
@@ -7508,8 +7582,7 @@ function onClick(element) {
 <h1 id="smart-cameras-and-drones">Smart cameras and drones</h1>
 
 <pre><code>&lt;div style=&quot;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&quot;&gt;
-  &lt;iframe allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; allowfullscreen=&quot;allowfullscreen&quot; loading=&quot;eager&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; src=&quot;https://www.youtube.com/embed/yuaY_8Vr3oc?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&quot; style=&quot;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&quot; title=&quot;YouTube video&quot;
-  &gt;&lt;/iframe&gt;
+  &lt;iframe allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; allowfullscreen=&quot;allowfullscreen&quot; loading=&quot;eager&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; src=&quot;https://www.youtube.com/embed/yuaY_8Vr3oc?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&quot; style=&quot;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&quot; title=&quot;YouTube video&quot;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 </code></pre>
 <h2 id="prerequisites">Prerequisites</h2>
@@ -7534,10 +7607,12 @@ containing a
 with the
 <a href="./reference/plainkdoc/alchemist/it.unibo.alchemist.model.actions/-camera-see/"><code>CameraSee</code></a>
 action.</p>
-<div class="box notices cstyle warning">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-triangle"></i> Warning
-  </div>
+
+<details open class=" box cstyle notices warning">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Warning
+  </summary>
   <div class="box-content">
 <p>Note: the
 <a href="./reference/plainkdoc/alchemist/it.unibo.alchemist.model.actions/-camera-see/"><code>CameraSee</code></a>
@@ -7546,7 +7621,7 @@ only works in 2D environments supporting euclidean geometry,
 for example
 <a href="./reference/plainkdoc/alchemist/it.unibo.alchemist.model.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a>.</p>
   </div>
-</div>
+</details>
 <p><a href="./reference/plainkdoc/alchemist/it.unibo.alchemist.model.actions/-camera-see/"><code>CameraSee</code></a>
 requires the following parameters:</p>
 <ol>
@@ -7844,16 +7919,18 @@ function onClick(element) {
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">30</span>, <span style="color:#ff9f43">25</span>]
 </span></span></code></pre></div></div>
 </div>
-<div class="box notices cstyle info">
-  <div class="box-label">
-    <i class="fa-fw fas fa-info-circle"></i> Info
-  </div>
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    Info
+  </summary>
   <div class="box-content">
 <p>To understand how variables work refer to <a href="./howtos/simulation/variables/index.html">this page</a>.
 You may also want to learn how to <a href="./howtos/simulation/export/index.html">export data</a>
 and specifying <a href="./howtos/execution/termination/index.html">termination criteria</a>.</p>
   </div>
-</div>
+</details>
 <p>Now we can launch the batch of simulations by providing the simulator the following command-line arguments:</p>
 <ul>
 <li><code>-b</code>: enable batch mode</li>
@@ -7937,14 +8014,16 @@ as long as the difference in scheduled time is lesser than the given epsilon val
 it may still be known and a discussion/workaround could be available
 <a href="https://github.com/AlchemistSimulator/Alchemist/issues" rel="external" target="_blank">on the Alchemist Github issue tracker</a>.</p>
 <p>Other issues you may experience are listed below.</p>
-<div class="box notices cstyle warning">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-triangle"></i> Warning
-  </div>
+
+<details open class=" box cstyle notices warning">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Warning
+  </summary>
   <div class="box-content">
 <p>=&gt; <span class="btn cstyle interactive transparent"><a href="https://github.com/AlchemistSimulator/Alchemist/issues/new/choose" target="_blank"><i class="fas fa-exclamation-triangle"></i> <span class="title">HELP! My issue is not on the tracker nor in this list!</span></a></span></p>
   </div>
-</div>
+</details>
 <h2 id="contents">Contents</h2>
 <ul class="children children-li children-sort-">
   <li><a href="./howtos/workarounds/swing-glitch/index.html">Graphical Glitches in Swing</a><p>Known issues with Swing and OpenGL acceleration, especially with legacy AMD/ATi drivers.</p><ul></ul></li>
@@ -7974,21 +8053,21 @@ it may still be known and a discussion/workaround could be available
 
 <p>Under some combination of hardware and drivers, the Swing interface may render uncorrectly.
 This is due to Alchemist using OpenGL as rendering backend for Swing, in order to increase performance.</p>
-<div class="expand">
-  <input type="checkbox" id="R-expand-d1eee0ad5a3de0121ef66e28a1c0454b" aria-controls="R-expandcontent-d1eee0ad5a3de0121ef66e28a1c0454b">
-  <label class="expand-label" for="R-expand-d1eee0ad5a3de0121ef66e28a1c0454b">
-    <i class="expander-icon fa-fw fas fa-chevron-down"></i>
-    <i class="expander-icon fa-fw fas fa-chevron-right"></i> Examples of graphical glitches, on a VirtualBox instance with Ubuntu
-  </label>
-  <div id="R-expandcontent-d1eee0ad5a3de0121ef66e28a1c0454b" class="expand-content">
-<p><a href="#R-image-d7479f6fcb3f782cafc02fdf4530f9b9" class="lightbox-link"><img alt="Graphical glitch example" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/workarounds/swing-glitch/vbox-glitch-1.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-d7479f6fcb3f782cafc02fdf4530f9b9"><img alt="Graphical glitch example" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/workarounds/swing-glitch/vbox-glitch-1.png"></a>
-<a href="#R-image-a43be922a90af9c4b0bd5c6b376cd234" class="lightbox-link"><img alt="Graphical glitch example" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/workarounds/swing-glitch/vbox-glitch-2.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-a43be922a90af9c4b0bd5c6b376cd234"><img alt="Graphical glitch example" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/workarounds/swing-glitch/vbox-glitch-2.png"></a>
-<a href="#R-image-a93b0d3c95ebe4ae1a6d683ae038da16" class="lightbox-link"><img alt="Graphical glitch example" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/workarounds/swing-glitch/vbox-glitch-3.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-a93b0d3c95ebe4ae1a6d683ae038da16"><img alt="Graphical glitch example" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/workarounds/swing-glitch/vbox-glitch-3.png"></a></p>
+
+<details class=" box cstyle notices transparent expand">
+  <summary class="box-label">
+    <i class="expander-icon fa-fw fas fa-chevron-right"></i> 
+    Examples of graphical glitches, on a VirtualBox instance with Ubuntu
+  </summary>
+  <div class="box-content">
+<p><a href="#R-image-b096470c19f1a77b8b4d4bfec722d613" class="lightbox-link"><img alt="Graphical glitch example" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/workarounds/swing-glitch/vbox-glitch-1.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-b096470c19f1a77b8b4d4bfec722d613"><img alt="Graphical glitch example" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/workarounds/swing-glitch/vbox-glitch-1.png"></a>
+<a href="#R-image-4823a38c40b46825d1bb0336acaee1b2" class="lightbox-link"><img alt="Graphical glitch example" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/workarounds/swing-glitch/vbox-glitch-2.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-4823a38c40b46825d1bb0336acaee1b2"><img alt="Graphical glitch example" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/workarounds/swing-glitch/vbox-glitch-2.png"></a>
+<a href="#R-image-6caa459229c5d626ca9997725b7a733d" class="lightbox-link"><img alt="Graphical glitch example" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./howtos/workarounds/swing-glitch/vbox-glitch-3.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-6caa459229c5d626ca9997725b7a733d"><img alt="Graphical glitch example" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./howtos/workarounds/swing-glitch/vbox-glitch-3.png"></a></p>
   </div>
-</div>
+</details>
 <h2 id="solution">Solution</h2>
 <p>Disable the OpenGL acceleration explicitly by setting the <code>sun.java2d.opengl</code> property to <code>false</code>.</p>
 <h3 id="gradle">Gradle</h3>
@@ -8020,15 +8099,17 @@ by adding:
 
 <p>When Alchemist is used on computers with a large amount of memory and parallelism,
 additional configuration might be required.</p>
-<div class="box notices cstyle info">
-  <div class="box-label">
-    <i class="fa-fw fas fa-info-circle"></i> Info
-  </div>
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    Info
+  </summary>
   <div class="box-content">
 <p>These problems have more to do with the way memory allocation on Linux and the JVM works than with Alchemist itself.
 They are not memory leaks in Alchemist (hence the reason why they do not happen with smaller memory sizes).</p>
   </div>
-</div>
+</details>
 <h2 id="symptoms">Symptoms</h2>
 <ul>
 <li>batch execution slowing down (this is due to the <em>memory pressure</em>)</li>
@@ -8041,14 +8122,16 @@ They are not memory leaks in Alchemist (hence the reason why they do not happen 
 [warning][gc] least 183157 mappings (current limit is 65530). Continuing execution with the current
 [warning][gc] limit could lead to a premature OutOfMemoryError being thrown, due to failure to map memory.</code></pre></div>
 <h2 id="solution">Solution</h2>
-<div class="box notices cstyle warning">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-triangle"></i> Warning
-  </div>
+
+<details open class=" box cstyle notices warning">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Warning
+  </summary>
   <div class="box-content">
 <p>The file <code>/proc/sys/vm/max_map_count</code> could be changed manually, but these changes won&rsquo;t persist reboots.</p>
   </div>
-</div>
+</details>
 <p>A persistent solution to the problem is to instruct the system to always load the correct configuration.
 One possible way is to instruct <code>sysctl</code> through a configuration file
 (e.g., <code>/etc/sysctl.d/99-vm-max-map-count.conf</code>)
@@ -8056,16 +8139,18 @@ including the following line: <code>vm.max_map_count=&lt;custom max_map_count&gt
 This can be done on a <strong>root</strong> shell via:</p>
 <div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo sh -c <span style="color:#5af78e">&#39;echo &#34;vm.max_map_count=&lt;custom max_map_count&gt;&#34; &gt; /etc/sysctl.d/99-vm-max-map-count.conf&#39;</span>
 </span></span><span style="display:flex;"><span>sudo sysctl --system</span></span></code></pre></div>
-<div class="box notices cstyle tip">
-  <div class="box-label">
-    <i class="fa-fw fas fa-lightbulb"></i> Computing a &ldquo;good&rdquo; value for max_map_count
-  </div>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    Computing a &ldquo;good&rdquo; value for max_map_count
+  </summary>
   <div class="box-content">
 <p>A reasonable estimation of the value is <strong>four times the amount of system RAM expressed in Megabytes</strong>
 (for instance vm.max_map_count=524288 for a system with 128GB RAM).</p>
 <p>When in doubt, select a higher value, <a href="https://archive.is/xyaA6" rel="external" target="_blank">apparently the negative effects are negligible</a>.</p>
   </div>
-</div>
+</details>
 <h3 id="ready-to-use-commands">Ready-to-use commands</h3>
 <ul>
 <li><strong>128GB</strong></li>
@@ -8200,17 +8285,19 @@ by its ID:</li>
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
-<div class="box notices cstyle tip">
-  <div class="box-label">
-    <i class="fa-fw fas fa-lightbulb"></i> Use GraphiQL to build client&rsquo;s operations files
-  </div>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    Use GraphiQL to build client&rsquo;s operations files
+  </summary>
   <div class="box-content">
 <p>You can test the structure of the data that you need inside the GraphiQL
 playground, in order to get predicable results when compiling your operations.
 GraphiQL also notices you if you are writing incorrect operations with useful
 explanation about the errors.</p>
   </div>
-</div>
+</details>
 <ol start="3">
 <li>
 <p>Run the Gradle task <code>./gradlew :alchemist-graphql:generateApolloSources</code> in order to
@@ -8371,11 +8458,8 @@ installation. For more information please refer to the <a href="https://docs.gra
 <p>A broad introduction is provided in form of introductory video from the <a href="https://www.discotec.org/2021/dais.html" rel="external" target="_blank">DAIS 2021</a>
 conference tutorial.</p>
 
-
-    
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/zF-LHHQjdOg?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/zF-LHHQjdOg?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <h3 id="the-model">The model</h3>
@@ -8448,11 +8532,11 @@ conference tutorial.</p>
 </li>
 </ul>
 <p>The following image is a visualization of such model:</p>
-<p><a href="#R-image-bb55542c721dc45df6f71a0edf3384fc" class="lightbox-link"><img alt="Alchemist model" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./images/simulator/model.svg" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-bb55542c721dc45df6f71a0edf3384fc"><img alt="Alchemist model" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./images/simulator/model.svg"></a></p>
+<p><a href="#R-image-057ee0477d23b8924410c648def00ebc" class="lightbox-link"><img alt="Alchemist model" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./images/simulator/model.svg" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-057ee0477d23b8924410c648def00ebc"><img alt="Alchemist model" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./images/simulator/model.svg"></a></p>
 <p>The behavior of the system is described in terms of reactions. As such, here&rsquo;s a pictorial representation of a reaction:</p>
-<p><a href="#R-image-92c74c77f9e9f55e65691fb55ddc52b2" class="lightbox-link"><img alt="Alchemist reaction" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./images/simulator/reaction.svg" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-92c74c77f9e9f55e65691fb55ddc52b2"><img alt="Alchemist reaction" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./images/simulator/reaction.svg"></a></p>
+<p><a href="#R-image-64803d607734b4c8dbb23e0ad34dcffa" class="lightbox-link"><img alt="Alchemist reaction" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./images/simulator/reaction.svg" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-64803d607734b4c8dbb23e0ad34dcffa"><img alt="Alchemist reaction" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./images/simulator/reaction.svg"></a></p>
 <h3 id="incarnations">Incarnations</h3>
 <p>As you can see, names are given after classical chemistry terms.
 This is mostly for historical reasons: Alchemist has been initially conceived as a chemical-oriented multi-compartment
@@ -8598,8 +8682,8 @@ Those simple reactions can be written in the section <code>programs</code> of th
 <h1 id="cognitive-agents">Cognitive Agents</h1>
 
 <p>Alchemist is capable of simulating the movement of pedestrians with sophisticated cognitive capabilities:</p>
-<p><a href="#R-image-059831085d67b2fb61f9d360083b24c7" class="lightbox-link"><img alt="demo" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./explanation/cognitive/no-knowledge.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-059831085d67b2fb61f9d360083b24c7"><img alt="demo" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./explanation/cognitive/no-knowledge.gif"></a></p>
+<p><a href="#R-image-c7e6f5d27ef9e9ec9cae9c2ef792d727" class="lightbox-link"><img alt="demo" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./explanation/cognitive/no-knowledge.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-c7e6f5d27ef9e9ec9cae9c2ef792d727"><img alt="demo" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./explanation/cognitive/no-knowledge.gif"></a></p>
 <p>The animation above shows an adult male with no previous knowledge of the environment trying to reach the destination marked green.</p>
 <h2 id="types-of-pedestrian">Types of pedestrian</h2>
 <p>There are three basic types of pedestrian,
@@ -8710,8 +8794,8 @@ The image below shows a bidimensional environment with obstacles on the left and
 right (nodes are painted blue,
 edges are represented as line segments connecting the centroid of a node to the associated crossing,
 which is painted green).</p>
-<p><a href="#R-image-cb1f2678e99c78aae0e6a90cd8c511ac" class="lightbox-link"><img alt="navigation graph" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./explanation/pathfinding/navigation-graph.jpeg" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-cb1f2678e99c78aae0e6a90cd8c511ac"><img alt="navigation graph" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./explanation/pathfinding/navigation-graph.jpeg"></a></p>
+<p><a href="#R-image-44a7ec64f1e43582ecb6e3d47d511c49" class="lightbox-link"><img alt="navigation graph" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="./explanation/pathfinding/navigation-graph.jpeg" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-44a7ec64f1e43582ecb6e3d47d511c49"><img alt="navigation graph" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="./explanation/pathfinding/navigation-graph.jpeg"></a></p>
 <p>Navigation graphs are mainly used for navigation purposes (e.g. in pathfinding algorithms):
 the advantage of decomposing the environment into convex regions is that agents can freely walk around within a convex region,
 as it is guaranteed that no obstacle will be found
@@ -8830,25 +8914,29 @@ the opposite of the matched number:</p>
 
 <h1 id="yaml-simulation-specification">YAML simulation specification</h1>
 
-<div class="box notices cstyle warning">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-triangle"></i> Warning
-  </div>
+
+<details open class=" box cstyle notices warning">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Warning
+  </summary>
   <div class="box-content">
 <p>This reference guide assumes that the reader knows the basics of <a href="https://yaml.org/" rel="external" target="_blank">YAML</a>.
 A good resource to learn it quickly is  <a href="https://learnxinyminutes.com/docs/yaml/" rel="external" target="_blank">Learn X in Y minutes where X = YAML</a></p>
   </div>
-</div>
-<div class="box notices cstyle info">
-  <div class="box-label">
-    <i class="fa-fw fas fa-info-circle"></i> Reading this document
-  </div>
+</details>
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    Reading this document
+  </summary>
   <div class="box-content">
 <p>The key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>,
 <strong>RECOMMENDED</strong>,  <strong>MAY</strong>, and <strong>OPTIONAL</strong> in this document are to be interpreted as described in
 <a href="https://datatracker.ietf.org/doc/html/rfc2119" rel="external" target="_blank">RFC 2119</a>.</p>
   </div>
-</div>
+</details>
 <h2 id="simulation-document-structure">Simulation document structure</h2>
 <p>The document <strong>MUST</strong> be YAML map.
 The map <strong>MUST</strong> contain all the mandatory Alchemist keys,
@@ -11333,22 +11421,22 @@ This page currently hosts minimal information on how to use such legacy GUI.</p>
         </div>
       </main>
     </div>
-    <script src="./js/clipboard.min.js?1733597560" defer></script>
-    <script src="./js/perfect-scrollbar.min.js?1733597560" defer></script>
-    <script src="./js/d3/d3-color.min.js?1733597560" defer></script>
-    <script src="./js/d3/d3-dispatch.min.js?1733597560" defer></script>
-    <script src="./js/d3/d3-drag.min.js?1733597560" defer></script>
-    <script src="./js/d3/d3-ease.min.js?1733597560" defer></script>
-    <script src="./js/d3/d3-interpolate.min.js?1733597560" defer></script>
-    <script src="./js/d3/d3-selection.min.js?1733597560" defer></script>
-    <script src="./js/d3/d3-timer.min.js?1733597560" defer></script>
-    <script src="./js/d3/d3-transition.min.js?1733597560" defer></script>
-    <script src="./js/d3/d3-zoom.min.js?1733597560" defer></script>
-    <script src="./js/js-yaml.min.js?1733597560" defer></script>
-    <script src="./js/mermaid.min.js?1733597560" defer></script>
+    <script src="./js/clipboard.min.js?1733773450" defer></script>
+    <script src="./js/perfect-scrollbar.min.js?1733773450" defer></script>
+    <script src="./js/d3/d3-color.min.js?1733773450" defer></script>
+    <script src="./js/d3/d3-dispatch.min.js?1733773450" defer></script>
+    <script src="./js/d3/d3-drag.min.js?1733773450" defer></script>
+    <script src="./js/d3/d3-ease.min.js?1733773450" defer></script>
+    <script src="./js/d3/d3-interpolate.min.js?1733773450" defer></script>
+    <script src="./js/d3/d3-selection.min.js?1733773450" defer></script>
+    <script src="./js/d3/d3-timer.min.js?1733773450" defer></script>
+    <script src="./js/d3/d3-transition.min.js?1733773450" defer></script>
+    <script src="./js/d3/d3-zoom.min.js?1733773450" defer></script>
+    <script src="./js/js-yaml.min.js?1733773450" defer></script>
+    <script src="./js/mermaid.min.js?1733773450" defer></script>
     <script>
       window.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="./js/theme.js?1733597560" defer></script>
+    <script src="./js/theme.js?1733773450" defer></script>
   </body>
 </html>

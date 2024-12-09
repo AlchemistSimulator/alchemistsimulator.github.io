@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article">
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.139.3">
-    <meta name="generator" content="Relearn 7.1.1">
+    <meta name="generator" content="Hugo 0.139.4">
+    <meta name="generator" content="Relearn 7.2.0">
     <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
     <meta name="description" content="Simulations related to the generalization of the Vascular Morphogenesis algorithm using the Aggregate Computing paradigm, presented at ACSOS 2024.">
     <meta name="author" content="Danilo Pianini">
@@ -23,26 +23,49 @@
     <meta itemprop="keywords" content="Simulation,Aggregate Computing,Vascular Morphogenesis">
     <title>2024: Aggregate Vascular Morphogenesis Controller :: Documentation for the Alchemist Simulator</title>
     <link href="../../showcase/2024-fieldvmc/index.xml" rel="alternate" type="application/rss+xml" title="2024: Aggregate Vascular Morphogenesis Controller :: Documentation for the Alchemist Simulator">
-    <link href="../../images/logo.svg?1733597560" rel="icon" type="image/svg+xml">
-    <link href="../../css/fontawesome-all.min.css?1733597560" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/fontawesome-all.min.css?1733597560" rel="stylesheet"></noscript>
-    <link href="../../css/nucleus.css?1733597560" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1733597560" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/auto-complete.css?1733597560" rel="stylesheet"></noscript>
-    <link href="../../css/perfect-scrollbar.min.css?1733597560" rel="stylesheet">
-    <link href="../../css/fonts.css?1733597560" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/fonts.css?1733597560" rel="stylesheet"></noscript>
-    <link href="../../css/theme.css?1733597560" rel="stylesheet">
-    <link href="../../css/theme-relearn.css?1733597560" rel="stylesheet" id="R-variant-style">
-    <link href="../../css/chroma-relearn-light.css?1733597560" rel="stylesheet" id="R-variant-chroma-style">
-    <link href="../../css/print.css?1733597560" rel="stylesheet" media="print">
-    <script src="../../js/variant.js?1733597560"></script>
+    <link href="../../images/logo.svg?1733773450" rel="icon" type="image/svg+xml">
+    <link href="../../css/fontawesome-all.min.css?1733773450" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/fontawesome-all.min.css?1733773450" rel="stylesheet"></noscript>
+    <link href="../../css/auto-complete.css?1733773450" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/auto-complete.css?1733773450" rel="stylesheet"></noscript>
+    <link href="../../css/perfect-scrollbar.min.css?1733773450" rel="stylesheet">
+    <link href="../../css/theme.min.css?1733773450" rel="stylesheet">
+    <link href="../../css/format-html.min.css?1733773450" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..';
       window.relearn.relBaseUri='..\/..';
       window.relearn.absBaseUri='https:\/\/alchemistsimulator.github.io';
+      window.relearn.min = `.min`;
       window.relearn.disableAnchorCopy=false;
       window.relearn.disableAnchorScrolling=false;
       // variant stuff
-      window.variants && variants.init( [ 'relearn' ] );
+      window.relearn.themevariants = [ 'relearn' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        var select = document.querySelector("#R-select-variant");
+        if (select) {
+          select.value = variant;
+        }
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
       // translations
       window.T_Copy_to_clipboard = `Copy to clipboard`;
       window.T_Copied_to_clipboard = `Copied to clipboard!`;
@@ -165,10 +188,10 @@ the resource (resp. success) distribution flows, the thicker they are, the more 
 <table>
   <thead>
       <tr>
-          <th style="text-align: center"><a href="#R-image-97ee6f2ee16bf403e174263b005c3c77" class="lightbox-link"><img alt="starting_structure" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting01.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-97ee6f2ee16bf403e174263b005c3c77"><img alt="starting_structure" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting01.png"></a></th>
-          <th style="text-align: center"><a href="#R-image-7fec420ff30dcb4e8180fd7b78298b64" class="lightbox-link"><img alt="self-organised_structure" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting19.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-7fec420ff30dcb4e8180fd7b78298b64"><img alt="self-organised_structure" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting19.png"></a></th>
+          <th style="text-align: center"><a href="#R-image-6d9d3ac05056cea89b50b36648b30b23" class="lightbox-link"><img alt="starting_structure" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting01.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-6d9d3ac05056cea89b50b36648b30b23"><img alt="starting_structure" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting01.png"></a></th>
+          <th style="text-align: center"><a href="#R-image-805ec0b9b9c4d03b94f22452d86b7199" class="lightbox-link"><img alt="self-organised_structure" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting19.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-805ec0b9b9c4d03b94f22452d86b7199"><img alt="self-organised_structure" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting19.png"></a></th>
       </tr>
   </thead>
   <tbody>
@@ -177,10 +200,10 @@ the resource (resp. success) distribution flows, the thicker they are, the more 
           <td style="text-align: center"><em>Self-Organised Structure</em></td>
       </tr>
       <tr>
-          <td style="text-align: center"><a href="#R-image-8076e016dac28501b034c5604ecccefc" class="lightbox-link"><img alt="structure_after_cutting" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting21.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-8076e016dac28501b034c5604ecccefc"><img alt="structure_after_cutting" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting21.png"></a></td>
-          <td style="text-align: center"><a href="#R-image-dfd65221bb94557ee6e110f9372a84a9" class="lightbox-link"><img alt="self-organised_structure_after_cutting" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting27.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-dfd65221bb94557ee6e110f9372a84a9"><img alt="self-organised_structure_after_cutting" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting27.png"></a></td>
+          <td style="text-align: center"><a href="#R-image-8401c79748c158b0e3fdc8e66fd185d3" class="lightbox-link"><img alt="structure_after_cutting" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting21.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-8401c79748c158b0e3fdc8e66fd185d3"><img alt="structure_after_cutting" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting21.png"></a></td>
+          <td style="text-align: center"><a href="#R-image-5cb36cdbb51cafe883b9ea253a23e0dc" class="lightbox-link"><img alt="self-organised_structure_after_cutting" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting27.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-5cb36cdbb51cafe883b9ea253a23e0dc"><img alt="self-organised_structure_after_cutting" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../showcase/2024-fieldvmc/images/cutting27.png"></a></td>
       </tr>
       <tr>
           <td style="text-align: center"><em>Structure after cutting a part of it</em></td>
@@ -226,7 +249,7 @@ and the structure stops evolving.</p>
 
         </div>
         <script>
-          window.index_js_url="../../searchindex.en.js?1733597560";
+          window.index_js_url="../../searchindex.en.js?1733773450";
         </script>
         <search><form action="../../search/index.html" method="get">
           <div class="searchbox default-animation">
@@ -239,12 +262,12 @@ and the structure stops evolving.</p>
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../../js/auto-complete.js?1733597560" defer></script>
-        <script src="../../js/lunr/lunr.min.js?1733597560" defer></script>
-        <script src="../../js/lunr/lunr.stemmer.support.min.js?1733597560" defer></script>
-        <script src="../../js/lunr/lunr.multi.min.js?1733597560" defer></script>
-        <script src="../../js/lunr/lunr.en.min.js?1733597560" defer></script>
-        <script src="../../js/search.js?1733597560" defer></script>
+        <script src="../../js/auto-complete.js?1733773450" defer></script>
+        <script src="../../js/lunr/lunr.min.js?1733773450" defer></script>
+        <script src="../../js/lunr/lunr.stemmer.support.min.js?1733773450" defer></script>
+        <script src="../../js/lunr/lunr.multi.min.js?1733773450" defer></script>
+        <script src="../../js/lunr/lunr.en.min.js?1733773450" defer></script>
+        <script src="../../js/search.js?1733773450" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -297,13 +320,13 @@ and the structure stops evolving.</p>
                   <span>&nbsp;</span>
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-variant">Theme</label>
-                    <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
                       <option id="R-select-variant-relearn" value="relearn" selected>Relearn</option>
                     </select>
                   </div>
                   <div class="clear"></div>
                 </div>
-                <script>window.variants && variants.markSelectedVariant();</script>
+                <script>window.relearn.markVariant();</script>
               </li>
               <li class="footerVisitedLinks showVisitedLinks">
                 <div class="padding menu-control">
@@ -318,7 +341,7 @@ and the structure stops evolving.</p>
             </ul>
           </div>
           <div id="R-footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 36.0.5</strong></div>
+    <div><strong>Alchemist Simulator 36.0.6</strong></div>
     <br>
     <a
         class="github-button"
@@ -352,22 +375,22 @@ and the structure stops evolving.</p>
         </div>
       </div>
     </aside>
-    <script src="../../js/clipboard.min.js?1733597560" defer></script>
-    <script src="../../js/perfect-scrollbar.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-color.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-dispatch.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-drag.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-ease.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-interpolate.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-selection.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-timer.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-transition.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-zoom.min.js?1733597560" defer></script>
-    <script src="../../js/js-yaml.min.js?1733597560" defer></script>
-    <script src="../../js/mermaid.min.js?1733597560" defer></script>
+    <script src="../../js/clipboard.min.js?1733773450" defer></script>
+    <script src="../../js/perfect-scrollbar.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-color.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-dispatch.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-drag.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-ease.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-interpolate.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-selection.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-timer.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-transition.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-zoom.min.js?1733773450" defer></script>
+    <script src="../../js/js-yaml.min.js?1733773450" defer></script>
+    <script src="../../js/mermaid.min.js?1733773450" defer></script>
     <script>
       window.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../js/theme.js?1733597560" defer></script>
+    <script src="../../js/theme.js?1733773450" defer></script>
   </body>
 </html>

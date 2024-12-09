@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article">
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.139.3">
-    <meta name="generator" content="Relearn 7.1.1">
+    <meta name="generator" content="Hugo 0.139.4">
+    <meta name="generator" content="Relearn 7.2.0">
     <meta name="description" content="A (video) guide through the main features of the simulator, as presented at DAIS 2021">
     <meta name="author" content="Danilo Pianini">
     <meta name="twitter:card" content="summary">
@@ -24,26 +24,49 @@
     <meta itemprop="keywords" content="Tutorial,Basics,Video,Examples,Deployment,Maps,Indoor,Graph,Export">
     <title>Step-by-step tutorial :: Documentation for the Alchemist Simulator</title>
     <link href="../../tutorials/basics/index.xml" rel="alternate" type="application/rss+xml" title="Step-by-step tutorial :: Documentation for the Alchemist Simulator">
-    <link href="../../images/logo.svg?1733597560" rel="icon" type="image/svg+xml">
-    <link href="../../css/fontawesome-all.min.css?1733597560" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/fontawesome-all.min.css?1733597560" rel="stylesheet"></noscript>
-    <link href="../../css/nucleus.css?1733597560" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1733597560" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/auto-complete.css?1733597560" rel="stylesheet"></noscript>
-    <link href="../../css/perfect-scrollbar.min.css?1733597560" rel="stylesheet">
-    <link href="../../css/fonts.css?1733597560" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/fonts.css?1733597560" rel="stylesheet"></noscript>
-    <link href="../../css/theme.css?1733597560" rel="stylesheet">
-    <link href="../../css/theme-relearn.css?1733597560" rel="stylesheet" id="R-variant-style">
-    <link href="../../css/chroma-relearn-light.css?1733597560" rel="stylesheet" id="R-variant-chroma-style">
-    <link href="../../css/print.css?1733597560" rel="stylesheet" media="print">
-    <script src="../../js/variant.js?1733597560"></script>
+    <link href="../../images/logo.svg?1733773450" rel="icon" type="image/svg+xml">
+    <link href="../../css/fontawesome-all.min.css?1733773450" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/fontawesome-all.min.css?1733773450" rel="stylesheet"></noscript>
+    <link href="../../css/auto-complete.css?1733773450" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/auto-complete.css?1733773450" rel="stylesheet"></noscript>
+    <link href="../../css/perfect-scrollbar.min.css?1733773450" rel="stylesheet">
+    <link href="../../css/theme.min.css?1733773450" rel="stylesheet">
+    <link href="../../css/format-html.min.css?1733773450" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..';
       window.relearn.relBaseUri='..\/..';
       window.relearn.absBaseUri='https:\/\/alchemistsimulator.github.io';
+      window.relearn.min = `.min`;
       window.relearn.disableAnchorCopy=false;
       window.relearn.disableAnchorScrolling=false;
       // variant stuff
-      window.variants && variants.init( [ 'relearn' ] );
+      window.relearn.themevariants = [ 'relearn' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        var select = document.querySelector("#R-select-variant");
+        if (select) {
+          select.value = variant;
+        }
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
       // translations
       window.T_Copy_to_clipboard = `Copy to clipboard`;
       window.T_Copied_to_clipboard = `Copied to clipboard!`;
@@ -142,10 +165,12 @@
 <a href="https://www.discotec.org/2021/dais.html" rel="external" target="_blank">DAIS 2021</a>
 (one of the three conferences of <a href="https://www.discotec.org/2021/" rel="external" target="_blank">DisCoTec 2021</a>).</p>
 <p>This tutorial features some companion videos, embedded in this page.</p>
-<div class="box notices cstyle info">
-  <div class="box-label">
-    <i class="fa-fw fas fa-info-circle"></i> Info
-  </div>
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    Info
+  </summary>
   <div class="box-content">
 <p>The tutorial is also available as a scientific document: <div id="cite-0c2060b5d5013375" style="font-family:monospace;"></div></p>
 <script>
@@ -154,29 +179,35 @@
     });
 </script>
   </div>
-</div>
-<div class="box notices cstyle info">
-  <div class="box-label">
-    <i class="fa-fw fas fa-info-circle"></i> Info
-  </div>
+</details>
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    Info
+  </summary>
   <div class="box-content">
 <p>All code has been open-sourced and it is being actively maintained on <a href="https://github.com/DanySK/DisCoTec-2021-Tutorial" rel="external" target="_blank">GitHub</a></p>
   </div>
-</div>
-<div class="box notices cstyle warning">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-triangle"></i> Warning
-  </div>
+</details>
+
+<details open class=" box cstyle notices warning">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Warning
+  </summary>
   <div class="box-content">
 <p>Snapshots presented here are from the Java Swing GUI module that was the main UI at the time the tutorial was written,
 and may or may not reflect the current graphical appearance of the examples
 (which can be configured in any case).</p>
   </div>
-</div>
-<div class="box notices cstyle tip">
-  <div class="box-label">
-    <i class="fa-fw fas fa-lightbulb"></i> Tip
-  </div>
+</details>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    Tip
+  </summary>
   <div class="box-content">
 <p>Simulations in alchemist are written in <a href="https://yaml.org/" rel="external" target="_blank">YAML</a>.
 YAML is pretty intuitive, it can be learnt quickly through
@@ -184,18 +215,20 @@ YAML is pretty intuitive, it can be learnt quickly through
 Even without any prior knowledge, looking at the syntax and comparing it with the information in the aforementioned page
 should provide enough information.</p>
   </div>
-</div>
+</details>
 <h2 id="import-the-infrastructure">Import the infrastructure</h2>
-<div class="box notices cstyle warning">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-triangle"></i> Warning
-  </div>
+
+<details open class=" box cstyle notices warning">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Warning
+  </summary>
   <div class="box-content">
 <p>You need to be able to import an existing Gradle project from GitHub.
 If you have no idea of what I&rsquo;m talking about,
 <a href="../../tutorials/quickstart/index.html">take a step back and make sure you followed the quickstart</a>.</p>
   </div>
-</div>
+</details>
 <ol>
 <li><code>git clone https://github.com/DanySK/DisCoTec-2021-Tutorial.git</code></li>
 <li><code>cd DisCoTec-2021-Tutorial</code></li>
@@ -207,17 +240,19 @@ If you have no idea of what I&rsquo;m talking about,
 </li>
 </ol>
 <p>The shell should begin to work, download the required components, and pop a graphical interface in front of you.</p>
-<div class="box notices cstyle note">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-circle"></i> Note
-  </div>
+
+<details open class=" box cstyle notices note">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-circle"></i> 
+    Note
+  </summary>
   <div class="box-content">
 <p>If something went wrong, let us know by <strong><a href="https://github.com/DanySK/DisCoTec-2021-Tutorial/issues/new/choose" rel="external" target="_blank">opening an issue</a></strong>!</p>
 <p>The build system is <em>continuous-integration sensitive</em>.
 If a GUI is not displayed but the proces terminates successfully,
 make sure that you do not have a <code>CI</code> environment variable set to <code>true</code>.</p>
   </div>
-</div>
+</details>
 <h2 id="writing-and-launching-simple-simulations">Writing and launching simple simulations</h2>
 <p>In this video you will see how to:</p>
 <ol>
@@ -226,35 +261,36 @@ make sure that you do not have a <code>CI</code> environment variable set to <co
 <li>deploy nodes into a bidimensional space; and</li>
 <li>write programs that perform manipulation of data in form of tuples.</li>
 </ol>
-<div class="box notices cstyle note">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-circle"></i> Note
-  </div>
+
+<details open class=" box cstyle notices note">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-circle"></i> 
+    Note
+  </summary>
   <div class="box-content">
 <p>This is actually the <strong>second</strong> video of the tutorial.
 The first presents introductory information on the simulator and its meta-model,
 it can be found in the <a href="../../explanation/index.html">Explanation</a> chapter of the documentation.</p>
   </div>
-</div>
+</details>
 
-
-    
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/nORRuG3VjYU?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/nORRuG3VjYU?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>The examples presented in the video are presented in the following subsections,
 updated to execute with the latest version of the simulator.
 You will find this code in the current version of the tutorial.</p>
-<div class="box notices cstyle tip">
-  <div class="box-label">
-    <i class="fa-fw fas fa-lightbulb"></i> Tip
-  </div>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    Tip
+  </summary>
   <div class="box-content">
 <p>Make changes to the existing configuration files and see what happens!</p>
   </div>
-</div>
+</details>
 <h3 id="three-connected-devices">Three connected devices</h3>
 <p>In this simple example, we simply deploy three nodes in a bidimensional space.
 They do nothing, they are just there.
@@ -297,17 +333,17 @@ function onClick(element) {
 <p>The graphic effect is just to see three dots in the interface.
 If links are displayed (see the <a href="../../reference/default-ui/index.html">reference of the graphical interface</a>),
 then the three nodes appear linked.
-<div class="expand">
-  <input type="checkbox" id="R-expand-1d234fc0d4c99aafc96d605c7fa6e673" aria-controls="R-expandcontent-1d234fc0d4c99aafc96d605c7fa6e673">
-  <label class="expand-label" for="R-expand-1d234fc0d4c99aafc96d605c7fa6e673">
-    <i class="expander-icon fa-fw fas fa-chevron-down"></i>
-    <i class="expander-icon fa-fw fas fa-chevron-right"></i> Show snapshot
-  </label>
-  <div id="R-expandcontent-1d234fc0d4c99aafc96d605c7fa6e673" class="expand-content">
-<p><a href="#R-image-fede5e5fd8fc45ca2f017f1ebcfb947c" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/3nodes.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-fede5e5fd8fc45ca2f017f1ebcfb947c"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/3nodes.png"></a></p>
+
+<details class=" box cstyle notices transparent expand">
+  <summary class="box-label">
+    <i class="expander-icon fa-fw fas fa-chevron-right"></i> 
+    Show snapshot
+  </summary>
+  <div class="box-content">
+<p><a href="#R-image-a9d6721575eb8297f1614d513feba28b" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/3nodes.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a9d6721575eb8297f1614d513feba28b"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/3nodes.png"></a></p>
   </div>
-</div></p>
+</details></p>
 <h3 id="a-grid-of-devices-playing-dodgeball">A grid of devices playing dodgeball</h3>
 <p>In this example we create a grid of devices
 and make them play dodgeball. The program to be injected is rather simple:
@@ -358,25 +394,25 @@ function onClick(element) {
 <p>Snapshots of the simulation of the “dodgeball” example follow.
 Devices with a ball are depicted in black. All other devices’ color hue depends on the
 hit count, shifting from red (zero hits) towards blue.</p>
-<div class="expand">
-  <input type="checkbox" id="R-expand-2c0fb9c3b1d7e97d19ec29f577c7f247" aria-controls="R-expandcontent-2c0fb9c3b1d7e97d19ec29f577c7f247">
-  <label class="expand-label" for="R-expand-2c0fb9c3b1d7e97d19ec29f577c7f247">
-    <i class="expander-icon fa-fw fas fa-chevron-down"></i>
-    <i class="expander-icon fa-fw fas fa-chevron-right"></i> Show snapshots
-  </label>
-  <div id="R-expandcontent-2c0fb9c3b1d7e97d19ec29f577c7f247" class="expand-content">
-<p><a href="#R-image-b2b6bd6d2741203086a7e6e24661d8a9" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/dodgeball00.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-b2b6bd6d2741203086a7e6e24661d8a9"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball00.png"></a>
-<a href="#R-image-f2f2a95e79c49299cd07ba67c91b4e95" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/dodgeball01.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-f2f2a95e79c49299cd07ba67c91b4e95"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball01.png"></a>
-<a href="#R-image-df39370d5764532bf7fa8cdb474db39a" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/dodgeball02.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-df39370d5764532bf7fa8cdb474db39a"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball02.png"></a>
-<a href="#R-image-7bf063085dfc8576b9b2a59f901ecd77" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/dodgeball03.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-7bf063085dfc8576b9b2a59f901ecd77"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball03.png"></a>
-<a href="#R-image-2bd8a538a50fc88b3be9781175fd929e" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/dodgeball04.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-2bd8a538a50fc88b3be9781175fd929e"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball04.png"></a></p>
+
+<details class=" box cstyle notices transparent expand">
+  <summary class="box-label">
+    <i class="expander-icon fa-fw fas fa-chevron-right"></i> 
+    Show snapshots
+  </summary>
+  <div class="box-content">
+<p><a href="#R-image-a9333ce3d9859a186b996ce50298e584" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/dodgeball00.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a9333ce3d9859a186b996ce50298e584"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball00.png"></a>
+<a href="#R-image-d1d68bbf1176f9fba131dfb3effac521" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/dodgeball01.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-d1d68bbf1176f9fba131dfb3effac521"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball01.png"></a>
+<a href="#R-image-a91ae40d590438712228337200d68656" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/dodgeball02.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a91ae40d590438712228337200d68656"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball02.png"></a>
+<a href="#R-image-4219c5f802cd0cb54339d2acbecd384d" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/dodgeball03.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-4219c5f802cd0cb54339d2acbecd384d"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball03.png"></a>
+<a href="#R-image-7f58d05b6a1ccc1dfe61e42e023ffff5" class="lightbox-link"><img alt="Dodgeball" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/dodgeball04.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-7f58d05b6a1ccc1dfe61e42e023ffff5"><img alt="Dodgeball" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball04.png"></a></p>
   </div>
-</div>
+</details>
 <h3 id="a-gradient-on-a-grid-of-devices">A gradient on a grid of devices</h3>
 <p>In this example, we implement with the SAPERE incarnation a very simple
 specification of a gradient, a pattern that is considered to be the basis of many
@@ -429,21 +465,21 @@ function onClick(element) {
 <p>Here are some snapshots of the simulation of the “gradient” example.
 Source devices have a central black dot. Devices’ color hue depends on the gradient
 value, shifting from red (low) towards blue (high).</p>
-<div class="expand">
-  <input type="checkbox" id="R-expand-547ca9f648a89fda60c3220ca552c3ba" aria-controls="R-expandcontent-547ca9f648a89fda60c3220ca552c3ba">
-  <label class="expand-label" for="R-expand-547ca9f648a89fda60c3220ca552c3ba">
-    <i class="expander-icon fa-fw fas fa-chevron-down"></i>
-    <i class="expander-icon fa-fw fas fa-chevron-right"></i> Show snapshots
-  </label>
-  <div id="R-expandcontent-547ca9f648a89fda60c3220ca552c3ba" class="expand-content">
-<p><a href="#R-image-76b1ea0a64b34c37531f8765765b52f5" class="lightbox-link"><img alt="Gradient" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/gradient00.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-76b1ea0a64b34c37531f8765765b52f5"><img alt="Gradient" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/gradient00.png"></a>
-<a href="#R-image-98e75aeb60d1e1cdca3f3943ba2977d3" class="lightbox-link"><img alt="Gradient" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/gradient01.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-98e75aeb60d1e1cdca3f3943ba2977d3"><img alt="Gradient" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/gradient01.png"></a>
-<a href="#R-image-c1e43a316d584062ff1de90b5958ee57" class="lightbox-link"><img alt="Gradient" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/gradient02.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-c1e43a316d584062ff1de90b5958ee57"><img alt="Gradient" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/gradient02.png"></a></p>
+
+<details class=" box cstyle notices transparent expand">
+  <summary class="box-label">
+    <i class="expander-icon fa-fw fas fa-chevron-right"></i> 
+    Show snapshots
+  </summary>
+  <div class="box-content">
+<p><a href="#R-image-1e5f4eaf2f3906ef0eb79b7feb8fb911" class="lightbox-link"><img alt="Gradient" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/gradient00.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-1e5f4eaf2f3906ef0eb79b7feb8fb911"><img alt="Gradient" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/gradient00.png"></a>
+<a href="#R-image-e9ae0fc7cf5948a1382a306681349499" class="lightbox-link"><img alt="Gradient" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/gradient01.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-e9ae0fc7cf5948a1382a306681349499"><img alt="Gradient" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/gradient01.png"></a>
+<a href="#R-image-1038dffacd57a43f3ae453c0070f9301" class="lightbox-link"><img alt="Gradient" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/gradient02.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-1038dffacd57a43f3ae453c0070f9301"><img alt="Gradient" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/gradient02.png"></a></p>
   </div>
-</div>
+</details>
 <h3 id="arbitrary-network-graphs">Arbitrary network graphs</h3>
 <p>This example showcases some complex deployments made possible by Alchemist via <a href="https://graphstream-project.org/" rel="external" target="_blank">Graphstream</a></p>
 
@@ -479,15 +515,12 @@ function onClick(element) {
 </div>
 <p>The example creates a single environment with three advanced deployments. From left to right: a
 Lobster graph, a banana tree, and a scale-free network with preferential attachment.</p>
-<p><a href="#R-image-19e4f76ad2b97a71269a01c1dacf519f" class="lightbox-link"><img alt="Arbitrary graphs" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../images/simulator/graphstream.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-19e4f76ad2b97a71269a01c1dacf519f"><img alt="Arbitrary graphs" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../images/simulator/graphstream.png"></a></p>
+<p><a href="#R-image-466c1ab64f87f834d589b8ab8f66dbdb" class="lightbox-link"><img alt="Arbitrary graphs" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../images/simulator/graphstream.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-466c1ab64f87f834d589b8ab8f66dbdb"><img alt="Arbitrary graphs" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../images/simulator/graphstream.png"></a></p>
 <h2 id="advanced-examples">Advanced examples</h2>
 
-
-    
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/crZM6Idpg74?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/crZM6Idpg74?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>In this video, we learn how to:</p>
@@ -550,23 +583,23 @@ function onClick(element) {
 </div>
 <p>In the following snapshots, mobile devices progressively explore the location, while measuring the distance from a point of interest
 via gradient (red nodes are closer to the point of interest; purple ones are farther).</p>
-<div class="expand">
-  <input type="checkbox" id="R-expand-1ce0f5067f790533efed3150d7645a6a" aria-controls="R-expandcontent-1ce0f5067f790533efed3150d7645a6a">
-  <label class="expand-label" for="R-expand-1ce0f5067f790533efed3150d7645a6a">
-    <i class="expander-icon fa-fw fas fa-chevron-down"></i>
-    <i class="expander-icon fa-fw fas fa-chevron-right"></i> Show snapshots
-  </label>
-  <div id="R-expandcontent-1ce0f5067f790533efed3150d7645a6a" class="expand-content">
-<p><a href="#R-image-b18a9e03d58f82ca02b87abdd232393d" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle00.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-b18a9e03d58f82ca02b87abdd232393d"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle00.png"></a>
-<a href="#R-image-b62757fc864ac0fa8f808b33bf9d4c31" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle01.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-b62757fc864ac0fa8f808b33bf9d4c31"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle01.png"></a>
-<a href="#R-image-0328b5a3b0517962a93190dc3c9fbae5" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle02.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-0328b5a3b0517962a93190dc3c9fbae5"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle02.png"></a>
-<a href="#R-image-718753dc17aa7521c17a90bc2b8550f2" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle03.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-718753dc17aa7521c17a90bc2b8550f2"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle03.png"></a></p>
+
+<details class=" box cstyle notices transparent expand">
+  <summary class="box-label">
+    <i class="expander-icon fa-fw fas fa-chevron-right"></i> 
+    Show snapshots
+  </summary>
+  <div class="box-content">
+<p><a href="#R-image-a552a4d2726c140ee8e44bbdfa281b08" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle00.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a552a4d2726c140ee8e44bbdfa281b08"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle00.png"></a>
+<a href="#R-image-661cc9d001e238f22a56a86268f5f9ae" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle01.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-661cc9d001e238f22a56a86268f5f9ae"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle01.png"></a>
+<a href="#R-image-8c6cbb092a1262577de41d438ca0a382" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle02.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-8c6cbb092a1262577de41d438ca0a382"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle02.png"></a>
+<a href="#R-image-ce48d28955115675631af9dba9d2a231" class="lightbox-link"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle03.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-ce48d28955115675631af9dba9d2a231"><img alt="Mobility in indoor environments" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle03.png"></a></p>
   </div>
-</div>
+</details>
 <h3 id="real-world-maps-and-gps-traces">Real-world maps and GPS traces</h3>
 <p>The simulator can
 load data from OpenStreetMap exports, navigate devices towards a destination
@@ -622,19 +655,19 @@ function onClick(element) {
 </span></span></code></pre></div></div>
 </div>
 <p>The following snapshots depict the simulation in execution.</p>
-<div class="expand">
-  <input type="checkbox" id="R-expand-1e6b9d6e936a82f6a13ec58d879e070b" aria-controls="R-expandcontent-1e6b9d6e936a82f6a13ec58d879e070b">
-  <label class="expand-label" for="R-expand-1e6b9d6e936a82f6a13ec58d879e070b">
-    <i class="expander-icon fa-fw fas fa-chevron-down"></i>
-    <i class="expander-icon fa-fw fas fa-chevron-right"></i> Show snapshots
-  </label>
-  <div id="R-expandcontent-1e6b9d6e936a82f6a13ec58d879e070b" class="expand-content">
-<p><a href="#R-image-840a4dc668d552ca90aeb8c98e8d1119" class="lightbox-link"><img alt="Venice" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/venice.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-840a4dc668d552ca90aeb8c98e8d1119"><img alt="Venice" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/venice.png"></a>
-<a href="#R-image-247f0943be041913813f2f52af870007" class="lightbox-link"><img alt="Venice" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/venice2.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-247f0943be041913813f2f52af870007"><img alt="Venice" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/venice2.png"></a></p>
+
+<details class=" box cstyle notices transparent expand">
+  <summary class="box-label">
+    <i class="expander-icon fa-fw fas fa-chevron-right"></i> 
+    Show snapshots
+  </summary>
+  <div class="box-content">
+<p><a href="#R-image-d914c5402390401b25c3547b65683d5a" class="lightbox-link"><img alt="Venice" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/venice.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-d914c5402390401b25c3547b65683d5a"><img alt="Venice" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/venice.png"></a>
+<a href="#R-image-0afa039cb01df6c4b935b8dda976cde0" class="lightbox-link"><img alt="Venice" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../tutorials/basics/venice2.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-0afa039cb01df6c4b935b8dda976cde0"><img alt="Venice" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../tutorials/basics/venice2.png"></a></p>
   </div>
-</div>
+</details>
 <h3 id="in-depth-analysis-of-simulated-scenarios">In-depth analysis of simulated scenarios</h3>
 <p>The following snippet showcases the aforementioned features by enriching
 the example of a gradient in an indoor environment presented previously with:</p>
@@ -715,10 +748,12 @@ function onClick(element) {
 </span></span><span style="display:flex;"><span>    - { <span style="color:#ff6ac1">type: Event, time-distribution: 1, actions</span>: { <span style="color:#ff6ac1">type: LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
 </span></span></code></pre></div></div>
 </div>
-<div class="box notices cstyle info">
-  <div class="box-label">
-    <i class="fa-fw fas fa-info-circle"></i> Info
-  </div>
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    Info
+  </summary>
   <div class="box-content">
 <p>This example:</p>
 <ul>
@@ -727,7 +762,7 @@ function onClick(element) {
 <li><a href="../../howtos/simulation/export/index.html">uses the data export infrastructure</a></li>
 </ul>
   </div>
-</div>
+</details>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -770,7 +805,7 @@ function onClick(element) {
 
         </div>
         <script>
-          window.index_js_url="../../searchindex.en.js?1733597560";
+          window.index_js_url="../../searchindex.en.js?1733773450";
         </script>
         <search><form action="../../search/index.html" method="get">
           <div class="searchbox default-animation">
@@ -783,12 +818,12 @@ function onClick(element) {
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../../js/auto-complete.js?1733597560" defer></script>
-        <script src="../../js/lunr/lunr.min.js?1733597560" defer></script>
-        <script src="../../js/lunr/lunr.stemmer.support.min.js?1733597560" defer></script>
-        <script src="../../js/lunr/lunr.multi.min.js?1733597560" defer></script>
-        <script src="../../js/lunr/lunr.en.min.js?1733597560" defer></script>
-        <script src="../../js/search.js?1733597560" defer></script>
+        <script src="../../js/auto-complete.js?1733773450" defer></script>
+        <script src="../../js/lunr/lunr.min.js?1733773450" defer></script>
+        <script src="../../js/lunr/lunr.stemmer.support.min.js?1733773450" defer></script>
+        <script src="../../js/lunr/lunr.multi.min.js?1733773450" defer></script>
+        <script src="../../js/lunr/lunr.en.min.js?1733773450" defer></script>
+        <script src="../../js/search.js?1733773450" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -844,13 +879,13 @@ function onClick(element) {
                   <span>&nbsp;</span>
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-variant">Theme</label>
-                    <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
                       <option id="R-select-variant-relearn" value="relearn" selected>Relearn</option>
                     </select>
                   </div>
                   <div class="clear"></div>
                 </div>
-                <script>window.variants && variants.markSelectedVariant();</script>
+                <script>window.relearn.markVariant();</script>
               </li>
               <li class="footerVisitedLinks showVisitedLinks">
                 <div class="padding menu-control">
@@ -865,7 +900,7 @@ function onClick(element) {
             </ul>
           </div>
           <div id="R-footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 36.0.5</strong></div>
+    <div><strong>Alchemist Simulator 36.0.6</strong></div>
     <br>
     <a
         class="github-button"
@@ -899,22 +934,22 @@ function onClick(element) {
         </div>
       </div>
     </aside>
-    <script src="../../js/clipboard.min.js?1733597560" defer></script>
-    <script src="../../js/perfect-scrollbar.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-color.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-dispatch.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-drag.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-ease.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-interpolate.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-selection.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-timer.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-transition.min.js?1733597560" defer></script>
-    <script src="../../js/d3/d3-zoom.min.js?1733597560" defer></script>
-    <script src="../../js/js-yaml.min.js?1733597560" defer></script>
-    <script src="../../js/mermaid.min.js?1733597560" defer></script>
+    <script src="../../js/clipboard.min.js?1733773450" defer></script>
+    <script src="../../js/perfect-scrollbar.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-color.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-dispatch.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-drag.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-ease.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-interpolate.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-selection.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-timer.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-transition.min.js?1733773450" defer></script>
+    <script src="../../js/d3/d3-zoom.min.js?1733773450" defer></script>
+    <script src="../../js/js-yaml.min.js?1733773450" defer></script>
+    <script src="../../js/mermaid.min.js?1733773450" defer></script>
     <script>
       window.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../js/theme.js?1733597560" defer></script>
+    <script src="../../js/theme.js?1733773450" defer></script>
   </body>
 </html>

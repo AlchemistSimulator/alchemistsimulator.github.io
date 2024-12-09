@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article">
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.139.3">
-    <meta name="generator" content="Relearn 7.1.1">
+    <meta name="generator" content="Hugo 0.139.4">
+    <meta name="generator" content="Relearn 7.2.0">
     <meta name="description" content="How to move node around in geospatial environments.">
     <meta name="author" content="Danilo Pianini">
     <meta name="twitter:card" content="summary">
@@ -22,26 +22,49 @@
     <meta itemprop="keywords" content="Reaction,Program,Behavior,Maps,Gps,Interpolation,Geospatial">
     <title>Move nodes on maps :: Documentation for the Alchemist Simulator</title>
     <link href="../../../../howtos/simulation/program/move-on-maps/index.xml" rel="alternate" type="application/rss+xml" title="Move nodes on maps :: Documentation for the Alchemist Simulator">
-    <link href="../../../../images/logo.svg?1733597560" rel="icon" type="image/svg+xml">
-    <link href="../../../../css/fontawesome-all.min.css?1733597560" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/fontawesome-all.min.css?1733597560" rel="stylesheet"></noscript>
-    <link href="../../../../css/nucleus.css?1733597560" rel="stylesheet">
-    <link href="../../../../css/auto-complete.css?1733597560" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/auto-complete.css?1733597560" rel="stylesheet"></noscript>
-    <link href="../../../../css/perfect-scrollbar.min.css?1733597560" rel="stylesheet">
-    <link href="../../../../css/fonts.css?1733597560" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/fonts.css?1733597560" rel="stylesheet"></noscript>
-    <link href="../../../../css/theme.css?1733597560" rel="stylesheet">
-    <link href="../../../../css/theme-relearn.css?1733597560" rel="stylesheet" id="R-variant-style">
-    <link href="../../../../css/chroma-relearn-light.css?1733597560" rel="stylesheet" id="R-variant-chroma-style">
-    <link href="../../../../css/print.css?1733597560" rel="stylesheet" media="print">
-    <script src="../../../../js/variant.js?1733597560"></script>
+    <link href="../../../../images/logo.svg?1733773450" rel="icon" type="image/svg+xml">
+    <link href="../../../../css/fontawesome-all.min.css?1733773450" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/fontawesome-all.min.css?1733773450" rel="stylesheet"></noscript>
+    <link href="../../../../css/auto-complete.css?1733773450" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../css/auto-complete.css?1733773450" rel="stylesheet"></noscript>
+    <link href="../../../../css/perfect-scrollbar.min.css?1733773450" rel="stylesheet">
+    <link href="../../../../css/theme.min.css?1733773450" rel="stylesheet">
+    <link href="../../../../css/format-html.min.css?1733773450" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..\/..';
       window.relearn.absBaseUri='https:\/\/alchemistsimulator.github.io';
+      window.relearn.min = `.min`;
       window.relearn.disableAnchorCopy=false;
       window.relearn.disableAnchorScrolling=false;
       // variant stuff
-      window.variants && variants.init( [ 'relearn' ] );
+      window.relearn.themevariants = [ 'relearn' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        var select = document.querySelector("#R-select-variant");
+        if (select) {
+          select.value = variant;
+        }
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
       // translations
       window.T_Copy_to_clipboard = `Copy to clipboard`;
       window.T_Copied_to_clipboard = `Copied to clipboard!`;
@@ -134,8 +157,8 @@
 
 <p>There are several possibilities to move nodes in gep-spatial environment.</p>
 <h2 id="ignore-geo-spatial-information">Ignore geo-spatial information</h2>
-<p><a href="#R-image-84942bdea68d8c7b4f691a810a2ce197" class="lightbox-link"><img alt="orthodromes" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/no_map_information.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-84942bdea68d8c7b4f691a810a2ce197"><img alt="orthodromes" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/no_map_information.png"></a></p>
+<p><a href="#R-image-5b01413441b6728119cbb187d75d5e83" class="lightbox-link"><img alt="orthodromes" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/no_map_information.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-5b01413441b6728119cbb187d75d5e83"><img alt="orthodromes" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/no_map_information.png"></a></p>
 <p>This is of course the easiest way:
 all data about the map is ignored.
 This strategy makes sense if you need a geo-spatial coordinate system,
@@ -298,41 +321,45 @@ function onClick(element) {
 <p><strong>From the showcase</strong></p>
 <p><a href="../../../../showcase/2020-jcee/index.html">Optimal resilient distributed data collection in mobile edge environments</a></p>
 <h2 id="navigate-along-the-streets">Navigate along the streets</h2>
-<p><a href="#R-image-adfbdb14a89b136a361db18b92017e0c" class="lightbox-link"><img alt="navigate along the streets" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/use_map_information.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-adfbdb14a89b136a361db18b92017e0c"><img alt="navigate along the streets" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/use_map_information.png"></a></p>
+<p><a href="#R-image-f3eec3894f5d9ab3e1c06dfa988020ae" class="lightbox-link"><img alt="navigate along the streets" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/use_map_information.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-f3eec3894f5d9ab3e1c06dfa988020ae"><img alt="navigate along the streets" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/use_map_information.png"></a></p>
 <p>Moves along the available paths, depending on the specific vehicle being used.
 Requires actual geo-spatial information.</p>
 <p>This kind of navigation can be realized using
 <a href="../../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.maps.actions/-target-map-walker/"><code>TargetMapWalker</code></a>.</p>
 <h2 id="reproduce-a-gps-trace">Reproduce a GPS Trace</h2>
-<p><a href="#R-image-34cf7f794e23b2ae1738cf873cf1ccf9" class="lightbox-link"><img alt="reproduce a GPS trace" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/reproduce_gps_trace.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-34cf7f794e23b2ae1738cf873cf1ccf9"><img alt="reproduce a GPS trace" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/reproduce_gps_trace.png"></a></p>
+<p><a href="#R-image-715073fe88712eefa36394d1763a45f8" class="lightbox-link"><img alt="reproduce a GPS trace" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/reproduce_gps_trace.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-715073fe88712eefa36394d1763a45f8"><img alt="reproduce a GPS trace" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/reproduce_gps_trace.png"></a></p>
 <p>Ignores the map geospatial information and relies on a GPS trace instead,
 starting from its first position and reaching the last,
 navigating from point to point in &ldquo;straight lines&rdquo;
 (on maps, these are actually <a href="https://en.wikipedia.org/wiki/Great-circle_distance" rel="external" target="_blank">orthodromes</a>).</p>
 <p>This kind of navigation can be realized using
 <a href="../../../../reference/plainkdoc/alchemist/it.unibo.alchemist.model.maps.actions/-reproduce-g-p-s-trace/"><code>ReproduceGPSTrace</code></a>.</p>
-<div class="box notices cstyle tip">
-  <div class="box-label">
-    <i class="fa-fw fas fa-lightbulb"></i> Deploying nodes using GPS traces
-  </div>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    Deploying nodes using GPS traces
+  </summary>
   <div class="box-content">
 <p>You probably want your nodes to <em>start</em> from the position that marks the beggining of a trace.
 We discussed <a href="../../../../howtos/simulation/deploy/gps/index.html">how to do so here</a>.</p>
   </div>
-</div>
-<div class="box notices cstyle warning">
-  <div class="box-label">
-    <i class="fa-fw fas fa-exclamation-triangle"></i> Time alignment of GPS traces
-  </div>
+</details>
+
+<details open class=" box cstyle notices warning">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Time alignment of GPS traces
+  </summary>
   <div class="box-content">
 <p>Navigation with GPS traces usually require that they get correctly aligned with time,
 especially if they come from samples taken at different times.
 We discussed the alignment of GPS traces <a href="../../../../howtos/simulation/deploy/gps/index.html#alignment-of-time">here</a>,
 the same alignment system used for importing traces is used for using them during navigation.</p>
   </div>
-</div>
+</details>
 <h3 id="examples-1">Examples</h3>
 
 <script>
@@ -385,8 +412,8 @@ function onClick(element) {
 </span></span></code></pre></div></div>
 </div>
 <h3 id="interpolate-gps-traces-with-street-data">Interpolate GPS traces with street data</h3>
-<p><a href="#R-image-69eed22bbe1731db5a4c08f3b991aded" class="lightbox-link"><img alt="interpolate GPS traces" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/interpolate_gps_trace_with_street_data.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-69eed22bbe1731db5a4c08f3b991aded"><img alt="interpolate GPS traces" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/interpolate_gps_trace_with_street_data.png"></a></p>
+<p><a href="#R-image-e8be3d74c071fdeca66f6f58b3e03056" class="lightbox-link"><img alt="interpolate GPS traces" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/interpolate_gps_trace_with_street_data.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-e8be3d74c071fdeca66f6f58b3e03056"><img alt="interpolate GPS traces" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../../../../howtos/simulation/program/move-on-maps/interpolate_gps_trace_with_street_data.png"></a></p>
 <p>Navigates along a GPS trace, but computes the point-to-point distance using the navigation system,
 rather than &ldquo;straight lines&rdquo; (<a href="https://en.wikipedia.org/wiki/Great-circle_distance" rel="external" target="_blank">orthodromes</a>).</p>
 <p>This kind of navigation can be realized using
@@ -410,7 +437,7 @@ rather than &ldquo;straight lines&rdquo; (<a href="https://en.wikipedia.org/wiki
 
         </div>
         <script>
-          window.index_js_url="../../../../searchindex.en.js?1733597560";
+          window.index_js_url="../../../../searchindex.en.js?1733773450";
         </script>
         <search><form action="../../../../search/index.html" method="get">
           <div class="searchbox default-animation">
@@ -423,12 +450,12 @@ rather than &ldquo;straight lines&rdquo; (<a href="https://en.wikipedia.org/wiki
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../../../../js/auto-complete.js?1733597560" defer></script>
-        <script src="../../../../js/lunr/lunr.min.js?1733597560" defer></script>
-        <script src="../../../../js/lunr/lunr.stemmer.support.min.js?1733597560" defer></script>
-        <script src="../../../../js/lunr/lunr.multi.min.js?1733597560" defer></script>
-        <script src="../../../../js/lunr/lunr.en.min.js?1733597560" defer></script>
-        <script src="../../../../js/search.js?1733597560" defer></script>
+        <script src="../../../../js/auto-complete.js?1733773450" defer></script>
+        <script src="../../../../js/lunr/lunr.min.js?1733773450" defer></script>
+        <script src="../../../../js/lunr/lunr.stemmer.support.min.js?1733773450" defer></script>
+        <script src="../../../../js/lunr/lunr.multi.min.js?1733773450" defer></script>
+        <script src="../../../../js/lunr/lunr.en.min.js?1733773450" defer></script>
+        <script src="../../../../js/search.js?1733773450" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -499,13 +526,13 @@ rather than &ldquo;straight lines&rdquo; (<a href="https://en.wikipedia.org/wiki
                   <span>&nbsp;</span>
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-variant">Theme</label>
-                    <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
                       <option id="R-select-variant-relearn" value="relearn" selected>Relearn</option>
                     </select>
                   </div>
                   <div class="clear"></div>
                 </div>
-                <script>window.variants && variants.markSelectedVariant();</script>
+                <script>window.relearn.markVariant();</script>
               </li>
               <li class="footerVisitedLinks showVisitedLinks">
                 <div class="padding menu-control">
@@ -520,7 +547,7 @@ rather than &ldquo;straight lines&rdquo; (<a href="https://en.wikipedia.org/wiki
             </ul>
           </div>
           <div id="R-footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 36.0.5</strong></div>
+    <div><strong>Alchemist Simulator 36.0.6</strong></div>
     <br>
     <a
         class="github-button"
@@ -554,22 +581,22 @@ rather than &ldquo;straight lines&rdquo; (<a href="https://en.wikipedia.org/wiki
         </div>
       </div>
     </aside>
-    <script src="../../../../js/clipboard.min.js?1733597560" defer></script>
-    <script src="../../../../js/perfect-scrollbar.min.js?1733597560" defer></script>
-    <script src="../../../../js/d3/d3-color.min.js?1733597560" defer></script>
-    <script src="../../../../js/d3/d3-dispatch.min.js?1733597560" defer></script>
-    <script src="../../../../js/d3/d3-drag.min.js?1733597560" defer></script>
-    <script src="../../../../js/d3/d3-ease.min.js?1733597560" defer></script>
-    <script src="../../../../js/d3/d3-interpolate.min.js?1733597560" defer></script>
-    <script src="../../../../js/d3/d3-selection.min.js?1733597560" defer></script>
-    <script src="../../../../js/d3/d3-timer.min.js?1733597560" defer></script>
-    <script src="../../../../js/d3/d3-transition.min.js?1733597560" defer></script>
-    <script src="../../../../js/d3/d3-zoom.min.js?1733597560" defer></script>
-    <script src="../../../../js/js-yaml.min.js?1733597560" defer></script>
-    <script src="../../../../js/mermaid.min.js?1733597560" defer></script>
+    <script src="../../../../js/clipboard.min.js?1733773450" defer></script>
+    <script src="../../../../js/perfect-scrollbar.min.js?1733773450" defer></script>
+    <script src="../../../../js/d3/d3-color.min.js?1733773450" defer></script>
+    <script src="../../../../js/d3/d3-dispatch.min.js?1733773450" defer></script>
+    <script src="../../../../js/d3/d3-drag.min.js?1733773450" defer></script>
+    <script src="../../../../js/d3/d3-ease.min.js?1733773450" defer></script>
+    <script src="../../../../js/d3/d3-interpolate.min.js?1733773450" defer></script>
+    <script src="../../../../js/d3/d3-selection.min.js?1733773450" defer></script>
+    <script src="../../../../js/d3/d3-timer.min.js?1733773450" defer></script>
+    <script src="../../../../js/d3/d3-transition.min.js?1733773450" defer></script>
+    <script src="../../../../js/d3/d3-zoom.min.js?1733773450" defer></script>
+    <script src="../../../../js/js-yaml.min.js?1733773450" defer></script>
+    <script src="../../../../js/mermaid.min.js?1733773450" defer></script>
     <script>
       window.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../../../js/theme.js?1733597560" defer></script>
+    <script src="../../../../js/theme.js?1733773450" defer></script>
   </body>
 </html>
