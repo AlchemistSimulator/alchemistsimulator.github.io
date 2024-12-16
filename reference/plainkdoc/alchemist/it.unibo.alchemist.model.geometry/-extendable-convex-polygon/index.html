@@ -26,39 +26,82 @@
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
 <link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
 <script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
     <div class="root">
-<nav class="navigation" id="navigation-wrapper">
-    <div class="navigation--inner">
-        <div class="navigation-title">
-            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
-            <div class="library-name">
-                    <a class="library-name--link" href="../../../index.html">
-                            alchemist
-                    </a>
-            </div>
-            <div class="library-version">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    alchemist
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":alchemist-ui-tooling:dokkaHtml/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":alchemist-ui-tooling:dokkaHtml/main"
+                                       data-filter=":alchemist-ui-tooling:dokkaHtml/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
         </div>
-        <div class="filter-section" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-ui-tooling:dokkaHtml/main">jvm</button>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
         </div>
-    </div>
-    <div class="navigation-controls">
-        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
-        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
-    </div>
-</nav>
+    </nav>
         <div id="container">
             <div class="sidebar" id="leftColumn">
-                <div class="sidebar--inner" id="sideMenu"></div>
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    alchemist
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
             </div>
             <div id="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="alchemist::it.unibo.alchemist.model.geometry/ExtendableConvexPolygon///PointingToDeclaration//106703059">
@@ -97,7 +140,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../-shape/diameter.html">diameter</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../-shape/diameter.html">diameter</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -112,7 +155,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../-shape/radius.html">radius</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../-shape/radius.html">radius</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -131,7 +174,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-mutable-convex-polygon/add-vertex.html"><span class="token function">addVertex</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Adds a vertex to the polygon.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-mutable-convex-polygon/add-vertex.html"><span class="token function">addVertex</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Adds a vertex to the polygon.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -146,7 +189,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="advance-edge.html"><span class="token function">advanceEdge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">step<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Advances an edge in its normal direction.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="advance-edge.html"><span class="token function">advanceEdge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">step<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Advances an edge in its normal direction.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -191,7 +234,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-convex-polygon/contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the polygon contains a vector (= a point). The definition of insideness may vary depending on the implementation, this may affect the outcome for points lying on the polygon's boundary. For accurate operations see <a href="../-convex-polygon/contains-boundary-included.html">containsBoundaryIncluded</a> and <a href="../-convex-polygon/contains-boundary-excluded.html">containsBoundaryExcluded</a>.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">Shape</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the polygon contains a polygonal <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">java.awt.Shape</a> (i.e. without curved segments). A polygonal shape is contained in a polygon if all of its points are contained in (or lie on the boundary of) the latter.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-convex-polygon/contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the polygon contains a vector (= a point). The definition of insideness may vary depending on the implementation, this may affect the outcome for points lying on the polygon's boundary. For accurate operations see <a href="../-convex-polygon/contains-boundary-included.html">containsBoundaryIncluded</a> and <a href="../-convex-polygon/contains-boundary-excluded.html">containsBoundaryExcluded</a>.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">Shape</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the polygon contains a polygonal <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">java.awt.Shape</a> (i.e. without curved segments). A polygonal shape is contained in a polygon if all of its points are contained in (or lie on the boundary of) the latter.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -206,7 +249,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/contains-boundary-excluded.html"><span class="token function">containsBoundaryExcluded</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a vector (= a point) is contained in the polygon, boundary excluded.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/contains-boundary-excluded.html"><span class="token function">containsBoundaryExcluded</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a vector (= a point) is contained in the polygon, boundary excluded.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -221,7 +264,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/contains-boundary-included.html"><span class="token function">containsBoundaryIncluded</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a vector (= a point) is contained in the polygon or lies on its boundary.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/contains-boundary-included.html"><span class="token function">containsBoundaryIncluded</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a vector (= a point) is contained in the polygon or lies on its boundary.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -236,7 +279,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/edges.html"><span class="token function">edges</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/edges.html"><span class="token function">edges</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -251,7 +294,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="extend.html"><span class="token function">extend</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">step<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Extends the polygon in each direction: each edge is given a chance to advance.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="extend.html"><span class="token function">extend</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">step<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Extends the polygon in each direction: each edge is given a chance to advance.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -266,7 +309,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/get-edge.html"><span class="token function">getEdge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Depending on the implementation, this may be faster than <a href="../-convex-polygon/edges.html">edges</a>.get(<a href="../-convex-polygon/get-edge.html">index</a>).</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/get-edge.html"><span class="token function">getEdge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Depending on the implementation, this may be faster than <a href="../-convex-polygon/edges.html">edges</a>.get(<a href="../-convex-polygon/get-edge.html">index</a>).</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -281,7 +324,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/intersects.html"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">segment<span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a segment intersects with the polygon, segments lying on the polygon's boundary are not considered to be intersecting.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/intersects.html"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">Shape</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">java.awt.Shape</a> intersects the polygon, adjacent shapes are not considered to be intersecting.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-mutable-convex-polygon/index.html#-416012423%2FFunctions%2F106703059"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/intersects.html"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">segment<span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a segment intersects with the polygon, segments lying on the polygon's boundary are not considered to be intersecting.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/intersects.html"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">Shape</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">java.awt.Shape</a> intersects the polygon, adjacent shapes are not considered to be intersecting.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-mutable-convex-polygon/index.html#-416012423%2FFunctions%2F106703059"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -296,7 +339,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/is-adjacent-to.html"><span class="token function">isAdjacentTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../-convex-polygon/index.html">ConvexPolygon</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">A polygon is adjacent to another if any of its points lies on the boundary of the other.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/is-adjacent-to.html"><span class="token function">isAdjacentTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../-convex-polygon/index.html">ConvexPolygon</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">A polygon is adjacent to another if any of its points lies on the boundary of the other.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -311,7 +354,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/lies-on-boundary.html"><span class="token function">liesOnBoundary</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a vector (= a point) lies on the polygon's boundary.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/lies-on-boundary.html"><span class="token function">liesOnBoundary</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a vector (= a point) lies on the polygon's boundary.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -326,7 +369,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-mutable-convex-polygon/move-vertex.html"><span class="token function">moveVertex</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">newX<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">newY<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Moves a vertex of the polygon to a new absolute position.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-mutable-convex-polygon/move-vertex.html"><span class="token function">moveVertex</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">newX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">newY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Moves a vertex of the polygon to a new absolute position.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -341,7 +384,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-mutable-convex-polygon/remove-vertex.html"><span class="token function">removeVertex</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Removes a vertex from the polygon.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-mutable-convex-polygon/remove-vertex.html"><span class="token function">removeVertex</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Removes a vertex from the polygon.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -356,7 +399,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-mutable-convex-polygon/replace-edge.html"><span class="token function">replaceEdge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">newEdge<span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Replaces an edge of the polygon.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-mutable-convex-polygon/replace-edge.html"><span class="token function">replaceEdge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">newEdge<span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Replaces an edge of the polygon.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -371,7 +414,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-mutable-convex-polygon/index.html#-483400315%2FFunctions%2F106703059"><span class="token function">transformed</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transformation<span class="token operator">: </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-mutable-convex-polygon/index.html#-483400315%2FFunctions%2F106703059"><span class="token function">transformed</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transformation<span class="token operator">: </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -386,7 +429,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/vertices.html"><span class="token function">vertices</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/vertices.html"><span class="token function">vertices</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -396,11 +439,16 @@
     </div>
   </div>
 </div>
-      <div class="footer">
-        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span
-                class="pull-right"><span>Generated by </span><a
-                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
-      </div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2024 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
             </div>
         </div>
     </div>

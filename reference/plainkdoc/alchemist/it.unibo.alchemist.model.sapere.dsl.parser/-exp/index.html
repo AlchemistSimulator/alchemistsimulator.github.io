@@ -26,39 +26,82 @@
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
 <link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
 <script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
     <div class="root">
-<nav class="navigation" id="navigation-wrapper">
-    <div class="navigation--inner">
-        <div class="navigation-title">
-            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
-            <div class="library-name">
-                    <a class="library-name--link" href="../../../index.html">
-                            alchemist
-                    </a>
-            </div>
-            <div class="library-version">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    alchemist
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":alchemist-ui-tooling:dokkaHtml/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":alchemist-ui-tooling:dokkaHtml/main"
+                                       data-filter=":alchemist-ui-tooling:dokkaHtml/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
         </div>
-        <div class="filter-section" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-ui-tooling:dokkaHtml/main">jvm</button>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
         </div>
-    </div>
-    <div class="navigation-controls">
-        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
-        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
-    </div>
-</nav>
+    </nav>
         <div id="container">
             <div class="sidebar" id="leftColumn">
-                <div class="sidebar--inner" id="sideMenu"></div>
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    alchemist
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
             </div>
             <div id="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="alchemist::it.unibo.alchemist.model.sapere.dsl.parser/Exp///PointingToDeclaration//106703059">
@@ -101,7 +144,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-a-d-d.html">ADD</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">9</span></div><div class="brief ">RegularExpression Id.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-a-d-d.html">ADD</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">9</span></div><div class="brief ">RegularExpression Id.</div></div></div>
                 </div>
               </div>
             </div>
@@ -116,7 +159,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-c-o-m-p.html">COMP</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">12</span></div><div class="brief ">RegularExpression Id.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-c-o-m-p.html">COMP</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">12</span></div><div class="brief ">RegularExpression Id.</div></div></div>
                 </div>
               </div>
             </div>
@@ -131,7 +174,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-d-e-f.html">DEF</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">11</span></div><div class="brief ">RegularExpression Id.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-d-e-f.html">DEF</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">11</span></div><div class="brief ">RegularExpression Id.</div></div></div>
                 </div>
               </div>
             </div>
@@ -146,7 +189,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-d-e-f-a-u-l-t.html">DEFAULT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></div><div class="brief ">Lexical state.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-d-e-f-a-u-l-t.html">DEFAULT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></div><div class="brief ">Lexical state.</div></div></div>
                 </div>
               </div>
             </div>
@@ -161,7 +204,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-d-e-l.html">DEL</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">10</span></div><div class="brief ">RegularExpression Id.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-d-e-l.html">DEL</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">10</span></div><div class="brief ">RegularExpression Id.</div></div></div>
                 </div>
               </div>
             </div>
@@ -176,7 +219,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-e-o-f.html">EOF</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></div><div class="brief ">End of File.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-e-o-f.html">EOF</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></div><div class="brief ">End of File.</div></div></div>
                 </div>
               </div>
             </div>
@@ -185,7 +228,7 @@
           <div class="table-row" data-filterable-current=":alchemist-ui-tooling:dokkaHtml/main" data-filterable-set=":alchemist-ui-tooling:dokkaHtml/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="jj_nt.html"><span><span>jj_nt</span></span></a></div>
+                  <div><a href="jj_nt.html"><span>jj_</span><wbr></wbr><span>nt</span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1546509446%2FProperties%2F106703059"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
@@ -206,7 +249,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-l-i-s-t-c-o-m-p.html">LISTCOMP</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">13</span></div><div class="brief ">RegularExpression Id.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-l-i-s-t-c-o-m-p.html">LISTCOMP</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">13</span></div><div class="brief ">RegularExpression Id.</div></div></div>
                 </div>
               </div>
             </div>
@@ -221,7 +264,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-l-i-t.html">LIT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">17</span></div><div class="brief ">RegularExpression Id.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-l-i-t.html">LIT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">17</span></div><div class="brief ">RegularExpression Id.</div></div></div>
                 </div>
               </div>
             </div>
@@ -236,7 +279,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-m-a-x.html">MAX</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">8</span></div><div class="brief ">RegularExpression Id.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-m-a-x.html">MAX</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">8</span></div><div class="brief ">RegularExpression Id.</div></div></div>
                 </div>
               </div>
             </div>
@@ -251,7 +294,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-m-i-n.html">MIN</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">7</span></div><div class="brief ">RegularExpression Id.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-m-i-n.html">MIN</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">7</span></div><div class="brief ">RegularExpression Id.</div></div></div>
                 </div>
               </div>
             </div>
@@ -266,7 +309,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-n-u-m.html">NUM</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">15</span></div><div class="brief ">RegularExpression Id.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-n-u-m.html">NUM</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">15</span></div><div class="brief ">RegularExpression Id.</div></div></div>
                 </div>
               </div>
             </div>
@@ -281,7 +324,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-r-e-t-u-r-n.html">RETURN</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">6</span></div><div class="brief ">RegularExpression Id.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-r-e-t-u-r-n.html">RETURN</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">6</span></div><div class="brief ">RegularExpression Id.</div></div></div>
                 </div>
               </div>
             </div>
@@ -305,7 +348,7 @@
           <div class="table-row" data-filterable-current=":alchemist-ui-tooling:dokkaHtml/main" data-filterable-set=":alchemist-ui-tooling:dokkaHtml/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="token_source.html"><span><span>token_source</span></span></a></div>
+                  <div><a href="token_source.html"><span>token_</span><wbr></wbr><span>source</span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="204325806%2FProperties%2F106703059"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
@@ -326,7 +369,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/token-image.html">tokenImage</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a><span class="token operator">&gt;</span></div><div class="brief ">Literal token values.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/token-image.html">tokenImage</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a><span class="token operator">&gt;</span></div><div class="brief ">Literal token values.</div></div></div>
                 </div>
               </div>
             </div>
@@ -341,7 +384,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-u-n-a-r-y-l-i-s-t-c-o-m-p.html">UNARYLISTCOMP</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">14</span></div><div class="brief ">RegularExpression Id.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-u-n-a-r-y-l-i-s-t-c-o-m-p.html">UNARYLISTCOMP</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">14</span></div><div class="brief ">RegularExpression Id.</div></div></div>
                 </div>
               </div>
             </div>
@@ -356,7 +399,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-v-a-r.html">VAR</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">16</span></div><div class="brief ">RegularExpression Id.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-exp-constants/-v-a-r.html">VAR</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">16</span></div><div class="brief ">RegularExpression Id.</div></div></div>
                 </div>
               </div>
             </div>
@@ -375,7 +418,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-atomic-expr.html"><span class="token function">AtomicExpr</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere.dsl/-i-tree-node/index.html">ITreeNode</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-atomic-expr.html"><span class="token function">AtomicExpr</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere.dsl/-i-tree-node/index.html">ITreeNode</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -414,7 +457,7 @@
           <div class="table-row" data-filterable-current=":alchemist-ui-tooling:dokkaHtml/main" data-filterable-set=":alchemist-ui-tooling:dokkaHtml/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="disable_tracing.html"><span><span>disable_tracing</span></span></a></div>
+                  <div><a href="disable_tracing.html"><span>disable_</span><wbr></wbr><span>tracing</span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="201480320%2FFunctions%2F106703059"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
@@ -435,7 +478,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-e.html"><span class="token function">E</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere.dsl/-i-tree-node/index.html">ITreeNode</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-e.html"><span class="token function">E</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere.dsl/-i-tree-node/index.html">ITreeNode</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -444,7 +487,7 @@
           <div class="table-row" data-filterable-current=":alchemist-ui-tooling:dokkaHtml/main" data-filterable-set=":alchemist-ui-tooling:dokkaHtml/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="enable_tracing.html"><span><span>enable_tracing</span></span></a></div>
+                  <div><a href="enable_tracing.html"><span>enable_</span><wbr></wbr><span>tracing</span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-755748375%2FFunctions%2F106703059"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
@@ -465,7 +508,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-expr.html"><span class="token function">Expr</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere.dsl/-i-tree-node/index.html">ITreeNode</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-expr.html"><span class="token function">Expr</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere.dsl/-i-tree-node/index.html">ITreeNode</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -510,7 +553,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-token.html"><span class="token function">getToken</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-token/index.html">Token</a></div><div class="brief ">Get the specific Token.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-token.html"><span class="token function">getToken</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-token/index.html">Token</a></div><div class="brief ">Get the specific Token.</div></div></div>
                 </div>
               </div>
             </div>
@@ -555,7 +598,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-list-expr.html"><span class="token function">ListExpr</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere.dsl/-i-tree-node/index.html">ITreeNode</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html">Set</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.sapere.dsl/-i-tree-node/index.html">ITreeNode</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-list-expr.html"><span class="token function">ListExpr</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere.dsl/-i-tree-node/index.html">ITreeNode</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html">Set</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.sapere.dsl/-i-tree-node/index.html">ITreeNode</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -645,7 +688,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-times-expr.html"><span class="token function">TimesExpr</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere.dsl/-i-tree-node/index.html">ITreeNode</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-times-expr.html"><span class="token function">TimesExpr</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere.dsl/-i-tree-node/index.html">ITreeNode</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -675,7 +718,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-var.html"><span class="token function">Var</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere.dsl/-i-tree-node/index.html">ITreeNode</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-ui-tooling:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-var.html"><span class="token function">Var</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere.dsl/-i-tree-node/index.html">ITreeNode</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -685,11 +728,16 @@
     </div>
   </div>
 </div>
-      <div class="footer">
-        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span
-                class="pull-right"><span>Generated by </span><a
-                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
-      </div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2024 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
             </div>
         </div>
     </div>
