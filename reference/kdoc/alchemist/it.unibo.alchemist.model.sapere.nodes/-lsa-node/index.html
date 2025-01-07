@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>LsaNode</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<link href="../../../images/logo.svg">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    alchemist
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+36.1.2        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/main"
+                                       data-filter=":/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+                <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link"
+                   href="https://alchemistsimulator.github.io/"></a>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    alchemist
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="alchemist::it.unibo.alchemist.model.sapere.nodes/LsaNode///PointingToDeclaration//-251573632">
+  <div class="breadcrumbs"><a href="../../../index.html">alchemist</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.sapere.nodes</a><span class="delimiter">/</span><span class="current">LsaNode</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Lsa</span><wbr></wbr><span><span>Node</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">LsaNode</a> : <a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">GenericNode</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">T</a><span class="token operator">&gt; </span>, <a href="../../it.unibo.alchemist.model.sapere/-i-lsa-node/index.html">ILsaNode</a></div><p class="paragraph">This class realizes a node with LSA concentration.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-753800818%2FConstructors%2F-251573632" anchor-label="LsaNode" id="-753800818%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-lsa-node.html"><span>Lsa</span><wbr></wbr><span><span>Node</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-753800818%2FConstructors%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-molecule/index.html">ILsaMolecule</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1578614650%2FProperties%2F-251573632" anchor-label="contents" id="1578614650%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.nodes/-generic-node/contents.html"><span><span>contents</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1578614650%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/contents.html">contents</a><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html">Map</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-molecule/index.html">Molecule</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1983267821%2FProperties%2F-251573632" anchor-label="environment" id="-1983267821%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.nodes/-generic-node/environment.html"><span><span>environment</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1983267821%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/environment.html">environment</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">T</a><span class="token punctuation">, </span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="409099737%2FProperties%2F-251573632" anchor-label="id" id="409099737%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.nodes/-generic-node/id.html"><span><span>id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="409099737%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/id.html">id</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-676582672%2FProperties%2F-251573632" anchor-label="incarnation" id="-676582672%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.nodes/-generic-node/incarnation.html"><span><span>incarnation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-676582672%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/incarnation.html">incarnation</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-incarnation/index.html">Incarnation</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">T</a><span class="token punctuation">, </span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1381205753%2FProperties%2F-251573632" anchor-label="molecules" id="1381205753%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.nodes/-generic-node/molecules.html"><span><span>molecules</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1381205753%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/molecules.html">molecules</a><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html">Map</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-molecule/index.html">Molecule</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1474567743%2FProperties%2F-251573632" anchor-label="properties" id="-1474567743%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.nodes/-generic-node/properties.html"><span><span>properties</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1474567743%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/properties.html">properties</a><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2019159844%2FProperties%2F-251573632" anchor-label="reactions" id="-2019159844%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.nodes/-generic-node/reactions.html"><span><span>reactions</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2019159844%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/reactions.html">reactions</a><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1793613482%2FFunctions%2F-251573632" anchor-label="addProperty" id="-1793613482%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1793613482%2FFunctions%2F-251573632"><span>add</span><wbr></wbr><span><span>Property</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1793613482%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-1793613482%2FFunctions%2F-251573632"><span class="token function">addProperty</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">nodeProperty<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Adds a capability to the node.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1165062452%2FFunctions%2F-251573632" anchor-label="addReaction" id="1165062452%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1165062452%2FFunctions%2F-251573632"><span>add</span><wbr></wbr><span><span>Reaction</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1165062452%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#1165062452%2FFunctions%2F-251573632"><span class="token function">addReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">reactionToAdd<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Adds a reaction to this node. The reaction is added only in the node, but not in the <a href="../../it.unibo.alchemist.core/-simulation/index.html">it.unibo.alchemist.core.Simulation</a> scheduler, so it will never be executed. To add the reaction also in the scheduler (and start to execute it), you have to call also the method <span data-unresolved-link="it.unibo.alchemist.core/Simulation/reactionAdded/#it.unibo.alchemist.model.Actionable[TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/">it.unibo.alchemist.core.Simulation.reactionAdded</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="965107411%2FFunctions%2F-251573632" anchor-label="asProperty" id="965107411%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-node/index.html#965107411%2FFunctions%2F-251573632"><span>as</span><wbr></wbr><span><span>Property</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="965107411%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-node/index.html#965107411%2FFunctions%2F-251573632">C</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator">&gt; </span><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-node/index.html#965107411%2FFunctions%2F-251573632"><span class="token function">asProperty</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">superType<span class="token operator">: </span>KClass&lt;C&gt;</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-node/index.html#965107411%2FFunctions%2F-251573632">C</a></div><div class="brief "><p class="paragraph">returns a <a href="../../it.unibo.alchemist.model/-node-property/index.html">NodeProperty</a> of the provided <a href="../../it.unibo.alchemist.model/-node/as-property.html">superType</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-982375174%2FFunctions%2F-251573632" anchor-label="asProperty" id="-982375174%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model/-node/-companion/as-property.html"><span>as</span><wbr></wbr><span><span>Property</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-982375174%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/-companion/as-property.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model/-node/-companion/as-property.html">C</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/-companion/as-property.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/-companion/as-property.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.model/-node/-companion/as-property.html"><span class="token function">asProperty</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/-companion/as-property.html">C</a></div><div class="brief "><p class="paragraph">returns a <a href="../../it.unibo.alchemist.model/-node-property/index.html">NodeProperty</a> of the provided type <a href="../../it.unibo.alchemist.model/-node/-companion/as-property.html">C</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1198386756%2FFunctions%2F-251573632" anchor-label="asPropertyOrNull" id="-1198386756%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-node/index.html#-1198386756%2FFunctions%2F-251573632"><span>as</span><wbr></wbr><span>Property</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1198386756%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-node/index.html#-1198386756%2FFunctions%2F-251573632">C</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator">&gt; </span><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-node/index.html#-1198386756%2FFunctions%2F-251573632"><span class="token function">asPropertyOrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">superType<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html">Class</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-node/index.html#-1198386756%2FFunctions%2F-251573632">C</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-node/index.html#-1198386756%2FFunctions%2F-251573632">C</a></div><div class="brief "><p class="paragraph">returns a <a href="../../it.unibo.alchemist.model/-node-property/index.html">NodeProperty</a> of the provided <a href="../../it.unibo.alchemist.model/-node/as-property-or-null.html">superType</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1004643440%2FFunctions%2F-251573632" anchor-label="asPropertyOrNull" id="-1004643440%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model/-node/-companion/as-property-or-null.html"><span>as</span><wbr></wbr><span>Property</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1004643440%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/-companion/as-property-or-null.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model/-node/-companion/as-property-or-null.html">C</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model/-node-property/index.html">NodeProperty</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/-companion/as-property-or-null.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/-companion/as-property-or-null.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.model/-node/-companion/as-property-or-null.html"><span class="token function">asPropertyOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/-companion/as-property-or-null.html">C</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">returns a <a href="../../it.unibo.alchemist.model/-node-property/index.html">NodeProperty</a> of the provided type <a href="../../it.unibo.alchemist.model/-node/-companion/as-property-or-null.html">C</a> or null if the node does not have a compatible property.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1510758631%2FFunctions%2F-251573632" anchor-label="cloneNode" id="-1510758631%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1510758631%2FFunctions%2F-251573632"><span>clone</span><wbr></wbr><span><span>Node</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1510758631%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1510758631%2FFunctions%2F-251573632"><span class="token function">cloneNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">currentTime<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-time/index.html">Time</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Creates a new Node which is a clone of the current Node. The new Node will have all the current Node's properties, such as reactions and molecules, but it will also have a different ID.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-197087140%2FFunctions%2F-251573632" anchor-label="compareTo" id="-197087140%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-172794249%2FFunctions%2F-251573632"><span>compare</span><wbr></wbr><span><span>To</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-197087140%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-172794249%2FFunctions%2F-251573632"><span class="token function">compareTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../../it.unibo.alchemist.model.maps/-g-p-s-point/index.html#-1554281679%2FFunctions%2F-251573632"><span class="token function">compareTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Comparable.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-178471363%2FFunctions%2F-251573632" anchor-label="contains" id="-178471363%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="contains.html"><span><span>contains</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-178471363%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">molecule<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-molecule/index.html">Molecule</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief ">Tests whether a node contains a <a href="../../it.unibo.alchemist.model/-molecule/index.html">Molecule</a>.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="101896514%2FFunctions%2F-251573632" anchor-label="equals" id="101896514%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#101896514%2FFunctions%2F-251573632"><span><span>equals</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="101896514%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#101896514%2FFunctions%2F-251573632"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1747000833%2FFunctions%2F-251573632" anchor-label="forEach" id="1747000833%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#132618950%2FFunctions%2F-251573632"><span>for</span><wbr></wbr><span><span>Each</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1747000833%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#132618950%2FFunctions%2F-251573632"><span class="token function">forEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html">Consumer</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Performs an <a href="../../it.unibo.alchemist.model.nodes/-generic-node/for-each.html">action</a> for every reaction.</p></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../it.unibo.alchemist.model.sapere.dsl.impl/-list-tree-node/index.html#-655675525%2FFunctions%2F-251573632"><span class="token function">forEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html">Consumer</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Iterable.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-45480235%2FFunctions%2F-251573632" anchor-label="getConcentration" id="-45480235%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-concentration.html"><span>get</span><wbr></wbr><span><span>Concentration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-45480235%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-concentration.html"><span class="token function">getConcentration</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">m<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-molecule/index.html">Molecule</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-molecule/index.html">ILsaMolecule</a><span class="token operator">&gt;</span></div><div class="brief ">Calculates the concentration of a molecule.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="983104609%2FFunctions%2F-251573632" anchor-label="getContents" id="983104609%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-contents.html"><span>get</span><wbr></wbr><span><span>Contents</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="983104609%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-contents.html"><span class="token function">getContents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html">Map</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-molecule/index.html">Molecule</a><span class="token punctuation">, </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-molecule/index.html">ILsaMolecule</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1164449359%2FFunctions%2F-251573632" anchor-label="getLsaSpace" id="1164449359%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-lsa-space.html"><span>get</span><wbr></wbr><span>Lsa</span><wbr></wbr><span><span>Space</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1164449359%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-lsa-space.html"><span class="token function">getLsaSpace</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-molecule/index.html">ILsaMolecule</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="673605110%2FFunctions%2F-251573632" anchor-label="getMoleculeCount" id="673605110%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-molecule-count.html"><span>get</span><wbr></wbr><span>Molecule</span><wbr></wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="673605110%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-molecule-count.html"><span class="token function">getMoleculeCount</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2040536679%2FFunctions%2F-251573632" anchor-label="hashCode" id="-2040536679%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.nodes/-generic-node/hash-code.html"><span>hash</span><wbr></wbr><span><span>Code</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2040536679%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="249584481%2FFunctions%2F-251573632" anchor-label="iterator" id="249584481%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.nodes/-generic-node/iterator.html"><span><span>iterator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="249584481%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/iterator.html"><span class="token function">iterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Iterator.html">Iterator</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../../it.unibo.alchemist.model.maps.environments/-o-s-m-environment/index.html#-1606146105%2FFunctions%2F-251573632"><span class="token function">iterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Iterator.html">Iterator</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Iterable.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1378464375%2FFunctions%2F-251573632" anchor-label="randomElement" id="-1378464375%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.util/-iterables/random-element.html"><span>random</span><wbr></wbr><span><span>Element</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1378464375%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html">R</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html">R</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html"><span class="token function">randomElement</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">randomGenerator<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html">R</a></div><div class="brief "><p class="paragraph">Returns a random element of the Iterable using the provided <a href="../../it.unibo.alchemist.util/-iterables/random-element.html">randomGenerator</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1927721100%2FFunctions%2F-251573632" anchor-label="removeConcentration" id="1927721100%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1203025098%2FFunctions%2F-251573632"><span>remove</span><wbr></wbr><span><span>Concentration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1927721100%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#1203025098%2FFunctions%2F-251573632"><span class="token function">removeConcentration</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">moleculeToRemove<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-molecule/index.html">Molecule</a></span></span><span class="token punctuation">)</span></div><br><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="remove-concentration.html"><span class="token function">removeConcentration</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">matchedInstance<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-molecule/index.html">ILsaMolecule</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief ">Deletes an ILsaMolecule from the Node LsaSpace Warning: the method removes only the first matched ILsaMolecule.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1868633729%2FFunctions%2F-251573632" anchor-label="removeReaction" id="-1868633729%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1868633729%2FFunctions%2F-251573632"><span>remove</span><wbr></wbr><span><span>Reaction</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1868633729%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-1868633729%2FFunctions%2F-251573632"><span class="token function">removeReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">reactionToRemove<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Removes a reaction from this node. The reaction is removed only in the node, but not in the <a href="../../it.unibo.alchemist.core/-simulation/index.html">it.unibo.alchemist.core.Simulation</a> scheduler, so the scheduler will continue to execute the reaction. To remove the reaction also in the scheduler (and stop to execute it), you have to call also the method <span data-unresolved-link="it.unibo.alchemist.core/Simulation/reactionRemoved/#it.unibo.alchemist.model.Actionable[TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/">it.unibo.alchemist.core.Simulation.reactionRemoved</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1972959136%2FFunctions%2F-251573632" anchor-label="setConcentration" id="1972959136%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-concentration.html"><span>set</span><wbr></wbr><span><span>Concentration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1972959136%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="set-concentration.html"><span class="token function">setConcentration</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inst<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-molecule/index.html">ILsaMolecule</a></span></span><span class="token punctuation">)</span></div><div class="brief ">Adds an instance of ILsaMolecule in the node's LsaSpace.</div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="set-concentration.html"><span class="token function">setConcentration</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">molecule<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-molecule/index.html">Molecule</a><span class="token punctuation">, </span></span><span class="parameter ">c<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.sapere/-i-lsa-molecule/index.html">ILsaMolecule</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief ">Sets the concentration of mol to c.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-455453423%2FFunctions%2F-251573632" anchor-label="shuffled" id="-455453423%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html"><span><span>shuffled</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-455453423%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html">R</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html">R</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html"><span class="token function">shuffled</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">randomGenerator<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html">R</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Fisher–Yates shuffle algorithm using a RandomGenerator. More information <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">on Wikipedia</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-977948309%2FFunctions%2F-251573632" anchor-label="spliterator" id="-977948309%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.nodes/-generic-node/spliterator.html"><span><span>spliterator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-977948309%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/spliterator.html"><span class="token function">spliterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Spliterator.html">Spliterator</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.nodes/-generic-node/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Spliterator.html">reactions</a>.</p></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../it.unibo.alchemist.model.sapere.dsl.impl/-list-tree-node/index.html#-677603448%2FFunctions%2F-251573632"><span class="token function">spliterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Spliterator.html">Spliterator</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Iterable.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="28058238%2FFunctions%2F-251573632" anchor-label="toGraphQLNodeSurrogate" id="28058238%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/to-graph-q-l-node-surrogate.html"><span>to</span><wbr></wbr><span>Graph</span><wbr></wbr><span>QLNode</span><wbr></wbr><span><span>Surrogate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="28058238%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/to-graph-q-l-node-surrogate.html">T</a><span class="token operator">&gt; </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/to-graph-q-l-node-surrogate.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/to-graph-q-l-node-surrogate.html"><span class="token function">toGraphQLNodeSurrogate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/-node-surrogate/index.html">NodeSurrogate</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/to-graph-q-l-node-surrogate.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Converts a <a href="../../it.unibo.alchemist.model/-node/index.html">Node</a> to a <a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/-node-surrogate/index.html">NodeSurrogate</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1126232643%2FFunctions%2F-251573632" anchor-label="toNodeSurrogate" id="-1126232643%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html"><span>to</span><wbr></wbr><span>Node</span><wbr></wbr><span><span>Surrogate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1126232643%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html">P</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model/-position/index.html">Position</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html">TS</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html">PS</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.boundary.webui.common.model.surrogate/-position-surrogate/index.html">PositionSurrogate</a><span class="token operator">&gt; </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html"><span class="token function">toNodeSurrogate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">toConcentrationSurrogate<span class="token operator">: </span><span class="token punctuation">(</span><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html">TS</a><span class="token punctuation">, </span></span><span class="parameter ">toPositionSurrogate<span class="token operator">: </span><span class="token punctuation">(</span><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html">P</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html">PS</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.boundary.webui.common.model.surrogate/-node-surrogate/index.html">NodeSurrogate</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html">TS</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.boundary.webui.server.surrogates.utility/to-node-surrogate.html">PS</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A function that maps a <a href="../../it.unibo.alchemist.model/-node/index.html">it.unibo.alchemist.model.Node</a> to its surrogate class <a href="../../it.unibo.alchemist.boundary.webui.common.model.surrogate/-node-surrogate/index.html">it.unibo.alchemist.boundary.webui.common.model.surrogate.NodeSurrogate</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1440948195%2FFunctions%2F-251573632" anchor-label="toString" id="-1440948195%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1440948195%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

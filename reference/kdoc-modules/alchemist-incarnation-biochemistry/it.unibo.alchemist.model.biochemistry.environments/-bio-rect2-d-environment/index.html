@@ -1,0 +1,749 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>BioRect2DEnvironment</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
+<link href="../../../images/logo.svg">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet"></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../index.html">
+                    alchemist-full
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">36.1.2
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-incarnation-biochemistry/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":alchemist-incarnation-biochemistry/main" data-filter=":alchemist-incarnation-biochemistry/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+                <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    alchemist-full
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-incarnation-biochemistry::it.unibo.alchemist.model.biochemistry.environments/BioRect2DEnvironment///PointingToDeclaration//577704718">
+  <div class="breadcrumbs"><a href="../../index.html">alchemist-incarnation-biochemistry</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.biochemistry.environments</a><span class="delimiter">/</span><span class="current">BioRect2DEnvironment</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Bio</span><wbr><span><span>Rect2DEnvironment</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">BioRect2DEnvironment</a> : <a href="../../../alchemist-physics/it.unibo.alchemist.model.physics.environments/-limited-continuos2-d/index.html">LimitedContinuos2D</a><span class="token operator">&lt;</span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics.environments/-limited-continuos2-d/index.html">T</a><span class="token operator">&gt; </span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/b3d5261ed28fb67f2891310c3ceea3a5f86d9483/alchemist-incarnation-biochemistry/src/main/java/it/unibo/alchemist/model/biochemistry/environments/BioRect2DEnvironment.java#L27">source</a>)</span></span></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-bio-rect2-d-environment-no-overlap/index.html">BioRect2DEnvironmentNoOverlap</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1854071230%2FConstructors%2F577704718" anchor-label="BioRect2DEnvironment" id="1854071230%2FConstructors%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-bio-rect2-d-environment.html"><span>Bio</span><wbr><span><span>Rect2DEnvironment</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1854071230%2FConstructors%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">incarnation<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.biochemistry/-biochemistry-incarnation/index.html">BiochemistryIncarnation</a><span class="token punctuation">, </span></span><span class="parameter ">minX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">maxX<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">minY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">maxY<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><div class="brief ">Builds a BioRect2DEnvironment with given bounds.</div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">incarnation<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.biochemistry/-biochemistry-incarnation/index.html">BiochemistryIncarnation</a></span></span><span class="token punctuation">)</span></div><div class="brief ">Builds a BioRect2DEnvironment with infinite bounds.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1372056526%2FProperties%2F577704718" anchor-label="globalReactions" id="1372056526%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1372056526%2FProperties%2F577704718"><span>global</span><wbr><span><span>Reactions</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1372056526%2FProperties%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="index.html#1372056526%2FProperties%2F577704718">globalReactions</a><span class="token operator">: </span><span data-unresolved-link="org.danilopianini.util/ListSet///PointingToDeclaration/">ListSet</span><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-global-reaction/index.html">GlobalReaction</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="538163487%2FProperties%2F577704718" anchor-label="incarnation" id="538163487%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#538163487%2FProperties%2F577704718"><span><span>incarnation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="538163487%2FProperties%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="index.html#538163487%2FProperties%2F577704718">incarnation</a><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-incarnation/index.html">Incarnation</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="548798820%2FProperties%2F577704718" anchor-label="nodes" id="548798820%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#548798820%2FProperties%2F577704718"><span><span>nodes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="548798820%2FProperties%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="index.html#548798820%2FProperties%2F577704718">nodes</a><span class="token operator">: </span><span data-unresolved-link="org.danilopianini.util/ListSet///PointingToDeclaration/">ListSet</span><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="21976033%2FProperties%2F577704718" anchor-label="shapeFactory" id="21976033%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#21976033%2FProperties%2F577704718"><span>shape</span><wbr><span><span>Factory</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="21976033%2FProperties%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="index.html#21976033%2FProperties%2F577704718">shapeFactory</a><span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.geometry/-euclidean2-d-shape-factory/index.html">Euclidean2DShapeFactory</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1661112158%2FProperties%2F577704718" anchor-label="simulation" id="1661112158%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1661112158%2FProperties%2F577704718"><span><span>simulation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1661112158%2FProperties%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="index.html#1661112158%2FProperties%2F577704718">simulation</a><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.core/-simulation/index.html">Simulation</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-293773629%2FFunctions%2F577704718" anchor-label="addGlobalReaction" id="-293773629%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-293773629%2FFunctions%2F577704718"><span>add</span><wbr><span>Global</span><wbr><span><span>Reaction</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-293773629%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-293773629%2FFunctions%2F577704718"><span class="token function">addGlobalReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-global-reaction/index.html">GlobalReaction</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-923298993%2FFunctions%2F577704718" anchor-label="addLayer" id="-923298993%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-923298993%2FFunctions%2F577704718"><span>add</span><wbr><span><span>Layer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-923298993%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-923298993%2FFunctions%2F577704718"><span class="token function">addLayer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-molecule/index.html">Molecule</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-layer/index.html">Layer</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-490787818%2FFunctions%2F577704718" anchor-label="addNode" id="-490787818%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-490787818%2FFunctions%2F577704718"><span>add</span><wbr><span><span>Node</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-490787818%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-490787818%2FFunctions%2F577704718"><span class="token function">addNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-232887584%2FFunctions%2F577704718" anchor-label="addTerminator" id="-232887584%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-232887584%2FFunctions%2F577704718"><span>add</span><wbr><span><span>Terminator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-232887584%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-232887584%2FFunctions%2F577704718"><span class="token function">addTerminator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Predicate.html">Predicate</a><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="7677909%2FFunctions%2F577704718" anchor-label="farthestPositionReachable" id="7677909%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#604622416%2FFunctions%2F577704718"><span>farthest</span><wbr><span>Position</span><wbr><span><span>Reachable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="7677909%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#604622416%2FFunctions%2F577704718"><span class="token function">farthestPositionReachable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics/-physics-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics/-physics-environment/index.html">P</a><span class="token punctuation">, </span></span><span class="parameter ">p2<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics/-physics-environment/index.html">P</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#987485543%2FFunctions%2F577704718"><span class="token function">farthestPositionReachable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics.environments/-continuous-physics2-d-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span></span><span class="parameter ">p2<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1211183614%2FFunctions%2F577704718" anchor-label="forEach" id="1211183614%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1211183614%2FFunctions%2F577704718"><span>for</span><wbr><span><span>Each</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1211183614%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#1211183614%2FFunctions%2F577704718"><span class="token function">forEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html">Consumer</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1371638940%2FFunctions%2F577704718" anchor-label="getDimensions" id="-1371638940%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1371638940%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Dimensions</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1371638940%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-1371638940%2FFunctions%2F577704718"><span class="token function">getDimensions</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="198139358%2FFunctions%2F577704718" anchor-label="getDistanceBetweenNodes" id="198139358%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#198139358%2FFunctions%2F577704718"><span>get</span><wbr><span>Distance</span><wbr><span>Between</span><wbr><span><span>Nodes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="198139358%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#198139358%2FFunctions%2F577704718"><span class="token function">getDistanceBetweenNodes</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-725234279%2FFunctions%2F577704718" anchor-label="getHeading" id="-725234279%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1212011716%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Heading</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-725234279%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#-1212011716%2FFunctions%2F577704718"><span class="token function">getHeading</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics/-physics-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics/-physics-environment/index.html">P</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1361590129%2FFunctions%2F577704718"><span class="token function">getHeading</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics.environments/-continuous-physics2-d-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1875546045%2FFunctions%2F577704718" anchor-label="getLayer" id="1875546045%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1875546045%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Layer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1875546045%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#1875546045%2FFunctions%2F577704718"><span class="token function">getLayer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-molecule/index.html">Molecule</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html">Optional</a><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-layer/index.html">Layer</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1665021373%2FFunctions%2F577704718" anchor-label="getLayers" id="1665021373%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1665021373%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Layers</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1665021373%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#1665021373%2FFunctions%2F577704718"><span class="token function">getLayers</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.danilopianini.util/ListSet///PointingToDeclaration/">ListSet</span><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-layer/index.html">Layer</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1149148087%2FFunctions%2F577704718" anchor-label="getLinkingRule" id="1149148087%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1149148087%2FFunctions%2F577704718"><span>get</span><wbr><span>Linking</span><wbr><span><span>Rule</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1149148087%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#1149148087%2FFunctions%2F577704718"><span class="token function">getLinkingRule</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-linking-rule/index.html">LinkingRule</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2139689890%2FFunctions%2F577704718" anchor-label="getNeighborhood" id="2139689890%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#2139689890%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Neighborhood</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2139689890%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#2139689890%2FFunctions%2F577704718"><span class="token function">getNeighborhood</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-neighborhood/index.html">Neighborhood</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="710043432%2FFunctions%2F577704718" anchor-label="getNodeByID" id="710043432%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#710043432%2FFunctions%2F577704718"><span>get</span><wbr><span>Node</span><wbr><span>By</span><wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="710043432%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#710043432%2FFunctions%2F577704718"><span class="token function">getNodeByID</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1393200110%2FFunctions%2F577704718" anchor-label="getNodeCount" id="1393200110%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1393200110%2FFunctions%2F577704718"><span>get</span><wbr><span>Node</span><wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1393200110%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#1393200110%2FFunctions%2F577704718"><span class="token function">getNodeCount</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2143427992%2FFunctions%2F577704718" anchor-label="getNodesWithin" id="-2143427992%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-2143427992%2FFunctions%2F577704718"><span>get</span><wbr><span>Nodes</span><wbr><span><span>Within</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2143427992%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-2143427992%2FFunctions%2F577704718"><span class="token function">getNodesWithin</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.geometry/-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics.environments/-continuous-physics2-d-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="747517247%2FFunctions%2F577704718" anchor-label="getNodesWithinRange" id="747517247%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#747517247%2FFunctions%2F577704718"><span>get</span><wbr><span>Nodes</span><wbr><span>Within</span><wbr><span><span>Range</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="747517247%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#747517247%2FFunctions%2F577704718"><span class="token function">getNodesWithinRange</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.danilopianini.util/ListSet///PointingToDeclaration/">ListSet</span><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2085135198%2FFunctions%2F577704718" anchor-label="getOffset" id="2085135198%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#2085135198%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Offset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2085135198%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#2085135198%2FFunctions%2F577704718"><span class="token function">getOffset</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1495871212%2FFunctions%2F577704718" anchor-label="getOrigin" id="1495871212%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-697725179%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Origin</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1495871212%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-697725179%2FFunctions%2F577704718"><span class="token function">getOrigin</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-euclidean-environment/index.html">P</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1924170035%2FFunctions%2F577704718"><span class="token function">getOrigin</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1873158887%2FFunctions%2F577704718" anchor-label="getPosition" id="1873158887%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1873158887%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Position</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1873158887%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#1873158887%2FFunctions%2F577704718"><span class="token function">getPosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-712088839%2FFunctions%2F577704718" anchor-label="getShape" id="-712088839%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1986820733%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Shape</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-712088839%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#1986820733%2FFunctions%2F577704718"><span class="token function">getShape</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics/-physics-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics/-physics-environment/index.html">P</a><span class="token punctuation">, </span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics/-physics-environment/index.html">A</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1092661104%2FFunctions%2F577704718"><span class="token function">getShape</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics.environments/-continuous-physics2-d-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.geometry/-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1481666596%2FFunctions%2F577704718" anchor-label="getShapeFactory" id="1481666596%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1481666596%2FFunctions%2F577704718"><span>get</span><wbr><span>Shape</span><wbr><span><span>Factory</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1481666596%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#1481666596%2FFunctions%2F577704718"><span class="token function">getShapeFactory</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics/-physics-environment/index.html">F</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="309879984%2FFunctions%2F577704718" anchor-label="getSize" id="309879984%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#309879984%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="309879984%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#309879984%2FFunctions%2F577704718"><span class="token function">getSize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-408489113%2FFunctions%2F577704718" anchor-label="getSizeInDistanceUnits" id="-408489113%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-408489113%2FFunctions%2F577704718"><span>get</span><wbr><span>Size</span><wbr><span>In</span><wbr><span>Distance</span><wbr><span><span>Units</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-408489113%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-408489113%2FFunctions%2F577704718"><span class="token function">getSizeInDistanceUnits</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-674166984%2FFunctions%2F577704718" anchor-label="isTerminated" id="-674166984%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-674166984%2FFunctions%2F577704718"><span>is</span><wbr><span><span>Terminated</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-674166984%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-674166984%2FFunctions%2F577704718"><span class="token function">isTerminated</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1937663186%2FFunctions%2F577704718" anchor-label="iterator" id="1937663186%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#775598295%2FFunctions%2F577704718"><span><span>iterator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1937663186%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#775598295%2FFunctions%2F577704718"><span class="token function">iterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Iterator.html">Iterator</a><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#-1606146105%2FFunctions%2F577704718"><span class="token function">iterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Iterator.html">Iterator</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Iterable.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="633035115%2FFunctions%2F577704718" anchor-label="makePosition" id="633035115%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-2114112611%2FFunctions%2F577704718"><span>make</span><wbr><span><span>Position</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="633035115%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#-2114112611%2FFunctions%2F577704718"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Number.html">Number</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">P</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#2058393982%2FFunctions%2F577704718"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Number.html">Number</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="137357811%2FFunctions%2F577704718" anchor-label="moveNode" id="137357811%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="move-node.html"><span>move</span><wbr><span><span>Node</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="137357811%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="move-node.html"><span class="token function">moveNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Double.html">Double</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><a href="https://javadoc.io/doc/com.google.code.findbugs/jsr305/3.0.2/javax/annotation/Nonnull.html"><span class="token annotation builtin">Nonnull</span></a>&nbsp;</span>direction<span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1706450794%2FFunctions%2F577704718" anchor-label="moveNodeToPosition" id="1706450794%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1706450794%2FFunctions%2F577704718"><span>move</span><wbr><span>Node</span><wbr><span>To</span><wbr><span><span>Position</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1706450794%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1706450794%2FFunctions%2F577704718"><span class="token function">moveNodeToPosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics.environments/-limited-continuos2-d/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="304149456%2FFunctions%2F577704718" anchor-label="removeGlobalReaction" id="304149456%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#304149456%2FFunctions%2F577704718"><span>remove</span><wbr><span>Global</span><wbr><span><span>Reaction</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="304149456%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#304149456%2FFunctions%2F577704718"><span class="token function">removeGlobalReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-global-reaction/index.html">GlobalReaction</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="347668816%2FFunctions%2F577704718" anchor-label="removeNode" id="347668816%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#347668816%2FFunctions%2F577704718"><span>remove</span><wbr><span><span>Node</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="347668816%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#347668816%2FFunctions%2F577704718"><span class="token function">removeNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1745157692%2FFunctions%2F577704718" anchor-label="setHeading" id="-1745157692%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1745157692%2FFunctions%2F577704718"><span>set</span><wbr><span><span>Heading</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1745157692%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1745157692%2FFunctions%2F577704718"><span class="token function">setHeading</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-physics/it.unibo.alchemist.model.physics.environments/-continuous-physics2-d-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-894069076%2FFunctions%2F577704718" anchor-label="setLinkingRule" id="-894069076%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-894069076%2FFunctions%2F577704718"><span>set</span><wbr><span>Linking</span><wbr><span><span>Rule</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-894069076%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-894069076%2FFunctions%2F577704718"><span class="token function">setLinkingRule</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-linking-rule/index.html">LinkingRule</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="763961884%2FFunctions%2F577704718" anchor-label="spliterator" id="763961884%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1010087032%2FFunctions%2F577704718"><span><span>spliterator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="763961884%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#1010087032%2FFunctions%2F577704718"><span class="token function">spliterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Spliterator.html">Spliterator</a><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-677603448%2FFunctions%2F577704718"><span class="token function">spliterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Spliterator.html">Spliterator</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Iterable.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1909129063%2FFunctions%2F577704718" anchor-label="toString" id="-1909129063%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1909129063%2FFunctions%2F577704718"><span>to</span><wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1909129063%2FFunctions%2F577704718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1909129063%2FFunctions%2F577704718"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
