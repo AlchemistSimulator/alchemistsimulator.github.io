@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.145.0">
-    <meta name="generator" content="Relearn 7.4.1">
+    <meta name="generator" content="Relearn 7.5.0">
     <meta name="description" content="Ready-to-run examples of increasing complexity with the Scafi incarnation">
     <meta name="author" content="Danilo Pianini">
     <meta name="twitter:card" content="summary">
@@ -22,22 +22,31 @@
     <meta itemprop="keywords" content="Scala,Scafi,Scala Fields,Tutorial,Aggregate,Aggregate Computing,Aggregate Programming">
     <title>Scafi Incarnation Tutorial :: Documentation for the Alchemist Simulator</title>
     <link href="../../tutorials/scafi/index.xml" rel="alternate" type="application/rss+xml" title="Scafi Incarnation Tutorial :: Documentation for the Alchemist Simulator">
-    <link href="../../images/logo.svg?1741103287" rel="icon" type="image/svg+xml">
-    <link href="../../css/fontawesome-all.min.css?1741103287" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/fontawesome-all.min.css?1741103287" rel="stylesheet"></noscript>
-    <link href="../../css/auto-complete.css?1741103287" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../css/auto-complete.css?1741103287" rel="stylesheet"></noscript>
-    <link href="../../css/perfect-scrollbar.min.css?1741103287" rel="stylesheet">
-    <link href="../../css/theme.min.css?1741103287" rel="stylesheet">
-    <link href="../../css/format-html.min.css?1741103287" rel="stylesheet" id="R-format-style">
+    <link href="../../images/logo.svg?1741274271" rel="icon" type="image/svg+xml">
+    <link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1741274271" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1741274271" rel="stylesheet"></noscript>
+    <link href="../../css/perfect-scrollbar/perfect-scrollbar.min.css?1741274271" rel="stylesheet">
+    <link href="../../css/theme.min.css?1741274271" rel="stylesheet">
+    <link href="../../css/format-html.min.css?1741274271" rel="stylesheet" id="R-format-style">
+    <link href="../../css/auto-complete/auto-complete.min.css?1741274271" rel="stylesheet">
+    <script src="../../js/auto-complete/auto-complete.min.js?1741274271" defer></script>
+    <script src="../../js/lunr/lunr.min.js?1741274271" defer></script>
+    <script src="../../js/lunr/lunr.stemmer.support.min.js?1741274271" defer></script>
+    <script src="../../js/lunr/lunr.multi.min.js?1741274271" defer></script>
+    <script src="../../js/lunr/lunr.en.min.js?1741274271" defer></script>
+    <script src="../../js/search.min.js?1741274271" defer></script>
     <script>
       window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
       window.relearn.relBasePath='..\/..';
       window.relearn.relBaseUri='..\/..';
       window.relearn.absBaseUri='https:\/\/alchemistsimulator.github.io';
-      window.relearn.min = `.min`;
+      window.relearn.contentLangs=['en'];
+      window.relearn.index_js_url="../../searchindex.en.js?1741274271";
       window.relearn.disableAnchorCopy=false;
       window.relearn.disableAnchorScrolling=false;
-      window.relearn.enableBlockCodeWrap=true;
       window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
       // variant stuff
       window.relearn.themevariants = [ 'relearn' ];
       window.relearn.customvariantname = "my-custom-variant";
@@ -184,29 +193,29 @@ The <code>README.md</code> file of the project explains the use and the steps to
 </ul>
 <p><strong>Check if it works</strong></p>
 <p>Open a terminal and type</p>
-<div class="highlight wrap-code"><pre tabindex="0"><code>java -version
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0"><code>java -version
 git --version</code></pre></div>
 <p>Now you are ready to launch Alchemist &amp; ScaFi simulations</p>
 <h2 id="quickstart">Quickstart</h2>
 <p>Open a terminal and run:</p>
 <p><strong>Windows</strong></p>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#ff5c57">curl </span>https<span style="color:#ff5c57">:</span>//raw.githubusercontent.com/scafi/<span style="color:#ff5c57">learning-scafi</span>-alchemist/master/launch.ps1 | <span style="color:#ff5c57">Select-Object</span> -ExpandProperty Content | powershell.exe</span></span></code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#ff5c57">curl </span>https<span style="color:#ff5c57">:</span>//raw.githubusercontent.com/scafi/<span style="color:#ff5c57">learning-scafi</span>-alchemist/master/launch.ps1 | <span style="color:#ff5c57">Select-Object</span> -ExpandProperty Content | powershell.exe</span></span></code></pre></div>
 <p><strong>Linux &amp; Mac</strong></p>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl https://raw.githubusercontent.com/scafi/learning-scafi-alchemist/master/launch.sh | bash</span></span></code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl https://raw.githubusercontent.com/scafi/learning-scafi-alchemist/master/launch.sh | bash</span></span></code></pre></div>
 <p>It will take some time for the system to download all the required dependencies,
 at the end of the process you will be presented
 the Alchemist default GUI
 (<a href="https://alchemistsimulator.github.io/reference/default-ui/" rel="external" target="_blank">here</a> are instructions on how to interact with the simulator).
 At this point, the simulation should be looking like this:
-<a href="#R-image-2e4744b8decaf7fbaaaacb8368925011" class="lightbox-link"><img alt="Alchemist simulation start" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175499943-f346221b-9308-4cf0-8402-d90ad3bc56c6.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-2e4744b8decaf7fbaaaacb8368925011"><img alt="Alchemist simulation start" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175499943-f346221b-9308-4cf0-8402-d90ad3bc56c6.png"></a></p>
+<a href="#R-image-a5363a92d27b82b93e62aa20cb88b0b0" class="lightbox-link"><img alt="Alchemist simulation start" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175499943-f346221b-9308-4cf0-8402-d90ad3bc56c6.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a5363a92d27b82b93e62aa20cb88b0b0"><img alt="Alchemist simulation start" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175499943-f346221b-9308-4cf0-8402-d90ad3bc56c6.png"></a></p>
 <p>Click <kbd>P</kbd> to start the simulation.
 The nodes will compute the ScaFi program described
 <a href="https://github.com/scafi/learning-scafi-alchemist/blob/master/src/main/scala/it/unibo/scafi/examples/HelloScafi.scala" rel="external" target="_blank">here</a>)
 in rounds,
 producing node colour changes.
-<a href="#R-image-7e0fac190f90bbe7ae6e5cf9c9ccb5b9" class="lightbox-link"><img alt="Alchemist simulation evolution" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175502234-a2c5ae1a-c909-4545-ba5e-8cea0441cbd3.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-7e0fac190f90bbe7ae6e5cf9c9ccb5b9"><img alt="Alchemist simulation evolution" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175502234-a2c5ae1a-c909-4545-ba5e-8cea0441cbd3.gif"></a></p>
+<a href="#R-image-4bd8f040e482fe219010c070f9053668" class="lightbox-link"><img alt="Alchemist simulation evolution" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175502234-a2c5ae1a-c909-4545-ba5e-8cea0441cbd3.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-4bd8f040e482fe219010c070f9053668"><img alt="Alchemist simulation evolution" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175502234-a2c5ae1a-c909-4545-ba5e-8cea0441cbd3.gif"></a></p>
 <h3 id="what-happened">What happened</h3>
 <p>Issuing the one-liner command, you have:</p>
 <ol>
@@ -216,8 +225,8 @@ producing node colour changes.
 </ol>
 <p>The last command produces the execution of the simulation called <code>helloScafi</code> described using a <code>yml</code> <a href="https://github.com/scafi/learning-scafi-alchemist/blob/master/src/main/yaml/helloScafi.yml" rel="external" target="_blank">file</a>.
 Particularly an Alchemist simulation typically consists of a network of devices that could communicate with each other by means of a neighbourhood relationship (you can see the connections by clicking <kbd>L</kbd>)
-<a href="#R-image-6eed199404ec2dee692e16fb8a8a58cf" class="lightbox-link"><img alt="Alchemist Neibourhood Relationship" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175505269-cb2f6281-d7f2-40ff-9a11-fe7301166092.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-6eed199404ec2dee692e16fb8a8a58cf"><img alt="Alchemist Neibourhood Relationship" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175505269-cb2f6281-d7f2-40ff-9a11-fe7301166092.png"></a>
+<a href="#R-image-5c9622b748815f4245eac2d59c033efc" class="lightbox-link"><img alt="Alchemist Neibourhood Relationship" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175505269-cb2f6281-d7f2-40ff-9a11-fe7301166092.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-5c9622b748815f4245eac2d59c033efc"><img alt="Alchemist Neibourhood Relationship" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175505269-cb2f6281-d7f2-40ff-9a11-fe7301166092.png"></a>
 In this case, the nodes&rsquo; positions are configured through real GPS traces from the Vienna marathon app.
 The simulation effects (i.e., node shapes and colours) are highly configurable through JSON <a href="https://github.com/scafi/learning-scafi-alchemist/blob/master/effects/helloScafi.json" rel="external" target="_blank">configuration</a>. Here the node colour depends on the output of the ScaFi program, which is executed in each device every 1 second. Particularly, the execution of a ScaFi program deals with local computations and interaction among neighbours through a distributed data structure called <em>computational field</em>. This distributed and repeated execution of <em>rounds</em> eventually produces a collective result (you can find more details about the execution model of ScaFi programs in the <a href="https://scafi.github.io/docs/#execution-model" rel="external" target="_blank">documentation</a>).</p>
 <p>In this case, the program consists of the evaluation of the distance from the node with the ID 100 (in Aggregate Computing literature called &ldquo;gradient&rdquo;).</p>
@@ -248,7 +257,7 @@ The simulation effects (i.e., node shapes and colours) are highly configurable t
 <p>from now on, we will assume all commands have been issued inside <code>learning-scafi-alchemist</code></p>
 <h3 id="1-hello-scafi-a-gradient-in-space-and-time">1. Hello, ScaFi! A gradient in space and time</h3>
 <h4 id="launch-command">Launch command</h4>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew runHelloScafi</span></span></code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew runHelloScafi</span></span></code></pre></div>
 <h4 id="what-happened-1">What happened</h4>
 <p>This is the example described in <a href="../../tutorials/scafi/index.html#quickstart">Quickstart</a> section.
 Particularly, the program consists of the description of the self-healing gradient: an algorithm that computes a gradient (i.e.,  a field mapping each device in the system with its minimum distance from the closest <em>source</em> device) field
@@ -274,12 +283,12 @@ In order to execute ScaFi script, you should at least define:</p>
 <li>the Scafi incarnation:</li>
 </ul>
 <!-- embedme ./src/main/yaml/helloScafi.yml#L1-L1 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: scafi</span></span></code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: scafi</span></span></code></pre></div>
 <ul>
 <li>a <code>Reaction</code> that contains the <code>Action</code> <code>RunScafiProgram</code> with the full class name of the program chosen</li>
 </ul>
 <!-- embedme ./src/main/yaml/helloScafi.yml#L37-L46 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#ff6ac1">_reactions</span>:
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#ff6ac1">_reactions</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">program</span>: <span style="color:#78787e">&amp;program</span>
 </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">time-distribution</span>:
 </span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">type</span>: ExponentialTime
@@ -293,7 +302,7 @@ In order to execute ScaFi script, you should at least define:</p>
 <li>a deployment that contains in the programs the Action specified above</li>
 </ul>
 <!-- embedme ./src/main/yaml/helloScafi.yml#L56-L60 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>: <span style="color:#78787e">## i.e, how to place nodes</span>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>: <span style="color:#78787e">## i.e, how to place nodes</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: FromGPSTrace <span style="color:#78787e">## place nodes from gps traces</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*totalNodes,</span> <span style="color:#78787e">*gpsTraceFile,</span> <span style="color:#ff6ac1">true</span>, <span style="color:#5af78e">&#34;AlignToTime&#34;</span>, <span style="color:#78787e">*timeToAlign,</span> <span style="color:#ff6ac1">false</span>, <span style="color:#ff6ac1">false</span>]
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">## the reactions installed in each nodes</span>
@@ -305,46 +314,46 @@ Particularly, a valid ScaFi program must:</p>
 <li>choose an incarnation</li>
 </ol>
 <!-- embedme ./src/main/scala/it/unibo/scafi/examples/HelloScafi.scala#L3-L3 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> it.unibo.alchemist.model.scafi.ScafiIncarnationForAlchemist._</span></span></code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> it.unibo.alchemist.model.scafi.ScafiIncarnationForAlchemist._</span></span></code></pre></div>
 <ol start="2">
 <li>extend the <code>AggregateProgram</code> trait</li>
 </ol>
 <!-- embedme ./src/main/scala/it/unibo/scafi/examples/HelloScafi.scala#L7-L7 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">HelloScafi</span> <span style="color:#ff6ac1">extends</span> <span style="color:#f3f99d">AggregateProgram</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">HelloScafi</span> <span style="color:#ff6ac1">extends</span> <span style="color:#f3f99d">AggregateProgram</span></span></span></code></pre></div>
 <ol start="3">
 <li>mix-in the libraries required for the application</li>
 </ol>
 <!-- embedme ./src/main/scala/it/unibo/scafi/examples/HelloScafi.scala#L8-L8 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">StandardSensors</span> <span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">ScafiAlchemistSupport</span> <span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">BlockG</span> <span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">Gradients</span> <span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">FieldUtils</span> <span style="color:#ff6ac1">{</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">StandardSensors</span> <span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">ScafiAlchemistSupport</span> <span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">BlockG</span> <span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">Gradients</span> <span style="color:#ff6ac1">with</span> <span style="color:#f3f99d">FieldUtils</span> <span style="color:#ff6ac1">{</span></span></span></code></pre></div>
 <ol start="4">
 <li>define the behaviour inside the <code>main</code> method.</li>
 </ol>
 <p>A ScaFi program typically deals with environment information through <strong>sensors</strong>.
 <code>sense[Type](name)</code> is the built-in operator used to query the sensors attached to each node. Each <em>molecule</em> expressed in the yaml (i.e., the Alchemist variable concept) can be queried from the ScaFi program. For instance, in helloScafi, we write:</p>
 <!-- embedme ./src/main/yaml/helloScafi.yml#L63-L64 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#ff6ac1">molecule</span>: test
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#ff6ac1">molecule</span>: test
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">concentration</span>: <span style="color:#78787e">*source</span> <span style="color:#78787e"># anchor to &#34;source&#34; value, check line 17</span></span></span></code></pre></div>
 <p>Therefore, in the program, we can get the <code>test</code> value as:</p>
 <!-- embedme ./src/main/scala/it/unibo/scafi/examples/HelloScafi.scala#L11-L12 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// Access to node state through &#34;molecule&#34;
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// Access to node state through &#34;molecule&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span><span style="color:#ff6ac1">val</span> source <span style="color:#ff6ac1">=</span> sense<span style="color:#ff6ac1">[</span><span style="color:#9aedfe">Int</span><span style="color:#ff6ac1">](</span><span style="color:#5af78e">&#34;test&#34;</span><span style="color:#ff6ac1">)</span> <span style="color:#ff6ac1">//</span> <span style="color:#f3f99d">Alchemist</span> <span style="color:#f3f99d">API</span> <span style="color:#ff6ac1">=&gt;</span> node<span style="color:#ff6ac1">.</span>get<span style="color:#ff6ac1">(</span><span style="color:#5af78e">&#34;test&#34;</span><span style="color:#ff6ac1">)</span></span></span></code></pre></div>
 <p>There are several built-sensors (in <code>checkSensors</code> there are examples of local sensors and neighbouring sensors).
 For more details, please check the <a href="http://scafi-docs.surge.sh/it/unibo/scafi/index.html" rel="external" target="_blank">Scaladoc</a>.</p>
 <p>The main logic of the program is expressed in the following line:</p>
 <!-- embedme ./src/main/scala/it/unibo/scafi/examples/HelloScafi.scala#L13-L14 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// An aggregate operation
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// An aggregate operation
 </span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span><span style="color:#ff6ac1">val</span> g <span style="color:#ff6ac1">=</span> classicGradient<span style="color:#ff6ac1">(</span>mid<span style="color:#ff6ac1">()</span> <span style="color:#ff6ac1">==</span> source<span style="color:#ff6ac1">)</span></span></span></code></pre></div>
 <p>Where <code>classicGradient</code> is a function defined in <code>BlockG</code> that implements the self-healing gradient described above. The first argument is a <code>Boolean</code> field that defines which part of the system could be considered a <em>source</em> zone. In this case, nodes are marked as source when the field of ids (i.e., <code>mid()</code>)  is equal to the value passed through the variable <code>test</code>. This can be expressed as <code>mid() == source</code>.</p>
 <p>The value produced by Scafi definitions could be used to express <em>actuation</em>. In the Scafi incarnation, you can update the Alchemist variables through <code>node.put</code></p>
 <!-- embedme ./src/main/scala/it/unibo/scafi/examples/HelloScafi.scala#L15-L16 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// Write access to node state (i.e., Actuation =&gt; it changes the node state)
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// Write access to node state (i.e., Actuation =&gt; it changes the node state)
 </span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>node<span style="color:#ff6ac1">.</span>put<span style="color:#ff6ac1">(</span><span style="color:#5af78e">&#34;g&#34;</span><span style="color:#ff6ac1">,</span> g<span style="color:#ff6ac1">)</span></span></span></code></pre></div>
 <p>In the Alchemist default GUI you can inspect the node variables (i.e., molecules) by double-clicking a nodes
-<a href="#R-image-6c9ba43030c29a87a52d1cda6fc2acb8" class="lightbox-link"><img alt="Alchemist Molecule panel" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/176140035-dcc4078a-b71d-4eef-a8f2-5cdbc81b0c60.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-6c9ba43030c29a87a52d1cda6fc2acb8"><img alt="Alchemist Molecule panel" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/176140035-dcc4078a-b71d-4eef-a8f2-5cdbc81b0c60.gif"></a></p>
+<a href="#R-image-509ebbbc5ee5c2a5e6198bbeb839c305" class="lightbox-link"><img alt="Alchemist Molecule panel" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/176140035-dcc4078a-b71d-4eef-a8f2-5cdbc81b0c60.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-509ebbbc5ee5c2a5e6198bbeb839c305"><img alt="Alchemist Molecule panel" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/176140035-dcc4078a-b71d-4eef-a8f2-5cdbc81b0c60.gif"></a></p>
 <p>Finally, the last instruction of the main is the returned value of the Scafi program (in scala <code>return</code> is optional)</p>
 <!-- embedme ./src/main/scala/it/unibo/scafi/examples/HelloScafi.scala#L17-L18 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// Return value of the program
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// Return value of the program
 </span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span>g</span></span></code></pre></div>
 <h4 id="minimal-changes">Minimal changes</h4>
 <ol>
@@ -354,8 +363,8 @@ For more details, please check the <a href="http://scafi-docs.surge.sh/it/unibo/
 <li>start a selection by clicking the mouse left button and dragging it into the environment</li>
 <li>once your selection is over, click <kbd>O</kbd> to enter into move mode</li>
 <li>click over the selection and drag the element into another position
-<a href="#R-image-4b3c9a40d045400162e23902f0efde55" class="lightbox-link"><img alt="Alchemist Move elements" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175920712-e193cf6d-6797-46e9-bc02-c0218f3bf583.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-4b3c9a40d045400162e23902f0efde55"><img alt="Alchemist Move elements" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175920712-e193cf6d-6797-46e9-bc02-c0218f3bf583.gif"></a></li>
+<a href="#R-image-b9c41dbc6fa09ae34e0d6d41ea1a1d2a" class="lightbox-link"><img alt="Alchemist Move elements" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175920712-e193cf6d-6797-46e9-bc02-c0218f3bf583.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-b9c41dbc6fa09ae34e0d6d41ea1a1d2a"><img alt="Alchemist Move elements" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175920712-e193cf6d-6797-46e9-bc02-c0218f3bf583.gif"></a></li>
 </ul>
 </li>
 <li>Try to modify the source node (via yml configuration) and check the program output differences</li>
@@ -365,12 +374,12 @@ For more details, please check the <a href="http://scafi-docs.surge.sh/it/unibo/
 <p>You can produce plots from the data generated by Alchemist simulations.
 Indeed, each Alchemist simulation produces aggregated data as expressed in the <code>export</code> configuration <a href="https://github.com/scafi/learning-scafi-alchemist/blob/master/src/main/yaml/helloScafi.yml#L68-L83" rel="external" target="_blank">section</a>. For more details about data exporting, please refer to the official Alchemist <a href="http://alchemistsimulator.github.io/howtos/simulation/export/" rel="external" target="_blank">guide</a>.<br>
 Particularly, this command:</p>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew runHelloScafi -Pbatch<span style="color:#ff6ac1">=</span><span style="color:#ff5c57">true</span> -Pvariables<span style="color:#ff6ac1">=</span>random</span></span></code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew runHelloScafi -Pbatch<span style="color:#ff6ac1">=</span><span style="color:#ff5c57">true</span> -Pvariables<span style="color:#ff6ac1">=</span>random</span></span></code></pre></div>
 <p>will run several simulations in batch, one for each possible value of the random variables (six in this case, as expressed in the <a href="https://github.com/scafi/learning-scafi-alchemist/blob/master/src/main/yaml/helloScafi.yml#L4-L8" rel="external" target="_blank">helloScafi.yml</a>). Each simulation, will produce a csv file in <code>$exportPath/$fileNameRoot-randomValue.$fileExtension</code> (in this case, build/exports/helloScafi/experiment-x.txt, the values starting with $ are gathered from the simulation configuration file).</p>
 <p>Typically, we use these data to produce charts that express the dynamics of the collective system.
 This repository contains a highly configurable script (please look at the configuration defined in <a href="https://github.com/scafi/learning-scafi-alchemist/tree/master/plots" rel="external" target="_blank">plots</a>).</p>
 <p>To run the script for this experiment, you should run:</p>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python plotter.py plots/helloScafi.yml ./build/exports/helloScafi <span style="color:#5af78e">&#34;.*&#34;</span> <span style="color:#5af78e">&#34;result&#34;</span> plots/ </span></span></code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python plotter.py plots/helloScafi.yml ./build/exports/helloScafi <span style="color:#5af78e">&#34;.*&#34;</span> <span style="color:#5af78e">&#34;result&#34;</span> plots/ </span></span></code></pre></div>
 <p>Where:</p>
 <ul>
 <li>the first argument is the plot configuration (expressed using a yaml file)</li>
@@ -381,7 +390,7 @@ This repository contains a highly configurable script (please look at the config
 </ul>
 <h3 id="2-a-richer-pattern-self-organizing-coordination-regions">2. A richer pattern: Self-organizing Coordination Regions</h3>
 <h4 id="launch-command-1">Launch command</h4>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew runSelforgCoordRegions</span></span></code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew runSelforgCoordRegions</span></span></code></pre></div>
 <h4 id="what-happened-2">What happened</h4>
 <p>This example shows an interesting pattern developed with ScaFi, the so-called Self-Organising Coordination Regions (SCR).
 (more details in <a href="https://hal.inria.fr/hal-02365498/document" rel="external" target="_blank">Self-organising Coordination Regions: A Pattern for
@@ -392,8 +401,8 @@ each one controlled by a <strong>leader</strong> device,
 which collects data from the area members
 and spreads decisions to enact some area-wide policy.
 Particularly, when you launch the command of SCR you will see something like this:</p>
-<p><a href="#R-image-2a121117fce339e6b8097ce1e85111ae" class="lightbox-link"><img alt="SCR result" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175658741-08537743-a325-4137-be14-a4dd6532237b.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-2a121117fce339e6b8097ce1e85111ae"><img alt="SCR result" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175658741-08537743-a325-4137-be14-a4dd6532237b.gif"></a></p>
+<p><a href="#R-image-0f699033b62a81824a686ea5943f9dd3" class="lightbox-link"><img alt="SCR result" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175658741-08537743-a325-4137-be14-a4dd6532237b.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-0f699033b62a81824a686ea5943f9dd3"><img alt="SCR result" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175658741-08537743-a325-4137-be14-a4dd6532237b.gif"></a></p>
 <p>Where the colour denotes the potential field (i.e., the gradient) that starts from the selected leader.
 In this GIF, the leaders are the ones marked with blue colour.</p>
 <h4 id="what-is-inside-1">What is inside</h4>
@@ -416,25 +425,25 @@ In this GIF, the leaders are the ones marked with blue colour.</p>
 <li>leader election: using block <code>S</code> the system will produce a distributed leader election that tries to divide the system equally with a certain range (in S term, it is called <code>grain</code>):</li>
 </ol>
 <!-- embedme ./src/main/scala/it/unibo/scafi/examples/SelforganisingCoordinationRegions.scala#L14-L15 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// Sparse choice (leader election) of the cluster heads
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// Sparse choice (leader election) of the cluster heads
 </span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span><span style="color:#ff6ac1">val</span> leader <span style="color:#ff6ac1">=</span> S<span style="color:#ff6ac1">(</span>sense<span style="color:#ff6ac1">(</span><span style="color:#f3f99d">Params</span><span style="color:#ff6ac1">.</span><span style="color:#f3f99d">GRAIN</span><span style="color:#ff6ac1">),</span> metric <span style="color:#ff6ac1">=</span> nbrRange<span style="color:#ff6ac1">)</span></span></span></code></pre></div>
 <ol start="2">
 <li>potential field definition: after the leader election process, there is another phase in which will be computed potential field from the leader. In this way, the slave node could send information to leader&rsquo;s</li>
 </ol>
 <!-- embedme ./src/main/scala/it/unibo/scafi/examples/SelforganisingCoordinationRegions.scala#L16-L17 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// G block to run a gradient from the leaders
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// G block to run a gradient from the leaders
 </span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span><span style="color:#ff6ac1">val</span> g <span style="color:#ff6ac1">=</span> distanceTo<span style="color:#ff6ac1">(</span>leader<span style="color:#ff6ac1">,</span> metric <span style="color:#ff6ac1">=</span> nbrRange<span style="color:#ff6ac1">)</span></span></span></code></pre></div>
 <ol start="3">
 <li>collection phase: the slave node could collect local information (e.g., temperature) and send it to the leader. During the path, it will be an aggregation process that combines local information with area information (i.e., all the nodes that are inside the potential field of a leader)</li>
 </ol>
 <!-- embedme ./src/main/scala/it/unibo/scafi/examples/SelforganisingCoordinationRegions.scala#L18-L19 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// C block to collect information towards the leaders
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// C block to collect information towards the leaders
 </span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span><span style="color:#ff6ac1">val</span> c <span style="color:#ff6ac1">=</span> C<span style="color:#ff6ac1">[</span><span style="color:#9aedfe">Double</span>,<span style="color:#9aedfe">Set</span><span style="color:#ff6ac1">[</span><span style="color:#9aedfe">ID</span><span style="color:#ff6ac1">]](</span>g<span style="color:#ff6ac1">,</span> <span style="color:#ff6ac1">_</span><span style="color:#ff6ac1">++</span><span style="color:#ff6ac1">_</span><span style="color:#ff6ac1">,</span> <span style="color:#f3f99d">Set</span><span style="color:#ff6ac1">(</span>mid<span style="color:#ff6ac1">()),</span> <span style="color:#f3f99d">Set</span><span style="color:#ff6ac1">.</span>empty<span style="color:#ff6ac1">)</span></span></span></code></pre></div>
 <ol start="4">
 <li>leader choice and share: with the information collected inside an area, the leader could perform an area-wide decision and then send it to the whole area (using <code>G</code>)</li>
 </ol>
 <!-- embedme ./src/main/scala/it/unibo/scafi/examples/SelforganisingCoordinationRegions.scala#L20-L22 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// G block to propagate decisions or aggregated info from leaders to members
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// G block to propagate decisions or aggregated info from leaders to members
 </span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span><span style="color:#ff6ac1">val</span> info <span style="color:#ff6ac1">=</span> G<span style="color:#ff6ac1">[</span><span style="color:#9aedfe">Set</span><span style="color:#ff6ac1">[</span><span style="color:#9aedfe">ID</span><span style="color:#ff6ac1">]](</span>leader<span style="color:#ff6ac1">,</span> c<span style="color:#ff6ac1">,</span> identity<span style="color:#ff6ac1">,</span> metric <span style="color:#ff6ac1">=</span> nbrRange<span style="color:#ff6ac1">)</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">val</span> head <span style="color:#ff6ac1">=</span> G<span style="color:#ff6ac1">[</span><span style="color:#9aedfe">ID</span><span style="color:#ff6ac1">](</span>leader<span style="color:#ff6ac1">,</span> mid<span style="color:#ff6ac1">(),</span> identity<span style="color:#ff6ac1">,</span> metric <span style="color:#ff6ac1">=</span> nbrRange<span style="color:#ff6ac1">)</span></span></span></code></pre></div>
 <h4 id="minimal-changes-1">Minimal changes</h4>
@@ -442,17 +451,17 @@ In this GIF, the leaders are the ones marked with blue colour.</p>
 <li>Try to change the grain (check in the configuration file). It would lead to changes in area formation</li>
 <li>Try to count the number of nodes inside an area and share this information with that area&mdash;suggestion: change phase 3. of the SCR</li>
 <li>As in the previous example, the areas are self-healing. Therefore try to move leaders and see what happens in the leader formation. Try to remove nodes too (see the next clip)
-<a href="#R-image-fb296d73a8b3cc7ea7e0ec100937d223" class="lightbox-link"><img alt="ezgif com-gif-maker" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/179356424-bd31b95a-e38a-491a-80d3-cc448059e484.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-fb296d73a8b3cc7ea7e0ec100937d223"><img alt="ezgif com-gif-maker" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/179356424-bd31b95a-e38a-491a-80d3-cc448059e484.gif"></a></li>
+<a href="#R-image-4c63b4231fd87f71733d0d6085ae15c4" class="lightbox-link"><img alt="ezgif com-gif-maker" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/179356424-bd31b95a-e38a-491a-80d3-cc448059e484.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-4c63b4231fd87f71733d0d6085ae15c4"><img alt="ezgif com-gif-maker" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/179356424-bd31b95a-e38a-491a-80d3-cc448059e484.gif"></a></li>
 </ol>
 <h3 id="3-overlapping-computations-in-space-and-time-with-aggregate-processes">3. Overlapping computations in space and time with aggregate processes</h3>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew runAggregateProcesses</span></span></code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew runAggregateProcesses</span></span></code></pre></div>
 <h4 id="what-happened-3">What happened</h4>
 <p>This example shows an application of Aggregate Processes,
 which is s a way to specify a dynamic number of collective
 computations running on dynamic ensembles of devices (more details in <a href="https://www.sciencedirect.com/science/article/abs/pii/S0952197620303389" rel="external" target="_blank">Engineering collective intelligence at the edge with aggregate processes</a>).
-<a href="#R-image-284ef54ba343c35b784d7f040bb1dd1e" class="lightbox-link"><img alt="Processes API" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175660568-9906a920-d701-48ce-a0de-a0d6fa146425.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-284ef54ba343c35b784d7f040bb1dd1e"><img alt="Processes API" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175660568-9906a920-d701-48ce-a0de-a0d6fa146425.gif"></a></p>
+<a href="#R-image-ba0137aeae67aa55a503c03e930b9df6" class="lightbox-link"><img alt="Processes API" class="lazy lightbox figure-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175660568-9906a920-d701-48ce-a0de-a0d6fa146425.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-ba0137aeae67aa55a503c03e930b9df6"><img alt="Processes API" class="lazy lightbox lightbox-image" loading="lazy" src="https://user-images.githubusercontent.com/23448811/175660568-9906a920-d701-48ce-a0de-a0d6fa146425.gif"></a></p>
 <p>The processes are the bigger circle around the nodes. The colour identifies the process ID. As you can see,
 during the simulation the process starts, shrink and then could disappear.</p>
 <h4 id="what-is-inside-2">What is inside</h4>
@@ -473,7 +482,7 @@ during the simulation the process starts, shrink and then could disappear.</p>
 <h4 id="minimal-changes-2">Minimal changes</h4>
 <p>To start the process, you can use the <code>spawn</code> operators (and their variation, <code>sspawn</code>, <code>cspawn</code>, etc.):</p>
 <!-- embedme ./src/main/scala/it/unibo/scafi/examples/AggregateProcesses.scala#L24-L24 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#ff6ac1">val</span> maps <span style="color:#ff6ac1">=</span> sspawn<span style="color:#ff6ac1">[</span><span style="color:#9aedfe">Pid</span>,<span style="color:#9aedfe">Unit</span>,<span style="color:#9aedfe">Double</span><span style="color:#ff6ac1">](</span>process<span style="color:#ff6ac1">,</span> pids<span style="color:#ff6ac1">,</span> <span style="color:#ff6ac1">{})</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#ff6ac1">val</span> maps <span style="color:#ff6ac1">=</span> sspawn<span style="color:#ff6ac1">[</span><span style="color:#9aedfe">Pid</span>,<span style="color:#9aedfe">Unit</span>,<span style="color:#9aedfe">Double</span><span style="color:#ff6ac1">](</span>process<span style="color:#ff6ac1">,</span> pids<span style="color:#ff6ac1">,</span> <span style="color:#ff6ac1">{})</span></span></span></code></pre></div>
 <p>Particularly, <code>sspawn</code> accepts:</p>
 <ul>
 <li>the process logic, that is a function <code>ID =&gt; Input =&gt; Pout[Out]</code>
@@ -481,7 +490,7 @@ during the simulation the process starts, shrink and then could disappear.</p>
 <li><code>ID</code> in this case is a <code>case class</code> that contains the <code>id</code> of a node that will start the process, the time in which it will effectively start and finally the time in which it will end.</li>
 </ul>
   <!-- embedme ./src/main/scala/it/unibo/scafi/examples/AggregateProcesses.scala#L41-L42 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#ff6ac1">case</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">Pid</span><span style="color:#ff6ac1">(</span>src<span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">ID</span> <span style="color:#ff6ac1">=</span> mid<span style="color:#ff6ac1">(),</span> time<span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">Long</span> <span style="color:#ff6ac1">=</span> alchemistTimestamp<span style="color:#ff6ac1">.</span>toDouble<span style="color:#ff6ac1">.</span>toLong<span style="color:#ff6ac1">)</span>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#ff6ac1">case</span> <span style="color:#ff6ac1">class</span> <span style="color:#f3f99d">Pid</span><span style="color:#ff6ac1">(</span>src<span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">ID</span> <span style="color:#ff6ac1">=</span> mid<span style="color:#ff6ac1">(),</span> time<span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">Long</span> <span style="color:#ff6ac1">=</span> alchemistTimestamp<span style="color:#ff6ac1">.</span>toDouble<span style="color:#ff6ac1">.</span>toLong<span style="color:#ff6ac1">)</span>
 </span></span><span style="display:flex;"><span>              <span style="color:#ff6ac1">(</span><span style="color:#ff6ac1">val</span> terminateAt<span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">Long</span> <span style="color:#ff6ac1">=</span> <span style="color:#f3f99d">Long</span><span style="color:#ff6ac1">.</span><span style="color:#f3f99d">MaxValue</span><span style="color:#ff6ac1">)</span></span></span></code></pre></div>
 <ul>
 <li>The input of the process (in this case is empty)</li>
@@ -493,12 +502,12 @@ during the simulation the process starts, shrink and then could disappear.</p>
 <li>In this case, the new <code>pids</code> associated to new processes are selected from Alchemist molecule.</li>
 </ul>
    <!-- embedme ./src/main/scala/it/unibo/scafi/examples/AggregateProcesses.scala#L11-L11 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> processesSpec<span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">Map</span><span style="color:#ff6ac1">[</span><span style="color:#9aedfe">Int</span>,<span style="color:#ff6ac1">(</span><span style="color:#9aedfe">Int</span>,<span style="color:#9aedfe">Int</span><span style="color:#ff6ac1">)]</span> <span style="color:#ff6ac1">=</span> sense<span style="color:#ff6ac1">(</span><span style="color:#f3f99d">MOLECULE_PROCS</span><span style="color:#ff6ac1">)</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> processesSpec<span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">Map</span><span style="color:#ff6ac1">[</span><span style="color:#9aedfe">Int</span>,<span style="color:#ff6ac1">(</span><span style="color:#9aedfe">Int</span>,<span style="color:#9aedfe">Int</span><span style="color:#ff6ac1">)]</span> <span style="color:#ff6ac1">=</span> sense<span style="color:#ff6ac1">(</span><span style="color:#f3f99d">MOLECULE_PROCS</span><span style="color:#ff6ac1">)</span></span></span></code></pre></div>
 <ul>
 <li>From this information il will be created the <code>pids</code> for the processes:</li>
 </ul>
   <!-- embedme ./src/main/scala/it/unibo/scafi/examples/AggregateProcesses.scala#L18-L22 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// Determine the processes to be generated (these are provided in a molecule &#34;procs&#34;)
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#78787e">// Determine the processes to be generated (these are provided in a molecule &#34;procs&#34;)
 </span></span></span><span style="display:flex;"><span><span style="color:#78787e"></span><span style="color:#ff6ac1">val</span> procs<span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">Set</span><span style="color:#ff6ac1">[</span><span style="color:#9aedfe">ProcessSpec</span><span style="color:#ff6ac1">]</span> <span style="color:#ff6ac1">=</span> processesSpec<span style="color:#ff6ac1">.</span>map<span style="color:#ff6ac1">(</span>tp <span style="color:#ff6ac1">=&gt;</span> <span style="color:#f3f99d">ProcessSpec</span><span style="color:#ff6ac1">.</span>fromTuple<span style="color:#ff6ac1">(</span>tp<span style="color:#ff6ac1">.</span>_1<span style="color:#ff6ac1">,</span> tp<span style="color:#ff6ac1">.</span>_2<span style="color:#ff6ac1">)).</span>toSet
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">val</span> t <span style="color:#ff6ac1">=</span> alchemistTimestamp<span style="color:#ff6ac1">.</span>toDouble<span style="color:#ff6ac1">.</span>toLong
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">val</span> pids<span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">Set</span><span style="color:#ff6ac1">[</span><span style="color:#9aedfe">Pid</span><span style="color:#ff6ac1">]</span> <span style="color:#ff6ac1">=</span> procs<span style="color:#ff6ac1">.</span>filter<span style="color:#ff6ac1">(</span>tgen <span style="color:#ff6ac1">=&gt;</span> tgen<span style="color:#ff6ac1">.</span>device <span style="color:#ff6ac1">==</span> mid<span style="color:#ff6ac1">()</span> <span style="color:#ff6ac1">&amp;&amp;</span> t <span style="color:#ff6ac1">&gt;</span> tgen<span style="color:#ff6ac1">.</span>startTime <span style="color:#ff6ac1">&amp;&amp;</span> <span style="color:#ff6ac1">(</span>t <span style="color:#ff6ac1">-</span> <span style="color:#ff9f43">5</span><span style="color:#ff6ac1">)</span> <span style="color:#ff6ac1">&lt;</span> tgen<span style="color:#ff6ac1">.</span>startTime<span style="color:#ff6ac1">)</span>
@@ -512,7 +521,7 @@ during the simulation the process starts, shrink and then could disappear.</p>
 <li>the nodes that belong to nodes are the ones that are inside the <code>bubble</code>, that is the nodes inside an area of 200 units</li>
 </ul>
 <!-- embedme ./src/main/scala/it/unibo/scafi/examples/AggregateProcesses.scala#L44-L50 -->
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> process<span style="color:#ff6ac1">(</span>pid<span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">Pid</span><span style="color:#ff6ac1">)(</span>src<span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">Unit</span> <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">())</span><span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">POut</span><span style="color:#ff6ac1">[</span><span style="color:#9aedfe">Double</span><span style="color:#ff6ac1">]</span> <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">{</span>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> process<span style="color:#ff6ac1">(</span>pid<span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">Pid</span><span style="color:#ff6ac1">)(</span>src<span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">Unit</span> <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">())</span><span style="color:#ff6ac1">:</span> <span style="color:#9aedfe">POut</span><span style="color:#ff6ac1">[</span><span style="color:#9aedfe">Double</span><span style="color:#ff6ac1">]</span> <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">{</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">val</span> g <span style="color:#ff6ac1">=</span> classicGradient<span style="color:#ff6ac1">(</span>pid<span style="color:#ff6ac1">.</span>src<span style="color:#ff6ac1">==</span>mid<span style="color:#ff6ac1">())</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">val</span> s <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">if</span><span style="color:#ff6ac1">(</span>pid<span style="color:#ff6ac1">.</span>src<span style="color:#ff6ac1">==</span>mid<span style="color:#ff6ac1">()</span> <span style="color:#ff6ac1">&amp;&amp;</span> pid<span style="color:#ff6ac1">.</span>terminateAt<span style="color:#ff6ac1">.</span>toDouble <span style="color:#ff6ac1">&lt;=</span> alchemistTimestamp<span style="color:#ff6ac1">.</span>toDouble<span style="color:#ff6ac1">){</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f3f99d">Terminated</span>
@@ -562,9 +571,6 @@ and we&rsquo;ll get back to you.</p>
 </div>
 
         </div>
-        <script>
-          window.index_js_url="../../searchindex.en.js?1741103287";
-        </script>
         <search><form action="../../search/index.html" method="get">
           <div class="searchbox default-animation">
             <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
@@ -573,15 +579,6 @@ and we&rsquo;ll get back to you.</p>
             <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
           </div>
         </form></search>
-        <script>
-          var contentLangs=['en'];
-        </script>
-        <script src="../../js/auto-complete.js?1741103287" defer></script>
-        <script src="../../js/lunr/lunr.min.js?1741103287" defer></script>
-        <script src="../../js/lunr/lunr.stemmer.support.min.js?1741103287" defer></script>
-        <script src="../../js/lunr/lunr.multi.min.js?1741103287" defer></script>
-        <script src="../../js/lunr/lunr.en.min.js?1741103287" defer></script>
-        <script src="../../js/search.js?1741103287" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -658,7 +655,7 @@ and we&rsquo;ll get back to you.</p>
             </ul>
           </div>
           <div id="R-footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 40.1.0</strong></div>
+    <div><strong>Alchemist Simulator 40.1.1</strong></div>
     <br>
     <a
         class="github-button"
@@ -692,22 +689,22 @@ and we&rsquo;ll get back to you.</p>
         </div>
       </div>
     </aside>
-    <script src="../../js/clipboard.min.js?1741103287" defer></script>
-    <script src="../../js/perfect-scrollbar.min.js?1741103287" defer></script>
-    <script src="../../js/d3/d3-color.min.js?1741103287" defer></script>
-    <script src="../../js/d3/d3-dispatch.min.js?1741103287" defer></script>
-    <script src="../../js/d3/d3-drag.min.js?1741103287" defer></script>
-    <script src="../../js/d3/d3-ease.min.js?1741103287" defer></script>
-    <script src="../../js/d3/d3-interpolate.min.js?1741103287" defer></script>
-    <script src="../../js/d3/d3-selection.min.js?1741103287" defer></script>
-    <script src="../../js/d3/d3-timer.min.js?1741103287" defer></script>
-    <script src="../../js/d3/d3-transition.min.js?1741103287" defer></script>
-    <script src="../../js/d3/d3-zoom.min.js?1741103287" defer></script>
-    <script src="../../js/js-yaml.min.js?1741103287" defer></script>
-    <script src="../../js/mermaid.min.js?1741103287" defer></script>
+    <script src="../../js/clipboard/clipboard.min.js?1741274271" defer></script>
+    <script src="../../js/perfect-scrollbar/perfect-scrollbar.min.js?1741274271" defer></script>
+    <script src="../../js/js-yaml/js-yaml.min.js?1741274271" defer></script>
+    <script src="../../js/d3/d3-color.min.js?1741274271" defer></script>
+    <script src="../../js/d3/d3-dispatch.min.js?1741274271" defer></script>
+    <script src="../../js/d3/d3-drag.min.js?1741274271" defer></script>
+    <script src="../../js/d3/d3-ease.min.js?1741274271" defer></script>
+    <script src="../../js/d3/d3-interpolate.min.js?1741274271" defer></script>
+    <script src="../../js/d3/d3-selection.min.js?1741274271" defer></script>
+    <script src="../../js/d3/d3-timer.min.js?1741274271" defer></script>
+    <script src="../../js/d3/d3-transition.min.js?1741274271" defer></script>
+    <script src="../../js/d3/d3-zoom.min.js?1741274271" defer></script>
+    <script src="../../js/mermaid/mermaid.min.js?1741274271" defer></script>
     <script>
-      window.themeUseMermaid = JSON.parse("{}");
+      window.relearn.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../js/theme.js?1741103287" defer></script>
+    <script src="../../js/theme.min.js?1741274271" defer></script>
   </body>
 </html>
