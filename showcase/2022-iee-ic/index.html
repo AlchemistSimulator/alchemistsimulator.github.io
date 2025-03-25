@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.145.0">
-    <meta name="generator" content="Relearn 7.5.0">
+    <meta name="generator" content="Relearn 7.6.0">
     <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
     <meta name="description" content="Simulation of collective distributed sensing and acting using Toronto rain gauge’s data.">
     <meta name="author" content="Danilo Pianini">
@@ -23,55 +23,58 @@
     <meta itemprop="keywords" content="Experiment,Maps,Export,Scafi">
     <title>2022: Dynamic Decentralization Domains for the Internet of Things :: Documentation for the Alchemist Simulator</title>
     <link href="../../showcase/2022-iee-ic/index.xml" rel="alternate" type="application/rss+xml" title="2022: Dynamic Decentralization Domains for the Internet of Things :: Documentation for the Alchemist Simulator">
-    <link href="../../images/logo.svg?1741815459" rel="icon" type="image/svg+xml">
-    <link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1741815459" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1741815459" rel="stylesheet"></noscript>
-    <link href="../../css/perfect-scrollbar/perfect-scrollbar.min.css?1741815459" rel="stylesheet">
-    <link href="../../css/theme.min.css?1741815459" rel="stylesheet">
-    <link href="../../css/format-html.min.css?1741815459" rel="stylesheet" id="R-format-style">
-    <link href="../../css/auto-complete/auto-complete.min.css?1741815459" rel="stylesheet">
-    <script src="../../js/auto-complete/auto-complete.min.js?1741815459" defer></script>
-    <script src="../../js/lunr/lunr.min.js?1741815459" defer></script>
-    <script src="../../js/lunr/lunr.stemmer.support.min.js?1741815459" defer></script>
-    <script src="../../js/lunr/lunr.multi.min.js?1741815459" defer></script>
-    <script src="../../js/lunr/lunr.en.min.js?1741815459" defer></script>
-    <script src="../../js/search.min.js?1741815459" defer></script>
+    <link href="../../images/logo.svg?1742921057" rel="icon" type="image/svg+xml">
+    <link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1742921057" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1742921057" rel="stylesheet"></noscript>
+    <link href="../../css/perfect-scrollbar/perfect-scrollbar.min.css?1742921057" rel="stylesheet">
+    <link href="../../css/theme.min.css?1742921057" rel="stylesheet">
+    <link href="../../css/format-html.min.css?1742921057" rel="stylesheet" id="R-format-style">
+    <link href="../../css/auto-complete/auto-complete.min.css?1742921057" rel="stylesheet">
+    <script src="../../js/auto-complete/auto-complete.min.js?1742921057" defer></script>
+    <script src="../../js/lunr/lunr.min.js?1742921057" defer></script>
+    <script src="../../js/lunr/lunr.stemmer.support.min.js?1742921057" defer></script>
+    <script src="../../js/lunr/lunr.multi.min.js?1742921057" defer></script>
+    <script src="../../js/lunr/lunr.en.min.js?1742921057" defer></script>
+    <script src="../../js/search.min.js?1742921057" defer></script>
     <script>
       window.relearn = window.relearn || {};
       // configuration
       window.relearn.min = `.min`;
+      window.relearn.path='\/showcase\/2022-iee-ic\/index.html';
       window.relearn.relBasePath='..\/..';
       window.relearn.relBaseUri='..\/..';
       window.relearn.absBaseUri='https:\/\/alchemistsimulator.github.io';
       window.relearn.contentLangs=['en'];
-      window.relearn.index_js_url="../../searchindex.en.js?1741815459";
+      window.relearn.index_js_url="../../searchindex.en.js?1742921057";
       window.relearn.disableAnchorCopy=false;
       window.relearn.disableAnchorScrolling=false;
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
       // variant stuff
       window.relearn.themevariants = [ 'relearn' ];
       window.relearn.customvariantname = "my-custom-variant";
       window.relearn.changeVariant = function(variant) {
         var oldVariant = document.documentElement.dataset.rThemeVariant;
-        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
         document.documentElement.dataset.rThemeVariant = variant;
         if (oldVariant != variant) {
           document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
         }
       }
       window.relearn.markVariant = function() {
-        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
-        var select = document.querySelector("#R-select-variant");
-        if (select) {
-          select.value = variant;
-        }
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
       }
       window.relearn.initVariant = function() {
-        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
         if( variant == window.relearn.customvariantname ){
         }else if( !variant || !window.relearn.themevariants.includes(variant) ){
           variant = window.relearn.themevariants[0];
-          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
         }
         document.documentElement.dataset.rThemeVariant = variant;
       }
@@ -240,14 +243,14 @@ stations, when at least an alert reaches them,
 their dot changes to a large red square. Circles
 represent gauges; their colors map the region they
 are subject to when measuring rainfall intensity.</p>
-<p><a href="#R-image-5e64a76308e5d8ac2f70a4f81f68dd56" class="lightbox-link"><img alt="step 1" class="lazy lightbox figure-image" loading="lazy" src="../../showcase/2022-iee-ic/step-1.png-low.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-5e64a76308e5d8ac2f70a4f81f68dd56"><img alt="step 1" class="lazy lightbox lightbox-image" loading="lazy" src="../../showcase/2022-iee-ic/step-1.png-low.png"></a>
-<a href="#R-image-2a4a85d7bfc40f7ab3d0c4234a744660" class="lightbox-link"><img alt="step 2" class="lazy lightbox figure-image" loading="lazy" src="../../showcase/2022-iee-ic/step-3.png-low.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-2a4a85d7bfc40f7ab3d0c4234a744660"><img alt="step 2" class="lazy lightbox lightbox-image" loading="lazy" src="../../showcase/2022-iee-ic/step-3.png-low.png"></a>
-<a href="#R-image-a2b08d735a19730cf24772c2ee574ed4" class="lightbox-link"><img alt="step 3" class="lazy lightbox figure-image" loading="lazy" src="../../showcase/2022-iee-ic/step-5.png-low.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-a2b08d735a19730cf24772c2ee574ed4"><img alt="step 3" class="lazy lightbox lightbox-image" loading="lazy" src="../../showcase/2022-iee-ic/step-5.png-low.png"></a>
-<a href="#R-image-4d3deb720e53297beae9e0b8b78d2cc5" class="lightbox-link"><img alt="step 4" class="lazy lightbox figure-image" loading="lazy" src="../../showcase/2022-iee-ic/step-6.png-low.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-4d3deb720e53297beae9e0b8b78d2cc5"><img alt="step 4" class="lazy lightbox lightbox-image" loading="lazy" src="../../showcase/2022-iee-ic/step-6.png-low.png"></a></p>
+<p><a href="#R-image-1ca432ea12800e912a3365017a237e97" class="lightbox-link"><img alt="step 1" class="lazy lightbox figure-image" loading="lazy" src="../../showcase/2022-iee-ic/step-1.png-low.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-1ca432ea12800e912a3365017a237e97"><img alt="step 1" class="lazy lightbox lightbox-image" loading="lazy" src="../../showcase/2022-iee-ic/step-1.png-low.png"></a>
+<a href="#R-image-ed394b8f564b1a7dca5c0c33e1768010" class="lightbox-link"><img alt="step 2" class="lazy lightbox figure-image" loading="lazy" src="../../showcase/2022-iee-ic/step-3.png-low.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-ed394b8f564b1a7dca5c0c33e1768010"><img alt="step 2" class="lazy lightbox lightbox-image" loading="lazy" src="../../showcase/2022-iee-ic/step-3.png-low.png"></a>
+<a href="#R-image-24d9754993ddbbccee0f40cb274a3538" class="lightbox-link"><img alt="step 3" class="lazy lightbox figure-image" loading="lazy" src="../../showcase/2022-iee-ic/step-5.png-low.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-24d9754993ddbbccee0f40cb274a3538"><img alt="step 3" class="lazy lightbox lightbox-image" loading="lazy" src="../../showcase/2022-iee-ic/step-5.png-low.png"></a>
+<a href="#R-image-aa03deb03b0bdb019d51998b2639fe71" class="lightbox-link"><img alt="step 4" class="lazy lightbox figure-image" loading="lazy" src="../../showcase/2022-iee-ic/step-6.png-low.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-aa03deb03b0bdb019d51998b2639fe71"><img alt="step 4" class="lazy lightbox lightbox-image" loading="lazy" src="../../showcase/2022-iee-ic/step-6.png-low.png"></a></p>
 <h2 id="video">Video</h2>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/nWLaglM0EkY?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
@@ -259,7 +262,7 @@ are subject to when measuring rainfall intensity.</p>
         </div>
       </main>
     </div>
-    <aside id="R-sidebar" class="default-animation showVisitedLinks">
+    <aside id="R-sidebar" class="default-animation">
       <div id="R-header-topbar" class="default-animation"></div>
       <div id="R-header-wrapper" class="default-animation">
         <div id="R-header" class="default-animation">
@@ -280,13 +283,27 @@ are subject to when measuring rainfall intensity.</p>
         </form></search>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
-        <ul>
-          <li><a class="padding" href="../../index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
-        </ul>
-        <hr class="padding">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="../../index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-controls">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
       </div>
       <div id="R-content-wrapper" class="highlightable">
-        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+        <div class="R-sidebarmenu R-shortcutmenu-home">
           <ul class="enlarge morespace collapsible-menu">
             <li class="" data-nav-id="/tutorials/index.html"><a class="padding" href="../../tutorials/index.html"><b>1. </b>Tutorials<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-e1e8c1e70c5500b49e8dda2dc550651a" class="collapsible-menu"></ul></li>
             <li class="" data-nav-id="/howtos/index.html"><a class="padding" href="../../howtos/index.html"><b>2. </b>How-to Guides<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-435cd60099784c14f4922700a72c8414" class="collapsible-menu"></ul></li>
@@ -296,7 +313,7 @@ are subject to when measuring rainfall intensity.</p>
             <li class="active hidden " data-nav-id="/showcase/2022-iee-ic/index.html"><a class="padding" href="../../showcase/2022-iee-ic/index.html">2022: Dynamic Decentralization Domains for the Internet of Things<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
           </ul>
         </div>
-        <div id="R-shortcutmenu-shortcuts" class="R-sidebarmenu">
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
           <div class="nav-title padding">More</div>
           <ul class="space collapsible-menu">
             <li class="" data-nav-id="https://github.com/AlchemistSimulator/Alchemist"><a class="padding" href="https://github.com/AlchemistSimulator/Alchemist" rel="external" target="_blank"><i class='fab fa-fw fa-github'></i> GitHub repo<i class="fa-fw fas fa-check read-icon"></i></a></li>
@@ -306,52 +323,26 @@ are subject to when measuring rainfall intensity.</p>
             <li class="" data-nav-id="/tags/"><a class="padding" href="../../tags/"><i class='fas fa-fw fa-tags'></i> Tags<i class="fa-fw fas fa-check read-icon"></i></a></li>
           </ul>
         </div>
-        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"></div>
-        <div id="R-menu-footer">
-          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter">
-          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks showVisitedLinks">
-            <ul>
-              <li id="R-select-language-container" class="footerLangSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-language"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-language">Language</label>
-                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="../../showcase/2022-iee-ic/index.html" lang="en" selected>English</option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-controls">
+          <ul class="">
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
                 </div>
-              </li>
-              <li id="R-select-variant-container" class="footerVariantSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-paint-brush"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-variant">Theme</label>
-                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
-                      <option id="R-select-variant-relearn" value="relearn" selected>Relearn</option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <script>window.relearn.markVariant();</script>
-              </li>
-              <li class="footerVisitedLinks showVisitedLinks">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-history"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <button onclick="clearHistory();">Clear History</button>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div id="R-footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 42.0.1</strong></div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><div class="padding">
+    <div><strong>Alchemist Simulator 42.0.2</strong></div>
     <br>
     <a
         class="github-button"
@@ -380,27 +371,25 @@ are subject to when measuring rainfall intensity.</p>
     </a>
     <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn"><span class="fas fa-heart"></span></a> by <a href="https://gohugo.io/">Hugo</a></p>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-</div>
-          </div>
-        </div>
+</div></div>
       </div>
     </aside>
-    <script src="../../js/clipboard/clipboard.min.js?1741815459" defer></script>
-    <script src="../../js/perfect-scrollbar/perfect-scrollbar.min.js?1741815459" defer></script>
-    <script src="../../js/js-yaml/js-yaml.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-color.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-dispatch.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-drag.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-ease.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-interpolate.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-selection.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-timer.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-transition.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-zoom.min.js?1741815459" defer></script>
-    <script src="../../js/mermaid/mermaid.min.js?1741815459" defer></script>
+    <script src="../../js/clipboard/clipboard.min.js?1742921057" defer></script>
+    <script src="../../js/perfect-scrollbar/perfect-scrollbar.min.js?1742921057" defer></script>
+    <script src="../../js/js-yaml/js-yaml.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-color.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-dispatch.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-drag.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-ease.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-interpolate.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-selection.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-timer.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-transition.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-zoom.min.js?1742921057" defer></script>
+    <script src="../../js/mermaid/mermaid.min.js?1742921057" defer></script>
     <script>
       window.relearn.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../js/theme.min.js?1741815459" defer></script>
+    <script src="../../js/theme.min.js?1742921057" defer></script>
   </body>
 </html>

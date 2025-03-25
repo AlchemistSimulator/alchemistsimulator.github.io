@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.145.0">
-    <meta name="generator" content="Relearn 7.5.0">
+    <meta name="generator" content="Relearn 7.6.0">
     <meta name="description" content="A (video) guide through the main features of the simulator, as presented at DAIS 2021">
     <meta name="author" content="Danilo Pianini">
     <meta name="twitter:card" content="summary">
@@ -24,55 +24,58 @@
     <meta itemprop="keywords" content="Tutorial,Basics,Video,Examples,Deployment,Maps,Indoor,Graph,Export">
     <title>Step-by-step tutorial :: Documentation for the Alchemist Simulator</title>
     <link href="../../tutorials/basics/index.xml" rel="alternate" type="application/rss+xml" title="Step-by-step tutorial :: Documentation for the Alchemist Simulator">
-    <link href="../../images/logo.svg?1741815459" rel="icon" type="image/svg+xml">
-    <link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1741815459" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1741815459" rel="stylesheet"></noscript>
-    <link href="../../css/perfect-scrollbar/perfect-scrollbar.min.css?1741815459" rel="stylesheet">
-    <link href="../../css/theme.min.css?1741815459" rel="stylesheet">
-    <link href="../../css/format-html.min.css?1741815459" rel="stylesheet" id="R-format-style">
-    <link href="../../css/auto-complete/auto-complete.min.css?1741815459" rel="stylesheet">
-    <script src="../../js/auto-complete/auto-complete.min.js?1741815459" defer></script>
-    <script src="../../js/lunr/lunr.min.js?1741815459" defer></script>
-    <script src="../../js/lunr/lunr.stemmer.support.min.js?1741815459" defer></script>
-    <script src="../../js/lunr/lunr.multi.min.js?1741815459" defer></script>
-    <script src="../../js/lunr/lunr.en.min.js?1741815459" defer></script>
-    <script src="../../js/search.min.js?1741815459" defer></script>
+    <link href="../../images/logo.svg?1742921057" rel="icon" type="image/svg+xml">
+    <link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1742921057" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1742921057" rel="stylesheet"></noscript>
+    <link href="../../css/perfect-scrollbar/perfect-scrollbar.min.css?1742921057" rel="stylesheet">
+    <link href="../../css/theme.min.css?1742921057" rel="stylesheet">
+    <link href="../../css/format-html.min.css?1742921057" rel="stylesheet" id="R-format-style">
+    <link href="../../css/auto-complete/auto-complete.min.css?1742921057" rel="stylesheet">
+    <script src="../../js/auto-complete/auto-complete.min.js?1742921057" defer></script>
+    <script src="../../js/lunr/lunr.min.js?1742921057" defer></script>
+    <script src="../../js/lunr/lunr.stemmer.support.min.js?1742921057" defer></script>
+    <script src="../../js/lunr/lunr.multi.min.js?1742921057" defer></script>
+    <script src="../../js/lunr/lunr.en.min.js?1742921057" defer></script>
+    <script src="../../js/search.min.js?1742921057" defer></script>
     <script>
       window.relearn = window.relearn || {};
       // configuration
       window.relearn.min = `.min`;
+      window.relearn.path='\/tutorials\/basics\/index.html';
       window.relearn.relBasePath='..\/..';
       window.relearn.relBaseUri='..\/..';
       window.relearn.absBaseUri='https:\/\/alchemistsimulator.github.io';
       window.relearn.contentLangs=['en'];
-      window.relearn.index_js_url="../../searchindex.en.js?1741815459";
+      window.relearn.index_js_url="../../searchindex.en.js?1742921057";
       window.relearn.disableAnchorCopy=false;
       window.relearn.disableAnchorScrolling=false;
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
       // variant stuff
       window.relearn.themevariants = [ 'relearn' ];
       window.relearn.customvariantname = "my-custom-variant";
       window.relearn.changeVariant = function(variant) {
         var oldVariant = document.documentElement.dataset.rThemeVariant;
-        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
         document.documentElement.dataset.rThemeVariant = variant;
         if (oldVariant != variant) {
           document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
         }
       }
       window.relearn.markVariant = function() {
-        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
-        var select = document.querySelector("#R-select-variant");
-        if (select) {
-          select.value = variant;
-        }
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
       }
       window.relearn.initVariant = function() {
-        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
         if( variant == window.relearn.customvariantname ){
         }else if( !variant || !window.relearn.themevariants.includes(variant) ){
           variant = window.relearn.themevariants[0];
-          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
         }
         document.documentElement.dataset.rThemeVariant = variant;
       }
@@ -350,8 +353,8 @@ then the three nodes appear linked.
     Show snapshot
   </summary>
   <div class="box-content">
-<p><a href="#R-image-341cd7659a90bae05ea51971a2d1e8c3" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/3nodes.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-341cd7659a90bae05ea51971a2d1e8c3"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/3nodes.png"></a></p>
+<p><a href="#R-image-b70629ba711d788a1cc7db78f9185718" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/3nodes.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-b70629ba711d788a1cc7db78f9185718"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/3nodes.png"></a></p>
   </div>
 </details></p>
 <h3 id="a-grid-of-devices-playing-dodgeball">A grid of devices playing dodgeball</h3>
@@ -411,16 +414,16 @@ hit count, shifting from red (zero hits) towards blue.</p>
     Show snapshots
   </summary>
   <div class="box-content">
-<p><a href="#R-image-f00382a5b92a03cb7e9cd12ce343b382" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball00.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-f00382a5b92a03cb7e9cd12ce343b382"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball00.png"></a>
-<a href="#R-image-aada8168e414b1c28fba6f1225e956cc" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball01.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-aada8168e414b1c28fba6f1225e956cc"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball01.png"></a>
-<a href="#R-image-fd627ab0951c7e32fa2109b8a116437c" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball02.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-fd627ab0951c7e32fa2109b8a116437c"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball02.png"></a>
-<a href="#R-image-d7e8e9f99174bf1003a4aca286736c82" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball03.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-d7e8e9f99174bf1003a4aca286736c82"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball03.png"></a>
-<a href="#R-image-dad3fb2e4a09a0f4fba197056fb00709" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball04.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-dad3fb2e4a09a0f4fba197056fb00709"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball04.png"></a></p>
+<p><a href="#R-image-57f30be7565b66605ca1252e59a5e1ba" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball00.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-57f30be7565b66605ca1252e59a5e1ba"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball00.png"></a>
+<a href="#R-image-ac49de0ad4e9f3eb0a0fd833dd213a7d" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball01.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-ac49de0ad4e9f3eb0a0fd833dd213a7d"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball01.png"></a>
+<a href="#R-image-c7e03cdf94d389537a16ec9f3710e767" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball02.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-c7e03cdf94d389537a16ec9f3710e767"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball02.png"></a>
+<a href="#R-image-49c640d44f75cd1d52aeb187d6fd155d" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball03.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-49c640d44f75cd1d52aeb187d6fd155d"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball03.png"></a>
+<a href="#R-image-430cca29d0e055d9b794f1d4886fc291" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball04.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-430cca29d0e055d9b794f1d4886fc291"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball04.png"></a></p>
   </div>
 </details>
 <h3 id="a-gradient-on-a-grid-of-devices">A gradient on a grid of devices</h3>
@@ -482,12 +485,12 @@ value, shifting from red (low) towards blue (high).</p>
     Show snapshots
   </summary>
   <div class="box-content">
-<p><a href="#R-image-fcc9b1185a719c7498649b140389da4d" class="lightbox-link"><img alt="Gradient" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/gradient00.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-fcc9b1185a719c7498649b140389da4d"><img alt="Gradient" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/gradient00.png"></a>
-<a href="#R-image-8ec4f7cadfc31f12372b27c26ab7b22b" class="lightbox-link"><img alt="Gradient" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/gradient01.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-8ec4f7cadfc31f12372b27c26ab7b22b"><img alt="Gradient" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/gradient01.png"></a>
-<a href="#R-image-4932b1142d0ae68a5f348dfcb1da3414" class="lightbox-link"><img alt="Gradient" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/gradient02.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-4932b1142d0ae68a5f348dfcb1da3414"><img alt="Gradient" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/gradient02.png"></a></p>
+<p><a href="#R-image-d8d7bd8ad286b9946bee859c6960e1bf" class="lightbox-link"><img alt="Gradient" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/gradient00.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-d8d7bd8ad286b9946bee859c6960e1bf"><img alt="Gradient" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/gradient00.png"></a>
+<a href="#R-image-b09c2117aaf46a8567ddab1255c8e552" class="lightbox-link"><img alt="Gradient" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/gradient01.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-b09c2117aaf46a8567ddab1255c8e552"><img alt="Gradient" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/gradient01.png"></a>
+<a href="#R-image-c4d19030bece43555ae41f9716de1ca1" class="lightbox-link"><img alt="Gradient" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/gradient02.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-c4d19030bece43555ae41f9716de1ca1"><img alt="Gradient" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/gradient02.png"></a></p>
   </div>
 </details>
 <h3 id="arbitrary-network-graphs">Arbitrary network graphs</h3>
@@ -525,8 +528,8 @@ function onClick(element) {
 </div>
 <p>The example creates a single environment with three advanced deployments. From left to right: a
 Lobster graph, a banana tree, and a scale-free network with preferential attachment.</p>
-<p><a href="#R-image-068f08ecdb2c63f199c20a42f00ebdc5" class="lightbox-link"><img alt="Arbitrary graphs" class="lazy lightbox figure-image" loading="lazy" src="../../images/simulator/graphstream.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-068f08ecdb2c63f199c20a42f00ebdc5"><img alt="Arbitrary graphs" class="lazy lightbox lightbox-image" loading="lazy" src="../../images/simulator/graphstream.png"></a></p>
+<p><a href="#R-image-01a2b092a6a1b115ed910fe6532acf7a" class="lightbox-link"><img alt="Arbitrary graphs" class="lazy lightbox figure-image" loading="lazy" src="../../images/simulator/graphstream.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-01a2b092a6a1b115ed910fe6532acf7a"><img alt="Arbitrary graphs" class="lazy lightbox lightbox-image" loading="lazy" src="../../images/simulator/graphstream.png"></a></p>
 <h2 id="advanced-examples">Advanced examples</h2>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/crZM6Idpg74?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
@@ -599,14 +602,14 @@ via gradient (red nodes are closer to the point of interest; purple ones are far
     Show snapshots
   </summary>
   <div class="box-content">
-<p><a href="#R-image-44a9b52bc22afd4a2f167356a2a3bc59" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle00.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-44a9b52bc22afd4a2f167356a2a3bc59"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle00.png"></a>
-<a href="#R-image-e523a33e070927e4c9cb65a28a5ac8dc" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle01.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-e523a33e070927e4c9cb65a28a5ac8dc"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle01.png"></a>
-<a href="#R-image-595dbf6781e6beecd8d12d6c7dd08e59" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle02.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-595dbf6781e6beecd8d12d6c7dd08e59"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle02.png"></a>
-<a href="#R-image-dc1f2b08cb53eee5da6c6c85f32c29a7" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle03.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-dc1f2b08cb53eee5da6c6c85f32c29a7"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle03.png"></a></p>
+<p><a href="#R-image-44d99f66da417f31a3a4e35a2824dbfd" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle00.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-44d99f66da417f31a3a4e35a2824dbfd"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle00.png"></a>
+<a href="#R-image-3a012ff90bb5353d8cdcc6bc5b9f2b1a" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle01.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-3a012ff90bb5353d8cdcc6bc5b9f2b1a"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle01.png"></a>
+<a href="#R-image-09e22215cd4cbeabc62e11ca720a5a61" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle02.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-09e22215cd4cbeabc62e11ca720a5a61"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle02.png"></a>
+<a href="#R-image-ded0b5c83d243e0bdec6528d057a5c21" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle03.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-ded0b5c83d243e0bdec6528d057a5c21"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle03.png"></a></p>
   </div>
 </details>
 <h3 id="real-world-maps-and-gps-traces">Real-world maps and GPS traces</h3>
@@ -671,10 +674,10 @@ function onClick(element) {
     Show snapshots
   </summary>
   <div class="box-content">
-<p><a href="#R-image-bff6728355449ec69119322c14f9bf27" class="lightbox-link"><img alt="Venice" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/venice.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-bff6728355449ec69119322c14f9bf27"><img alt="Venice" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/venice.png"></a>
-<a href="#R-image-131bc020b3a6c939f9f5b06f58e98d69" class="lightbox-link"><img alt="Venice" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/venice2.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-131bc020b3a6c939f9f5b06f58e98d69"><img alt="Venice" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/venice2.png"></a></p>
+<p><a href="#R-image-9297927ab820ed892ff7f8c742041013" class="lightbox-link"><img alt="Venice" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/venice.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-9297927ab820ed892ff7f8c742041013"><img alt="Venice" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/venice.png"></a>
+<a href="#R-image-49db719da923437e89fbcd900220a951" class="lightbox-link"><img alt="Venice" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/venice2.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-49db719da923437e89fbcd900220a951"><img alt="Venice" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/venice2.png"></a></p>
   </div>
 </details>
 <h3 id="in-depth-analysis-of-simulated-scenarios">In-depth analysis of simulated scenarios</h3>
@@ -803,7 +806,7 @@ function onClick(element) {
         </div>
       </main>
     </div>
-    <aside id="R-sidebar" class="default-animation showVisitedLinks">
+    <aside id="R-sidebar" class="default-animation">
       <div id="R-header-topbar" class="default-animation"></div>
       <div id="R-header-wrapper" class="default-animation">
         <div id="R-header" class="default-animation">
@@ -824,13 +827,27 @@ function onClick(element) {
         </form></search>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
-        <ul>
-          <li><a class="padding" href="../../index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
-        </ul>
-        <hr class="padding">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="../../index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-controls">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
       </div>
       <div id="R-content-wrapper" class="highlightable">
-        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+        <div class="R-sidebarmenu R-shortcutmenu-home">
           <ul class="enlarge morespace collapsible-menu">
             <li class="parent " data-nav-id="/tutorials/index.html"><a class="padding" href="../../tutorials/index.html"><b>1. </b>Tutorials<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-e1e8c1e70c5500b49e8dda2dc550651a" class="collapsible-menu">
             <li class="" data-nav-id="/tutorials/quickstart/index.html"><a class="padding" href="../../tutorials/quickstart/index.html">Quickstart<i class="fa-fw fas fa-check read-icon"></i></a></li>
@@ -843,7 +860,7 @@ function onClick(element) {
             <li class="" data-nav-id="/reference/index.html"><a class="padding" href="../../reference/index.html"><b>4. </b>Reference<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-66002f201bef818664bb81aa67490c58" class="collapsible-menu"></ul></li>
           </ul>
         </div>
-        <div id="R-shortcutmenu-shortcuts" class="R-sidebarmenu">
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
           <div class="nav-title padding">More</div>
           <ul class="space collapsible-menu">
             <li class="" data-nav-id="https://github.com/AlchemistSimulator/Alchemist"><a class="padding" href="https://github.com/AlchemistSimulator/Alchemist" rel="external" target="_blank"><i class='fab fa-fw fa-github'></i> GitHub repo<i class="fa-fw fas fa-check read-icon"></i></a></li>
@@ -853,52 +870,26 @@ function onClick(element) {
             <li class="" data-nav-id="/tags/"><a class="padding" href="../../tags/"><i class='fas fa-fw fa-tags'></i> Tags<i class="fa-fw fas fa-check read-icon"></i></a></li>
           </ul>
         </div>
-        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter"></div>
-        <div id="R-menu-footer">
-          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showVisitedLinks showFooter">
-          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks showVisitedLinks">
-            <ul>
-              <li id="R-select-language-container" class="footerLangSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-language"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-language">Language</label>
-                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="../../tutorials/basics/index.html" lang="en" selected>English</option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-controls">
+          <ul class="">
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
                 </div>
-              </li>
-              <li id="R-select-variant-container" class="footerVariantSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-paint-brush"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-variant">Theme</label>
-                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
-                      <option id="R-select-variant-relearn" value="relearn" selected>Relearn</option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <script>window.relearn.markVariant();</script>
-              </li>
-              <li class="footerVisitedLinks showVisitedLinks">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-history"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <button onclick="clearHistory();">Clear History</button>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div id="R-footer" class="footerFooter showFooter"><div class="padding">
-    <div><strong>Alchemist Simulator 42.0.1</strong></div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><div class="padding">
+    <div><strong>Alchemist Simulator 42.0.2</strong></div>
     <br>
     <a
         class="github-button"
@@ -927,27 +918,25 @@ function onClick(element) {
     </a>
     <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn"><span class="fas fa-heart"></span></a> by <a href="https://gohugo.io/">Hugo</a></p>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-</div>
-          </div>
-        </div>
+</div></div>
       </div>
     </aside>
-    <script src="../../js/clipboard/clipboard.min.js?1741815459" defer></script>
-    <script src="../../js/perfect-scrollbar/perfect-scrollbar.min.js?1741815459" defer></script>
-    <script src="../../js/js-yaml/js-yaml.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-color.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-dispatch.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-drag.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-ease.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-interpolate.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-selection.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-timer.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-transition.min.js?1741815459" defer></script>
-    <script src="../../js/d3/d3-zoom.min.js?1741815459" defer></script>
-    <script src="../../js/mermaid/mermaid.min.js?1741815459" defer></script>
+    <script src="../../js/clipboard/clipboard.min.js?1742921057" defer></script>
+    <script src="../../js/perfect-scrollbar/perfect-scrollbar.min.js?1742921057" defer></script>
+    <script src="../../js/js-yaml/js-yaml.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-color.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-dispatch.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-drag.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-ease.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-interpolate.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-selection.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-timer.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-transition.min.js?1742921057" defer></script>
+    <script src="../../js/d3/d3-zoom.min.js?1742921057" defer></script>
+    <script src="../../js/mermaid/mermaid.min.js?1742921057" defer></script>
     <script>
       window.relearn.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../js/theme.min.js?1741815459" defer></script>
+    <script src="../../js/theme.min.js?1742921057" defer></script>
   </body>
 </html>
