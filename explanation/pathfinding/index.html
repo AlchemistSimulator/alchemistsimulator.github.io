@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.145.0">
-    <meta name="generator" content="Relearn 7.6.1">
+    <meta name="generator" content="Hugo 0.148.0">
+    <meta name="generator" content="Relearn 8.0.0">
     <meta name="description" content="Strategies to navigate the environment.">
     <meta name="author" content="Danilo Pianini">
     <meta name="twitter:card" content="summary">
@@ -22,18 +22,27 @@
     <meta itemprop="keywords" content="Node,Nodes,Pathfinding,Navigation Mesh">
     <title>Pathfinding :: Documentation for the Alchemist Simulator</title>
     <link href="../../explanation/pathfinding/index.xml" rel="alternate" type="application/rss+xml" title="Pathfinding :: Documentation for the Alchemist Simulator">
-    <link href="../../images/logo.svg?1750733457" rel="icon" type="image/svg+xml">
-    <link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1750733457" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1750733457" rel="stylesheet"></noscript>
-    <link href="../../css/perfect-scrollbar/perfect-scrollbar.min.css?1750733457" rel="stylesheet">
-    <link href="../../css/theme.min.css?1750733457" rel="stylesheet">
-    <link href="../../css/format-html.min.css?1750733457" rel="stylesheet" id="R-format-style">
-    <link href="../../css/auto-complete/auto-complete.min.css?1750733457" rel="stylesheet">
-    <script src="../../js/auto-complete/auto-complete.min.js?1750733457" defer></script>
-    <script src="../../js/lunr/lunr.min.js?1750733457" defer></script>
-    <script src="../../js/lunr/lunr.stemmer.support.min.js?1750733457" defer></script>
-    <script src="../../js/lunr/lunr.multi.min.js?1750733457" defer></script>
-    <script src="../../js/lunr/lunr.en.min.js?1750733457" defer></script>
-    <script src="../../js/search.min.js?1750733457" defer></script>
+    <link href="../../images/logo.svg?1752012346" rel="icon" type="image/svg+xml">
+    <link href="../../css/auto-complete/auto-complete.min.css?1752012346" rel="stylesheet">
+    <script src="../../js/auto-complete/auto-complete.min.js?1752012346" defer></script>
+    <script src="../../js/search-lunr.min.js?1752012346" defer></script>
+    <script src="../../js/search.min.js?1752012346" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../searchindex.en.js?1752012346";
+    </script>
+    <script src="../../js/lunr/lunr.min.js?1752012346" defer></script>
+    <script src="../../js/lunr/lunr.stemmer.support.min.js?1752012346" defer></script>
+    <script src="../../js/lunr/lunr.multi.min.js?1752012346" defer></script>
+    <script src="../../js/lunr/lunr.en.min.js?1752012346" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1752012346" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1752012346" rel="stylesheet"></noscript>
+    <link href="../../css/perfect-scrollbar/perfect-scrollbar.min.css?1752012346" rel="stylesheet">
+    <link href="../../css/theme.min.css?1752012346" rel="stylesheet">
+    <link href="../../css/format-html.min.css?1752012346" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -42,8 +51,6 @@
       window.relearn.relBasePath='..\/..';
       window.relearn.relBaseUri='..\/..';
       window.relearn.absBaseUri='https:\/\/alchemistsimulator.github.io';
-      window.relearn.contentLangs=['en'];
-      window.relearn.index_js_url="../../searchindex.en.js?1750733457";
       window.relearn.disableAnchorCopy=false;
       window.relearn.disableAnchorScrolling=false;
       window.relearn.disableInlineCopyToClipboard=false;
@@ -52,6 +59,15 @@
       window.relearn.getItem = (s,n) => {return s.getItem(n)};
       window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
       window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
       // variant stuff
       window.relearn.themevariants = [ 'relearn' ];
       window.relearn.customvariantname = "my-custom-variant";
@@ -79,15 +95,6 @@
       }
       window.relearn.initVariant();
       window.relearn.markVariant();
-      // translations
-      window.T_Copy_to_clipboard = `Copy to clipboard`;
-      window.T_Copied_to_clipboard = `Copied to clipboard!`;
-      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
-      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
-      window.T_Reset_view = `Reset view`;
-      window.T_View_reset = `View reset!`;
-      window.T_No_results_found = `No results found for "{0}"`;
-      window.T_N_results_found = `{1} results found for "{0}"`;
     </script><script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 <script src="../../citations.js"></script>
 
@@ -117,10 +124,7 @@
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList">
-            <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../index.html"><span itemprop="name">The Alchemist Simulator</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li>
-            <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../explanation/index.html"><span itemprop="name">Explanation</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li>
-            <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Pathfinding</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../index.html"><span itemprop="name">The Alchemist Simulator</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../explanation/index.html"><span itemprop="name">Explanation</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Pathfinding</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/AlchemistSimulator/Alchemist/edit/master/site/content/explanation/pathfinding/_index.md" rel="external" target="_blank" title="Edit (CTRL+ALT+w)"><i class="fa-fw fas fa-pen"></i></a>
@@ -166,8 +170,8 @@ The image below shows a bidimensional environment with obstacles on the left and
 right (nodes are painted blue,
 edges are represented as line segments connecting the centroid of a node to the associated crossing,
 which is painted green).</p>
-<p><a href="#R-image-852e4407cdc7442c0735a56ca8a21cff" class="lightbox-link"><img alt="navigation graph" class="lazy lightbox figure-image" loading="lazy" src="../../explanation/pathfinding/navigation-graph.jpeg" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-852e4407cdc7442c0735a56ca8a21cff"><img alt="navigation graph" class="lazy lightbox lightbox-image" loading="lazy" src="../../explanation/pathfinding/navigation-graph.jpeg"></a></p>
+<p><a href="#R-image-3f35bb5209ca6188e88207bd3e663d22" class="lightbox-link"><img alt="navigation graph" class="lazy lightbox figure-image" loading="lazy" src="../../explanation/pathfinding/navigation-graph.jpeg" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-3f35bb5209ca6188e88207bd3e663d22"><img alt="navigation graph" class="lazy lightbox lightbox-image" loading="lazy" src="../../explanation/pathfinding/navigation-graph.jpeg"></a></p>
 <p>Navigation graphs are mainly used for navigation purposes (e.g. in pathfinding algorithms):
 the advantage of decomposing the environment into convex regions is that agents can freely walk around within a convex region,
 as it is guaranteed that no obstacle will be found
@@ -283,7 +287,7 @@ for the generation of navigation meshes.</p>
           </ul>
         </div>
 <div id="R-footer"><div class="padding">
-    <div><strong>Alchemist Simulator 42.2.3</strong></div>
+    <div><strong>Alchemist Simulator 42.2.4</strong></div>
     <br>
     <a
         class="github-button"
@@ -315,22 +319,22 @@ for the generation of navigation meshes.</p>
 </div></div>
       </div>
     </aside>
-    <script src="../../js/clipboard/clipboard.min.js?1750733457" defer></script>
-    <script src="../../js/perfect-scrollbar/perfect-scrollbar.min.js?1750733457" defer></script>
-    <script src="../../js/js-yaml/js-yaml.min.js?1750733457" defer></script>
-    <script src="../../js/d3/d3-color.min.js?1750733457" defer></script>
-    <script src="../../js/d3/d3-dispatch.min.js?1750733457" defer></script>
-    <script src="../../js/d3/d3-drag.min.js?1750733457" defer></script>
-    <script src="../../js/d3/d3-ease.min.js?1750733457" defer></script>
-    <script src="../../js/d3/d3-interpolate.min.js?1750733457" defer></script>
-    <script src="../../js/d3/d3-selection.min.js?1750733457" defer></script>
-    <script src="../../js/d3/d3-timer.min.js?1750733457" defer></script>
-    <script src="../../js/d3/d3-transition.min.js?1750733457" defer></script>
-    <script src="../../js/d3/d3-zoom.min.js?1750733457" defer></script>
-    <script src="../../js/mermaid/mermaid.min.js?1750733457" defer></script>
+    <script src="../../js/js-yaml/js-yaml.min.js?1752012346" defer></script>
+    <script src="../../js/d3/d3-color.min.js?1752012346" defer></script>
+    <script src="../../js/d3/d3-dispatch.min.js?1752012346" defer></script>
+    <script src="../../js/d3/d3-drag.min.js?1752012346" defer></script>
+    <script src="../../js/d3/d3-ease.min.js?1752012346" defer></script>
+    <script src="../../js/d3/d3-interpolate.min.js?1752012346" defer></script>
+    <script src="../../js/d3/d3-selection.min.js?1752012346" defer></script>
+    <script src="../../js/d3/d3-timer.min.js?1752012346" defer></script>
+    <script src="../../js/d3/d3-transition.min.js?1752012346" defer></script>
+    <script src="../../js/d3/d3-zoom.min.js?1752012346" defer></script>
+    <script src="../../js/mermaid/mermaid.min.js?1752012346" defer></script>
     <script>
       window.relearn.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../js/theme.min.js?1750733457" defer></script>
+    <script src="../../js/clipboard/clipboard.min.js?1752012346" defer></script>
+    <script src="../../js/perfect-scrollbar/perfect-scrollbar.min.js?1752012346" defer></script>
+    <script src="../../js/theme.min.js?1752012346" defer></script>
   </body>
 </html>
