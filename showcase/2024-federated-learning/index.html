@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Relearn 8.0.1">
+    <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+    <meta name="description" content="Simulations related ScaRLib tool for Science of Computer Programming journal (2024).">
+    <meta name="author" content="Danilo Pianini">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Federated Learning for Large Scale Distributed Systems :: Documentation for the Alchemist Simulator">
+    <meta name="twitter:description" content="Simulations related ScaRLib tool for Science of Computer Programming journal (2024).">
+    <meta property="og:url" content="https://alchemistsimulator.github.io/showcase/2024-federated-learning/index.html">
+    <meta property="og:site_name" content="Documentation for the Alchemist Simulator">
+    <meta property="og:title" content="Federated Learning for Large Scale Distributed Systems :: Documentation for the Alchemist Simulator">
+    <meta property="og:description" content="Simulations related ScaRLib tool for Science of Computer Programming journal (2024).">
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Federated Learning for Large Scale Distributed Systems :: Documentation for the Alchemist Simulator">
+    <meta itemprop="description" content="Simulations related ScaRLib tool for Science of Computer Programming journal (2024).">
+    <meta itemprop="wordCount" content="437">
+    <meta itemprop="keywords" content="Simulation,Aggregate Computing,Multi-Agent Reinforcement Learning">
+    <title>Federated Learning for Large Scale Distributed Systems :: Documentation for the Alchemist Simulator</title>
+    <link href="../../showcase/2024-federated-learning/index.xml" rel="alternate" type="application/rss+xml" title="Federated Learning for Large Scale Distributed Systems :: Documentation for the Alchemist Simulator">
+    <link href="../../images/logo.svg?1760230644" rel="icon" type="image/svg+xml">
+    <link href="../../css/auto-complete/auto-complete.min.css?1760230644" rel="stylesheet">
+    <script src="../../js/auto-complete/auto-complete.min.js?1760230644" defer></script>
+    <script src="../../js/search-lunr.min.js?1760230644" defer></script>
+    <script src="../../js/search.min.js?1760230644" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../searchindex.en.js?1760230644";
+    </script>
+    <script src="../../js/lunr/lunr.min.js?1760230644" defer></script>
+    <script src="../../js/lunr/lunr.stemmer.support.min.js?1760230644" defer></script>
+    <script src="../../js/lunr/lunr.multi.min.js?1760230644" defer></script>
+    <script src="../../js/lunr/lunr.en.min.js?1760230644" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1760230644" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1760230644" rel="stylesheet"></noscript>
+    <link href="../../css/perfect-scrollbar/perfect-scrollbar.min.css?1760230644" rel="stylesheet">
+    <link href="../../css/theme.min.css?1760230644" rel="stylesheet">
+    <link href="../../css/format-html.min.css?1760230644" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/showcase\/2024-federated-learning\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/alchemistsimulator.github.io';
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="../../citations.js"></script>
+
+  </head>
+  <body class="mobile-support html" data-url="../../showcase/2024-federated-learning/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#simulations">Simulations</a>
+      <ul>
+        <li><a href="#1-field-based-federated-learning-fbfl">1. Field-Based Federated Learning (FBFL)</a></li>
+        <li><a href="#proximity-based-self-federated-learning">Proximity-based Self-Federated Learning</a></li>
+      </ul>
+    </li>
+    <li><a href="#federation-evolution-under-aggregator-failure">Federation evolution under aggregator failure</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../index.html"><span itemprop="name">The Alchemist Simulator</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../showcase/index.html"><span itemprop="name">Showcase</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Federated Learning for Large Scale Distributed Systems</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/AlchemistSimulator/Alchemist/edit/master/site/content/showcase/2024-federated-learning/_index.md" rel="external" target="_blank" title="Edit (CTRL+ALT+w)"><i class="fa-fw fas fa-pen"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="../../showcase/index.html" title="Showcase (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><span class="topbar-control"><i class="fa-fw fas fa-chevron-right"></i></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable showcase" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+<div class="R-taxonomy taxonomy-tags cstyle tags" title="Tags" style="--VARIABLE-TAGS-BG-color: var(--INTERNAL-TAG-BG-color);">
+  <ul>
+    <li><a class="term-link" href="../../tags/aggregate-computing/index.html">Aggregate Computing</a></li>
+    <li><a class="term-link" href="../../tags/multi-agent-reinforcement-learning/index.html">Multi-Agent Reinforcement Learning</a></li>
+    <li><a class="term-link" href="../../tags/simulation/index.html">Simulation</a></li>
+  </ul>
+</div>
+  </header>
+
+<h1 id="federated-learning-for-large-scale-distributed-systems">Federated Learning for Large Scale Distributed Systems</h1>
+
+<p>Simulation and detailed description publicly available at:</p>
+<ul>
+<li>
+<p><a href="https://github.com/domm99/experiments-2025-lmcs-field-based-FL" rel="external" target="_blank">https://github.com/domm99/experiments-2025-lmcs-field-based-FL</a> <a href="https://doi.org/10.5281/zenodo.17328680" rel="external" target="_blank"><a href="#R-image-6725e1e835d697f805cb1b9f52e20ab7" class="lightbox-link"><img alt="DOI" class="lazy lightbox figure-image" loading="lazy" src="https://zenodo.org/badge/DOI/10.5281/zenodo.17328680.svg" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-6725e1e835d697f805cb1b9f52e20ab7"><img alt="DOI" class="lazy lightbox lightbox-image" loading="lazy" src="https://zenodo.org/badge/DOI/10.5281/zenodo.17328680.svg"></a></a>.</p>
+</li>
+<li>
+<p><a href="https://github.com/domm99/experiments-2025-iot-self-federated-learning" rel="external" target="_blank">https://github.com/domm99/experiments-2025-iot-self-federated-learning</a> <a href="https://doi.org/10.5281/zenodo.17328674" rel="external" target="_blank"><a href="#R-image-aac76dac715bca8d89c33e25e064dd6a" class="lightbox-link"><img alt="DOI" class="lazy lightbox figure-image" loading="lazy" src="https://zenodo.org/badge/DOI/10.5281/zenodo.17328674.svg" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-aac76dac715bca8d89c33e25e064dd6a"><img alt="DOI" class="lazy lightbox lightbox-image" loading="lazy" src="https://zenodo.org/badge/DOI/10.5281/zenodo.17328674.svg"></a></a>.</p>
+</li>
+</ul>
+<p>Related to the papers:</p>
+<ul>
+<li>
+<p>``<em>Field-Based Coordination for Federated Learning</em> &rsquo;&rsquo; published at <em>International Conference on Coordination Models and Languages</em> (DOI: <a href="https://doi.org/10.1007/978-3-031-62697-5_4" rel="external" target="_blank">10.1007/978-3-031-62697-5_4</a>).</p>
+</li>
+<li>
+<p>``<em>Proximity-based Self-Federated Learning</em> &rsquo;&rsquo; published at <em>International Conference on Autonomic Computing and Self-Organizing Systems</em> (DOI: <a href="https://doi.org/10.1109/ACSOS61780.2024.00033" rel="external" target="_blank">10.1109/ACSOS61780.2024.00033</a>).</p>
+</li>
+<li>
+<p>``<em>FBFL: A Field-Based Coordination Approach for Data Heterogeneity in Federated Learning</em> &rsquo;&rsquo; submitted at Journal <em>Logical Methods in Computer Science</em> (DOI: <a href="https://doi.org/10.48550/arXiv.2502.08577" rel="external" target="_blank">arXiv.2502.08577</a>).</p>
+</li>
+<li>
+<p>``<em>Decentralized Proximity-Aware Clustering for Collective Self-Federated Learning</em> &rsquo;&rsquo; submitted at Journal <em>Internet of Things</em>.</p>
+</li>
+</ul>
+<h2 id="abstract">Abstract</h2>
+<p>In the era of pervasive devices and edge intelligence, Federated Learning enables multiple distributed nodes to collaboratively train machine learning models without exchanging raw data. This fosters privacy preservation and bandwidth efficiency. Yet, real-world deployments face challenges of data heterogeneity, network dynamics, and lack of centralized control.</p>
+<p>In our work, we harness the Alchemist simulator as a playground for exploring field-based, self-organizing, and spatial coordination paradigms for federated learning. Through three complementary simulation experiments, we investigate how devices can autonomously organize, aggregate, and adapt models in a fully decentralized manner, leveraging computational fields and spatial interaction patterns.</p>
+<h2 id="simulations">Simulations</h2>
+<h3 id="1-field-based-federated-learning-fbfl">1. Field-Based Federated Learning (FBFL)</h3>
+<p>This simulation explores the emergence of personalized model zones using computational fields as a distributed coordination mechanism.
+Devices in spatial proximity exchange model parameters through local diffusion processes, forming hierarchical regions governed by dynamically elected leaders. These leaders act as aggregators for their respective zones, enabling localized learning and self-stabilizing coordination.</p>
+<h4 id="methodology--implementation">Methodology &amp; Implementation</h4>
+<ul>
+<li><strong>Distributed spatial leader election</strong>: nodes autonomously select aggregators within neighborhoods</li>
+<li><strong>Hierarchical aggregation</strong>: aggregation occurs at multiple levels based on spatial zones</li>
+<li><strong>Field coordination primitives</strong>: implemented via ScaFi over Alchemist, using constructs like diffusion, convergence, and feedback loops</li>
+<li><strong>Datasets used</strong>: MNIST, FashionMNIST, Extended MNIST</li>
+<li><strong>Simulation parameters</strong>: (here you can insert the number of nodes, communication radius, number of rounds, etc.)</li>
+</ul>
+<h4 id="key-outcomes">Key Outcomes</h4>
+<ul>
+<li>Accuracy under IID settings comparable to centralized FedAvg</li>
+<li>Superior robustness to node failures and topology changes</li>
+<li>Emergent spatial clusters aligned to local data distributions</li>
+<li>No reliance on any central server</li>
+</ul>
+<h3 id="proximity-based-self-federated-learning">Proximity-based Self-Federated Learning</h3>
+<p>This experiment introduces a collective intelligence paradigm for federated IoT systems.
+Devices autonomously cluster into self-federations based on both spatial proximity and model similarity, forming specialized local models that better represent underlying regional data distributions.</p>
+<ul>
+<li>
+<p><strong>Goal</strong>: Enable adaptive, decentralized FL in non-IID IoT environments.</p>
+</li>
+<li>
+<p><strong>Method</strong>: Field-based coordination using Self-Organizing Coordination Regions (SCR) and space-fluid sparse choice for dynamic federation formation.</p>
+</li>
+<li>
+<p><strong>Implementation</strong>: Each node locally computes similarity with neighbors, elects a regional leader, and participates in decentralized aggregation cycles.</p>
+</li>
+<li>
+<p><strong>Dataset</strong>: Extended MNIST and CIFAR-100.</p>
+</li>
+</ul>
+<h2 id="federation-evolution-under-aggregator-failure">Federation evolution under aggregator failure</h2>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+  <div style="flex: 1 0 32%; text-align: center; margin-bottom: 1em;">
+    <img src="images/1.png" alt="Start of the learning" style="width: 100%;" />
+    <div>Start of the learning.</div>
+  </div>
+  <div style="flex: 1 0 32%; text-align: center; margin-bottom: 1em;">
+    <img src="images/3.png" alt="Federations stabilization" style="width: 100%;" />
+    <div>Federations stabilization.</div>
+  </div>
+  <div style="flex: 1 0 32%; text-align: center; margin-bottom: 1em;">
+    <img src="images/5.png" alt="Learning" style="width: 100%;" />
+    <div>Learning.</div>
+  </div>
+  <div style="flex: 1 0 32%; text-align: center; margin-bottom: 1em;">
+    <img src="images/6.png" alt="Aggregators failure" style="width: 100%;" />
+    <div>Aggregators failure.</div>
+  </div>
+  <div style="flex: 1 0 32%; text-align: center; margin-bottom: 1em;">
+    <img src="images/8.png" alt="Federations re-stabilization" style="width: 100%;" />
+    <div>Federations re-stabilization.</div>
+  </div>
+  <div style="flex: 1 0 32%; text-align: center; margin-bottom: 1em;">
+    <img src="images/10.png" alt="Learning again" style="width: 100%;" />
+    <div>Learning resumes.</div>
+  </div>
+</div>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+<div style="white-space: nowrap;">
+    <div style="max-width: 100%; display: inline-block; ">
+        <img alt="The Alchemist Logo" src="../../images/logo.svg"/>
+    </div>
+</div>
+
+        </div>
+        <search><form action="../../search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="../../index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/tutorials/index.html"><a class="padding" href="../../tutorials/index.html"><b>1. </b>Tutorials<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-e1e8c1e70c5500b49e8dda2dc550651a" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/howtos/index.html"><a class="padding" href="../../howtos/index.html"><b>2. </b>How-to Guides<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-435cd60099784c14f4922700a72c8414" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/explanation/index.html"><a class="padding" href="../../explanation/index.html"><b>3. </b>Explanation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-547d30965b8467ddcbfa08ec6013372a" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/reference/index.html"><a class="padding" href="../../reference/index.html"><b>4. </b>Reference<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-66002f201bef818664bb81aa67490c58" class="collapsible-menu"></ul></li>
+            <li class="parent hidden " data-nav-id="/showcase/index.html"><a class="padding" href="../../showcase/index.html">Showcase<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-d239fbd71fa0d7cd9837b0b6e348e27a" class="collapsible-menu">
+            <li class="active hidden " data-nav-id="/showcase/2024-federated-learning/index.html"><a class="padding" href="../../showcase/2024-federated-learning/index.html">Federated Learning for Large Scale Distributed Systems<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <div class="nav-title padding">More</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="https://github.com/AlchemistSimulator/Alchemist"><a class="padding" href="https://github.com/AlchemistSimulator/Alchemist" rel="external" target="_blank"><i class='fab fa-fw fa-github'></i> GitHub repo<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="https://youtube.com/@alchemistsimulator"><a class="padding" href="https://youtube.com/@alchemistsimulator" rel="external" target="_blank"><i class='fab fa-youtube'></i> YouTube channel<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/showcase/"><a class="padding" href="../../showcase/"><i class='fas fa-fw fa-camera'></i> Use cases<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/license/"><a class="padding" href="../../license/"><i class='fas fa-balance-scale'></i> License<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/tags/"><a class="padding" href="../../tags/"><i class='fas fa-fw fa-tags'></i> Tags<i class="fa-fw fas fa-check read-icon"></i></a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><div class="padding">
+    <div><strong>Alchemist Simulator 42.3.9</strong></div>
+    <br>
+    <a
+        class="github-button"
+        href="https://github.com/AlchemistSimulator/Alchemist/releases/latest/"
+        data-icon="octicon-cloud-download" aria-label="Download Alchemist-full on GitHub"
+    >
+    Download
+    </a>
+    <a
+        class="github-button"
+        href="https://github.com/AlchemistSimulator/Alchemist"
+        data-icon="octicon-star"
+        data-show-count="true"
+        aria-label="Star McShelby/hugo-theme-relearn on GitHub"
+    >
+    Star
+    </a>
+    <a
+        class="github-button"
+        href="https://github.com/AlchemistSimulator/Alchemist/fork"
+        data-icon="octicon-repo-forked"
+        data-show-count="true"
+        aria-label="Fork McShelby/hugo-theme-relearn on GitHub"
+    >
+    Fork
+    </a>
+    <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn"><span class="fas fa-heart"></span></a> by <a href="https://gohugo.io/">Hugo</a></p>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+</div></div>
+      </div>
+    </aside>
+    <script src="../../js/js-yaml/js-yaml.min.js?1760230644" defer></script>
+    <script src="../../js/d3/d3-color.min.js?1760230644" defer></script>
+    <script src="../../js/d3/d3-dispatch.min.js?1760230644" defer></script>
+    <script src="../../js/d3/d3-drag.min.js?1760230644" defer></script>
+    <script src="../../js/d3/d3-ease.min.js?1760230644" defer></script>
+    <script src="../../js/d3/d3-interpolate.min.js?1760230644" defer></script>
+    <script src="../../js/d3/d3-selection.min.js?1760230644" defer></script>
+    <script src="../../js/d3/d3-timer.min.js?1760230644" defer></script>
+    <script src="../../js/d3/d3-transition.min.js?1760230644" defer></script>
+    <script src="../../js/d3/d3-zoom.min.js?1760230644" defer></script>
+    <script src="../../js/mermaid/mermaid.min.js?1760230644" defer></script>
+    <script>
+      window.relearn.themeUseMermaid = JSON.parse("{}");
+    </script>
+    <script src="../../js/clipboard/clipboard.min.js?1760230644" defer></script>
+    <script src="../../js/perfect-scrollbar/perfect-scrollbar.min.js?1760230644" defer></script>
+    <script src="../../js/theme.min.js?1760230644" defer></script>
+  </body>
+</html>
