@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Alone</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,22 +25,20 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 <link href="../../../images/logo.svg">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     alchemist
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -48,11 +46,11 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-42.3.10        </div>
+42.3.11        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
-                        data-filter=":/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/alldocs">alldocs</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
                         data-role="dropdown-toggle"
@@ -61,24 +59,24 @@
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":/main"
-                                       data-filter=":/main"/>
+                                <input type="checkbox" class="checkbox--input" id=":/alldocs"
+                                       data-filter=":/alldocs"/>
                                 <span class="checkbox--icon"></span>
-                                jvm
+                                alldocs
                             </label>
                         </li>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link"
                    href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
@@ -88,48 +86,54 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="classlike" id="content" pageIds="alchemist::it.unibo.alchemist.model.cognitive.groups/Alone///PointingToDeclaration//-251573632">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="alchemist::it.unibo.alchemist.model.cognitive.groups/Alone///PointingToDeclaration//-1814946674">
   <div class="breadcrumbs"><a href="../../../index.html">alchemist</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.cognitive.groups</a><span class="delimiter">/</span><span class="current">Alone</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Alone</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Alone</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="../../it.unibo.alchemist.model.cognitive/-group/index.html">Group</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt; </span>, <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span></div><p class="paragraph">Group representing a node alone.</p></div></div>
+    <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Alone</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="../../it.unibo.alchemist.model.cognitive/-group/index.html">Group</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt; </span>, <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span></div><p class="paragraph">Group representing a node alone.</p></div>    </div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
-        <div class="table"><a data-name="588058763%2FConstructors%2F-251573632" anchor-label="Alone" id="588058763%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="588058763%2FConstructors%2F-1814946674" anchor-label="Alone" id="588058763%2FConstructors%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-alone.html"><span><span>Alone</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="588058763%2FConstructors%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="588058763%2FConstructors%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -137,33 +141,37 @@
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
-        <div class="table"><a data-name="-2104385538%2FProperties%2F-251573632" anchor-label="members" id="-2104385538%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-2104385538%2FProperties%2F-1814946674" anchor-label="members" id="-2104385538%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.model.cognitive/-group/members.html"><span><span>members</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2104385538%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2104385538%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model.cognitive/-group/members.html">members</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The list of pedestrians belonging to this group.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model.cognitive/-group/members.html">members</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The list of pedestrians belonging to this group.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="844915858%2FProperties%2F-251573632" anchor-label="size" id="844915858%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="844915858%2FProperties%2F-1814946674" anchor-label="size" id="844915858%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#844915858%2FProperties%2F-251573632"><span><span>size</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="844915858%2FProperties%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#844915858%2FProperties%2F-1814946674"><span><span>size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="844915858%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../-generic-group/index.html#844915858%2FProperties%2F-251573632">size</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../-generic-group/index.html#844915858%2FProperties%2F-1814946674">size</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -171,333 +179,377 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="64482843%2FFunctions%2F-251573632" anchor-label="add" id="64482843%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1958259687%2FFunctions%2F-1814946674" anchor-label="add" id="1958259687%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#-2082011951%2FFunctions%2F-251573632"><span><span>add</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="64482843%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#882550416%2FFunctions%2F-1814946674"><span><span>add</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1958259687%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-2082011951%2FFunctions%2F-251573632"><span class="token function">add</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#1496493718%2FFunctions%2F-251573632"><span class="token function">add</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">element<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#882550416%2FFunctions%2F-1814946674"><span class="token function">add</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#1855873387%2FFunctions%2F-1814946674"><span class="token function">add</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">element<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="809194807%2FFunctions%2F-251573632" anchor-label="addAll" id="809194807%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1270570731%2FFunctions%2F-1814946674" anchor-label="addAll" id="-1270570731%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#-651966098%2FFunctions%2F-251573632"><span>add</span><wbr></wbr><span><span>All</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="809194807%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#-4875109%2FFunctions%2F-1814946674"><span>add</span><wbr></wbr><span><span>All</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1270570731%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-651966098%2FFunctions%2F-251573632"><span class="token function">addAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">elements<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#548777251%2FFunctions%2F-251573632"><span class="token function">addAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">elements<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-4875109%2FFunctions%2F-1814946674"><span class="token function">addAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">elements<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#2026806150%2FFunctions%2F-1814946674"><span class="token function">addAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">elements<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-35526398%2FFunctions%2F-251573632" anchor-label="clear" id="-35526398%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-35526398%2FFunctions%2F-1814946674" anchor-label="clear" id="-35526398%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#-35526398%2FFunctions%2F-251573632"><span><span>clear</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-35526398%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#-35526398%2FFunctions%2F-1814946674"><span><span>clear</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-35526398%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-35526398%2FFunctions%2F-251573632"><span class="token function">clear</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-35526398%2FFunctions%2F-1814946674"><span class="token function">clear</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="539999703%2FFunctions%2F-251573632" anchor-label="contains" id="539999703%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="765883978%2FFunctions%2F-1814946674" anchor-label="contains" id="765883978%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#539999703%2FFunctions%2F-251573632"><span><span>contains</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="539999703%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#765883978%2FFunctions%2F-1814946674"><span><span>contains</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="765883978%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#539999703%2FFunctions%2F-251573632"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#765883978%2FFunctions%2F-1814946674"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1863500020%2FFunctions%2F-251573632" anchor-label="containsAll" id="1863500020%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-225903147%2FFunctions%2F-1814946674" anchor-label="containsAll" id="-225903147%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#1863500020%2FFunctions%2F-251573632"><span>contains</span><wbr></wbr><span><span>All</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1863500020%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#-225903147%2FFunctions%2F-1814946674"><span>contains</span><wbr></wbr><span><span>All</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-225903147%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#1863500020%2FFunctions%2F-251573632"><span class="token function">containsAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">elements<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-225903147%2FFunctions%2F-1814946674"><span class="token function">containsAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">elements<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1171599221%2FFunctions%2F-251573632" anchor-label="findExtremeCoordsOnX" id="-1171599221%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1171599221%2FFunctions%2F-1814946674" anchor-label="findExtremeCoordsOnX" id="-1171599221%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-x.html"><span>find</span><wbr></wbr><span>Extreme</span><wbr></wbr><span>Coords</span><wbr></wbr><span>On</span><wbr></wbr><span><span>X</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1171599221%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1171599221%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-x.html">V</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model.geometry/-vector2-d/index.html">Vector2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-x.html">V</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-x.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-x.html"><span class="token function">findExtremeCoordsOnX</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.ranges/-closed-range/index.html">ClosedRange</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Given a non-empty list of points represented as vectors, this method finds the extreme coordinates (i.e. min and max coordinates) on the X-axis, these are used to create the returned <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.ranges/-closed-range/index.html">ClosedRange</a>.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-x.html">V</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model.geometry/-vector2-d/index.html">Vector2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-x.html">V</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-x.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-x.html"><span class="token function">findExtremeCoordsOnX</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.ranges/-closed-range/index.html">ClosedRange</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Given a non-empty list of points represented as vectors, this method finds the extreme coordinates (i.e. min and max coordinates) on the X-axis, these are used to create the returned <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.ranges/-closed-range/index.html">ClosedRange</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="809562858%2FFunctions%2F-251573632" anchor-label="findExtremeCoordsOnY" id="809562858%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="809562858%2FFunctions%2F-1814946674" anchor-label="findExtremeCoordsOnY" id="809562858%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-y.html"><span>find</span><wbr></wbr><span>Extreme</span><wbr></wbr><span>Coords</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Y</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="809562858%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="809562858%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-y.html">V</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model.geometry/-vector2-d/index.html">Vector2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-y.html">V</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-y.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-y.html"><span class="token function">findExtremeCoordsOnY</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.ranges/-closed-range/index.html">ClosedRange</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Given a non-empty list of points represented as vectors, this method finds the extreme coordinates (i.e. min and max coordinates) on the Y-axis, these are used to create the returned <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.ranges/-closed-range/index.html">ClosedRange</a>.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-y.html">V</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model.geometry/-vector2-d/index.html">Vector2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-y.html">V</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-y.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.util/-ranges/find-extreme-coords-on-y.html"><span class="token function">findExtremeCoordsOnY</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.ranges/-closed-range/index.html">ClosedRange</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Given a non-empty list of points represented as vectors, this method finds the extreme coordinates (i.e. min and max coordinates) on the Y-axis, these are used to create the returned <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.ranges/-closed-range/index.html">ClosedRange</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="961975567%2FFunctions%2F-251573632" anchor-label="get" id="961975567%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="961975567%2FFunctions%2F-1814946674" anchor-label="get" id="961975567%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#961975567%2FFunctions%2F-251573632"><span><span>get</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="961975567%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#961975567%2FFunctions%2F-1814946674"><span><span>get</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="961975567%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#961975567%2FFunctions%2F-251573632"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#961975567%2FFunctions%2F-1814946674"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-837042367%2FFunctions%2F-251573632" anchor-label="indexOf" id="-837042367%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-407930336%2FFunctions%2F-1814946674" anchor-label="indexOf" id="-407930336%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#-837042367%2FFunctions%2F-251573632"><span>index</span><wbr></wbr><span><span>Of</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-837042367%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#-407930336%2FFunctions%2F-1814946674"><span>index</span><wbr></wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-407930336%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-837042367%2FFunctions%2F-251573632"><span class="token function">indexOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-407930336%2FFunctions%2F-1814946674"><span class="token function">indexOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1000881820%2FFunctions%2F-251573632" anchor-label="isEmpty" id="-1000881820%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1000881820%2FFunctions%2F-1814946674" anchor-label="isEmpty" id="-1000881820%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#-1000881820%2FFunctions%2F-251573632"><span>is</span><wbr></wbr><span><span>Empty</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1000881820%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#-1000881820%2FFunctions%2F-1814946674"><span>is</span><wbr></wbr><span><span>Empty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1000881820%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-1000881820%2FFunctions%2F-251573632"><span class="token function">isEmpty</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-1000881820%2FFunctions%2F-1814946674"><span class="token function">isEmpty</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1577986619%2FFunctions%2F-251573632" anchor-label="iterator" id="-1577986619%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1177836957%2FFunctions%2F-1814946674" anchor-label="iterator" id="1177836957%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#-1577986619%2FFunctions%2F-251573632"><span><span>iterator</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1577986619%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#1177836957%2FFunctions%2F-1814946674"><span><span>iterator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1177836957%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-1577986619%2FFunctions%2F-251573632"><span class="token function">iterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-iterator/index.html">MutableIterator</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#1177836957%2FFunctions%2F-1814946674"><span class="token function">iterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-iterator/index.html">MutableIterator</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1443991945%2FFunctions%2F-251573632" anchor-label="lastIndexOf" id="-1443991945%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1327716778%2FFunctions%2F-1814946674" anchor-label="lastIndexOf" id="1327716778%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#-1443991945%2FFunctions%2F-251573632"><span>last</span><wbr></wbr><span>Index</span><wbr></wbr><span><span>Of</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1443991945%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#1327716778%2FFunctions%2F-1814946674"><span>last</span><wbr></wbr><span>Index</span><wbr></wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1327716778%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-1443991945%2FFunctions%2F-251573632"><span class="token function">lastIndexOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#1327716778%2FFunctions%2F-1814946674"><span class="token function">lastIndexOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-375512816%2FFunctions%2F-251573632" anchor-label="listIterator" id="-375512816%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-375512816%2FFunctions%2F-1814946674" anchor-label="listIterator" id="-375512816%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#-1028972833%2FFunctions%2F-251573632"><span>list</span><wbr></wbr><span><span>Iterator</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-375512816%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#-1028972833%2FFunctions%2F-1814946674"><span>list</span><wbr></wbr><span><span>Iterator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-375512816%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-1028972833%2FFunctions%2F-251573632"><span class="token function">listIterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-list-iterator/index.html">MutableListIterator</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-398766659%2FFunctions%2F-251573632"><span class="token function">listIterator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-list-iterator/index.html">MutableListIterator</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-1028972833%2FFunctions%2F-1814946674"><span class="token function">listIterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-list-iterator/index.html">MutableListIterator</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-398766659%2FFunctions%2F-1814946674"><span class="token function">listIterator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-list-iterator/index.html">MutableListIterator</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1378464375%2FFunctions%2F-251573632" anchor-label="randomElement" id="-1378464375%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="299598801%2FFunctions%2F-1814946674" anchor-label="randomElement" id="299598801%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.util/-iterables/random-element.html"><span>random</span><wbr></wbr><span><span>Element</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1378464375%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="299598801%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html">R</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html">R</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html"><span class="token function">randomElement</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">randomGenerator<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html">R</a></div><div class="brief "><p class="paragraph">Returns a random element of the Iterable using the provided <a href="../../it.unibo.alchemist.util/-iterables/random-element.html">randomGenerator</a>.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html">R</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html">R</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html"><span class="token function">randomElement</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">randomGenerator<span class="token operator">: </span>ERROR CLASS: Symbol not found for RandomGenerator</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html">R</a></div><div class="brief "><p class="paragraph">Returns a random element of the Iterable using the provided <a href="../../it.unibo.alchemist.util/-iterables/random-element.html">randomGenerator</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="416360554%2FFunctions%2F-251573632" anchor-label="remove" id="416360554%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="731697687%2FFunctions%2F-1814946674" anchor-label="remove" id="731697687%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#416360554%2FFunctions%2F-251573632"><span><span>remove</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="416360554%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#731697687%2FFunctions%2F-1814946674"><span><span>remove</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="731697687%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#416360554%2FFunctions%2F-251573632"><span class="token function">remove</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#731697687%2FFunctions%2F-1814946674"><span class="token function">remove</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-850409785%2FFunctions%2F-251573632" anchor-label="removeAll" id="-850409785%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1522148962%2FFunctions%2F-1814946674" anchor-label="removeAll" id="1522148962%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#-850409785%2FFunctions%2F-251573632"><span>remove</span><wbr></wbr><span><span>All</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-850409785%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#1522148962%2FFunctions%2F-1814946674"><span>remove</span><wbr></wbr><span><span>All</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1522148962%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-850409785%2FFunctions%2F-251573632"><span class="token function">removeAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">elements<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#1522148962%2FFunctions%2F-1814946674"><span class="token function">removeAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">elements<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1899070414%2FFunctions%2F-251573632" anchor-label="removeAt" id="-1899070414%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1899070414%2FFunctions%2F-1814946674" anchor-label="removeAt" id="-1899070414%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#-1899070414%2FFunctions%2F-251573632"><span>remove</span><wbr></wbr><span><span>At</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1899070414%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#-1899070414%2FFunctions%2F-1814946674"><span>remove</span><wbr></wbr><span><span>At</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1899070414%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-1899070414%2FFunctions%2F-251573632"><span class="token function">removeAt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-1899070414%2FFunctions%2F-1814946674"><span class="token function">removeAt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="988282214%2FFunctions%2F-251573632" anchor-label="retainAll" id="988282214%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="2082867107%2FFunctions%2F-1814946674" anchor-label="retainAll" id="2082867107%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#988282214%2FFunctions%2F-251573632"><span>retain</span><wbr></wbr><span><span>All</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="988282214%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#2082867107%2FFunctions%2F-1814946674"><span>retain</span><wbr></wbr><span><span>All</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2082867107%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#988282214%2FFunctions%2F-251573632"><span class="token function">retainAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">elements<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#2082867107%2FFunctions%2F-1814946674"><span class="token function">retainAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">elements<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1076771351%2FFunctions%2F-251573632" anchor-label="set" id="1076771351%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="647397898%2FFunctions%2F-1814946674" anchor-label="set" id="647397898%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#1076771351%2FFunctions%2F-251573632"><span><span>set</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1076771351%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#647397898%2FFunctions%2F-1814946674"><span><span>set</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="647397898%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#1076771351%2FFunctions%2F-251573632"><span class="token function">set</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">element<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#647397898%2FFunctions%2F-1814946674"><span class="token function">set</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">element<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-455453423%2FFunctions%2F-251573632" anchor-label="shuffled" id="-455453423%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1851243865%2FFunctions%2F-1814946674" anchor-label="shuffled" id="1851243865%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html"><span><span>shuffled</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-455453423%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1851243865%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html">R</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html">R</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html"><span class="token function">shuffled</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">randomGenerator<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html">R</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Fisher–Yates shuffle algorithm using a RandomGenerator. More information <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">on Wikipedia</a>.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html">R</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html">R</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html"><span class="token function">shuffled</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">randomGenerator<span class="token operator">: </span>ERROR CLASS: Symbol not found for RandomGenerator</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html">R</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Fisher–Yates shuffle algorithm using a RandomGenerator. More information <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">on Wikipedia</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-11148114%2FFunctions%2F-251573632" anchor-label="subList" id="-11148114%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-11148114%2FFunctions%2F-1814946674" anchor-label="subList" id="-11148114%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-generic-group/index.html#-11148114%2FFunctions%2F-251573632"><span>sub</span><wbr></wbr><span><span>List</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-11148114%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-generic-group/index.html#-11148114%2FFunctions%2F-1814946674"><span>sub</span><wbr></wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-11148114%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-11148114%2FFunctions%2F-251573632"><span class="token function">subList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fromIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">toIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-generic-group/index.html#-11148114%2FFunctions%2F-1814946674"><span class="token function">subList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fromIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">toIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1901052567%2FFunctions%2F-251573632" anchor-label="takeFraction" id="1901052567%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1901052567%2FFunctions%2F-1814946674" anchor-label="takeFraction" id="1901052567%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.util/-lists/take-fraction.html"><span>take</span><wbr></wbr><span><span>Fraction</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1901052567%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1901052567%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-lists/take-fraction.html">T</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-lists/take-fraction.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.util/-lists/take-fraction.html"><span class="token function">takeFraction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">percentage<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-lists/take-fraction.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Takes the first <a href="../../it.unibo.alchemist.util/-lists/take-fraction.html">percentage</a> * size elements of the list.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-lists/take-fraction.html">T</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-lists/take-fraction.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.util/-lists/take-fraction.html"><span class="token function">takeFraction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">percentage<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-lists/take-fraction.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Takes the first <a href="../../it.unibo.alchemist.util/-lists/take-fraction.html">percentage</a> * size elements of the list.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -508,17 +560,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,22 +1,22 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>MapWormhole</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
@@ -24,35 +24,33 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
 <link href="../../../images/logo.svg">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet"></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
                     alchemist-full
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">42.3.10
+        <div class="library-version" id="library-version">42.3.11
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-swingui/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":alchemist-swingui/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -66,7 +64,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -74,38 +72,40 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist-full
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-swingui::it.unibo.alchemist.boundary.wormhole.impl/MapWormhole///PointingToDeclaration//-1550537275">
   <div class="breadcrumbs"><a href="../../index.html">alchemist-swingui</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.boundary.wormhole.impl</a><span class="delimiter">/</span><span class="current">MapWormhole</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Map</span><wbr><span><span>Wormhole</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-swingui/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">MapWormhole</a> : <a href="../-wormhole-swing/index.html">WormholeSwing</a><span class="token operator">&lt;</span><a href="../-wormhole-swing/index.html">P</a><span class="token operator">&gt; </span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/077a866cdc7de0c5d1f807758b1f4fb56f130435/alchemist-swingui/src/main/java/it/unibo/alchemist/boundary/wormhole/impl/MapWormhole.java#L31">source</a>)</span></span></div><p class="paragraph">Wormhole used for maps rendering.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-swingui/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">MapWormhole</a> : <a href="../-wormhole-swing/index.html">WormholeSwing</a><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-geo-position/index.html">GeoPosition</a><span class="token operator">&gt; </span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/e077af6e3177ee9499ab8bfc0331a1b7c19353b0/alchemist-swingui/src/main/java/it/unibo/alchemist/boundary/wormhole/impl/MapWormhole.java#L31">source</a>)</span></span></div><p class="paragraph">Wormhole used for maps rendering.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="717590030%2FConstructors%2F-1550537275" anchor-label="MapWormhole" id="717590030%2FConstructors%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-map-wormhole.html"><span>Map</span><wbr><span><span>Wormhole</span></span></a></div>
@@ -122,9 +122,9 @@
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="813843527%2FProperties%2F-1550537275" anchor-label="MAX_ZOOM" id="813843527%2FProperties%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-m-a-x_-z-o-o-m.html"><span>MAX_</span><wbr><span>ZOOM</span></a></div>
@@ -139,7 +139,7 @@
             </div>
           </div>
 <a data-name="1002779035%2FProperties%2F-1550537275" anchor-label="mode" id="1002779035%2FProperties%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-wormhole-swing/index.html#1002779035%2FProperties%2F-1550537275"><span><span>mode</span></span></a></div>
@@ -154,7 +154,7 @@
             </div>
           </div>
 <a data-name="821501856%2FProperties%2F-1550537275" anchor-label="rotation" id="821501856%2FProperties%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-wormhole-swing/index.html#821501856%2FProperties%2F-1550537275"><span><span>rotation</span></span></a></div>
@@ -169,7 +169,7 @@
             </div>
           </div>
 <a data-name="-635822741%2FProperties%2F-1550537275" anchor-label="zoom" id="-635822741%2FProperties%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-wormhole-swing/index.html#-635822741%2FProperties%2F-1550537275"><span><span>zoom</span></span></a></div>
@@ -186,9 +186,9 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-941381911%2FFunctions%2F-1550537275" anchor-label="center" id="-941381911%2FFunctions%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-wormhole-swing/index.html#-941381911%2FFunctions%2F-1550537275"><span><span>center</span></span></a></div>
@@ -203,7 +203,7 @@
             </div>
           </div>
 <a data-name="1892065944%2FFunctions%2F-1550537275" anchor-label="getEnvPoint" id="1892065944%2FFunctions%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-env-point.html"><span>get</span><wbr><span>Env</span><wbr><span><span>Point</span></span></a></div>
@@ -218,7 +218,7 @@
             </div>
           </div>
 <a data-name="708672667%2FFunctions%2F-1550537275" anchor-label="getViewPoint" id="708672667%2FFunctions%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-view-point.html"><span>get</span><wbr><span>View</span><wbr><span><span>Point</span></span></a></div>
@@ -233,7 +233,7 @@
             </div>
           </div>
 <a data-name="-180004575%2FFunctions%2F-1550537275" anchor-label="getViewPosition" id="-180004575%2FFunctions%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-view-position.html"><span>get</span><wbr><span>View</span><wbr><span><span>Position</span></span></a></div>
@@ -248,7 +248,7 @@
             </div>
           </div>
 <a data-name="1687399488%2FFunctions%2F-1550537275" anchor-label="getViewSize" id="1687399488%2FFunctions%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-wormhole-swing/index.html#1687399488%2FFunctions%2F-1550537275"><span>get</span><wbr><span>View</span><wbr><span><span>Size</span></span></a></div>
@@ -263,7 +263,7 @@
             </div>
           </div>
 <a data-name="-1077030401%2FFunctions%2F-1550537275" anchor-label="isInsideView" id="-1077030401%2FFunctions%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-wormhole-swing/index.html#-1077030401%2FFunctions%2F-1550537275"><span>is</span><wbr><span>Inside</span><wbr><span><span>View</span></span></a></div>
@@ -272,13 +272,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-swingui/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-wormhole-swing/index.html#-1077030401%2FFunctions%2F-1550537275"><span class="token function">isInsideView</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Point.html">Point</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-swingui/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-wormhole-swing/index.html#-1077030401%2FFunctions%2F-1550537275"><span class="token function">isInsideView</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">viewPoint<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Point.html">Point</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="518058800%2FFunctions%2F-1550537275" anchor-label="optimalZoom" id="518058800%2FFunctions%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="optimal-zoom.html"><span>optimal</span><wbr><span><span>Zoom</span></span></a></div>
@@ -293,7 +293,7 @@
             </div>
           </div>
 <a data-name="1833115781%2FFunctions%2F-1550537275" anchor-label="rotateAroundPoint" id="1833115781%2FFunctions%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="rotate-around-point.html"><span>rotate</span><wbr><span>Around</span><wbr><span><span>Point</span></span></a></div>
@@ -308,7 +308,7 @@
             </div>
           </div>
 <a data-name="-6447428%2FFunctions%2F-1550537275" anchor-label="setEnvPosition" id="-6447428%2FFunctions%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-env-position.html"><span>set</span><wbr><span>Env</span><wbr><span><span>Position</span></span></a></div>
@@ -323,7 +323,7 @@
             </div>
           </div>
 <a data-name="693579873%2FFunctions%2F-1550537275" anchor-label="setViewPosition" id="693579873%2FFunctions%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-view-position.html"><span>set</span><wbr><span>View</span><wbr><span><span>Position</span></span></a></div>
@@ -338,7 +338,7 @@
             </div>
           </div>
 <a data-name="1348887071%2FFunctions%2F-1550537275" anchor-label="setZoom" id="1348887071%2FFunctions%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-zoom.html"><span>set</span><wbr><span><span>Zoom</span></span></a></div>
@@ -353,7 +353,7 @@
             </div>
           </div>
 <a data-name="125545531%2FFunctions%2F-1550537275" anchor-label="zoomOnPoint" id="125545531%2FFunctions%2F-1550537275" data-filterable-set=":alchemist-swingui/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-swingui/main" data-filterable-set=":alchemist-swingui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="zoom-on-point.html"><span>zoom</span><wbr><span>On</span><wbr><span><span>Point</span></span></a></div>
@@ -373,17 +373,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

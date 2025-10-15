@@ -1,22 +1,22 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>And</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
@@ -24,35 +24,33 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
 <link href="../../../images/logo.svg">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet"></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
                     alchemist-full
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">42.3.10
+        <div class="library-version" id="library-version">42.3.11
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-loading/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":alchemist-loading/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -66,7 +64,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -74,38 +72,40 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist-full
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-loading::it.unibo.alchemist.model.positionfilters/And///PointingToDeclaration//409329903">
   <div class="breadcrumbs"><a href="../../index.html">alchemist-loading</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.positionfilters</a><span class="delimiter">/</span><span class="current">And</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>And</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">And</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator"> : </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-position/index.html">Position</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>positionBasedFilterA<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-position-based-filter/index.html">PositionBasedFilter</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>positionBasedFilterB<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-position-based-filter/index.html">PositionBasedFilter</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="../../it.unibo.alchemist.model/-position-based-filter/index.html">PositionBasedFilter</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt; </span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/077a866cdc7de0c5d1f807758b1f4fb56f130435/alchemist-loading/src/main/kotlin/it/unibo/alchemist/model/positionfilters/And.kt#L20">source</a>)</span></span></div><p class="paragraph">Check if both <a href="position-based-filter-a.html">positionBasedFilterA</a> and <a href="position-based-filter-b.html">positionBasedFilterB</a> are satisfied.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>position</span><wbr><span>Based</span><wbr><span>Filter</span><wbr><span><span>A</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the first filter.</p></div></div></div></div><div class="table-row" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>position</span><wbr><span>Based</span><wbr><span>Filter</span><wbr><span><span>B</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the second filter.</p></div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">And</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator"> : </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-position/index.html">Position</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>positionBasedFilterA<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-position-based-filter/index.html">PositionBasedFilter</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>positionBasedFilterB<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-position-based-filter/index.html">PositionBasedFilter</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="../../it.unibo.alchemist.model/-position-based-filter/index.html">PositionBasedFilter</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt; </span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/e077af6e3177ee9499ab8bfc0331a1b7c19353b0/alchemist-loading/src/main/kotlin/it/unibo/alchemist/model/positionfilters/And.kt#L20">source</a>)</span></span></div><p class="paragraph">Check if both <a href="../../../alchemist-loading/it.unibo.alchemist.model.positionfilters/-and/--root--.html">positionBasedFilterA</a> and <a href="../../../alchemist-loading/it.unibo.alchemist.model.positionfilters/-and/--root--.html">positionBasedFilterB</a> are satisfied.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>position</span><wbr><span>Based</span><wbr><span>Filter</span><wbr><span><span>A</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the first filter.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>position</span><wbr><span>Based</span><wbr><span>Filter</span><wbr><span><span>B</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the second filter.</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="-305077265%2FConstructors%2F409329903" anchor-label="And" id="-305077265%2FConstructors%2F409329903" data-filterable-set=":alchemist-loading/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-and.html"><span><span>And</span></span></a></div>
@@ -122,9 +122,9 @@
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-57418444%2FProperties%2F409329903" anchor-label="positionBasedFilterA" id="-57418444%2FProperties%2F409329903" data-filterable-set=":alchemist-loading/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="position-based-filter-a.html"><span>position</span><wbr><span>Based</span><wbr><span>Filter</span><wbr><span><span>A</span></span></a></div>
@@ -139,7 +139,7 @@
             </div>
           </div>
 <a data-name="-26398637%2FProperties%2F409329903" anchor-label="positionBasedFilterB" id="-26398637%2FProperties%2F409329903" data-filterable-set=":alchemist-loading/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="position-based-filter-b.html"><span>position</span><wbr><span>Based</span><wbr><span>Filter</span><wbr><span><span>B</span></span></a></div>
@@ -156,24 +156,24 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="-114374014%2FFunctions%2F409329903" anchor-label="and" id="-114374014%2FFunctions%2F409329903" data-filterable-set=":alchemist-loading/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1875886971%2FFunctions%2F409329903" anchor-label="and" id="-1875886971%2FFunctions%2F409329903" data-filterable-set=":alchemist-loading/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-xor/index.html#-114374014%2FFunctions%2F409329903"><span><span>and</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-114374014%2FFunctions%2F409329903"></span>
+                  <div><a href="../-xor/index.html#-1875886971%2FFunctions%2F409329903"><span><span>and</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1875886971%2FFunctions%2F409329903"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-xor/index.html#-114374014%2FFunctions%2F409329903"><span class="token function">and</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p0<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Predicate.html">Predicate</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="index.html">P</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Predicate.html">Predicate</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-xor/index.html#-1875886971%2FFunctions%2F409329903"><span class="token function">and</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Predicate.html">Predicate</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="index.html">P</a><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Predicate.html">Predicate</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1386547844%2FFunctions%2F409329903" anchor-label="contains" id="1386547844%2FFunctions%2F409329903" data-filterable-set=":alchemist-loading/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="contains.html"><span><span>contains</span></span></a></div>
@@ -182,13 +182,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><a href="index.html">P</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Returns true if both <a href="position-based-filter-a.html">positionBasedFilterA</a> and <a href="position-based-filter-b.html">positionBasedFilterB</a> are satisfied.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><a href="index.html">P</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Returns true if both <a href="../../../alchemist-loading/it.unibo.alchemist.model.positionfilters/-and/--root--.html">positionBasedFilterA</a> and <a href="../../../alchemist-loading/it.unibo.alchemist.model.positionfilters/-and/--root--.html">positionBasedFilterB</a> are satisfied.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1583760558%2FFunctions%2F409329903" anchor-label="invoke" id="-1583760558%2FFunctions%2F409329903" data-filterable-set=":alchemist-loading/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.model/-position-based-filter/invoke.html"><span><span>invoke</span></span></a></div>
@@ -203,7 +203,7 @@
             </div>
           </div>
 <a data-name="600125100%2FFunctions%2F409329903" anchor-label="negate" id="600125100%2FFunctions%2F409329903" data-filterable-set=":alchemist-loading/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-xor/index.html#600125100%2FFunctions%2F409329903"><span><span>negate</span></span></a></div>
@@ -212,28 +212,28 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-xor/index.html#600125100%2FFunctions%2F409329903"><span class="token function">negate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Predicate.html">Predicate</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-xor/index.html#600125100%2FFunctions%2F409329903"><span class="token function">negate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Predicate.html">Predicate</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="343765432%2FFunctions%2F409329903" anchor-label="or" id="343765432%2FFunctions%2F409329903" data-filterable-set=":alchemist-loading/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
+<a data-name="323910459%2FFunctions%2F409329903" anchor-label="or" id="323910459%2FFunctions%2F409329903" data-filterable-set=":alchemist-loading/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-xor/index.html#343765432%2FFunctions%2F409329903"><span><span>or</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="343765432%2FFunctions%2F409329903"></span>
+                  <div><a href="../-xor/index.html#323910459%2FFunctions%2F409329903"><span><span>or</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="323910459%2FFunctions%2F409329903"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-xor/index.html#343765432%2FFunctions%2F409329903"><span class="token function">or</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p0<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Predicate.html">Predicate</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="index.html">P</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Predicate.html">Predicate</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-loading/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-xor/index.html#323910459%2FFunctions%2F409329903"><span class="token function">or</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Predicate.html">Predicate</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="index.html">P</a><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Predicate.html">Predicate</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-71508552%2FFunctions%2F409329903" anchor-label="test" id="-71508552%2FFunctions%2F409329903" data-filterable-set=":alchemist-loading/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-loading/main" data-filterable-set=":alchemist-loading/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.model/-position-based-filter/test.html"><span><span>test</span></span></a></div>
@@ -253,17 +253,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

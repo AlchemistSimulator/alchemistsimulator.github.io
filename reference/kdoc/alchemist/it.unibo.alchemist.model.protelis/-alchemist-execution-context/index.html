@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>AlchemistExecutionContext</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,22 +25,20 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 <link href="../../../images/logo.svg">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     alchemist
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -48,11 +46,11 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-42.3.10        </div>
+42.3.11        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
-                        data-filter=":/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/alldocs">alldocs</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
                         data-role="dropdown-toggle"
@@ -61,24 +59,24 @@
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":/main"
-                                       data-filter=":/main"/>
+                                <input type="checkbox" class="checkbox--input" id=":/alldocs"
+                                       data-filter=":/alldocs"/>
                                 <span class="checkbox--icon"></span>
-                                jvm
+                                alldocs
                             </label>
                         </li>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link"
                    href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
@@ -88,48 +86,54 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="classlike" id="content" pageIds="alchemist::it.unibo.alchemist.model.protelis/AlchemistExecutionContext///PointingToDeclaration//-251573632">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="alchemist::it.unibo.alchemist.model.protelis/AlchemistExecutionContext///PointingToDeclaration//-1814946674">
   <div class="breadcrumbs"><a href="../../../index.html">alchemist</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.protelis</a><span class="delimiter">/</span><span class="current">AlchemistExecutionContext</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Alchemist</span><wbr></wbr><span>Execution</span><wbr></wbr><span><span>Context</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">AlchemistExecutionContext</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model/-position/index.html">Position</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>environmentAccess<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">node<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">protelisDevice<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.protelis.properties/-protelis-device/index.html">ProtelisDevice</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">reaction<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>randomGenerator<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">networkManager<span class="token operator">: </span><a href="../-alchemist-network-manager/index.html">AlchemistNetworkManager</a></span></span><span class="token punctuation">)</span></div><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u></u></div></span></div><div><div class="title"><P> position type</div></div></div></div></div></div></div>
+    <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">AlchemistExecutionContext</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model/-position/index.html">Position</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>environmentAccess<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">node<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">protelisDevice<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.protelis.properties/-protelis-device/index.html">ProtelisDevice</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">reaction<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>randomGenerator<span class="token operator">: </span>ERROR CLASS: Symbol not found for RandomGenerator<span class="token punctuation">, </span></span><span class="parameter ">networkManager<span class="token operator">: </span><a href="../-alchemist-network-manager/index.html">AlchemistNetworkManager</a></span></span><span class="token punctuation">)</span> : <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt; ERROR CLASS: Symbol not found for AbstractExecutionContext&amp;lt;it/unibo/alchemist/model/protelis/AlchemistExecutionContext&amp;lt;P&amp;gt;&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt; ERROR CLASS: Symbol not found for AbstractExecutionContext&lt;it/unibo/alchemist/model/protelis/AlchemistExecutionContext&lt;P&gt;&gt;</span>, <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt; ERROR CLASS: Symbol not found for SpatiallyEmbeddedDevice&amp;lt;kotlin/Double&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt; ERROR CLASS: Symbol not found for SpatiallyEmbeddedDevice&lt;kotlin/Double&gt;</span>, <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt; ERROR CLASS: Symbol not found for LocalizedDevice///PointingToDeclaration/">&lt;ERROR CLASS&gt; ERROR CLASS: Symbol not found for LocalizedDevice</span>, <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt; ERROR CLASS: Symbol not found for TimeAwareDevice&amp;lt;kotlin/Number&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt; ERROR CLASS: Symbol not found for TimeAwareDevice&lt;kotlin/Number&gt;</span></div><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u></u></div></span></div><div><div class="title"><P> position type</div></div></div></div></div></div>    </div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
-        <div class="table"><a data-name="-159116203%2FConstructors%2F-251573632" anchor-label="AlchemistExecutionContext" id="-159116203%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="-380025451%2FConstructors%2F-1814946674" anchor-label="AlchemistExecutionContext" id="-380025451%2FConstructors%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-alchemist-execution-context.html"><span>Alchemist</span><wbr></wbr><span>Execution</span><wbr></wbr><span><span>Context</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-159116203%2FConstructors%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-380025451%2FConstructors%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">localNode<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">reaction<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">random<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">networkManager<span class="token operator">: </span><a href="../-alchemist-network-manager/index.html">AlchemistNetworkManager</a></span></span><span class="token punctuation">)</span></div><div class="brief "></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environmentAccess<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">node<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">protelisDevice<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.protelis.properties/-protelis-device/index.html">ProtelisDevice</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">reaction<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">randomGenerator<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">networkManager<span class="token operator">: </span><a href="../-alchemist-network-manager/index.html">AlchemistNetworkManager</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environmentAccess<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">node<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">protelisDevice<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.protelis.properties/-protelis-device/index.html">ProtelisDevice</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">reaction<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">randomGenerator<span class="token operator">: </span>ERROR CLASS: Symbol not found for RandomGenerator<span class="token punctuation">, </span></span><span class="parameter ">networkManager<span class="token operator">: </span><a href="../-alchemist-network-manager/index.html">AlchemistNetworkManager</a></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">localNode<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">reaction<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">random<span class="token operator">: </span>ERROR CLASS: Symbol not found for RandomGenerator<span class="token punctuation">, </span></span><span class="parameter ">networkManager<span class="token operator">: </span><a href="../-alchemist-network-manager/index.html">AlchemistNetworkManager</a></span></span><span class="token punctuation">)</span></div><div class="brief "></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -137,18 +141,20 @@
         </div>
       </div>
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
-        <div class="table"><a data-name="1661399276%2FClasslikes%2F-251573632" anchor-label="Companion" id="1661399276%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="1661399276%2FClasslikes%2F-1814946674" anchor-label="Companion" id="1661399276%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1661399276%2FClasslikes%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1661399276%2FClasslikes%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div><div class="brief "><p class="paragraph">Internal constants.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div><div class="brief "><p class="paragraph">Internal constants.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -156,48 +162,54 @@
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
-        <div class="table"><a data-name="-1305660394%2FProperties%2F-251573632" anchor-label="devicePosition" id="-1305660394%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-1305660394%2FProperties%2F-1814946674" anchor-label="devicePosition" id="-1305660394%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="device-position.html"><span>device</span><wbr></wbr><span><span>Position</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1305660394%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1305660394%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="device-position.html">devicePosition</a><span class="token operator">: </span><a href="index.html">P</a></div><div class="brief "><p class="paragraph">The device position, in form of <a href="../../it.unibo.alchemist.model/-position/index.html">Position</a>.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">val </span><a href="device-position.html">devicePosition</a><span class="token operator">: </span><a href="index.html">P</a></div><div class="brief "><p class="paragraph">The device position, in form of <a href="../../it.unibo.alchemist.model/-position/index.html">Position</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-616931794%2FProperties%2F-251573632" anchor-label="environmentAccess" id="-616931794%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-616931794%2FProperties%2F-1814946674" anchor-label="environmentAccess" id="-616931794%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="environment-access.html"><span>environment</span><wbr></wbr><span><span>Access</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-616931794%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-616931794%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="environment-access.html">environmentAccess</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><a href="index.html">P</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">val </span><a href="environment-access.html">environmentAccess</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><a href="index.html">P</a><span class="token operator">&gt;</span></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1609116245%2FProperties%2F-251573632" anchor-label="randomGenerator" id="1609116245%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1609116245%2FProperties%2F-1814946674" anchor-label="randomGenerator" id="1609116245%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="random-generator.html"><span>random</span><wbr></wbr><span><span>Generator</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1609116245%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1609116245%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="random-generator.html">randomGenerator</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">val </span><a href="random-generator.html">randomGenerator</a><span class="token operator">: </span>ERROR CLASS: Symbol not found for RandomGenerator</div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -205,198 +217,224 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="-1833225339%2FFunctions%2F-251573632" anchor-label="distanceTo" id="-1833225339%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1888487518%2FFunctions%2F-1814946674" anchor-label="distanceTo" id="-1888487518%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="distance-to.html"><span>distance</span><wbr></wbr><span><span>To</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1833225339%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1888487518%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="distance-to.html"><span class="token function">distanceTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="distance-to.html"><span class="token function">distanceTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes the distance between two nodes, through <a href="../../it.unibo.alchemist.model/-environment/get-distance-between-nodes.html">Environment.getDistanceBetweenNodes</a>.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">fun </span><a href="distance-to.html"><span class="token function">distanceTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span>ERROR CLASS: Symbol not found for DeviceUID?<span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="distance-to.html"><span class="token function">distanceTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">target<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes the distance between two nodes, through <a href="../../it.unibo.alchemist.model/-environment/get-distance-between-nodes.html">Environment.getDistanceBetweenNodes</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1698774964%2FFunctions%2F-251573632" anchor-label="equals" id="-1698774964%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1698774964%2FFunctions%2F-1814946674" anchor-label="equals" id="-1698774964%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="equals.html"><span><span>equals</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1698774964%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1698774964%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="equals.html"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="equals.html"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-52310096%2FFunctions%2F-251573632" anchor-label="getCoordinates" id="-52310096%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-52310096%2FFunctions%2F-1814946674" anchor-label="getCoordinates" id="-52310096%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-coordinates.html"><span>get</span><wbr></wbr><span><span>Coordinates</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-52310096%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-52310096%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-coordinates.html"><span class="token function">getCoordinates</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="get-coordinates.html"><span class="token function">getCoordinates</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span>ERROR CLASS: Symbol not found for Tuple</div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1354356773%2FFunctions%2F-251573632" anchor-label="getCurrentTime" id="1354356773%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1354356773%2FFunctions%2F-1814946674" anchor-label="getCurrentTime" id="1354356773%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-current-time.html"><span>get</span><wbr></wbr><span>Current</span><wbr></wbr><span><span>Time</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1354356773%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1354356773%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-current-time.html"><span class="token function">getCurrentTime</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="get-current-time.html"><span class="token function">getCurrentTime</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="45523953%2FFunctions%2F-251573632" anchor-label="getDeviceUID" id="45523953%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="45523953%2FFunctions%2F-1814946674" anchor-label="getDeviceUID" id="45523953%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-device-u-i-d.html"><span>get</span><wbr></wbr><span>Device</span><wbr></wbr><span><span>UID</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="45523953%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="45523953%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="get-device-u-i-d.html"><span class="token function">getDeviceUID</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="get-device-u-i-d.html"><span class="token function">getDeviceUID</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span>ERROR CLASS: Symbol not found for DeviceUID</div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-100031718%2FFunctions%2F-251573632" anchor-label="hashCode" id="-100031718%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-100031718%2FFunctions%2F-1814946674" anchor-label="hashCode" id="-100031718%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hash-code.html"><span>hash</span><wbr></wbr><span><span>Code</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-100031718%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-100031718%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="396842976%2FFunctions%2F-251573632" anchor-label="instance" id="396842976%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="396842976%2FFunctions%2F-1814946674" anchor-label="instance" id="396842976%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="instance.html"><span><span>instance</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="396842976%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="396842976%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="instance.html"><span class="token function">instance</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">AlchemistExecutionContext</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="instance.html"><span class="token function">instance</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">AlchemistExecutionContext</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1799876496%2FFunctions%2F-251573632" anchor-label="nbrDelay" id="1799876496%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1799876496%2FFunctions%2F-1814946674" anchor-label="nbrDelay" id="1799876496%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="nbr-delay.html"><span>nbr</span><wbr></wbr><span><span>Delay</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1799876496%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1799876496%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="nbr-delay.html"><span class="token function">nbrDelay</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-number/index.html">Number</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="nbr-delay.html"><span class="token function">nbrDelay</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span>ERROR CLASS: Symbol not found for Field&lt;kotlin/Number&gt;</div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-579179551%2FFunctions%2F-251573632" anchor-label="nbrLag" id="-579179551%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-579179551%2FFunctions%2F-1814946674" anchor-label="nbrLag" id="-579179551%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="nbr-lag.html"><span>nbr</span><wbr></wbr><span><span>Lag</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-579179551%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-579179551%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="nbr-lag.html"><span class="token function">nbrLag</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-number/index.html">Number</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="nbr-lag.html"><span class="token function">nbrLag</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span>ERROR CLASS: Symbol not found for Field&lt;kotlin/Number&gt;</div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-469256938%2FFunctions%2F-251573632" anchor-label="nbrRange" id="-469256938%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-469256938%2FFunctions%2F-1814946674" anchor-label="nbrRange" id="-469256938%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="nbr-range.html"><span>nbr</span><wbr></wbr><span><span>Range</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-469256938%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-469256938%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="nbr-range.html"><span class="token function">nbrRange</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="nbr-range.html"><span class="token function">nbrRange</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span>ERROR CLASS: Symbol not found for Field&lt;kotlin/Double&gt;</div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="2082468%2FFunctions%2F-251573632" anchor-label="nbrVector" id="2082468%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="2082468%2FFunctions%2F-1814946674" anchor-label="nbrVector" id="2082468%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="nbr-vector.html"><span>nbr</span><wbr></wbr><span><span>Vector</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2082468%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2082468%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="nbr-vector.html"><span class="token function">nbrVector</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="nbr-vector.html"><span class="token function">nbrVector</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span>ERROR CLASS: Symbol not found for Field&lt;ERROR CLASS: Symbol not found for Tuple&gt;</div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1485725614%2FFunctions%2F-251573632" anchor-label="nextRandomDouble" id="1485725614%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1485725614%2FFunctions%2F-1814946674" anchor-label="nextRandomDouble" id="1485725614%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="next-random-double.html"><span>next</span><wbr></wbr><span>Random</span><wbr></wbr><span><span>Double</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1485725614%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1485725614%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="next-random-double.html"><span class="token function">nextRandomDouble</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="next-random-double.html"><span class="token function">nextRandomDouble</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-956971617%2FFunctions%2F-251573632" anchor-label="routingDistance" id="-956971617%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1996648439%2FFunctions%2F-1814946674" anchor-label="routingDistance" id="1996648439%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="routing-distance.html"><span>routing</span><wbr></wbr><span><span>Distance</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-956971617%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1996648439%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="routing-distance.html"><span class="token function">routingDistance</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dest<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="routing-distance.html"><span class="token function">routingDistance</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dest<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-geo-position/index.html">GeoPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="routing-distance.html"><span class="token function">routingDistance</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dest<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="routing-distance.html"><span class="token function">routingDistance</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dest<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-number/index.html">Number</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes the distance along a map. Requires a <a href="../../it.unibo.alchemist.model.maps/-map-environment/index.html">MapEnvironment</a>.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">fun </span><a href="routing-distance.html"><span class="token function">routingDistance</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dest<span class="token operator">: </span>ERROR CLASS: Symbol not found for Tuple</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="routing-distance.html"><span class="token function">routingDistance</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dest<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-geo-position/index.html">GeoPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="routing-distance.html"><span class="token function">routingDistance</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dest<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="routing-distance.html"><span class="token function">routingDistance</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dest<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-number/index.html">Number</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes the distance along a map. Requires a <a href="../../it.unibo.alchemist.model.maps/-map-environment/index.html">MapEnvironment</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -407,17 +445,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

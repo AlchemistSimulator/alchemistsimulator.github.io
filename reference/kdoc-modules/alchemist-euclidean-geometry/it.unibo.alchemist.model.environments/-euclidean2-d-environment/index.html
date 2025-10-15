@@ -1,22 +1,22 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Euclidean2DEnvironment</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
@@ -24,35 +24,33 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
 <link href="../../../images/logo.svg">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet"></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
                     alchemist-full
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">42.3.10
+        <div class="library-version" id="library-version">42.3.11
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-euclidean-geometry/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":alchemist-euclidean-geometry/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -66,7 +64,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -74,38 +72,40 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist-full
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-euclidean-geometry::it.unibo.alchemist.model.environments/Euclidean2DEnvironment///PointingToDeclaration//1780278300">
   <div class="breadcrumbs"><a href="../../index.html">alchemist-euclidean-geometry</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.environments</a><span class="delimiter">/</span><span class="current">Euclidean2DEnvironment</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Euclidean2DEnvironment</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">Euclidean2DEnvironment</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span> : <a href="../../../alchemist-api/it.unibo.alchemist.model/-euclidean-environment/index.html">EuclideanEnvironment</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt; </span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/077a866cdc7de0c5d1f807758b1f4fb56f130435/alchemist-euclidean-geometry/src/main/kotlin/it/unibo/alchemist/model/environments/Euclidean2DEnvironment.kt#L18">source</a>)</span></span></div><p class="paragraph">A bidimensional Euclidean space with any concentration type <a href="index.html">T</a>.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-continuous2-d-environment/index.html">Continuous2DEnvironment</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-environment2-d-with-obstacles/index.html">Environment2DWithObstacles</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-euclidean2-d-environment-with-obstacles/index.html">Euclidean2DEnvironmentWithObstacles</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">Euclidean2DEnvironment</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span> : <a href="../../../alchemist-api/it.unibo.alchemist.model/-euclidean-environment/index.html">EuclideanEnvironment</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt; </span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/e077af6e3177ee9499ab8bfc0331a1b7c19353b0/alchemist-euclidean-geometry/src/main/kotlin/it/unibo/alchemist/model/environments/Euclidean2DEnvironment.kt#L18">source</a>)</span></span></div><p class="paragraph">A bidimensional Euclidean space with any concentration type <a href="index.html">T</a>.</p><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-continuous2-d-environment/index.html">Continuous2DEnvironment</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-environment2-d-with-obstacles/index.html">Environment2DWithObstacles</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-euclidean2-d-environment-with-obstacles/index.html">Euclidean2DEnvironmentWithObstacles</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="590400790%2FClasslikes%2F1780278300" anchor-label="Companion" id="590400790%2FClasslikes%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
@@ -122,9 +122,9 @@
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-1630740866%2FProperties%2F1780278300" anchor-label="dimensions" id="-1630740866%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-1630740866%2FProperties%2F1780278300"><span><span>dimensions</span></span></a></div>
@@ -139,7 +139,7 @@
             </div>
           </div>
 <a data-name="-400042648%2FProperties%2F1780278300" anchor-label="globalReactions" id="-400042648%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-400042648%2FProperties%2F1780278300"><span>global</span><wbr><span><span>Reactions</span></span></a></div>
@@ -154,7 +154,7 @@
             </div>
           </div>
 <a data-name="1674346425%2FProperties%2F1780278300" anchor-label="incarnation" id="1674346425%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#1674346425%2FProperties%2F1780278300"><span><span>incarnation</span></span></a></div>
@@ -169,7 +169,7 @@
             </div>
           </div>
 <a data-name="187765726%2FProperties%2F1780278300" anchor-label="isTerminated" id="187765726%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#187765726%2FProperties%2F1780278300"><span>is</span><wbr><span><span>Terminated</span></span></a></div>
@@ -184,7 +184,7 @@
             </div>
           </div>
 <a data-name="1465322921%2FProperties%2F1780278300" anchor-label="layers" id="1465322921%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#1465322921%2FProperties%2F1780278300"><span><span>layers</span></span></a></div>
@@ -199,7 +199,7 @@
             </div>
           </div>
 <a data-name="-1811163317%2FProperties%2F1780278300" anchor-label="linkingRule" id="-1811163317%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-1811163317%2FProperties%2F1780278300"><span>linking</span><wbr><span><span>Rule</span></span></a></div>
@@ -214,7 +214,7 @@
             </div>
           </div>
 <a data-name="706321538%2FProperties%2F1780278300" anchor-label="nodeCount" id="706321538%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#706321538%2FProperties%2F1780278300"><span>node</span><wbr><span><span>Count</span></span></a></div>
@@ -229,7 +229,7 @@
             </div>
           </div>
 <a data-name="-1245297794%2FProperties%2F1780278300" anchor-label="nodes" id="-1245297794%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-1245297794%2FProperties%2F1780278300"><span><span>nodes</span></span></a></div>
@@ -244,7 +244,7 @@
             </div>
           </div>
 <a data-name="-861099144%2FProperties%2F1780278300" anchor-label="offset" id="-861099144%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-861099144%2FProperties%2F1780278300"><span><span>offset</span></span></a></div>
@@ -259,7 +259,7 @@
             </div>
           </div>
 <a data-name="1915886725%2FProperties%2F1780278300" anchor-label="origin" id="1915886725%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="origin.html"><span><span>origin</span></span></a></div>
@@ -274,7 +274,7 @@
             </div>
           </div>
 <a data-name="1143573892%2FProperties%2F1780278300" anchor-label="simulation" id="1143573892%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#1143573892%2FProperties%2F1780278300"><span><span>simulation</span></span></a></div>
@@ -289,7 +289,7 @@
             </div>
           </div>
 <a data-name="-1966394022%2FProperties%2F1780278300" anchor-label="simulationOrNull" id="-1966394022%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-1966394022%2FProperties%2F1780278300"><span>simulation</span><wbr><span>Or</span><wbr><span><span>Null</span></span></a></div>
@@ -304,7 +304,7 @@
             </div>
           </div>
 <a data-name="2090052426%2FProperties%2F1780278300" anchor-label="size" id="2090052426%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#2090052426%2FProperties%2F1780278300"><span><span>size</span></span></a></div>
@@ -319,7 +319,7 @@
             </div>
           </div>
 <a data-name="-682009861%2FProperties%2F1780278300" anchor-label="sizeInDistanceUnits" id="-682009861%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-682009861%2FProperties%2F1780278300"><span>size</span><wbr><span>In</span><wbr><span>Distance</span><wbr><span><span>Units</span></span></a></div>
@@ -336,9 +336,9 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="1257100367%2FFunctions%2F1780278300" anchor-label="addGlobalReaction" id="1257100367%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#1257100367%2FFunctions%2F1780278300"><span>add</span><wbr><span>Global</span><wbr><span><span>Reaction</span></span></a></div>
@@ -352,53 +352,53 @@
               </div>
             </div>
           </div>
-<a data-name="1448575229%2FFunctions%2F1780278300" anchor-label="addLayer" id="1448575229%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+<a data-name="-502053011%2FFunctions%2F1780278300" anchor-label="addLayer" id="-502053011%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#1448575229%2FFunctions%2F1780278300"><span>add</span><wbr><span><span>Layer</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1448575229%2FFunctions%2F1780278300"></span>
+                  <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-502053011%2FFunctions%2F1780278300"><span>add</span><wbr><span><span>Layer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-502053011%2FFunctions%2F1780278300"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#1448575229%2FFunctions%2F1780278300"><span class="token function">addLayer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">molecule<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-molecule/index.html">Molecule</a><span class="token punctuation">, </span></span><span class="parameter ">layer<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-layer/index.html">Layer</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#-502053011%2FFunctions%2F1780278300"><span class="token function">addLayer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">molecule<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-molecule/index.html">Molecule</a><span class="token punctuation">, </span></span><span class="parameter ">layer<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-layer/index.html">Layer</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1797885296%2FFunctions%2F1780278300" anchor-label="addNode" id="-1797885296%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+<a data-name="1885789216%2FFunctions%2F1780278300" anchor-label="addNode" id="1885789216%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-1797885296%2FFunctions%2F1780278300"><span>add</span><wbr><span><span>Node</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1797885296%2FFunctions%2F1780278300"></span>
+                  <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#1885789216%2FFunctions%2F1780278300"><span>add</span><wbr><span><span>Node</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1885789216%2FFunctions%2F1780278300"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#-1797885296%2FFunctions%2F1780278300"><span class="token function">addNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">position<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#1885789216%2FFunctions%2F1780278300"><span class="token function">addNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">position<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1758393973%2FFunctions%2F1780278300" anchor-label="addTerminator" id="-1758393973%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+<a data-name="-1273923989%2FFunctions%2F1780278300" anchor-label="addTerminator" id="-1273923989%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-508139239%2FFunctions%2F1780278300"><span>add</span><wbr><span><span>Terminator</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1758393973%2FFunctions%2F1780278300"></span>
+                  <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#291018889%2FFunctions%2F1780278300"><span>add</span><wbr><span><span>Terminator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1273923989%2FFunctions%2F1780278300"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#-508139239%2FFunctions%2F1780278300"><span class="token function">addTerminator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">terminator<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-termination-predicate/index.html">TerminationPredicate</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#-1472051650%2FFunctions%2F1780278300"><span class="token function">addTerminator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">terminator<span class="token operator">: </span><span class="token punctuation">(</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#291018889%2FFunctions%2F1780278300"><span class="token function">addTerminator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">terminator<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-termination-predicate/index.html">TerminationPredicate</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#1425279726%2FFunctions%2F1780278300"><span class="token function">addTerminator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">terminator<span class="token operator">: </span><span class="token punctuation">(</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="853735748%2FFunctions%2F1780278300" anchor-label="getDistanceBetweenNodes" id="853735748%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#853735748%2FFunctions%2F1780278300"><span>get</span><wbr><span>Distance</span><wbr><span>Between</span><wbr><span><span>Nodes</span></span></a></div>
@@ -413,7 +413,7 @@
             </div>
           </div>
 <a data-name="7163095%2FFunctions%2F1780278300" anchor-label="getLayer" id="7163095%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#7163095%2FFunctions%2F1780278300"><span>get</span><wbr><span><span>Layer</span></span></a></div>
@@ -428,7 +428,7 @@
             </div>
           </div>
 <a data-name="1490178030%2FFunctions%2F1780278300" anchor-label="getNeighborhood" id="1490178030%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#1490178030%2FFunctions%2F1780278300"><span>get</span><wbr><span><span>Neighborhood</span></span></a></div>
@@ -443,7 +443,7 @@
             </div>
           </div>
 <a data-name="-1965159453%2FFunctions%2F1780278300" anchor-label="getNodeByID" id="-1965159453%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-1965159453%2FFunctions%2F1780278300"><span>get</span><wbr><span>Node</span><wbr><span>By</span><wbr><span><span>ID</span></span></a></div>
@@ -457,23 +457,23 @@
               </div>
             </div>
           </div>
-<a data-name="-1651238615%2FFunctions%2F1780278300" anchor-label="getNodesWithinRange" id="-1651238615%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+<a data-name="1866004415%2FFunctions%2F1780278300" anchor-label="getNodesWithinRange" id="1866004415%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#1778932064%2FFunctions%2F1780278300"><span>get</span><wbr><span>Nodes</span><wbr><span>Within</span><wbr><span><span>Range</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1651238615%2FFunctions%2F1780278300"></span>
+                  <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#2006953741%2FFunctions%2F1780278300"><span>get</span><wbr><span>Nodes</span><wbr><span>Within</span><wbr><span><span>Range</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1866004415%2FFunctions%2F1780278300"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#1778932064%2FFunctions%2F1780278300"><span class="token function">getNodesWithinRange</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">range<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.danilopianini.util/ListSet///PointingToDeclaration/">ListSet</span><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#-1591471235%2FFunctions%2F1780278300"><span class="token function">getNodesWithinRange</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span></span><span class="parameter ">range<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.danilopianini.util/ListSet///PointingToDeclaration/">ListSet</span><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#2006953741%2FFunctions%2F1780278300"><span class="token function">getNodesWithinRange</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span></span><span class="parameter ">range<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.danilopianini.util/ListSet///PointingToDeclaration/">ListSet</span><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#1778932064%2FFunctions%2F1780278300"><span class="token function">getNodesWithinRange</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">range<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.danilopianini.util/ListSet///PointingToDeclaration/">ListSet</span><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-2027080333%2FFunctions%2F1780278300" anchor-label="getPosition" id="-2027080333%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-2027080333%2FFunctions%2F1780278300"><span>get</span><wbr><span><span>Position</span></span></a></div>
@@ -488,7 +488,7 @@
             </div>
           </div>
 <a data-name="-858216167%2FFunctions%2F1780278300" anchor-label="iterator" id="-858216167%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-858216167%2FFunctions%2F1780278300"><span><span>iterator</span></span></a></div>
@@ -502,53 +502,53 @@
               </div>
             </div>
           </div>
-<a data-name="-398796635%2FFunctions%2F1780278300" anchor-label="makePosition" id="-398796635%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+<a data-name="607451140%2FFunctions%2F1780278300" anchor-label="makePosition" id="607451140%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="make-position.html"><span>make</span><wbr><span><span>Position</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-398796635%2FFunctions%2F1780278300"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="607451140%2FFunctions%2F1780278300"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="make-position.html"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>coordinates<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-number/index.html">Number</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="make-position.html"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">coordinates<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-number/index.html">Number</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="make-position.html"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="make-position.html"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-number/index.html">Number</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-number/index.html">Number</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><div class="brief "><p class="paragraph">Creates a new <a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a>.</p></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="make-position.html"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>coordinates<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="make-position.html"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>coordinates<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><br><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="make-position.html"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>coordinates<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-number/index.html">Number</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="make-position.html"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">coordinates<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-number/index.html">Number</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="make-position.html"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="make-position.html"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-number/index.html">Number</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-number/index.html">Number</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><div class="brief "><p class="paragraph">Creates a new <a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="316449590%2FFunctions%2F1780278300" anchor-label="moveNode" id="316449590%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+<a data-name="587325832%2FFunctions%2F1780278300" anchor-label="moveNode" id="587325832%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#316449590%2FFunctions%2F1780278300"><span>move</span><wbr><span><span>Node</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="316449590%2FFunctions%2F1780278300"></span>
+                  <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#587325832%2FFunctions%2F1780278300"><span>move</span><wbr><span><span>Node</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="587325832%2FFunctions%2F1780278300"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#316449590%2FFunctions%2F1780278300"><span class="token function">moveNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">direction<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#587325832%2FFunctions%2F1780278300"><span class="token function">moveNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">direction<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1622421944%2FFunctions%2F1780278300" anchor-label="moveNodeToPosition" id="-1622421944%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+<a data-name="-1292621352%2FFunctions%2F1780278300" anchor-label="moveNodeToPosition" id="-1292621352%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-1622421944%2FFunctions%2F1780278300"><span>move</span><wbr><span>Node</span><wbr><span>To</span><wbr><span><span>Position</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1622421944%2FFunctions%2F1780278300"></span>
+                  <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-1292621352%2FFunctions%2F1780278300"><span>move</span><wbr><span>Node</span><wbr><span>To</span><wbr><span><span>Position</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1292621352%2FFunctions%2F1780278300"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#-1622421944%2FFunctions%2F1780278300"><span class="token function">moveNodeToPosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">newPosition<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-euclidean2-d-environment-with-obstacles/index.html#-1292621352%2FFunctions%2F1780278300"><span class="token function">moveNodeToPosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">newPosition<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1584940072%2FFunctions%2F1780278300" anchor-label="removeGlobalReaction" id="1584940072%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#1584940072%2FFunctions%2F1780278300"><span>remove</span><wbr><span>Global</span><wbr><span><span>Reaction</span></span></a></div>
@@ -563,7 +563,7 @@
             </div>
           </div>
 <a data-name="-1430912856%2FFunctions%2F1780278300" anchor-label="removeNode" id="-1430912856%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-environment-with-obstacles/index.html#-1430912856%2FFunctions%2F1780278300"><span>remove</span><wbr><span><span>Node</span></span></a></div>
@@ -583,17 +583,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

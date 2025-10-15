@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>it.unibo.alchemist.model.geometry.navigationgraph</title>
     <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,22 +25,20 @@
 <link href="../../styles/main.css" rel="Stylesheet">
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 <link href="../../images/logo.svg">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
                     alchemist
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -48,11 +46,11 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-42.3.10        </div>
+42.3.11        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
-                        data-filter=":/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/alldocs">alldocs</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
                         data-role="dropdown-toggle"
@@ -61,24 +59,24 @@
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":/main"
-                                       data-filter=":/main"/>
+                                <input type="checkbox" class="checkbox--input" id=":/alldocs"
+                                       data-filter=":/alldocs"/>
                                 <span class="checkbox--icon"></span>
-                                jvm
+                                alldocs
                             </label>
                         </li>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link"
                    href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
@@ -88,27 +86,29 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="package" id="content" pageIds="alchemist::it.unibo.alchemist.model.geometry.navigationgraph////PointingToDeclaration//-251573632">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="alchemist::it.unibo.alchemist.model.geometry.navigationgraph////PointingToDeclaration//-1814946674">
   <div class="breadcrumbs"><a href="../../index.html">alchemist</a><span class="delimiter">/</span><span class="current">it.unibo.alchemist.model.geometry.navigationgraph</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
@@ -117,138 +117,156 @@
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
-        <div class="table"><a data-name="1177020932%2FClasslikes%2F-251573632" anchor-label="BaseNavigationGraph" id="1177020932%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="1177020932%2FClasslikes%2F-1814946674" anchor-label="BaseNavigationGraph" id="1177020932%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-base-navigation-graph/index.html"><span>Base</span><wbr></wbr><span>Navigation</span><wbr></wbr><span><span>Graph</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1177020932%2FClasslikes%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1177020932%2FClasslikes%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-base-navigation-graph/index.html">BaseNavigationGraph</a><span class="token operator">&lt;</span><a href="-base-navigation-graph/index.html">V</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-vector/index.html">Vector</a><span class="token operator">&lt;</span><a href="-base-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-base-navigation-graph/index.html">A</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-transformation/index.html">Transformation</a><span class="token operator">&lt;</span><a href="-base-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-base-navigation-graph/index.html">N</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-convex-shape/index.html">ConvexShape</a><span class="token operator">&lt;</span><a href="-base-navigation-graph/index.html">V</a><span class="token punctuation">, </span><a href="-base-navigation-graph/index.html">A</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-base-navigation-graph/index.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vertexSupplier<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Supplier.html">Supplier</a><span class="token operator">&lt;</span><a href="-base-navigation-graph/index.html">N</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">edgeSupplier<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Supplier.html">Supplier</a><span class="token operator">&lt;</span><a href="-base-navigation-graph/index.html">E</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">graphType<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span> : <a href="-navigation-graph/index.html">NavigationGraph</a><span class="token operator">&lt;</span><a href="-base-navigation-graph/index.html">V</a><span class="token punctuation">, </span><a href="-base-navigation-graph/index.html">A</a><span class="token punctuation">, </span><a href="-base-navigation-graph/index.html">N</a><span class="token punctuation">, </span><a href="-base-navigation-graph/index.html">E</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">An implementation of <a href="-navigation-graph/index.html">NavigationGraph</a>, deriving from AbstractBaseGraph. The user can specify the GraphType so as to obtain a custom graph (e.g. weighted or not, directed or undirected, etc). AbstractBaseGraph guarantees deterministic ordering for the collection it maintains, as stated in its api documentation. Note that vertices and edges are used as keys inside AbstractBaseGraph, so when choosing their types, you must follow these rules:</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-base-navigation-graph/index.html">BaseNavigationGraph</a><span class="token operator">&lt;</span><a href="-base-navigation-graph/index.html">V</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-vector/index.html">Vector</a><span class="token operator">&lt;</span><a href="-base-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-base-navigation-graph/index.html">A</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-transformation/index.html">Transformation</a><span class="token operator">&lt;</span><a href="-base-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-base-navigation-graph/index.html">N</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-convex-shape/index.html">ConvexShape</a><span class="token operator">&lt;</span><a href="-base-navigation-graph/index.html">V</a><span class="token punctuation">, </span><a href="-base-navigation-graph/index.html">A</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-base-navigation-graph/index.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vertexSupplier<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Supplier.html">Supplier</a><span class="token operator">&lt;</span><a href="-base-navigation-graph/index.html">N</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">edgeSupplier<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Supplier.html">Supplier</a><span class="token operator">&lt;</span><a href="-base-navigation-graph/index.html">E</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">graphType<span class="token operator">: </span>ERROR CLASS: Symbol not found for GraphType</span></span><span class="token punctuation">)</span> : <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt; ERROR CLASS: Symbol not found for AbstractBaseGraph&amp;lt;N, E&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt; ERROR CLASS: Symbol not found for AbstractBaseGraph&lt;N, E&gt;</span>, <a href="-navigation-graph/index.html">NavigationGraph</a><span class="token operator">&lt;</span><a href="-base-navigation-graph/index.html">V</a><span class="token punctuation">, </span><a href="-base-navigation-graph/index.html">A</a><span class="token punctuation">, </span><a href="-base-navigation-graph/index.html">N</a><span class="token punctuation">, </span><a href="-base-navigation-graph/index.html">E</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">An implementation of <a href="-navigation-graph/index.html">NavigationGraph</a>, deriving from AbstractBaseGraph. The user can specify the GraphType so as to obtain a custom graph (e.g. weighted or not, directed or undirected, etc). AbstractBaseGraph guarantees deterministic ordering for the collection it maintains, as stated in its api documentation. Note that vertices and edges are used as keys inside AbstractBaseGraph, so when choosing their types, you must follow these rules:</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-656262525%2FClasslikes%2F-251573632" anchor-label="DirectedEuclidean2DNavigationGraph" id="-656262525%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-656262525%2FClasslikes%2F-1814946674" anchor-label="DirectedEuclidean2DNavigationGraph" id="-656262525%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-directed-euclidean2-d-navigation-graph/index.html"><span>Directed</span><wbr></wbr><span>Euclidean2DNavigation</span><wbr></wbr><span><span>Graph</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-656262525%2FClasslikes%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-656262525%2FClasslikes%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-directed-euclidean2-d-navigation-graph/index.html">DirectedEuclidean2DNavigationGraph</a><span class="token operator"> = </span><a href="-directed-navigation-graph/index.html">DirectedNavigationGraph</a><span class="token operator">&lt;</span><a href="../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../it.unibo.alchemist.model.geometry/-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token punctuation">, </span><a href="../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a><span class="token punctuation">, </span><a href="-euclidean2-d-passage/index.html">Euclidean2DPassage</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A 2D <a href="-directed-navigation-graph/index.html">DirectedNavigationGraph</a>.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-directed-euclidean2-d-navigation-graph/index.html">DirectedEuclidean2DNavigationGraph</a><span class="token operator"> = </span><a href="-directed-navigation-graph/index.html">DirectedNavigationGraph</a><span class="token operator">&lt;</span><a href="../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../it.unibo.alchemist.model.geometry/-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token punctuation">, </span><a href="../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a><span class="token punctuation">, </span><a href="-euclidean2-d-passage/index.html">Euclidean2DPassage</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A 2D <a href="-directed-navigation-graph/index.html">DirectedNavigationGraph</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1880181637%2FClasslikes%2F-251573632" anchor-label="DirectedNavigationGraph" id="-1880181637%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1880181637%2FClasslikes%2F-1814946674" anchor-label="DirectedNavigationGraph" id="-1880181637%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-directed-navigation-graph/index.html"><span>Directed</span><wbr></wbr><span>Navigation</span><wbr></wbr><span><span>Graph</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1880181637%2FClasslikes%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1880181637%2FClasslikes%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-directed-navigation-graph/index.html">DirectedNavigationGraph</a><span class="token operator">&lt;</span><a href="-directed-navigation-graph/index.html">V</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-vector/index.html">Vector</a><span class="token operator">&lt;</span><a href="-directed-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-directed-navigation-graph/index.html">A</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-transformation/index.html">Transformation</a><span class="token operator">&lt;</span><a href="-directed-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-directed-navigation-graph/index.html">N</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-convex-shape/index.html">ConvexShape</a><span class="token operator">&lt;</span><a href="-directed-navigation-graph/index.html">V</a><span class="token punctuation">, </span><a href="-directed-navigation-graph/index.html">A</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-directed-navigation-graph/index.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">edgeClass<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html">Class</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-directed-navigation-graph/index.html">E</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="-base-navigation-graph/index.html">BaseNavigationGraph</a><span class="token operator">&lt;</span><a href="-directed-navigation-graph/index.html">V</a><span class="token punctuation">, </span><a href="-directed-navigation-graph/index.html">A</a><span class="token punctuation">, </span><a href="-directed-navigation-graph/index.html">N</a><span class="token punctuation">, </span><a href="-directed-navigation-graph/index.html">E</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">A directed unweighted <a href="-base-navigation-graph/index.html">BaseNavigationGraph</a>, allowing multiple edges between the same pair of vertices and without self-loops (i.e. edges connecting a node to itself).</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">class </span><a href="-directed-navigation-graph/index.html">DirectedNavigationGraph</a><span class="token operator">&lt;</span><a href="-directed-navigation-graph/index.html">V</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-vector/index.html">Vector</a><span class="token operator">&lt;</span><a href="-directed-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-directed-navigation-graph/index.html">A</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-transformation/index.html">Transformation</a><span class="token operator">&lt;</span><a href="-directed-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-directed-navigation-graph/index.html">N</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-convex-shape/index.html">ConvexShape</a><span class="token operator">&lt;</span><a href="-directed-navigation-graph/index.html">V</a><span class="token punctuation">, </span><a href="-directed-navigation-graph/index.html">A</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-directed-navigation-graph/index.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">edgeClass<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html">Class</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-directed-navigation-graph/index.html">E</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="-base-navigation-graph/index.html">BaseNavigationGraph</a><span class="token operator">&lt;</span><a href="-directed-navigation-graph/index.html">V</a><span class="token punctuation">, </span><a href="-directed-navigation-graph/index.html">A</a><span class="token punctuation">, </span><a href="-directed-navigation-graph/index.html">N</a><span class="token punctuation">, </span><a href="-directed-navigation-graph/index.html">E</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">A directed unweighted <a href="-base-navigation-graph/index.html">BaseNavigationGraph</a>, allowing multiple edges between the same pair of vertices and without self-loops (i.e. edges connecting a node to itself).</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-548889109%2FClasslikes%2F-251573632" anchor-label="Euclidean2DNavigationGraph" id="-548889109%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-548889109%2FClasslikes%2F-1814946674" anchor-label="Euclidean2DNavigationGraph" id="-548889109%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-euclidean2-d-navigation-graph/index.html"><span>Euclidean2DNavigation</span><wbr></wbr><span><span>Graph</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-548889109%2FClasslikes%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-548889109%2FClasslikes%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-euclidean2-d-navigation-graph/index.html">Euclidean2DNavigationGraph</a><span class="token operator"> = </span><a href="-navigation-graph/index.html">NavigationGraph</a><span class="token operator">&lt;</span><a href="../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../it.unibo.alchemist.model.geometry/-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token punctuation">, </span><a href="../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a><span class="token punctuation">, </span><a href="-euclidean2-d-passage/index.html">Euclidean2DPassage</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A <a href="-navigation-graph/index.html">NavigationGraph</a> in an euclidean bidimensional space. Nodes are <a href="../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a>s and edges are <a href="-euclidean2-d-passage/index.html">Euclidean2DPassage</a>s. Using <a href="-euclidean2-d-passage/index.html">Euclidean2DPassage</a>s as edges leads to some overhead (as these store the nodes they connect, when this information is already stored in the navigation graph), but allows to have duplicate edges in opposite directions, which means a node n1 can be connected to another node n2 through a passage whose shape is equal to the one of the passage connecting n2 to n1. The two passages would not result equal because their tail and head would be swapped. On the contrary, if edges were plain segments, the graph would not have allowed to have two edges so that e1.equal(e2).</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-euclidean2-d-navigation-graph/index.html">Euclidean2DNavigationGraph</a><span class="token operator"> = </span><a href="-navigation-graph/index.html">NavigationGraph</a><span class="token operator">&lt;</span><a href="../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../it.unibo.alchemist.model.geometry/-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token punctuation">, </span><a href="../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a><span class="token punctuation">, </span><a href="-euclidean2-d-passage/index.html">Euclidean2DPassage</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A <a href="-navigation-graph/index.html">NavigationGraph</a> in an euclidean bidimensional space. Nodes are <a href="../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a>s and edges are <a href="-euclidean2-d-passage/index.html">Euclidean2DPassage</a>s. Using <a href="-euclidean2-d-passage/index.html">Euclidean2DPassage</a>s as edges leads to some overhead (as these store the nodes they connect, when this information is already stored in the navigation graph), but allows to have duplicate edges in opposite directions, which means a node n1 can be connected to another node n2 through a passage whose shape is equal to the one of the passage connecting n2 to n1. The two passages would not result equal because their tail and head would be swapped. On the contrary, if edges were plain segments, the graph would not have allowed to have two edges so that e1.equal(e2).</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1319278409%2FClasslikes%2F-251573632" anchor-label="Euclidean2DPassage" id="-1319278409%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1319278409%2FClasslikes%2F-1814946674" anchor-label="Euclidean2DPassage" id="-1319278409%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-euclidean2-d-passage/index.html"><span><span>Euclidean2DPassage</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1319278409%2FClasslikes%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1319278409%2FClasslikes%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-euclidean2-d-passage/index.html">Euclidean2DPassage</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>tail<span class="token operator">: </span><a href="../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>head<span class="token operator">: </span><a href="../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>passageShapeOnTail<span class="token operator">: </span><a href="../it.unibo.alchemist.model.geometry/-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Defines a passage between two <a href="../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a>s in an euclidean bidimensional space. The passage is oriented, which means it connects <a href="-euclidean2-d-passage/tail.html">tail</a> to <a href="-euclidean2-d-passage/head.html">head</a>, but the opposite is not necessarily true. <a href="-euclidean2-d-passage/tail.html">tail</a> and <a href="-euclidean2-d-passage/head.html">head</a> can be non-adjacent (there can be some distance between them), this introduces navigation issues as agents may not know which direction to follow when crossing a passage. <a href="-euclidean2-d-passage/passage-shape-on-tail.html">passageShapeOnTail</a> is a <a href="../it.unibo.alchemist.model.geometry/-segment2-d/index.html">Segment2D</a> representing the shape of the passage on <a href="-euclidean2-d-passage/tail.html">tail</a>'s boundary (e.g. in indoor environments, the segment should represent the shape of the door between two rooms). <a href="-euclidean2-d-passage/passage-shape-on-tail.html">passageShapeOnTail</a> must be determined so as to guarantee that <a href="-euclidean2-d-passage/head.html">head</a> is reachable by throwing a ray from any point of the segment in its normal direction. This solves navigation issues as it provides agents with a direction to follow when crossing <a href="-euclidean2-d-passage/index.html">Euclidean2DPassage</a>s (namely, the normal direction to <a href="-euclidean2-d-passage/passage-shape-on-tail.html">passageShapeOnTail</a>).</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-euclidean2-d-passage/index.html">Euclidean2DPassage</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>tail<span class="token operator">: </span><a href="../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>head<span class="token operator">: </span><a href="../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>passageShapeOnTail<span class="token operator">: </span><a href="../it.unibo.alchemist.model.geometry/-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Defines a passage between two <a href="../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a>s in an euclidean bidimensional space. The passage is oriented, which means it connects <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/Euclidean2DPassage//#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.Segment2D[it.unibo.alchemist.model.positions.Euclidean2DPosition]/PointingToCallableParameters(0)/">tail</span> to <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/Euclidean2DPassage//#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.Segment2D[it.unibo.alchemist.model.positions.Euclidean2DPosition]/PointingToCallableParameters(1)/">head</span>, but the opposite is not necessarily true. <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/Euclidean2DPassage//#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.Segment2D[it.unibo.alchemist.model.positions.Euclidean2DPosition]/PointingToCallableParameters(0)/">tail</span> and <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/Euclidean2DPassage//#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.Segment2D[it.unibo.alchemist.model.positions.Euclidean2DPosition]/PointingToCallableParameters(1)/">head</span> can be non-adjacent (there can be some distance between them), this introduces navigation issues as agents may not know which direction to follow when crossing a passage. <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/Euclidean2DPassage//#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.Segment2D[it.unibo.alchemist.model.positions.Euclidean2DPosition]/PointingToCallableParameters(2)/">passageShapeOnTail</span> is a <a href="../it.unibo.alchemist.model.geometry/-segment2-d/index.html">Segment2D</a> representing the shape of the passage on <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/Euclidean2DPassage//#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.Segment2D[it.unibo.alchemist.model.positions.Euclidean2DPosition]/PointingToCallableParameters(0)/">tail</span>'s boundary (e.g. in indoor environments, the segment should represent the shape of the door between two rooms). <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/Euclidean2DPassage//#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.Segment2D[it.unibo.alchemist.model.positions.Euclidean2DPosition]/PointingToCallableParameters(2)/">passageShapeOnTail</span> must be determined so as to guarantee that <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/Euclidean2DPassage//#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.Segment2D[it.unibo.alchemist.model.positions.Euclidean2DPosition]/PointingToCallableParameters(1)/">head</span> is reachable by throwing a ray from any point of the segment in its normal direction. This solves navigation issues as it provides agents with a direction to follow when crossing <a href="-euclidean2-d-passage/index.html">Euclidean2DPassage</a>s (namely, the normal direction to <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/Euclidean2DPassage//#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.ConvexPolygon#it.unibo.alchemist.model.geometry.Segment2D[it.unibo.alchemist.model.positions.Euclidean2DPosition]/PointingToCallableParameters(2)/">passageShapeOnTail</span>).</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="697149350%2FClasslikes%2F-251573632" anchor-label="ExtendableConvexPolygonInEnvironment" id="697149350%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="697149350%2FClasslikes%2F-1814946674" anchor-label="ExtendableConvexPolygonInEnvironment" id="697149350%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-extendable-convex-polygon-in-environment/index.html"><span>Extendable</span><wbr></wbr><span>Convex</span><wbr></wbr><span>Polygon</span><wbr></wbr><span>In</span><wbr></wbr><span><span>Environment</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="697149350%2FClasslikes%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="697149350%2FClasslikes%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-extendable-convex-polygon-in-environment/index.html">ExtendableConvexPolygonInEnvironment</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vertices<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><a href="../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">origin<span class="token operator">: </span><a href="../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">awtObstacles<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">Shape</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="../it.unibo.alchemist.model.geometry/-awt-mutable-convex-polygon/index.html">AwtMutableConvexPolygon</a>, <a href="../it.unibo.alchemist.model.geometry/-extendable-convex-polygon/index.html">ExtendableConvexPolygon</a></div><div class="brief "><p class="paragraph">An <a href="../it.unibo.alchemist.model.geometry/-extendable-convex-polygon/index.html">ExtendableConvexPolygon</a> located inside an environment with obstacles. Obstacles, as well as the environment's boundaries, are taken into account when the polygon is extended (i.e. the polygon is prevented from intersecting an obstacle or growing beyond such boundaries). A rectangular region is assumed, its <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/ExtendableConvexPolygonInEnvironment/origin/#/PointingToDeclaration/">origin</span>, <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/ExtendableConvexPolygonInEnvironment/width/#/PointingToDeclaration/">width</span> and <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/ExtendableConvexPolygonInEnvironment/height/#/PointingToDeclaration/">height</span> are to be specified. Both <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">java.awt.Shape</a>s and <a href="../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a>s can be specified as obstacles (see <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/ExtendableConvexPolygonInEnvironment/awtObstacles/#/PointingToDeclaration/">awtObstacles</span> and <a href="-extendable-convex-polygon-in-environment/polygonal-obstacles.html">polygonalObstacles</a>). This class is explicitly designed for the algorithm contained in <a href="-navi-gator/generate-navigation-graph.html">NaviGator.generateNavigationGraph</a>. TODO(improve the quality of this class)</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">class </span><a href="-extendable-convex-polygon-in-environment/index.html">ExtendableConvexPolygonInEnvironment</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vertices<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><a href="../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">origin<span class="token operator">: </span><a href="../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">awtObstacles<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">Shape</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="../it.unibo.alchemist.model.geometry/-awt-mutable-convex-polygon/index.html">AwtMutableConvexPolygon</a>, <a href="../it.unibo.alchemist.model.geometry/-extendable-convex-polygon/index.html">ExtendableConvexPolygon</a></div><div class="brief "><p class="paragraph">An <a href="../it.unibo.alchemist.model.geometry/-extendable-convex-polygon/index.html">ExtendableConvexPolygon</a> located inside an environment with obstacles. Obstacles, as well as the environment's boundaries, are taken into account when the polygon is extended (i.e. the polygon is prevented from intersecting an obstacle or growing beyond such boundaries). A rectangular region is assumed, its <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/ExtendableConvexPolygonInEnvironment//#kotlin.collections.MutableList[it.unibo.alchemist.model.positions.Euclidean2DPosition]#it.unibo.alchemist.model.positions.Euclidean2DPosition#kotlin.Double#kotlin.Double#kotlin.collections.List[java.awt.Shape]/PointingToCallableParameters(1)/">origin</span>, <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/ExtendableConvexPolygonInEnvironment//#kotlin.collections.MutableList[it.unibo.alchemist.model.positions.Euclidean2DPosition]#it.unibo.alchemist.model.positions.Euclidean2DPosition#kotlin.Double#kotlin.Double#kotlin.collections.List[java.awt.Shape]/PointingToCallableParameters(2)/">width</span> and <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/ExtendableConvexPolygonInEnvironment//#kotlin.collections.MutableList[it.unibo.alchemist.model.positions.Euclidean2DPosition]#it.unibo.alchemist.model.positions.Euclidean2DPosition#kotlin.Double#kotlin.Double#kotlin.collections.List[java.awt.Shape]/PointingToCallableParameters(3)/">height</span> are to be specified. Both <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">java.awt.Shape</a>s and <a href="../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a>s can be specified as obstacles (see <span data-unresolved-link="it.unibo.alchemist.model.geometry.navigationgraph/ExtendableConvexPolygonInEnvironment//#kotlin.collections.MutableList[it.unibo.alchemist.model.positions.Euclidean2DPosition]#it.unibo.alchemist.model.positions.Euclidean2DPosition#kotlin.Double#kotlin.Double#kotlin.collections.List[java.awt.Shape]/PointingToCallableParameters(4)/">awtObstacles</span> and <a href="-extendable-convex-polygon-in-environment/polygonal-obstacles.html">polygonalObstacles</a>). This class is explicitly designed for the algorithm contained in <a href="-navi-gator/generate-navigation-graph.html">NaviGator.generateNavigationGraph</a>. TODO(improve the quality of this class)</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1801166317%2FClasslikes%2F-251573632" anchor-label="NavigationGraph" id="-1801166317%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1801166317%2FClasslikes%2F-1814946674" anchor-label="NavigationGraph" id="-1801166317%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-navigation-graph/index.html"><span>Navigation</span><wbr></wbr><span><span>Graph</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1801166317%2FClasslikes%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1801166317%2FClasslikes%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-navigation-graph/index.html">NavigationGraph</a><span class="token operator">&lt;</span><a href="-navigation-graph/index.html">V</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-vector/index.html">Vector</a><span class="token operator">&lt;</span><a href="-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-navigation-graph/index.html">A</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-transformation/index.html">Transformation</a><span class="token operator">&lt;</span><a href="-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-navigation-graph/index.html">N</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-convex-shape/index.html">ConvexShape</a><span class="token operator">&lt;</span><a href="-navigation-graph/index.html">V</a><span class="token punctuation">, </span><a href="-navigation-graph/index.html">A</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-navigation-graph/index.html">E</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A graph used for navigation purposes. Nodes are <a href="../it.unibo.alchemist.model.geometry/-convex-shape/index.html">ConvexShape</a>s, usually representing portions of an environment which are traversable by agents (the advantage of such representation is that agents can freely walk around within a convex area, as it is guaranteed that no obstacle will be found). Note that implementations of this graph must guarantee predictable ordering for the collections they maintain, as reproducibility is a key feature of Alchemist. Be also aware that, by contract, the org.jgrapht.Graph interface does not allow duplicated edges (see org.jgrapht.Graph.addEdge).</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-navigation-graph/index.html">NavigationGraph</a><span class="token operator">&lt;</span><a href="-navigation-graph/index.html">V</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-vector/index.html">Vector</a><span class="token operator">&lt;</span><a href="-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-navigation-graph/index.html">A</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-transformation/index.html">Transformation</a><span class="token operator">&lt;</span><a href="-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-navigation-graph/index.html">N</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-convex-shape/index.html">ConvexShape</a><span class="token operator">&lt;</span><a href="-navigation-graph/index.html">V</a><span class="token punctuation">, </span><a href="-navigation-graph/index.html">A</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-navigation-graph/index.html">E</a><span class="token operator">&gt;</span> : <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt; ERROR CLASS: Symbol not found for org.jgrapht.Graph&amp;lt;N, E&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt; ERROR CLASS: Symbol not found for org.jgrapht.Graph&lt;N, E&gt;</span></div><div class="brief "><p class="paragraph">A graph used for navigation purposes. Nodes are <a href="../it.unibo.alchemist.model.geometry/-convex-shape/index.html">ConvexShape</a>s, usually representing portions of an environment which are traversable by agents (the advantage of such representation is that agents can freely walk around within a convex area, as it is guaranteed that no obstacle will be found). Note that implementations of this graph must guarantee predictable ordering for the collections they maintain, as reproducibility is a key feature of Alchemist. Be also aware that, by contract, the org.jgrapht.Graph interface does not allow duplicated edges (see org.jgrapht.Graph.addEdge).</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1942762262%2FClasslikes%2F-251573632" anchor-label="NaviGator" id="1942762262%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1942762262%2FClasslikes%2F-1814946674" anchor-label="NaviGator" id="1942762262%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-navi-gator/index.html"><span>Navi</span><wbr></wbr><span><span>Gator</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1942762262%2FClasslikes%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1942762262%2FClasslikes%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-navi-gator/index.html">NaviGator</a></div><div class="brief "><p class="paragraph">TODO(improve the quality of this algorithm)</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">object </span><a href="-navi-gator/index.html">NaviGator</a></div><div class="brief "><p class="paragraph">TODO(improve the quality of this algorithm)</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1102589460%2FClasslikes%2F-251573632" anchor-label="UndirectedNavigationGraph" id="1102589460%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1102589460%2FClasslikes%2F-1814946674" anchor-label="UndirectedNavigationGraph" id="1102589460%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-undirected-navigation-graph/index.html"><span>Undirected</span><wbr></wbr><span>Navigation</span><wbr></wbr><span><span>Graph</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1102589460%2FClasslikes%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1102589460%2FClasslikes%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-undirected-navigation-graph/index.html">UndirectedNavigationGraph</a><span class="token operator">&lt;</span><a href="-undirected-navigation-graph/index.html">V</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-vector/index.html">Vector</a><span class="token operator">&lt;</span><a href="-undirected-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-undirected-navigation-graph/index.html">A</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-transformation/index.html">Transformation</a><span class="token operator">&lt;</span><a href="-undirected-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-undirected-navigation-graph/index.html">N</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-convex-shape/index.html">ConvexShape</a><span class="token operator">&lt;</span><a href="-undirected-navigation-graph/index.html">V</a><span class="token punctuation">, </span><a href="-undirected-navigation-graph/index.html">A</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-undirected-navigation-graph/index.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">edgeClass<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html">Class</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-undirected-navigation-graph/index.html">E</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="-base-navigation-graph/index.html">BaseNavigationGraph</a><span class="token operator">&lt;</span><a href="-undirected-navigation-graph/index.html">V</a><span class="token punctuation">, </span><a href="-undirected-navigation-graph/index.html">A</a><span class="token punctuation">, </span><a href="-undirected-navigation-graph/index.html">N</a><span class="token punctuation">, </span><a href="-undirected-navigation-graph/index.html">E</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">An undirected unweighted <a href="-base-navigation-graph/index.html">BaseNavigationGraph</a>, allowing multiple edges between the same pair of vertices and without self-loops (i.e. edges connecting a node to itself).</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">class </span><a href="-undirected-navigation-graph/index.html">UndirectedNavigationGraph</a><span class="token operator">&lt;</span><a href="-undirected-navigation-graph/index.html">V</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-vector/index.html">Vector</a><span class="token operator">&lt;</span><a href="-undirected-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-undirected-navigation-graph/index.html">A</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-transformation/index.html">Transformation</a><span class="token operator">&lt;</span><a href="-undirected-navigation-graph/index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-undirected-navigation-graph/index.html">N</a><span class="token operator"> : </span><a href="../it.unibo.alchemist.model.geometry/-convex-shape/index.html">ConvexShape</a><span class="token operator">&lt;</span><a href="-undirected-navigation-graph/index.html">V</a><span class="token punctuation">, </span><a href="-undirected-navigation-graph/index.html">A</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="-undirected-navigation-graph/index.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">edgeClass<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html">Class</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-undirected-navigation-graph/index.html">E</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="-base-navigation-graph/index.html">BaseNavigationGraph</a><span class="token operator">&lt;</span><a href="-undirected-navigation-graph/index.html">V</a><span class="token punctuation">, </span><a href="-undirected-navigation-graph/index.html">A</a><span class="token punctuation">, </span><a href="-undirected-navigation-graph/index.html">N</a><span class="token punctuation">, </span><a href="-undirected-navigation-graph/index.html">E</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">An undirected unweighted <a href="-base-navigation-graph/index.html">BaseNavigationGraph</a>, allowing multiple edges between the same pair of vertices and without self-loops (i.e. edges connecting a node to itself).</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -259,17 +277,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

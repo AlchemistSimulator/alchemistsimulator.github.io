@@ -1,22 +1,22 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Abstract2DEnvironment</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
@@ -24,35 +24,33 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
 <link href="../../../images/logo.svg">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet"></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
                     alchemist-full
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">42.3.10
+        <div class="library-version" id="library-version">42.3.11
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-implementationbase/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":alchemist-implementationbase/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -66,7 +64,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -74,38 +72,40 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist-full
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-implementationbase::it.unibo.alchemist.model.environments/Abstract2DEnvironment///PointingToDeclaration//476461854">
   <div class="breadcrumbs"><a href="../../index.html">alchemist-implementationbase</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.environments</a><span class="delimiter">/</span><span class="current">Abstract2DEnvironment</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Abstract2DEnvironment</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-implementationbase/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">Abstract2DEnvironment</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="index.html">P</a><span class="token operator"> : </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-position2-d/index.html">Position2D</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator">&gt;</span> : <a href="../-abstract-environment/index.html">AbstractEnvironment</a><span class="token operator">&lt;</span><a href="../-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../-abstract-environment/index.html">P</a><span class="token operator">&gt; </span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/077a866cdc7de0c5d1f807758b1f4fb56f130435/alchemist-implementationbase/src/main/java/it/unibo/alchemist/model/environments/Abstract2DEnvironment.java#L32">source</a>)</span></span></div><p class="paragraph">Models a bidimensional environment.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>&lt;T&gt;</span></span></u></div></span></div><div><div class="title"><p class="paragraph">concentration type</p></div></div></div></div><div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>&lt;P&gt;</span></span></u></div></span></div><div><div class="title"><p class="paragraph"><a href="../../../alchemist-api/it.unibo.alchemist.model/-position2-d/index.html">Position2D</a> type</p></div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-implementationbase/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">Abstract2DEnvironment</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="index.html">P</a><span class="token operator"> : </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-position2-d/index.html">Position2D</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator">&gt;</span> : <a href="../-abstract-environment/index.html">AbstractEnvironment</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="index.html">P</a><span class="token operator">&gt; </span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/e077af6e3177ee9499ab8bfc0331a1b7c19353b0/alchemist-implementationbase/src/main/java/it/unibo/alchemist/model/environments/Abstract2DEnvironment.java#L32">source</a>)</span></span></div><p class="paragraph">Models a bidimensional environment.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>&lt;T&gt;</span></span></u></div></span></div><div><div class="title"><p class="paragraph">concentration type</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>&lt;P&gt;</span></span></u></div></span></div><div><div class="title"><p class="paragraph"><a href="../../../alchemist-api/it.unibo.alchemist.model/-position2-d/index.html">Position2D</a> type</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
     <div class="tabs-section-body">
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="538163487%2FProperties%2F476461854" anchor-label="incarnation" id="538163487%2FProperties%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-abstract-environment/incarnation.html"><span><span>incarnation</span></span></a></div>
@@ -120,7 +120,7 @@
             </div>
           </div>
 <a data-name="1347621041%2FProperties%2F476461854" anchor-label="linkingRule" id="1347621041%2FProperties%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-abstract-environment/linking-rule.html"><span>linking</span><wbr><span><span>Rule</span></span></a></div>
@@ -135,7 +135,7 @@
             </div>
           </div>
 <a data-name="548798820%2FProperties%2F476461854" anchor-label="nodes" id="548798820%2FProperties%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-abstract-environment/nodes.html"><span><span>nodes</span></span></a></div>
@@ -150,7 +150,7 @@
             </div>
           </div>
 <a data-name="1429072820%2FProperties%2F476461854" anchor-label="simulationOrNull" id="1429072820%2FProperties%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-abstract-environment/simulation-or-null.html"><span>simulation</span><wbr><span>Or</span><wbr><span><span>Null</span></span></a></div>
@@ -167,9 +167,9 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="1651958214%2FFunctions%2F476461854" anchor-label="addGlobalReaction" id="1651958214%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#135842141%2FFunctions%2F476461854"><span>add</span><wbr><span>Global</span><wbr><span><span>Reaction</span></span></a></div>
@@ -184,7 +184,7 @@
             </div>
           </div>
 <a data-name="-220804474%2FFunctions%2F476461854" anchor-label="addLayer" id="-220804474%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#382421865%2FFunctions%2F476461854"><span>add</span><wbr><span><span>Layer</span></span></a></div>
@@ -199,7 +199,7 @@
             </div>
           </div>
 <a data-name="-878993946%2FFunctions%2F476461854" anchor-label="addNode" id="-878993946%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1935796528%2FFunctions%2F476461854"><span>add</span><wbr><span><span>Node</span></span></a></div>
@@ -214,7 +214,7 @@
             </div>
           </div>
 <a data-name="-1005692346%2FFunctions%2F476461854" anchor-label="addTerminator" id="-1005692346%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1454169907%2FFunctions%2F476461854"><span>add</span><wbr><span><span>Terminator</span></span></a></div>
@@ -229,7 +229,7 @@
             </div>
           </div>
 <a data-name="10796373%2FFunctions%2F476461854" anchor-label="allShortestHopPaths" id="10796373%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.util/-environments/all-shortest-hop-paths.html"><span>all</span><wbr><span>Shortest</span><wbr><span>Hop</span><wbr><span><span>Paths</span></span></a></div>
@@ -244,7 +244,7 @@
             </div>
           </div>
 <a data-name="212303912%2FFunctions%2F476461854" anchor-label="allSubNetworks" id="212303912%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.util/-environments/all-sub-networks.html"><span>all</span><wbr><span>Sub</span><wbr><span><span>Networks</span></span></a></div>
@@ -259,7 +259,7 @@
             </div>
           </div>
 <a data-name="386580527%2FFunctions%2F476461854" anchor-label="allSubNetworksByNode" id="386580527%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.util/-environments/all-sub-networks-by-node.html"><span>all</span><wbr><span>Sub</span><wbr><span>Networks</span><wbr><span>By</span><wbr><span><span>Node</span></span></a></div>
@@ -274,7 +274,7 @@
             </div>
           </div>
 <a data-name="1438139552%2FFunctions%2F476461854" anchor-label="allSubNetworksByNodeWithHopDistance" id="1438139552%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.util/-environments/all-sub-networks-by-node-with-hop-distance.html"><span>all</span><wbr><span>Sub</span><wbr><span>Networks</span><wbr><span>By</span><wbr><span>Node</span><wbr><span>With</span><wbr><span>Hop</span><wbr><span><span>Distance</span></span></a></div>
@@ -289,7 +289,7 @@
             </div>
           </div>
 <a data-name="1847987289%2FFunctions%2F476461854" anchor-label="allSubNetworksWithHopDistance" id="1847987289%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.util/-environments/all-sub-networks-with-hop-distance.html"><span>all</span><wbr><span>Sub</span><wbr><span>Networks</span><wbr><span>With</span><wbr><span>Hop</span><wbr><span><span>Distance</span></span></a></div>
@@ -304,7 +304,7 @@
             </div>
           </div>
 <a data-name="-1724349495%2FFunctions%2F476461854" anchor-label="forEach" id="-1724349495%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1211183614%2FFunctions%2F476461854"><span>for</span><wbr><span><span>Each</span></span></a></div>
@@ -313,13 +313,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-implementationbase/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1211183614%2FFunctions%2F476461854"><span class="token function">forEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html">Consumer</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-655675525%2FFunctions%2F476461854"><span class="token function">forEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html">Consumer</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Iterable.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-implementationbase/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1211183614%2FFunctions%2F476461854"><span class="token function">forEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html">Consumer</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-655675525%2FFunctions%2F476461854"><span class="token function">forEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html">Consumer</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Iterable.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1371638940%2FFunctions%2F476461854" anchor-label="getDimensions" id="-1371638940%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-dimensions.html"><span>get</span><wbr><span><span>Dimensions</span></span></a></div>
@@ -334,7 +334,7 @@
             </div>
           </div>
 <a data-name="-508613674%2FFunctions%2F476461854" anchor-label="getDistanceBetweenNodes" id="-508613674%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1661170052%2FFunctions%2F476461854"><span>get</span><wbr><span>Distance</span><wbr><span>Between</span><wbr><span><span>Nodes</span></span></a></div>
@@ -349,7 +349,7 @@
             </div>
           </div>
 <a data-name="-861073342%2FFunctions%2F476461854" anchor-label="getGlobalReactions" id="-861073342%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#586939386%2FFunctions%2F476461854"><span>get</span><wbr><span>Global</span><wbr><span><span>Reactions</span></span></a></div>
@@ -364,7 +364,7 @@
             </div>
           </div>
 <a data-name="-271663285%2FFunctions%2F476461854" anchor-label="getIncarnation" id="-271663285%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-271663285%2FFunctions%2F476461854"><span>get</span><wbr><span><span>Incarnation</span></span></a></div>
@@ -379,7 +379,7 @@
             </div>
           </div>
 <a data-name="-82944570%2FFunctions%2F476461854" anchor-label="getLayer" id="-82944570%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#7163095%2FFunctions%2F476461854"><span>get</span><wbr><span><span>Layer</span></span></a></div>
@@ -394,7 +394,7 @@
             </div>
           </div>
 <a data-name="1319862726%2FFunctions%2F476461854" anchor-label="getLayers" id="1319862726%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1815356713%2FFunctions%2F476461854"><span>get</span><wbr><span><span>Layers</span></span></a></div>
@@ -409,7 +409,7 @@
             </div>
           </div>
 <a data-name="537794269%2FFunctions%2F476461854" anchor-label="getLinkingRule" id="537794269%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#537794269%2FFunctions%2F476461854"><span>get</span><wbr><span>Linking</span><wbr><span><span>Rule</span></span></a></div>
@@ -424,7 +424,7 @@
             </div>
           </div>
 <a data-name="1529022566%2FFunctions%2F476461854" anchor-label="getNeighborhood" id="1529022566%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-406055620%2FFunctions%2F476461854"><span>get</span><wbr><span><span>Neighborhood</span></span></a></div>
@@ -439,7 +439,7 @@
             </div>
           </div>
 <a data-name="539572970%2FFunctions%2F476461854" anchor-label="getNodeByID" id="539572970%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#98689614%2FFunctions%2F476461854"><span>get</span><wbr><span>Node</span><wbr><span>By</span><wbr><span><span>ID</span></span></a></div>
@@ -454,7 +454,7 @@
             </div>
           </div>
 <a data-name="-86023178%2FFunctions%2F476461854" anchor-label="getNodeCount" id="-86023178%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-2039834476%2FFunctions%2F476461854"><span>get</span><wbr><span>Node</span><wbr><span><span>Count</span></span></a></div>
@@ -469,7 +469,7 @@
             </div>
           </div>
 <a data-name="34347152%2FFunctions%2F476461854" anchor-label="getNodes" id="34347152%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#34347152%2FFunctions%2F476461854"><span>get</span><wbr><span><span>Nodes</span></span></a></div>
@@ -484,7 +484,7 @@
             </div>
           </div>
 <a data-name="-1709872808%2FFunctions%2F476461854" anchor-label="getNodesWithinRange" id="-1709872808%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1592659813%2FFunctions%2F476461854"><span>get</span><wbr><span>Nodes</span><wbr><span>Within</span><wbr><span><span>Range</span></span></a></div>
@@ -499,7 +499,7 @@
             </div>
           </div>
 <a data-name="2085135198%2FFunctions%2F476461854" anchor-label="getOffset" id="2085135198%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-offset.html"><span>get</span><wbr><span><span>Offset</span></span></a></div>
@@ -514,7 +514,7 @@
             </div>
           </div>
 <a data-name="1581168966%2FFunctions%2F476461854" anchor-label="getPosition" id="1581168966%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1653473665%2FFunctions%2F476461854"><span>get</span><wbr><span><span>Position</span></span></a></div>
@@ -529,7 +529,7 @@
             </div>
           </div>
 <a data-name="987711782%2FFunctions%2F476461854" anchor-label="getSimulation" id="987711782%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1912083378%2FFunctions%2F476461854"><span>get</span><wbr><span><span>Simulation</span></span></a></div>
@@ -544,7 +544,7 @@
             </div>
           </div>
 <a data-name="-1434722040%2FFunctions%2F476461854" anchor-label="getSimulationOrNull" id="-1434722040%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1434722040%2FFunctions%2F476461854"><span>get</span><wbr><span>Simulation</span><wbr><span>Or</span><wbr><span><span>Null</span></span></a></div>
@@ -559,7 +559,7 @@
             </div>
           </div>
 <a data-name="309879984%2FFunctions%2F476461854" anchor-label="getSize" id="309879984%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-size.html"><span>get</span><wbr><span><span>Size</span></span></a></div>
@@ -574,7 +574,7 @@
             </div>
           </div>
 <a data-name="567783464%2FFunctions%2F476461854" anchor-label="getSizeInDistanceUnits" id="567783464%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1481381747%2FFunctions%2F476461854"><span>get</span><wbr><span>Size</span><wbr><span>In</span><wbr><span>Distance</span><wbr><span><span>Units</span></span></a></div>
@@ -589,7 +589,7 @@
             </div>
           </div>
 <a data-name="206263927%2FFunctions%2F476461854" anchor-label="isNetworkSegmented" id="206263927%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.util/-environments/is-network-segmented.html"><span>is</span><wbr><span>Network</span><wbr><span><span>Segmented</span></span></a></div>
@@ -604,7 +604,7 @@
             </div>
           </div>
 <a data-name="1306815370%2FFunctions%2F476461854" anchor-label="isTerminated" id="1306815370%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#187765726%2FFunctions%2F476461854"><span>is</span><wbr><span><span>Terminated</span></span></a></div>
@@ -619,7 +619,7 @@
             </div>
           </div>
 <a data-name="1937663186%2FFunctions%2F476461854" anchor-label="iterator" id="1937663186%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-abstract-environment/iterator.html"><span><span>iterator</span></span></a></div>
@@ -634,7 +634,7 @@
             </div>
           </div>
 <a data-name="-2114112611%2FFunctions%2F476461854" anchor-label="makePosition" id="-2114112611%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-2114112611%2FFunctions%2F476461854"><span>make</span><wbr><span><span>Position</span></span></a></div>
@@ -649,7 +649,7 @@
             </div>
           </div>
 <a data-name="473762496%2FFunctions%2F476461854" anchor-label="moveNodeToPosition" id="473762496%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="move-node-to-position.html"><span>move</span><wbr><span>Node</span><wbr><span>To</span><wbr><span><span>Position</span></span></a></div>
@@ -664,7 +664,7 @@
             </div>
           </div>
 <a data-name="-1706427462%2FFunctions%2F476461854" anchor-label="networkDiameter" id="-1706427462%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.util/-environments/network-diameter.html"><span>network</span><wbr><span><span>Diameter</span></span></a></div>
@@ -679,7 +679,7 @@
             </div>
           </div>
 <a data-name="1942813173%2FFunctions%2F476461854" anchor-label="networkDiameterByHopDistance" id="1942813173%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.util/-environments/network-diameter-by-hop-distance.html"><span>network</span><wbr><span>Diameter</span><wbr><span>By</span><wbr><span>Hop</span><wbr><span><span>Distance</span></span></a></div>
@@ -693,23 +693,8 @@
               </div>
             </div>
           </div>
-<a data-name="-1985979693%2FFunctions%2F476461854" anchor-label="randomElement" id="-1985979693%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="../../it.unibo.alchemist.util/-iterables/random-element.html"><span>random</span><wbr><span><span>Element</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1985979693%2FFunctions%2F476461854"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-implementationbase/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html">R</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html">R</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html"><span class="token function">randomElement</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">randomGenerator<span class="token operator">: </span><a href="https://javadoc.io/doc/org.apache.commons/commons-math3/3.6.1/org/apache/commons/math3/random/RandomGenerator.html">RandomGenerator</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.util/-iterables/random-element.html">R</a></div><div class="brief "><p class="paragraph">Returns a random element of the Iterable using the provided <a href="../../it.unibo.alchemist.util/-iterables/random-element.html">randomGenerator</a>.</p></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
 <a data-name="301175354%2FFunctions%2F476461854" anchor-label="removeGlobalReaction" id="301175354%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-14988554%2FFunctions%2F476461854"><span>remove</span><wbr><span>Global</span><wbr><span><span>Reaction</span></span></a></div>
@@ -724,7 +709,7 @@
             </div>
           </div>
 <a data-name="-438655430%2FFunctions%2F476461854" anchor-label="removeNode" id="-438655430%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1737627786%2FFunctions%2F476461854"><span>remove</span><wbr><span><span>Node</span></span></a></div>
@@ -739,7 +724,7 @@
             </div>
           </div>
 <a data-name="-1248698810%2FFunctions%2F476461854" anchor-label="setLinkingRule" id="-1248698810%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1248698810%2FFunctions%2F476461854"><span>set</span><wbr><span>Linking</span><wbr><span><span>Rule</span></span></a></div>
@@ -754,7 +739,7 @@
             </div>
           </div>
 <a data-name="-1614258802%2FFunctions%2F476461854" anchor-label="setSimulation" id="-1614258802%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1650163104%2FFunctions%2F476461854"><span>set</span><wbr><span><span>Simulation</span></span></a></div>
@@ -768,23 +753,8 @@
               </div>
             </div>
           </div>
-<a data-name="2073076827%2FFunctions%2F476461854" anchor-label="shuffled" id="2073076827%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html"><span><span>shuffled</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2073076827%2FFunctions%2F476461854"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-implementationbase/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html">R</a><span class="token operator">&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html">R</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html"><span class="token function">shuffled</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">randomGenerator<span class="token operator">: </span><a href="https://javadoc.io/doc/org.apache.commons/commons-math3/3.6.1/org/apache/commons/math3/random/RandomGenerator.html">RandomGenerator</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.util/-iterables/shuffled.html">R</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Fisher–Yates shuffle algorithm using a <a href="https://javadoc.io/doc/org.apache.commons/commons-math3/3.6.1/org/apache/commons/math3/random/RandomGenerator.html">RandomGenerator</a>. More information <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">on Wikipedia</a>.</p></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
 <a data-name="763961884%2FFunctions%2F476461854" anchor-label="spliterator" id="763961884%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-abstract-environment/spliterator.html"><span><span>spliterator</span></span></a></div>
@@ -799,7 +769,7 @@
             </div>
           </div>
 <a data-name="-1909129063%2FFunctions%2F476461854" anchor-label="toString" id="-1909129063%2FFunctions%2F476461854" data-filterable-set=":alchemist-implementationbase/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-implementationbase/main" data-filterable-set=":alchemist-implementationbase/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-abstract-environment/to-string.html"><span>to</span><wbr><span><span>String</span></span></a></div>
@@ -819,17 +789,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

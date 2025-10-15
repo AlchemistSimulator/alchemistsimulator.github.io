@@ -1,22 +1,22 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Companion</title>
-<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
@@ -24,35 +24,33 @@
 <link href="../../../../styles/main.css" rel="Stylesheet">
 <link href="../../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../../scripts/prism.js" async></script>
 <script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
 <link href="../../../../images/logo.svg">
 <link href="../../../../styles/logo-styles.css" rel="Stylesheet"></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../../index.html" tabindex="1">
                     alchemist-full
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">42.3.10
+        <div class="library-version" id="library-version">42.3.11
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-cognitive-agents/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":alchemist-cognitive-agents/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -66,7 +64,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -74,38 +72,40 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist-full
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-cognitive-agents::it.unibo.alchemist.model.cognitive.impact.cognitive/AbstractCognitiveCharacteristic.Companion///PointingToDeclaration//700932220">
   <div class="breadcrumbs"><a href="../../../index.html">alchemist-cognitive-agents</a><span class="delimiter">/</span><a href="../../index.html">it.unibo.alchemist.model.cognitive.impact.cognitive</a><span class="delimiter">/</span><a href="../index.html">AbstractCognitiveCharacteristic</a><span class="delimiter">/</span><span class="current">Companion</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Companion</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-cognitive-agents/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">Companion</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/077a866cdc7de0c5d1f807758b1f4fb56f130435/alchemist-cognitive-agents/src/main/kotlin/it/unibo/alchemist/model/cognitive/impact/cognitive/AbstractCognitiveCharacteristic.kt#L27">source</a>)</span></span></div><p class="paragraph">Cognitive characteristics are modeled following the principles of <a href="https://doi.org/10.1007/978-3-662-58611-2_2">Network Oriented Modeling</a>, which allow characteristics to influence each other and evolve during the simulation. Each characteristic is modeled as an equation; weights and constant values used in equations are defined below. These are described in the <a href="https://doi.org/10.1007/978-3-319-70647-4_11">IMPACT model</a>.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-cognitive-agents/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">Companion</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/e077af6e3177ee9499ab8bfc0331a1b7c19353b0/alchemist-cognitive-agents/src/main/kotlin/it/unibo/alchemist/model/cognitive/impact/cognitive/AbstractCognitiveCharacteristic.kt#L27">source</a>)</span></span></div><p class="paragraph">Cognitive characteristics are modeled following the principles of <a href="https://doi.org/10.1007/978-3-662-58611-2_2">Network Oriented Modeling</a>, which allow characteristics to influence each other and evolve during the simulation. Each characteristic is modeled as an equation; weights and constant values used in equations are defined below. These are described in the <a href="https://doi.org/10.1007/978-3-319-70647-4_11">IMPACT model</a>.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="343118956%2FProperties%2F700932220" anchor-label="advancedLogisticSigma" id="343118956%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="advanced-logistic-sigma.html"><span>advanced</span><wbr><span>Logistic</span><wbr><span><span>Sigma</span></span></a></div>
@@ -114,13 +114,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-cognitive-agents/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="advanced-logistic-sigma.html">advancedLogisticSigma</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Sigma of the advancedLogistic function used to compute <a href="../../-fear/index.html">Fear</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-cognitive-agents/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="advanced-logistic-sigma.html">advancedLogisticSigma</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Sigma of the <a href="../../../../alchemist-implementationbase/it.unibo.alchemist.util.math/index.html">advancedLogistic</a> function used to compute <a href="../../-fear/index.html">Fear</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="298390857%2FProperties%2F700932220" anchor-label="advancedLogisticTau" id="298390857%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="advanced-logistic-tau.html"><span>advanced</span><wbr><span>Logistic</span><wbr><span><span>Tau</span></span></a></div>
@@ -129,13 +129,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-cognitive-agents/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="advanced-logistic-tau.html">advancedLogisticTau</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Tau of the advancedLogistic function used to compute <a href="../../-fear/index.html">Fear</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-cognitive-agents/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="advanced-logistic-tau.html">advancedLogisticTau</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Tau of the <a href="../../../../alchemist-implementationbase/it.unibo.alchemist.util.math/index.html">advancedLogistic</a> function used to compute <a href="../../-fear/index.html">Fear</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-278641548%2FProperties%2F700932220" anchor-label="affectiveBiasingOmega" id="-278641548%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="affective-biasing-omega.html"><span>affective</span><wbr><span>Biasing</span><wbr><span><span>Omega</span></span></a></div>
@@ -150,7 +150,7 @@
             </div>
           </div>
 <a data-name="1642372079%2FProperties%2F700932220" anchor-label="amplifyingEvacuationOmega" id="1642372079%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="amplifying-evacuation-omega.html"><span>amplifying</span><wbr><span>Evacuation</span><wbr><span><span>Omega</span></span></a></div>
@@ -165,7 +165,7 @@
             </div>
           </div>
 <a data-name="1085696376%2FProperties%2F700932220" anchor-label="amplifyingFeelingOmega" id="1085696376%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="amplifying-feeling-omega.html"><span>amplifying</span><wbr><span>Feeling</span><wbr><span><span>Omega</span></span></a></div>
@@ -180,7 +180,7 @@
             </div>
           </div>
 <a data-name="-1157713688%2FProperties%2F700932220" anchor-label="amplifyingIntentionOmega" id="-1157713688%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="amplifying-intention-omega.html"><span>amplifying</span><wbr><span>Intention</span><wbr><span><span>Omega</span></span></a></div>
@@ -195,7 +195,7 @@
             </div>
           </div>
 <a data-name="-1568751969%2FProperties%2F700932220" anchor-label="bodyEta" id="-1568751969%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="body-eta.html"><span>body</span><wbr><span><span>Eta</span></span></a></div>
@@ -210,7 +210,7 @@
             </div>
           </div>
 <a data-name="-1703372277%2FProperties%2F700932220" anchor-label="inhibitingFeelingOmega" id="-1703372277%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="inhibiting-feeling-omega.html"><span>inhibiting</span><wbr><span>Feeling</span><wbr><span><span>Omega</span></span></a></div>
@@ -225,7 +225,7 @@
             </div>
           </div>
 <a data-name="-1393096517%2FProperties%2F700932220" anchor-label="inhibitingIntentionOmega" id="-1393096517%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="inhibiting-intention-omega.html"><span>inhibiting</span><wbr><span>Intention</span><wbr><span><span>Omega</span></span></a></div>
@@ -240,7 +240,7 @@
             </div>
           </div>
 <a data-name="445593623%2FProperties%2F700932220" anchor-label="inhibitingWalkRandOmega" id="445593623%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="inhibiting-walk-rand-omega.html"><span>inhibiting</span><wbr><span>Walk</span><wbr><span>Rand</span><wbr><span><span>Omega</span></span></a></div>
@@ -255,7 +255,7 @@
             </div>
           </div>
 <a data-name="-1763509334%2FProperties%2F700932220" anchor-label="logisticSigma" id="-1763509334%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="logistic-sigma.html"><span>logistic</span><wbr><span><span>Sigma</span></span></a></div>
@@ -264,13 +264,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-cognitive-agents/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="logistic-sigma.html">logisticSigma</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Sigma of the logistic function used to compute <a href="../../-intention-evacuate/index.html">IntentionEvacuate</a> and <a href="../../-intention-walk-randomly/index.html">IntentionWalkRandomly</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-cognitive-agents/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="logistic-sigma.html">logisticSigma</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Sigma of the <a href="../../../../alchemist-implementationbase/it.unibo.alchemist.util.math/index.html">logistic</a> function used to compute <a href="../../-intention-evacuate/index.html">IntentionEvacuate</a> and <a href="../../-intention-walk-randomly/index.html">IntentionWalkRandomly</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-490392569%2FProperties%2F700932220" anchor-label="logisticTau" id="-490392569%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="logistic-tau.html"><span>logistic</span><wbr><span><span>Tau</span></span></a></div>
@@ -279,13 +279,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-cognitive-agents/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="logistic-tau.html">logisticTau</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Tau of the logistic function used to compute <a href="../../-intention-evacuate/index.html">IntentionEvacuate</a> and <a href="../../-intention-walk-randomly/index.html">IntentionWalkRandomly</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-cognitive-agents/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="logistic-tau.html">logisticTau</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Tau of the <a href="../../../../alchemist-implementationbase/it.unibo.alchemist.util.math/index.html">logistic</a> function used to compute <a href="../../-intention-evacuate/index.html">IntentionEvacuate</a> and <a href="../../-intention-walk-randomly/index.html">IntentionWalkRandomly</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-771415546%2FProperties%2F700932220" anchor-label="mentalEta" id="-771415546%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mental-eta.html"><span>mental</span><wbr><span><span>Eta</span></span></a></div>
@@ -300,7 +300,7 @@
             </div>
           </div>
 <a data-name="1113595420%2FProperties%2F700932220" anchor-label="persistingOmega" id="1113595420%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="persisting-omega.html"><span>persisting</span><wbr><span><span>Omega</span></span></a></div>
@@ -315,7 +315,7 @@
             </div>
           </div>
 <a data-name="990038805%2FProperties%2F700932220" anchor-label="sensingOmega" id="990038805%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="sensing-omega.html"><span>sensing</span><wbr><span><span>Omega</span></span></a></div>
@@ -335,17 +335,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

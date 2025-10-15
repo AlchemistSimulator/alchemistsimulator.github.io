@@ -1,22 +1,22 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>BiochemistrydslLexer</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
@@ -24,35 +24,33 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
 <link href="../../../images/logo.svg">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet"></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
                     alchemist-full
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">42.3.10
+        <div class="library-version" id="library-version">42.3.11
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-incarnation-biochemistry/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":alchemist-incarnation-biochemistry/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -66,7 +64,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -74,25 +72,27 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist-full
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-incarnation-biochemistry::it.unibo.alchemist.model.biochemistry.dsl/BiochemistrydslLexer///PointingToDeclaration//577704718">
   <div class="breadcrumbs"><a href="../../index.html">alchemist-incarnation-biochemistry</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.biochemistry.dsl</a><span class="delimiter">/</span><span class="current">BiochemistrydslLexer</span></div>
   <div class="cover ">
@@ -103,9 +103,9 @@
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="1400826452%2FConstructors%2F577704718" anchor-label="BiochemistrydslLexer" id="1400826452%2FConstructors%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-biochemistrydsl-lexer.html"><span>Biochemistrydsl</span><wbr><span><span>Lexer</span></span></a></div>
@@ -122,9 +122,9 @@
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-676553652%2FProperties%2F577704718" anchor-label="_ATN" id="-676553652%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="_-a-t-n.html"><span>_</span><wbr><span>ATN</span></a></div>
@@ -139,7 +139,7 @@
             </div>
           </div>
 <a data-name="649423130%2FProperties%2F577704718" anchor-label="_channel" id="649423130%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#649423130%2FProperties%2F577704718"><span>_</span><wbr><span>channel</span></a></div>
@@ -154,7 +154,7 @@
             </div>
           </div>
 <a data-name="1373046388%2FProperties%2F577704718" anchor-label="_hitEOF" id="1373046388%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1373046388%2FProperties%2F577704718"><span>_</span><wbr><span>hitEOF</span></a></div>
@@ -169,7 +169,7 @@
             </div>
           </div>
 <a data-name="1408543795%2FProperties%2F577704718" anchor-label="_input" id="1408543795%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1408543795%2FProperties%2F577704718"><span>_</span><wbr><span>input</span></a></div>
@@ -184,7 +184,7 @@
             </div>
           </div>
 <a data-name="589852282%2FProperties%2F577704718" anchor-label="_mode" id="589852282%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#589852282%2FProperties%2F577704718"><span>_</span><wbr><span>mode</span></a></div>
@@ -199,7 +199,7 @@
             </div>
           </div>
 <a data-name="126564792%2FProperties%2F577704718" anchor-label="_modeStack" id="126564792%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#126564792%2FProperties%2F577704718"><span>_</span><wbr><span>modeStack</span></a></div>
@@ -214,7 +214,7 @@
             </div>
           </div>
 <a data-name="765957968%2FProperties%2F577704718" anchor-label="_serializedATN" id="765957968%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="_serialized-a-t-n.html"><span>_</span><wbr><span>serialized</span><wbr><span><span>ATN</span></span></a></div>
@@ -241,7 +241,7 @@
             </div>
           </div>
 <a data-name="1916703280%2FProperties%2F577704718" anchor-label="_text" id="1916703280%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1916703280%2FProperties%2F577704718"><span>_</span><wbr><span>text</span></a></div>
@@ -256,7 +256,7 @@
             </div>
           </div>
 <a data-name="812764388%2FProperties%2F577704718" anchor-label="_token" id="812764388%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#812764388%2FProperties%2F577704718"><span>_</span><wbr><span>token</span></a></div>
@@ -271,7 +271,7 @@
             </div>
           </div>
 <a data-name="202385642%2FProperties%2F577704718" anchor-label="_tokenStartCharIndex" id="202385642%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#202385642%2FProperties%2F577704718"><span>_</span><wbr><span>token</span><wbr><span>Start</span><wbr><span>Char</span><wbr><span><span>Index</span></span></a></div>
@@ -286,7 +286,7 @@
             </div>
           </div>
 <a data-name="-654482980%2FProperties%2F577704718" anchor-label="_tokenStartCharPositionInLine" id="-654482980%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-654482980%2FProperties%2F577704718"><span>_</span><wbr><span>token</span><wbr><span>Start</span><wbr><span>Char</span><wbr><span>Position</span><wbr><span>In</span><wbr><span><span>Line</span></span></a></div>
@@ -301,7 +301,7 @@
             </div>
           </div>
 <a data-name="-821060640%2FProperties%2F577704718" anchor-label="_tokenStartLine" id="-821060640%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-821060640%2FProperties%2F577704718"><span>_</span><wbr><span>token</span><wbr><span>Start</span><wbr><span><span>Line</span></span></a></div>
@@ -316,7 +316,7 @@
             </div>
           </div>
 <a data-name="1548665027%2FProperties%2F577704718" anchor-label="_type" id="1548665027%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1548665027%2FProperties%2F577704718"><span>_</span><wbr><span>type</span></a></div>
@@ -331,7 +331,7 @@
             </div>
           </div>
 <a data-name="957886243%2FProperties%2F577704718" anchor-label="channelNames" id="957886243%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="channel-names.html"><span>channel</span><wbr><span><span>Names</span></span></a></div>
@@ -346,7 +346,7 @@
             </div>
           </div>
 <a data-name="-126054915%2FProperties%2F577704718" anchor-label="DEFAULT_MODE" id="-126054915%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-126054915%2FProperties%2F577704718"><span>DEFAULT_</span><wbr><span>MODE</span></a></div>
@@ -361,7 +361,7 @@
             </div>
           </div>
 <a data-name="143017661%2FProperties%2F577704718" anchor-label="DEFAULT_TOKEN_CHANNEL" id="143017661%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#143017661%2FProperties%2F577704718"><span>DEFAULT_</span><wbr><span>TOKEN_</span><wbr><span>CHANNEL</span></a></div>
@@ -376,7 +376,7 @@
             </div>
           </div>
 <a data-name="1846740432%2FProperties%2F577704718" anchor-label="EOF" id="1846740432%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#1846740432%2FProperties%2F577704718"><span><span>EOF</span></span></a></div>
@@ -391,7 +391,7 @@
             </div>
           </div>
 <a data-name="2002138567%2FProperties%2F577704718" anchor-label="ErrorCharacter" id="2002138567%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-error-character.html"><span>Error</span><wbr><span><span>Character</span></span></a></div>
@@ -406,7 +406,7 @@
             </div>
           </div>
 <a data-name="754384436%2FProperties%2F577704718" anchor-label="HIDDEN" id="754384436%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#754384436%2FProperties%2F577704718"><span><span>HIDDEN</span></span></a></div>
@@ -421,7 +421,7 @@
             </div>
           </div>
 <a data-name="-244223133%2FProperties%2F577704718" anchor-label="LITERAL" id="-244223133%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-l-i-t-e-r-a-l.html"><span><span>LITERAL</span></span></a></div>
@@ -436,7 +436,7 @@
             </div>
           </div>
 <a data-name="487078907%2FProperties%2F577704718" anchor-label="MAX_CHAR_VALUE" id="487078907%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#487078907%2FProperties%2F577704718"><span>MAX_</span><wbr><span>CHAR_</span><wbr><span>VALUE</span></a></div>
@@ -451,7 +451,7 @@
             </div>
           </div>
 <a data-name="1661918697%2FProperties%2F577704718" anchor-label="MIN_CHAR_VALUE" id="1661918697%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1661918697%2FProperties%2F577704718"><span>MIN_</span><wbr><span>CHAR_</span><wbr><span>VALUE</span></a></div>
@@ -466,7 +466,7 @@
             </div>
           </div>
 <a data-name="-984670195%2FProperties%2F577704718" anchor-label="modeNames" id="-984670195%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mode-names.html"><span>mode</span><wbr><span><span>Names</span></span></a></div>
@@ -481,7 +481,7 @@
             </div>
           </div>
 <a data-name="1768474409%2FProperties%2F577704718" anchor-label="MORE" id="1768474409%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1768474409%2FProperties%2F577704718"><span><span>MORE</span></span></a></div>
@@ -496,7 +496,7 @@
             </div>
           </div>
 <a data-name="274890861%2FProperties%2F577704718" anchor-label="POSDOUBLE" id="274890861%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-p-o-s-d-o-u-b-l-e.html"><span><span>POSDOUBLE</span></span></a></div>
@@ -511,7 +511,7 @@
             </div>
           </div>
 <a data-name="729701286%2FProperties%2F577704718" anchor-label="ruleNames" id="729701286%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="rule-names.html"><span>rule</span><wbr><span><span>Names</span></span></a></div>
@@ -526,7 +526,7 @@
             </div>
           </div>
 <a data-name="-1367277505%2FProperties%2F577704718" anchor-label="SKIP" id="-1367277505%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1367277505%2FProperties%2F577704718"><span><span>SKIP</span></span></a></div>
@@ -541,7 +541,7 @@
             </div>
           </div>
 <a data-name="-2000641396%2FProperties%2F577704718" anchor-label="T__0" id="-2000641396%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__0.html"><span>T_</span><wbr><span>_</span><wbr><span>0</span></a></div>
@@ -556,7 +556,7 @@
             </div>
           </div>
 <a data-name="-1969621589%2FProperties%2F577704718" anchor-label="T__1" id="-1969621589%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__1.html"><span>T_</span><wbr><span>_</span><wbr><span>1</span></a></div>
@@ -571,7 +571,7 @@
             </div>
           </div>
 <a data-name="-1440799393%2FProperties%2F577704718" anchor-label="T__10" id="-1440799393%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__10.html"><span>T_</span><wbr><span>_</span><wbr><span>10</span></a></div>
@@ -586,7 +586,7 @@
             </div>
           </div>
 <a data-name="-1409779586%2FProperties%2F577704718" anchor-label="T__11" id="-1409779586%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__11.html"><span>T_</span><wbr><span>_</span><wbr><span>11</span></a></div>
@@ -601,7 +601,7 @@
             </div>
           </div>
 <a data-name="-1378759779%2FProperties%2F577704718" anchor-label="T__12" id="-1378759779%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__12.html"><span>T_</span><wbr><span>_</span><wbr><span>12</span></a></div>
@@ -616,7 +616,7 @@
             </div>
           </div>
 <a data-name="-1347739972%2FProperties%2F577704718" anchor-label="T__13" id="-1347739972%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__13.html"><span>T_</span><wbr><span>_</span><wbr><span>13</span></a></div>
@@ -631,7 +631,7 @@
             </div>
           </div>
 <a data-name="-1316720165%2FProperties%2F577704718" anchor-label="T__14" id="-1316720165%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__14.html"><span>T_</span><wbr><span>_</span><wbr><span>14</span></a></div>
@@ -646,7 +646,7 @@
             </div>
           </div>
 <a data-name="-1285700358%2FProperties%2F577704718" anchor-label="T__15" id="-1285700358%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__15.html"><span>T_</span><wbr><span>_</span><wbr><span>15</span></a></div>
@@ -661,7 +661,7 @@
             </div>
           </div>
 <a data-name="-1254680551%2FProperties%2F577704718" anchor-label="T__16" id="-1254680551%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__16.html"><span>T_</span><wbr><span>_</span><wbr><span>16</span></a></div>
@@ -676,7 +676,7 @@
             </div>
           </div>
 <a data-name="-1223660744%2FProperties%2F577704718" anchor-label="T__17" id="-1223660744%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__17.html"><span>T_</span><wbr><span>_</span><wbr><span>17</span></a></div>
@@ -691,7 +691,7 @@
             </div>
           </div>
 <a data-name="-1938601782%2FProperties%2F577704718" anchor-label="T__2" id="-1938601782%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__2.html"><span>T_</span><wbr><span>_</span><wbr><span>2</span></a></div>
@@ -706,7 +706,7 @@
             </div>
           </div>
 <a data-name="-1907581975%2FProperties%2F577704718" anchor-label="T__3" id="-1907581975%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__3.html"><span>T_</span><wbr><span>_</span><wbr><span>3</span></a></div>
@@ -721,7 +721,7 @@
             </div>
           </div>
 <a data-name="-1876562168%2FProperties%2F577704718" anchor-label="T__4" id="-1876562168%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__4.html"><span>T_</span><wbr><span>_</span><wbr><span>4</span></a></div>
@@ -736,7 +736,7 @@
             </div>
           </div>
 <a data-name="-1845542361%2FProperties%2F577704718" anchor-label="T__5" id="-1845542361%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__5.html"><span>T_</span><wbr><span>_</span><wbr><span>5</span></a></div>
@@ -751,7 +751,7 @@
             </div>
           </div>
 <a data-name="-1814522554%2FProperties%2F577704718" anchor-label="T__6" id="-1814522554%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__6.html"><span>T_</span><wbr><span>_</span><wbr><span>6</span></a></div>
@@ -766,7 +766,7 @@
             </div>
           </div>
 <a data-name="-1783502747%2FProperties%2F577704718" anchor-label="T__7" id="-1783502747%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__7.html"><span>T_</span><wbr><span>_</span><wbr><span>7</span></a></div>
@@ -781,7 +781,7 @@
             </div>
           </div>
 <a data-name="-1752482940%2FProperties%2F577704718" anchor-label="T__8" id="-1752482940%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__8.html"><span>T_</span><wbr><span>_</span><wbr><span>8</span></a></div>
@@ -796,7 +796,7 @@
             </div>
           </div>
 <a data-name="-1721463133%2FProperties%2F577704718" anchor-label="T__9" id="-1721463133%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t__9.html"><span>T_</span><wbr><span>_</span><wbr><span>9</span></a></div>
@@ -811,7 +811,7 @@
             </div>
           </div>
 <a data-name="-2023337895%2FProperties%2F577704718" anchor-label="tokenNames" id="-2023337895%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="token-names.html"><span>token</span><wbr><span><span>Names</span></span></a></div>
@@ -826,7 +826,7 @@
             </div>
           </div>
 <a data-name="967674914%2FProperties%2F577704718" anchor-label="VOCABULARY" id="967674914%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-v-o-c-a-b-u-l-a-r-y.html"><span><span>VOCABULARY</span></span></a></div>
@@ -841,7 +841,7 @@
             </div>
           </div>
 <a data-name="147585516%2FProperties%2F577704718" anchor-label="WS" id="147585516%2FProperties%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-w-s.html"><span><span>WS</span></span></a></div>
@@ -858,9 +858,9 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-1923514104%2FFunctions%2F577704718" anchor-label="action" id="-1923514104%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#-1923514104%2FFunctions%2F577704718"><span><span>action</span></span></a></div>
@@ -869,13 +869,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#-1923514104%2FFunctions%2F577704718"><span class="token function">action</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/RuleContext.html">RuleContext</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">p2<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#-1923514104%2FFunctions%2F577704718"><span class="token function">action</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">_localctx<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/RuleContext.html">RuleContext</a><span class="token punctuation">, </span></span><span class="parameter ">ruleIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">actionIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1697060421%2FFunctions%2F577704718" anchor-label="addErrorListener" id="1697060421%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#1697060421%2FFunctions%2F577704718"><span>add</span><wbr><span>Error</span><wbr><span><span>Listener</span></span></a></div>
@@ -884,13 +884,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#1697060421%2FFunctions%2F577704718"><span class="token function">addErrorListener</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/ANTLRErrorListener.html">ANTLRErrorListener</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#1697060421%2FFunctions%2F577704718"><span class="token function">addErrorListener</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">listener<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/ANTLRErrorListener.html">ANTLRErrorListener</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1311563340%2FFunctions%2F577704718" anchor-label="emit" id="1311563340%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-23866261%2FFunctions%2F577704718"><span><span>emit</span></span></a></div>
@@ -899,13 +899,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-23866261%2FFunctions%2F577704718"><span class="token function">emit</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/Token.html">Token</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1966724333%2FFunctions%2F577704718"><span class="token function">emit</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/Token.html">Token</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-23866261%2FFunctions%2F577704718"><span class="token function">emit</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/Token.html">Token</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1966724333%2FFunctions%2F577704718"><span class="token function">emit</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">token<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/Token.html">Token</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-343642381%2FFunctions%2F577704718" anchor-label="emitEOF" id="-343642381%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-343642381%2FFunctions%2F577704718"><span>emit</span><wbr><span><span>EOF</span></span></a></div>
@@ -920,7 +920,7 @@
             </div>
           </div>
 <a data-name="1344908185%2FFunctions%2F577704718" anchor-label="getAllTokens" id="1344908185%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1344908185%2FFunctions%2F577704718"><span>get</span><wbr><span>All</span><wbr><span><span>Tokens</span></span></a></div>
@@ -935,7 +935,7 @@
             </div>
           </div>
 <a data-name="-1005642749%2FFunctions%2F577704718" anchor-label="getATN" id="-1005642749%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-a-t-n.html"><span>get</span><wbr><span><span>ATN</span></span></a></div>
@@ -950,7 +950,7 @@
             </div>
           </div>
 <a data-name="1001831409%2FFunctions%2F577704718" anchor-label="getChannel" id="1001831409%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1001831409%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Channel</span></span></a></div>
@@ -965,7 +965,7 @@
             </div>
           </div>
 <a data-name="1594299895%2FFunctions%2F577704718" anchor-label="getChannelNames" id="1594299895%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-channel-names.html"><span>get</span><wbr><span>Channel</span><wbr><span><span>Names</span></span></a></div>
@@ -980,7 +980,7 @@
             </div>
           </div>
 <a data-name="1410030973%2FFunctions%2F577704718" anchor-label="getCharErrorDisplay" id="1410030973%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1410030973%2FFunctions%2F577704718"><span>get</span><wbr><span>Char</span><wbr><span>Error</span><wbr><span><span>Display</span></span></a></div>
@@ -989,13 +989,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1410030973%2FFunctions%2F577704718"><span class="token function">getCharErrorDisplay</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1410030973%2FFunctions%2F577704718"><span class="token function">getCharErrorDisplay</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-484363720%2FFunctions%2F577704718" anchor-label="getCharIndex" id="-484363720%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-484363720%2FFunctions%2F577704718"><span>get</span><wbr><span>Char</span><wbr><span><span>Index</span></span></a></div>
@@ -1010,7 +1010,7 @@
             </div>
           </div>
 <a data-name="1751576654%2FFunctions%2F577704718" anchor-label="getCharPositionInLine" id="1751576654%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1751576654%2FFunctions%2F577704718"><span>get</span><wbr><span>Char</span><wbr><span>Position</span><wbr><span>In</span><wbr><span><span>Line</span></span></a></div>
@@ -1025,7 +1025,7 @@
             </div>
           </div>
 <a data-name="-670997529%2FFunctions%2F577704718" anchor-label="getErrorDisplay" id="-670997529%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-670997529%2FFunctions%2F577704718"><span>get</span><wbr><span>Error</span><wbr><span><span>Display</span></span></a></div>
@@ -1034,13 +1034,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-670997529%2FFunctions%2F577704718"><span class="token function">getErrorDisplay</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-670997529%2FFunctions%2F577704718"><span class="token function">getErrorDisplay</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">s<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1510830016%2FFunctions%2F577704718" anchor-label="getErrorHeader" id="1510830016%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#1510830016%2FFunctions%2F577704718"><span>get</span><wbr><span>Error</span><wbr><span><span>Header</span></span></a></div>
@@ -1049,13 +1049,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#1510830016%2FFunctions%2F577704718"><span class="token function">getErrorHeader</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/RecognitionException.html">RecognitionException</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#1510830016%2FFunctions%2F577704718"><span class="token function">getErrorHeader</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">e<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/RecognitionException.html">RecognitionException</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1805030894%2FFunctions%2F577704718" anchor-label="getErrorListenerDispatch" id="1805030894%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#1805030894%2FFunctions%2F577704718"><span>get</span><wbr><span>Error</span><wbr><span>Listener</span><wbr><span><span>Dispatch</span></span></a></div>
@@ -1070,7 +1070,7 @@
             </div>
           </div>
 <a data-name="-1848821889%2FFunctions%2F577704718" anchor-label="getErrorListeners" id="-1848821889%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#-1848821889%2FFunctions%2F577704718"><span>get</span><wbr><span>Error</span><wbr><span><span>Listeners</span></span></a></div>
@@ -1085,7 +1085,7 @@
             </div>
           </div>
 <a data-name="-17804912%2FFunctions%2F577704718" anchor-label="getGrammarFileName" id="-17804912%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-grammar-file-name.html"><span>get</span><wbr><span>Grammar</span><wbr><span>File</span><wbr><span><span>Name</span></span></a></div>
@@ -1100,7 +1100,7 @@
             </div>
           </div>
 <a data-name="-1240562532%2FFunctions%2F577704718" anchor-label="getInputStream" id="-1240562532%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1494098794%2FFunctions%2F577704718"><span>get</span><wbr><span>Input</span><wbr><span><span>Stream</span></span></a></div>
@@ -1115,7 +1115,7 @@
             </div>
           </div>
 <a data-name="-1065373654%2FFunctions%2F577704718" anchor-label="getInterpreter" id="-1065373654%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#-1065373654%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Interpreter</span></span></a></div>
@@ -1130,7 +1130,7 @@
             </div>
           </div>
 <a data-name="-283805230%2FFunctions%2F577704718" anchor-label="getLine" id="-283805230%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-283805230%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Line</span></span></a></div>
@@ -1145,7 +1145,7 @@
             </div>
           </div>
 <a data-name="1329711545%2FFunctions%2F577704718" anchor-label="getModeNames" id="1329711545%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-mode-names.html"><span>get</span><wbr><span>Mode</span><wbr><span><span>Names</span></span></a></div>
@@ -1160,7 +1160,7 @@
             </div>
           </div>
 <a data-name="929298499%2FFunctions%2F577704718" anchor-label="getParseInfo" id="929298499%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#929298499%2FFunctions%2F577704718"><span>get</span><wbr><span>Parse</span><wbr><span><span>Info</span></span></a></div>
@@ -1175,7 +1175,7 @@
             </div>
           </div>
 <a data-name="901559152%2FFunctions%2F577704718" anchor-label="getRuleIndexMap" id="901559152%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#901559152%2FFunctions%2F577704718"><span>get</span><wbr><span>Rule</span><wbr><span>Index</span><wbr><span><span>Map</span></span></a></div>
@@ -1190,7 +1190,7 @@
             </div>
           </div>
 <a data-name="-1250884270%2FFunctions%2F577704718" anchor-label="getRuleNames" id="-1250884270%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-rule-names.html"><span>get</span><wbr><span>Rule</span><wbr><span><span>Names</span></span></a></div>
@@ -1205,7 +1205,7 @@
             </div>
           </div>
 <a data-name="1096780391%2FFunctions%2F577704718" anchor-label="getSerializedATN" id="1096780391%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-serialized-a-t-n.html"><span>get</span><wbr><span>Serialized</span><wbr><span><span>ATN</span></span></a></div>
@@ -1220,7 +1220,7 @@
             </div>
           </div>
 <a data-name="95915520%2FFunctions%2F577704718" anchor-label="getSourceName" id="95915520%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#95915520%2FFunctions%2F577704718"><span>get</span><wbr><span>Source</span><wbr><span><span>Name</span></span></a></div>
@@ -1235,7 +1235,7 @@
             </div>
           </div>
 <a data-name="760374067%2FFunctions%2F577704718" anchor-label="getState" id="760374067%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#760374067%2FFunctions%2F577704718"><span>get</span><wbr><span><span>State</span></span></a></div>
@@ -1250,7 +1250,7 @@
             </div>
           </div>
 <a data-name="-818477383%2FFunctions%2F577704718" anchor-label="getText" id="-818477383%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-818477383%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Text</span></span></a></div>
@@ -1265,7 +1265,7 @@
             </div>
           </div>
 <a data-name="1921509755%2FFunctions%2F577704718" anchor-label="getToken" id="1921509755%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1921509755%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Token</span></span></a></div>
@@ -1280,7 +1280,7 @@
             </div>
           </div>
 <a data-name="-427366829%2FFunctions%2F577704718" anchor-label="getTokenErrorDisplay" id="-427366829%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#-427366829%2FFunctions%2F577704718"><span>get</span><wbr><span>Token</span><wbr><span>Error</span><wbr><span><span>Display</span></span></a></div>
@@ -1289,13 +1289,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#-427366829%2FFunctions%2F577704718"><span class="token function">getTokenErrorDisplay</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/Token.html">Token</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#-427366829%2FFunctions%2F577704718"><span class="token function">getTokenErrorDisplay</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">t<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/Token.html">Token</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1910141682%2FFunctions%2F577704718" anchor-label="getTokenFactory" id="-1910141682%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-365805931%2FFunctions%2F577704718"><span>get</span><wbr><span>Token</span><wbr><span><span>Factory</span></span></a></div>
@@ -1310,7 +1310,7 @@
             </div>
           </div>
 <a data-name="1003019309%2FFunctions%2F577704718" anchor-label="getTokenNames" id="1003019309%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-token-names.html"><span>get</span><wbr><span>Token</span><wbr><span><span>Names</span></span></a></div>
@@ -1325,7 +1325,7 @@
             </div>
           </div>
 <a data-name="-1104717396%2FFunctions%2F577704718" anchor-label="getTokenType" id="-1104717396%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#-1104717396%2FFunctions%2F577704718"><span>get</span><wbr><span>Token</span><wbr><span><span>Type</span></span></a></div>
@@ -1334,13 +1334,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#-1104717396%2FFunctions%2F577704718"><span class="token function">getTokenType</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#-1104717396%2FFunctions%2F577704718"><span class="token function">getTokenType</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tokenName<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1167445901%2FFunctions%2F577704718" anchor-label="getTokenTypeMap" id="1167445901%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#1167445901%2FFunctions%2F577704718"><span>get</span><wbr><span>Token</span><wbr><span>Type</span><wbr><span><span>Map</span></span></a></div>
@@ -1355,7 +1355,7 @@
             </div>
           </div>
 <a data-name="-1186515636%2FFunctions%2F577704718" anchor-label="getType" id="-1186515636%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1186515636%2FFunctions%2F577704718"><span>get</span><wbr><span><span>Type</span></span></a></div>
@@ -1370,7 +1370,7 @@
             </div>
           </div>
 <a data-name="-1976007690%2FFunctions%2F577704718" anchor-label="getVocabulary" id="-1976007690%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-vocabulary.html"><span>get</span><wbr><span><span>Vocabulary</span></span></a></div>
@@ -1385,7 +1385,7 @@
             </div>
           </div>
 <a data-name="-520338824%2FFunctions%2F577704718" anchor-label="mode" id="-520338824%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-520338824%2FFunctions%2F577704718"><span><span>mode</span></span></a></div>
@@ -1394,13 +1394,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-520338824%2FFunctions%2F577704718"><span class="token function">mode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-520338824%2FFunctions%2F577704718"><span class="token function">mode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">m<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="315801385%2FFunctions%2F577704718" anchor-label="more" id="315801385%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#315801385%2FFunctions%2F577704718"><span><span>more</span></span></a></div>
@@ -1415,7 +1415,7 @@
             </div>
           </div>
 <a data-name="-798998730%2FFunctions%2F577704718" anchor-label="nextToken" id="-798998730%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-798998730%2FFunctions%2F577704718"><span>next</span><wbr><span><span>Token</span></span></a></div>
@@ -1430,7 +1430,7 @@
             </div>
           </div>
 <a data-name="-1315044863%2FFunctions%2F577704718" anchor-label="notifyListeners" id="-1315044863%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1315044863%2FFunctions%2F577704718"><span>notify</span><wbr><span><span>Listeners</span></span></a></div>
@@ -1439,13 +1439,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1315044863%2FFunctions%2F577704718"><span class="token function">notifyListeners</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/LexerNoViableAltException.html">LexerNoViableAltException</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1315044863%2FFunctions%2F577704718"><span class="token function">notifyListeners</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">e<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/LexerNoViableAltException.html">LexerNoViableAltException</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="406341096%2FFunctions%2F577704718" anchor-label="popMode" id="406341096%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#406341096%2FFunctions%2F577704718"><span>pop</span><wbr><span><span>Mode</span></span></a></div>
@@ -1460,7 +1460,7 @@
             </div>
           </div>
 <a data-name="1037804169%2FFunctions%2F577704718" anchor-label="precpred" id="1037804169%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1037804169%2FFunctions%2F577704718"><span><span>precpred</span></span></a></div>
@@ -1469,13 +1469,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1037804169%2FFunctions%2F577704718"><span class="token function">precpred</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/RuleContext.html">RuleContext</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1037804169%2FFunctions%2F577704718"><span class="token function">precpred</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">localctx<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/RuleContext.html">RuleContext</a><span class="token punctuation">, </span></span><span class="parameter ">precedence<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1779717682%2FFunctions%2F577704718" anchor-label="pushMode" id="1779717682%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1779717682%2FFunctions%2F577704718"><span>push</span><wbr><span><span>Mode</span></span></a></div>
@@ -1484,13 +1484,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1779717682%2FFunctions%2F577704718"><span class="token function">pushMode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1779717682%2FFunctions%2F577704718"><span class="token function">pushMode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">m<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="712866003%2FFunctions%2F577704718" anchor-label="recover" id="712866003%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#712866003%2FFunctions%2F577704718"><span><span>recover</span></span></a></div>
@@ -1499,13 +1499,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#712866003%2FFunctions%2F577704718"><span class="token function">recover</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/LexerNoViableAltException.html">LexerNoViableAltException</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#712866003%2FFunctions%2F577704718"><span class="token function">recover</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">e<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/LexerNoViableAltException.html">LexerNoViableAltException</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="797569284%2FFunctions%2F577704718" anchor-label="removeErrorListener" id="797569284%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#797569284%2FFunctions%2F577704718"><span>remove</span><wbr><span>Error</span><wbr><span><span>Listener</span></span></a></div>
@@ -1514,13 +1514,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#797569284%2FFunctions%2F577704718"><span class="token function">removeErrorListener</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/ANTLRErrorListener.html">ANTLRErrorListener</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#797569284%2FFunctions%2F577704718"><span class="token function">removeErrorListener</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">listener<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/ANTLRErrorListener.html">ANTLRErrorListener</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-404745773%2FFunctions%2F577704718" anchor-label="removeErrorListeners" id="-404745773%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#-404745773%2FFunctions%2F577704718"><span>remove</span><wbr><span>Error</span><wbr><span><span>Listeners</span></span></a></div>
@@ -1535,7 +1535,7 @@
             </div>
           </div>
 <a data-name="-37022643%2FFunctions%2F577704718" anchor-label="reset" id="-37022643%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-37022643%2FFunctions%2F577704718"><span><span>reset</span></span></a></div>
@@ -1550,7 +1550,7 @@
             </div>
           </div>
 <a data-name="121197248%2FFunctions%2F577704718" anchor-label="sempred" id="121197248%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#121197248%2FFunctions%2F577704718"><span><span>sempred</span></span></a></div>
@@ -1559,13 +1559,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#121197248%2FFunctions%2F577704718"><span class="token function">sempred</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/RuleContext.html">RuleContext</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">p2<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#121197248%2FFunctions%2F577704718"><span class="token function">sempred</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">_localctx<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/RuleContext.html">RuleContext</a><span class="token punctuation">, </span></span><span class="parameter ">ruleIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">actionIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-177050922%2FFunctions%2F577704718" anchor-label="setChannel" id="-177050922%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-177050922%2FFunctions%2F577704718"><span>set</span><wbr><span><span>Channel</span></span></a></div>
@@ -1574,13 +1574,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-177050922%2FFunctions%2F577704718"><span class="token function">setChannel</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-177050922%2FFunctions%2F577704718"><span class="token function">setChannel</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">channel<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-853287439%2FFunctions%2F577704718" anchor-label="setCharPositionInLine" id="-853287439%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-853287439%2FFunctions%2F577704718"><span>set</span><wbr><span>Char</span><wbr><span>Position</span><wbr><span>In</span><wbr><span><span>Line</span></span></a></div>
@@ -1589,13 +1589,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-853287439%2FFunctions%2F577704718"><span class="token function">setCharPositionInLine</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-853287439%2FFunctions%2F577704718"><span class="token function">setCharPositionInLine</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">charPositionInLine<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1147463714%2FFunctions%2F577704718" anchor-label="setInputStream" id="1147463714%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1147463714%2FFunctions%2F577704718"><span>set</span><wbr><span>Input</span><wbr><span><span>Stream</span></span></a></div>
@@ -1604,13 +1604,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1147463714%2FFunctions%2F577704718"><span class="token function">setInputStream</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/IntStream.html">IntStream</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1147463714%2FFunctions%2F577704718"><span class="token function">setInputStream</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">input<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/IntStream.html">IntStream</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="630423%2FFunctions%2F577704718" anchor-label="setInterpreter" id="630423%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#630423%2FFunctions%2F577704718"><span>set</span><wbr><span><span>Interpreter</span></span></a></div>
@@ -1619,13 +1619,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#630423%2FFunctions%2F577704718"><span class="token function">setInterpreter</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/Recognizer.html">ATNInterpreter</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#630423%2FFunctions%2F577704718"><span class="token function">setInterpreter</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">interpreter<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/Recognizer.html">ATNInterpreter</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1242662163%2FFunctions%2F577704718" anchor-label="setLine" id="-1242662163%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1242662163%2FFunctions%2F577704718"><span>set</span><wbr><span><span>Line</span></span></a></div>
@@ -1634,13 +1634,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1242662163%2FFunctions%2F577704718"><span class="token function">setLine</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1242662163%2FFunctions%2F577704718"><span class="token function">setLine</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">line<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="152482132%2FFunctions%2F577704718" anchor-label="setState" id="152482132%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-biochemistrydsl-parser/index.html#152482132%2FFunctions%2F577704718"><span>set</span><wbr><span><span>State</span></span></a></div>
@@ -1649,13 +1649,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#152482132%2FFunctions%2F577704718"><span class="token function">setState</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../-biochemistrydsl-parser/index.html#152482132%2FFunctions%2F577704718"><span class="token function">setState</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">atnState<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1978223320%2FFunctions%2F577704718" anchor-label="setText" id="-1978223320%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1978223320%2FFunctions%2F577704718"><span>set</span><wbr><span><span>Text</span></span></a></div>
@@ -1664,13 +1664,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1978223320%2FFunctions%2F577704718"><span class="token function">setText</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1978223320%2FFunctions%2F577704718"><span class="token function">setText</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">text<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="606359305%2FFunctions%2F577704718" anchor-label="setToken" id="606359305%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#606359305%2FFunctions%2F577704718"><span>set</span><wbr><span><span>Token</span></span></a></div>
@@ -1679,13 +1679,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#606359305%2FFunctions%2F577704718"><span class="token function">setToken</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/Token.html">Token</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#606359305%2FFunctions%2F577704718"><span class="token function">setToken</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">_token<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/Token.html">Token</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1049177990%2FFunctions%2F577704718" anchor-label="setTokenFactory" id="-1049177990%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1049177990%2FFunctions%2F577704718"><span>set</span><wbr><span>Token</span><wbr><span><span>Factory</span></span></a></div>
@@ -1694,13 +1694,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1049177990%2FFunctions%2F577704718"><span class="token function">setTokenFactory</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/TokenFactory.html">TokenFactory</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1049177990%2FFunctions%2F577704718"><span class="token function">setTokenFactory</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">factory<span class="token operator">: </span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/TokenFactory.html">TokenFactory</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1196840243%2FFunctions%2F577704718" anchor-label="setType" id="1196840243%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1196840243%2FFunctions%2F577704718"><span>set</span><wbr><span><span>Type</span></span></a></div>
@@ -1709,13 +1709,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1196840243%2FFunctions%2F577704718"><span class="token function">setType</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1196840243%2FFunctions%2F577704718"><span class="token function">setType</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ttype<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1475016767%2FFunctions%2F577704718" anchor-label="skip" id="1475016767%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1475016767%2FFunctions%2F577704718"><span><span>skip</span></span></a></div>
@@ -1735,17 +1735,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

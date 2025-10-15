@@ -1,22 +1,22 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>it.unibo.alchemist.model.sapere.actions</title>
-<link href="../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
@@ -24,35 +24,33 @@
 <link href="../../styles/main.css" rel="Stylesheet">
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../scripts/prism.js" async></script>
 <script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
 <link href="../../images/logo.svg">
 <link href="../../styles/logo-styles.css" rel="Stylesheet"></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
                     alchemist-full
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">42.3.10
+        <div class="library-version" id="library-version">42.3.11
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-incarnation-sapere/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":alchemist-incarnation-sapere/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -66,7 +64,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -74,25 +72,27 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist-full
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="package" id="content" pageids="alchemist-incarnation-sapere::it.unibo.alchemist.model.sapere.actions////PointingToDeclaration//-236430104">
   <div class="breadcrumbs"><a href="../index.html">alchemist-incarnation-sapere</a><span class="delimiter">/</span><span class="current">it.unibo.alchemist.model.sapere.actions</span></div>
   <div class="cover ">
@@ -102,9 +102,9 @@
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="-1680775944%2FClasslikes%2F-236430104" anchor-label="AbstractLsaAction" id="-1680775944%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-abstract-lsa-action/index.html"><span>Abstract</span><wbr><span>Lsa</span><wbr><span><span>Action</span></span></a></div>
@@ -113,13 +113,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-sapere/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-abstract-lsa-action/index.html">AbstractLsaAction</a> : <a href="../../alchemist-implementationbase/it.unibo.alchemist.model.actions/-abstract-action/index.html">AbstractAction</a><span class="token operator">&lt;</span><a href="../../alchemist-implementationbase/it.unibo.alchemist.model.actions/-abstract-action/index.html">T</a><span class="token operator">&gt; </span>, <a href="../it.unibo.alchemist.model.sapere/-i-lsa-action/index.html">ILsaAction</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-sapere/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-abstract-lsa-action/index.html">AbstractLsaAction</a> : <a href="../../alchemist-implementationbase/it.unibo.alchemist.model.actions/-abstract-action/index.html">AbstractAction</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><a href="../it.unibo.alchemist.model.sapere/-i-lsa-molecule/index.html">ILsaMolecule</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span>, <a href="../it.unibo.alchemist.model.sapere/-i-lsa-action/index.html">ILsaAction</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1987802137%2FClasslikes%2F-236430104" anchor-label="AbstractSAPEREAgent" id="1987802137%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-abstract-s-a-p-e-r-e-agent/index.html"><span>Abstract</span><wbr><span><span>SAPEREAgent</span></span></a></div>
@@ -134,7 +134,7 @@
             </div>
           </div>
 <a data-name="873486314%2FClasslikes%2F-236430104" anchor-label="AbstractSAPERELocalAgent" id="873486314%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-abstract-s-a-p-e-r-e-local-agent/index.html"><span>Abstract</span><wbr><span>SAPERELocal</span><wbr><span><span>Agent</span></span></a></div>
@@ -149,7 +149,7 @@
             </div>
           </div>
 <a data-name="-250894996%2FClasslikes%2F-236430104" anchor-label="AbstractSAPEREMoveNodeAgent" id="-250894996%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-abstract-s-a-p-e-r-e-move-node-agent/index.html"><span>Abstract</span><wbr><span>SAPEREMove</span><wbr><span>Node</span><wbr><span><span>Agent</span></span></a></div>
@@ -164,7 +164,7 @@
             </div>
           </div>
 <a data-name="796256939%2FClasslikes%2F-236430104" anchor-label="AbstractSAPERENeighborAgent" id="796256939%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-abstract-s-a-p-e-r-e-neighbor-agent/index.html"><span>Abstract</span><wbr><span>SAPERENeighbor</span><wbr><span><span>Agent</span></span></a></div>
@@ -179,7 +179,7 @@
             </div>
           </div>
 <a data-name="113707638%2FClasslikes%2F-236430104" anchor-label="LsaAllNeighborsAction" id="113707638%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-lsa-all-neighbors-action/index.html"><span>Lsa</span><wbr><span>All</span><wbr><span>Neighbors</span><wbr><span><span>Action</span></span></a></div>
@@ -194,7 +194,7 @@
             </div>
           </div>
 <a data-name="-727650753%2FClasslikes%2F-236430104" anchor-label="LsaAscendingAgent" id="-727650753%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-lsa-ascending-agent/index.html"><span>Lsa</span><wbr><span>Ascending</span><wbr><span><span>Agent</span></span></a></div>
@@ -203,13 +203,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-sapere/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-lsa-ascending-agent/index.html">LsaAscendingAgent</a><span class="token operator">&lt;</span><a href="-lsa-ascending-agent/index.html">P</a><span class="token operator"> : </span><a href="../../alchemist-api/it.unibo.alchemist.model/-position2-d/index.html">Position2D</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-lsa-ascending-agent/index.html">P</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator">&gt;</span> : <a href="-abstract-s-a-p-e-r-e-move-node-agent/index.html">AbstractSAPEREMoveNodeAgent</a><span class="token operator">&lt;</span><a href="-abstract-s-a-p-e-r-e-move-node-agent/index.html">P</a><span class="token operator">&gt; </span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-sapere/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-lsa-ascending-agent/index.html">LsaAscendingAgent</a><span class="token operator">&lt;</span><a href="-lsa-ascending-agent/index.html">P</a><span class="token operator"> : </span><a href="../../alchemist-api/it.unibo.alchemist.model/-position2-d/index.html">Position2D</a><span class="token operator">&lt;</span><span class="token keyword">out </span><a href="-lsa-ascending-agent/index.html">P</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator">&gt;</span> : <a href="-abstract-s-a-p-e-r-e-move-node-agent/index.html">AbstractSAPEREMoveNodeAgent</a><span class="token operator">&lt;</span><a href="-lsa-ascending-agent/index.html">P</a><span class="token operator">&gt; </span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-11549912%2FClasslikes%2F-236430104" anchor-label="LsaAscendingGradientDist" id="-11549912%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-lsa-ascending-gradient-dist/index.html"><span>Lsa</span><wbr><span>Ascending</span><wbr><span>Gradient</span><wbr><span><span>Dist</span></span></a></div>
@@ -218,13 +218,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-sapere/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-lsa-ascending-gradient-dist/index.html">LsaAscendingGradientDist</a><span class="token operator">&lt;</span><a href="-lsa-ascending-gradient-dist/index.html">P</a><span class="token operator"> : </span><a href="../../alchemist-api/it.unibo.alchemist.model/-position/index.html">Position</a><span class="token operator">&lt;</span><a href="-lsa-ascending-gradient-dist/index.html">P</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator">&gt;</span> : <a href="-abstract-s-a-p-e-r-e-neighbor-agent/index.html">AbstractSAPERENeighborAgent</a><span class="token operator">&lt;</span><a href="-abstract-s-a-p-e-r-e-neighbor-agent/index.html">P</a><span class="token operator">&gt; </span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-sapere/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-lsa-ascending-gradient-dist/index.html">LsaAscendingGradientDist</a><span class="token operator">&lt;</span><a href="-lsa-ascending-gradient-dist/index.html">P</a><span class="token operator"> : </span><a href="../../alchemist-api/it.unibo.alchemist.model/-position/index.html">Position</a><span class="token operator">&lt;</span><a href="-lsa-ascending-gradient-dist/index.html">P</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator">&gt;</span> : <a href="-abstract-s-a-p-e-r-e-neighbor-agent/index.html">AbstractSAPERENeighborAgent</a><span class="token operator">&lt;</span><a href="-lsa-ascending-gradient-dist/index.html">P</a><span class="token operator">&gt; </span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="640668351%2FClasslikes%2F-236430104" anchor-label="LsaChangeArgument" id="640668351%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-lsa-change-argument/index.html"><span>Lsa</span><wbr><span>Change</span><wbr><span><span>Argument</span></span></a></div>
@@ -239,7 +239,7 @@
             </div>
           </div>
 <a data-name="-1772680924%2FClasslikes%2F-236430104" anchor-label="LsaCountNeighborsAction" id="-1772680924%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-lsa-count-neighbors-action/index.html"><span>Lsa</span><wbr><span>Count</span><wbr><span>Neighbors</span><wbr><span><span>Action</span></span></a></div>
@@ -254,7 +254,7 @@
             </div>
           </div>
 <a data-name="-1492795551%2FClasslikes%2F-236430104" anchor-label="LsaRandomNeighborAction" id="-1492795551%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-lsa-random-neighbor-action/index.html"><span>Lsa</span><wbr><span>Random</span><wbr><span>Neighbor</span><wbr><span><span>Action</span></span></a></div>
@@ -269,7 +269,7 @@
             </div>
           </div>
 <a data-name="-1397261127%2FClasslikes%2F-236430104" anchor-label="LsaStandardAction" id="-1397261127%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-lsa-standard-action/index.html"><span>Lsa</span><wbr><span>Standard</span><wbr><span><span>Action</span></span></a></div>
@@ -284,7 +284,7 @@
             </div>
           </div>
 <a data-name="-1559428013%2FClasslikes%2F-236430104" anchor-label="SAPEREChemotaxis" id="-1559428013%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-s-a-p-e-r-e-chemotaxis/index.html"><span><span>SAPEREChemotaxis</span></span></a></div>
@@ -293,13 +293,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-sapere/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-s-a-p-e-r-e-chemotaxis/index.html">SAPEREChemotaxis</a><span class="token operator">&lt;</span><a href="-s-a-p-e-r-e-chemotaxis/index.html">P</a><span class="token operator"> : </span><a href="../../alchemist-api/it.unibo.alchemist.model/-position/index.html">Position</a><span class="token operator">&lt;</span><a href="-s-a-p-e-r-e-chemotaxis/index.html">P</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator">&gt;</span> : <a href="-abstract-s-a-p-e-r-e-neighbor-agent/index.html">AbstractSAPERENeighborAgent</a><span class="token operator">&lt;</span><a href="-abstract-s-a-p-e-r-e-neighbor-agent/index.html">P</a><span class="token operator">&gt; </span></div><div class="brief ">This class provides a chemotaxis implementation for SAPERE, namely, an agent able to move a molecule towards a specific node.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-sapere/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-s-a-p-e-r-e-chemotaxis/index.html">SAPEREChemotaxis</a><span class="token operator">&lt;</span><a href="-s-a-p-e-r-e-chemotaxis/index.html">P</a><span class="token operator"> : </span><a href="../../alchemist-api/it.unibo.alchemist.model/-position/index.html">Position</a><span class="token operator">&lt;</span><a href="-s-a-p-e-r-e-chemotaxis/index.html">P</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator">&gt;</span> : <a href="-abstract-s-a-p-e-r-e-neighbor-agent/index.html">AbstractSAPERENeighborAgent</a><span class="token operator">&lt;</span><a href="-s-a-p-e-r-e-chemotaxis/index.html">P</a><span class="token operator">&gt; </span></div><div class="brief ">This class provides a chemotaxis implementation for SAPERE, namely, an agent able to move a molecule towards a specific node.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1450687547%2FClasslikes%2F-236430104" anchor-label="SAPEREMoveLSAToAgent" id="-1450687547%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-s-a-p-e-r-e-move-l-s-a-to-agent/index.html"><span>SAPEREMove</span><wbr><span>LSATo</span><wbr><span><span>Agent</span></span></a></div>
@@ -314,7 +314,7 @@
             </div>
           </div>
 <a data-name="-1073650416%2FClasslikes%2F-236430104" anchor-label="SAPEREWalker" id="-1073650416%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-s-a-p-e-r-e-walker/index.html"><span><span>SAPEREWalker</span></span></a></div>
@@ -323,13 +323,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-sapere/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-s-a-p-e-r-e-walker/index.html">SAPEREWalker</a> : <a href="../../alchemist-maps/it.unibo.alchemist.model.maps.actions/-move-on-map/index.html">MoveOnMap</a><span class="token operator">&lt;</span><a href="../../alchemist-maps/it.unibo.alchemist.model.maps.actions/-move-on-map/index.html">T</a><span class="token punctuation">, </span><a href="../../alchemist-maps/it.unibo.alchemist.model.maps.actions/-move-on-map/index.html">O</a><span class="token punctuation">, </span><a href="../../alchemist-maps/it.unibo.alchemist.model.maps.actions/-move-on-map/index.html">S</a><span class="token operator">&gt; </span>, <a href="../it.unibo.alchemist.model.sapere/-i-lsa-action/index.html">ILsaAction</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-sapere/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-s-a-p-e-r-e-walker/index.html">SAPEREWalker</a> : <a href="../../alchemist-maps/it.unibo.alchemist.model.maps.actions/-move-on-map/index.html">MoveOnMap</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><a href="../it.unibo.alchemist.model.sapere/-i-lsa-molecule/index.html">ILsaMolecule</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="../../alchemist-maps/it.unibo.alchemist.model.maps.routingservices/-graph-hopper-options/index.html">GraphHopperOptions</a><span class="token punctuation">, </span><a href="../../alchemist-maps/it.unibo.alchemist.model.maps.routingservices/-graph-hopper-routing-service/index.html">GraphHopperRoutingService</a><span class="token operator">&gt; </span>, <a href="../it.unibo.alchemist.model.sapere/-i-lsa-action/index.html">ILsaAction</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1239847049%2FClasslikes%2F-236430104" anchor-label="SAPEREWalkerRiseGradient" id="-1239847049%2FClasslikes%2F-236430104" data-filterable-set=":alchemist-incarnation-sapere/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-sapere/main" data-filterable-set=":alchemist-incarnation-sapere/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-s-a-p-e-r-e-walker-rise-gradient/index.html"><span>SAPEREWalker</span><wbr><span>Rise</span><wbr><span><span>Gradient</span></span></a></div>
@@ -338,7 +338,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-sapere/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-s-a-p-e-r-e-walker-rise-gradient/index.html">SAPEREWalkerRiseGradient</a> : <a href="../../alchemist-maps/it.unibo.alchemist.model.maps.actions/-move-on-map/index.html">MoveOnMap</a><span class="token operator">&lt;</span><a href="../../alchemist-maps/it.unibo.alchemist.model.maps.actions/-move-on-map/index.html">T</a><span class="token punctuation">, </span><a href="../../alchemist-maps/it.unibo.alchemist.model.maps.actions/-move-on-map/index.html">O</a><span class="token punctuation">, </span><a href="../../alchemist-maps/it.unibo.alchemist.model.maps.actions/-move-on-map/index.html">S</a><span class="token operator">&gt; </span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-sapere/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-s-a-p-e-r-e-walker-rise-gradient/index.html">SAPEREWalkerRiseGradient</a> : <a href="../../alchemist-maps/it.unibo.alchemist.model.maps.actions/-move-on-map/index.html">MoveOnMap</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><a href="../it.unibo.alchemist.model.sapere/-i-lsa-molecule/index.html">ILsaMolecule</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="../../alchemist-maps/it.unibo.alchemist.model.maps.routingservices/-graph-hopper-options/index.html">GraphHopperOptions</a><span class="token punctuation">, </span><a href="../../alchemist-maps/it.unibo.alchemist.model.maps.routingservices/-graph-hopper-routing-service/index.html">GraphHopperRoutingService</a><span class="token operator">&gt; </span></div></div></div>
                 </div>
               </div>
             </div>
@@ -349,17 +349,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

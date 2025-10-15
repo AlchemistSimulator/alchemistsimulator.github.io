@@ -1,22 +1,22 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>ElderlyMale</title>
-<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
@@ -24,35 +24,33 @@
 <link href="../../../../styles/main.css" rel="Stylesheet">
 <link href="../../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../../scripts/prism.js" async></script>
 <script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
 <link href="../../../../images/logo.svg">
 <link href="../../../../styles/logo-styles.css" rel="Stylesheet"></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../../index.html" tabindex="1">
                     alchemist-full
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">42.3.10
+        <div class="library-version" id="library-version">42.3.11
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-cognitive-agents/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":alchemist-cognitive-agents/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -66,7 +64,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -74,38 +72,40 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist-full
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-cognitive-agents::it.unibo.alchemist.model.cognitive.impact.individual/HelpAttitudeSpec.ElderlyMale///PointingToDeclaration//700932220">
   <div class="breadcrumbs"><a href="../../../index.html">alchemist-cognitive-agents</a><span class="delimiter">/</span><a href="../../index.html">it.unibo.alchemist.model.cognitive.impact.individual</a><span class="delimiter">/</span><a href="../index.html">HelpAttitudeSpec</a><span class="delimiter">/</span><span class="current">ElderlyMale</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Elderly</span><wbr><span><span>Male</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-cognitive-agents/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">ElderlyMale</a> : <span data-unresolved-link="com.uchuhimo.konf/ConfigSpec///PointingToDeclaration/">ConfigSpec</span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/077a866cdc7de0c5d1f807758b1f4fb56f130435/alchemist-cognitive-agents/src/main/kotlin/it/unibo/alchemist/model/cognitive/impact/individual/HelpAttitudeSpec.kt#L95">source</a>)</span></span></div><p class="paragraph">Elderly males attitudes.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-cognitive-agents/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">ElderlyMale</a> : <span data-unresolved-link="com.uchuhimo.konf/ConfigSpec///PointingToDeclaration/">ConfigSpec</span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/e077af6e3177ee9499ab8bfc0331a1b7c19353b0/alchemist-cognitive-agents/src/main/kotlin/it/unibo/alchemist/model/cognitive/impact/individual/HelpAttitudeSpec.kt#L95">source</a>)</span></span></div><p class="paragraph">Elderly males attitudes.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-367193645%2FProperties%2F700932220" anchor-label="adultFemale" id="-367193645%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="adult-female.html"><span>adult</span><wbr><span><span>Female</span></span></a></div>
@@ -120,7 +120,7 @@
             </div>
           </div>
 <a data-name="45032114%2FProperties%2F700932220" anchor-label="adultMale" id="45032114%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="adult-male.html"><span>adult</span><wbr><span><span>Male</span></span></a></div>
@@ -135,7 +135,7 @@
             </div>
           </div>
 <a data-name="226316849%2FProperties%2F700932220" anchor-label="childFemale" id="226316849%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="child-female.html"><span>child</span><wbr><span><span>Female</span></span></a></div>
@@ -150,7 +150,7 @@
             </div>
           </div>
 <a data-name="121627280%2FProperties%2F700932220" anchor-label="childMale" id="121627280%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="child-male.html"><span>child</span><wbr><span><span>Male</span></span></a></div>
@@ -165,7 +165,7 @@
             </div>
           </div>
 <a data-name="-2102975530%2FProperties%2F700932220" anchor-label="elderlyFemale" id="-2102975530%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="elderly-female.html"><span>elderly</span><wbr><span><span>Female</span></span></a></div>
@@ -180,7 +180,7 @@
             </div>
           </div>
 <a data-name="1603000693%2FProperties%2F700932220" anchor-label="elderlyMale" id="1603000693%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="elderly-male.html"><span>elderly</span><wbr><span><span>Male</span></span></a></div>
@@ -195,7 +195,7 @@
             </div>
           </div>
 <a data-name="1077241977%2FProperties%2F700932220" anchor-label="innerSpecs" id="1077241977%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../-speed-spec/index.html#1077241977%2FProperties%2F700932220"><span>inner</span><wbr><span><span>Specs</span></span></a></div>
@@ -210,7 +210,7 @@
             </div>
           </div>
 <a data-name="301623135%2FProperties%2F700932220" anchor-label="items" id="301623135%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../-speed-spec/index.html#301623135%2FProperties%2F700932220"><span><span>items</span></span></a></div>
@@ -225,7 +225,7 @@
             </div>
           </div>
 <a data-name="1376686665%2FProperties%2F700932220" anchor-label="prefix" id="1376686665%2FProperties%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../-speed-spec/index.html#1376686665%2FProperties%2F700932220"><span><span>prefix</span></span></a></div>
@@ -242,9 +242,9 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="1157218497%2FFunctions%2F700932220" anchor-label="addInnerSpec" id="1157218497%2FFunctions%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../-speed-spec/index.html#1157218497%2FFunctions%2F700932220"><span>add</span><wbr><span>Inner</span><wbr><span><span>Spec</span></span></a></div>
@@ -259,7 +259,7 @@
             </div>
           </div>
 <a data-name="-1176720725%2FFunctions%2F700932220" anchor-label="addItem" id="-1176720725%2FFunctions%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../-speed-spec/index.html#-1176720725%2FFunctions%2F700932220"><span>add</span><wbr><span><span>Item</span></span></a></div>
@@ -274,7 +274,7 @@
             </div>
           </div>
 <a data-name="216658617%2FFunctions%2F700932220" anchor-label="get" id="216658617%2FFunctions%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../-speed-spec/index.html#216658617%2FFunctions%2F700932220"><span><span>get</span></span></a></div>
@@ -289,7 +289,7 @@
             </div>
           </div>
 <a data-name="-57241479%2FFunctions%2F700932220" anchor-label="lazy" id="-57241479%2FFunctions%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../-speed-spec/index.html#-57241479%2FFunctions%2F700932220"><span><span>lazy</span></span></a></div>
@@ -304,7 +304,7 @@
             </div>
           </div>
 <a data-name="-1307546368%2FFunctions%2F700932220" anchor-label="optional" id="-1307546368%2FFunctions%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../-speed-spec/index.html#-1307546368%2FFunctions%2F700932220"><span><span>optional</span></span></a></div>
@@ -319,7 +319,7 @@
             </div>
           </div>
 <a data-name="-1897999851%2FFunctions%2F700932220" anchor-label="plus" id="-1897999851%2FFunctions%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../-speed-spec/index.html#-1897999851%2FFunctions%2F700932220"><span><span>plus</span></span></a></div>
@@ -334,7 +334,7 @@
             </div>
           </div>
 <a data-name="-620175742%2FFunctions%2F700932220" anchor-label="qualify" id="-620175742%2FFunctions%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../-speed-spec/index.html#-620175742%2FFunctions%2F700932220"><span><span>qualify</span></span></a></div>
@@ -349,7 +349,7 @@
             </div>
           </div>
 <a data-name="1352156512%2FFunctions%2F700932220" anchor-label="required" id="1352156512%2FFunctions%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../-speed-spec/index.html#1352156512%2FFunctions%2F700932220"><span><span>required</span></span></a></div>
@@ -364,7 +364,7 @@
             </div>
           </div>
 <a data-name="73507879%2FFunctions%2F700932220" anchor-label="withFallback" id="73507879%2FFunctions%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../-speed-spec/index.html#73507879%2FFunctions%2F700932220"><span>with</span><wbr><span><span>Fallback</span></span></a></div>
@@ -379,7 +379,7 @@
             </div>
           </div>
 <a data-name="-1060748701%2FFunctions%2F700932220" anchor-label="withPrefix" id="-1060748701%2FFunctions%2F700932220" data-filterable-set=":alchemist-cognitive-agents/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-cognitive-agents/main" data-filterable-set=":alchemist-cognitive-agents/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../-speed-spec/index.html#-1060748701%2FFunctions%2F700932220"><span>with</span><wbr><span><span>Prefix</span></span></a></div>
@@ -399,17 +399,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>ConvexPolygon</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,22 +25,20 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 <link href="../../../images/logo.svg">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     alchemist
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -48,11 +46,11 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-42.3.10        </div>
+42.3.11        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
-                        data-filter=":/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/alldocs">alldocs</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
                         data-role="dropdown-toggle"
@@ -61,24 +59,24 @@
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":/main"
-                                       data-filter=":/main"/>
+                                <input type="checkbox" class="checkbox--input" id=":/alldocs"
+                                       data-filter=":/alldocs"/>
                                 <span class="checkbox--icon"></span>
-                                jvm
+                                alldocs
                             </label>
                         </li>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link"
                    href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
@@ -88,78 +86,88 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="classlike" id="content" pageIds="alchemist::it.unibo.alchemist.model.geometry/ConvexPolygon///PointingToDeclaration//-251573632">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="alchemist::it.unibo.alchemist.model.geometry/ConvexPolygon///PointingToDeclaration//-1814946674">
   <div class="breadcrumbs"><a href="../../../index.html">alchemist</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.geometry</a><span class="delimiter">/</span><span class="current">ConvexPolygon</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Convex</span><wbr></wbr><span><span>Polygon</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">ConvexPolygon</a> : <a href="../-convex-shape/index.html">ConvexShape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt; </span>, <a href="../-awt-shape-compatible/index.html">AwtShapeCompatible</a></div><p class="paragraph">A simple polygon (i.e. not self-intersecting and without holes) in which no line segment between two points on the boundary ever goes outside the polygon.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-abstract-convex-polygon/index.html">AbstractConvexPolygon</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-mutable-convex-polygon/index.html">MutableConvexPolygon</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">ConvexPolygon</a> : <a href="../-convex-shape/index.html">ConvexShape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt; </span>, <a href="../-awt-shape-compatible/index.html">AwtShapeCompatible</a></div><p class="paragraph">A simple polygon (i.e. not self-intersecting and without holes) in which no line segment between two points on the boundary ever goes outside the polygon.</p><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-abstract-convex-polygon/index.html">AbstractConvexPolygon</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-mutable-convex-polygon/index.html">MutableConvexPolygon</a></div></span></div><div></div></div></div></div></div>    </div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
-        <div class="table"><a data-name="1888526727%2FProperties%2F-251573632" anchor-label="centroid" id="1888526727%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="1888526727%2FProperties%2F-1814946674" anchor-label="centroid" id="1888526727%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-shape/centroid.html"><span><span>centroid</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1888526727%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1888526727%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../-shape/centroid.html">centroid</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><div class="brief "><p class="paragraph">The geometric center.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../-shape/centroid.html">centroid</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><div class="brief "><p class="paragraph">The geometric center.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-901557414%2FProperties%2F-251573632" anchor-label="diameter" id="-901557414%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-901557414%2FProperties%2F-1814946674" anchor-label="diameter" id="-901557414%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-shape/diameter.html"><span><span>diameter</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-901557414%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-901557414%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../-shape/diameter.html">diameter</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The largest distance between any pair of vertices.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../-shape/diameter.html">diameter</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The largest distance between any pair of vertices.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1496151413%2FProperties%2F-251573632" anchor-label="radius" id="1496151413%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1496151413%2FProperties%2F-1814946674" anchor-label="radius" id="1496151413%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-shape/radius.html"><span><span>radius</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1496151413%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1496151413%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../-shape/radius.html">radius</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Half the <a href="../-shape/diameter.html">diameter</a>.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../-shape/radius.html">radius</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Half the <a href="../-shape/diameter.html">diameter</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -167,183 +175,207 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="-1795400008%2FFunctions%2F-251573632" anchor-label="asAwtShape" id="-1795400008%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1795400008%2FFunctions%2F-1814946674" anchor-label="asAwtShape" id="-1795400008%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-awt-shape-compatible/as-awt-shape.html"><span>as</span><wbr></wbr><span>Awt</span><wbr></wbr><span><span>Shape</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1795400008%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1795400008%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-awt-shape-compatible/as-awt-shape.html"><span class="token function">asAwtShape</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">Shape</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-awt-shape-compatible/as-awt-shape.html"><span class="token function">asAwtShape</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">Shape</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-466253710%2FFunctions%2F-251573632" anchor-label="closestEdgeTo" id="-466253710%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-466253710%2FFunctions%2F-1814946674" anchor-label="closestEdgeTo" id="-466253710%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="closest-edge-to.html"><span>closest</span><wbr></wbr><span>Edge</span><wbr></wbr><span><span>To</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-466253710%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-466253710%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="closest-edge-to.html"><span class="token function">closestEdgeTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">segment<span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Finds the edge of the polygon closest to the provided <a href="closest-edge-to.html">segment</a>, i.e. the first one that would collide (= intersect) with the segment in case the polygon extended on each side.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="closest-edge-to.html"><span class="token function">closestEdgeTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">segment<span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Finds the edge of the polygon closest to the provided <a href="closest-edge-to.html">segment</a>, i.e. the first one that would collide (= intersect) with the segment in case the polygon extended on each side.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1339800871%2FFunctions%2F-251573632" anchor-label="contains" id="1339800871%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1339800871%2FFunctions%2F-1814946674" anchor-label="contains" id="1339800871%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="contains.html"><span><span>contains</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1339800871%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1339800871%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the polygon contains a vector (= a point). The definition of insideness may vary depending on the implementation, this may affect the outcome for points lying on the polygon's boundary. For accurate operations see <a href="contains-boundary-included.html">containsBoundaryIncluded</a> and <a href="contains-boundary-excluded.html">containsBoundaryExcluded</a>.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">Shape</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the polygon contains a polygonal <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">java.awt.Shape</a> (i.e. without curved segments). A polygonal shape is contained in a polygon if all of its points are contained in (or lie on the boundary of) the latter.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the polygon contains a vector (= a point). The definition of insideness may vary depending on the implementation, this may affect the outcome for points lying on the polygon's boundary. For accurate operations see <a href="contains-boundary-included.html">containsBoundaryIncluded</a> and <a href="contains-boundary-excluded.html">containsBoundaryExcluded</a>.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">Shape</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the polygon contains a polygonal <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">java.awt.Shape</a> (i.e. without curved segments). A polygonal shape is contained in a polygon if all of its points are contained in (or lie on the boundary of) the latter.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1073806982%2FFunctions%2F-251573632" anchor-label="containsBoundaryExcluded" id="1073806982%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1073806982%2FFunctions%2F-1814946674" anchor-label="containsBoundaryExcluded" id="1073806982%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="contains-boundary-excluded.html"><span>contains</span><wbr></wbr><span>Boundary</span><wbr></wbr><span><span>Excluded</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1073806982%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1073806982%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="contains-boundary-excluded.html"><span class="token function">containsBoundaryExcluded</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a vector (= a point) is contained in the polygon, boundary excluded.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="contains-boundary-excluded.html"><span class="token function">containsBoundaryExcluded</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a vector (= a point) is contained in the polygon, boundary excluded.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1104193876%2FFunctions%2F-251573632" anchor-label="containsBoundaryIncluded" id="1104193876%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1104193876%2FFunctions%2F-1814946674" anchor-label="containsBoundaryIncluded" id="1104193876%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="contains-boundary-included.html"><span>contains</span><wbr></wbr><span>Boundary</span><wbr></wbr><span><span>Included</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1104193876%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1104193876%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="contains-boundary-included.html"><span class="token function">containsBoundaryIncluded</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a vector (= a point) is contained in the polygon or lies on its boundary.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="contains-boundary-included.html"><span class="token function">containsBoundaryIncluded</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a vector (= a point) is contained in the polygon or lies on its boundary.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="44927979%2FFunctions%2F-251573632" anchor-label="edges" id="44927979%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="44927979%2FFunctions%2F-1814946674" anchor-label="edges" id="44927979%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="edges.html"><span><span>edges</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="44927979%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="44927979%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="edges.html"><span class="token function">edges</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="edges.html"><span class="token function">edges</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="656144844%2FFunctions%2F-251573632" anchor-label="getEdge" id="656144844%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="656144844%2FFunctions%2F-1814946674" anchor-label="getEdge" id="656144844%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-edge.html"><span>get</span><wbr></wbr><span><span>Edge</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="656144844%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="656144844%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-edge.html"><span class="token function">getEdge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Depending on the implementation, this may be faster than <a href="edges.html">edges</a>.get(<a href="get-edge.html">index</a>).</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-edge.html"><span class="token function">getEdge</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Depending on the implementation, this may be faster than <a href="edges.html">edges</a>.get(<a href="get-edge.html">index</a>).</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="926436316%2FFunctions%2F-251573632" anchor-label="intersects" id="926436316%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1516728204%2FFunctions%2F-1814946674" anchor-label="intersects" id="-1516728204%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="intersects.html"><span><span>intersects</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="926436316%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1516728204%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="intersects.html"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">segment<span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a segment intersects with the polygon, segments lying on the polygon's boundary are not considered to be intersecting.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="intersects.html"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">Shape</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">java.awt.Shape</a> intersects the polygon, adjacent shapes are not considered to be intersecting.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-mutable-convex-polygon/index.html#-416012423%2FFunctions%2F-251573632"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">A shape intersects another if any of its points is contained in the other one.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="intersects.html"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">segment<span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a segment intersects with the polygon, segments lying on the polygon's boundary are not considered to be intersecting.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="intersects.html"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">Shape</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">java.awt.Shape</a> intersects the polygon, adjacent shapes are not considered to be intersecting.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-shape/intersects.html"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">A shape intersects another if any of its points is contained in the other one.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="337937956%2FFunctions%2F-251573632" anchor-label="isAdjacentTo" id="337937956%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="337937956%2FFunctions%2F-1814946674" anchor-label="isAdjacentTo" id="337937956%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-adjacent-to.html"><span>is</span><wbr></wbr><span>Adjacent</span><wbr></wbr><span><span>To</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="337937956%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="337937956%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="is-adjacent-to.html"><span class="token function">isAdjacentTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="index.html">ConvexPolygon</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">A polygon is adjacent to another if any of its points lies on the boundary of the other.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="is-adjacent-to.html"><span class="token function">isAdjacentTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="index.html">ConvexPolygon</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">A polygon is adjacent to another if any of its points lies on the boundary of the other.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="2118839109%2FFunctions%2F-251573632" anchor-label="liesOnBoundary" id="2118839109%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="2118839109%2FFunctions%2F-1814946674" anchor-label="liesOnBoundary" id="2118839109%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="lies-on-boundary.html"><span>lies</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Boundary</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2118839109%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2118839109%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="lies-on-boundary.html"><span class="token function">liesOnBoundary</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a vector (= a point) lies on the polygon's boundary.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="lies-on-boundary.html"><span class="token function">liesOnBoundary</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vector<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a vector (= a point) lies on the polygon's boundary.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-483400315%2FFunctions%2F-251573632" anchor-label="transformed" id="-483400315%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1846610075%2FFunctions%2F-1814946674" anchor-label="transformed" id="-1846610075%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-mutable-convex-polygon/index.html#-483400315%2FFunctions%2F-251573632"><span><span>transformed</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-483400315%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-shape/transformed.html"><span><span>transformed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1846610075%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-mutable-convex-polygon/index.html#-483400315%2FFunctions%2F-251573632"><span class="token function">transformed</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transformation<span class="token operator">: </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Transforms the shape.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-shape/transformed.html"><span class="token function">transformed</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transformation<span class="token operator">: </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Transforms the shape.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-949818976%2FFunctions%2F-251573632" anchor-label="vertices" id="-949818976%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-949818976%2FFunctions%2F-1814946674" anchor-label="vertices" id="-949818976%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="vertices.html"><span><span>vertices</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-949818976%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-949818976%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="vertices.html"><span class="token function">vertices</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="vertices.html"><span class="token function">vertices</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -354,17 +386,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

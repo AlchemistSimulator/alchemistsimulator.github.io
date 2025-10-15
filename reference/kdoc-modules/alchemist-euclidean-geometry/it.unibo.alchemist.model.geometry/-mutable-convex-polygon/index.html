@@ -1,22 +1,22 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>MutableConvexPolygon</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
@@ -24,35 +24,33 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
 <link href="../../../images/logo.svg">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet"></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
                     alchemist-full
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">42.3.10
+        <div class="library-version" id="library-version">42.3.11
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-euclidean-geometry/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":alchemist-euclidean-geometry/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -66,7 +64,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -74,38 +72,40 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist-full
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-euclidean-geometry::it.unibo.alchemist.model.geometry/MutableConvexPolygon///PointingToDeclaration//1780278300">
   <div class="breadcrumbs"><a href="../../index.html">alchemist-euclidean-geometry</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.geometry</a><span class="delimiter">/</span><span class="current">MutableConvexPolygon</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Mutable</span><wbr><span>Convex</span><wbr><span><span>Polygon</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">MutableConvexPolygon</a> : <a href="../-convex-polygon/index.html">ConvexPolygon</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/077a866cdc7de0c5d1f807758b1f4fb56f130435/alchemist-euclidean-geometry/src/main/kotlin/it/unibo/alchemist/model/geometry/MutableConvexPolygon.kt#L17">source</a>)</span></span></div><p class="paragraph">A mutable <a href="../-convex-polygon/index.html">ConvexPolygon</a>.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-awt-mutable-convex-polygon/index.html">AwtMutableConvexPolygon</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-extendable-convex-polygon/index.html">ExtendableConvexPolygon</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">MutableConvexPolygon</a> : <a href="../-convex-polygon/index.html">ConvexPolygon</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/e077af6e3177ee9499ab8bfc0331a1b7c19353b0/alchemist-euclidean-geometry/src/main/kotlin/it/unibo/alchemist/model/geometry/MutableConvexPolygon.kt#L17">source</a>)</span></span></div><p class="paragraph">A mutable <a href="../-convex-polygon/index.html">ConvexPolygon</a>.</p><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-awt-mutable-convex-polygon/index.html">AwtMutableConvexPolygon</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-extendable-convex-polygon/index.html">ExtendableConvexPolygon</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="1888526727%2FProperties%2F1780278300" anchor-label="centroid" id="1888526727%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1888526727%2FProperties%2F1780278300"><span><span>centroid</span></span></a></div>
@@ -120,7 +120,7 @@
             </div>
           </div>
 <a data-name="-901557414%2FProperties%2F1780278300" anchor-label="diameter" id="-901557414%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-901557414%2FProperties%2F1780278300"><span><span>diameter</span></span></a></div>
@@ -135,7 +135,7 @@
             </div>
           </div>
 <a data-name="1496151413%2FProperties%2F1780278300" anchor-label="radius" id="1496151413%2FProperties%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.model.geometry.navigationgraph/-extendable-convex-polygon-in-environment/index.html#1496151413%2FProperties%2F1780278300"><span><span>radius</span></span></a></div>
@@ -152,9 +152,9 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-2110478502%2FFunctions%2F1780278300" anchor-label="addVertex" id="-2110478502%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="add-vertex.html"><span>add</span><wbr><span><span>Vertex</span></span></a></div>
@@ -169,7 +169,7 @@
             </div>
           </div>
 <a data-name="-1795400008%2FFunctions%2F1780278300" anchor-label="asAwtShape" id="-1795400008%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-awt-shape-compatible/as-awt-shape.html"><span>as</span><wbr><span>Awt</span><wbr><span><span>Shape</span></span></a></div>
@@ -184,7 +184,7 @@
             </div>
           </div>
 <a data-name="-466253710%2FFunctions%2F1780278300" anchor-label="closestEdgeTo" id="-466253710%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-convex-polygon/closest-edge-to.html"><span>closest</span><wbr><span>Edge</span><wbr><span><span>To</span></span></a></div>
@@ -199,7 +199,7 @@
             </div>
           </div>
 <a data-name="1339800871%2FFunctions%2F1780278300" anchor-label="contains" id="1339800871%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-convex-polygon/contains.html"><span><span>contains</span></span></a></div>
@@ -214,7 +214,7 @@
             </div>
           </div>
 <a data-name="1073806982%2FFunctions%2F1780278300" anchor-label="containsBoundaryExcluded" id="1073806982%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-convex-polygon/contains-boundary-excluded.html"><span>contains</span><wbr><span>Boundary</span><wbr><span><span>Excluded</span></span></a></div>
@@ -229,7 +229,7 @@
             </div>
           </div>
 <a data-name="1104193876%2FFunctions%2F1780278300" anchor-label="containsBoundaryIncluded" id="1104193876%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-convex-polygon/contains-boundary-included.html"><span>contains</span><wbr><span>Boundary</span><wbr><span><span>Included</span></span></a></div>
@@ -244,7 +244,7 @@
             </div>
           </div>
 <a data-name="44927979%2FFunctions%2F1780278300" anchor-label="edges" id="44927979%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-convex-polygon/edges.html"><span><span>edges</span></span></a></div>
@@ -259,7 +259,7 @@
             </div>
           </div>
 <a data-name="656144844%2FFunctions%2F1780278300" anchor-label="getEdge" id="656144844%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-convex-polygon/get-edge.html"><span>get</span><wbr><span><span>Edge</span></span></a></div>
@@ -273,23 +273,23 @@
               </div>
             </div>
           </div>
-<a data-name="926436316%2FFunctions%2F1780278300" anchor-label="intersects" id="926436316%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+<a data-name="-1516728204%2FFunctions%2F1780278300" anchor-label="intersects" id="-1516728204%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-convex-polygon/intersects.html"><span><span>intersects</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="926436316%2FFunctions%2F1780278300"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1516728204%2FFunctions%2F1780278300"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/intersects.html"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">segment<span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a segment intersects with the polygon, segments lying on the polygon's boundary are not considered to be intersecting.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/intersects.html"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">Shape</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">java.awt.Shape</a> intersects the polygon, adjacent shapes are not considered to be intersecting.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#-416012423%2FFunctions%2F1780278300"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/intersects.html"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">segment<span class="token operator">: </span><a href="../-segment2-d/index.html">Segment2D</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a segment intersects with the polygon, segments lying on the polygon's boundary are not considered to be intersecting.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../-convex-polygon/intersects.html"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">Shape</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if a <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Shape.html">java.awt.Shape</a> intersects the polygon, adjacent shapes are not considered to be intersecting.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#1069552529%2FFunctions%2F1780278300"><span class="token function">intersects</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="337937956%2FFunctions%2F1780278300" anchor-label="isAdjacentTo" id="337937956%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-convex-polygon/is-adjacent-to.html"><span>is</span><wbr><span>Adjacent</span><wbr><span><span>To</span></span></a></div>
@@ -304,7 +304,7 @@
             </div>
           </div>
 <a data-name="2118839109%2FFunctions%2F1780278300" anchor-label="liesOnBoundary" id="2118839109%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-convex-polygon/lies-on-boundary.html"><span>lies</span><wbr><span>On</span><wbr><span><span>Boundary</span></span></a></div>
@@ -319,7 +319,7 @@
             </div>
           </div>
 <a data-name="1002411638%2FFunctions%2F1780278300" anchor-label="moveVertex" id="1002411638%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="move-vertex.html"><span>move</span><wbr><span><span>Vertex</span></span></a></div>
@@ -334,7 +334,7 @@
             </div>
           </div>
 <a data-name="-1784313319%2FFunctions%2F1780278300" anchor-label="removeVertex" id="-1784313319%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="remove-vertex.html"><span>remove</span><wbr><span><span>Vertex</span></span></a></div>
@@ -349,7 +349,7 @@
             </div>
           </div>
 <a data-name="-383496633%2FFunctions%2F1780278300" anchor-label="replaceEdge" id="-383496633%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="replace-edge.html"><span>replace</span><wbr><span><span>Edge</span></span></a></div>
@@ -363,23 +363,23 @@
               </div>
             </div>
           </div>
-<a data-name="-483400315%2FFunctions%2F1780278300" anchor-label="transformed" id="-483400315%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+<a data-name="-1846610075%2FFunctions%2F1780278300" anchor-label="transformed" id="-1846610075%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="index.html#-483400315%2FFunctions%2F1780278300"><span><span>transformed</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-483400315%2FFunctions%2F1780278300"></span>
+                  <div><a href="index.html#-1846610075%2FFunctions%2F1780278300"><span><span>transformed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1846610075%2FFunctions%2F1780278300"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#-483400315%2FFunctions%2F1780278300"><span class="token function">transformed</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transformation<span class="token operator">: </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#-1846610075%2FFunctions%2F1780278300"><span class="token function">transformed</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transformation<span class="token operator">: </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-949818976%2FFunctions%2F1780278300" anchor-label="vertices" id="-949818976%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-convex-polygon/vertices.html"><span><span>vertices</span></span></a></div>
@@ -399,17 +399,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

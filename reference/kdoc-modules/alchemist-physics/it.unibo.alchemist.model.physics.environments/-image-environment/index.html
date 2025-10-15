@@ -1,22 +1,22 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>ImageEnvironment</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
@@ -24,35 +24,33 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
 <link href="../../../images/logo.svg">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet"></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
                     alchemist-full
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">42.3.10
+        <div class="library-version" id="library-version">42.3.11
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-physics/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":alchemist-physics/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -66,7 +64,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -74,38 +72,40 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist-full
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-physics::it.unibo.alchemist.model.physics.environments/ImageEnvironment///PointingToDeclaration//-2141783558">
   <div class="breadcrumbs"><a href="../../index.html">alchemist-physics</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.physics.environments</a><span class="delimiter">/</span><span class="current">ImageEnvironment</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Image</span><wbr><span><span>Environment</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">ImageEnvironment</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span> : <a href="../-continuous2-d-obstacles/index.html">Continuous2DObstacles</a><span class="token operator">&lt;</span><a href="../-continuous2-d-obstacles/index.html">T</a><span class="token operator">&gt; </span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/077a866cdc7de0c5d1f807758b1f4fb56f130435/alchemist-physics/src/main/java/it/unibo/alchemist/model/physics/environments/ImageEnvironment.java#L35">source</a>)</span></span></div><p class="paragraph">This environment loads an image from the file system, and marks as obstacles all the pixels of a given color.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>&lt;T&gt;</span></span></u></div></span></div><div><div class="title"><p class="paragraph">concentration type</p></div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">ImageEnvironment</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span> : <a href="../-continuous2-d-obstacles/index.html">Continuous2DObstacles</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt; </span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/e077af6e3177ee9499ab8bfc0331a1b7c19353b0/alchemist-physics/src/main/java/it/unibo/alchemist/model/physics/environments/ImageEnvironment.java#L35">source</a>)</span></span></div><p class="paragraph">This environment loads an image from the file system, and marks as obstacles all the pixels of a given color.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>&lt;T&gt;</span></span></u></div></span></div><div><div class="title"><p class="paragraph">concentration type</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="1270307766%2FConstructors%2F-2141783558" anchor-label="ImageEnvironment" id="1270307766%2FConstructors%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-image-environment.html"><span>Image</span><wbr><span><span>Environment</span></span></a></div>
@@ -122,9 +122,9 @@
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-1971260292%2FProperties%2F-2141783558" anchor-label="DEFAULT_COLOR" id="-1971260292%2FProperties%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-d-e-f-a-u-l-t_-c-o-l-o-r.html"><span>DEFAULT_</span><wbr><span>COLOR</span></a></div>
@@ -139,7 +139,7 @@
             </div>
           </div>
 <a data-name="1962930574%2FProperties%2F-2141783558" anchor-label="DEFAULT_DELTA_X" id="1962930574%2FProperties%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-d-e-f-a-u-l-t_-d-e-l-t-a_-x.html"><span>DEFAULT_</span><wbr><span>DELTA_</span><wbr><span>X</span></a></div>
@@ -154,7 +154,7 @@
             </div>
           </div>
 <a data-name="1993950381%2FProperties%2F-2141783558" anchor-label="DEFAULT_DELTA_Y" id="1993950381%2FProperties%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-d-e-f-a-u-l-t_-d-e-l-t-a_-y.html"><span>DEFAULT_</span><wbr><span>DELTA_</span><wbr><span>Y</span></a></div>
@@ -169,7 +169,7 @@
             </div>
           </div>
 <a data-name="-1821955992%2FProperties%2F-2141783558" anchor-label="DEFAULT_ZOOM" id="-1821955992%2FProperties%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-d-e-f-a-u-l-t_-z-o-o-m.html"><span>DEFAULT_</span><wbr><span>ZOOM</span></a></div>
@@ -184,7 +184,7 @@
             </div>
           </div>
 <a data-name="538163487%2FProperties%2F-2141783558" anchor-label="incarnation" id="538163487%2FProperties%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-continuous-physics2-d-environment/index.html#538163487%2FProperties%2F-2141783558"><span><span>incarnation</span></span></a></div>
@@ -199,7 +199,7 @@
             </div>
           </div>
 <a data-name="1347621041%2FProperties%2F-2141783558" anchor-label="linkingRule" id="1347621041%2FProperties%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-continuous-physics2-d-environment/index.html#1347621041%2FProperties%2F-2141783558"><span>linking</span><wbr><span><span>Rule</span></span></a></div>
@@ -214,7 +214,7 @@
             </div>
           </div>
 <a data-name="548798820%2FProperties%2F-2141783558" anchor-label="nodes" id="548798820%2FProperties%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-continuous-physics2-d-environment/index.html#548798820%2FProperties%2F-2141783558"><span><span>nodes</span></span></a></div>
@@ -229,7 +229,7 @@
             </div>
           </div>
 <a data-name="21976033%2FProperties%2F-2141783558" anchor-label="shapeFactory" id="21976033%2FProperties%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-continuous-physics2-d-environment/shape-factory.html"><span>shape</span><wbr><span><span>Factory</span></span></a></div>
@@ -238,13 +238,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-continuous-physics2-d-environment/shape-factory.html">shapeFactory</a><span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.geometry/-euclidean2-d-shape-factory/index.html">Euclidean2DShapeFactory</a></div><div class="brief "><p class="paragraph">A factory of shapes compatible with this environment.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-continuous-physics2-d-environment/shape-factory.html">shapeFactory</a><span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.geometry/-euclidean2-d-shape-factory/index.html">Euclidean2DShapeFactory</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1429072820%2FProperties%2F-2141783558" anchor-label="simulationOrNull" id="1429072820%2FProperties%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-continuous-physics2-d-environment/index.html#1429072820%2FProperties%2F-2141783558"><span>simulation</span><wbr><span>Or</span><wbr><span><span>Null</span></span></a></div>
@@ -261,9 +261,9 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-293773629%2FFunctions%2F-2141783558" anchor-label="addGlobalReaction" id="-293773629%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-293773629%2FFunctions%2F-2141783558"><span>add</span><wbr><span>Global</span><wbr><span><span>Reaction</span></span></a></div>
@@ -272,13 +272,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-293773629%2FFunctions%2F-2141783558"><span class="token function">addGlobalReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-global-reaction/index.html">GlobalReaction</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-293773629%2FFunctions%2F-2141783558"><span class="token function">addGlobalReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">reaction<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-global-reaction/index.html">GlobalReaction</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-923298993%2FFunctions%2F-2141783558" anchor-label="addLayer" id="-923298993%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-923298993%2FFunctions%2F-2141783558"><span>add</span><wbr><span><span>Layer</span></span></a></div>
@@ -287,13 +287,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-923298993%2FFunctions%2F-2141783558"><span class="token function">addLayer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-molecule/index.html">Molecule</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-layer/index.html">Layer</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-923298993%2FFunctions%2F-2141783558"><span class="token function">addLayer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">molecule<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-molecule/index.html">Molecule</a><span class="token punctuation">, </span></span><span class="parameter ">layer<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-layer/index.html">Layer</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-490787818%2FFunctions%2F-2141783558" anchor-label="addNode" id="-490787818%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-490787818%2FFunctions%2F-2141783558"><span>add</span><wbr><span><span>Node</span></span></a></div>
@@ -302,13 +302,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-490787818%2FFunctions%2F-2141783558"><span class="token function">addNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-490787818%2FFunctions%2F-2141783558"><span class="token function">addNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">position<span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1610122156%2FFunctions%2F-2141783558" anchor-label="addObstacle" id="1610122156%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#546996240%2FFunctions%2F-2141783558"><span>add</span><wbr><span><span>Obstacle</span></span></a></div>
@@ -323,7 +323,7 @@
             </div>
           </div>
 <a data-name="-150826189%2FFunctions%2F-2141783558" anchor-label="addTerminator" id="-150826189%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-150826189%2FFunctions%2F-2141783558"><span>add</span><wbr><span><span>Terminator</span></span></a></div>
@@ -332,13 +332,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-150826189%2FFunctions%2F-2141783558"><span class="token function">addTerminator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-termination-predicate/index.html">TerminationPredicate</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-150826189%2FFunctions%2F-2141783558"><span class="token function">addTerminator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">terminator<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-termination-predicate/index.html">TerminationPredicate</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="7677909%2FFunctions%2F-2141783558" anchor-label="farthestPositionReachable" id="7677909%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#604622416%2FFunctions%2F-2141783558"><span>farthest</span><wbr><span>Position</span><wbr><span><span>Reachable</span></span></a></div>
@@ -347,13 +347,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#604622416%2FFunctions%2F-2141783558"><span class="token function">farthestPositionReachable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">desiredPosition<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">P</a><span class="token punctuation">, </span></span><span class="parameter ">hitboxRadius<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">P</a></div><div class="brief "><p class="paragraph">Computes the farthest position reachable by a <a href="../../it.unibo.alchemist.model.physics/-physics-environment/farthest-position-reachable.html">node</a> towards a <a href="../../it.unibo.alchemist.model.physics/-physics-environment/farthest-position-reachable.html">desiredPosition</a>, avoiding node overlapping. If no node is located in between, <a href="../../it.unibo.alchemist.model.physics/-physics-environment/farthest-position-reachable.html">desiredPosition</a> is returned. Otherwise, the first position where the node collides with someone else is returned. For collision purposes, hitboxes are used: each node is given a circular hitbox of radius equal to its shape's radius (shapeless nodes can't cause overlapping). The client can specify a different radius for the hitbox of the moving node.</p></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#987485543%2FFunctions%2F-2141783558"><span class="token function">farthestPositionReachable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../-continuous-physics2-d-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">desiredPosition<span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span></span><span class="parameter ">hitboxRadius<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><div class="brief "><p class="paragraph">Computes the farthest position reachable by a <a href="../-continuous-physics2-d-environment/farthest-position-reachable.html">node</a> towards a <a href="../-continuous-physics2-d-environment/farthest-position-reachable.html">desiredPosition</a>, avoiding node overlapping. If no node is located in between, <a href="../-continuous-physics2-d-environment/farthest-position-reachable.html">desiredPosition</a> is returned. Otherwise, the first position where the node collides with someone else is returned. For collision purposes, hitboxes are used: each node is given a circular hitbox of radius equal to its shape's radius (shapeless nodes can't cause overlapping). The client can specify a different radius for the hitbox of the moving node.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#604622416%2FFunctions%2F-2141783558"><span class="token function">farthestPositionReachable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">desiredPosition<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">P</a><span class="token punctuation">, </span></span><span class="parameter ">hitboxRadius<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">P</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#987485543%2FFunctions%2F-2141783558"><span class="token function">farthestPositionReachable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../-continuous-physics2-d-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">desiredPosition<span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span></span><span class="parameter ">hitboxRadius<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><div class="brief "><p class="paragraph">Computes the farthest position reachable by a <a href="../../it.unibo.alchemist.model.physics/-physics-environment/farthest-position-reachable.html">node</a> towards a <a href="../../it.unibo.alchemist.model.physics/-physics-environment/farthest-position-reachable.html">desiredPosition</a>, avoiding node overlapping. If no node is located in between, <a href="../../it.unibo.alchemist.model.physics/-physics-environment/farthest-position-reachable.html">desiredPosition</a> is returned. Otherwise, the first position where the node collides with someone else is returned. For collision purposes, hitboxes are used: each node is given a circular hitbox of radius equal to its shape's radius (shapeless nodes can't cause overlapping). The client can specify a different radius for the hitbox of the moving node.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1211183614%2FFunctions%2F-2141783558" anchor-label="forEach" id="1211183614%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1211183614%2FFunctions%2F-2141783558"><span>for</span><wbr><span><span>Each</span></span></a></div>
@@ -362,13 +362,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1211183614%2FFunctions%2F-2141783558"><span class="token function">forEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html">Consumer</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1211183614%2FFunctions%2F-2141783558"><span class="token function">forEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html">Consumer</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1371638940%2FFunctions%2F-2141783558" anchor-label="getDimensions" id="-1371638940%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1371638940%2FFunctions%2F-2141783558"><span>get</span><wbr><span><span>Dimensions</span></span></a></div>
@@ -383,7 +383,7 @@
             </div>
           </div>
 <a data-name="198139358%2FFunctions%2F-2141783558" anchor-label="getDistanceBetweenNodes" id="198139358%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#198139358%2FFunctions%2F-2141783558"><span>get</span><wbr><span>Distance</span><wbr><span>Between</span><wbr><span><span>Nodes</span></span></a></div>
@@ -392,13 +392,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#198139358%2FFunctions%2F-2141783558"><span class="token function">getDistanceBetweenNodes</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#198139358%2FFunctions%2F-2141783558"><span class="token function">getDistanceBetweenNodes</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">n1<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">n2<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-544570412%2FFunctions%2F-2141783558" anchor-label="getGlobalReactions" id="-544570412%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-544570412%2FFunctions%2F-2141783558"><span>get</span><wbr><span>Global</span><wbr><span><span>Reactions</span></span></a></div>
@@ -413,7 +413,7 @@
             </div>
           </div>
 <a data-name="-725234279%2FFunctions%2F-2141783558" anchor-label="getHeading" id="-725234279%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1212011716%2FFunctions%2F-2141783558"><span>get</span><wbr><span><span>Heading</span></span></a></div>
@@ -422,13 +422,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#-1212011716%2FFunctions%2F-2141783558"><span class="token function">getHeading</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">P</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1361590129%2FFunctions%2F-2141783558"><span class="token function">getHeading</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../-continuous-physics2-d-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span>NonExistentClass</div><div class="brief "><p class="paragraph">Gets the heading of a node as a direction vector.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#-1212011716%2FFunctions%2F-2141783558"><span class="token function">getHeading</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">P</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1361590129%2FFunctions%2F-2141783558"><span class="token function">getHeading</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../-continuous-physics2-d-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><div class="brief "><p class="paragraph">Gets the heading of a node as a direction vector.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1875546045%2FFunctions%2F-2141783558" anchor-label="getLayer" id="1875546045%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1875546045%2FFunctions%2F-2141783558"><span>get</span><wbr><span><span>Layer</span></span></a></div>
@@ -437,13 +437,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1875546045%2FFunctions%2F-2141783558"><span class="token function">getLayer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-molecule/index.html">Molecule</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-layer/index.html">Layer</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1875546045%2FFunctions%2F-2141783558"><span class="token function">getLayer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">molecule<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-molecule/index.html">Molecule</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-layer/index.html">Layer</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1665021373%2FFunctions%2F-2141783558" anchor-label="getLayers" id="1665021373%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1665021373%2FFunctions%2F-2141783558"><span>get</span><wbr><span><span>Layers</span></span></a></div>
@@ -458,7 +458,7 @@
             </div>
           </div>
 <a data-name="2139689890%2FFunctions%2F-2141783558" anchor-label="getNeighborhood" id="2139689890%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#2139689890%2FFunctions%2F-2141783558"><span>get</span><wbr><span><span>Neighborhood</span></span></a></div>
@@ -467,13 +467,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#2139689890%2FFunctions%2F-2141783558"><span class="token function">getNeighborhood</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-neighborhood/index.html">Neighborhood</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#2139689890%2FFunctions%2F-2141783558"><span class="token function">getNeighborhood</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-neighborhood/index.html">Neighborhood</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="710043432%2FFunctions%2F-2141783558" anchor-label="getNodeByID" id="710043432%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#710043432%2FFunctions%2F-2141783558"><span>get</span><wbr><span>Node</span><wbr><span>By</span><wbr><span><span>ID</span></span></a></div>
@@ -482,13 +482,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#710043432%2FFunctions%2F-2141783558"><span class="token function">getNodeByID</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#710043432%2FFunctions%2F-2141783558"><span class="token function">getNodeByID</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">id<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1393200110%2FFunctions%2F-2141783558" anchor-label="getNodeCount" id="1393200110%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1393200110%2FFunctions%2F-2141783558"><span>get</span><wbr><span>Node</span><wbr><span><span>Count</span></span></a></div>
@@ -502,23 +502,23 @@
               </div>
             </div>
           </div>
-<a data-name="1374855815%2FFunctions%2F-2141783558" anchor-label="getNodesWithin" id="1374855815%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+<a data-name="-2143427992%2FFunctions%2F-2141783558" anchor-label="getNodesWithin" id="-2143427992%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="index.html#1374855815%2FFunctions%2F-2141783558"><span>get</span><wbr><span>Nodes</span><wbr><span><span>Within</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1374855815%2FFunctions%2F-2141783558"></span>
+                  <div><a href="index.html#-2143427992%2FFunctions%2F-2141783558"><span>get</span><wbr><span>Nodes</span><wbr><span><span>Within</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2143427992%2FFunctions%2F-2141783558"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1374855815%2FFunctions%2F-2141783558"><span class="token function">getNodesWithin</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span>NonExistentClass</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../-continuous-physics2-d-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Gets all nodes whose shape.intersect is true for the given shape.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-2143427992%2FFunctions%2F-2141783558"><span class="token function">getNodesWithin</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.geometry/-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../-continuous-physics2-d-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Gets all nodes whose shape.intersect is true for the given shape.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="747517247%2FFunctions%2F-2141783558" anchor-label="getNodesWithinRange" id="747517247%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#747517247%2FFunctions%2F-2141783558"><span>get</span><wbr><span>Nodes</span><wbr><span>Within</span><wbr><span><span>Range</span></span></a></div>
@@ -527,13 +527,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#747517247%2FFunctions%2F-2141783558"><span class="token function">getNodesWithinRange</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.danilopianini.util/ListSet///PointingToDeclaration/">ListSet</span><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#747517247%2FFunctions%2F-2141783558"><span class="token function">getNodesWithinRange</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">range<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.danilopianini.util/ListSet///PointingToDeclaration/">ListSet</span><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1413639165%2FFunctions%2F-2141783558" anchor-label="getObstacles" id="1413639165%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-134130559%2FFunctions%2F-2141783558"><span>get</span><wbr><span><span>Obstacles</span></span></a></div>
@@ -548,7 +548,7 @@
             </div>
           </div>
 <a data-name="-1862745623%2FFunctions%2F-2141783558" anchor-label="getObstaclesInRange" id="-1862745623%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#538207103%2FFunctions%2F-2141783558"><span>get</span><wbr><span>Obstacles</span><wbr><span>In</span><wbr><span><span>Range</span></span></a></div>
@@ -563,7 +563,7 @@
             </div>
           </div>
 <a data-name="2085135198%2FFunctions%2F-2141783558" anchor-label="getOffset" id="2085135198%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#2085135198%2FFunctions%2F-2141783558"><span>get</span><wbr><span><span>Offset</span></span></a></div>
@@ -578,7 +578,7 @@
             </div>
           </div>
 <a data-name="1495871212%2FFunctions%2F-2141783558" anchor-label="getOrigin" id="1495871212%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-697725179%2FFunctions%2F-2141783558"><span>get</span><wbr><span><span>Origin</span></span></a></div>
@@ -593,7 +593,7 @@
             </div>
           </div>
 <a data-name="1873158887%2FFunctions%2F-2141783558" anchor-label="getPosition" id="1873158887%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1873158887%2FFunctions%2F-2141783558"><span>get</span><wbr><span><span>Position</span></span></a></div>
@@ -602,13 +602,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1873158887%2FFunctions%2F-2141783558"><span class="token function">getPosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1873158887%2FFunctions%2F-2141783558"><span class="token function">getPosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-712088839%2FFunctions%2F-2141783558" anchor-label="getShape" id="-712088839%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1986820733%2FFunctions%2F-2141783558"><span>get</span><wbr><span><span>Shape</span></span></a></div>
@@ -617,13 +617,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#1986820733%2FFunctions%2F-2141783558"><span class="token function">getShape</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">P</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">A</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1092661104%2FFunctions%2F-2141783558"><span class="token function">getShape</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../-continuous-physics2-d-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span>NonExistentClass</div><div class="brief "><p class="paragraph">Gets the shape of a node relatively to its position and heading in the environment.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#1986820733%2FFunctions%2F-2141783558"><span class="token function">getShape</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">P</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.physics/-physics-environment/index.html">A</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1092661104%2FFunctions%2F-2141783558"><span class="token function">getShape</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../-continuous-physics2-d-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-shape/index.html">Shape</a><span class="token operator">&lt;</span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token punctuation">, </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.geometry/-euclidean2-d-transformation/index.html">Euclidean2DTransformation</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Gets the shape of a node relatively to its position and heading in the environment.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1481666596%2FFunctions%2F-2141783558" anchor-label="getShapeFactory" id="1481666596%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1481666596%2FFunctions%2F-2141783558"><span>get</span><wbr><span>Shape</span><wbr><span><span>Factory</span></span></a></div>
@@ -638,7 +638,7 @@
             </div>
           </div>
 <a data-name="961973144%2FFunctions%2F-2141783558" anchor-label="getSimulation" id="961973144%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#961973144%2FFunctions%2F-2141783558"><span>get</span><wbr><span><span>Simulation</span></span></a></div>
@@ -653,7 +653,7 @@
             </div>
           </div>
 <a data-name="309879984%2FFunctions%2F-2141783558" anchor-label="getSize" id="309879984%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#309879984%2FFunctions%2F-2141783558"><span>get</span><wbr><span><span>Size</span></span></a></div>
@@ -668,7 +668,7 @@
             </div>
           </div>
 <a data-name="-408489113%2FFunctions%2F-2141783558" anchor-label="getSizeInDistanceUnits" id="-408489113%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-408489113%2FFunctions%2F-2141783558"><span>get</span><wbr><span>Size</span><wbr><span>In</span><wbr><span>Distance</span><wbr><span><span>Units</span></span></a></div>
@@ -683,7 +683,7 @@
             </div>
           </div>
 <a data-name="156616361%2FFunctions%2F-2141783558" anchor-label="hasMobileObstacles" id="156616361%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean-physics2-d-environment-with-obstacles/index.html#-1546764455%2FFunctions%2F-2141783558"><span>has</span><wbr><span>Mobile</span><wbr><span><span>Obstacles</span></span></a></div>
@@ -698,7 +698,7 @@
             </div>
           </div>
 <a data-name="2085396465%2FFunctions%2F-2141783558" anchor-label="intersectsObstacle" id="2085396465%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1558929657%2FFunctions%2F-2141783558"><span>intersects</span><wbr><span><span>Obstacle</span></span></a></div>
@@ -713,7 +713,7 @@
             </div>
           </div>
 <a data-name="-674166984%2FFunctions%2F-2141783558" anchor-label="isTerminated" id="-674166984%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-continuous-physics2-d-environment/index.html#-674166984%2FProperties%2F-2141783558"><span>is</span><wbr><span><span>Terminated</span></span></a></div>
@@ -728,7 +728,7 @@
             </div>
           </div>
 <a data-name="1937663186%2FFunctions%2F-2141783558" anchor-label="iterator" id="1937663186%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-continuous-physics2-d-environment/index.html#775598295%2FFunctions%2F-2141783558"><span><span>iterator</span></span></a></div>
@@ -743,7 +743,7 @@
             </div>
           </div>
 <a data-name="-1895153558%2FFunctions%2F-2141783558" anchor-label="makePosition" id="-1895153558%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-2114112611%2FFunctions%2F-2141783558"><span>make</span><wbr><span><span>Position</span></span></a></div>
@@ -752,13 +752,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#-2114112611%2FFunctions%2F-2141783558"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Number.html">Number</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">P</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-722066485%2FFunctions%2F-2141783558"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><br><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#2058393982%2FFunctions%2F-2141783558"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">coordinates<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Number.html">Number</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span>NonExistentClass</div><div class="brief "><p class="paragraph">Creates an euclidean position from the given coordinates.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#-2114112611%2FFunctions%2F-2141783558"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Number.html">Number</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-environment/index.html">P</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-722066485%2FFunctions%2F-2141783558"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><br><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#2058393982%2FFunctions%2F-2141783558"><span class="token function">makePosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">coordinates<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Number.html">Number</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></div><div class="brief "><p class="paragraph">Creates an euclidean position from the given coordinates.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1390727606%2FFunctions%2F-2141783558" anchor-label="moveNode" id="-1390727606%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1390727606%2FFunctions%2F-2141783558"><span>move</span><wbr><span><span>Node</span></span></a></div>
@@ -767,13 +767,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1390727606%2FFunctions%2F-2141783558"><span class="token function">moveNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-euclidean-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-euclidean-environment/index.html">P</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-1390727606%2FFunctions%2F-2141783558"><span class="token function">moveNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model/-euclidean-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">direction<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-euclidean-environment/index.html">P</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-75417637%2FFunctions%2F-2141783558" anchor-label="moveNodeToPosition" id="-75417637%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#473762496%2FFunctions%2F-2141783558"><span>move</span><wbr><span>Node</span><wbr><span>To</span><wbr><span><span>Position</span></span></a></div>
@@ -782,13 +782,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#473762496%2FFunctions%2F-2141783558"><span class="token function">moveNodeToPosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract2-d-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract2-d-environment/index.html">P</a></span></span><span class="token punctuation">)</span></div><br><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-322261337%2FFunctions%2F-2141783558"><span class="token function">moveNodeToPosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../-continuous2-d-obstacles/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">newPosition<span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Moves the <a href="../-continuous2-d-obstacles/move-node-to-position.html">node</a> to the <a href="../../../alchemist-physics/it.unibo.alchemist.model.physics.environments/-continuous2-d-obstacles/farthest-position-reachable.html">farthestPositionReachable</a> towards the desired <a href="../-continuous2-d-obstacles/move-node-to-position.html">newPosition</a>. If the node is shapeless, it is simply moved to <a href="../-continuous2-d-obstacles/move-node-to-position.html">newPosition</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#473762496%2FFunctions%2F-2141783558"><span class="token function">moveNodeToPosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract2-d-environment/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">newPosition<span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract2-d-environment/index.html">P</a></span></span><span class="token punctuation">)</span></div><br><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-322261337%2FFunctions%2F-2141783558"><span class="token function">moveNodeToPosition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../-continuous2-d-obstacles/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">newPosition<span class="token operator">: </span><a href="../../../alchemist-euclidean-geometry/it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Moves the <a href="../-continuous-physics2-d-environment/move-node-to-position.html">node</a> to the <a href="../-continuous-physics2-d-environment/farthest-position-reachable.html">farthestPositionReachable</a> towards the desired <a href="../-continuous-physics2-d-environment/move-node-to-position.html">newPosition</a>. If the node is shapeless, it is simply moved to <a href="../-continuous-physics2-d-environment/move-node-to-position.html">newPosition</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-744617263%2FFunctions%2F-2141783558" anchor-label="next" id="-744617263%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1661475465%2FFunctions%2F-2141783558"><span><span>next</span></span></a></div>
@@ -803,7 +803,7 @@
             </div>
           </div>
 <a data-name="304149456%2FFunctions%2F-2141783558" anchor-label="removeGlobalReaction" id="304149456%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#304149456%2FFunctions%2F-2141783558"><span>remove</span><wbr><span>Global</span><wbr><span><span>Reaction</span></span></a></div>
@@ -812,13 +812,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#304149456%2FFunctions%2F-2141783558"><span class="token function">removeGlobalReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-global-reaction/index.html">GlobalReaction</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#304149456%2FFunctions%2F-2141783558"><span class="token function">removeGlobalReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">reaction<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-global-reaction/index.html">GlobalReaction</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="347668816%2FFunctions%2F-2141783558" anchor-label="removeNode" id="347668816%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#347668816%2FFunctions%2F-2141783558"><span>remove</span><wbr><span><span>Node</span></span></a></div>
@@ -827,13 +827,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#347668816%2FFunctions%2F-2141783558"><span class="token function">removeNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#347668816%2FFunctions%2F-2141783558"><span class="token function">removeNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1823871116%2FFunctions%2F-2141783558" anchor-label="removeObstacle" id="-1823871116%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1015510577%2FFunctions%2F-2141783558"><span>remove</span><wbr><span><span>Obstacle</span></span></a></div>
@@ -848,7 +848,7 @@
             </div>
           </div>
 <a data-name="-1745157692%2FFunctions%2F-2141783558" anchor-label="setHeading" id="-1745157692%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1745157692%2FFunctions%2F-2141783558"><span>set</span><wbr><span><span>Heading</span></span></a></div>
@@ -863,7 +863,7 @@
             </div>
           </div>
 <a data-name="-1738239046%2FFunctions%2F-2141783558" anchor-label="setSimulation" id="-1738239046%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1738239046%2FFunctions%2F-2141783558"><span>set</span><wbr><span><span>Simulation</span></span></a></div>
@@ -872,13 +872,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-1738239046%2FFunctions%2F-2141783558"><span class="token function">setSimulation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.core/-simulation/index.html">Simulation</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-physics/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-1738239046%2FFunctions%2F-2141783558"><span class="token function">setSimulation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">value<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.core/-simulation/index.html">Simulation</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">T</a><span class="token punctuation">, </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.environments/-abstract-environment/index.html">P</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="763961884%2FFunctions%2F-2141783558" anchor-label="spliterator" id="763961884%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-continuous-physics2-d-environment/index.html#1010087032%2FFunctions%2F-2141783558"><span><span>spliterator</span></span></a></div>
@@ -893,7 +893,7 @@
             </div>
           </div>
 <a data-name="-1909129063%2FFunctions%2F-2141783558" anchor-label="toString" id="-1909129063%2FFunctions%2F-2141783558" data-filterable-set=":alchemist-physics/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-physics/main" data-filterable-set=":alchemist-physics/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-continuous-physics2-d-environment/index.html#-1909129063%2FFunctions%2F-2141783558"><span>to</span><wbr><span><span>String</span></span></a></div>
@@ -913,17 +913,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

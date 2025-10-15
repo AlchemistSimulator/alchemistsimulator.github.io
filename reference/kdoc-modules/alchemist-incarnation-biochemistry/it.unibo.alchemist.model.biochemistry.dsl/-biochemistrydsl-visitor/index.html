@@ -1,22 +1,22 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>BiochemistrydslVisitor</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
@@ -24,35 +24,33 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
 <link href="../../../images/logo.svg">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet"></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
                     alchemist-full
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">42.3.10
+        <div class="library-version" id="library-version">42.3.11
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-incarnation-biochemistry/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":alchemist-incarnation-biochemistry/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -66,7 +64,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -74,38 +72,40 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist-full
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-incarnation-biochemistry::it.unibo.alchemist.model.biochemistry.dsl/BiochemistrydslVisitor///PointingToDeclaration//577704718">
   <div class="breadcrumbs"><a href="../../index.html">alchemist-incarnation-biochemistry</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.biochemistry.dsl</a><span class="delimiter">/</span><span class="current">BiochemistrydslVisitor</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Biochemistrydsl</span><wbr><span><span>Visitor</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">BiochemistrydslVisitor</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span> : <a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/tree/ParseTreeVisitor.html">ParseTreeVisitor</a><span class="token operator">&lt;</span><a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/tree/ParseTreeVisitor.html">T</a><span class="token operator">&gt; </span></div><p class="paragraph">This interface defines a complete generic visitor for a parse tree produced by BiochemistrydslParser.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>&lt;T&gt;</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The return type of the visit operation. Use <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Void.html">Void</a> for operations with no return type.</p></div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">BiochemistrydslVisitor</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span> : <a href="https://javadoc.io/doc/org.antlr/antlr4-runtime/4.13.2/org/antlr/v4/runtime/tree/ParseTreeVisitor.html">ParseTreeVisitor</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt; </span></div><p class="paragraph">This interface defines a complete generic visitor for a parse tree produced by <a href="../-biochemistrydsl-parser/index.html">BiochemistrydslParser</a>.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>&lt;T&gt;</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The return type of the visit operation. Use <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Void.html">Void</a> for operations with no return type.</p></div></div></div></div></div><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-biochemistrydsl-base-visitor/index.html">BiochemistrydslBaseVisitor</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-1843616136%2FFunctions%2F577704718" anchor-label="visit" id="-1843616136%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1843616136%2FFunctions%2F577704718"><span><span>visit</span></span></a></div>
@@ -119,233 +119,233 @@
               </div>
             </div>
           </div>
-<a data-name="-925038184%2FFunctions%2F577704718" anchor-label="visitArg" id="-925038184%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-2089002806%2FFunctions%2F577704718" anchor-label="visitArg" id="-2089002806%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-arg.html"><span>visit</span><wbr><span><span>Arg</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-925038184%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2089002806%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-arg.html"><span class="token function">visitArg</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>ArgContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by arg.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-arg.html"><span class="token function">visitArg</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-arg-context/index.html">BiochemistrydslParser.ArgContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/arg.html">arg</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1593326120%2FFunctions%2F577704718" anchor-label="visitArgList" id="-1593326120%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="329206154%2FFunctions%2F577704718" anchor-label="visitArgList" id="329206154%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-arg-list.html"><span>visit</span><wbr><span>Arg</span><wbr><span><span>List</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1593326120%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="329206154%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-arg-list.html"><span class="token function">visitArgList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>ArgListContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by argList.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-arg-list.html"><span class="token function">visitArgList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-arg-list-context/index.html">BiochemistrydslParser.ArgListContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/arg-list.html">argList</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-151778440%2FFunctions%2F577704718" anchor-label="visitBiochemicalReaction" id="-151778440%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-1918857494%2FFunctions%2F577704718" anchor-label="visitBiochemicalReaction" id="-1918857494%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-biochemical-reaction.html"><span>visit</span><wbr><span>Biochemical</span><wbr><span><span>Reaction</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-151778440%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1918857494%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction.html"><span class="token function">visitBiochemicalReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>BiochemicalReactionContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by biochemicalReaction.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction.html"><span class="token function">visitBiochemicalReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-biochemical-reaction-context/index.html">BiochemistrydslParser.BiochemicalReactionContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/biochemical-reaction.html">biochemicalReaction</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1568272616%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionLeft" id="-1568272616%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-2060545462%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionLeft" id="-2060545462%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-biochemical-reaction-left.html"><span>visit</span><wbr><span>Biochemical</span><wbr><span>Reaction</span><wbr><span><span>Left</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1568272616%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2060545462%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-left.html"><span class="token function">visitBiochemicalReactionLeft</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>BiochemicalReactionLeftContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by biochemicalReactionLeft.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-left.html"><span class="token function">visitBiochemicalReactionLeft</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-biochemical-reaction-left-context/index.html">BiochemistrydslParser.BiochemicalReactionLeftContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/biochemical-reaction-left.html">biochemicalReactionLeft</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-941425754%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionLeftContext" id="-941425754%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-1251539340%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionLeftContext" id="-1251539340%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-biochemical-reaction-left-context.html"><span>visit</span><wbr><span>Biochemical</span><wbr><span>Reaction</span><wbr><span>Left</span><wbr><span><span>Context</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-941425754%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1251539340%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-left-context.html"><span class="token function">visitBiochemicalReactionLeftContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>BiochemicalReactionLeftContextContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by biochemicalReactionLeftContext.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-left-context.html"><span class="token function">visitBiochemicalReactionLeftContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-biochemical-reaction-left-context-context/index.html">BiochemistrydslParser.BiochemicalReactionLeftContextContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/biochemical-reaction-left-context.html">biochemicalReactionLeftContext</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1956831768%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionLeftInCellContext" id="1956831768%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-1986696410%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionLeftInCellContext" id="-1986696410%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-biochemical-reaction-left-in-cell-context.html"><span>visit</span><wbr><span>Biochemical</span><wbr><span>Reaction</span><wbr><span>Left</span><wbr><span>In</span><wbr><span>Cell</span><wbr><span><span>Context</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1956831768%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1986696410%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-left-in-cell-context.html"><span class="token function">visitBiochemicalReactionLeftInCellContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>BiochemicalReactionLeftInCellContextContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by biochemicalReactionLeftInCellContext.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-left-in-cell-context.html"><span class="token function">visitBiochemicalReactionLeftInCellContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-biochemical-reaction-left-in-cell-context-context/index.html">BiochemistrydslParser.BiochemicalReactionLeftInCellContextContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/biochemical-reaction-left-in-cell-context.html">biochemicalReactionLeftInCellContext</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1613837128%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionLeftInEnvContext" id="-1613837128%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-856957526%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionLeftInEnvContext" id="-856957526%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-biochemical-reaction-left-in-env-context.html"><span>visit</span><wbr><span>Biochemical</span><wbr><span>Reaction</span><wbr><span>Left</span><wbr><span>In</span><wbr><span>Env</span><wbr><span><span>Context</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1613837128%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-856957526%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-left-in-env-context.html"><span class="token function">visitBiochemicalReactionLeftInEnvContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>BiochemicalReactionLeftInEnvContextContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by biochemicalReactionLeftInEnvContext.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-left-in-env-context.html"><span class="token function">visitBiochemicalReactionLeftInEnvContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-biochemical-reaction-left-in-env-context-context/index.html">BiochemistrydslParser.BiochemicalReactionLeftInEnvContextContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/biochemical-reaction-left-in-env-context.html">biochemicalReactionLeftInEnvContext</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="471710200%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionLeftInNeighborContext" id="471710200%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="468656134%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionLeftInNeighborContext" id="468656134%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-biochemical-reaction-left-in-neighbor-context.html"><span>visit</span><wbr><span>Biochemical</span><wbr><span>Reaction</span><wbr><span>Left</span><wbr><span>In</span><wbr><span>Neighbor</span><wbr><span><span>Context</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="471710200%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="468656134%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-left-in-neighbor-context.html"><span class="token function">visitBiochemicalReactionLeftInNeighborContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>BiochemicalReactionLeftInNeighborContextContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by biochemicalReactionLeftInNeighborContext.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-left-in-neighbor-context.html"><span class="token function">visitBiochemicalReactionLeftInNeighborContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-biochemical-reaction-left-in-neighbor-context-context/index.html">BiochemistrydslParser.BiochemicalReactionLeftInNeighborContextContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/biochemical-reaction-left-in-neighbor-context.html">biochemicalReactionLeftInNeighborContext</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1517821106%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionRight" id="-1517821106%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-1762631780%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionRight" id="-1762631780%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-biochemical-reaction-right.html"><span>visit</span><wbr><span>Biochemical</span><wbr><span>Reaction</span><wbr><span><span>Right</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1517821106%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1762631780%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-right.html"><span class="token function">visitBiochemicalReactionRight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>BiochemicalReactionRightContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by biochemicalReactionRight.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-right.html"><span class="token function">visitBiochemicalReactionRight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-biochemical-reaction-right-context/index.html">BiochemistrydslParser.BiochemicalReactionRightContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/biochemical-reaction-right.html">biochemicalReactionRight</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1046916712%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionRightContext" id="-1046916712%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="1559366090%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionRightContext" id="1559366090%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-biochemical-reaction-right-context.html"><span>visit</span><wbr><span>Biochemical</span><wbr><span>Reaction</span><wbr><span>Right</span><wbr><span><span>Context</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1046916712%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1559366090%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-right-context.html"><span class="token function">visitBiochemicalReactionRightContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>BiochemicalReactionRightContextContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by biochemicalReactionRightContext.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-right-context.html"><span class="token function">visitBiochemicalReactionRightContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-biochemical-reaction-right-context-context/index.html">BiochemistrydslParser.BiochemicalReactionRightContextContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/biochemical-reaction-right-context.html">biochemicalReactionRightContext</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1164483116%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionRightElem" id="1164483116%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-804125510%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionRightElem" id="-804125510%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-biochemical-reaction-right-elem.html"><span>visit</span><wbr><span>Biochemical</span><wbr><span>Reaction</span><wbr><span>Right</span><wbr><span><span>Elem</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1164483116%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-804125510%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-right-elem.html"><span class="token function">visitBiochemicalReactionRightElem</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>BiochemicalReactionRightElemContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by biochemicalReactionRightElem.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-right-elem.html"><span class="token function">visitBiochemicalReactionRightElem</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-biochemical-reaction-right-elem-context/index.html">BiochemistrydslParser.BiochemicalReactionRightElemContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/biochemical-reaction-right-elem.html">biochemicalReactionRightElem</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-346096072%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionRightInCellContext" id="-346096072%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-83550166%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionRightInCellContext" id="-83550166%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-biochemical-reaction-right-in-cell-context.html"><span>visit</span><wbr><span>Biochemical</span><wbr><span>Reaction</span><wbr><span>Right</span><wbr><span>In</span><wbr><span>Cell</span><wbr><span><span>Context</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-346096072%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-83550166%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-right-in-cell-context.html"><span class="token function">visitBiochemicalReactionRightInCellContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>BiochemicalReactionRightInCellContextContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by biochemicalReactionRightInCellContext.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-right-in-cell-context.html"><span class="token function">visitBiochemicalReactionRightInCellContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-biochemical-reaction-right-in-cell-context-context/index.html">BiochemistrydslParser.BiochemicalReactionRightInCellContextContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/biochemical-reaction-right-in-cell-context.html">biochemicalReactionRightInCellContext</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1404916452%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionRightInEnvContext" id="-1404916452%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-1948216406%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionRightInEnvContext" id="-1948216406%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-biochemical-reaction-right-in-env-context.html"><span>visit</span><wbr><span>Biochemical</span><wbr><span>Reaction</span><wbr><span>Right</span><wbr><span>In</span><wbr><span>Env</span><wbr><span><span>Context</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1404916452%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1948216406%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-right-in-env-context.html"><span class="token function">visitBiochemicalReactionRightInEnvContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>BiochemicalReactionRightInEnvContextContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by biochemicalReactionRightInEnvContext.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-right-in-env-context.html"><span class="token function">visitBiochemicalReactionRightInEnvContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-biochemical-reaction-right-in-env-context-context/index.html">BiochemistrydslParser.BiochemicalReactionRightInEnvContextContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/biochemical-reaction-right-in-env-context.html">biochemicalReactionRightInEnvContext</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1654659912%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionRightInNeighborContext" id="-1654659912%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-1752856150%2FFunctions%2F577704718" anchor-label="visitBiochemicalReactionRightInNeighborContext" id="-1752856150%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-biochemical-reaction-right-in-neighbor-context.html"><span>visit</span><wbr><span>Biochemical</span><wbr><span>Reaction</span><wbr><span>Right</span><wbr><span>In</span><wbr><span>Neighbor</span><wbr><span><span>Context</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1654659912%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1752856150%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-right-in-neighbor-context.html"><span class="token function">visitBiochemicalReactionRightInNeighborContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>BiochemicalReactionRightInNeighborContextContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by biochemicalReactionRightInNeighborContext.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biochemical-reaction-right-in-neighbor-context.html"><span class="token function">visitBiochemicalReactionRightInNeighborContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-biochemical-reaction-right-in-neighbor-context-context/index.html">BiochemistrydslParser.BiochemicalReactionRightInNeighborContextContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/biochemical-reaction-right-in-neighbor-context.html">biochemicalReactionRightInNeighborContext</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1972192920%2FFunctions%2F577704718" anchor-label="visitBiomolecule" id="1972192920%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-824538678%2FFunctions%2F577704718" anchor-label="visitBiomolecule" id="-824538678%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-biomolecule.html"><span>visit</span><wbr><span><span>Biomolecule</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1972192920%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-824538678%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biomolecule.html"><span class="token function">visitBiomolecule</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>BiomoleculeContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by biomolecule.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-biomolecule.html"><span class="token function">visitBiomolecule</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-biomolecule-context/index.html">BiochemistrydslParser.BiomoleculeContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/biomolecule.html">biomolecule</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1430787268%2FFunctions%2F577704718" anchor-label="visitChildren" id="-1430787268%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1430787268%2FFunctions%2F577704718"><span>visit</span><wbr><span><span>Children</span></span></a></div>
@@ -359,143 +359,143 @@
               </div>
             </div>
           </div>
-<a data-name="964996600%2FFunctions%2F577704718" anchor-label="visitConcentration" id="964996600%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-1386255510%2FFunctions%2F577704718" anchor-label="visitConcentration" id="-1386255510%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-concentration.html"><span>visit</span><wbr><span><span>Concentration</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="964996600%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1386255510%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-concentration.html"><span class="token function">visitConcentration</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>ConcentrationContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by concentration.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-concentration.html"><span class="token function">visitConcentration</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-concentration-context/index.html">BiochemistrydslParser.ConcentrationContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/concentration.html">concentration</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="553816892%2FFunctions%2F577704718" anchor-label="visitCreateJunction" id="553816892%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="11203658%2FFunctions%2F577704718" anchor-label="visitCreateJunction" id="11203658%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-create-junction.html"><span>visit</span><wbr><span>Create</span><wbr><span><span>Junction</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="553816892%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="11203658%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-create-junction.html"><span class="token function">visitCreateJunction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>CreateJunctionContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by createJunction.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-create-junction.html"><span class="token function">visitCreateJunction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-create-junction-context/index.html">BiochemistrydslParser.CreateJunctionContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/create-junction.html">createJunction</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="386873124%2FFunctions%2F577704718" anchor-label="visitCreateJunctionJunction" id="386873124%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="332437810%2FFunctions%2F577704718" anchor-label="visitCreateJunctionJunction" id="332437810%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-create-junction-junction.html"><span>visit</span><wbr><span>Create</span><wbr><span>Junction</span><wbr><span><span>Junction</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="386873124%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="332437810%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-create-junction-junction.html"><span class="token function">visitCreateJunctionJunction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>CreateJunctionJunctionContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by createJunctionJunction.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-create-junction-junction.html"><span class="token function">visitCreateJunctionJunction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-create-junction-junction-context/index.html">BiochemistrydslParser.CreateJunctionJunctionContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/create-junction-junction.html">createJunctionJunction</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2139042486%2FFunctions%2F577704718" anchor-label="visitCreateJunctionLeft" id="-2139042486%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-151218536%2FFunctions%2F577704718" anchor-label="visitCreateJunctionLeft" id="-151218536%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-create-junction-left.html"><span>visit</span><wbr><span>Create</span><wbr><span>Junction</span><wbr><span><span>Left</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2139042486%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-151218536%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-create-junction-left.html"><span class="token function">visitCreateJunctionLeft</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>CreateJunctionLeftContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by createJunctionLeft.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-create-junction-left.html"><span class="token function">visitCreateJunctionLeft</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-create-junction-left-context/index.html">BiochemistrydslParser.CreateJunctionLeftContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/create-junction-left.html">createJunctionLeft</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1367915560%2FFunctions%2F577704718" anchor-label="visitCreateJunctionRight" id="-1367915560%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="2042159754%2FFunctions%2F577704718" anchor-label="visitCreateJunctionRight" id="2042159754%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-create-junction-right.html"><span>visit</span><wbr><span>Create</span><wbr><span>Junction</span><wbr><span><span>Right</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1367915560%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2042159754%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-create-junction-right.html"><span class="token function">visitCreateJunctionRight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>CreateJunctionRightContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by createJunctionRight.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-create-junction-right.html"><span class="token function">visitCreateJunctionRight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-create-junction-right-context/index.html">BiochemistrydslParser.CreateJunctionRightContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/create-junction-right.html">createJunctionRight</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2019500264%2FFunctions%2F577704718" anchor-label="visitCustomCondition" id="-2019500264%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-339772342%2FFunctions%2F577704718" anchor-label="visitCustomCondition" id="-339772342%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-custom-condition.html"><span>visit</span><wbr><span>Custom</span><wbr><span><span>Condition</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2019500264%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-339772342%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-custom-condition.html"><span class="token function">visitCustomCondition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>CustomConditionContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by customCondition.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-custom-condition.html"><span class="token function">visitCustomCondition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-custom-condition-context/index.html">BiochemistrydslParser.CustomConditionContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/custom-condition.html">customCondition</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1734959982%2FFunctions%2F577704718" anchor-label="visitCustomConditions" id="1734959982%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-1292248644%2FFunctions%2F577704718" anchor-label="visitCustomConditions" id="-1292248644%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-custom-conditions.html"><span>visit</span><wbr><span>Custom</span><wbr><span><span>Conditions</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1734959982%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1292248644%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-custom-conditions.html"><span class="token function">visitCustomConditions</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>CustomConditionsContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by customConditions.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-custom-conditions.html"><span class="token function">visitCustomConditions</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-custom-conditions-context/index.html">BiochemistrydslParser.CustomConditionsContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/custom-conditions.html">customConditions</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1261110404%2FFunctions%2F577704718" anchor-label="visitCustomReactionType" id="1261110404%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="1815454098%2FFunctions%2F577704718" anchor-label="visitCustomReactionType" id="1815454098%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-custom-reaction-type.html"><span>visit</span><wbr><span>Custom</span><wbr><span>Reaction</span><wbr><span><span>Type</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1261110404%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1815454098%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-custom-reaction-type.html"><span class="token function">visitCustomReactionType</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>CustomReactionTypeContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by customReactionType.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-custom-reaction-type.html"><span class="token function">visitCustomReactionType</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-custom-reaction-type-context/index.html">BiochemistrydslParser.CustomReactionTypeContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/custom-reaction-type.html">customReactionType</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="211170872%2FFunctions%2F577704718" anchor-label="visitDecimal" id="211170872%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="606055978%2FFunctions%2F577704718" anchor-label="visitDecimal" id="606055978%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-decimal.html"><span>visit</span><wbr><span><span>Decimal</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="211170872%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="606055978%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-decimal.html"><span class="token function">visitDecimal</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>DecimalContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by decimal.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-decimal.html"><span class="token function">visitDecimal</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-decimal-context/index.html">BiochemistrydslParser.DecimalContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/decimal.html">decimal</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="625736043%2FFunctions%2F577704718" anchor-label="visitErrorNode" id="625736043%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#625736043%2FFunctions%2F577704718"><span>visit</span><wbr><span>Error</span><wbr><span><span>Node</span></span></a></div>
@@ -509,173 +509,173 @@
               </div>
             </div>
           </div>
-<a data-name="1121199000%2FFunctions%2F577704718" anchor-label="visitJavaClass" id="1121199000%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="1532095818%2FFunctions%2F577704718" anchor-label="visitJavaClass" id="1532095818%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-java-class.html"><span>visit</span><wbr><span>Java</span><wbr><span><span>Class</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1121199000%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1532095818%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-java-class.html"><span class="token function">visitJavaClass</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>JavaClassContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by javaClass.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-java-class.html"><span class="token function">visitJavaClass</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-java-class-context/index.html">BiochemistrydslParser.JavaClassContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/java-class.html">javaClass</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1930730664%2FFunctions%2F577704718" anchor-label="visitJavaConstructor" id="-1930730664%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="1470607882%2FFunctions%2F577704718" anchor-label="visitJavaConstructor" id="1470607882%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-java-constructor.html"><span>visit</span><wbr><span>Java</span><wbr><span><span>Constructor</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1930730664%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1470607882%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-java-constructor.html"><span class="token function">visitJavaConstructor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>JavaConstructorContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by javaConstructor.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-java-constructor.html"><span class="token function">visitJavaConstructor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-java-constructor-context/index.html">BiochemistrydslParser.JavaConstructorContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/java-constructor.html">javaConstructor</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-125641596%2FFunctions%2F577704718" anchor-label="visitJunction" id="-125641596%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="372638482%2FFunctions%2F577704718" anchor-label="visitJunction" id="372638482%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-junction.html"><span>visit</span><wbr><span><span>Junction</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-125641596%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="372638482%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction.html"><span class="token function">visitJunction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>JunctionContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by junction.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction.html"><span class="token function">visitJunction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-junction-context/index.html">BiochemistrydslParser.JunctionContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/junction.html">junction</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1650870738%2FFunctions%2F577704718" anchor-label="visitJunctionLeft" id="1650870738%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-1197668192%2FFunctions%2F577704718" anchor-label="visitJunctionLeft" id="-1197668192%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-junction-left.html"><span>visit</span><wbr><span>Junction</span><wbr><span><span>Left</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1650870738%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1197668192%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction-left.html"><span class="token function">visitJunctionLeft</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>JunctionLeftContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by junctionLeft.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction-left.html"><span class="token function">visitJunctionLeft</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-junction-left-context/index.html">BiochemistrydslParser.JunctionLeftContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/junction-left.html">junctionLeft</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1872960874%2FFunctions%2F577704718" anchor-label="visitJunctionReaction" id="-1872960874%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="1708728292%2FFunctions%2F577704718" anchor-label="visitJunctionReaction" id="1708728292%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-junction-reaction.html"><span>visit</span><wbr><span>Junction</span><wbr><span><span>Reaction</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1872960874%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1708728292%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction-reaction.html"><span class="token function">visitJunctionReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>JunctionReactionContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by junctionReaction.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction-reaction.html"><span class="token function">visitJunctionReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-junction-reaction-context/index.html">BiochemistrydslParser.JunctionReactionContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/junction-reaction.html">junctionReaction</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="152912510%2FFunctions%2F577704718" anchor-label="visitJunctionReactionJunction" id="152912510%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="841924812%2FFunctions%2F577704718" anchor-label="visitJunctionReactionJunction" id="841924812%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-junction-reaction-junction.html"><span>visit</span><wbr><span>Junction</span><wbr><span>Reaction</span><wbr><span><span>Junction</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="152912510%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="841924812%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction-reaction-junction.html"><span class="token function">visitJunctionReactionJunction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>JunctionReactionJunctionContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by junctionReactionJunction.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction-reaction-junction.html"><span class="token function">visitJunctionReactionJunction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-junction-reaction-junction-context/index.html">BiochemistrydslParser.JunctionReactionJunctionContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/junction-reaction-junction.html">junctionReactionJunction</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-720750056%2FFunctions%2F577704718" anchor-label="visitJunctionReactionJunctionCondition" id="-720750056%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="1569613514%2FFunctions%2F577704718" anchor-label="visitJunctionReactionJunctionCondition" id="1569613514%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-junction-reaction-junction-condition.html"><span>visit</span><wbr><span>Junction</span><wbr><span>Reaction</span><wbr><span>Junction</span><wbr><span><span>Condition</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-720750056%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1569613514%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction-reaction-junction-condition.html"><span class="token function">visitJunctionReactionJunctionCondition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>JunctionReactionJunctionConditionContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by junctionReactionJunctionCondition.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction-reaction-junction-condition.html"><span class="token function">visitJunctionReactionJunctionCondition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-junction-reaction-junction-condition-context/index.html">BiochemistrydslParser.JunctionReactionJunctionConditionContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/junction-reaction-junction-condition.html">junctionReactionJunctionCondition</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1709241188%2FFunctions%2F577704718" anchor-label="visitJunctionReactionLeft" id="1709241188%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="125028594%2FFunctions%2F577704718" anchor-label="visitJunctionReactionLeft" id="125028594%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-junction-reaction-left.html"><span>visit</span><wbr><span>Junction</span><wbr><span>Reaction</span><wbr><span><span>Left</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1709241188%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="125028594%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction-reaction-left.html"><span class="token function">visitJunctionReactionLeft</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>JunctionReactionLeftContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by junctionReactionLeft.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction-reaction-left.html"><span class="token function">visitJunctionReactionLeft</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-junction-reaction-left-context/index.html">BiochemistrydslParser.JunctionReactionLeftContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/junction-reaction-left.html">junctionReactionLeft</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-831921608%2FFunctions%2F577704718" anchor-label="visitJunctionReactionRight" id="-831921608%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-2110270422%2FFunctions%2F577704718" anchor-label="visitJunctionReactionRight" id="-2110270422%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-junction-reaction-right.html"><span>visit</span><wbr><span>Junction</span><wbr><span>Reaction</span><wbr><span><span>Right</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-831921608%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2110270422%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction-reaction-right.html"><span class="token function">visitJunctionReactionRight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>JunctionReactionRightContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by junctionReactionRight.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction-reaction-right.html"><span class="token function">visitJunctionReactionRight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-junction-reaction-right-context/index.html">BiochemistrydslParser.JunctionReactionRightContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/junction-reaction-right.html">junctionReactionRight</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="750948056%2FFunctions%2F577704718" anchor-label="visitJunctionRight" id="750948056%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="-1232650742%2FFunctions%2F577704718" anchor-label="visitJunctionRight" id="-1232650742%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-junction-right.html"><span>visit</span><wbr><span>Junction</span><wbr><span><span>Right</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="750948056%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1232650742%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction-right.html"><span class="token function">visitJunctionRight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>JunctionRightContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by junctionRight.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-junction-right.html"><span class="token function">visitJunctionRight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-junction-right-context/index.html">BiochemistrydslParser.JunctionRightContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/junction-right.html">junctionRight</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1581717330%2FFunctions%2F577704718" anchor-label="visitReaction" id="-1581717330%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+<a data-name="985605372%2FFunctions%2F577704718" anchor-label="visitReaction" id="985605372%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="visit-reaction.html"><span>visit</span><wbr><span><span>Reaction</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1581717330%2FFunctions%2F577704718"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="985605372%2FFunctions%2F577704718"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-reaction.html"><span class="token function">visitReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span>ReactionContext</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by reaction.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-incarnation-biochemistry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="visit-reaction.html"><span class="token function">visitReaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ctx<span class="token operator">: </span><a href="../-biochemistrydsl-parser/-reaction-context/index.html">BiochemistrydslParser.ReactionContext</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief ">Visit a parse tree produced by <a href="../-biochemistrydsl-parser/reaction.html">reaction</a>.</div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1231633633%2FFunctions%2F577704718" anchor-label="visitTerminal" id="-1231633633%2FFunctions%2F577704718" data-filterable-set=":alchemist-incarnation-biochemistry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-incarnation-biochemistry/main" data-filterable-set=":alchemist-incarnation-biochemistry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1231633633%2FFunctions%2F577704718"><span>visit</span><wbr><span><span>Terminal</span></span></a></div>
@@ -695,17 +695,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

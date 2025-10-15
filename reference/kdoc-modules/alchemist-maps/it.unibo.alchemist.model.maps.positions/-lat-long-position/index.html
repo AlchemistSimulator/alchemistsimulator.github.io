@@ -1,22 +1,22 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>LatLongPosition</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
@@ -24,35 +24,33 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
 <link href="../../../images/logo.svg">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet"></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
                     alchemist-full
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">42.3.10
+        <div class="library-version" id="library-version">42.3.11
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-maps/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":alchemist-maps/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -66,7 +64,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -74,38 +72,40 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist-full
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-maps::it.unibo.alchemist.model.maps.positions/LatLongPosition///PointingToDeclaration//670323506">
   <div class="breadcrumbs"><a href="../../index.html">alchemist-maps</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.maps.positions</a><span class="delimiter">/</span><span class="current">LatLongPosition</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Lat</span><wbr><span>Long</span><wbr><span><span>Position</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-maps/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">LatLongPosition</a> : <a href="../../../alchemist-api/it.unibo.alchemist.model/-geo-position/index.html">GeoPosition</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/077a866cdc7de0c5d1f807758b1f4fb56f130435/alchemist-maps/src/main/java/it/unibo/alchemist/model/maps/positions/LatLongPosition.java#L39">source</a>)</span></span></div><p class="paragraph">Unmodifiable state version of <a href="https://javadoc.io/doc/com.javadocmd/simplelatlng/1.4.0/com/javadocmd/simplelatlng/LatLng.html">LatLng</a>, also implementing the <a href="../../../alchemist-api/it.unibo.alchemist.model/-geo-position/index.html">GeoPosition</a> interface.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-maps/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">LatLongPosition</a> : <a href="../../../alchemist-api/it.unibo.alchemist.model/-geo-position/index.html">GeoPosition</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/e077af6e3177ee9499ab8bfc0331a1b7c19353b0/alchemist-maps/src/main/java/it/unibo/alchemist/model/maps/positions/LatLongPosition.java#L39">source</a>)</span></span></div><p class="paragraph">Unmodifiable state version of <a href="https://javadoc.io/doc/com.javadocmd/simplelatlng/1.4.0/com/javadocmd/simplelatlng/LatLng.html">LatLng</a>, also implementing the <a href="../../../alchemist-api/it.unibo.alchemist.model/-geo-position/index.html">GeoPosition</a> interface.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="-583366822%2FConstructors%2F670323506" anchor-label="LatLongPosition" id="-583366822%2FConstructors%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-lat-long-position.html"><span>Lat</span><wbr><span>Long</span><wbr><span><span>Position</span></span></a></div>
@@ -122,9 +122,9 @@
         </div>
       </div>
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="2003636593%2FClasslikes%2F670323506" anchor-label="DistanceFormula" id="2003636593%2FClasslikes%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-distance-formula/index.html"><span>Distance</span><wbr><span><span>Formula</span></span></a></div>
@@ -141,9 +141,9 @@
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-919835855%2FProperties%2F670323506" anchor-label="DEFAULT_DISTANCE_FORMULA" id="-919835855%2FProperties%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-d-e-f-a-u-l-t_-d-i-s-t-a-n-c-e_-f-o-r-m-u-l-a.html"><span>DEFAULT_</span><wbr><span>DISTANCE_</span><wbr><span>FORMULA</span></a></div>
@@ -158,7 +158,7 @@
             </div>
           </div>
 <a data-name="-394683911%2FProperties%2F670323506" anchor-label="EARTH_MEAN_RADIUS_METERS" id="-394683911%2FProperties%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-e-a-r-t-h_-m-e-a-n_-r-a-d-i-u-s_-m-e-t-e-r-s.html"><span>EARTH_</span><wbr><span>MEAN_</span><wbr><span>RADIUS_</span><wbr><span>METERS</span></a></div>
@@ -175,9 +175,9 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="466669975%2FFunctions%2F670323506" anchor-label="boundingBox" id="466669975%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="bounding-box.html"><span>bounding</span><wbr><span><span>Box</span></span></a></div>
@@ -192,7 +192,7 @@
             </div>
           </div>
 <a data-name="-1330143319%2FFunctions%2F670323506" anchor-label="distance" id="-1330143319%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="distance.html"><span><span>distance</span></span></a></div>
@@ -207,7 +207,7 @@
             </div>
           </div>
 <a data-name="-1304637708%2FFunctions%2F670323506" anchor-label="distanceInRadians" id="-1304637708%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="distance-in-radians.html"><span>distance</span><wbr><span>In</span><wbr><span><span>Radians</span></span></a></div>
@@ -222,7 +222,7 @@
             </div>
           </div>
 <a data-name="441707190%2FFunctions%2F670323506" anchor-label="distanceTo" id="441707190%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="distance-to.html"><span>distance</span><wbr><span><span>To</span></span></a></div>
@@ -237,7 +237,7 @@
             </div>
           </div>
 <a data-name="-343287047%2FFunctions%2F670323506" anchor-label="equals" id="-343287047%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="equals.html"><span><span>equals</span></span></a></div>
@@ -252,7 +252,7 @@
             </div>
           </div>
 <a data-name="-1504189934%2FFunctions%2F670323506" anchor-label="getCoordinate" id="-1504189934%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-coordinate.html"><span>get</span><wbr><span><span>Coordinate</span></span></a></div>
@@ -267,7 +267,7 @@
             </div>
           </div>
 <a data-name="-1199266906%2FFunctions%2F670323506" anchor-label="getCoordinates" id="-1199266906%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-coordinates.html"><span>get</span><wbr><span><span>Coordinates</span></span></a></div>
@@ -282,7 +282,7 @@
             </div>
           </div>
 <a data-name="-1745028468%2FFunctions%2F670323506" anchor-label="getDimensions" id="-1745028468%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-dimensions.html"><span>get</span><wbr><span><span>Dimensions</span></span></a></div>
@@ -297,7 +297,7 @@
             </div>
           </div>
 <a data-name="-1929839155%2FFunctions%2F670323506" anchor-label="getLatitude" id="-1929839155%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-latitude.html"><span>get</span><wbr><span><span>Latitude</span></span></a></div>
@@ -312,7 +312,7 @@
             </div>
           </div>
 <a data-name="1884141426%2FFunctions%2F670323506" anchor-label="getLongitude" id="1884141426%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-longitude.html"><span>get</span><wbr><span><span>Longitude</span></span></a></div>
@@ -327,7 +327,7 @@
             </div>
           </div>
 <a data-name="1415940297%2FFunctions%2F670323506" anchor-label="getX" id="1415940297%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-x.html"><span>get</span><wbr><span><span>X</span></span></a></div>
@@ -342,7 +342,7 @@
             </div>
           </div>
 <a data-name="1446960104%2FFunctions%2F670323506" anchor-label="getY" id="1446960104%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-y.html"><span>get</span><wbr><span><span>Y</span></span></a></div>
@@ -357,7 +357,7 @@
             </div>
           </div>
 <a data-name="-1920981104%2FFunctions%2F670323506" anchor-label="hashCode" id="-1920981104%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hash-code.html"><span>hash</span><wbr><span><span>Code</span></span></a></div>
@@ -372,7 +372,7 @@
             </div>
           </div>
 <a data-name="1392448858%2FFunctions%2F670323506" anchor-label="minus" id="1392448858%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="minus.html"><span><span>minus</span></span></a></div>
@@ -387,7 +387,7 @@
             </div>
           </div>
 <a data-name="1886468570%2FFunctions%2F670323506" anchor-label="plus" id="1886468570%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="plus.html"><span><span>plus</span></span></a></div>
@@ -402,7 +402,7 @@
             </div>
           </div>
 <a data-name="-2099147169%2FFunctions%2F670323506" anchor-label="toString" id="-2099147169%2FFunctions%2F670323506" data-filterable-set=":alchemist-maps/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-maps/main" data-filterable-set=":alchemist-maps/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-string.html"><span>to</span><wbr><span><span>String</span></span></a></div>
@@ -422,17 +422,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

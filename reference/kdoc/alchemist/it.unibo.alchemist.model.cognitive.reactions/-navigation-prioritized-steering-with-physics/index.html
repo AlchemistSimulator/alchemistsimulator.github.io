@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>NavigationPrioritizedSteeringWithPhysics</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,22 +25,20 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 <link href="../../../images/logo.svg">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     alchemist
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -48,11 +46,11 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-42.3.10        </div>
+42.3.11        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
-                        data-filter=":/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/alldocs">alldocs</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
                         data-role="dropdown-toggle"
@@ -61,24 +59,24 @@
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":/main"
-                                       data-filter=":/main"/>
+                                <input type="checkbox" class="checkbox--input" id=":/alldocs"
+                                       data-filter=":/alldocs"/>
                                 <span class="checkbox--icon"></span>
-                                jvm
+                                alldocs
                             </label>
                         </li>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link"
                    href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
@@ -88,48 +86,54 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="classlike" id="content" pageIds="alchemist::it.unibo.alchemist.model.cognitive.reactions/NavigationPrioritizedSteeringWithPhysics///PointingToDeclaration//-251573632">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="alchemist::it.unibo.alchemist.model.cognitive.reactions/NavigationPrioritizedSteeringWithPhysics///PointingToDeclaration//-1814946674">
   <div class="breadcrumbs"><a href="../../../index.html">alchemist</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.cognitive.reactions</a><span class="delimiter">/</span><span class="current">NavigationPrioritizedSteeringWithPhysics</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Navigation</span><wbr></wbr><span>Prioritized</span><wbr></wbr><span>Steering</span><wbr></wbr><span>With</span><wbr></wbr><span><span>Physics</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">NavigationPrioritizedSteeringWithPhysics</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="index.html">N</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.physics.environments/-euclidean-physics2-d-environment-with-graph/index.html">EuclideanPhysics2DEnvironmentWithGraph</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token punctuation">, </span><a href="index.html">T</a><span class="token punctuation">, </span><a href="index.html">N</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">pedestrian<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.cognitive/-pedestrian-property/index.html">PedestrianProperty</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">timeDistribution<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-time-distribution/index.html">TimeDistribution</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">toleranceAngle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Math.toDegrees(SinglePrevalent.DEFAULT_TOLERANCE_ANGLE)<span class="token punctuation">, </span></span><span class="parameter ">alpha<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>SinglePrevalent.DEFAULT_ALPHA</span></span><span class="token punctuation">)</span> : <a href="../-navigation-prioritized-steering/index.html">NavigationPrioritizedSteering</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="index.html">N</a><span class="token operator">&gt; </span></div><p class="paragraph"><a href="../-navigation-prioritized-steering/index.html">NavigationPrioritizedSteering</a> strategy for physical pedestrians, taking into account physical forces as well. <a href="../../it.unibo.alchemist.model.cognitive.steering/-sum/index.html">Sum</a> strategy is used to combine steering actions and physical forces.</p></div></div>
+    <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">NavigationPrioritizedSteeringWithPhysics</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="index.html">N</a><span class="token operator"> : </span><a href="../../it.unibo.alchemist.model.geometry/-convex-polygon/index.html">ConvexPolygon</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.physics.environments/-euclidean-physics2-d-environment-with-graph/index.html">EuclideanPhysics2DEnvironmentWithGraph</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token punctuation">, </span><a href="index.html">T</a><span class="token punctuation">, </span><a href="index.html">N</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">pedestrian<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.cognitive/-pedestrian-property/index.html">PedestrianProperty</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">timeDistribution<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-time-distribution/index.html">TimeDistribution</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">toleranceAngle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Math.toDegrees(SinglePrevalent.DEFAULT_TOLERANCE_ANGLE)<span class="token punctuation">, </span></span><span class="parameter ">alpha<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>SinglePrevalent.DEFAULT_ALPHA</span></span><span class="token punctuation">)</span> : <a href="../-navigation-prioritized-steering/index.html">NavigationPrioritizedSteering</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="index.html">N</a><span class="token operator">&gt; </span></div><p class="paragraph"><a href="../-navigation-prioritized-steering/index.html">NavigationPrioritizedSteering</a> strategy for physical pedestrians, taking into account physical forces as well. <a href="../../it.unibo.alchemist.model.cognitive.steering/-sum/index.html">Sum</a> strategy is used to combine steering actions and physical forces.</p></div>    </div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
-        <div class="table"><a data-name="-1654066165%2FConstructors%2F-251573632" anchor-label="NavigationPrioritizedSteeringWithPhysics" id="-1654066165%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="-1654066165%2FConstructors%2F-1814946674" anchor-label="NavigationPrioritizedSteeringWithPhysics" id="-1654066165%2FConstructors%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-navigation-prioritized-steering-with-physics.html"><span>Navigation</span><wbr></wbr><span>Prioritized</span><wbr></wbr><span>Steering</span><wbr></wbr><span>With</span><wbr></wbr><span><span>Physics</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1654066165%2FConstructors%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1654066165%2FConstructors%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.physics.environments/-euclidean-physics2-d-environment-with-graph/index.html">EuclideanPhysics2DEnvironmentWithGraph</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token punctuation">, </span><a href="index.html">T</a><span class="token punctuation">, </span><a href="index.html">N</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">pedestrian<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.cognitive/-pedestrian-property/index.html">PedestrianProperty</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">timeDistribution<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-time-distribution/index.html">TimeDistribution</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">toleranceAngle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Math.toDegrees(SinglePrevalent.DEFAULT_TOLERANCE_ANGLE)<span class="token punctuation">, </span></span><span class="parameter ">alpha<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>SinglePrevalent.DEFAULT_ALPHA</span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.physics.environments/-euclidean-physics2-d-environment-with-graph/index.html">EuclideanPhysics2DEnvironmentWithGraph</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token punctuation">, </span><a href="index.html">T</a><span class="token punctuation">, </span><a href="index.html">N</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">pedestrian<span class="token operator">: </span><a href="../../it.unibo.alchemist.model.cognitive/-pedestrian-property/index.html">PedestrianProperty</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">timeDistribution<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-time-distribution/index.html">TimeDistribution</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">toleranceAngle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Math.toDegrees(SinglePrevalent.DEFAULT_TOLERANCE_ANGLE)<span class="token punctuation">, </span></span><span class="parameter ">alpha<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>SinglePrevalent.DEFAULT_ALPHA</span></span><span class="token punctuation">)</span></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -137,168 +141,190 @@
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
-        <div class="table"><a data-name="2144458922%2FProperties%2F-251573632" anchor-label="actions" id="2144458922%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="868524009%2FProperties%2F-1814946674" anchor-label="actions" id="868524009%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-steering-behavior/index.html#2144458922%2FProperties%2F-251573632"><span><span>actions</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2144458922%2FProperties%2F-251573632"></span>
+                  <div><a href="../../it.unibo.alchemist.model/-actionable/actions.html"><span><span>actions</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="868524009%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="../-steering-behavior/index.html#2144458922%2FProperties%2F-251573632">actions</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-action/index.html">Action</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="../../it.unibo.alchemist.model/-actionable/actions.html">actions</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-action/index.html">Action</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The list of <a href="../../it.unibo.alchemist.model/-action/index.html">Action</a>s of the <a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a>. Please be careful when you modify this list.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1167337349%2FProperties%2F-251573632" anchor-label="conditions" id="-1167337349%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-2083760932%2FProperties%2F-1814946674" anchor-label="conditions" id="-2083760932%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-steering-behavior/index.html#-1167337349%2FProperties%2F-251573632"><span><span>conditions</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1167337349%2FProperties%2F-251573632"></span>
+                  <div><a href="../../it.unibo.alchemist.model/-actionable/conditions.html"><span><span>conditions</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2083760932%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="../-steering-behavior/index.html#-1167337349%2FProperties%2F-251573632">conditions</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-condition/index.html">Condition</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="../../it.unibo.alchemist.model/-actionable/conditions.html">conditions</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model/-condition/index.html">Condition</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The list of <a href="../../it.unibo.alchemist.model/-condition/index.html">Condition</a>s of the <a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a>. Please be careful when you modify this list.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="114764549%2FProperties%2F-251573632" anchor-label="inboundDependencies" id="114764549%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-334099516%2FProperties%2F-1814946674" anchor-label="inboundDependencies" id="-334099516%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-steering-behavior/index.html#114764549%2FProperties%2F-251573632"><span>inbound</span><wbr></wbr><span><span>Dependencies</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="114764549%2FProperties%2F-251573632"></span>
+                  <div><a href="../../it.unibo.alchemist.model/-actionable/inbound-dependencies.html"><span>inbound</span><wbr></wbr><span><span>Dependencies</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-334099516%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../-steering-behavior/index.html#114764549%2FProperties%2F-251573632">inboundDependencies</a><span class="token operator">: </span><span data-unresolved-link="/ListSet///PointingToDeclaration/">ListSet</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model/-actionable/inbound-dependencies.html">inboundDependencies</a><span class="token operator">: </span>@EnhancedNullability org/danilopianini/util/ListSet&lt;it/unibo/alchemist/model/Dependency!&gt;</div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="426392526%2FProperties%2F-251573632" anchor-label="inputContext" id="426392526%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1523034040%2FProperties%2F-1814946674" anchor-label="inputContext" id="-1523034040%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-steering-behavior/index.html#426392526%2FProperties%2F-251573632"><span>input</span><wbr></wbr><span><span>Context</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="426392526%2FProperties%2F-251573632"></span>
+                  <div><a href="../../it.unibo.alchemist.model/-reaction/input-context.html"><span>input</span><wbr></wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1523034040%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../-steering-behavior/index.html#426392526%2FProperties%2F-251573632">inputContext</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-context/index.html">Context</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model/-reaction/input-context.html">inputContext</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-context/index.html">Context</a></div><div class="brief "><p class="paragraph">The widest <a href="../../it.unibo.alchemist.model/-context/index.html">Context</a> among <a href="../../it.unibo.alchemist.model/-condition/index.html">Condition</a>s, namely the smallest <a href="../../it.unibo.alchemist.model/-context/index.html">Context</a> in which the <a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a> can read informations.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-524134159%2FProperties%2F-251573632" anchor-label="node" id="-524134159%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="193564523%2FProperties%2F-1814946674" anchor-label="node" id="193564523%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../../it.unibo.alchemist.model.reactions/-abstract-reaction/node.html"><span><span>node</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-524134159%2FProperties%2F-251573632"></span>
+                  <div><a href="../../it.unibo.alchemist.model/-reaction/node.html"><span><span>node</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="193564523%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model.reactions/-abstract-reaction/node.html">node</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model/-reaction/node.html">node</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">?</span><span class="token operator">&gt;</span></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="315663002%2FProperties%2F-251573632" anchor-label="outboundDependencies" id="315663002%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-714221125%2FProperties%2F-1814946674" anchor-label="outboundDependencies" id="-714221125%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-steering-behavior/index.html#315663002%2FProperties%2F-251573632"><span>outbound</span><wbr></wbr><span><span>Dependencies</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="315663002%2FProperties%2F-251573632"></span>
+                  <div><a href="../../it.unibo.alchemist.model/-actionable/outbound-dependencies.html"><span>outbound</span><wbr></wbr><span><span>Dependencies</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-714221125%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../-steering-behavior/index.html#315663002%2FProperties%2F-251573632">outboundDependencies</a><span class="token operator">: </span><span data-unresolved-link="/ListSet///PointingToDeclaration/">ListSet</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model/-actionable/outbound-dependencies.html">outboundDependencies</a><span class="token operator">: </span>@EnhancedNullability org/danilopianini/util/ListSet&lt;it/unibo/alchemist/model/Dependency!&gt;</div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2134576679%2FProperties%2F-251573632" anchor-label="outputContext" id="-2134576679%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1857709215%2FProperties%2F-1814946674" anchor-label="outputContext" id="1857709215%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-steering-behavior/index.html#-2134576679%2FProperties%2F-251573632"><span>output</span><wbr></wbr><span><span>Context</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2134576679%2FProperties%2F-251573632"></span>
+                  <div><a href="../../it.unibo.alchemist.model/-reaction/output-context.html"><span>output</span><wbr></wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1857709215%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../-steering-behavior/index.html#-2134576679%2FProperties%2F-251573632">outputContext</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-context/index.html">Context</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model/-reaction/output-context.html">outputContext</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-context/index.html">Context</a></div><div class="brief "><p class="paragraph">The widest <a href="../../it.unibo.alchemist.model/-context/index.html">Context</a> among <a href="../../it.unibo.alchemist.model/-action/index.html">Action</a>s, namely the smallest context in which the <a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a> can do modifications.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-122803980%2FProperties%2F-251573632" anchor-label="rate" id="-122803980%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-122803980%2FProperties%2F-1814946674" anchor-label="rate" id="-122803980%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.model/-actionable/rate.html"><span><span>rate</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-122803980%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-122803980%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model/-actionable/rate.html">rate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the speed of this <a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a>. It is an average number, and can potentially change during the simulation, depending on the implementation.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model/-actionable/rate.html">rate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the speed of this <a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a>. It is an average number, and can potentially change during the simulation, depending on the implementation.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-758298021%2FProperties%2F-251573632" anchor-label="steerStrategy" id="-758298021%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-758298021%2FProperties%2F-1814946674" anchor-label="steerStrategy" id="-758298021%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="steer-strategy.html"><span>steer</span><wbr></wbr><span><span>Strategy</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-758298021%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-758298021%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="steer-strategy.html">steerStrategy</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.cognitive/-steering-strategy/index.html">SteeringStrategy</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="steer-strategy.html">steerStrategy</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.cognitive/-steering-strategy/index.html">SteeringStrategy</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1078010529%2FProperties%2F-251573632" anchor-label="tau" id="-1078010529%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1904403426%2FProperties%2F-1814946674" anchor-label="tau" id="-1904403426%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-steering-behavior/index.html#-1078010529%2FProperties%2F-251573632"><span><span>tau</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1078010529%2FProperties%2F-251573632"></span>
+                  <div><a href="../../it.unibo.alchemist.model/-actionable/tau.html"><span><span>tau</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1904403426%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../-steering-behavior/index.html#-1078010529%2FProperties%2F-251573632">tau</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-time/index.html">Time</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model/-actionable/tau.html">tau</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-time/index.html">Time</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1605244642%2FProperties%2F-251573632" anchor-label="timeDistribution" id="1605244642%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="821954179%2FProperties%2F-1814946674" anchor-label="timeDistribution" id="821954179%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../../it.unibo.alchemist.model.reactions/-abstract-reaction/time-distribution.html"><span>time</span><wbr></wbr><span><span>Distribution</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1605244642%2FProperties%2F-251573632"></span>
+                  <div><a href="../../it.unibo.alchemist.model/-actionable/time-distribution.html"><span>time</span><wbr></wbr><span><span>Distribution</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="821954179%2FProperties%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model.reactions/-abstract-reaction/time-distribution.html">timeDistribution</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-time-distribution/index.html">TimeDistribution</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../it.unibo.alchemist.model/-actionable/time-distribution.html">timeDistribution</a><span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-time-distribution/index.html">TimeDistribution</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">?</span><span class="token operator">&gt;</span></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -306,168 +332,139 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="-9979314%2FFunctions%2F-251573632" anchor-label="canExecute" id="-9979314%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-926402897%2FFunctions%2F-1814946674" anchor-label="canExecute" id="-926402897%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../../it.unibo.alchemist.model.reactions/-abstract-reaction/can-execute.html"><span>can</span><wbr></wbr><span><span>Execute</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-9979314%2FFunctions%2F-251573632"></span>
+                  <div><a href="../../it.unibo.alchemist.model/-actionable/can-execute.html"><span>can</span><wbr></wbr><span><span>Execute</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-926402897%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../../it.unibo.alchemist.model.reactions/-abstract-reaction/can-execute.html"><span class="token function">canExecute</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../it.unibo.alchemist.model/-actionable/can-execute.html"><span class="token function">canExecute</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1815929245%2FFunctions%2F-251573632" anchor-label="cloneOnNewNode" id="1815929245%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1815929245%2FFunctions%2F-1814946674" anchor-label="cloneOnNewNode" id="1815929245%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-steering-behavior/clone-on-new-node.html"><span>clone</span><wbr></wbr><span>On</span><wbr></wbr><span>New</span><wbr></wbr><span><span>Node</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1815929245%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1815929245%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-steering-behavior/clone-on-new-node.html"><span class="token function">cloneOnNewNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">currentTime<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-time/index.html">Time</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-steering-behavior/index.html">SteeringBehavior</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">This method allows to clone this reaction on a new node. It may result useful to support runtime creation of nodes with the same reaction programming, e.g. for morphogenesis.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-steering-behavior/clone-on-new-node.html"><span class="token function">cloneOnNewNode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">node<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-node/index.html">Node</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">currentTime<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-time/index.html">Time</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-steering-behavior/index.html">SteeringBehavior</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">This method allows to clone this reaction on a new node. It may result useful to support runtime creation of nodes with the same reaction programming, e.g. for morphogenesis.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1230288904%2FFunctions%2F-251573632" anchor-label="compareTo" id="-1230288904%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1889203034%2FFunctions%2F-1814946674" anchor-label="compareTo" id="1889203034%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-steering-behavior/index.html#-1230288904%2FFunctions%2F-251573632"><span>compare</span><wbr></wbr><span><span>To</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1230288904%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-steering-behavior/index.html#1889203034%2FFunctions%2F-1814946674"><span>compare</span><wbr></wbr><span><span>To</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1889203034%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="../-steering-behavior/index.html#-1230288904%2FFunctions%2F-251573632"><span class="token function">compareTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-actionable/index.html">Actionable</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="../-steering-behavior/index.html#1889203034%2FFunctions%2F-1814946674"><span class="token function">compareTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">o<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-actionable/index.html">Actionable</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">?</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1990192942%2FFunctions%2F-251573632" anchor-label="equals" id="1990192942%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="../-steering-behavior/index.html#1990192942%2FFunctions%2F-251573632"><span><span>equals</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1990192942%2FFunctions%2F-251573632"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="../-steering-behavior/index.html#1990192942%2FFunctions%2F-251573632"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-36208026%2FFunctions%2F-251573632" anchor-label="execute" id="-36208026%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-36208026%2FFunctions%2F-1814946674" anchor-label="execute" id="-36208026%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-steering-behavior/execute.html"><span><span>execute</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-36208026%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-36208026%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-steering-behavior/execute.html"><span class="token function">execute</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">The default execution iterates all the actions in order and executes them. Override to change the behavior.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-steering-behavior/execute.html"><span class="token function">execute</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Executes the reactions.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2077766152%2FFunctions%2F-251573632" anchor-label="hashCode" id="-2077766152%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="620924048%2FFunctions%2F-1814946674" anchor-label="initializationComplete" id="620924048%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../../it.unibo.alchemist.model.reactions/-abstract-reaction/hash-code.html"><span>hash</span><wbr></wbr><span><span>Code</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2077766152%2FFunctions%2F-251573632"></span>
+                  <div><a href="../../it.unibo.alchemist.model/-actionable/initialization-complete.html"><span>initialization</span><wbr></wbr><span><span>Complete</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="620924048%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../../it.unibo.alchemist.model.reactions/-abstract-reaction/hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../it.unibo.alchemist.model/-actionable/initialization-complete.html"><span class="token function">initializationComplete</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">atTime<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-time/index.html">Time</a><span class="token punctuation">, </span></span><span class="parameter ">environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">?</span><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method is called when the environment has completed its initialization. Can be used by this reaction to compute its next execution time - in case such computation requires an inspection of the environment.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1961955025%2FFunctions%2F-251573632" anchor-label="initializationComplete" id="1961955025%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="../-steering-behavior/index.html#1961955025%2FFunctions%2F-251573632"><span>initialization</span><wbr></wbr><span><span>Complete</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1961955025%2FFunctions%2F-251573632"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-steering-behavior/index.html#1961955025%2FFunctions%2F-251573632"><span class="token function">initializationComplete</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">atTime<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-time/index.html">Time</a><span class="token punctuation">, </span></span><span class="parameter ">environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method is called when the environment has completed its initialization. Can be used by this reaction to compute its next execution time - in case such computation requires an inspection of the environment.</p></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="2030729619%2FFunctions%2F-251573632" anchor-label="steerActions" id="2030729619%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="2030729619%2FFunctions%2F-1814946674" anchor-label="steerActions" id="2030729619%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-steering-behavior/steer-actions.html"><span>steer</span><wbr></wbr><span><span>Actions</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2030729619%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2030729619%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../-steering-behavior/steer-actions.html"><span class="token function">steerActions</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.cognitive/-steering-action/index.html">SteeringAction</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The list of steering actions in this reaction.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../-steering-behavior/steer-actions.html"><span class="token function">steerActions</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.cognitive/-steering-action/index.html">SteeringAction</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.positions/-euclidean2-d-position/index.html">Euclidean2DPosition</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The list of steering actions in this reaction.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-345821986%2FFunctions%2F-251573632" anchor-label="toGraphQLReactionSurrogate" id="-345821986%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-345821986%2FFunctions%2F-1814946674" anchor-label="toGraphQLReactionSurrogate" id="-345821986%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/to-graph-q-l-reaction-surrogate.html"><span>to</span><wbr></wbr><span>Graph</span><wbr></wbr><span>QLReaction</span><wbr></wbr><span><span>Surrogate</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-345821986%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-345821986%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/to-graph-q-l-reaction-surrogate.html">T</a><span class="token operator">&gt; </span><a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/to-graph-q-l-reaction-surrogate.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/to-graph-q-l-reaction-surrogate.html"><span class="token function">toGraphQLReactionSurrogate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/-reaction-surrogate/index.html">ReactionSurrogate</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/to-graph-q-l-reaction-surrogate.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Converts a <a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a> to a <a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/-reaction-surrogate/index.html">ReactionSurrogate</a>.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/to-graph-q-l-reaction-surrogate.html">T</a><span class="token operator">&gt; </span><a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/to-graph-q-l-reaction-surrogate.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/to-graph-q-l-reaction-surrogate.html"><span class="token function">toGraphQLReactionSurrogate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/-reaction-surrogate/index.html">ReactionSurrogate</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/to-graph-q-l-reaction-surrogate.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Converts a <a href="../../it.unibo.alchemist.model/-reaction/index.html">Reaction</a> to a <a href="../../it.unibo.alchemist.boundary.graphql.schema.model.surrogates/-reaction-surrogate/index.html">ReactionSurrogate</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="2039035079%2FFunctions%2F-251573632" anchor-label="toString" id="2039035079%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="525483034%2FFunctions%2F-1814946674" anchor-label="update" id="525483034%2FFunctions%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../../it.unibo.alchemist.model.reactions/-abstract-reaction/to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2039035079%2FFunctions%2F-251573632"></span>
+                  <div><a href="../../it.unibo.alchemist.model/-actionable/update.html"><span><span>update</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="525483034%2FFunctions%2F-1814946674"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../../it.unibo.alchemist.model.reactions/-abstract-reaction/to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-262541895%2FFunctions%2F-251573632" anchor-label="update" id="-262541895%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="../-steering-behavior/index.html#-262541895%2FFunctions%2F-251573632"><span><span>update</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-262541895%2FFunctions%2F-251573632"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-steering-behavior/index.html#-262541895%2FFunctions%2F-251573632"><span class="token function">update</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">currentTime<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-time/index.html">Time</a><span class="token punctuation">, </span></span><span class="parameter ">hasBeenExecuted<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Updates the scheduling of this reaction.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../it.unibo.alchemist.model/-actionable/update.html"><span class="token function">update</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">currentTime<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-time/index.html">Time</a><span class="token punctuation">, </span></span><span class="parameter ">hasBeenExecuted<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">environment<span class="token operator">: </span><a href="../../it.unibo.alchemist.model/-environment/index.html">Environment</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">?</span><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Updates the scheduling of this reaction.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -478,17 +475,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,22 +1,22 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>AbstractEuclideanPosition</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
@@ -24,35 +24,33 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>
 <link href="../../../images/logo.svg">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet"></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
                     alchemist-full
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">42.3.10
+        <div class="library-version" id="library-version">42.3.11
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":alchemist-euclidean-geometry/main">jvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":alchemist-euclidean-geometry/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -66,7 +64,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -74,38 +72,40 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     alchemist-full
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-euclidean-geometry::it.unibo.alchemist.model.positions/AbstractEuclideanPosition///PointingToDeclaration//1780278300">
   <div class="breadcrumbs"><a href="../../index.html">alchemist-euclidean-geometry</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.positions</a><span class="delimiter">/</span><span class="current">AbstractEuclideanPosition</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Abstract</span><wbr><span>Euclidean</span><wbr><span><span>Position</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">AbstractEuclideanPosition</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator"> : </span><a href="index.html">AbstractEuclideanPosition</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator">&gt;</span> : <a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.positions/-abstract-position/index.html">AbstractPosition</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.positions/-abstract-position/index.html">P</a><span class="token operator">&gt; </span>, <a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">Vector</a><span class="token operator">&lt;</span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a><span class="token operator">&gt; </span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/077a866cdc7de0c5d1f807758b1f4fb56f130435/alchemist-euclidean-geometry/src/main/java/it/unibo/alchemist/model/positions/AbstractEuclideanPosition.java#L22">source</a>)</span></span></div><p class="paragraph">N-dimensional Euclidean position.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>&lt;P&gt;</span></span></u></div></span></div><div><div class="title"><p class="paragraph">actual type</p></div></div></div></div></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-euclidean2-d-position/index.html">Euclidean2DPosition</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">AbstractEuclideanPosition</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator"> : </span><a href="index.html">AbstractEuclideanPosition</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator">&gt;</span> : <a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.positions/-abstract-position/index.html">AbstractPosition</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt; </span>, <a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">Vector</a><span class="token operator">&lt;</span><a href="index.html">P</a><span class="token operator">&gt; </span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/e077af6e3177ee9499ab8bfc0331a1b7c19353b0/alchemist-euclidean-geometry/src/main/java/it/unibo/alchemist/model/positions/AbstractEuclideanPosition.java#L22">source</a>)</span></span></div><p class="paragraph">N-dimensional Euclidean position.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>&lt;P&gt;</span></span></u></div></span></div><div><div class="title"><p class="paragraph">actual type</p></div></div></div></div></div><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-euclidean2-d-position/index.html">Euclidean2DPosition</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-186500501%2FFunctions%2F1780278300" anchor-label="angleBetween" id="-186500501%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-186500501%2FFunctions%2F1780278300"><span>angle</span><wbr><span><span>Between</span></span></a></div>
@@ -114,13 +114,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-186500501%2FFunctions%2F1780278300"><span class="token function">angleBetween</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-186500501%2FFunctions%2F1780278300"><span class="token function">angleBetween</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-191798737%2FFunctions%2F1780278300" anchor-label="boundingBox" id="-191798737%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-191798737%2FFunctions%2F1780278300"><span>bounding</span><wbr><span><span>Box</span></span></a></div>
@@ -129,13 +129,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-191798737%2FFunctions%2F1780278300"><span class="token function">boundingBox</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.positions/-abstract-position/index.html">P</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-191798737%2FFunctions%2F1780278300"><span class="token function">boundingBox</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">range<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List</a><span class="token operator">&lt;</span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.positions/-abstract-position/index.html">P</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="183084789%2FFunctions%2F1780278300" anchor-label="coerceAtLeast" id="183084789%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#183084789%2FFunctions%2F1780278300"><span>coerce</span><wbr><span>At</span><wbr><span><span>Least</span></span></a></div>
@@ -144,13 +144,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#183084789%2FFunctions%2F1780278300"><span class="token function">coerceAtLeast</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#183084789%2FFunctions%2F1780278300"><span class="token function">coerceAtLeast</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">minimumMagnitude<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-448468233%2FFunctions%2F1780278300" anchor-label="coerceAtMost" id="-448468233%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-448468233%2FFunctions%2F1780278300"><span>coerce</span><wbr><span>At</span><wbr><span><span>Most</span></span></a></div>
@@ -159,13 +159,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-448468233%2FFunctions%2F1780278300"><span class="token function">coerceAtMost</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-448468233%2FFunctions%2F1780278300"><span class="token function">coerceAtMost</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">maximumMagnitude<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="2059046214%2FFunctions%2F1780278300" anchor-label="coerceIn" id="2059046214%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#2059046214%2FFunctions%2F1780278300"><span>coerce</span><wbr><span><span>In</span></span></a></div>
@@ -174,13 +174,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#2059046214%2FFunctions%2F1780278300"><span class="token function">coerceIn</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">p1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#2059046214%2FFunctions%2F1780278300"><span class="token function">coerceIn</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">minimumMagnitude<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">maximumMagnitude<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1023904465%2FFunctions%2F1780278300" anchor-label="distanceTo" id="-1023904465%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1023904465%2FFunctions%2F1780278300"><span>distance</span><wbr><span><span>To</span></span></a></div>
@@ -189,13 +189,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-1023904465%2FFunctions%2F1780278300"><span class="token function">distanceTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.positions/-abstract-position/index.html">P</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-1023904465%2FFunctions%2F1780278300"><span class="token function">distanceTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.positions/-abstract-position/index.html">P</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1184673247%2FFunctions%2F1780278300" anchor-label="div" id="1184673247%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1184673247%2FFunctions%2F1780278300"><span><span>div</span></span></a></div>
@@ -204,13 +204,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1184673247%2FFunctions%2F1780278300"><span class="token function">div</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1184673247%2FFunctions%2F1780278300"><span class="token function">div</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1642278135%2FFunctions%2F1780278300" anchor-label="dot" id="1642278135%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1642278135%2FFunctions%2F1780278300"><span><span>dot</span></span></a></div>
@@ -219,13 +219,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1642278135%2FFunctions%2F1780278300"><span class="token function">dot</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1642278135%2FFunctions%2F1780278300"><span class="token function">dot</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1208215905%2FFunctions%2F1780278300" anchor-label="equals" id="1208215905%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1208215905%2FFunctions%2F1780278300"><span><span>equals</span></span></a></div>
@@ -234,13 +234,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#1208215905%2FFunctions%2F1780278300"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#1208215905%2FFunctions%2F1780278300"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">o<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="686745437%2FFunctions%2F1780278300" anchor-label="fromCoordinates" id="686745437%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#686745437%2FFunctions%2F1780278300"><span>from</span><wbr><span><span>Coordinates</span></span></a></div>
@@ -255,7 +255,7 @@
             </div>
           </div>
 <a data-name="-292113496%2FFunctions%2F1780278300" anchor-label="get" id="-292113496%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get.html"><span><span>get</span></span></a></div>
@@ -270,7 +270,7 @@
             </div>
           </div>
 <a data-name="829873786%2FFunctions%2F1780278300" anchor-label="getCoordinate" id="829873786%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#829873786%2FFunctions%2F1780278300"><span>get</span><wbr><span><span>Coordinate</span></span></a></div>
@@ -279,13 +279,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#829873786%2FFunctions%2F1780278300"><span class="token function">getCoordinate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#829873786%2FFunctions%2F1780278300"><span class="token function">getCoordinate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dimension<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="948410894%2FFunctions%2F1780278300" anchor-label="getCoordinates" id="948410894%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#948410894%2FFunctions%2F1780278300"><span>get</span><wbr><span><span>Coordinates</span></span></a></div>
@@ -300,7 +300,7 @@
             </div>
           </div>
 <a data-name="1510840100%2FFunctions%2F1780278300" anchor-label="getDimensions" id="1510840100%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1510840100%2FFunctions%2F1780278300"><span>get</span><wbr><span><span>Dimensions</span></span></a></div>
@@ -315,7 +315,7 @@
             </div>
           </div>
 <a data-name="943262303%2FFunctions%2F1780278300" anchor-label="getMagnitude" id="943262303%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#943262303%2FFunctions%2F1780278300"><span>get</span><wbr><span><span>Magnitude</span></span></a></div>
@@ -330,7 +330,7 @@
             </div>
           </div>
 <a data-name="949470243%2FFunctions%2F1780278300" anchor-label="getZero" id="949470243%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#949470243%2FFunctions%2F1780278300"><span>get</span><wbr><span><span>Zero</span></span></a></div>
@@ -345,22 +345,22 @@
             </div>
           </div>
 <a data-name="787876856%2FFunctions%2F1780278300" anchor-label="hashCode" id="787876856%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-euclidean2-d-position/index.html#787876856%2FFunctions%2F1780278300"><span>hash</span><wbr><span><span>Code</span></span></a></div>
+                  <div><a href="index.html#787876856%2FFunctions%2F1780278300"><span>hash</span><wbr><span><span>Code</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="787876856%2FFunctions%2F1780278300"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../-euclidean2-d-position/index.html#787876856%2FFunctions%2F1780278300"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#787876856%2FFunctions%2F1780278300"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="812298217%2FFunctions%2F1780278300" anchor-label="minus" id="812298217%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1577673122%2FFunctions%2F1780278300"><span><span>minus</span></span></a></div>
@@ -369,13 +369,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#-1577673122%2FFunctions%2F1780278300"><span class="token function">minus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#2008906107%2FFunctions%2F1780278300"><span class="token function">minus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.positions/-abstract-position/index.html">P</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.positions/-abstract-position/index.html">P</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#-1577673122%2FFunctions%2F1780278300"><span class="token function">minus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#2008906107%2FFunctions%2F1780278300"><span class="token function">minus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.positions/-abstract-position/index.html">P</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.positions/-abstract-position/index.html">P</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="884029042%2FFunctions%2F1780278300" anchor-label="normal" id="884029042%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#884029042%2FFunctions%2F1780278300"><span><span>normal</span></span></a></div>
@@ -390,7 +390,7 @@
             </div>
           </div>
 <a data-name="1053893730%2FFunctions%2F1780278300" anchor-label="normalized" id="1053893730%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-euclidean2-d-position/index.html#1053893730%2FFunctions%2F1780278300"><span><span>normalized</span></span></a></div>
@@ -405,7 +405,7 @@
             </div>
           </div>
 <a data-name="-1444596483%2FFunctions%2F1780278300" anchor-label="plus" id="-1444596483%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-875692016%2FFunctions%2F1780278300"><span><span>plus</span></span></a></div>
@@ -414,13 +414,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#-875692016%2FFunctions%2F1780278300"><span class="token function">plus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#1928391801%2FFunctions%2F1780278300"><span class="token function">plus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.positions/-abstract-position/index.html">P</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.positions/-abstract-position/index.html">P</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="index.html#-875692016%2FFunctions%2F1780278300"><span class="token function">plus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#1928391801%2FFunctions%2F1780278300"><span class="token function">plus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.positions/-abstract-position/index.html">P</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-implementationbase/it.unibo.alchemist.model.positions/-abstract-position/index.html">P</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1705460320%2FFunctions%2F1780278300" anchor-label="resized" id="1705460320%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#1705460320%2FFunctions%2F1780278300"><span><span>resized</span></span></a></div>
@@ -429,13 +429,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1705460320%2FFunctions%2F1780278300"><span class="token function">resized</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#1705460320%2FFunctions%2F1780278300"><span class="token function">resized</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">newLen<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist-api/it.unibo.alchemist.model.geometry/-vector/index.html">S</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1818758262%2FFunctions%2F1780278300" anchor-label="times" id="-1818758262%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index.html#-1818758262%2FFunctions%2F1780278300"><span><span>times</span></span></a></div>
@@ -450,16 +450,16 @@
             </div>
           </div>
 <a data-name="609710791%2FFunctions%2F1780278300" anchor-label="toString" id="609710791%2FFunctions%2F1780278300" data-filterable-set=":alchemist-euclidean-geometry/main"></a>
-          <div class="table-row" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-euclidean-geometry/main" data-filterable-set=":alchemist-euclidean-geometry/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-euclidean2-d-position/index.html#609710791%2FFunctions%2F1780278300"><span>to</span><wbr><span><span>String</span></span></a></div>
+                  <div><a href="index.html#609710791%2FFunctions%2F1780278300"><span>to</span><wbr><span><span>String</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="609710791%2FFunctions%2F1780278300"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-euclidean2-d-position/index.html#609710791%2FFunctions%2F1780278300"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-euclidean-geometry/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#609710791%2FFunctions%2F1780278300"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html">String</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -470,17 +470,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Danilo Pianini and contributors listed in the Alchemist build files</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
