@@ -317,6 +317,20 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "The Alchemist Simulator \u003e Showcase",
+    "content": "From Simulation publicly available at https://github.com/AggregateComputing/experiment-2023-acsos-field-informed-rl\nAbstract Collective tasks in multi-agent systems require agents to coordinate and adapt to dynamic environments. Traditional reinforcement learning approaches often struggle with scalability and generalization when dealing with large numbers of agents and varying spatial configurations.\nThis work presents a novel approach that combines field-based coordination (from aggregate computing) with graph neural networks (GNNs) for learning collective behaviors. The key insight is to leverage the spatial structure of agent interactions, represented as dynamic graphs, to inform the learning process. By incorporating field-based abstractions into the state representation, agents can learn policies that are more robust and scalable.\nThe approach is implemented using aggregate computing principles and graph neural networks, enabling agents to learn coordinated behaviors while maintaining spatial awareness. Experiments demonstrate that this field-informed approach leads to faster convergence and better generalization compared to traditional multi-agent reinforcement learning methods.\nThe simulations are built using Alchemist with ScaFi for aggregate computing and Pytorch Geometric for GNNs.\nExperiment description The experiments evaluate the proposed approach across several collective coordination tasks:\nTask Scenarios The evaluation focuses on scenarios requiring spatial coordination among multiple agents:\nFormation control: Agents learn to maintain specific geometric formations while moving Coverage tasks: Agents coordinate to efficiently cover an area Collective navigation: Groups of agents learn to navigate while maintaining cohesion Each scenario is designed to test different aspects of collective behavior:\nScalability to varying numbers of agents Adaptation to dynamic environments Generalization to new spatial configurations Learning Architecture The system combines:\nField-based state representation: Agents perceive their environment through computational fields, representing spatial properties like distance gradients and local density Graph Neural Networks: The GNN architecture processes the agent interaction graph, where edges represent communication or sensing relationships Decentralized execution: Each agent uses the learned policy independently, relying only on local information and neighbor communication Training Process Agents are trained using multi-agent reinforcement learning with:\nCentralized training for coordination Decentralized execution for scalability Field-based reward shaping to guide learning toward spatially coherent behaviors The training leverages the aggregate computing paradigm to provide structured, spatially-aware information to the learning process, significantly improving sample efficiency and final performance.\nResults The experiments demonstrate that incorporating field-based information into GNN-based reinforcement learning:\nAccelerates learning convergence compared to baseline approaches Produces more robust policies that generalize across different numbers of agents Enables effective coordination in large-scale scenarios (tested with up to hundreds of agents) Maintains performance when deployed in dynamic environments Snapshots The following image shows the collective behavior learned by agents during simulation.\nVisualization of agents coordinating through field-informed GNN policies.\nCitation",
+    "description": "Simulations demonstrating field-informed reinforcement learning for collective tasks using graph neural networks and aggregate computing.",
+    "tags": [
+      "Simulation",
+      "Aggregate Computing",
+      "Reinforcement Learning",
+      "Graph Neural Networks",
+      "Collective Behavior"
+    ],
+    "title": "2023: Field-informed Reinforcement Learning of Collective Tasks with Graph Neural Networks",
+    "uri": "/showcase/2022-gnn-ac/index.html"
+  },
+  {
+    "breadcrumb": "The Alchemist Simulator \u003e Showcase",
     "content": "From Simulation publicly available at https://github.com/AggregateComputing/experiment-2023-coordination-swarm-behaviour\nAbstract Programming swarm behaviors is a challenging task due to the complexity of coordinating multiple autonomous agents in a distributed and dynamic environment. Traditional approaches often require low-level imperative programming, making it difficult to express and maintain complex collective behaviors.\nMacroSwarm is a field-based library for expressing swarm behaviors in a declarative and compositional way. It is built on top of the Aggregate Computing framework, a distributed computing paradigm for the JVM that enables the specification of collective behaviors through spatial computations over fields of values. MacroSwarm is specifically implemented on top of ScaFi, a Scala-based library for programming aggregate computing systems. The library provides high-level abstractions that simplify the development of swarm coordination patterns, such as formation control, flocking, and cooperative task allocation.\nThe following simulations are built on top of Alchemist, a flexible meta-simulator for pervasive and aggregate computing systems.\nSimulation description The experiment presents a case study highlighting MacroSwarm’s ability to express complex swarm behaviors through a compositional and declarative API.\nIn the proposed scenario, a fleet of drones is deployed to patrol a spatial area of $1 \\text{ km}^2$. Within this environment, dangerous situations may arise randomly, such as fires breaking out or people getting injured. When such emergencies occur, specialized drones designated as healers must approach the danger zone and resolve the situation.\nThe exploration strategy requires coordination in heterogeneous groups, each composed of at least one healer and several explorer drones. The explorers assist healers in identifying alarm situations across the patrolled area. The simulation begins with 50 explorer drones and 5 healer drones randomly positioned within the area.\nEach drone operates with the following constraints:\nMaximum speed of approximately $20 \\text{ km/h}$ ($\\sim 5.5 \\text{ m/s}$) Communication range of $100 \\text{ m}$ Alarm situations are generated randomly at different times within a $[0, 50]$-minute (simulated) timeframe. Each simulation run lasts 90 simulated minutes, during which the swarm coordination mechanisms are evaluated based on their effectiveness in detecting and resolving emergencies while maintaining efficient area coverage.\nSnapshots The following images show different phases of the swarm coordination behavior during the simulation.\nAdditional Resources For more information about the MacroSwarm framework and its capabilities, please refer to the MacroSwarm website.\nCitation",
     "description": "Simulations demonstrating MacroSwarm, a field-based library for expressing swarm behaviors in a declarative way, presented at COORDINATION 2023.",
     "tags": [
@@ -795,7 +809,21 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "The Alchemist Simulator \u003e Showcase",
-    "content": "Simulation and detailed description publicly available at https://github.com/ScaRLib-group/SCP-ScaRLib-flock-demo . Related to the paper ``ScaRLib: Towards a hybrid toolchain for aggregate computing and many-agent reinforcement learning’’ published in the journal Science of Computer Programming (DOI: 10.1016/j.scico.2024.103176).\nAbstract ScaRLib is a Scala-based framework designed to merge macroprogramming and multi-agent reinforcement learning (MARL) in large-scale cyber-physical systems. It integrates Alchemist, ScaFi, and PyTorch into a modular toolchain that allows developers to define and train swarm behaviors through high-level abstractions and declarative configurations.\nIn essence, ScaRLib makes it possible to teach simulated agents collective behaviors — such as coordination, cohesion, and collision avoidance — by combining aggregate computing models with deep reinforcement learning techniques. This hybrid approach paves the way for adaptive, scalable, and self-organizing swarm systems.\nExperiment description Objective This experiment demonstrates how reinforcement learning can be combined with aggregate computing to produce flocking behavior — where agents (e.g., drones) learn to maintain cohesion while avoiding collisions.\nSetup Agents are deployed in a $2D$ continuous environment simulated by Alchemist, each capable of moving in eight directions (N, S, E, W, and diagonals). Each agent perceives only its local neighborhood (the five nearest agents) and decides its next move based on its learned policy.\nThe ScaFi aggregate program defines how agents perceive their surroundings — computing distances to neighbors and building their state representation. Learning is managed through the Centralized Training, Decentralized Execution (CTDE) model in ScaRLib, where agents are trained collectively but act independently during simulation.\nReward Design The reinforcement signal is defined by two components:\nCohesion factor: rewards agents that remain close to their neighbors.\nCollision factor: penalizes agents that get too close (i.e., distance lower than a target distance $\\delta$).\nThis balance encourages the emergence of smooth, coordinated group motion.\nResults After training over 1000 epochs with 50 agents, the learned policy produces robust flocking behaviors:\nAgents naturally form cohesive clusters while avoiding collisions.\nThe same policy scales effectively to 100 and 200 agents, maintaining stable inter-agent distances ($\\simeq 2 \\times \\delta $. Performance analysis confirms polynomial scalability, with Alchemist efficiently handling simulations with hundreds of agents.\nImages Snapshots of learned flocking policy over time.",
+    "content": "From Simulations publicly available at:\nhttps://github.com/domm99/experiments-2025-lmcs-field-based-FL https://github.com/domm99/experiments-2025-iot-self-federated-learning Abstract In the era of pervasive devices and edge intelligence, Federated Learning enables multiple distributed nodes to collaboratively train machine learning models without exchanging raw data, fostering privacy preservation and bandwidth efficiency. However, real-world deployments face significant challenges: data heterogeneity across devices, dynamic network topologies, and the lack of centralized control in truly distributed environments.\nThese simulations explore field-based and self-organizing coordination paradigms for federated learning, built on top of the Aggregate Computing framework and implemented using ScaFi. Through complementary experiments, we investigate how devices can autonomously organize into federations, aggregate model parameters, and adapt to failures in a fully decentralized manner, leveraging computational fields and spatial interaction patterns.\nThe following simulations are built on top of Alchemist.\nSimulation Descriptions Field-Based Federated Learning (FBFL) This simulation explores the emergence of personalized model zones using computational fields as a distributed coordination mechanism. Devices in spatial proximity exchange model parameters through local diffusion processes, forming hierarchical regions governed by dynamically elected leaders. These leaders act as aggregators for their respective zones, enabling localized learning and self-stabilizing coordination without central infrastructure.\nThe implementation leverages field coordination primitives from ScaFi, including constructs for diffusion, convergence, and feedback loops. Nodes autonomously select aggregators within their neighborhoods through distributed spatial leader election, and aggregation occurs at multiple levels based on emergent spatial zones.\nKey characteristics:\nDatasets: MNIST, FashionMNIST, Extended MNIST Coordination: Fully decentralized using computational fields Aggregation: Hierarchical, based on spatial proximity Resilience: Self-stabilizing under node failures and topology changes The system achieves accuracy comparable to centralized FedAvg under IID settings, while demonstrating superior robustness to dynamic network conditions. Emergent spatial clusters naturally align with local data distributions, creating personalized learning zones without explicit configuration.\nSnapshots The following images show the evolution of self-organizing federations during a simulation where aggregator failures occur and the system autonomously recovers.\nLeft: Start of the learning. Center: Federation stabilization. Right: Active learning phase. Left: Aggregator failures. Center: Federation re-stabilization. Right: Learning resumes. Additional Resources The work presented here is based on multiple publications:\nField-Based Coordination for Federated Learning at COORDINATION 2024 (DOI: 10.1007/978-3-031-62697-5_4) Proximity-based Self-Federated Learning at ACSOS 2024 (DOI: 10.1109/ACSOS61780.2024.00033) FBFL: A Field-Based Coordination Approach for Data Heterogeneity in Federated Learning submitted to Logical Methods in Computer Science (arXiv:2502.08577) Decentralized Proximity-Aware Clustering for Collective Self-Federated Learning submitted to Internet of Things journal Citation",
+    "description": "Simulations demonstrating field-based and proximity-based approaches to decentralized federated learning in large-scale distributed systems.",
+    "tags": [
+      "Simulation",
+      "Federated Learning",
+      "Aggregate Computing",
+      "Scafi",
+      "Self-Organization"
+    ],
+    "title": "2024: Field-Based Coordination for Federated Learning",
+    "uri": "/showcase/2024-federated-learning/index.html"
+  },
+  {
+    "breadcrumb": "The Alchemist Simulator \u003e Showcase",
+    "content": "From Simulation and detailed description publicly available at https://github.com/ScaRLib-group/SCP-ScaRLib-flock-demo .\nAbstract ScaRLib is a Scala-based framework designed to merge macroprogramming and multi-agent reinforcement learning (MARL) in large-scale cyber-physical systems. It integrates Alchemist, ScaFi, and PyTorch into a modular toolchain that allows developers to define and train swarm behaviors through high-level abstractions and declarative configurations.\nIn essence, ScaRLib makes it possible to teach simulated agents collective behaviors — such as coordination, cohesion, and collision avoidance — by combining aggregate computing models with deep reinforcement learning techniques. This hybrid approach paves the way for adaptive, scalable, and self-organizing swarm systems.\nExperiment description Objective This experiment demonstrates how reinforcement learning can be combined with aggregate computing to produce flocking behavior — where agents (e.g., drones) learn to maintain cohesion while avoiding collisions.\nSetup Agents are deployed in a $2D$ continuous environment simulated by Alchemist, each capable of moving in eight directions (N, S, E, W, and diagonals). Each agent perceives only its local neighborhood (the five nearest agents) and decides its next move based on its learned policy.\nThe ScaFi aggregate program defines how agents perceive their surroundings — computing distances to neighbors and building their state representation. Learning is managed through the Centralized Training, Decentralized Execution (CTDE) model in ScaRLib, where agents are trained collectively but act independently during simulation.\nReward Design The reinforcement signal is defined by two components:\nCohesion factor: rewards agents that remain close to their neighbors.\nCollision factor: penalizes agents that get too close (i.e., distance lower than a target distance $\\delta$).\nThis balance encourages the emergence of smooth, coordinated group motion.\nResults After training over 1000 epochs with 50 agents, the learned policy produces robust flocking behaviors:\nAgents naturally form cohesive clusters while avoiding collisions.\nThe same policy scales effectively to 100 and 200 agents, maintaining stable inter-agent distances ($\\simeq 2 \\times \\delta $. Performance analysis confirms polynomial scalability, with Alchemist efficiently handling simulations with hundreds of agents.\nImages Snapshots of learned flocking policy over time.",
     "description": "Simulations related ScaRLib tool for Science of Computer Programming journal (2024).",
     "tags": [
       "Simulation",
@@ -812,18 +840,6 @@ var relearn_searchindex = [
     "tags": [],
     "title": "Development",
     "uri": "/howtos/development/index.html"
-  },
-  {
-    "breadcrumb": "The Alchemist Simulator \u003e Showcase",
-    "content": "Simulation and detailed description publicly available at:\nhttps://github.com/domm99/experiments-2025-lmcs-field-based-FL .\nhttps://github.com/domm99/experiments-2025-iot-self-federated-learning .\nRelated to the papers:\n``Field-Based Coordination for Federated Learning ’’ published at International Conference on Coordination Models and Languages (DOI: 10.1007/978-3-031-62697-5_4).\n``Proximity-based Self-Federated Learning ’’ published at International Conference on Autonomic Computing and Self-Organizing Systems (DOI: 10.1109/ACSOS61780.2024.00033).\n``FBFL: A Field-Based Coordination Approach for Data Heterogeneity in Federated Learning ’’ submitted at Journal Logical Methods in Computer Science (DOI: arXiv.2502.08577).\n``Decentralized Proximity-Aware Clustering for Collective Self-Federated Learning ’’ submitted at Journal Internet of Things.\nAbstract In the era of pervasive devices and edge intelligence, Federated Learning enables multiple distributed nodes to collaboratively train machine learning models without exchanging raw data. This fosters privacy preservation and bandwidth efficiency. Yet, real-world deployments face challenges of data heterogeneity, network dynamics, and lack of centralized control.\nIn our work, we harness the Alchemist simulator as a playground for exploring field-based, self-organizing, and spatial coordination paradigms for federated learning. Through three complementary simulation experiments, we investigate how devices can autonomously organize, aggregate, and adapt models in a fully decentralized manner, leveraging computational fields and spatial interaction patterns.\nSimulations 1. Field-Based Federated Learning (FBFL) This simulation explores the emergence of personalized model zones using computational fields as a distributed coordination mechanism. Devices in spatial proximity exchange model parameters through local diffusion processes, forming hierarchical regions governed by dynamically elected leaders. These leaders act as aggregators for their respective zones, enabling localized learning and self-stabilizing coordination.\nMethodology \u0026 Implementation Distributed spatial leader election: nodes autonomously select aggregators within neighborhoods Hierarchical aggregation: aggregation occurs at multiple levels based on spatial zones Field coordination primitives: implemented via ScaFi over Alchemist, using constructs like diffusion, convergence, and feedback loops Datasets used: MNIST, FashionMNIST, Extended MNIST Simulation parameters: (here you can insert the number of nodes, communication radius, number of rounds, etc.) Key Outcomes Accuracy under IID settings comparable to centralized FedAvg Superior robustness to node failures and topology changes Emergent spatial clusters aligned to local data distributions No reliance on any central server Proximity-based Self-Federated Learning This experiment introduces a collective intelligence paradigm for federated IoT systems. Devices autonomously cluster into self-federations based on both spatial proximity and model similarity, forming specialized local models that better represent underlying regional data distributions.\nGoal: Enable adaptive, decentralized FL in non-IID IoT environments.\nMethod: Field-based coordination using Self-Organizing Coordination Regions (SCR) and space-fluid sparse choice for dynamic federation formation.\nImplementation: Each node locally computes similarity with neighbors, elects a regional leader, and participates in decentralized aggregation cycles.\nDataset: Extended MNIST and CIFAR-100.\nFederation evolution under aggregator failure Start of the learning. Federations stabilization. Learning. Aggregators failure. Federations re-stabilization. Learning resumes.",
-    "description": "Simulations related ScaRLib tool for Science of Computer Programming journal (2024).",
-    "tags": [
-      "Simulation",
-      "Aggregate Computing",
-      "Multi-Agent Reinforcement Learning"
-    ],
-    "title": "Federated Learning for Large Scale Distributed Systems",
-    "uri": "/showcase/2024-federated-learning/index.html"
   },
   {
     "breadcrumb": "The Alchemist Simulator \u003e How-to Guides \u003e Simulation \u003e Deploy Nodes",
@@ -1156,6 +1172,14 @@ var relearn_searchindex = [
     "content": "",
     "description": "",
     "tags": [],
+    "title": "Tag :: Collective Behavior",
+    "uri": "/tags/collective-behavior/index.html"
+  },
+  {
+    "breadcrumb": "The Alchemist Simulator \u003e Tags",
+    "content": "",
+    "description": "",
+    "tags": [],
     "title": "Tag :: Command Line",
     "uri": "/tags/command-line/index.html"
   },
@@ -1404,6 +1428,14 @@ var relearn_searchindex = [
     "content": "",
     "description": "",
     "tags": [],
+    "title": "Tag :: Federated Learning",
+    "uri": "/tags/federated-learning/index.html"
+  },
+  {
+    "breadcrumb": "The Alchemist Simulator \u003e Tags",
+    "content": "",
+    "description": "",
+    "tags": [],
     "title": "Tag :: Geo-Spatial Data",
     "uri": "/tags/geo-spatial-data/index.html"
   },
@@ -1454,6 +1486,14 @@ var relearn_searchindex = [
     "tags": [],
     "title": "Tag :: Gradle",
     "uri": "/tags/gradle/index.html"
+  },
+  {
+    "breadcrumb": "The Alchemist Simulator \u003e Tags",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Tag :: Graph Neural Networks",
+    "uri": "/tags/graph-neural-networks/index.html"
   },
   {
     "breadcrumb": "The Alchemist Simulator \u003e Tags",
@@ -2028,6 +2068,14 @@ var relearn_searchindex = [
     "content": "",
     "description": "",
     "tags": [],
+    "title": "Tag :: Reinforcement Learning",
+    "uri": "/tags/reinforcement-learning/index.html"
+  },
+  {
+    "breadcrumb": "The Alchemist Simulator \u003e Tags",
+    "content": "",
+    "description": "",
+    "tags": [],
     "title": "Tag :: Replicability",
     "uri": "/tags/replicability/index.html"
   },
@@ -2108,6 +2156,14 @@ var relearn_searchindex = [
     "content": "",
     "description": "",
     "tags": [],
+    "title": "Tag :: Self-Organization",
+    "uri": "/tags/self-organization/index.html"
+  },
+  {
+    "breadcrumb": "The Alchemist Simulator \u003e Tags",
+    "content": "",
+    "description": "",
+    "tags": [],
     "title": "Tag :: Shadowjar",
     "uri": "/tags/shadowjar/index.html"
   },
@@ -2121,8 +2177,8 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "The Alchemist Simulator",
-    "content": "Examples from published papers Showcase Contents 2020: Optimal resilient distributed data collection in mobile edge environmentsSimulation of crowd control with mobile in Turin.\n2022: Dynamic Decentralization Domains for the Internet of ThingsSimulation of collective distributed sensing and acting using Toronto rain gauge’s data.\n2022: Situated recommendation systemSimulation of people attending attractions inside the Mirabilandia amusement park.\n2022: Turin's 2017 stampede in simulationSimulation of Piazza San Carlo crowd disaster\n2023: MacroSwarm - A Field-based Compositional Framework for Swarm ProgrammingSimulations demonstrating MacroSwarm, a field-based library for expressing swarm behaviors in a declarative way, presented at COORDINATION 2023.\n2024: Aggregate Vascular Morphogenesis ControllerSimulations related to the generalization of the Vascular Morphogenesis algorithm using the Aggregate Computing paradigm, presented at ACSOS 2024.\n2024: Decentralized Multi-Drone Coordination for Wildlife Video AcquisitionSimulation of decentralized multi-drone coordination for wildlife video acquisition.\n2024: ScaRLib: Towards a hybrid toolchain for aggregate computing and many-agent reinforcement learningSimulations related ScaRLib tool for Science of Computer Programming journal (2024).\nFederated Learning for Large Scale Distributed SystemsSimulations related ScaRLib tool for Science of Computer Programming journal (2024).",
-    "description": "Examples from published papers Showcase Contents 2020: Optimal resilient distributed data collection in mobile edge environmentsSimulation of crowd control with mobile in Turin.\n2022: Dynamic Decentralization Domains for the Internet of ThingsSimulation of collective distributed sensing and acting using Toronto rain gauge’s data.\n2022: Situated recommendation systemSimulation of people attending attractions inside the Mirabilandia amusement park.\n2022: Turin's 2017 stampede in simulationSimulation of Piazza San Carlo crowd disaster\n2023: MacroSwarm - A Field-based Compositional Framework for Swarm ProgrammingSimulations demonstrating MacroSwarm, a field-based library for expressing swarm behaviors in a declarative way, presented at COORDINATION 2023.",
+    "content": "Examples from published papers Showcase Contents 2020: Optimal resilient distributed data collection in mobile edge environmentsSimulation of crowd control with mobile in Turin.\n2022: Dynamic Decentralization Domains for the Internet of ThingsSimulation of collective distributed sensing and acting using Toronto rain gauge’s data.\n2022: Situated recommendation systemSimulation of people attending attractions inside the Mirabilandia amusement park.\n2022: Turin's 2017 stampede in simulationSimulation of Piazza San Carlo crowd disaster\n2023: Field-informed Reinforcement Learning of Collective Tasks with Graph Neural NetworksSimulations demonstrating field-informed reinforcement learning for collective tasks using graph neural networks and aggregate computing.\n2023: MacroSwarm - A Field-based Compositional Framework for Swarm ProgrammingSimulations demonstrating MacroSwarm, a field-based library for expressing swarm behaviors in a declarative way, presented at COORDINATION 2023.\n2024: Aggregate Vascular Morphogenesis ControllerSimulations related to the generalization of the Vascular Morphogenesis algorithm using the Aggregate Computing paradigm, presented at ACSOS 2024.\n2024: Decentralized Multi-Drone Coordination for Wildlife Video AcquisitionSimulation of decentralized multi-drone coordination for wildlife video acquisition.\n2024: Field-Based Coordination for Federated LearningSimulations demonstrating field-based and proximity-based approaches to decentralized federated learning in large-scale distributed systems.\n2024: ScaRLib: Towards a hybrid toolchain for aggregate computing and many-agent reinforcement learningSimulations related ScaRLib tool for Science of Computer Programming journal (2024).",
+    "description": "Examples from published papers Showcase Contents 2020: Optimal resilient distributed data collection in mobile edge environmentsSimulation of crowd control with mobile in Turin.\n2022: Dynamic Decentralization Domains for the Internet of ThingsSimulation of collective distributed sensing and acting using Toronto rain gauge’s data.\n2022: Situated recommendation systemSimulation of people attending attractions inside the Mirabilandia amusement park.\n2022: Turin's 2017 stampede in simulationSimulation of Piazza San Carlo crowd disaster",
     "tags": [],
     "title": "Showcase",
     "uri": "/showcase/index.html"

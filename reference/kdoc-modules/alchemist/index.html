@@ -1,0 +1,2878 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>alchemist</title>
+<link href="../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../scripts/sourceset_dependencies.js" async></script>
+<link href="../styles/style.css" rel="Stylesheet">
+<link href="../styles/main.css" rel="Stylesheet">
+<link href="../styles/prism.css" rel="Stylesheet">
+<link href="../styles/logo-styles.css" rel="Stylesheet">
+<link href="../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../scripts/main.js" defer></script>
+<script type="text/javascript" src="../scripts/prism.js" async></script>
+<script type="text/javascript" src="../ui-kit/ui-kit.min.js" defer></script>
+<link href="../images/logo.svg">
+<link href="../styles/logo-styles.css" rel="Stylesheet"></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../index.html" tabindex="1">
+                    alchemist-full
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">42.3.16
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":/alldocs">alldocs</button>
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/alldocs" data-filter=":/alldocs">
+                                <span class="checkbox--icon"></span>
+                                alldocs
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/main" data-filter=":/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+                <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    alchemist-full
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" id="content" pageids="alchemist::////PointingToDeclaration//1295556994">
+  <div class="breadcrumbs"></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>alchemist</span></span></h1>
+  </div>
+  <h2 class="">Packages</h2>
+  <div class="table"><a data-name="-484005824%2FPackages%2F-251573632" anchor-label="it.unibo.alchemist" id="-484005824%2FPackages%2F-251573632" data-filterable-set=":/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/main" data-filterable-set=":/main">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist/index.html">it.unibo.alchemist</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-484005824%2FPackages%2F-251573632"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">jvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1521160092%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary" id="1521160092%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary/index.html">it.unibo.alchemist.boundary</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1521160092%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="2071072852%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.composeui" id="2071072852%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.composeui/index.html">it.unibo.alchemist.boundary.composeui</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2071072852%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="179764960%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.exporters" id="179764960%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.exporters/index.html">it.unibo.alchemist.boundary.exporters</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="179764960%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-33387211%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.exportfilters" id="-33387211%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.exportfilters/index.html">it.unibo.alchemist.boundary.exportfilters</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-33387211%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1613001435%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.extractors" id="-1613001435%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.extractors/index.html">it.unibo.alchemist.boundary.extractors</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1613001435%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1069984088%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.gps" id="1069984088%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.gps/index.html">it.unibo.alchemist.boundary.gps</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1069984088%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1675455798%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.gps.alignments" id="-1675455798%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.gps.alignments/index.html">it.unibo.alchemist.boundary.gps.alignments</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1675455798%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="546436010%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.gps.loaders" id="546436010%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.gps.loaders/index.html">it.unibo.alchemist.boundary.gps.loaders</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="546436010%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-482925097%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.graphql" id="-482925097%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.graphql/index.html">it.unibo.alchemist.boundary.graphql</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-482925097%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="2117714566%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.graphql.client" id="2117714566%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.graphql.client/index.html">it.unibo.alchemist.boundary.graphql.client</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2117714566%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-122880189%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.graphql.monitor" id="-122880189%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.graphql.monitor/index.html">it.unibo.alchemist.boundary.graphql.monitor</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-122880189%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1859335338%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.graphql.schema.model.surrogates" id="-1859335338%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.graphql.schema.model.surrogates/index.html">it.unibo.alchemist.boundary.graphql.schema.model.surrogates</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1859335338%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-604999106%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.graphql.schema.operations.mutations" id="-604999106%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.graphql.schema.operations.mutations/index.html">it.unibo.alchemist.boundary.graphql.schema.operations.mutations</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-604999106%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="155105338%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.graphql.schema.operations.queries" id="155105338%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.graphql.schema.operations.queries/index.html">it.unibo.alchemist.boundary.graphql.schema.operations.queries</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="155105338%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1715635638%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.graphql.schema.operations.subscriptions" id="-1715635638%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.graphql.schema.operations.subscriptions/index.html">it.unibo.alchemist.boundary.graphql.schema.operations.subscriptions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1715635638%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="2087970392%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.graphql.schema.util" id="2087970392%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.graphql.schema.util/index.html">it.unibo.alchemist.boundary.graphql.schema.util</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2087970392%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="113096279%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.graphql.server.modules" id="113096279%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.graphql.server.modules/index.html">it.unibo.alchemist.boundary.graphql.server.modules</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="113096279%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="639629722%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.graphql.utils" id="639629722%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.graphql.utils/index.html">it.unibo.alchemist.boundary.graphql.utils</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="639629722%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="135545665%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.launchers" id="135545665%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.launchers/index.html">it.unibo.alchemist.boundary.launchers</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="135545665%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="602900459%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.loader.util" id="602900459%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.loader.util/index.html">it.unibo.alchemist.boundary.loader.util</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="602900459%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1446785169%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.modelproviders" id="-1446785169%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.modelproviders/index.html">it.unibo.alchemist.boundary.modelproviders</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1446785169%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-497956561%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.monitors" id="-497956561%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.monitors/index.html">it.unibo.alchemist.boundary.monitors</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-497956561%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1580726914%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.statistic" id="-1580726914%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.statistic/index.html">it.unibo.alchemist.boundary.statistic</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1580726914%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-128152596%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.swingui.api" id="-128152596%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.swingui.api/index.html">it.unibo.alchemist.boundary.swingui.api</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-128152596%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-424722577%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.swingui.effect.api" id="-424722577%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.swingui.effect.api/index.html">it.unibo.alchemist.boundary.swingui.effect.api</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-424722577%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="874952815%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.swingui.effect.impl" id="874952815%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.swingui.effect.impl/index.html">it.unibo.alchemist.boundary.swingui.effect.impl</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="874952815%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1531805077%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.swingui.effect.isolines.api" id="1531805077%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.swingui.effect.isolines.api/index.html">it.unibo.alchemist.boundary.swingui.effect.isolines.api</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1531805077%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1397767945%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.swingui.effect.isolines.impl" id="1397767945%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.swingui.effect.isolines.impl/index.html">it.unibo.alchemist.boundary.swingui.effect.isolines.impl</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1397767945%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1478687634%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.swingui.impl" id="1478687634%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.swingui.impl/index.html">it.unibo.alchemist.boundary.swingui.impl</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1478687634%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1459913050%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.swingui.monitor.impl" id="-1459913050%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.swingui.monitor.impl/index.html">it.unibo.alchemist.boundary.swingui.monitor.impl</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1459913050%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-1459913050%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.swingui.monitor.impl" id="-1459913050%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+            <p class="paragraph">This package contains generic monitors for various Environments.</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-506288450%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.swingui.tape.impl" id="-506288450%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.swingui.tape.impl/index.html">it.unibo.alchemist.boundary.swingui.tape.impl</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-506288450%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="608869590%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.ui.api" id="608869590%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.ui.api/index.html">it.unibo.alchemist.boundary.ui.api</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="608869590%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1443428376%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.ui.impl" id="-1443428376%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.ui.impl/index.html">it.unibo.alchemist.boundary.ui.impl</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1443428376%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="626414488%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.util" id="626414488%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.util/index.html">it.unibo.alchemist.boundary.util</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="626414488%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1563978011%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.variables" id="-1563978011%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.variables/index.html">it.unibo.alchemist.boundary.variables</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1563978011%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="786692711%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.client" id="786692711%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.client/index.html">it.unibo.alchemist.boundary.webui.client</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="786692711%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1037663899%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.client.adapters.reactBootstrap.buttons" id="-1037663899%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.client.adapters.reactBootstrap.buttons/index.html">it.unibo.alchemist.boundary.webui.client.adapters.reactBootstrap.buttons</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1037663899%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1863842287%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.client.adapters.reactBootstrap.modal" id="-1863842287%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.client.adapters.reactBootstrap.modal/index.html">it.unibo.alchemist.boundary.webui.client.adapters.reactBootstrap.modal</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1863842287%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1236154480%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.client.adapters.reactBootstrap.navbar" id="1236154480%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.client.adapters.reactBootstrap.navbar/index.html">it.unibo.alchemist.boundary.webui.client.adapters.reactBootstrap.navbar</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1236154480%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-274910189%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.client.api" id="-274910189%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.client.api/index.html">it.unibo.alchemist.boundary.webui.client.api</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-274910189%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1832260369%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.client.api.utility" id="1832260369%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.client.api.utility/index.html">it.unibo.alchemist.boundary.webui.client.api.utility</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1832260369%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-858278143%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.client.components" id="-858278143%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.client.components/index.html">it.unibo.alchemist.boundary.webui.client.components</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-858278143%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-240332137%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.client.logic" id="-240332137%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.client.logic/index.html">it.unibo.alchemist.boundary.webui.client.logic</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-240332137%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1529331210%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.client.state" id="1529331210%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.client.state/index.html">it.unibo.alchemist.boundary.webui.client.state</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1529331210%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1529686617%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.client.state.actions" id="1529686617%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.client.state.actions/index.html">it.unibo.alchemist.boundary.webui.client.state.actions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1529686617%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-680950577%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.client.state.reducers" id="-680950577%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.client.state.reducers/index.html">it.unibo.alchemist.boundary.webui.client.state.reducers</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-680950577%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1476861122%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.common.model" id="1476861122%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.common.model/index.html">it.unibo.alchemist.boundary.webui.common.model</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1476861122%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1381696316%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.common.model.serialization" id="-1381696316%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.common.model.serialization/index.html">it.unibo.alchemist.boundary.webui.common.model.serialization</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1381696316%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="189349548%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.common.model.surrogate" id="189349548%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.common.model.surrogate/index.html">it.unibo.alchemist.boundary.webui.common.model.surrogate</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="189349548%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1889228146%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.common.renderer" id="-1889228146%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.common.renderer/index.html">it.unibo.alchemist.boundary.webui.common.renderer</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1889228146%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-403475414%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.common.state" id="-403475414%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.common.state/index.html">it.unibo.alchemist.boundary.webui.common.state</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-403475414%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="595719045%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.common.utility" id="595719045%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.common.utility/index.html">it.unibo.alchemist.boundary.webui.common.utility</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="595719045%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1902542136%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.server.modules" id="1902542136%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.server.modules/index.html">it.unibo.alchemist.boundary.webui.server.modules</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1902542136%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1279352501%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.server.monitor" id="-1279352501%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.server.monitor/index.html">it.unibo.alchemist.boundary.webui.server.monitor</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1279352501%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="361886269%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.server.routes" id="361886269%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.server.routes/index.html">it.unibo.alchemist.boundary.webui.server.routes</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="361886269%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1349838462%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.server.state" id="-1349838462%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.server.state/index.html">it.unibo.alchemist.boundary.webui.server.state</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1349838462%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1880722897%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.server.state.actions" id="1880722897%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.server.state.actions/index.html">it.unibo.alchemist.boundary.webui.server.state.actions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1880722897%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1611239511%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.server.state.reducers" id="1611239511%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.server.state.reducers/index.html">it.unibo.alchemist.boundary.webui.server.state.reducers</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1611239511%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1375719372%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.server.surrogates.utility" id="1375719372%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.server.surrogates.utility/index.html">it.unibo.alchemist.boundary.webui.server.surrogates.utility</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1375719372%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1673896669%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.webui.server.utility" id="1673896669%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.webui.server.utility/index.html">it.unibo.alchemist.boundary.webui.server.utility</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1673896669%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1326349129%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.boundary.wormhole.impl" id="1326349129%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.boundary.wormhole.impl/index.html">it.unibo.alchemist.boundary.wormhole.impl</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1326349129%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1170604212%2FPackages%2F-251573632" anchor-label="it.unibo.alchemist.config" id="1170604212%2FPackages%2F-251573632" data-filterable-set=":/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/main" data-filterable-set=":/main">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.config/index.html">it.unibo.alchemist.config</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1170604212%2FPackages%2F-251573632"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">jvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="899860177%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.core" id="899860177%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.core/index.html">it.unibo.alchemist.core</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="899860177%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="858820027%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model" id="858820027%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model/index.html">it.unibo.alchemist.model</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="858820027%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-2075674358%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.actions" id="-2075674358%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.actions/index.html">it.unibo.alchemist.model.actions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2075674358%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-2075674358%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.actions" id="-2075674358%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+            <p class="paragraph">Generic actions implementations.</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-871379981%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.biochemistry" id="-871379981%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.biochemistry/index.html">it.unibo.alchemist.model.biochemistry</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-871379981%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-805224638%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.biochemistry.actions" id="-805224638%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.biochemistry.actions/index.html">it.unibo.alchemist.model.biochemistry.actions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-805224638%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1047020311%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.biochemistry.conditions" id="1047020311%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.biochemistry.conditions/index.html">it.unibo.alchemist.model.biochemistry.conditions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1047020311%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1008683041%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.biochemistry.environments" id="-1008683041%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.biochemistry.environments/index.html">it.unibo.alchemist.model.biochemistry.environments</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1008683041%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1250602913%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.biochemistry.layers" id="1250602913%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.biochemistry.layers/index.html">it.unibo.alchemist.model.biochemistry.layers</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1250602913%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="286979122%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.biochemistry.molecules" id="286979122%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.biochemistry.molecules/index.html">it.unibo.alchemist.model.biochemistry.molecules</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="286979122%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="646913206%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.biochemistry.nodes" id="646913206%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.biochemistry.nodes/index.html">it.unibo.alchemist.model.biochemistry.nodes</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="646913206%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-888855086%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.biochemistry.properties" id="-888855086%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.biochemistry.properties/index.html">it.unibo.alchemist.model.biochemistry.properties</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-888855086%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-2045139281%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.biochemistry.reactions" id="-2045139281%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.biochemistry.reactions/index.html">it.unibo.alchemist.model.biochemistry.reactions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2045139281%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-101114777%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.cognitive" id="-101114777%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.cognitive/index.html">it.unibo.alchemist.model.cognitive</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-101114777%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1768105034%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.cognitive.actions" id="-1768105034%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.cognitive.actions/index.html">it.unibo.alchemist.model.cognitive.actions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1768105034%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1963713059%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.cognitive.conditions" id="1963713059%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.cognitive.conditions/index.html">it.unibo.alchemist.model.cognitive.conditions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1963713059%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-535247893%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.cognitive.environments" id="-535247893%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.cognitive.environments/index.html">it.unibo.alchemist.model.cognitive.environments</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-535247893%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="733038271%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.cognitive.groups" id="733038271%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.cognitive.groups/index.html">it.unibo.alchemist.model.cognitive.groups</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="733038271%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1733795919%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.cognitive.impact" id="-1733795919%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.cognitive.impact/index.html">it.unibo.alchemist.model.cognitive.impact</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1733795919%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="6517469%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.cognitive.impact.cognitive" id="6517469%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.cognitive.impact.cognitive/index.html">it.unibo.alchemist.model.cognitive.impact.cognitive</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="6517469%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1817702714%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.cognitive.impact.individual" id="1817702714%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.cognitive.impact.individual/index.html">it.unibo.alchemist.model.cognitive.impact.individual</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1817702714%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1983773311%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.cognitive.navigation" id="1983773311%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.cognitive.navigation/index.html">it.unibo.alchemist.model.cognitive.navigation</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1983773311%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="27837662%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.cognitive.properties" id="27837662%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.cognitive.properties/index.html">it.unibo.alchemist.model.cognitive.properties</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="27837662%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="339736099%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.cognitive.reactions" id="339736099%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.cognitive.reactions/index.html">it.unibo.alchemist.model.cognitive.reactions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="339736099%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="480525532%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.cognitive.steering" id="480525532%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.cognitive.steering/index.html">it.unibo.alchemist.model.cognitive.steering</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="480525532%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="331224143%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.conditions" id="331224143%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.conditions/index.html">it.unibo.alchemist.model.conditions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="331224143%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="331224143%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.conditions" id="331224143%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+            <p class="paragraph">Conditions implementations.</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="881946011%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.deployments" id="881946011%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.deployments/index.html">it.unibo.alchemist.model.deployments</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="881946011%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1694033129%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.environments" id="-1694033129%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.environments/index.html">it.unibo.alchemist.model.environments</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1694033129%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="687733449%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.geometry" id="687733449%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.geometry/index.html">it.unibo.alchemist.model.geometry</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="687733449%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1648699285%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.geometry.navigationgraph" id="1648699285%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.geometry.navigationgraph/index.html">it.unibo.alchemist.model.geometry.navigationgraph</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1648699285%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="964220859%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.geometry.shapes" id="964220859%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.geometry.shapes/index.html">it.unibo.alchemist.model.geometry.shapes</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="964220859%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-907518837%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.geometry.util" id="-907518837%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.geometry.util/index.html">it.unibo.alchemist.model.geometry.util</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-907518837%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1976967975%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.layers" id="-1976967975%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.layers/index.html">it.unibo.alchemist.model.layers</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1976967975%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1259730458%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.linkingrules" id="-1259730458%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.linkingrules/index.html">it.unibo.alchemist.model.linkingrules</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1259730458%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="537995054%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.maps" id="537995054%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.maps/index.html">it.unibo.alchemist.model.maps</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="537995054%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="305999741%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.maps.actions" id="305999741%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.maps.actions/index.html">it.unibo.alchemist.model.maps.actions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="305999741%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1160802958%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.maps.deployments" id="1160802958%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.maps.deployments/index.html">it.unibo.alchemist.model.maps.deployments</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1160802958%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1639402364%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.maps.environments" id="-1639402364%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.maps.environments/index.html">it.unibo.alchemist.model.maps.environments</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1639402364%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1205099693%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.maps.linkingrules" id="-1205099693%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.maps.linkingrules/index.html">it.unibo.alchemist.model.maps.linkingrules</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1205099693%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="864172710%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.maps.movestrategies" id="864172710%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.maps.movestrategies/index.html">it.unibo.alchemist.model.maps.movestrategies</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="864172710%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-348272258%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.maps.movestrategies.routing" id="-348272258%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.maps.movestrategies.routing/index.html">it.unibo.alchemist.model.maps.movestrategies.routing</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-348272258%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-776276161%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.maps.movestrategies.speed" id="-776276161%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.maps.movestrategies.speed/index.html">it.unibo.alchemist.model.maps.movestrategies.speed</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-776276161%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-256923363%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.maps.movestrategies.target" id="-256923363%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.maps.movestrategies.target/index.html">it.unibo.alchemist.model.maps.movestrategies.target</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-256923363%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-923577046%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.maps.positions" id="-923577046%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.maps.positions/index.html">it.unibo.alchemist.model.maps.positions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-923577046%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="595399694%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.maps.routes" id="595399694%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.maps.routes/index.html">it.unibo.alchemist.model.maps.routes</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="595399694%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1190887652%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.maps.routingservices" id="1190887652%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.maps.routingservices/index.html">it.unibo.alchemist.model.maps.routingservices</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1190887652%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-844489734%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.molecules" id="-844489734%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.molecules/index.html">it.unibo.alchemist.model.molecules</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-844489734%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-844489734%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.molecules" id="-844489734%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+            <p class="paragraph">Molecule implementations.</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-96384903%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.movestrategies" id="-96384903%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.movestrategies/index.html">it.unibo.alchemist.model.movestrategies</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-96384903%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="822563921%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.movestrategies.routing" id="822563921%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.movestrategies.routing/index.html">it.unibo.alchemist.model.movestrategies.routing</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="822563921%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1744889134%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.movestrategies.speed" id="-1744889134%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.movestrategies.speed/index.html">it.unibo.alchemist.model.movestrategies.speed</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1744889134%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-219154454%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.movestrategies.target" id="-219154454%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.movestrategies.target/index.html">it.unibo.alchemist.model.movestrategies.target</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-219154454%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1774285582%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.neighborhoods" id="-1774285582%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.neighborhoods/index.html">it.unibo.alchemist.model.neighborhoods</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1774285582%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1673959298%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.nodes" id="-1673959298%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.nodes/index.html">it.unibo.alchemist.model.nodes</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1673959298%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1232935343%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.obstacles" id="-1232935343%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.obstacles/index.html">it.unibo.alchemist.model.obstacles</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1232935343%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1421021740%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.physics" id="-1421021740%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.physics/index.html">it.unibo.alchemist.model.physics</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1421021740%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1152577571%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.physics.actions" id="1152577571%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.physics.actions/index.html">it.unibo.alchemist.model.physics.actions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1152577571%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1789881246%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.physics.environments" id="1789881246%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.physics.environments/index.html">it.unibo.alchemist.model.physics.environments</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1789881246%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1659126447%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.physics.properties" id="-1659126447%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.physics.properties/index.html">it.unibo.alchemist.model.physics.properties</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1659126447%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1792892080%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.physics.reactions" id="-1792892080%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.physics.reactions/index.html">it.unibo.alchemist.model.physics.reactions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1792892080%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1910077569%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.positionfilters" id="-1910077569%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.positionfilters/index.html">it.unibo.alchemist.model.positionfilters</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1910077569%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-494817417%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.positions" id="-494817417%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.positions/index.html">it.unibo.alchemist.model.positions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-494817417%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-494817417%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.positions" id="-494817417%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+            <p class="paragraph">Position implementations.</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-1604651254%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.properties" id="-1604651254%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.properties/index.html">it.unibo.alchemist.model.properties</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1604651254%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="732895951%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.protelis" id="732895951%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.protelis/index.html">it.unibo.alchemist.model.protelis</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="732895951%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1698820638%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.protelis.actions" id="1698820638%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.protelis.actions/index.html">it.unibo.alchemist.model.protelis.actions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1698820638%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="859234217%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.protelis.concentrations" id="859234217%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.protelis.concentrations/index.html">it.unibo.alchemist.model.protelis.concentrations</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="859234217%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-227126597%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.protelis.conditions" id="-227126597%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.protelis.conditions/index.html">it.unibo.alchemist.model.protelis.conditions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-227126597%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="2131965302%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.protelis.properties" id="2131965302%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.protelis.properties/index.html">it.unibo.alchemist.model.protelis.properties</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2131965302%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1118359159%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.reactions" id="1118359159%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.reactions/index.html">it.unibo.alchemist.model.reactions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1118359159%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="241476833%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.routes" id="241476833%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.routes/index.html">it.unibo.alchemist.model.routes</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="241476833%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="452634829%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.sapere" id="452634829%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.sapere/index.html">it.unibo.alchemist.model.sapere</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="452634829%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1500077540%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.sapere.actions" id="-1500077540%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.sapere.actions/index.html">it.unibo.alchemist.model.sapere.actions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1500077540%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1971726869%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.sapere.concentrations" id="-1971726869%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.sapere.concentrations/index.html">it.unibo.alchemist.model.sapere.concentrations</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1971726869%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1868383747%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.sapere.conditions" id="-1868383747%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.sapere.conditions/index.html">it.unibo.alchemist.model.sapere.conditions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1868383747%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1956656476%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.sapere.dsl" id="1956656476%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.sapere.dsl/index.html">it.unibo.alchemist.model.sapere.dsl</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1956656476%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-740118922%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.sapere.dsl.impl" id="-740118922%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.sapere.dsl.impl/index.html">it.unibo.alchemist.model.sapere.dsl.impl</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-740118922%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1053431115%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.sapere.dsl.parser" id="-1053431115%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.sapere.dsl.parser/index.html">it.unibo.alchemist.model.sapere.dsl.parser</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1053431115%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1959003116%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.sapere.linkingrules" id="-1959003116%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.sapere.linkingrules/index.html">it.unibo.alchemist.model.sapere.linkingrules</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1959003116%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1746728820%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.sapere.molecules" id="-1746728820%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.sapere.molecules/index.html">it.unibo.alchemist.model.sapere.molecules</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1746728820%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="83062288%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.sapere.nodes" id="83062288%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.sapere.nodes/index.html">it.unibo.alchemist.model.sapere.nodes</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="83062288%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="216120073%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.sapere.reactions" id="216120073%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.sapere.reactions/index.html">it.unibo.alchemist.model.sapere.reactions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="216120073%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1209259679%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.sapere.timedistributions" id="-1209259679%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.sapere.timedistributions/index.html">it.unibo.alchemist.model.sapere.timedistributions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1209259679%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="60900281%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.terminators" id="60900281%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.terminators/index.html">it.unibo.alchemist.model.terminators</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="60900281%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="5762767%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.timedistributions" id="5762767%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.timedistributions/index.html">it.unibo.alchemist.model.timedistributions</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="5762767%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1989075757%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.times" id="-1989075757%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.times/index.html">it.unibo.alchemist.model.times</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1989075757%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-1989075757%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.times" id="-1989075757%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+            <p class="paragraph">Time implementations.</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="259379417%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.model.util" id="259379417%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.model.util/index.html">it.unibo.alchemist.model.util</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="259379417%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-259243516%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.test" id="-259243516%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.test/index.html">it.unibo.alchemist.test</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-259243516%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="708084084%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.util" id="708084084%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.util/index.html">it.unibo.alchemist.util</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="708084084%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1158022214%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.util.math" id="1158022214%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.util.math/index.html">it.unibo.alchemist.util.math</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1158022214%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-749450941%2FPackages%2F-1814946674" anchor-label="it.unibo.alchemist.utils" id="-749450941%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="it.unibo.alchemist.utils/index.html">it.unibo.alchemist.utils</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-749450941%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1313127525%2FPackages%2F-1814946674" anchor-label="org.apache.commons.math3.distribution" id="1313127525%2FPackages%2F-1814946674" data-filterable-set=":/alldocs"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="org.apache.commons.math3.distribution/index.html">org.apache.commons.math3.distribution</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1313127525%2FPackages%2F-1814946674"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">alldocs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
