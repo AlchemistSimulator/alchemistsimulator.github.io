@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>AISShipType</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<link href="../../../images/logo.svg">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    alchemist
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+43.1.0        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/alldocs">alldocs</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/alldocs"
+                                       data-filter=":/alldocs"/>
+                                <span class="checkbox--icon"></span>
+                                alldocs
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+                <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link"
+                   href="https://alchemistsimulator.github.io/"></a>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    alchemist
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="alchemist::it.unibo.alchemist.boundary.gps.loaders.ais/AISShipType///PointingToDeclaration//-1814946674">
+  <div class="breadcrumbs"><a href="../../../index.html">alchemist</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.boundary.gps.loaders.ais</a><span class="delimiter">/</span><span class="current">AISShipType</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>AISShip</span><wbr></wbr><span><span>Type</span></span></h1>
+    <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="index.html">AISShipType</a></div><p class="paragraph">AIS ship and cargo type codes.</p><p class="paragraph">The values follow the VT Explorer AIS ship type reference.</p><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-not-available/index.html">NotAvailable</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-reserved-for-future-use/index.html">ReservedForFutureUse</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-wing-in-ground/index.html">WingInGround</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-fishing/index.html">Fishing</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-towing/index.html">Towing</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-towing-large/index.html">TowingLarge</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-dredging-or-underwater-ops/index.html">DredgingOrUnderwaterOps</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-diving-ops/index.html">DivingOps</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-military-ops/index.html">MilitaryOps</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-sailing/index.html">Sailing</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-pleasure-craft/index.html">PleasureCraft</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-reserved/index.html">Reserved</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-high-speed-craft/index.html">HighSpeedCraft</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-pilot-vessel/index.html">PilotVessel</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-search-and-rescue-vessel/index.html">SearchAndRescueVessel</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-tug/index.html">Tug</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-port-tender/index.html">PortTender</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-anti-pollution-equipment/index.html">AntiPollutionEquipment</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-law-enforcement/index.html">LawEnforcement</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-spare-local-vessel/index.html">SpareLocalVessel</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-medical-transport/index.html">MedicalTransport</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-noncombatant-ship/index.html">NoncombatantShip</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-passenger/index.html">Passenger</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-cargo/index.html">Cargo</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-tanker/index.html">Tanker</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-other-type/index.html">OtherType</a></div></span></div><div></div></div></div></div></div>    </div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="1955097556%2FClasslikes%2F-1814946674" anchor-label="AntiPollutionEquipment" id="1955097556%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-anti-pollution-equipment/index.html"><span>Anti</span><wbr></wbr><span>Pollution</span><wbr></wbr><span><span>Equipment</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1955097556%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-anti-pollution-equipment/index.html">AntiPollutionEquipment</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="709685418%2FClasslikes%2F-1814946674" anchor-label="AnyCargo" id="709685418%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-any-cargo/index.html"><span>Any</span><wbr></wbr><span><span>Cargo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="709685418%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-any-cargo/index.html">AnyCargo</a> : <a href="-cargo/index.html">AISShipType.Cargo</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1228048929%2FClasslikes%2F-1814946674" anchor-label="AnyHighSpeedCraft" id="1228048929%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-any-high-speed-craft/index.html"><span>Any</span><wbr></wbr><span>High</span><wbr></wbr><span>Speed</span><wbr></wbr><span><span>Craft</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1228048929%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-any-high-speed-craft/index.html">AnyHighSpeedCraft</a> : <a href="-high-speed-craft/index.html">AISShipType.HighSpeedCraft</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1809597636%2FClasslikes%2F-1814946674" anchor-label="AnyOtherType" id="-1809597636%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-any-other-type/index.html"><span>Any</span><wbr></wbr><span>Other</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1809597636%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-any-other-type/index.html">AnyOtherType</a> : <a href="-other-type/index.html">AISShipType.OtherType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1430370060%2FClasslikes%2F-1814946674" anchor-label="AnyPassenger" id="1430370060%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-any-passenger/index.html"><span>Any</span><wbr></wbr><span><span>Passenger</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1430370060%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-any-passenger/index.html">AnyPassenger</a> : <a href="-passenger/index.html">AISShipType.Passenger</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1559314149%2FClasslikes%2F-1814946674" anchor-label="AnyTanker" id="1559314149%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-any-tanker/index.html"><span>Any</span><wbr></wbr><span><span>Tanker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1559314149%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-any-tanker/index.html">AnyTanker</a> : <a href="-tanker/index.html">AISShipType.Tanker</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-931686011%2FClasslikes%2F-1814946674" anchor-label="AnyWingInGround" id="-931686011%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-any-wing-in-ground/index.html"><span>Any</span><wbr></wbr><span>Wing</span><wbr></wbr><span>In</span><wbr></wbr><span><span>Ground</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-931686011%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-any-wing-in-ground/index.html">AnyWingInGround</a> : <a href="-wing-in-ground/index.html">AISShipType.WingInGround</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="880651500%2FClasslikes%2F-1814946674" anchor-label="Cargo" id="880651500%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-cargo/index.html"><span><span>Cargo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="880651500%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-cargo/index.html">Cargo</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1443654258%2FClasslikes%2F-1814946674" anchor-label="CargoNoAdditionalInformation" id="1443654258%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-cargo-no-additional-information/index.html"><span>Cargo</span><wbr></wbr><span>No</span><wbr></wbr><span>Additional</span><wbr></wbr><span><span>Information</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1443654258%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-cargo-no-additional-information/index.html">CargoNoAdditionalInformation</a> : <a href="-cargo/index.html">AISShipType.Cargo</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1298433385%2FClasslikes%2F-1814946674" anchor-label="CargoReservedForFutureUse" id="1298433385%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-cargo-reserved-for-future-use/index.html"><span>Cargo</span><wbr></wbr><span>Reserved</span><wbr></wbr><span>For</span><wbr></wbr><span>Future</span><wbr></wbr><span><span>Use</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1298433385%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-cargo-reserved-for-future-use/index.html">CargoReservedForFutureUse</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>code<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-cargo/index.html">AISShipType.Cargo</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1872840676%2FClasslikes%2F-1814946674" anchor-label="Companion" id="-1872840676%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1872840676%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div><div class="brief "><p class="paragraph">Lookup helpers for AIS ship type codes.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-961592953%2FClasslikes%2F-1814946674" anchor-label="DivingOps" id="-961592953%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-diving-ops/index.html"><span>Diving</span><wbr></wbr><span><span>Ops</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-961592953%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-diving-ops/index.html">DivingOps</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1656316672%2FClasslikes%2F-1814946674" anchor-label="DredgingOrUnderwaterOps" id="-1656316672%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-dredging-or-underwater-ops/index.html"><span>Dredging</span><wbr></wbr><span>Or</span><wbr></wbr><span>Underwater</span><wbr></wbr><span><span>Ops</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1656316672%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-dredging-or-underwater-ops/index.html">DredgingOrUnderwaterOps</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="20313118%2FClasslikes%2F-1814946674" anchor-label="Fishing" id="20313118%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-fishing/index.html"><span><span>Fishing</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="20313118%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-fishing/index.html">Fishing</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1985571399%2FClasslikes%2F-1814946674" anchor-label="HazardousCargo" id="-1985571399%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-cargo/index.html"><span>Hazardous</span><wbr></wbr><span><span>Cargo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1985571399%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-hazardous-cargo/index.html">HazardousCargo</a> : <a href="-cargo/index.html">AISShipType.Cargo</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1239687816%2FClasslikes%2F-1814946674" anchor-label="HazardousCargoA" id="1239687816%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-cargo-a/index.html"><span>Hazardous</span><wbr></wbr><span>Cargo</span><wbr></wbr><span><span>A</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1239687816%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-cargo-a/index.html">HazardousCargoA</a> : <a href="-hazardous-cargo/index.html">AISShipType.HazardousCargo</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1270707623%2FClasslikes%2F-1814946674" anchor-label="HazardousCargoB" id="1270707623%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-cargo-b/index.html"><span>Hazardous</span><wbr></wbr><span>Cargo</span><wbr></wbr><span><span>B</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1270707623%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-cargo-b/index.html">HazardousCargoB</a> : <a href="-hazardous-cargo/index.html">AISShipType.HazardousCargo</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1301727430%2FClasslikes%2F-1814946674" anchor-label="HazardousCargoC" id="1301727430%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-cargo-c/index.html"><span>Hazardous</span><wbr></wbr><span>Cargo</span><wbr></wbr><span><span>C</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1301727430%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-cargo-c/index.html">HazardousCargoC</a> : <a href="-hazardous-cargo/index.html">AISShipType.HazardousCargo</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1332747237%2FClasslikes%2F-1814946674" anchor-label="HazardousCargoD" id="1332747237%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-cargo-d/index.html"><span>Hazardous</span><wbr></wbr><span>Cargo</span><wbr></wbr><span><span>D</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1332747237%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-cargo-d/index.html">HazardousCargoD</a> : <a href="-hazardous-cargo/index.html">AISShipType.HazardousCargo</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1003477518%2FClasslikes%2F-1814946674" anchor-label="HazardousHighSpeedCraft" id="-1003477518%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-high-speed-craft/index.html"><span>Hazardous</span><wbr></wbr><span>High</span><wbr></wbr><span>Speed</span><wbr></wbr><span><span>Craft</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1003477518%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-hazardous-high-speed-craft/index.html">HazardousHighSpeedCraft</a> : <a href="-high-speed-craft/index.html">AISShipType.HighSpeedCraft</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1619827055%2FClasslikes%2F-1814946674" anchor-label="HazardousHighSpeedCraftA" id="1619827055%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-high-speed-craft-a/index.html"><span>Hazardous</span><wbr></wbr><span>High</span><wbr></wbr><span>Speed</span><wbr></wbr><span>Craft</span><wbr></wbr><span><span>A</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1619827055%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-high-speed-craft-a/index.html">HazardousHighSpeedCraftA</a> : <a href="-hazardous-high-speed-craft/index.html">AISShipType.HazardousHighSpeedCraft</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1650846862%2FClasslikes%2F-1814946674" anchor-label="HazardousHighSpeedCraftB" id="1650846862%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-high-speed-craft-b/index.html"><span>Hazardous</span><wbr></wbr><span>High</span><wbr></wbr><span>Speed</span><wbr></wbr><span>Craft</span><wbr></wbr><span><span>B</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1650846862%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-high-speed-craft-b/index.html">HazardousHighSpeedCraftB</a> : <a href="-hazardous-high-speed-craft/index.html">AISShipType.HazardousHighSpeedCraft</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1681866669%2FClasslikes%2F-1814946674" anchor-label="HazardousHighSpeedCraftC" id="1681866669%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-high-speed-craft-c/index.html"><span>Hazardous</span><wbr></wbr><span>High</span><wbr></wbr><span>Speed</span><wbr></wbr><span>Craft</span><wbr></wbr><span><span>C</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1681866669%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-high-speed-craft-c/index.html">HazardousHighSpeedCraftC</a> : <a href="-hazardous-high-speed-craft/index.html">AISShipType.HazardousHighSpeedCraft</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1712886476%2FClasslikes%2F-1814946674" anchor-label="HazardousHighSpeedCraftD" id="1712886476%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-high-speed-craft-d/index.html"><span>Hazardous</span><wbr></wbr><span>High</span><wbr></wbr><span>Speed</span><wbr></wbr><span>Craft</span><wbr></wbr><span><span>D</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1712886476%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-high-speed-craft-d/index.html">HazardousHighSpeedCraftD</a> : <a href="-hazardous-high-speed-craft/index.html">AISShipType.HazardousHighSpeedCraft</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1258929973%2FClasslikes%2F-1814946674" anchor-label="HazardousOtherType" id="-1258929973%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-other-type/index.html"><span>Hazardous</span><wbr></wbr><span>Other</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1258929973%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-hazardous-other-type/index.html">HazardousOtherType</a> : <a href="-other-type/index.html">AISShipType.OtherType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2004231754%2FClasslikes%2F-1814946674" anchor-label="HazardousOtherTypeA" id="-2004231754%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-other-type-a/index.html"><span>Hazardous</span><wbr></wbr><span>Other</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>A</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2004231754%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-other-type-a/index.html">HazardousOtherTypeA</a> : <a href="-hazardous-other-type/index.html">AISShipType.HazardousOtherType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1973211947%2FClasslikes%2F-1814946674" anchor-label="HazardousOtherTypeB" id="-1973211947%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-other-type-b/index.html"><span>Hazardous</span><wbr></wbr><span>Other</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>B</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1973211947%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-other-type-b/index.html">HazardousOtherTypeB</a> : <a href="-hazardous-other-type/index.html">AISShipType.HazardousOtherType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1942192140%2FClasslikes%2F-1814946674" anchor-label="HazardousOtherTypeC" id="-1942192140%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-other-type-c/index.html"><span>Hazardous</span><wbr></wbr><span>Other</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>C</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1942192140%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-other-type-c/index.html">HazardousOtherTypeC</a> : <a href="-hazardous-other-type/index.html">AISShipType.HazardousOtherType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1911172333%2FClasslikes%2F-1814946674" anchor-label="HazardousOtherTypeD" id="-1911172333%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-other-type-d/index.html"><span>Hazardous</span><wbr></wbr><span>Other</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>D</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1911172333%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-other-type-d/index.html">HazardousOtherTypeD</a> : <a href="-hazardous-other-type/index.html">AISShipType.HazardousOtherType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1981037723%2FClasslikes%2F-1814946674" anchor-label="HazardousPassenger" id="1981037723%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-passenger/index.html"><span>Hazardous</span><wbr></wbr><span><span>Passenger</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1981037723%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-hazardous-passenger/index.html">HazardousPassenger</a> : <a href="-passenger/index.html">AISShipType.Passenger</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-349480986%2FClasslikes%2F-1814946674" anchor-label="HazardousPassengerA" id="-349480986%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-passenger-a/index.html"><span>Hazardous</span><wbr></wbr><span>Passenger</span><wbr></wbr><span><span>A</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-349480986%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-passenger-a/index.html">HazardousPassengerA</a> : <a href="-hazardous-passenger/index.html">AISShipType.HazardousPassenger</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-318461179%2FClasslikes%2F-1814946674" anchor-label="HazardousPassengerB" id="-318461179%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-passenger-b/index.html"><span>Hazardous</span><wbr></wbr><span>Passenger</span><wbr></wbr><span><span>B</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-318461179%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-passenger-b/index.html">HazardousPassengerB</a> : <a href="-hazardous-passenger/index.html">AISShipType.HazardousPassenger</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-287441372%2FClasslikes%2F-1814946674" anchor-label="HazardousPassengerC" id="-287441372%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-passenger-c/index.html"><span>Hazardous</span><wbr></wbr><span>Passenger</span><wbr></wbr><span><span>C</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-287441372%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-passenger-c/index.html">HazardousPassengerC</a> : <a href="-hazardous-passenger/index.html">AISShipType.HazardousPassenger</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-256421565%2FClasslikes%2F-1814946674" anchor-label="HazardousPassengerD" id="-256421565%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-passenger-d/index.html"><span>Hazardous</span><wbr></wbr><span>Passenger</span><wbr></wbr><span><span>D</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-256421565%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-passenger-d/index.html">HazardousPassengerD</a> : <a href="-hazardous-passenger/index.html">AISShipType.HazardousPassenger</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-389268554%2FClasslikes%2F-1814946674" anchor-label="HazardousTanker" id="-389268554%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-tanker/index.html"><span>Hazardous</span><wbr></wbr><span><span>Tanker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-389268554%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-hazardous-tanker/index.html">HazardousTanker</a> : <a href="-tanker/index.html">AISShipType.Tanker</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-814531541%2FClasslikes%2F-1814946674" anchor-label="HazardousTankerA" id="-814531541%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-tanker-a/index.html"><span>Hazardous</span><wbr></wbr><span>Tanker</span><wbr></wbr><span><span>A</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-814531541%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-tanker-a/index.html">HazardousTankerA</a> : <a href="-hazardous-tanker/index.html">AISShipType.HazardousTanker</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-783511734%2FClasslikes%2F-1814946674" anchor-label="HazardousTankerB" id="-783511734%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-tanker-b/index.html"><span>Hazardous</span><wbr></wbr><span>Tanker</span><wbr></wbr><span><span>B</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-783511734%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-tanker-b/index.html">HazardousTankerB</a> : <a href="-hazardous-tanker/index.html">AISShipType.HazardousTanker</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-752491927%2FClasslikes%2F-1814946674" anchor-label="HazardousTankerC" id="-752491927%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-tanker-c/index.html"><span>Hazardous</span><wbr></wbr><span>Tanker</span><wbr></wbr><span><span>C</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-752491927%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-tanker-c/index.html">HazardousTankerC</a> : <a href="-hazardous-tanker/index.html">AISShipType.HazardousTanker</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-721472120%2FClasslikes%2F-1814946674" anchor-label="HazardousTankerD" id="-721472120%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-tanker-d/index.html"><span>Hazardous</span><wbr></wbr><span>Tanker</span><wbr></wbr><span><span>D</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-721472120%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-tanker-d/index.html">HazardousTankerD</a> : <a href="-hazardous-tanker/index.html">AISShipType.HazardousTanker</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1528558998%2FClasslikes%2F-1814946674" anchor-label="HazardousWingInGround" id="1528558998%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-wing-in-ground/index.html"><span>Hazardous</span><wbr></wbr><span>Wing</span><wbr></wbr><span>In</span><wbr></wbr><span><span>Ground</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1528558998%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-hazardous-wing-in-ground/index.html">HazardousWingInGround</a> : <a href="-wing-in-ground/index.html">AISShipType.WingInGround</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1491419573%2FClasslikes%2F-1814946674" anchor-label="HazardousWingInGroundA" id="-1491419573%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-wing-in-ground-a/index.html"><span>Hazardous</span><wbr></wbr><span>Wing</span><wbr></wbr><span>In</span><wbr></wbr><span>Ground</span><wbr></wbr><span><span>A</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1491419573%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-wing-in-ground-a/index.html">HazardousWingInGroundA</a> : <a href="-hazardous-wing-in-ground/index.html">AISShipType.HazardousWingInGround</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1460399766%2FClasslikes%2F-1814946674" anchor-label="HazardousWingInGroundB" id="-1460399766%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-wing-in-ground-b/index.html"><span>Hazardous</span><wbr></wbr><span>Wing</span><wbr></wbr><span>In</span><wbr></wbr><span>Ground</span><wbr></wbr><span><span>B</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1460399766%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-wing-in-ground-b/index.html">HazardousWingInGroundB</a> : <a href="-hazardous-wing-in-ground/index.html">AISShipType.HazardousWingInGround</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1429379959%2FClasslikes%2F-1814946674" anchor-label="HazardousWingInGroundC" id="-1429379959%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-wing-in-ground-c/index.html"><span>Hazardous</span><wbr></wbr><span>Wing</span><wbr></wbr><span>In</span><wbr></wbr><span>Ground</span><wbr></wbr><span><span>C</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1429379959%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-wing-in-ground-c/index.html">HazardousWingInGroundC</a> : <a href="-hazardous-wing-in-ground/index.html">AISShipType.HazardousWingInGround</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1398360152%2FClasslikes%2F-1814946674" anchor-label="HazardousWingInGroundD" id="-1398360152%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hazardous-wing-in-ground-d/index.html"><span>Hazardous</span><wbr></wbr><span>Wing</span><wbr></wbr><span>In</span><wbr></wbr><span>Ground</span><wbr></wbr><span><span>D</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1398360152%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-hazardous-wing-in-ground-d/index.html">HazardousWingInGroundD</a> : <a href="-hazardous-wing-in-ground/index.html">AISShipType.HazardousWingInGround</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1627097057%2FClasslikes%2F-1814946674" anchor-label="HighSpeedCraft" id="-1627097057%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-high-speed-craft/index.html"><span>High</span><wbr></wbr><span>Speed</span><wbr></wbr><span><span>Craft</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1627097057%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-high-speed-craft/index.html">HighSpeedCraft</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-446646817%2FClasslikes%2F-1814946674" anchor-label="HighSpeedCraftNoAdditionalInformation" id="-446646817%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-high-speed-craft-no-additional-information/index.html"><span>High</span><wbr></wbr><span>Speed</span><wbr></wbr><span>Craft</span><wbr></wbr><span>No</span><wbr></wbr><span>Additional</span><wbr></wbr><span><span>Information</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-446646817%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-high-speed-craft-no-additional-information/index.html">HighSpeedCraftNoAdditionalInformation</a> : <a href="-high-speed-craft/index.html">AISShipType.HighSpeedCraft</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="101759260%2FClasslikes%2F-1814946674" anchor-label="HighSpeedCraftReservedForFutureUse" id="101759260%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-high-speed-craft-reserved-for-future-use/index.html"><span>High</span><wbr></wbr><span>Speed</span><wbr></wbr><span>Craft</span><wbr></wbr><span>Reserved</span><wbr></wbr><span>For</span><wbr></wbr><span>Future</span><wbr></wbr><span><span>Use</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="101759260%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-high-speed-craft-reserved-for-future-use/index.html">HighSpeedCraftReservedForFutureUse</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>code<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-high-speed-craft/index.html">AISShipType.HighSpeedCraft</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="437143964%2FClasslikes%2F-1814946674" anchor-label="LawEnforcement" id="437143964%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-law-enforcement/index.html"><span>Law</span><wbr></wbr><span><span>Enforcement</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="437143964%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-law-enforcement/index.html">LawEnforcement</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="724057666%2FClasslikes%2F-1814946674" anchor-label="MedicalTransport" id="724057666%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-medical-transport/index.html"><span>Medical</span><wbr></wbr><span><span>Transport</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="724057666%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-medical-transport/index.html">MedicalTransport</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1511586525%2FClasslikes%2F-1814946674" anchor-label="MilitaryOps" id="-1511586525%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-military-ops/index.html"><span>Military</span><wbr></wbr><span><span>Ops</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1511586525%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-military-ops/index.html">MilitaryOps</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-748617864%2FClasslikes%2F-1814946674" anchor-label="NoncombatantShip" id="-748617864%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-noncombatant-ship/index.html"><span>Noncombatant</span><wbr></wbr><span><span>Ship</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-748617864%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-noncombatant-ship/index.html">NoncombatantShip</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-790119708%2FClasslikes%2F-1814946674" anchor-label="NotAvailable" id="-790119708%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-not-available/index.html"><span>Not</span><wbr></wbr><span><span>Available</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-790119708%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-not-available/index.html">NotAvailable</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1664648830%2FClasslikes%2F-1814946674" anchor-label="OtherType" id="1664648830%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-other-type/index.html"><span>Other</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1664648830%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-other-type/index.html">OtherType</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1091628192%2FClasslikes%2F-1814946674" anchor-label="OtherTypeNoAdditionalInformation" id="1091628192%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-other-type-no-additional-information/index.html"><span>Other</span><wbr></wbr><span>Type</span><wbr></wbr><span>No</span><wbr></wbr><span>Additional</span><wbr></wbr><span><span>Information</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1091628192%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-other-type-no-additional-information/index.html">OtherTypeNoAdditionalInformation</a> : <a href="-other-type/index.html">AISShipType.OtherType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1300962821%2FClasslikes%2F-1814946674" anchor-label="OtherTypeReservedForFutureUse" id="-1300962821%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-other-type-reserved-for-future-use/index.html"><span>Other</span><wbr></wbr><span>Type</span><wbr></wbr><span>Reserved</span><wbr></wbr><span>For</span><wbr></wbr><span>Future</span><wbr></wbr><span><span>Use</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1300962821%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-other-type-reserved-for-future-use/index.html">OtherTypeReservedForFutureUse</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>code<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-other-type/index.html">AISShipType.OtherType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="609649230%2FClasslikes%2F-1814946674" anchor-label="Passenger" id="609649230%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-passenger/index.html"><span><span>Passenger</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="609649230%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-passenger/index.html">Passenger</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-676550960%2FClasslikes%2F-1814946674" anchor-label="PassengerNoAdditionalInformation" id="-676550960%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-passenger-no-additional-information/index.html"><span>Passenger</span><wbr></wbr><span>No</span><wbr></wbr><span>Additional</span><wbr></wbr><span><span>Information</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-676550960%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-passenger-no-additional-information/index.html">PassengerNoAdditionalInformation</a> : <a href="-passenger/index.html">AISShipType.Passenger</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-133245493%2FClasslikes%2F-1814946674" anchor-label="PassengerReservedForFutureUse" id="-133245493%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-passenger-reserved-for-future-use/index.html"><span>Passenger</span><wbr></wbr><span>Reserved</span><wbr></wbr><span>For</span><wbr></wbr><span>Future</span><wbr></wbr><span><span>Use</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-133245493%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-passenger-reserved-for-future-use/index.html">PassengerReservedForFutureUse</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>code<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-passenger/index.html">AISShipType.Passenger</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1762030746%2FClasslikes%2F-1814946674" anchor-label="PilotVessel" id="1762030746%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-pilot-vessel/index.html"><span>Pilot</span><wbr></wbr><span><span>Vessel</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1762030746%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-pilot-vessel/index.html">PilotVessel</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1844662507%2FClasslikes%2F-1814946674" anchor-label="PleasureCraft" id="-1844662507%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-pleasure-craft/index.html"><span>Pleasure</span><wbr></wbr><span><span>Craft</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1844662507%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-pleasure-craft/index.html">PleasureCraft</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1617364859%2FClasslikes%2F-1814946674" anchor-label="PortTender" id="-1617364859%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-port-tender/index.html"><span>Port</span><wbr></wbr><span><span>Tender</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1617364859%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-port-tender/index.html">PortTender</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1342299570%2FClasslikes%2F-1814946674" anchor-label="Reserved" id="1342299570%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-reserved/index.html"><span><span>Reserved</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1342299570%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-reserved/index.html">Reserved</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>code<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1229630071%2FClasslikes%2F-1814946674" anchor-label="ReservedForFutureUse" id="1229630071%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-reserved-for-future-use/index.html"><span>Reserved</span><wbr></wbr><span>For</span><wbr></wbr><span>Future</span><wbr></wbr><span><span>Use</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1229630071%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-reserved-for-future-use/index.html">ReservedForFutureUse</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>code<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-488387017%2FClasslikes%2F-1814946674" anchor-label="Sailing" id="-488387017%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sailing/index.html"><span><span>Sailing</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-488387017%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-sailing/index.html">Sailing</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2002795568%2FClasslikes%2F-1814946674" anchor-label="SearchAndRescueVessel" id="-2002795568%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-search-and-rescue-vessel/index.html"><span>Search</span><wbr></wbr><span>And</span><wbr></wbr><span>Rescue</span><wbr></wbr><span><span>Vessel</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2002795568%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-search-and-rescue-vessel/index.html">SearchAndRescueVessel</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1952738288%2FClasslikes%2F-1814946674" anchor-label="SpareLocalVessel" id="1952738288%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-spare-local-vessel/index.html"><span>Spare</span><wbr></wbr><span>Local</span><wbr></wbr><span><span>Vessel</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1952738288%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-spare-local-vessel/index.html">SpareLocalVessel</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>code<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1730671901%2FClasslikes%2F-1814946674" anchor-label="Tanker" id="-1730671901%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-tanker/index.html"><span><span>Tanker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1730671901%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-tanker/index.html">Tanker</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1658472091%2FClasslikes%2F-1814946674" anchor-label="TankerNoAdditionalInformation" id="1658472091%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-tanker-no-additional-information/index.html"><span>Tanker</span><wbr></wbr><span>No</span><wbr></wbr><span>Additional</span><wbr></wbr><span><span>Information</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1658472091%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-tanker-no-additional-information/index.html">TankerNoAdditionalInformation</a> : <a href="-tanker/index.html">AISShipType.Tanker</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1182580256%2FClasslikes%2F-1814946674" anchor-label="TankerReservedForFutureUse" id="-1182580256%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-tanker-reserved-for-future-use/index.html"><span>Tanker</span><wbr></wbr><span>Reserved</span><wbr></wbr><span>For</span><wbr></wbr><span>Future</span><wbr></wbr><span><span>Use</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1182580256%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-tanker-reserved-for-future-use/index.html">TankerReservedForFutureUse</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>code<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-tanker/index.html">AISShipType.Tanker</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="603548628%2FClasslikes%2F-1814946674" anchor-label="Towing" id="603548628%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-towing/index.html"><span><span>Towing</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="603548628%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-towing/index.html">Towing</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-14702669%2FClasslikes%2F-1814946674" anchor-label="TowingLarge" id="-14702669%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-towing-large/index.html"><span>Towing</span><wbr></wbr><span><span>Large</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-14702669%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-towing-large/index.html">TowingLarge</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2098097058%2FClasslikes%2F-1814946674" anchor-label="Tug" id="2098097058%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-tug/index.html"><span><span>Tug</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2098097058%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-tug/index.html">Tug</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="222883587%2FClasslikes%2F-1814946674" anchor-label="WingInGround" id="222883587%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-wing-in-ground/index.html"><span>Wing</span><wbr></wbr><span>In</span><wbr></wbr><span><span>Ground</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="222883587%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-wing-in-ground/index.html">WingInGround</a> : <a href="index.html">AISShipType</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1673057792%2FClasslikes%2F-1814946674" anchor-label="WingInGroundReservedForFutureUse" id="1673057792%2FClasslikes%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-wing-in-ground-reserved-for-future-use/index.html"><span>Wing</span><wbr></wbr><span>In</span><wbr></wbr><span>Ground</span><wbr></wbr><span>Reserved</span><wbr></wbr><span>For</span><wbr></wbr><span>Future</span><wbr></wbr><span><span>Use</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1673057792%2FClasslikes%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-wing-in-ground-reserved-for-future-use/index.html">WingInGroundReservedForFutureUse</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>code<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-wing-in-ground/index.html">AISShipType.WingInGround</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="1366669400%2FProperties%2F-1814946674" anchor-label="code" id="1366669400%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="code.html"><span><span>code</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1366669400%2FProperties%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="code.html">code</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">raw AIS ship type code.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1916743769%2FProperties%2F-1814946674" anchor-label="description" id="1916743769%2FProperties%2F-1814946674" data-filterable-set=":/alldocs"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="description.html"><span><span>description</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1916743769%2FProperties%2F-1814946674"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":/alldocs" data-filterable-set=":/alldocs" data-active="" data-toggle=":/alldocs">alldocs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":/alldocs"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="description.html">description</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">human-readable AIS ship type description.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
