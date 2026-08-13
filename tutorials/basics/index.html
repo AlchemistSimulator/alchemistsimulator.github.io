@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Hugo 0.165.0">
     <meta name="generator" content="Relearn 8.2.0">
     <meta name="description" content="A (video) guide through the main features of the simulator, as presented at DAIS 2021">
     <meta name="author" content="Danilo Pianini">
@@ -20,31 +20,31 @@
     <meta itemprop="description" content="A (video) guide through the main features of the simulator, as presented at DAIS 2021">
     <meta itemprop="datePublished" content="2022-01-19T17:24:57+01:00">
     <meta itemprop="dateModified" content="2022-01-19T17:24:57+01:00">
-    <meta itemprop="wordCount" content="1867">
+    <meta itemprop="wordCount" content="1081">
     <meta itemprop="keywords" content="Tutorial,Basics,Video,Examples,Deployment,Maps,Indoor,Graph,Export">
     <title>Step-by-step tutorial :: Documentation for the Alchemist Simulator</title>
     <link href="../../tutorials/basics/index.xml" rel="alternate" type="application/rss+xml" title="Step-by-step tutorial :: Documentation for the Alchemist Simulator">
-    <link href="../../images/logo.svg?1786123293" rel="icon" type="image/svg+xml">
-    <link href="../../css/auto-complete/auto-complete.min.css?1786123293" rel="stylesheet">
-    <script src="../../js/auto-complete/auto-complete.min.js?1786123293" defer></script>
-    <script src="../../js/search-lunr.min.js?1786123293" defer></script>
-    <script src="../../js/search.min.js?1786123293" defer></script>
+    <link href="../../images/logo.svg?1786621235" rel="icon" type="image/svg+xml">
+    <link href="../../css/auto-complete/auto-complete.min.css?1786621235" rel="stylesheet">
+    <script src="../../js/auto-complete/auto-complete.min.js?1786621235" defer></script>
+    <script src="../../js/search-lunr.min.js?1786621235" defer></script>
+    <script src="../../js/search.min.js?1786621235" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../searchindex.en.js?1786123293";
+      window.relearn.index_js_url="../../searchindex.en.js?1786621235";
     </script>
-    <script src="../../js/lunr/lunr.min.js?1786123293" defer></script>
-    <script src="../../js/lunr/lunr.stemmer.support.min.js?1786123293" defer></script>
-    <script src="../../js/lunr/lunr.multi.min.js?1786123293" defer></script>
-    <script src="../../js/lunr/lunr.en.min.js?1786123293" defer></script>
+    <script src="../../js/lunr/lunr.min.js?1786621235" defer></script>
+    <script src="../../js/lunr/lunr.stemmer.support.min.js?1786621235" defer></script>
+    <script src="../../js/lunr/lunr.multi.min.js?1786621235" defer></script>
+    <script src="../../js/lunr/lunr.en.min.js?1786621235" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1786123293" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1786123293" rel="stylesheet"></noscript>
-    <link href="../../css/perfect-scrollbar/perfect-scrollbar.min.css?1786123293" rel="stylesheet">
-    <link href="../../css/theme.min.css?1786123293" rel="stylesheet">
-    <link href="../../css/format-html.min.css?1786123293" rel="stylesheet" id="R-format-style">
+    <link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1786621235" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1786621235" rel="stylesheet"></noscript>
+    <link href="../../css/perfect-scrollbar/perfect-scrollbar.min.css?1786621235" rel="stylesheet">
+    <link href="../../css/theme.min.css?1786621235" rel="stylesheet">
+    <link href="../../css/format-html.min.css?1786621235" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -343,16 +343,7 @@ function onClick(element) {
         <span class="fas fa-chevron-right"></span>
         <strong>Click to show / hide code</strong>
     </a>
-    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere <span style="color:#78787e"># The incarnation is always mandatory</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance <span style="color:#78787e"># Loads a class with this name implementing LinkingRule</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>] <span style="color:#78787e"># Connection radius (parameter of a ConnectWithinDistance&#39;s constructor)</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
-</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point <span style="color:#78787e"># Loads a class with this name implementing Deployment</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>] <span style="color:#78787e"># Coordinates</span>
-</span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">Point, parameters</span>: [<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
-</span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">Point, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
-</span></span></code></pre></div></div>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
 </div>
 <p>The graphic effect is just to see three dots in the interface.
 If links are displayed (see the <a href="../../reference/default-ui/index.html">reference of the graphical interface</a>),
@@ -364,8 +355,8 @@ then the three nodes appear linked.
     Show snapshot
   </summary>
   <div class="box-content">
-<p><a href="#R-image-d46986affe527b74198ed1b39a83f896" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/3nodes.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-d46986affe527b74198ed1b39a83f896"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/3nodes.png"></a></p>
+<p><a href="#R-image-5a45aff983047a8e9081bd79cd5265db" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/3nodes.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-5a45aff983047a8e9081bd79cd5265db"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/3nodes.png"></a></p>
   </div>
 </details></p>
 <h3 id="a-grid-of-devices-playing-dodgeball">A grid of devices playing dodgeball</h3>
@@ -399,21 +390,7 @@ function onClick(element) {
         <span class="fas fa-chevron-right"></span>
         <strong>Click to show / hide code</strong>
     </a>
-    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Grid
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.1</span>, <span style="color:#ff9f43">0.1</span>] <span style="color:#78787e"># A perturbed grid of devices</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">contents</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;{hit, 0}&#34;</span> <span style="color:#78787e"># Everywhere, no one has been hit</span>
-</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">in</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">Rectangle, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, -<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>] } <span style="color:#78787e"># Inside this shape...</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">molecule</span>: ball <span style="color:#78787e"># ...every node has a ball</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span> <span style="color:#78787e"># This is a frequency, time distribution type is left to the incarnation</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#78787e"># &#39;program&#39; specs are passed down to the incarnation for being interpreted as reactions</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{ball} {hit, N} --&gt; {hit, N + 1} {launching}&#34;</span> <span style="color:#78787e"># If hit, count the hit</span>
-</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{launching} --&gt; +{ball}&#34;</span> <span style="color:#78787e"># As soon as possible, throw the ball to a neighbor</span>
-</span></span></code></pre></div></div>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
 </div>
 <p>Snapshots of the simulation of the “dodgeball” example follow.
 Devices with a ball are depicted in black. All other devices’ color hue depends on the
@@ -425,16 +402,16 @@ hit count, shifting from red (zero hits) towards blue.</p>
     Show snapshots
   </summary>
   <div class="box-content">
-<p><a href="#R-image-3136152c19fba9f157ba75de73bb97ec" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball00.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-3136152c19fba9f157ba75de73bb97ec"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball00.png"></a>
-<a href="#R-image-137c4197212b39995ee2c400c12a2b1d" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball01.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-137c4197212b39995ee2c400c12a2b1d"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball01.png"></a>
-<a href="#R-image-9ad5d8f596906d8f9e305b485351866c" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball02.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-9ad5d8f596906d8f9e305b485351866c"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball02.png"></a>
-<a href="#R-image-6c157f73417edbcbf636377162653f57" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball03.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-6c157f73417edbcbf636377162653f57"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball03.png"></a>
-<a href="#R-image-a79e7c6af93a7fc0ea06119fbfbeb6cd" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball04.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-a79e7c6af93a7fc0ea06119fbfbeb6cd"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball04.png"></a></p>
+<p><a href="#R-image-34a7d3949882c064d80adebc86665c49" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball00.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-34a7d3949882c064d80adebc86665c49"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball00.png"></a>
+<a href="#R-image-e12a7d7eeb8282142278297d947b53f0" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball01.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-e12a7d7eeb8282142278297d947b53f0"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball01.png"></a>
+<a href="#R-image-60662410c75f6089c7a38452f224052b" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball02.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-60662410c75f6089c7a38452f224052b"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball02.png"></a>
+<a href="#R-image-0565846b98da8af75a4c266a517e13d1" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball03.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-0565846b98da8af75a4c266a517e13d1"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball03.png"></a>
+<a href="#R-image-fed52870a939f97748415e8b9db34075" class="lightbox-link"><img alt="Dodgeball" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/dodgeball04.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-fed52870a939f97748415e8b9db34075"><img alt="Dodgeball" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/dodgeball04.png"></a></p>
   </div>
 </details>
 <h3 id="a-gradient-on-a-grid-of-devices">A gradient on a grid of devices</h3>
@@ -464,27 +441,7 @@ function onClick(element) {
         <span class="fas fa-chevron-right"></span>
         <strong>Click to show / hide code</strong>
     </a>
-    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Grid
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.1</span>, <span style="color:#ff9f43">0.1</span>]
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">contents</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">in</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">Rectangle, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, -<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>] }
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: source <span style="color:#78787e"># Here is the source of the gradient</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">0.1</span> <span style="color:#78787e"># Exponential with λ=0.1</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#78787e"># If there is a source, then the gradient is zero.</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{source} --&gt; {source} {gradient, 0}&#34;</span>
-</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span> <span style="color:#78787e"># Exponential distribution with λ=1</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#78787e"># Send all neighbors your gradient value plus one</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{gradient, N} --&gt; {gradient, N} *{gradient, N+1}&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#78787e"># In case of multiple gradients, take the shortest</span>
-</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{gradient, N}{gradient, def: N2&gt;=N} --&gt; {gradient, N}&#34;</span>
-</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">0.1</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{gradient, N} --&gt; {gradient, N + 1}&#34;</span> <span style="color:#78787e"># Aging process</span>
-</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{gradient, def: N &gt; 30} --&gt;&#34;</span> <span style="color:#78787e"># Death process</span>
-</span></span></code></pre></div></div>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
 </div>
 <p>Here are some snapshots of the simulation of the “gradient” example.
 Source devices have a central black dot. Devices’ color hue depends on the gradient
@@ -496,12 +453,12 @@ value, shifting from red (low) towards blue (high).</p>
     Show snapshots
   </summary>
   <div class="box-content">
-<p><a href="#R-image-15fc1d20dbd1e207a9b0c14ae7302bad" class="lightbox-link"><img alt="Gradient" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/gradient00.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-15fc1d20dbd1e207a9b0c14ae7302bad"><img alt="Gradient" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/gradient00.png"></a>
-<a href="#R-image-076a029dfc2a6a3250cf9166267d7df3" class="lightbox-link"><img alt="Gradient" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/gradient01.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-076a029dfc2a6a3250cf9166267d7df3"><img alt="Gradient" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/gradient01.png"></a>
-<a href="#R-image-9cc1c77e0d2af29b32ff04243b64898e" class="lightbox-link"><img alt="Gradient" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/gradient02.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-9cc1c77e0d2af29b32ff04243b64898e"><img alt="Gradient" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/gradient02.png"></a></p>
+<p><a href="#R-image-b9db20b9d10f500ee2498cee3f139dc0" class="lightbox-link"><img alt="Gradient" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/gradient00.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-b9db20b9d10f500ee2498cee3f139dc0"><img alt="Gradient" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/gradient00.png"></a>
+<a href="#R-image-1c9f99168dc95a3d1d59b0d68ec31e2a" class="lightbox-link"><img alt="Gradient" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/gradient01.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-1c9f99168dc95a3d1d59b0d68ec31e2a"><img alt="Gradient" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/gradient01.png"></a>
+<a href="#R-image-8b6da205c3abe734343c509cbb385a6b" class="lightbox-link"><img alt="Gradient" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/gradient02.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-8b6da205c3abe734343c509cbb385a6b"><img alt="Gradient" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/gradient02.png"></a></p>
   </div>
 </details>
 <h3 id="arbitrary-network-graphs">Arbitrary network graphs</h3>
@@ -529,18 +486,12 @@ function onClick(element) {
         <span class="fas fa-chevron-right"></span>
         <strong>Click to show / hide code</strong>
     </a>
-    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
-</span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">GraphStreamDeployment, parameters</span>: [<span style="color:#ff9f43">300</span>, -<span style="color:#ff9f43">30</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0.8</span>, Lobster, [5, 15]] }
-</span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">GraphStreamDeployment, parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">2</span>, BananaTree, 10] }
-</span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">GraphStreamDeployment, parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">30</span>, <span style="color:#ff9f43">0</span>, PreferentialAttachment] }
-</span></span></code></pre></div></div>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
 </div>
 <p>The example creates a single environment with three advanced deployments. From left to right: a
 Lobster graph, a banana tree, and a scale-free network with preferential attachment.</p>
-<p><a href="#R-image-c0fb2c19f651f176bc6ca4b8265ec1b1" class="lightbox-link"><img alt="Arbitrary graphs" class="lazy lightbox figure-image" loading="lazy" src="../../images/simulator/graphstream.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-c0fb2c19f651f176bc6ca4b8265ec1b1"><img alt="Arbitrary graphs" class="lazy lightbox lightbox-image" loading="lazy" src="../../images/simulator/graphstream.png"></a></p>
+<p><a href="#R-image-dfc78f8445057006c5dee85c3bc66b4f" class="lightbox-link"><img alt="Arbitrary graphs" class="lazy lightbox figure-image" loading="lazy" src="../../images/simulator/graphstream.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-dfc78f8445057006c5dee85c3bc66b4f"><img alt="Arbitrary graphs" class="lazy lightbox lightbox-image" loading="lazy" src="../../images/simulator/graphstream.png"></a></p>
 <h2 id="advanced-examples">Advanced examples</h2>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/crZM6Idpg74?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
@@ -584,25 +535,7 @@ function onClick(element) {
         <span class="fas fa-chevron-right"></span>
         <strong>Click to show / hide code</strong>
     </a>
-    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ImageEnvironment, parameters</span>: [chiaravalle.png, 0.1] }
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ObstaclesBreakConnection, parameters</span>: [<span style="color:#ff9f43">50</span>] }
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Rectangle
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        import protelis:coord:spreading
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let source = [110, 325]
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let vector = self.getCoordinates() - source
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let distance = hypot(vector.get(0), vector.get(1))
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        distanceTo(distance &lt; 50)</span>
-</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: send <span style="color:#78787e"># Actual network message delivery</span>
-</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Event
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">actions</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">LevyWalk, parameters</span>: [<span style="color:#ff9f43">1.4</span>] }
-</span></span></code></pre></div></div>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
 </div>
 <p>In the following snapshots, mobile devices progressively explore the location, while measuring the distance from a point of interest
 via gradient (red nodes are closer to the point of interest; purple ones are farther).</p>
@@ -613,14 +546,14 @@ via gradient (red nodes are closer to the point of interest; purple ones are far
     Show snapshots
   </summary>
   <div class="box-content">
-<p><a href="#R-image-b6d86a168acedefbffa7aa68ab913129" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle00.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-b6d86a168acedefbffa7aa68ab913129"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle00.png"></a>
-<a href="#R-image-b58b83e5a48719695abdb92510ea4179" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle01.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-b58b83e5a48719695abdb92510ea4179"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle01.png"></a>
-<a href="#R-image-e9f78e8beb65afc87ae0b2922622488a" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle02.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-e9f78e8beb65afc87ae0b2922622488a"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle02.png"></a>
-<a href="#R-image-0e64f3dbe3ffbe75074a167928b501ce" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle03.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-0e64f3dbe3ffbe75074a167928b501ce"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle03.png"></a></p>
+<p><a href="#R-image-2be80ad3983de3e77e59a681d0d8f34b" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle00.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-2be80ad3983de3e77e59a681d0d8f34b"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle00.png"></a>
+<a href="#R-image-37b43f5160bf751155add6e8272c70aa" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle01.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-37b43f5160bf751155add6e8272c70aa"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle01.png"></a>
+<a href="#R-image-900b6a02168ae04426f431f0a812d7b2" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle02.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-900b6a02168ae04426f431f0a812d7b2"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle02.png"></a>
+<a href="#R-image-0f06924f17e9234a7de297b0c456f175" class="lightbox-link"><img alt="Mobility in indoor environments" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/chiaravalle03.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-0f06924f17e9234a7de297b0c456f175"><img alt="Mobility in indoor environments" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/chiaravalle03.png"></a></p>
   </div>
 </details>
 <h3 id="real-world-maps-and-gps-traces">Real-world maps and GPS traces</h3>
@@ -653,29 +586,7 @@ function onClick(element) {
         <span class="fas fa-chevron-right"></span>
         <strong>Click to show / hide code</strong>
     </a>
-    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type</span>: OSMEnvironment }
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">1000</span>] }
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_venice_lagoon</span>: <span style="color:#78787e">&amp;lagoon</span>
-</span></span><span style="display:flex;"><span>  [[<span style="color:#ff9f43">45.2038121</span>, <span style="color:#ff9f43">12.2504425</span>], [<span style="color:#ff9f43">45.2207426</span>, <span style="color:#ff9f43">12.2641754</span>], [<span style="color:#ff9f43">45.2381516</span>, <span style="color:#ff9f43">12.2806549</span>],
-</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.2570053</span>, <span style="color:#ff9f43">12.2895813</span>], [<span style="color:#ff9f43">45.276336</span>, <span style="color:#ff9f43">12.2957611</span>], [<span style="color:#ff9f43">45.3029049</span>, <span style="color:#ff9f43">12.2991943</span>],
-</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3212544</span>, <span style="color:#ff9f43">12.3046875</span>], [<span style="color:#ff9f43">45.331875</span>, <span style="color:#ff9f43">12.3040009</span>], [<span style="color:#ff9f43">45.3453893</span>, <span style="color:#ff9f43">12.3040009</span>],
-</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3502151</span>, <span style="color:#ff9f43">12.3156738</span>], [<span style="color:#ff9f43">45.3622776</span>, <span style="color:#ff9f43">12.3232269</span>], [<span style="color:#ff9f43">45.3719259</span>, <span style="color:#ff9f43">12.3300934</span>],
-</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3830193</span>, <span style="color:#ff9f43">12.3348999</span>], [<span style="color:#ff9f43">45.395557</span>, <span style="color:#ff9f43">12.3445129</span>], [<span style="color:#ff9f43">45.3998964</span>, <span style="color:#ff9f43">12.3300934</span>],
-</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.4018249</span>, <span style="color:#ff9f43">12.3136139</span>], [<span style="color:#ff9f43">45.4105023</span>, <span style="color:#ff9f43">12.3122406</span>], [<span style="color:#ff9f43">45.4167685</span>, <span style="color:#ff9f43">12.311554</span>],
-</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.4278531</span>, <span style="color:#ff9f43">12.3012543</span>], [<span style="color:#ff9f43">45.4408627</span>, <span style="color:#ff9f43">12.2902679</span>], [<span style="color:#ff9f43">45.4355628</span>, <span style="color:#ff9f43">12.2772217</span>],
-</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.4206242</span>, <span style="color:#ff9f43">12.2703552</span>], [<span style="color:#ff9f43">45.3994143</span>, <span style="color:#ff9f43">12.2744751</span>], [<span style="color:#ff9f43">45.3738553</span>, <span style="color:#ff9f43">12.2676086</span>],
-</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3579354</span>, <span style="color:#ff9f43">12.2614288</span>], [<span style="color:#ff9f43">45.3429763</span>, <span style="color:#ff9f43">12.2497559</span>], [<span style="color:#ff9f43">45.3198059</span>, <span style="color:#ff9f43">12.2408295</span>],
-</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.2975921</span>, <span style="color:#ff9f43">12.2346497</span>], [<span style="color:#ff9f43">45.2802014</span>, <span style="color:#ff9f43">12.2408295</span>], [<span style="color:#ff9f43">45.257972</span>, <span style="color:#ff9f43">12.233963</span>],
-</span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.2038121</span>, <span style="color:#ff9f43">12.2504425</span>]]
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Polygon
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">500</span>, <span style="color:#78787e">*lagoon]</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">10</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: Event
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">actions</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">BrownianMove, parameters</span>: [<span style="color:#ff9f43">0.0005</span>]}
-</span></span></code></pre></div></div>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
 </div>
 <p>The following snapshots depict the simulation in execution.</p>
 
@@ -685,10 +596,10 @@ function onClick(element) {
     Show snapshots
   </summary>
   <div class="box-content">
-<p><a href="#R-image-58f852bd5f26e54f78905aad1dbc2545" class="lightbox-link"><img alt="Venice" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/venice.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-58f852bd5f26e54f78905aad1dbc2545"><img alt="Venice" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/venice.png"></a>
-<a href="#R-image-cc7943c00bc2ae8fa24e9731b427284e" class="lightbox-link"><img alt="Venice" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/venice2.png" style="height: auto;width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-cc7943c00bc2ae8fa24e9731b427284e"><img alt="Venice" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/venice2.png"></a></p>
+<p><a href="#R-image-60f507b0d44f52cfd2e199285e6df135" class="lightbox-link"><img alt="Venice" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/venice.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-60f507b0d44f52cfd2e199285e6df135"><img alt="Venice" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/venice.png"></a>
+<a href="#R-image-2561985c21c063ad6a609b8b0c1b2c7e" class="lightbox-link"><img alt="Venice" class="lazy lightbox figure-image" loading="lazy" src="../../tutorials/basics/venice2.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-2561985c21c063ad6a609b8b0c1b2c7e"><img alt="Venice" class="lazy lightbox lightbox-image" loading="lazy" src="../../tutorials/basics/venice2.png"></a></p>
   </div>
 </details>
 <h3 id="in-depth-analysis-of-simulated-scenarios">In-depth analysis of simulated scenarios</h3>
@@ -724,52 +635,7 @@ function onClick(element) {
         <span class="fas fa-chevron-right"></span>
         <strong>Click to show / hide code</strong>
     </a>
-    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span> <span style="color:#78787e"># Must be a valid Groovy snippet</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">image_name</span>: { <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;&#39;chiaravalle.png&#39;&#34;</span> }
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">image_path</span>: <span style="color:#78787e">&amp;image_path</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin <span style="color:#78787e"># Pick whatever JSR223 language you like and add it to the classpath</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: | <span style="color:#78787e"># The following is pure Kotlin code. Other variables can be referenced!</span>
-</span></span><span style="display:flex;"><span>      import java.io.File
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">fun File.findImage()</span>: String? = walkTopDown().find { image_name in it.name }?.absolutePath
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">fun File.findImageRecursively()</span>: <span style="color:#ff6ac1">String = findImage() ?</span>: File(this, &#34;..&#34;).findImageRecursively()
-</span></span><span style="display:flex;"><span>      File(&#34;.&#34;).findImageRecursively()
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">timeout</span>: <span style="color:#ff9f43">5000</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#78787e"># Linear free variable</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">walking_speed</span>: <span style="color:#78787e">&amp;walk-speed</span> { <span style="color:#ff6ac1">default</span>: <span style="color:#ff6ac1">1.4, min</span>: <span style="color:#ff6ac1">1, max</span>: <span style="color:#ff6ac1">2, step</span>: <span style="color:#ff9f43">0.1</span> }
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">seed</span>: <span style="color:#78787e">&amp;seed</span> { <span style="color:#ff6ac1">default</span>: <span style="color:#ff6ac1">0, min</span>: <span style="color:#ff6ac1">0, max</span>: <span style="color:#ff6ac1">99, step</span>: <span style="color:#ff9f43">1</span> } <span style="color:#78787e"># 100 samples</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">scenario_seed</span>: <span style="color:#78787e">&amp;scenario_seed</span> { <span style="color:#ff6ac1">formula</span>: (seed + 31) * seed } <span style="color:#78787e"># Variable-dependent</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">people_count</span>: <span style="color:#78787e">&amp;people_count</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: GeometricVariable <span style="color:#78787e"># A variable scanning a space with geometric segmentation</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">500</span>, <span style="color:#ff9f43">9</span>] <span style="color:#78787e"># default 300, minimum 50, maximum 100, 9 samples</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">seeds</span>: { <span style="color:#ff6ac1">simulation</span>: <span style="color:#78787e">*seed,</span> <span style="color:#ff6ac1">scenario</span>: <span style="color:#78787e">*scenario_seed}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">export</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: CSVExporter
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">fileNameRoot</span>: <span style="color:#5af78e">&#34;snippet-variables-export&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
-</span></span><span style="display:flex;"><span>      - time
-</span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">aggregators</span>: [ mean, max, min, variance, median ] <span style="color:#78787e"># From Apache&#39;s UnivariateStatistic</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">value-filter</span>: onlyfinite <span style="color:#78787e"># discards NaN and Infinity</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ImageEnvironment, parameters</span>: [<span style="color:#78787e">*image_path,</span> <span style="color:#78787e">*zoom]</span> }
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ObstaclesBreakConnection, parameters</span>: [<span style="color:#ff9f43">50</span>] }
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Rectangle
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*people_count,</span> <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
-</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        import protelis:coord:spreading
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let source = [110, 325]
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let vector = self.getCoordinates() - source
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let distance = hypot(vector.get(0), vector.get(1))
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        distanceTo(distance &lt; 50)</span>
-</span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: send
-</span></span><span style="display:flex;"><span>    - { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">Event, time-distribution</span>: <span style="color:#ff6ac1">1, actions</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
-</span></span></code></pre></div></div>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
 </div>
 
 <details open class=" box cstyle notices info">
@@ -900,7 +766,7 @@ function onClick(element) {
           </ul>
         </div>
 <div id="R-footer"><div class="padding">
-    <div><strong>Alchemist Simulator 43.1.25</strong></div>
+    <div><strong>Alchemist Simulator 43.1.26</strong></div>
     <br>
     <a
         class="github-button"
@@ -932,22 +798,22 @@ function onClick(element) {
 </div></div>
       </div>
     </aside>
-    <script src="../../js/js-yaml/js-yaml.min.js?1786123293" defer></script>
-    <script src="../../js/d3/d3-color.min.js?1786123293" defer></script>
-    <script src="../../js/d3/d3-dispatch.min.js?1786123293" defer></script>
-    <script src="../../js/d3/d3-drag.min.js?1786123293" defer></script>
-    <script src="../../js/d3/d3-ease.min.js?1786123293" defer></script>
-    <script src="../../js/d3/d3-interpolate.min.js?1786123293" defer></script>
-    <script src="../../js/d3/d3-selection.min.js?1786123293" defer></script>
-    <script src="../../js/d3/d3-timer.min.js?1786123293" defer></script>
-    <script src="../../js/d3/d3-transition.min.js?1786123293" defer></script>
-    <script src="../../js/d3/d3-zoom.min.js?1786123293" defer></script>
-    <script src="../../js/mermaid/mermaid.min.js?1786123293" defer></script>
+    <script src="../../js/js-yaml/js-yaml.min.js?1786621235" defer></script>
+    <script src="../../js/d3/d3-color.min.js?1786621235" defer></script>
+    <script src="../../js/d3/d3-dispatch.min.js?1786621235" defer></script>
+    <script src="../../js/d3/d3-drag.min.js?1786621235" defer></script>
+    <script src="../../js/d3/d3-ease.min.js?1786621235" defer></script>
+    <script src="../../js/d3/d3-interpolate.min.js?1786621235" defer></script>
+    <script src="../../js/d3/d3-selection.min.js?1786621235" defer></script>
+    <script src="../../js/d3/d3-timer.min.js?1786621235" defer></script>
+    <script src="../../js/d3/d3-transition.min.js?1786621235" defer></script>
+    <script src="../../js/d3/d3-zoom.min.js?1786621235" defer></script>
+    <script src="../../js/mermaid/mermaid.min.js?1786621235" defer></script>
     <script>
       window.relearn.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../js/clipboard/clipboard.min.js?1786123293" defer></script>
-    <script src="../../js/perfect-scrollbar/perfect-scrollbar.min.js?1786123293" defer></script>
-    <script src="../../js/theme.min.js?1786123293" defer></script>
+    <script src="../../js/clipboard/clipboard.min.js?1786621235" defer></script>
+    <script src="../../js/perfect-scrollbar/perfect-scrollbar.min.js?1786621235" defer></script>
+    <script src="../../js/theme.min.js?1786621235" defer></script>
   </body>
 </html>
