@@ -18,31 +18,31 @@
     <meta property="og:type" content="website">
     <meta itemprop="name" content="YAML simulation specification :: Documentation for the Alchemist Simulator">
     <meta itemprop="description" content="Specification of the YAML-based language simulations are configured with.">
-    <meta itemprop="wordCount" content="2289">
+    <meta itemprop="wordCount" content="4445">
     <meta itemprop="keywords" content="Yaml,Simulations,Specification,Environment,Extension,Programming">
     <title>YAML simulation specification :: Documentation for the Alchemist Simulator</title>
     <link href="../../reference/yaml/index.xml" rel="alternate" type="application/rss+xml" title="YAML simulation specification :: Documentation for the Alchemist Simulator">
-    <link href="../../images/logo.svg?1790657771" rel="icon" type="image/svg+xml">
-    <link href="../../css/auto-complete/auto-complete.min.css?1790657771" rel="stylesheet">
-    <script src="../../js/auto-complete/auto-complete.min.js?1790657771" defer></script>
-    <script src="../../js/search-lunr.min.js?1790657771" defer></script>
-    <script src="../../js/search.min.js?1790657771" defer></script>
+    <link href="../../images/logo.svg?1790787134" rel="icon" type="image/svg+xml">
+    <link href="../../css/auto-complete/auto-complete.min.css?1790787134" rel="stylesheet">
+    <script src="../../js/auto-complete/auto-complete.min.js?1790787134" defer></script>
+    <script src="../../js/search-lunr.min.js?1790787134" defer></script>
+    <script src="../../js/search.min.js?1790787134" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../searchindex.en.js?1790657771";
+      window.relearn.index_js_url="../../searchindex.en.js?1790787134";
     </script>
-    <script src="../../js/lunr/lunr.min.js?1790657771" defer></script>
-    <script src="../../js/lunr/lunr.stemmer.support.min.js?1790657771" defer></script>
-    <script src="../../js/lunr/lunr.multi.min.js?1790657771" defer></script>
-    <script src="../../js/lunr/lunr.en.min.js?1790657771" defer></script>
+    <script src="../../js/lunr/lunr.min.js?1790787134" defer></script>
+    <script src="../../js/lunr/lunr.stemmer.support.min.js?1790787134" defer></script>
+    <script src="../../js/lunr/lunr.multi.min.js?1790787134" defer></script>
+    <script src="../../js/lunr/lunr.en.min.js?1790787134" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1790657771" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1790657771" rel="stylesheet"></noscript>
-    <link href="../../css/perfect-scrollbar/perfect-scrollbar.min.css?1790657771" rel="stylesheet">
-    <link href="../../css/theme.min.css?1790657771" rel="stylesheet">
-    <link href="../../css/format-html.min.css?1790657771" rel="stylesheet" id="R-format-style">
+    <link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1790787134" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../fonts/fontawesome/css/fontawesome-all.min.css?1790787134" rel="stylesheet"></noscript>
+    <link href="../../css/perfect-scrollbar/perfect-scrollbar.min.css?1790787134" rel="stylesheet">
+    <link href="../../css/theme.min.css?1790787134" rel="stylesheet">
+    <link href="../../css/format-html.min.css?1790787134" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -295,7 +295,239 @@ function onClick(element) {
         <span class="fas fa-chevron-right"></span>
         <strong>Click to show / hide code</strong>
     </a>
-    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"></code></pre></div></div>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#78787e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"> * Copyright (C) 2010-2026, Danilo Pianini and contributors
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"> * listed, for each module, in the respective subproject&#39;s build.gradle.kts file.
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"> * This file is part of Alchemist, and is distributed under the terms of the
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"> * GNU General Public License, with a linking exception,
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"> * as described in the file LICENSE in the Alchemist distribution&#39;s top directory.
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">package</span> it.unibo.alchemist.boundary.loader.syntax
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">internal</span> <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">AlchemistYamlSyntax</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">JavaType</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> type <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> parameters <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>            setOf(
+</span></span><span style="display:flex;"><span>                validDescriptor {
+</span></span><span style="display:flex;"><span>                    mandatory(type)
+</span></span><span style="display:flex;"><span>                    optional(parameters)
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">DependentVariable</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> language <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> formula <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> timeout <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>            <span style="color:#f3f99d">JavaType</span>.validDescriptors +
+</span></span><span style="display:flex;"><span>                setOf(
+</span></span><span style="display:flex;"><span>                    validDescriptor {
+</span></span><span style="display:flex;"><span>                        mandatory(formula)
+</span></span><span style="display:flex;"><span>                        optional(language)
+</span></span><span style="display:flex;"><span>                        optional(timeout)
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                )
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Deployment</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> contents <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> nodes <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> properties <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> programs <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>            setOf(
+</span></span><span style="display:flex;"><span>                validDescriptor {
+</span></span><span style="display:flex;"><span>                    mandatory(<span style="color:#f3f99d">JavaType</span>.type)
+</span></span><span style="display:flex;"><span>                    optional(<span style="color:#f3f99d">JavaType</span>.parameters, contents, properties, nodes, programs)
+</span></span><span style="display:flex;"><span>                    forbidden(<span style="color:#f3f99d">Filter</span>.FILTER)
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">         * in:
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">         *   - type: FilterType
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">         *     parameters: [...]
+</span></span></span><span style="display:flex;"><span><span style="color:#78787e">         */</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Filter</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> FILTER = <span style="color:#5af78e">&#34;in&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>                setOf(
+</span></span><span style="display:flex;"><span>                    validDescriptor {
+</span></span><span style="display:flex;"><span>                        mandatory(<span style="color:#f3f99d">JavaType</span>.type)
+</span></span><span style="display:flex;"><span>                        optional(<span style="color:#f3f99d">JavaType</span>.parameters)
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                )
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Property</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>                setOf(
+</span></span><span style="display:flex;"><span>                    validDescriptor {
+</span></span><span style="display:flex;"><span>                        mandatory(<span style="color:#f3f99d">JavaType</span>.type)
+</span></span><span style="display:flex;"><span>                        optional(<span style="color:#f3f99d">JavaType</span>.parameters, <span style="color:#f3f99d">Filter</span>.FILTER)
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                )
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Contents</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> molecule <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> concentration <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>                setOf(
+</span></span><span style="display:flex;"><span>                    validDescriptor {
+</span></span><span style="display:flex;"><span>                        mandatory(molecule, concentration)
+</span></span><span style="display:flex;"><span>                        optional(<span style="color:#f3f99d">Filter</span>.FILTER)
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                )
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Program</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> program <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> actions <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> conditions <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> TIME_DISTRIBUTION = <span style="color:#5af78e">&#34;time-distribution&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>                setOf(
+</span></span><span style="display:flex;"><span>                    validDescriptor {
+</span></span><span style="display:flex;"><span>                        mandatory(<span style="color:#f3f99d">JavaType</span>.type)
+</span></span><span style="display:flex;"><span>                        optional(<span style="color:#f3f99d">JavaType</span>.parameters, <span style="color:#f3f99d">Filter</span>.FILTER, conditions, TIME_DISTRIBUTION, actions)
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                    validDescriptor {
+</span></span><span style="display:flex;"><span>                        mandatory(program)
+</span></span><span style="display:flex;"><span>                        optional(TIME_DISTRIBUTION, <span style="color:#f3f99d">Filter</span>.FILTER)
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                )
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Export</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> data <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>            setOf(
+</span></span><span style="display:flex;"><span>                validDescriptor { mandatory(<span style="color:#f3f99d">JavaType</span>.type, <span style="color:#f3f99d">JavaType</span>.parameters, <span style="color:#ff6ac1">data</span>) },
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Data</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> time <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> molecule <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> property <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> aggregators <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> precision <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> VALUE_FILTER = <span style="color:#5af78e">&#34;value-filter&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>                <span style="color:#f3f99d">JavaType</span>.validDescriptors +
+</span></span><span style="display:flex;"><span>                    setOf(
+</span></span><span style="display:flex;"><span>                        validDescriptor {
+</span></span><span style="display:flex;"><span>                            mandatory(time)
+</span></span><span style="display:flex;"><span>                            optional(precision)
+</span></span><span style="display:flex;"><span>                        },
+</span></span><span style="display:flex;"><span>                        validDescriptor {
+</span></span><span style="display:flex;"><span>                            mandatory(molecule)
+</span></span><span style="display:flex;"><span>                            optional(<span style="color:#ff6ac1">property</span>, aggregators, precision, VALUE_FILTER)
+</span></span><span style="display:flex;"><span>                        },
+</span></span><span style="display:flex;"><span>                    )
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Environment</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> GLOBAL_PROGRAMS = <span style="color:#5af78e">&#34;global-programs&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">GlobalProgram</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> actions <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">val</span> conditions <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> TIME_DISTRIBUTION = <span style="color:#5af78e">&#34;time-distribution&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>                setOf(
+</span></span><span style="display:flex;"><span>                    validDescriptor {
+</span></span><span style="display:flex;"><span>                        mandatory(<span style="color:#f3f99d">JavaType</span>.type)
+</span></span><span style="display:flex;"><span>                        optional(<span style="color:#f3f99d">JavaType</span>.parameters, actions, conditions, TIME_DISTRIBUTION)
+</span></span><span style="display:flex;"><span>                    },
+</span></span><span style="display:flex;"><span>                )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">fun</span> <span style="color:#57c7ff">toString</span>(): String = <span style="color:#ff6ac1">this</span><span style="color:#ff6ac1">::</span><span style="color:#ff6ac1">class</span>.simpleName <span style="color:#ff6ac1">?:</span> <span style="color:#ff6ac1">this</span>.javaClass.canonicalName
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>            setOf(
+</span></span><span style="display:flex;"><span>                validDescriptor {
+</span></span><span style="display:flex;"><span>                    optional(<span style="color:#f3f99d">JavaType</span>.parameters, GLOBAL_PROGRAMS)
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Layer</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> molecule <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>            setOf(
+</span></span><span style="display:flex;"><span>                validDescriptor {
+</span></span><span style="display:flex;"><span>                    mandatory(<span style="color:#f3f99d">JavaType</span>.type, molecule)
+</span></span><span style="display:flex;"><span>                    optional(<span style="color:#f3f99d">JavaType</span>.parameters)
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Monitor</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>            setOf(
+</span></span><span style="display:flex;"><span>                validDescriptor {
+</span></span><span style="display:flex;"><span>                    mandatory(<span style="color:#f3f99d">JavaType</span>.type)
+</span></span><span style="display:flex;"><span>                    optional(<span style="color:#f3f99d">JavaType</span>.parameters)
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Seeds</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> scenario <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> simulation <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>            setOf(
+</span></span><span style="display:flex;"><span>                validDescriptor { optional(simulation, scenario) },
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">object</span> <span style="color:#f3f99d">Variable</span> : SyntaxElement {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> min <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> max <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> default <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">val</span> step <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>            <span style="color:#f3f99d">JavaType</span>.validDescriptors +
+</span></span><span style="display:flex;"><span>                setOf(
+</span></span><span style="display:flex;"><span>                    validDescriptor { mandatory(min, max, default, step) },
+</span></span><span style="display:flex;"><span>                )
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> deployments <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> engine <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> environment <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> export <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> incarnation <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> launcher <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> layers <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> monitors <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> LINKING_RULES = <span style="color:#5af78e">&#34;network-model&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">const</span> <span style="color:#ff6ac1">val</span> REMOTE_DEPENDENCIES = <span style="color:#5af78e">&#34;remote-dependencies&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> seeds <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> terminate <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">val</span> variables <span style="color:#ff6ac1">by</span> OwnName
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">override</span> <span style="color:#ff6ac1">val</span> validDescriptors =
+</span></span><span style="display:flex;"><span>        setOf(
+</span></span><span style="display:flex;"><span>            validDescriptor {
+</span></span><span style="display:flex;"><span>                mandatory(incarnation)
+</span></span><span style="display:flex;"><span>                optional(*validKeys.toTypedArray())
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">private</span> <span style="color:#ff6ac1">fun</span> <span style="color:#57c7ff">validDescriptor</span>(configuration: <span style="color:#f3f99d">DescriptorBuilder</span>.() <span style="color:#ff6ac1">-&gt;</span> Unit): <span style="color:#f3f99d">SyntaxElement</span>.ValidDescriptor =
+</span></span><span style="display:flex;"><span>        DescriptorBuilder().apply(configuration).build()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
 </div>
 <h3 id="types-of-entries">Types of entries</h3>
 <table>
@@ -438,7 +670,11 @@ works, only a (reasonable) subset of all possible overloads gets generated, and 
             <span class="fas fa-chevron-right"></span>
             <strong>Click to show / hide code</strong>
         </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Point
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>]
+    </span></span></code></pre></div></div>
     </div></li>
 <li>Construction of variables with named parameters
 
@@ -464,7 +700,20 @@ works, only a (reasonable) subset of all possible overloads gets generated, and 
             <span class="fas fa-chevron-right"></span>
             <strong>Click to show / hide code</strong>
         </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: GraphStreamDeployment
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>:
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">nodeCount</span>: <span style="color:#ff9f43">1000</span>
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">offsetX</span>: -<span style="color:#ff9f43">10</span>
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">offsetY</span>: <span style="color:#ff9f43">10</span>
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">zoom</span>: <span style="color:#ff9f43">100</span>
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">layoutQuality</span>: <span style="color:#ff9f43">0.2</span>
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">generatorName</span>: Lobster
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">createLinks</span>: <span style="color:#ff6ac1">true</span>
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">15</span>]
+    </span></span></code></pre></div></div>
     </div></li>
 </ul>
 <h4 id="counter-examples">Counter-examples</h4>
@@ -496,7 +745,29 @@ in order to provide the latter, the designer must also provide the former.
             <span class="fas fa-chevron-right"></span>
             <strong>Click to show / hide code</strong>
         </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">6</span>]
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Rectangle
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>:
+    </span></span><span style="display:flex;"><span>    [<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">100</span>]
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">contents</span>:
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: grain
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff9f43">5</span>
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">layers</span>:
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">molecule</span>: layer
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: BidimensionalGaussianLayer
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">centerX</span>: <span style="color:#ff9f43">30</span>
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">centerY</span>: <span style="color:#ff9f43">30</span>
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">norm</span>: <span style="color:#ff9f43">30</span>
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">sigmaX</span>: <span style="color:#ff9f43">15</span>
+    </span></span></code></pre></div></div>
     </div></li>
 </ul>
 <hr>
@@ -550,7 +821,8 @@ through a
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: biochemistry
+  </span></span></code></pre></div></div>
   </div></li>
 <li>Minimal Protelis specification
 
@@ -576,7 +848,8 @@ through a
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+  </span></span></code></pre></div></div>
   </div></li>
 <li>Minimal SAPERE specification
 
@@ -602,7 +875,8 @@ through a
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+  </span></span></code></pre></div></div>
   </div></li>
 </ul>
 <hr>
@@ -641,7 +915,8 @@ through a
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: biochemistry
+  </span></span></code></pre></div></div>
   </div></li>
 <li>Minimal Protelis specification
 
@@ -667,7 +942,8 @@ through a
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+  </span></span></code></pre></div></div>
   </div></li>
 <li>Minimal SAPERE specification
 
@@ -693,7 +969,8 @@ through a
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+  </span></span></code></pre></div></div>
   </div></li>
 </ul>
 <hr>
@@ -756,7 +1033,11 @@ with additional keys.</p>
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Point
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>]
+  </span></span></code></pre></div></div>
   </div></li>
 <li>Deployment of three nodes
 
@@ -782,7 +1063,16 @@ with additional keys.</p>
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere <span style="color:#78787e"># The incarnation is always mandatory</span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance <span style="color:#78787e"># Loads a class with this name implementing LinkingRule</span>
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>] <span style="color:#78787e"># Connection radius (parameter of a ConnectWithinDistance&#39;s constructor)</span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+  </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point <span style="color:#78787e"># Loads a class with this name implementing Deployment</span>
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>] <span style="color:#78787e"># Coordinates</span>
+  </span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">Point, parameters</span>: [<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
+  </span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">Point, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
+  </span></span></code></pre></div></div>
   </div></li>
 <li>Deployment of three nodes, but nesting the traversable
 
@@ -808,7 +1098,17 @@ with additional keys.</p>
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">the_bottom_point</span>:
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: Point
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>]
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">the_top_points</span>:
+  </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Point
+  </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>]
+  </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Point
+  </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>]
+  </span></span></code></pre></div></div>
   </div></li>
 <li>Deployment of three nodes through <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.deployments/-specific-positions/"><code>SpecificPositions</code></a>.
 
@@ -834,7 +1134,11 @@ with additional keys.</p>
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: SpecificPositions
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [[<span style="color:#ff9f43">0</span>,<span style="color:#ff9f43">1</span>],[<span style="color:#ff9f43">2</span>,<span style="color:#ff9f43">2</span>],[<span style="color:#ff9f43">3</span>,<span style="color:#ff9f43">4</span>]]
+  </span></span></code></pre></div></div>
   </div></li>
 <li><a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.deployments/-grid/"><code>Grid</code></a> centered in <code>(0, 0)</code>, with nodes distanced of <code>0.25</code> both horizontally and vertically.
 
@@ -860,7 +1164,11 @@ with additional keys.</p>
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Grid
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>]
+  </span></span></code></pre></div></div>
   </div></li>
 <li>Irregular <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.deployments/-grid/"><code>Grid</code></a> centered in <code>(0, 0)</code>, with nodes distanced of <code>0.25</code> both horizontally and vertically, randomly perturbed of (±<code>0.1</code> distance units).
 
@@ -886,7 +1194,11 @@ with additional keys.</p>
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Grid
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.1</span>, <span style="color:#ff9f43">0.1</span>]
+  </span></span></code></pre></div></div>
   </div></li>
 <li>Nodes located randomly inside a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.deployments/-circle/"><code>Circle</code></a>
 
@@ -912,7 +1224,11 @@ with additional keys.</p>
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Circle
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1000</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>]
+  </span></span></code></pre></div></div>
   </div></li>
 <li>Nodes located randomly inside a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.deployments/-rectangle/"><code>Rectangle</code></a>
 
@@ -938,7 +1254,11 @@ with additional keys.</p>
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Rectangle
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1000</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">20</span>]
+  </span></span></code></pre></div></div>
   </div></li>
 <li>Nodes located randomly inside a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.deployments/-polygon/"><code>Polygon</code></a> delimiting the Venice Lagoon
 
@@ -964,7 +1284,29 @@ with additional keys.</p>
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type</span>: OSMEnvironment }
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">1000</span>] }
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_venice_lagoon</span>: <span style="color:#78787e">&amp;lagoon</span>
+  </span></span><span style="display:flex;"><span>  [[<span style="color:#ff9f43">45.2038121</span>, <span style="color:#ff9f43">12.2504425</span>], [<span style="color:#ff9f43">45.2207426</span>, <span style="color:#ff9f43">12.2641754</span>], [<span style="color:#ff9f43">45.2381516</span>, <span style="color:#ff9f43">12.2806549</span>],
+  </span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.2570053</span>, <span style="color:#ff9f43">12.2895813</span>], [<span style="color:#ff9f43">45.276336</span>, <span style="color:#ff9f43">12.2957611</span>], [<span style="color:#ff9f43">45.3029049</span>, <span style="color:#ff9f43">12.2991943</span>],
+  </span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3212544</span>, <span style="color:#ff9f43">12.3046875</span>], [<span style="color:#ff9f43">45.331875</span>, <span style="color:#ff9f43">12.3040009</span>], [<span style="color:#ff9f43">45.3453893</span>, <span style="color:#ff9f43">12.3040009</span>],
+  </span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3502151</span>, <span style="color:#ff9f43">12.3156738</span>], [<span style="color:#ff9f43">45.3622776</span>, <span style="color:#ff9f43">12.3232269</span>], [<span style="color:#ff9f43">45.3719259</span>, <span style="color:#ff9f43">12.3300934</span>],
+  </span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3830193</span>, <span style="color:#ff9f43">12.3348999</span>], [<span style="color:#ff9f43">45.395557</span>, <span style="color:#ff9f43">12.3445129</span>], [<span style="color:#ff9f43">45.3998964</span>, <span style="color:#ff9f43">12.3300934</span>],
+  </span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.4018249</span>, <span style="color:#ff9f43">12.3136139</span>], [<span style="color:#ff9f43">45.4105023</span>, <span style="color:#ff9f43">12.3122406</span>], [<span style="color:#ff9f43">45.4167685</span>, <span style="color:#ff9f43">12.311554</span>],
+  </span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.4278531</span>, <span style="color:#ff9f43">12.3012543</span>], [<span style="color:#ff9f43">45.4408627</span>, <span style="color:#ff9f43">12.2902679</span>], [<span style="color:#ff9f43">45.4355628</span>, <span style="color:#ff9f43">12.2772217</span>],
+  </span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.4206242</span>, <span style="color:#ff9f43">12.2703552</span>], [<span style="color:#ff9f43">45.3994143</span>, <span style="color:#ff9f43">12.2744751</span>], [<span style="color:#ff9f43">45.3738553</span>, <span style="color:#ff9f43">12.2676086</span>],
+  </span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.3579354</span>, <span style="color:#ff9f43">12.2614288</span>], [<span style="color:#ff9f43">45.3429763</span>, <span style="color:#ff9f43">12.2497559</span>], [<span style="color:#ff9f43">45.3198059</span>, <span style="color:#ff9f43">12.2408295</span>],
+  </span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.2975921</span>, <span style="color:#ff9f43">12.2346497</span>], [<span style="color:#ff9f43">45.2802014</span>, <span style="color:#ff9f43">12.2408295</span>], [<span style="color:#ff9f43">45.257972</span>, <span style="color:#ff9f43">12.233963</span>],
+  </span></span><span style="display:flex;"><span>   [<span style="color:#ff9f43">45.2038121</span>, <span style="color:#ff9f43">12.2504425</span>]]
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Polygon
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">500</span>, <span style="color:#78787e">*lagoon]</span>
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
+  </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">10</span>
+  </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: Event
+  </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">actions</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">BrownianMove, parameters</span>: [<span style="color:#ff9f43">0.0005</span>]}
+  </span></span></code></pre></div></div>
   </div></li>
 </ul>
 <hr>
@@ -1006,7 +1348,34 @@ If left unspecified, nodes get created through
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ContinuousPhysics2DEnvironment
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">seeds</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">scenario</span>: <span style="color:#ff9f43">0</span>
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">simulation</span>: <span style="color:#ff9f43">1</span>
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+  </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Human
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;elderly&#34;</span>, <span style="color:#5af78e">&#34;female&#34;</span>]
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: HeterogeneousPedestrian
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social
+  </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">20</span>]
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">properties</span>:
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Human
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#5af78e">&#34;child&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span>]
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: HeterogeneousPedestrian
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Perceptive2D
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CircularArea
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Social</span></span></code></pre></div></div>
   </div></li>
 </ul>
 <h3 id="deploymentproperties"><code>deployment.properties</code></h3>
@@ -1058,7 +1427,36 @@ If left unspecified, nodes get created through
             <span class="fas fa-chevron-right"></span>
             <strong>Click to show / hide code</strong>
         </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">7</span>]
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_gradient</span>: <span style="color:#78787e">&amp;gradient</span>
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: Event
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">actions</span>:
+    </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: RunProtelisProgram
+    </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [distanceTo, 1.01]
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">program</span>: send
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>,<span style="color:#ff9f43">0</span>]
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">contents</span>:
+    </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: source
+    </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff6ac1">false</span>
+    </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: enabled
+    </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff6ac1">true</span>
+    </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: data
+    </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff9f43">1</span> / 0
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*gradient</span>
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">terminate</span>:
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: StepCount
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: <span style="color:#ff9f43">5000</span>
+    </span></span></code></pre></div></div>
     </div></li>
 <li>Injection of a molecule only in those nodes located inside a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.positionfilters/-rectangle/"><code>Rectangle</code></a>
 
@@ -1084,7 +1482,21 @@ If left unspecified, nodes get created through
             <span class="fas fa-chevron-right"></span>
             <strong>Click to show / hide code</strong>
         </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Grid
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.1</span>, <span style="color:#ff9f43">0.1</span>] <span style="color:#78787e"># A perturbed grid of devices</span>
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">contents</span>:
+    </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;{hit, 0}&#34;</span> <span style="color:#78787e"># Everywhere, no one has been hit</span>
+    </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">in</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">Rectangle, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, -<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>] } <span style="color:#78787e"># Inside this shape...</span>
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">molecule</span>: ball <span style="color:#78787e"># ...every node has a ball</span>
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
+    </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span> <span style="color:#78787e"># This is a frequency, time distribution type is left to the incarnation</span>
+    </span></span><span style="display:flex;"><span>      <span style="color:#78787e"># &#39;program&#39; specs are passed down to the incarnation for being interpreted as reactions</span>
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{ball} {hit, N} --&gt; {hit, N + 1} {launching}&#34;</span> <span style="color:#78787e"># If hit, count the hit</span>
+    </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{launching} --&gt; +{ball}&#34;</span> <span style="color:#78787e"># As soon as possible, throw the ball to a neighbor</span>
+    </span></span></code></pre></div></div>
     </div></li>
 </ul>
 <h3 id="contentmolecule"><code>content.molecule</code></h3>
@@ -1156,7 +1568,8 @@ using the same syntax of <a href="../../reference/yaml/index.html#arbitrary-clas
             <span class="fas fa-chevron-right"></span>
             <strong>Click to show / hide code</strong>
         </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    </span></span></code></pre></div></div>
     </div></li>
 <li>Explicitly builds a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a> solely with the contextual parameters
 
@@ -1182,7 +1595,10 @@ using the same syntax of <a href="../../reference/yaml/index.html#arbitrary-clas
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+  </span></span></code></pre></div></div>
   </div></li>
 <li>Explicitly builds a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a> using the qualified type name using only the contextual parameters
 
@@ -1208,7 +1624,10 @@ using the same syntax of <a href="../../reference/yaml/index.html#arbitrary-clas
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: it.unibo.alchemist.model.environments.Continuous2DEnvironment
+  </span></span></code></pre></div></div>
   </div></li>
 <li>Explicitly builds a <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.environments/-continuous2-d-environment/"><code>Continuous2DEnvironment</code></a> explicitly specifying that no parameters but the contextual ones should be used
 
@@ -1234,7 +1653,11 @@ using the same syntax of <a href="../../reference/yaml/index.html#arbitrary-clas
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: []
+  </span></span></code></pre></div></div>
   </div></li>
 </ul>
 <hr>
@@ -1382,7 +1805,20 @@ using the <a href="../../reference/yaml/index.html#arbitrary-class-loading-syste
             <span class="fas fa-chevron-right"></span>
             <strong>Click to show / hide code</strong>
         </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: []
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">layers</span>:
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: StepLayer
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">0</span>]
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: A
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: StepLayer
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">2</span>, -<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">100</span>]
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: B
+    </span></span></code></pre></div></div>
     </div></li>
 <li>Creation of two <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.layers/-bidimensional-gaussian-layer/"><code>BidimensionalGaussianLayer</code></a>s:
 
@@ -1408,7 +1844,66 @@ using the <a href="../../reference/yaml/index.html#arbitrary-class-loading-syste
             <span class="fas fa-chevron-right"></span>
             <strong>Click to show / hide code</strong>
         </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_danger</span>: <span style="color:#78787e">&amp;danger</span>
+    </span></span><span style="display:flex;"><span>  danger
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_target</span>: <span style="color:#78787e">&amp;target</span>
+    </span></span><span style="display:flex;"><span>  targe
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ContinuousPhysics2DEnvironment
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">layers</span>:
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: BidimensionalGaussianLayer
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: <span style="color:#78787e">*danger</span>
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">80</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">20</span>]
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: BidimensionalGaussianLayer
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: <span style="color:#78787e">*target</span>
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">50</span>]
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">seeds</span>:
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">scenario</span>: <span style="color:#ff9f43">0</span>
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">simulation</span>: <span style="color:#ff9f43">1</span>
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_reactions</span>: <span style="color:#78787e">&amp;behavior</span>
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">time-distribution</span>:
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: DiracComb
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2.0</span>]
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: BlendedSteering
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">actions</span>:
+    </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CognitiveAgentAvoidLayer
+    </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*danger]</span>
+    </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CognitiveAgentFollowLayer
+    </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*target]</span>
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">conditions</span>:
+    </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: WantToEscape
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">time-distribution</span>:
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: DiracComb
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>]
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: CognitiveBehavior
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">actions</span>:
+    </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: HeadTowardRandomDirection
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_nodes</span>: <span style="color:#78787e">&amp;nodes</span>
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">properties</span>:
+    </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Human
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [ <span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span> ]
+    </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: CognitivePedestrian
+    </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Cognitive2D
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [ <span style="color:#78787e">*danger</span> ]
+    </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Perceptive2D
+    </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: CircularArea
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*behavior</span>
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">25</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">8</span>]
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;&lt;</span>: <span style="color:#78787e">*nodes</span>
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">75</span>, <span style="color:#ff9f43">60</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>]
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;&lt;</span>: <span style="color:#78787e">*nodes</span>
+    </span></span></code></pre></div></div>
     </div></li>
 </ul>
 <hr>
@@ -1440,7 +1935,20 @@ using the <a href="../../reference/yaml/index.html#arbitrary-class-loading-syste
             <span class="fas fa-chevron-right"></span>
             <strong>Click to show / hide code</strong>
         </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: []
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">layers</span>:
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: StepLayer
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">0</span>]
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: A
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: StepLayer
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">2</span>, -<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">100</span>]
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: B
+    </span></span></code></pre></div></div>
     </div></li>
 <li>Creation of two <a href="../../reference/kdoc/alchemist/it.unibo.alchemist.model.layers/-bidimensional-gaussian-layer/"><code>BidimensionalGaussianLayer</code></a>s:
 
@@ -1466,7 +1974,66 @@ using the <a href="../../reference/yaml/index.html#arbitrary-class-loading-syste
             <span class="fas fa-chevron-right"></span>
             <strong>Click to show / hide code</strong>
         </a>
-        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+        <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_danger</span>: <span style="color:#78787e">&amp;danger</span>
+    </span></span><span style="display:flex;"><span>  danger
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_target</span>: <span style="color:#78787e">&amp;target</span>
+    </span></span><span style="display:flex;"><span>  targe
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ContinuousPhysics2DEnvironment
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">layers</span>:
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: BidimensionalGaussianLayer
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: <span style="color:#78787e">*danger</span>
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">80</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">20</span>]
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: BidimensionalGaussianLayer
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: <span style="color:#78787e">*target</span>
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">50</span>]
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">seeds</span>:
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">scenario</span>: <span style="color:#ff9f43">0</span>
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">simulation</span>: <span style="color:#ff9f43">1</span>
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_reactions</span>: <span style="color:#78787e">&amp;behavior</span>
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">time-distribution</span>:
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: DiracComb
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2.0</span>]
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: BlendedSteering
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">actions</span>:
+    </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CognitiveAgentAvoidLayer
+    </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*danger]</span>
+    </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: CognitiveAgentFollowLayer
+    </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*target]</span>
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">conditions</span>:
+    </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: WantToEscape
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">time-distribution</span>:
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: DiracComb
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0.5</span>]
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: CognitiveBehavior
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">actions</span>:
+    </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: HeadTowardRandomDirection
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">_nodes</span>: <span style="color:#78787e">&amp;nodes</span>
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">properties</span>:
+    </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Human
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [ <span style="color:#5af78e">&#34;adult&#34;</span>, <span style="color:#5af78e">&#34;male&#34;</span> ]
+    </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: CognitivePedestrian
+    </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Cognitive2D
+    </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">parameters</span>: [ <span style="color:#78787e">*danger</span> ]
+    </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: Perceptive2D
+    </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">type</span>: CircularArea
+    </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>: <span style="color:#78787e">*behavior</span>
+    </span></span><span style="display:flex;"><span>
+    </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">25</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">8</span>]
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;&lt;</span>: <span style="color:#78787e">*nodes</span>
+    </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Circle
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">75</span>, <span style="color:#ff9f43">60</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">10</span>]
+    </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">&lt;&lt;</span>: <span style="color:#78787e">*nodes</span>
+    </span></span></code></pre></div></div>
     </div></li>
 </ul>
 <hr>
@@ -1500,7 +2067,19 @@ using the <a href="../../reference/yaml/index.html#arbitrary-class-loading-syste
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">global-programs</span>:
+  </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>:
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">type</span>: DiracComb
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1.0</span>]
+  </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: GlobalTestReaction
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">monitors</span>:
+  </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: another.location.SimpleMonitor
+  </span></span></code></pre></div></div>
   </div></li>
 </ul>
 <hr>
@@ -1532,7 +2111,19 @@ using the <a href="../../reference/yaml/index.html#arbitrary-class-loading-syste
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Continuous2DEnvironment
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">global-programs</span>:
+  </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>:
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">type</span>: DiracComb
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">1.0</span>]
+  </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">type</span>: GlobalTestReaction
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">monitors</span>:
+  </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: another.location.SimpleMonitor
+  </span></span></code></pre></div></div>
   </div></li>
 </ul>
 <hr>
@@ -1568,7 +2159,16 @@ and no node will have any neighbor.</p>
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere <span style="color:#78787e"># The incarnation is always mandatory</span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance <span style="color:#78787e"># Loads a class with this name implementing LinkingRule</span>
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">2</span>] <span style="color:#78787e"># Connection radius (parameter of a ConnectWithinDistance&#39;s constructor)</span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+  </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Point <span style="color:#78787e"># Loads a class with this name implementing Deployment</span>
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>] <span style="color:#78787e"># Coordinates</span>
+  </span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">Point, parameters</span>: [<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
+  </span></span><span style="display:flex;"><span>  - { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">Point, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">0.85</span>] }
+  </span></span></code></pre></div></div>
   </div></li>
 </ul>
 <hr>
@@ -1645,7 +2245,21 @@ using the <a href="../../reference/yaml/index.html#arbitrary-class-loading-syste
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ConnectWithinDistance, parameters</span>: [<span style="color:#ff9f43">0.5</span>] }
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Grid
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [-<span style="color:#ff9f43">5</span>, -<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.25</span>, <span style="color:#ff9f43">0.1</span>, <span style="color:#ff9f43">0.1</span>] <span style="color:#78787e"># A perturbed grid of devices</span>
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">contents</span>:
+  </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;{hit, 0}&#34;</span> <span style="color:#78787e"># Everywhere, no one has been hit</span>
+  </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">in</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">Rectangle, parameters</span>: [-<span style="color:#ff9f43">0.5</span>, -<span style="color:#ff9f43">0.5</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>] } <span style="color:#78787e"># Inside this shape...</span>
+  </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">molecule</span>: ball <span style="color:#78787e"># ...every node has a ball</span>
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
+  </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span> <span style="color:#78787e"># This is a frequency, time distribution type is left to the incarnation</span>
+  </span></span><span style="display:flex;"><span>      <span style="color:#78787e"># &#39;program&#39; specs are passed down to the incarnation for being interpreted as reactions</span>
+  </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{ball} {hit, N} --&gt; {hit, N + 1} {launching}&#34;</span> <span style="color:#78787e"># If hit, count the hit</span>
+  </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: <span style="color:#5af78e">&#34;{launching} --&gt; +{ball}&#34;</span> <span style="color:#78787e"># As soon as possible, throw the ball to a neighbor</span>
+  </span></span></code></pre></div></div>
   </div></li>
 </ul>
 <hr>
@@ -1712,7 +2326,32 @@ using the <a href="../../reference/yaml/index.html#arbitrary-class-loading-syste
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: ConnectWithinDistance
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">30</span>]
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+  </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: Rectangle
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">contents</span>:
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;source&#34;</span>
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">concentration</span>: <span style="color:#ff6ac1">true</span>
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">in</span>:
+  </span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">type</span>: Circle
+  </span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">107.96487911806524</span>, <span style="color:#ff9f43">102.49167432603535</span>, <span style="color:#ff9f43">10</span>]
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">programs</span>:
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span> <span style="color:#78787e"># This is a frequency</span>
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">           import protelis:coord:spreading
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">           distanceTo(self.getDeviceUID().getId() == 0)</span>
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">program</span>: send
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">terminate</span>:
+  </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: AfterTime
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: <span style="color:#ff9f43">1</span>
+  </span></span></code></pre></div></div>
   </div>
 
   <script>
@@ -1737,7 +2376,69 @@ using the <a href="../../reference/yaml/index.html#arbitrary-class-loading-syste
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span>
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">image_name</span>: { <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;&#39;chiaravalle.png&#39;&#34;</span> }
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">image_path</span>: <span style="color:#78787e">&amp;image_path</span>
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: &gt;<span style="color:#5af78e">
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">      import java.io.File
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">      File(&#34;../..&#34;).walkTopDown().find { image_name in it.name }?.absolutePath ?: image_name</span>
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">walking_speed</span>: <span style="color:#78787e">&amp;walk-speed</span> { <span style="color:#ff6ac1">default</span>: <span style="color:#ff6ac1">1.4, min</span>: <span style="color:#ff6ac1">1, max</span>: <span style="color:#ff6ac1">2, step</span>: <span style="color:#ff9f43">0.1</span> }
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">seed</span>: <span style="color:#78787e">&amp;seed</span> { <span style="color:#ff6ac1">default</span>: <span style="color:#ff6ac1">0, min</span>: <span style="color:#ff6ac1">0, max</span>: <span style="color:#ff6ac1">99, step</span>: <span style="color:#ff9f43">1</span> }
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">scenario_seed</span>: <span style="color:#78787e">&amp;scenario_seed</span> { <span style="color:#ff6ac1">formula</span>: (seed + 31) * seed }
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">people_count</span>: <span style="color:#78787e">&amp;people_count</span>
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: GeometricVariable
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">300</span>, <span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">500</span>, <span style="color:#ff9f43">9</span>]
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">seeds</span>: { <span style="color:#ff6ac1">simulation</span>: <span style="color:#78787e">*seed,</span> <span style="color:#ff6ac1">scenario</span>: <span style="color:#78787e">*scenario_seed}</span>
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">export</span>:
+  </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: CSVExporter
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
+  </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">fileNameRoot</span>: <span style="color:#5af78e">&#34;00-testing_csv_export&#34;</span>
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
+  </span></span><span style="display:flex;"><span>      - time
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">aggregators</span>: [ mean, max, min, variance, median ]
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">value-filter</span>: onlyfinite
+  </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: CSVExporter
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
+  </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">fileNameRoot</span>: <span style="color:#5af78e">&#34;fixed-decimals&#34;</span>
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">type</span>: Time
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>:
+  </span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">precision</span>: <span style="color:#ff9f43">2</span>
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">property</span>: <span style="color:#5af78e">&#34;self.nextRandomDouble()&#34;</span>
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">precision</span>: <span style="color:#ff9f43">2</span>
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">aggregators</span>: [ mean, max, min, variance, median ]
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">value-filter</span>: onlyfinite
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ImageEnvironment, parameters</span>: [<span style="color:#78787e">*image_path,</span> <span style="color:#78787e">*zoom]</span> }
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ObstaclesBreakConnection, parameters</span>: [<span style="color:#ff9f43">5</span>] }
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Rectangle
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*people_count,</span> <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
+  </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
+  </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        import protelis:coord:spreading
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let source = [110, 325]
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let vector = self.getCoordinates() - source
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let distance = hypot(vector.get(0), vector.get(1))
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        distanceTo(distance &lt; 50)</span>
+  </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: send
+  </span></span><span style="display:flex;"><span>    - { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">Event, time-distribution</span>: <span style="color:#ff6ac1">1, actions</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">terminate</span>:
+  </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: AfterTime
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: <span style="color:#ff9f43">10</span></span></span></code></pre></div></div>
   </div>
 
   <script>
@@ -1762,7 +2463,54 @@ using the <a href="../../reference/yaml/index.html#arbitrary-class-loading-syste
           <span class="fas fa-chevron-right"></span>
           <strong>Click to show / hide code</strong>
       </a>
-      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"></code></pre></div></div>
+      <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">variables</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">zoom</span>: <span style="color:#78787e">&amp;zoom</span>
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: <span style="color:#ff9f43">0.1</span>
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">image_name</span>: { <span style="color:#ff6ac1">formula</span>: <span style="color:#5af78e">&#34;&#39;chiaravalle.png&#39;&#34;</span> }
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">image_path</span>: <span style="color:#78787e">&amp;image_path</span>
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: &gt;<span style="color:#5af78e">
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">      import java.io.File
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">      File(&#34;../..&#34;).walkTopDown().find { image_name in it.name }?.absolutePath ?: image_name</span>
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">walking_speed</span>: <span style="color:#78787e">&amp;walk-speed</span> { <span style="color:#ff6ac1">default</span>: <span style="color:#ff6ac1">1.4, min</span>: <span style="color:#ff6ac1">1, max</span>: <span style="color:#ff6ac1">2, step</span>: <span style="color:#ff9f43">0.1</span> }
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">seed</span>: <span style="color:#78787e">&amp;seed</span> { <span style="color:#ff6ac1">default</span>: <span style="color:#ff6ac1">0, min</span>: <span style="color:#ff6ac1">0, max</span>: <span style="color:#ff6ac1">99, step</span>: <span style="color:#ff9f43">1</span> }
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">scenario_seed</span>: <span style="color:#78787e">&amp;scenario_seed</span> { <span style="color:#ff6ac1">formula</span>: (seed + 31) * seed }
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">people_count</span>: <span style="color:#78787e">&amp;people_count</span>
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">type</span>: GeometricVariable
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">50</span>, <span style="color:#ff9f43">500</span>, <span style="color:#ff9f43">9</span>]
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">seeds</span>: { <span style="color:#ff6ac1">simulation</span>: <span style="color:#78787e">*seed,</span> <span style="color:#ff6ac1">scenario</span>: <span style="color:#78787e">*scenario_seed}</span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">export</span>:
+  </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: MongoDBExporter
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
+  </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">uri</span>: <span style="color:#5af78e">&#34;mongodb://localhost:27017/&#34;</span>
+  </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">dbName</span>: <span style="color:#5af78e">&#34;test&#34;</span>
+  </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">interval</span>: <span style="color:#ff9f43">2.0</span>
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">data</span>:
+  </span></span><span style="display:flex;"><span>      - time
+  </span></span><span style="display:flex;"><span>      - <span style="color:#ff6ac1">molecule</span>: <span style="color:#5af78e">&#34;default_module:default_program&#34;</span>
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">aggregators</span>: [ mean, max, min, variance, median ]
+  </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">value-filter</span>: onlyfinite
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ImageEnvironment, parameters</span>: [<span style="color:#78787e">*image_path,</span> <span style="color:#78787e">*zoom]</span> }
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">network-model</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">ObstaclesBreakConnection, parameters</span>: [<span style="color:#ff9f43">50</span>] }
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Rectangle
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#78787e">*people_count,</span> <span style="color:#ff9f43">62</span>, <span style="color:#ff9f43">15</span>, <span style="color:#ff9f43">95</span>, <span style="color:#ff9f43">200</span>]
+  </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">programs</span>:
+  </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">time-distribution</span>: <span style="color:#ff9f43">1</span>
+  </span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">program</span>: &gt;<span style="color:#5af78e">
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        import protelis:coord:spreading
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let source = [110, 325]
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let vector = self.getCoordinates() - source
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        let distance = hypot(vector.get(0), vector.get(1))
+  </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        distanceTo(distance &lt; 50)</span>
+  </span></span><span style="display:flex;"><span>    - <span style="color:#ff6ac1">program</span>: send
+  </span></span><span style="display:flex;"><span>    - { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">Event, time-distribution</span>: <span style="color:#ff6ac1">1, actions</span>: { <span style="color:#ff6ac1">type</span>: <span style="color:#ff6ac1">LevyWalk, parameters</span>: [<span style="color:#78787e">*walk-speed]</span> } }
+  </span></span><span style="display:flex;"><span>
+  </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">terminate</span>:
+  </span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: AfterTime
+  </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>: <span style="color:#ff9f43">3</span>
+  </span></span></code></pre></div></div>
   </div></li>
 </ul>
 <h3 id="variable"><code>variable</code></h3>
@@ -1944,7 +2692,7 @@ Defaults to 1000ms.</p>
           </ul>
         </div>
 <div id="R-footer"><div class="padding">
-    <div><strong>Alchemist Simulator 43.1.37</strong></div>
+    <div><strong>Alchemist Simulator 43.1.38</strong></div>
     <br>
     <a
         class="github-button"
@@ -1976,22 +2724,22 @@ Defaults to 1000ms.</p>
 </div></div>
       </div>
     </aside>
-    <script src="../../js/js-yaml/js-yaml.min.js?1790657771" defer></script>
-    <script src="../../js/d3/d3-color.min.js?1790657771" defer></script>
-    <script src="../../js/d3/d3-dispatch.min.js?1790657771" defer></script>
-    <script src="../../js/d3/d3-drag.min.js?1790657771" defer></script>
-    <script src="../../js/d3/d3-ease.min.js?1790657771" defer></script>
-    <script src="../../js/d3/d3-interpolate.min.js?1790657771" defer></script>
-    <script src="../../js/d3/d3-selection.min.js?1790657771" defer></script>
-    <script src="../../js/d3/d3-timer.min.js?1790657771" defer></script>
-    <script src="../../js/d3/d3-transition.min.js?1790657771" defer></script>
-    <script src="../../js/d3/d3-zoom.min.js?1790657771" defer></script>
-    <script src="../../js/mermaid/mermaid.min.js?1790657771" defer></script>
+    <script src="../../js/js-yaml/js-yaml.min.js?1790787134" defer></script>
+    <script src="../../js/d3/d3-color.min.js?1790787134" defer></script>
+    <script src="../../js/d3/d3-dispatch.min.js?1790787134" defer></script>
+    <script src="../../js/d3/d3-drag.min.js?1790787134" defer></script>
+    <script src="../../js/d3/d3-ease.min.js?1790787134" defer></script>
+    <script src="../../js/d3/d3-interpolate.min.js?1790787134" defer></script>
+    <script src="../../js/d3/d3-selection.min.js?1790787134" defer></script>
+    <script src="../../js/d3/d3-timer.min.js?1790787134" defer></script>
+    <script src="../../js/d3/d3-transition.min.js?1790787134" defer></script>
+    <script src="../../js/d3/d3-zoom.min.js?1790787134" defer></script>
+    <script src="../../js/mermaid/mermaid.min.js?1790787134" defer></script>
     <script>
       window.relearn.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../js/clipboard/clipboard.min.js?1790657771" defer></script>
-    <script src="../../js/perfect-scrollbar/perfect-scrollbar.min.js?1790657771" defer></script>
-    <script src="../../js/theme.min.js?1790657771" defer></script>
+    <script src="../../js/clipboard/clipboard.min.js?1790787134" defer></script>
+    <script src="../../js/perfect-scrollbar/perfect-scrollbar.min.js?1790787134" defer></script>
+    <script src="../../js/theme.min.js?1790787134" defer></script>
   </body>
 </html>
