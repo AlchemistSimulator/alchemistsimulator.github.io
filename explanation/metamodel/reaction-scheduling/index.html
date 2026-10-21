@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.168.0">
+    <meta name="generator" content="Relearn 8.2.0">
+    <meta name="description" content="How reactions turn model changes and time samples into observable occurrence times.">
+    <meta name="author" content="Danilo Pianini">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Reaction Scheduling and Ownership :: Documentation for the Alchemist Simulator">
+    <meta name="twitter:description" content="How reactions turn model changes and time samples into observable occurrence times.">
+    <meta property="og:url" content="https://alchemistsimulator.github.io/explanation/metamodel/reaction-scheduling/index.html">
+    <meta property="og:site_name" content="Documentation for the Alchemist Simulator">
+    <meta property="og:title" content="Reaction Scheduling and Ownership :: Documentation for the Alchemist Simulator">
+    <meta property="og:description" content="How reactions turn model changes and time samples into observable occurrence times.">
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Reaction Scheduling and Ownership :: Documentation for the Alchemist Simulator">
+    <meta itemprop="description" content="How reactions turn model changes and time samples into observable occurrence times.">
+    <meta itemprop="wordCount" content="997">
+    <meta itemprop="keywords" content="Model,Reaction,Condition,Time Distribution,Scheduling,Reactive">
+    <title>Reaction Scheduling and Ownership :: Documentation for the Alchemist Simulator</title>
+    <link href="../../../explanation/metamodel/reaction-scheduling/index.xml" rel="alternate" type="application/rss+xml" title="Reaction Scheduling and Ownership :: Documentation for the Alchemist Simulator">
+    <link href="../../../images/logo.svg?1792547095" rel="icon" type="image/svg+xml">
+    <link href="../../../css/auto-complete/auto-complete.min.css?1792547095" rel="stylesheet">
+    <script src="../../../js/auto-complete/auto-complete.min.js?1792547095" defer></script>
+    <script src="../../../js/search-lunr.min.js?1792547095" defer></script>
+    <script src="../../../js/search.min.js?1792547095" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../../searchindex.en.js?1792547095";
+    </script>
+    <script src="../../../js/lunr/lunr.min.js?1792547095" defer></script>
+    <script src="../../../js/lunr/lunr.stemmer.support.min.js?1792547095" defer></script>
+    <script src="../../../js/lunr/lunr.multi.min.js?1792547095" defer></script>
+    <script src="../../../js/lunr/lunr.en.min.js?1792547095" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="../../../fonts/fontawesome/css/fontawesome-all.min.css?1792547095" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../fonts/fontawesome/css/fontawesome-all.min.css?1792547095" rel="stylesheet"></noscript>
+    <link href="../../../css/perfect-scrollbar/perfect-scrollbar.min.css?1792547095" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1792547095" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1792547095" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/explanation\/metamodel\/reaction-scheduling\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/alchemistsimulator.github.io';
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="../../../citations.js"></script>
+
+  </head>
+  <body class="mobile-support html" data-url="../../../explanation/metamodel/reaction-scheduling/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle link noborder notitle interactive"><button onclick="toggleNav()" type="button"title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button"title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#ownership">Ownership</a></li>
+    <li><a href="#reaction-scheduling-transitions">Reaction scheduling transitions</a>
+      <ul>
+        <li><a href="#initialization">Initialization</a></li>
+        <li><a href="#firing">Firing</a></li>
+        <li><a href="#reactive-invalidation">Reactive invalidation</a></li>
+        <li><a href="#membership-and-removal">Membership and removal</a></li>
+      </ul>
+    </li>
+    <li><a href="#engine-boundary">Engine boundary</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../index.html"><span itemprop="name">The Alchemist Simulator</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../explanation/index.html"><span itemprop="name">Explanation</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../explanation/metamodel/index.html"><span itemprop="name">The Alchemist Meta-Model</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Reaction Scheduling and Ownership</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show">
+<span class="btn cstyle link noborder notitle interactive"><a href="https://github.com/AlchemistSimulator/Alchemist/edit/master/site/content/explanation/metamodel/reaction-scheduling/_index.md" rel="external" title="Edit (CTRL+ALT+w)"><i class="fa-fw fas fa-pen"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle link noborder notitle interactive"><a href="../../../explanation/metamodel/index.html" title="The Alchemist Meta-Model (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle link noborder notitle interactive"><a href="../../../explanation/engine/index.html" title="The Alchemist Simulation Engine (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button"title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable explanation" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+<div class="R-taxonomy taxonomy-tags cstyle tags" title="Tags" style="--VARIABLE-TAGS-BG-color: var(--INTERNAL-TAG-BG-color);">
+  <i class="fa-fw fas fa-layer-group"></i>
+  <ul>
+    <li><a class="term-link" href="../../../tags/condition/index.html">Condition</a></li>
+    <li><a class="term-link" href="../../../tags/model/index.html">Model</a></li>
+    <li><a class="term-link" href="../../../tags/reaction/index.html">Reaction</a></li>
+    <li><a class="term-link" href="../../../tags/reactive/index.html">Reactive</a></li>
+    <li><a class="term-link" href="../../../tags/scheduling/index.html">Scheduling</a></li>
+    <li><a class="term-link" href="../../../tags/time-distribution/index.html">Time Distribution</a></li>
+  </ul>
+</div>
+  </header>
+
+<h1 id="reaction-scheduling-and-ownership">Reaction Scheduling and Ownership</h1>
+
+<p>Scheduling is part of the reaction model.
+Each <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model/-reaction/"><code>Reaction</code></a> turns model state into an absolute, observable occurrence time.
+The simulation engine subscribes to that occurrence and keeps its scheduler aligned with it.</p>
+<h2 id="ownership">Ownership</h2>
+<p>Scheduling responsibilities have explicit owners:</p>
+<ul>
+<li>A <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model/-time-distribution/"><code>TimeDistribution</code></a> generates non-negative delay samples for a
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model/-time-distributed-reaction/"><code>TimeDistributedReaction</code></a>.</li>
+<li>A reaction owns its absolute, observable <code>nextOccurrence</code> and decides when to draw, preserve, transform, or
+replace a putative occurrence.</li>
+<li>An <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.reactions/-absolute-event/"><code>AbsoluteEvent</code></a> owns one fixed absolute occurrence.</li>
+<li>A <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.reactions/-conditional-event/"><code>ConditionalEvent</code></a> draws a new putative occurrence when its
+conditions become valid and unregisters itself after its first successful execution.</li>
+<li>A <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model/-reaction-host/"><code>ReactionHost</code></a> owns reaction membership and publishes it as an observable
+list of reactions. Both
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model/-node/"><code>Node</code></a> and <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model/-environment/"><code>Environment</code></a> are reaction hosts.
+Ownership is explicit in both directions: every reaction exposes its fixed <code>host</code>,
+and a host only registers reactions whose host is the host itself.</li>
+<li>Every <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model/-condition/"><code>Condition</code></a> and <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model/-action/"><code>Action</code></a> exposes the
+<code>reaction</code> owning it, and a reaction only accepts conditions and actions it owns.
+Their host, and possibly their node, are reached through the owning reaction.
+Conditions and actions that work on a node take it as an explicit target,
+while local ones work on the node hosting their
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model/-node-reaction/"><code>NodeReaction</code></a>.</li>
+<li><a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model/-condition/"><code>Condition</code></a> exposes reactive validity through the general model contract.
+A recurring reaction owns a subscription to their combined validity. Specialized reaction families validate the
+concrete condition types they accept and own exact subscriptions to any additional semantic inputs used by their
+scheduling law.</li>
+<li>Disposing a reaction releases its derived observables and exact subscription handles. Model observables remain
+owned by the model entities that expose them.</li>
+<li>During a reaction execution or scheduled command, the engine collects directly invalidated reactions and refreshes
+each affected reaction once when that model mutation completes.</li>
+<li>The engine owns one exact subscription to every scheduled reaction&rsquo;s <code>nextOccurrence</code>.</li>
+<li>The scheduler indexes reactions by their current occurrence time.</li>
+</ul>
+<p>The model and execution paths are therefore distinct:</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>scheduling: model observable -&gt; dirty reaction -&gt; mutation completion -&gt; reaction policy -&gt; nextOccurrence emission -&gt; engine -&gt; scheduler reindexing
+</span></span><span style="display:flex;"><span>firing: scheduler selection -&gt; engine time advance -&gt; reaction procedure -&gt; model mutation and/or removal</span></span></code></pre></div>
+<h2 id="reaction-scheduling-transitions">Reaction scheduling transitions</h2>
+<h3 id="initialization">Initialization</h3>
+<p>Once the environment is ready, the engine asks each reaction to complete initialization.
+The reaction activates its reactive inputs, computes any specialized state, and establishes its first
+<code>nextOccurrence</code> before the engine inserts it into the scheduler.
+A reaction is scheduled at an infinite future time while its conditions are invalid;
+sampling begins on the transition to valid.
+An <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.reactions/-absolute-event/"><code>AbsoluteEvent</code></a> starts at its fixed occurrence and uses its conditions
+as occurrence-time guards.
+A reaction cloned onto another node is a newly instantiated program.
+Its conditions and actions are cloned onto the new reaction:
+a node target that was the host of the original reaction becomes the host of the new one, other targets are kept.</p>
+<h3 id="firing">Firing</h3>
+<p>The scheduler selects the reaction with the earliest occurrence and the engine advances simulation time to it.
+The engine calls the selected reaction&rsquo;s <code>execute</code>;
+the reaction owns condition, actions, recurrence, and single-use removal.
+A scheduling-gated reaction exposes a finite occurrence while its conditions are valid.
+At its fixed occurrence, an <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.reactions/-absolute-event/"><code>AbsoluteEvent</code></a> evaluates its conditions,
+applies its actions when all conditions are valid, and unregisters itself.
+Successful recurring execution advances the reaction&rsquo;s stateful distribution.
+A <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.reactions/-conditional-event/"><code>ConditionalEvent</code></a> unregisters itself after its actions complete.</p>
+<h3 id="reactive-invalidation">Reactive invalidation</h3>
+<p>An observable model change can invalidate a reaction between occurrences.
+Observable model state includes node contents, positions, neighborhoods, nodes within a range,
+and layer values observed at node positions.
+The reaction is marked dirty synchronously.
+When the enclosing reaction execution or scheduled command completes,
+each dirty reaction refreshes its specialized state once and applies an invalidation policy distinct from post-firing
+advancement, in first-invalidation order.
+An additional semantic input can trigger this refresh while combined condition validity remains true.
+If that policy changes <code>nextOccurrence</code>, the observable emits and the engine immediately asks the scheduler to
+reindex the reaction.
+An invalid reaction publishes the infinite occurrence.
+Sampling occurs when its scheduling policy enables it again.
+Revalidation refreshes specialized state and applies the invalidation policy from the current simulation time.</p>
+<p>The correct invalidation policy belongs to the reaction family:</p>
+<ul>
+<li>The <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.reactions/-generic-reaction/"><code>GenericReaction</code></a> policy draws a fresh delay.</li>
+<li>A <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.reactions/-conditional-event/"><code>ConditionalEvent</code></a> draws on each invalid-to-valid transition from
+the current simulation time. A later invalidation discards that occurrence and publishes infinity. Repeated valid
+updates preserve the pending occurrence.</li>
+<li>An <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.reactions/-abstract-markovian-node-reaction/"><code>AbstractMarkovianNodeReaction</code></a> preserves or rescales a surviving
+exponential residual after a positive rate change and requires an
+<a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model.timedistributions/-exponential-time/"><code>ExponentialTime</code></a>.
+Its rate must be non-negative and different from NaN. Zero suspends scheduling; positive infinity produces an
+immediate occurrence subject to the distribution&rsquo;s start time.</li>
+</ul>
+<h3 id="membership-and-removal">Membership and removal</h3>
+<p>Callers add and remove reactions through a <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model/-reaction-host/"><code>ReactionHost</code></a>.
+The host changes membership first and, if a simulation is attached,
+emits exactly one ordinary <code>reactionAdded</code> or <code>reactionRemoved</code> notification.
+Adding a node emits <code>reactionAdded</code> once for each reaction already hosted by that node; removing a node emits the
+corresponding <code>reactionRemoved</code> notifications before disposing the node.
+The engine processes that notification on the simulation thread.
+Removal disposes the exact scheduling subscription before removing the scheduler entry;
+disposal is idempotent and prevents later scheduling emissions.</p>
+<p>Both event policies invoke the same host removal operation when their one-shot procedure completes.
+Node cloning reconstructs each <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model/-node-reaction/"><code>NodeReaction</code></a> through <code>cloneOnNewNode</code>, including
+a fresh conditional event and time distribution.</p>
+<h2 id="engine-boundary">Engine boundary</h2>
+<p>The engine integrates a reaction into execution in a fixed order:</p>
+<ol>
+<li>Complete reaction initialization and establish the current occurrence.</li>
+<li>Insert the reaction into the scheduler.</li>
+<li>Subscribe to <code>nextOccurrence</code>.</li>
+<li>Collect direct reaction invalidations during each reaction execution or scheduled command.</li>
+<li>Refresh each dirty reaction once when that model mutation completes.</li>
+<li>Reindex the reaction on every subsequent occurrence emission.</li>
+<li>Select and execute the earliest finite reaction.</li>
+<li>Process membership notifications from <a href="../../../reference/kdoc/alchemist/it.unibo.alchemist.model/-reaction-host/"><code>ReactionHost</code></a> implementations.</li>
+</ol>
+<p>Registration, occurrence emissions, scheduler updates, and scheduler removal are confined to the simulation thread.
+Host mutations notify the engine through its command queue;
+other mutations originating from another thread must be submitted through the same simulation scheduling API.</p>
+<p>For the event loop, commands, monitors, and scheduler implementation, see
+<a href="../../../explanation/engine/index.html">the simulation engine explanation</a>.</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+<div style="white-space: nowrap;">
+    <div style="max-width: 100%; display: inline-block; ">
+        <img alt="The Alchemist Logo" src="../../../images/logo.svg"/>
+    </div>
+</div>
+
+        </div>
+        <search><form action="../../../search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="../../../index.html"><a class="padding" href="../../../index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="../../../tutorials/index.html"><a class="padding" href="../../../tutorials/index.html"><b>1. </b>Tutorials<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-e1e8c1e70c5500b49e8dda2dc550651a" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../howtos/index.html"><a class="padding" href="../../../howtos/index.html"><b>2. </b>How-to Guides<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-435cd60099784c14f4922700a72c8414" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-url="../../../explanation/index.html"><a class="padding" href="../../../explanation/index.html"><b>3. </b>Explanation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-547d30965b8467ddcbfa08ec6013372a" class="collapsible-menu">
+            <li class="parent alwaysopen " data-nav-url="../../../explanation/metamodel/index.html"><a class="padding" href="../../../explanation/metamodel/index.html">The Alchemist Meta-Model<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-173efad17a2fab87c6bf7a49729ca431" class="collapsible-menu">
+            <li class="active " data-nav-url="../../../explanation/metamodel/reaction-scheduling/index.html"><a class="padding" href="../../../explanation/metamodel/reaction-scheduling/index.html">Reaction Scheduling and Ownership<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="../../../explanation/engine/index.html"><a class="padding" href="../../../explanation/engine/index.html">The Alchemist Simulation Engine<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="../../../explanation/biochemistry/index.html"><a class="padding" href="../../../explanation/biochemistry/index.html">Biochemistry Incarnation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="../../../explanation/cognitive/index.html"><a class="padding" href="../../../explanation/cognitive/index.html">Cognitive Agents<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="../../../explanation/pathfinding/index.html"><a class="padding" href="../../../explanation/pathfinding/index.html">Pathfinding<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="../../../explanation/sapere/index.html"><a class="padding" href="../../../explanation/sapere/index.html">SAPERE Incarnation<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="../../../reference/index.html"><a class="padding" href="../../../reference/index.html"><b>4. </b>Reference<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-66002f201bef818664bb81aa67490c58" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <div class="nav-title padding">More</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="https://github.com/AlchemistSimulator/Alchemist"><a class="padding" href="https://github.com/AlchemistSimulator/Alchemist" rel="external"><i class='fab fa-fw fa-github'></i> GitHub repo<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="https://youtube.com/@alchemistsimulator"><a class="padding" href="https://youtube.com/@alchemistsimulator" rel="external"><i class='fab fa-youtube'></i> YouTube channel<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="../../../showcase/"><a class="padding" href="../../../showcase/"><i class='fas fa-fw fa-camera'></i> Use cases<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="../../../license/"><a class="padding" href="../../../license/"><i class='fas fa-balance-scale'></i> License<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="../../../tags/"><a class="padding" href="../../../tags/"><i class='fas fa-fw fa-tags'></i> Tags<i class="fa-fw fas fa-check read-icon"></i></a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><div class="padding">
+    <div><strong>Alchemist Simulator 44.0.0</strong></div>
+    <br>
+    <a
+        class="github-button"
+        href="https://github.com/AlchemistSimulator/Alchemist/releases/latest/"
+        data-icon="octicon-cloud-download" aria-label="Download Alchemist-full on GitHub"
+    >
+    Download
+    </a>
+    <a
+        class="github-button"
+        href="https://github.com/AlchemistSimulator/Alchemist"
+        data-icon="octicon-star"
+        data-show-count="true"
+        aria-label="Star McShelby/hugo-theme-relearn on GitHub"
+    >
+    Star
+    </a>
+    <a
+        class="github-button"
+        href="https://github.com/AlchemistSimulator/Alchemist/fork"
+        data-icon="octicon-repo-forked"
+        data-show-count="true"
+        aria-label="Fork McShelby/hugo-theme-relearn on GitHub"
+    >
+    Fork
+    </a>
+    <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn"><span class="fas fa-heart"></span></a> by <a href="https://gohugo.io/">Hugo</a></p>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+</div></div>
+      </div>
+    </aside>
+    <script src="../../../js/js-yaml/js-yaml.min.js?1792547095" defer></script>
+    <script src="../../../js/d3/d3-color.min.js?1792547095" defer></script>
+    <script src="../../../js/d3/d3-dispatch.min.js?1792547095" defer></script>
+    <script src="../../../js/d3/d3-drag.min.js?1792547095" defer></script>
+    <script src="../../../js/d3/d3-ease.min.js?1792547095" defer></script>
+    <script src="../../../js/d3/d3-interpolate.min.js?1792547095" defer></script>
+    <script src="../../../js/d3/d3-selection.min.js?1792547095" defer></script>
+    <script src="../../../js/d3/d3-timer.min.js?1792547095" defer></script>
+    <script src="../../../js/d3/d3-transition.min.js?1792547095" defer></script>
+    <script src="../../../js/d3/d3-zoom.min.js?1792547095" defer></script>
+    <script src="../../../js/mermaid/mermaid.min.js?1792547095" defer></script>
+    <script>
+      window.relearn.themeUseMermaid = JSON.parse("{}");
+    </script>
+    <script src="../../../js/clipboard/clipboard.min.js?1792547095" defer></script>
+    <script src="../../../js/perfect-scrollbar/perfect-scrollbar.min.js?1792547095" defer></script>
+    <script src="../../../js/theme.min.js?1792547095" defer></script>
+  </body>
+</html>
