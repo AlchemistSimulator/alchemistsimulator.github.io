@@ -18,31 +18,31 @@
     <meta property="og:type" content="website">
     <meta itemprop="name" content="Create reusable variables :: Documentation for the Alchemist Simulator">
     <meta itemprop="description" content="Define reusable pieces of information and compute upon them, prepare for the execution of simulation batches.">
-    <meta itemprop="wordCount" content="3607">
+    <meta itemprop="wordCount" content="3742">
     <meta itemprop="keywords" content="Variable,Metric,Dry,Language,Groovy,Kotlin,Scala,Jsr223">
     <title>Create reusable variables :: Documentation for the Alchemist Simulator</title>
     <link href="../../../howtos/simulation/variables/index.xml" rel="alternate" type="application/rss+xml" title="Create reusable variables :: Documentation for the Alchemist Simulator">
-    <link href="../../../images/logo.svg?1792843586" rel="icon" type="image/svg+xml">
-    <link href="../../../css/auto-complete/auto-complete.min.css?1792843586" rel="stylesheet">
-    <script src="../../../js/auto-complete/auto-complete.min.js?1792843586" defer></script>
-    <script src="../../../js/search-lunr.min.js?1792843586" defer></script>
-    <script src="../../../js/search.min.js?1792843586" defer></script>
+    <link href="../../../images/logo.svg?1792879554" rel="icon" type="image/svg+xml">
+    <link href="../../../css/auto-complete/auto-complete.min.css?1792879554" rel="stylesheet">
+    <script src="../../../js/auto-complete/auto-complete.min.js?1792879554" defer></script>
+    <script src="../../../js/search-lunr.min.js?1792879554" defer></script>
+    <script src="../../../js/search.min.js?1792879554" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="../../../searchindex.en.js?1792843586";
+      window.relearn.index_js_url="../../../searchindex.en.js?1792879554";
     </script>
-    <script src="../../../js/lunr/lunr.min.js?1792843586" defer></script>
-    <script src="../../../js/lunr/lunr.stemmer.support.min.js?1792843586" defer></script>
-    <script src="../../../js/lunr/lunr.multi.min.js?1792843586" defer></script>
-    <script src="../../../js/lunr/lunr.en.min.js?1792843586" defer></script>
+    <script src="../../../js/lunr/lunr.min.js?1792879554" defer></script>
+    <script src="../../../js/lunr/lunr.stemmer.support.min.js?1792879554" defer></script>
+    <script src="../../../js/lunr/lunr.multi.min.js?1792879554" defer></script>
+    <script src="../../../js/lunr/lunr.en.min.js?1792879554" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="../../../fonts/fontawesome/css/fontawesome-all.min.css?1792843586" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../fonts/fontawesome/css/fontawesome-all.min.css?1792843586" rel="stylesheet"></noscript>
-    <link href="../../../css/perfect-scrollbar/perfect-scrollbar.min.css?1792843586" rel="stylesheet">
-    <link href="../../../css/theme.min.css?1792843586" rel="stylesheet">
-    <link href="../../../css/format-html.min.css?1792843586" rel="stylesheet" id="R-format-style">
+    <link href="../../../fonts/fontawesome/css/fontawesome-all.min.css?1792879554" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../fonts/fontawesome/css/fontawesome-all.min.css?1792879554" rel="stylesheet"></noscript>
+    <link href="../../../css/perfect-scrollbar/perfect-scrollbar.min.css?1792879554" rel="stylesheet">
+    <link href="../../../css/theme.min.css?1792879554" rel="stylesheet">
+    <link href="../../../css/format-html.min.css?1792879554" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -1352,6 +1352,46 @@ function onClick(element) {
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
 </span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">test3</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: test + test2
+</span></span><span style="display:flex;"><span>  <span style="color:#78787e"># The runtime classes of these values are not accessible from scripts</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">list</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: listOf(1, 2)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">singletonList</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: listOf(3)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">emptyList</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: emptyList&lt;Int&gt;()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">set</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: setOf(4)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">emptySet</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: emptySet&lt;Int&gt;()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">map</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: mapOf(&#34;five&#34; to 5)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">emptyMap</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: emptyMap&lt;String, Int&gt;()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">entry</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: mapOf(&#34;six&#34; to 6, &#34;seven&#34; to 7).entries.first()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
+</span></span><span style="display:flex;"><span>  <span style="color:#78787e"># References all the collections above</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">collectionSizes</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: list.size + singletonList.size + emptyList.size + set.size + emptySet.size + map.size + emptyMap.size + entry.value as Int
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
+</span></span><span style="display:flex;"><span>  <span style="color:#78787e"># Evaluated with all the collections above as bindings, without referencing them</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">afterCollections</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: collectionSizes * 2
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
+</span></span><span style="display:flex;"><span>  <span style="color:#78787e"># The runtime class of this value is accessible, and must be preserved</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">sortedMap</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: java.util.TreeMap(mapOf(&#34;b&#34; to 2, &#34;a&#34; to 1))
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">firstKey</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">formula</span>: sortedMap.firstKey()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">language</span>: kotlin
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: sapere
 </span></span></code></pre></div></div>
 </div>
@@ -2038,7 +2078,7 @@ function onClick(element) {
           </ul>
         </div>
 <div id="R-footer"><div class="padding">
-    <div><strong>Alchemist Simulator 47.0.3</strong></div>
+    <div><strong>Alchemist Simulator 47.0.4</strong></div>
     <br>
     <a
         class="github-button"
@@ -2070,22 +2110,22 @@ function onClick(element) {
 </div></div>
       </div>
     </aside>
-    <script src="../../../js/js-yaml/js-yaml.min.js?1792843586" defer></script>
-    <script src="../../../js/d3/d3-color.min.js?1792843586" defer></script>
-    <script src="../../../js/d3/d3-dispatch.min.js?1792843586" defer></script>
-    <script src="../../../js/d3/d3-drag.min.js?1792843586" defer></script>
-    <script src="../../../js/d3/d3-ease.min.js?1792843586" defer></script>
-    <script src="../../../js/d3/d3-interpolate.min.js?1792843586" defer></script>
-    <script src="../../../js/d3/d3-selection.min.js?1792843586" defer></script>
-    <script src="../../../js/d3/d3-timer.min.js?1792843586" defer></script>
-    <script src="../../../js/d3/d3-transition.min.js?1792843586" defer></script>
-    <script src="../../../js/d3/d3-zoom.min.js?1792843586" defer></script>
-    <script src="../../../js/mermaid/mermaid.min.js?1792843586" defer></script>
+    <script src="../../../js/js-yaml/js-yaml.min.js?1792879554" defer></script>
+    <script src="../../../js/d3/d3-color.min.js?1792879554" defer></script>
+    <script src="../../../js/d3/d3-dispatch.min.js?1792879554" defer></script>
+    <script src="../../../js/d3/d3-drag.min.js?1792879554" defer></script>
+    <script src="../../../js/d3/d3-ease.min.js?1792879554" defer></script>
+    <script src="../../../js/d3/d3-interpolate.min.js?1792879554" defer></script>
+    <script src="../../../js/d3/d3-selection.min.js?1792879554" defer></script>
+    <script src="../../../js/d3/d3-timer.min.js?1792879554" defer></script>
+    <script src="../../../js/d3/d3-transition.min.js?1792879554" defer></script>
+    <script src="../../../js/d3/d3-zoom.min.js?1792879554" defer></script>
+    <script src="../../../js/mermaid/mermaid.min.js?1792879554" defer></script>
     <script>
       window.relearn.themeUseMermaid = JSON.parse("{}");
     </script>
-    <script src="../../../js/clipboard/clipboard.min.js?1792843586" defer></script>
-    <script src="../../../js/perfect-scrollbar/perfect-scrollbar.min.js?1792843586" defer></script>
-    <script src="../../../js/theme.min.js?1792843586" defer></script>
+    <script src="../../../js/clipboard/clipboard.min.js?1792879554" defer></script>
+    <script src="../../../js/perfect-scrollbar/perfect-scrollbar.min.js?1792879554" defer></script>
+    <script src="../../../js/theme.min.js?1792879554" defer></script>
   </body>
 </html>
