@@ -1,0 +1,426 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ObservableMutableMap</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
+<link href="../../../images/logo.svg">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet"></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
+                    alchemist-full
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">49.0.0
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":alchemist-observables/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":alchemist-observables/main" data-filter=":alchemist-observables/main">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+                <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://alchemistsimulator.github.io/"></a>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    alchemist-full
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="alchemist-observables::it.unibo.alchemist.model.observables/ObservableMutableMap///PointingToDeclaration//1369824579">
+  <div class="breadcrumbs"><a href="../../index.html">alchemist-observables</a><span class="delimiter">/</span><a href="../index.html">it.unibo.alchemist.model.observables</a><span class="delimiter">/</span><span class="current">ObservableMutableMap</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Observable</span><wbr><span>Mutable</span><wbr><span><span>Map</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">ObservableMutableMap</a><span class="token operator">&lt;</span><a href="index.html">K</a><span class="token punctuation">, </span><a href="index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">initial<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="index.html">K</a><span class="token punctuation">, </span><a href="index.html">V</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span> : <a href="../-abstract-observable/index.html">AbstractObservable</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="index.html">K</a><span class="token punctuation">, </span><a href="index.html">V</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span>, <a href="../../../alchemist/it.unibo.alchemist.model.observation/-observable-map/index.html">ObservableMap</a><span class="token operator">&lt;</span><a href="index.html">K</a><span class="token punctuation">, </span><a href="index.html">V</a><span class="token operator">&gt; </span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/AlchemistSimulator/Alchemist/tree/882d143a634d82db200984186e8793f31159431c/alchemist-observables/src/main/kotlin/it/unibo/alchemist/model/observables/ObservableMutableMap.kt#L34">source</a>)</span></span></div><p class="paragraph">A class that represents an observable, mutable map. Allows observation of map changes, including addition, removal, modifications of key-value pairs, and observation of particular keys for their value changes.</p><h4 class="tableheader">Type Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>K</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The type of keys maintained by the map.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>V</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The type of mapped values.</p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="-640139782%2FConstructors%2F1369824579" anchor-label="ObservableMutableMap" id="-640139782%2FConstructors%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-observable-mutable-map.html"><span>Observable</span><wbr><span>Mutable</span><wbr><span><span>Map</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-640139782%2FConstructors%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">initial<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="index.html">K</a><span class="token punctuation">, </span><a href="index.html">V</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-735498171%2FClasslikes%2F1369824579" anchor-label="ObservableMapExtensions" id="-735498171%2FClasslikes%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-observable-map-extensions/index.html"><span>Observable</span><wbr><span>Map</span><wbr><span><span>Extensions</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-735498171%2FClasslikes%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-observable-map-extensions/index.html">ObservableMapExtensions</a></div><div class="brief "><p class="paragraph">Simple utility function for the ObservableMaps.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-1663101498%2FProperties%2F1369824579" anchor-label="current" id="-1663101498%2FProperties%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="current.html"><span><span>current</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1663101498%2FProperties%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="current.html">current</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="index.html">K</a><span class="token punctuation">, </span><a href="index.html">V</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The current value: while observed, the latest value published; otherwise, a freshly computed one. Observables holding their own state may read it directly.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-577057673%2FProperties%2F1369824579" anchor-label="isObserved" id="-577057673%2FProperties%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-observable-mutable-set/index.html#-577057673%2FProperties%2F1369824579"><span>is</span><wbr><span><span>Observed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-577057673%2FProperties%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../-observable-mutable-set/index.html#-577057673%2FProperties%2F1369824579">isObserved</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-794018214%2FProperties%2F1369824579" anchor-label="observerCount" id="-794018214%2FProperties%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-abstract-observable/observer-count.html"><span>observer</span><wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-794018214%2FProperties%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../-abstract-observable/observer-count.html">observerCount</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1854231645%2FFunctions%2F1369824579" anchor-label="clearAndPutAll" id="1854231645%2FFunctions%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clear-and-put-all.html"><span>clear</span><wbr><span>And</span><wbr><span>Put</span><wbr><span><span>All</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1854231645%2FFunctions%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="clear-and-put-all.html"><span class="token function">clearAndPutAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">from<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="index.html">K</a><span class="token punctuation">, </span><a href="index.html">V</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Replaces the whole content of this map with <a href="clear-and-put-all.html">from</a>, like doing a <code class="lang-kotlin">clear</code> followed by a <code class="lang-kotlin">putAll</code>, * but without notifying per-key observers for keys that remain present (unless their value changes).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-344881277%2FFunctions%2F1369824579" anchor-label="combineLatestCollection" id="-344881277%2FFunctions%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.observables.util/-observables/combine-latest-collection.html"><span>combine</span><wbr><span>Latest</span><wbr><span><span>Collection</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-344881277%2FFunctions%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-static/index.html"><span class="token annotation builtin">JvmStatic</span></a></div></div><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/combine-latest-collection.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.observables.util/-observables/combine-latest-collection.html">C</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/combine-latest-collection.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.observables.util/-observables/combine-latest-collection.html">R</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.observables.util/-observables/combine-latest-collection.html">O</a><span class="token operator">&gt; </span><a href="../../../alchemist/it.unibo.alchemist.model.observation/-observable/index.html">Observable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/combine-latest-collection.html">C</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/combine-latest-collection.html"><span class="token function">combineLatestCollection</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transformer<span class="token operator">: </span><span class="token punctuation">(</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/combine-latest-collection.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../../alchemist/it.unibo.alchemist.model.observation/-observable/index.html">Observable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/combine-latest-collection.html">R</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">aggregator<span class="token operator">: </span><span class="token punctuation">(</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/combine-latest-collection.html">R</a><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../it.unibo.alchemist.model.observables.util/-observables/combine-latest-collection.html">O</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist/it.unibo.alchemist.model.observation/-observable/index.html">Observable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/combine-latest-collection.html">O</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Maps every element of the current collection to an observable through <code class="lang-kotlin">transformer</code>, and aggregates their current values through <a href="../../it.unibo.alchemist.model.observables.util/-observables/combine-latest-collection.html">aggregator</a>. The result is recomputed whenever the collection changes or any mapped observable emits; observables of elements leaving the collection are unsubscribed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="518452336%2FFunctions%2F1369824579" anchor-label="currentOrNull" id="518452336%2FFunctions%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.observables.util/-observables/current-or-null.html"><span>current</span><wbr><span>Or</span><wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="518452336%2FFunctions%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/current-or-null.html">T</a><span class="token operator">&gt; </span><a href="../../../alchemist/it.unibo.alchemist.model.observation/-observable/index.html">Observable</a><span class="token operator">&lt;</span><span data-unresolved-link="arrow.core/Option///PointingToDeclaration/">Option</span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/current-or-null.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/current-or-null.html"><span class="token function">currentOrNull</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../it.unibo.alchemist.model.observables.util/-observables/current-or-null.html">T</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Retrieves the current value of the observable if present, or <code class="lang-kotlin">null</code> if no value is available.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1127650272%2FFunctions%2F1369824579" anchor-label="dispose" id="1127650272%2FFunctions%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dispose.html"><span><span>dispose</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1127650272%2FFunctions%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="dispose.html"><span class="token function">dispose</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-995277483%2FFunctions%2F1369824579" anchor-label="get" id="-995277483%2FFunctions%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get.html"><span><span>get</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-995277483%2FFunctions%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="index.html">K</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist/it.unibo.alchemist.model.observation/-observable/index.html">Observable</a><span class="token operator">&lt;</span><span data-unresolved-link="arrow.core/Option///PointingToDeclaration/">Option</span><span class="token operator">&lt;</span><a href="index.html">V</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1542981669%2FFunctions%2F1369824579" anchor-label="map" id="-1542981669%2FFunctions%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-abstract-observable/map.html"><span><span>map</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1542981669%2FFunctions%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../-abstract-observable/map.html">S</a><span class="token operator">&gt; </span><a href="../-abstract-observable/map.html"><span class="token function">map</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transform<span class="token operator">: </span><span class="token punctuation">(</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="index.html">K</a><span class="token punctuation">, </span><a href="index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span data-unresolved-link="it.unibo.alchemist.model.observables/ObservableMutableMap/map/#kotlin.Function1[kotlin.collections.Map[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],TypeParam(bounds=[kotlin.Any?])]/PointingToGenericParameters(0)/">S</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist/it.unibo.alchemist.model.observation/-observable/index.html">Observable</a><span class="token operator">&lt;</span><span data-unresolved-link="it.unibo.alchemist.model.observables/ObservableMutableMap/map/#kotlin.Function1[kotlin.collections.Map[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],TypeParam(bounds=[kotlin.Any?])]/PointingToGenericParameters(0)/">S</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-639741945%2FFunctions%2F1369824579" anchor-label="mergeWith" id="-639741945%2FFunctions%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-abstract-observable/merge-with.html"><span>merge</span><wbr><span><span>With</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-639741945%2FFunctions%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../-abstract-observable/merge-with.html">O</a><span class="token punctuation">, </span><a href="../-abstract-observable/merge-with.html">R</a><span class="token operator">&gt; </span><a href="../-abstract-observable/merge-with.html"><span class="token function">mergeWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../../../alchemist/it.unibo.alchemist.model.observation/-observable/index.html">Observable</a><span class="token operator">&lt;</span><span data-unresolved-link="it.unibo.alchemist.model.observables/ObservableMutableMap/mergeWith/#it.unibo.alchemist.model.observation.Observable[TypeParam(bounds=[kotlin.Any?])]#kotlin.Function2[kotlin.collections.Map[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]/PointingToGenericParameters(0)/">O</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">merge<span class="token operator">: </span><span class="token punctuation">(</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="index.html">K</a><span class="token punctuation">, </span><a href="index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><span data-unresolved-link="it.unibo.alchemist.model.observables/ObservableMutableMap/mergeWith/#it.unibo.alchemist.model.observation.Observable[TypeParam(bounds=[kotlin.Any?])]#kotlin.Function2[kotlin.collections.Map[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]/PointingToGenericParameters(0)/">O</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span data-unresolved-link="it.unibo.alchemist.model.observables/ObservableMutableMap/mergeWith/#it.unibo.alchemist.model.observation.Observable[TypeParam(bounds=[kotlin.Any?])]#kotlin.Function2[kotlin.collections.Map[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]/PointingToGenericParameters(1)/">R</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist/it.unibo.alchemist.model.observation/-observable/index.html">Observable</a><span class="token operator">&lt;</span><span data-unresolved-link="it.unibo.alchemist.model.observables/ObservableMutableMap/mergeWith/#it.unibo.alchemist.model.observation.Observable[TypeParam(bounds=[kotlin.Any?])]#kotlin.Function2[kotlin.collections.Map[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]/PointingToGenericParameters(1)/">R</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1362693597%2FFunctions%2F1369824579" anchor-label="onChange" id="1362693597%2FFunctions%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-abstract-observable/on-change.html"><span>on</span><wbr><span><span>Change</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1362693597%2FFunctions%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-abstract-observable/on-change.html"><span class="token function">onChange</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">notifyOnRegistration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">callback<span class="token operator">: </span><span class="token punctuation">(</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="index.html">K</a><span class="token punctuation">, </span><a href="index.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist/it.unibo.alchemist.model.observation/-disposable/index.html">Disposable</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-243545683%2FFunctions%2F1369824579" anchor-label="put" id="-243545683%2FFunctions%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="put.html"><span><span>put</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-243545683%2FFunctions%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="put.html"><span class="token function">put</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="index.html">K</a><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><a href="index.html">V</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Adds the specified key-value pair to the map. If the key already exists, the value is updated. Observers are notified if the value changes.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2119044359%2FFunctions%2F1369824579" anchor-label="remove" id="2119044359%2FFunctions%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remove.html"><span><span>remove</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2119044359%2FFunctions%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="remove.html"><span class="token function">remove</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="index.html">K</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">V</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Removes the mapping for the specified key from the map, if it exists. Notifies observers if the key had an associated value before removal.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-991055360%2FFunctions%2F1369824579" anchor-label="set" id="-991055360%2FFunctions%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set.html"><span><span>set</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-991055360%2FFunctions%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="set.html"><span class="token function">set</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="index.html">K</a><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><a href="index.html">V</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1716480804%2FFunctions%2F1369824579" anchor-label="switchMap" id="-1716480804%2FFunctions%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../it.unibo.alchemist.model.observables.util/-observables/switch-map.html"><span>switch</span><wbr><span><span>Map</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1716480804%2FFunctions%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-static/index.html"><span class="token annotation builtin">JvmStatic</span></a></div></div><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/switch-map.html">T</a><span class="token punctuation">, </span><a href="../../it.unibo.alchemist.model.observables.util/-observables/switch-map.html">R</a><span class="token operator">&gt; </span><a href="../../../alchemist/it.unibo.alchemist.model.observation/-observable/index.html">Observable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/switch-map.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/switch-map.html"><span class="token function">switchMap</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transform<span class="token operator">: </span><span class="token punctuation">(</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/switch-map.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../../alchemist/it.unibo.alchemist.model.observation/-observable/index.html">Observable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/switch-map.html">R</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../alchemist/it.unibo.alchemist.model.observation/-observable/index.html">Observable</a><span class="token operator">&lt;</span><a href="../../it.unibo.alchemist.model.observables.util/-observables/switch-map.html">R</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Maps the current value of this <a href="../../../alchemist/it.unibo.alchemist.model.observation/-observable/index.html">Observable</a> to an inner observable through <a href="../../it.unibo.alchemist.model.observables.util/-observables/switch-map.html">transform</a>, and mirrors the inner observable of the most recent value only: whenever this observable emits, the previous inner observable is unsubscribed and the new one is followed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-602049049%2FFunctions%2F1369824579" anchor-label="updateOrNull" id="-602049049%2FFunctions%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-observable-map-extensions/update-or-null.html"><span>update</span><wbr><span>Or</span><wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-602049049%2FFunctions%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="-observable-map-extensions/update-or-null.html">K</a><span class="token punctuation">, </span><a href="-observable-map-extensions/update-or-null.html">V</a><span class="token operator">&gt; </span><a href="index.html">ObservableMutableMap</a><span class="token operator">&lt;</span><a href="-observable-map-extensions/update-or-null.html">K</a><span class="token punctuation">, </span><a href="-observable-map-extensions/update-or-null.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="-observable-map-extensions/update-or-null.html"><span class="token function">updateOrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="-observable-map-extensions/update-or-null.html">K</a><span class="token punctuation">, </span></span><span class="parameter ">valueUpdate<span class="token operator">: </span><a href="-observable-map-extensions/update-or-null.html">V</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-observable-map-extensions/update-or-null.html">V</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Updates the value associated with the given key in the map by applying the provided transformation function. If the key does not exist or its current value is <code class="lang-kotlin">null</code>, no operation is performed, and <code class="lang-kotlin">null</code> is returned.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-977813932%2FFunctions%2F1369824579" anchor-label="upsertValue" id="-977813932%2FFunctions%2F1369824579" data-filterable-set=":alchemist-observables/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":alchemist-observables/main" data-filterable-set=":alchemist-observables/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-observable-map-extensions/upsert-value.html"><span>upsert</span><wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-977813932%2FFunctions%2F1369824579"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":alchemist-observables/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="-observable-map-extensions/upsert-value.html">K</a><span class="token punctuation">, </span><a href="-observable-map-extensions/upsert-value.html">V</a><span class="token operator">&gt; </span><a href="index.html">ObservableMutableMap</a><span class="token operator">&lt;</span><a href="-observable-map-extensions/upsert-value.html">K</a><span class="token punctuation">, </span><a href="-observable-map-extensions/upsert-value.html">V</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="-observable-map-extensions/upsert-value.html"><span class="token function">upsertValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="-observable-map-extensions/upsert-value.html">K</a><span class="token punctuation">, </span></span><span class="parameter ">valueUpdate<span class="token operator">: </span><span class="token punctuation">(</span><a href="-observable-map-extensions/upsert-value.html">V</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="-observable-map-extensions/upsert-value.html">V</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Inserts or updates a key-value pair in the ObservableMutableMap. If the key already exists, its value is updated using the provided transformation function. If the key does not exist, a new key-value pair is added with the value derived from the transformation function.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Danilo Pianini and contributors listed in the Alchemist build files</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
