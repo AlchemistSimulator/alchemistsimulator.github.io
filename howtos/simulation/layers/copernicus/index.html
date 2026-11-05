@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.169.0">
+    <meta name="generator" content="Relearn 8.2.0">
+    <meta name="description" content="Feed real-world, time-varying gridded data (e.g., from Copernicus) into the simulation as layers">
+    <meta name="author" content="Danilo Pianini">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Layers from gridded geographic data :: Documentation for the Alchemist Simulator">
+    <meta name="twitter:description" content="Feed real-world, time-varying gridded data (e.g., from Copernicus) into the simulation as layers">
+    <meta property="og:url" content="https://alchemistsimulator.github.io/howtos/simulation/layers/copernicus/index.html">
+    <meta property="og:site_name" content="Documentation for the Alchemist Simulator">
+    <meta property="og:title" content="Layers from gridded geographic data :: Documentation for the Alchemist Simulator">
+    <meta property="og:description" content="Feed real-world, time-varying gridded data (e.g., from Copernicus) into the simulation as layers">
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Layers from gridded geographic data :: Documentation for the Alchemist Simulator">
+    <meta itemprop="description" content="Feed real-world, time-varying gridded data (e.g., from Copernicus) into the simulation as layers">
+    <meta itemprop="wordCount" content="1611">
+    <meta itemprop="keywords" content="Layer,Layers,Data,Copernicus,Climate,Weather,Netcdf,Grib,Geo-Spatial Data">
+    <title>Layers from gridded geographic data :: Documentation for the Alchemist Simulator</title>
+    <link href="../../../../howtos/simulation/layers/copernicus/index.xml" rel="alternate" type="application/rss+xml" title="Layers from gridded geographic data :: Documentation for the Alchemist Simulator">
+    <link href="../../../../images/logo.svg?1793904366" rel="icon" type="image/svg+xml">
+    <link href="../../../../css/auto-complete/auto-complete.min.css?1793904366" rel="stylesheet">
+    <script src="../../../../js/auto-complete/auto-complete.min.js?1793904366" defer></script>
+    <script src="../../../../js/search-lunr.min.js?1793904366" defer></script>
+    <script src="../../../../js/search.min.js?1793904366" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="../../../../searchindex.en.js?1793904366";
+    </script>
+    <script src="../../../../js/lunr/lunr.min.js?1793904366" defer></script>
+    <script src="../../../../js/lunr/lunr.stemmer.support.min.js?1793904366" defer></script>
+    <script src="../../../../js/lunr/lunr.multi.min.js?1793904366" defer></script>
+    <script src="../../../../js/lunr/lunr.en.min.js?1793904366" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="../../../../fonts/fontawesome/css/fontawesome-all.min.css?1793904366" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../../../../fonts/fontawesome/css/fontawesome-all.min.css?1793904366" rel="stylesheet"></noscript>
+    <link href="../../../../css/perfect-scrollbar/perfect-scrollbar.min.css?1793904366" rel="stylesheet">
+    <link href="../../../../css/theme.min.css?1793904366" rel="stylesheet">
+    <link href="../../../../css/format-html.min.css?1793904366" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/howtos\/simulation\/layers\/copernicus\/index.html';
+      window.relearn.relBasePath='..\/..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/alchemistsimulator.github.io';
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="../../../../citations.js"></script>
+
+  </head>
+  <body class="mobile-support html" data-url="../../../../howtos/simulation/layers/copernicus/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle link noborder notitle interactive"><button onclick="toggleNav()" type="button"title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button"title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#mapping-data-time-to-simulation-time">Mapping data time to simulation time</a></li>
+    <li><a href="#reading-local-data-files">Reading local data files</a></li>
+    <li><a href="#downloading-data-from-a-copernicus-data-store">Downloading data from a Copernicus data store</a>
+      <ul>
+        <li><a href="#credentials">Credentials</a></li>
+        <li><a href="#caching">Caching</a></li>
+        <li><a href="#other-parameters">Other parameters</a></li>
+      </ul>
+    </li>
+    <li><a href="#interpolation-and-conversion">Interpolation and conversion</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../../index.html"><span itemprop="name">The Alchemist Simulator</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../../howtos/index.html"><span itemprop="name">How-to Guides</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../../howtos/simulation/index.html"><span itemprop="name">Simulation</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="../../../../howtos/simulation/layers/index.html"><span itemprop="name">Create Layers</span></a><meta itemprop="position" content="4">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Layers from gridded geographic data</span><meta itemprop="position" content="5"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show">
+<span class="btn cstyle link noborder notitle interactive"><a href="https://github.com/AlchemistSimulator/Alchemist/edit/master/site/content/howtos/simulation/layers/copernicus/_index.md" rel="external" title="Edit (CTRL+ALT+w)"><i class="fa-fw fas fa-pen"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle link noborder notitle interactive"><a href="../../../../howtos/simulation/layers/index.html" title="Create Layers (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle link noborder notitle interactive"><a href="../../../../howtos/simulation/environment/index.html" title="Create rich environments (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button"title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable howtos" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+<div class="R-taxonomy taxonomy-tags cstyle tags" title="Tags" style="--VARIABLE-TAGS-BG-color: var(--INTERNAL-TAG-BG-color);">
+  <i class="fa-fw fas fa-layer-group"></i>
+  <ul>
+    <li><a class="term-link" href="../../../../tags/climate/index.html">Climate</a></li>
+    <li><a class="term-link" href="../../../../tags/copernicus/index.html">Copernicus</a></li>
+    <li><a class="term-link" href="../../../../tags/data/index.html">Data</a></li>
+    <li><a class="term-link" href="../../../../tags/geo-spatial-data/index.html">Geo-Spatial Data</a></li>
+    <li><a class="term-link" href="../../../../tags/grib/index.html">Grib</a></li>
+    <li><a class="term-link" href="../../../../tags/layer/index.html">Layer</a></li>
+    <li><a class="term-link" href="../../../../tags/layers/index.html">Layers</a></li>
+    <li><a class="term-link" href="../../../../tags/netcdf/index.html">Netcdf</a></li>
+    <li><a class="term-link" href="../../../../tags/weather/index.html">Weather</a></li>
+  </ul>
+</div>
+  </header>
+
+<h1 id="layers-from-gridded-geographic-data">Layers from gridded geographic data</h1>
+
+<p>Real-world environmental data, such as river discharge, precipitation, temperature, or air quality,
+is commonly distributed as <em>gridded time series</em>:
+a sequence of time slices, each one holding the values of a variable on a latitude/longitude grid.
+The <a href="https://www.copernicus.eu/" rel="external">Copernicus</a> data stores
+(<a href="https://cds.climate.copernicus.eu/" rel="external">Climate</a>,
+<a href="https://ewds.climate.copernicus.eu/" rel="external">Early Warning</a>, and
+<a href="https://ads.atmosphere.copernicus.eu/" rel="external">Atmosphere</a>)
+distribute this kind of data in the <a href="https://www.unidata.ucar.edu/software/netcdf/" rel="external">NetCDF</a>
+and <a href="https://confluence.ecmwf.int/display/CKB/What+are+GRIB+files+and+how+can+I+read+them" rel="external">GRIB</a> formats.</p>
+<p>The <code>alchemist-geogrids</code> module turns these files into <a href="../../../../howtos/simulation/layers/index.html">layers</a>:
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.geogrid.layers/-gridded-geo-layer/"><code>GriddedGeoLayer</code></a> exposes, at every position,
+the value of the data at the current simulation time,
+interpolated in space between the grid points and in time between the slices.
+Its specialization <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.geogrid.layers/-double-gridded-geo-layer/"><code>DoubleGriddedGeoLayer</code></a>
+yields <code>Double</code>s with sensible defaults, and it is what most simulations need.
+Nodes observing the layer are notified whenever its value at their position changes,
+either because they move or because the simulation time advances.</p>
+<p>These layers live on geographic coordinates,
+so they require an environment whose positions are
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model/-geo-position/"><code>GeoPosition</code></a>s, such as the
+<a href="../../../../howtos/simulation/environment/maps/index.html">map environments</a>.</p>
+<p>The data backing a layer is provided as its <code>data</code> parameter:
+a <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.geogrid.snapshots/-grids-from-directory/"><code>GridsFromDirectory</code></a> reads it from local files of any provider,
+while a <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.geogrid.snapshots/-copernicus-data/"><code>CopernicusData</code></a> downloads it from a Copernicus data store.</p>
+<h2 id="mapping-data-time-to-simulation-time">Mapping data time to simulation time</h2>
+<p>Data slices are timestamped with real-world instants, while simulations advance in simulation time units.
+Two parameters, both written in ISO-8601, connect them:</p>
+<ul>
+<li><code>timeScale</code> is the real-world duration of one simulation time unit (by default, <code>PT1H</code>: one hour);</li>
+<li><code>timeOrigin</code> is the real-world instant corresponding to simulation time zero
+(by default, the first instant found in the data).</li>
+</ul>
+<p>Before the first slice and after the last one, the layer holds the values of the first and of the last slice.
+Outside the spatial extent of the grid, instead, no value is extrapolated, and querying the layer fails:
+make sure that the data covers the area where nodes move.</p>
+<h2 id="reading-local-data-files">Reading local data files</h2>
+<p>If the data files are already available,
+for instance because they were downloaded from the web interface of a data store,
+<code>GridsFromDirectory</code> reads them from the given <code>directory</code>,
+with no network access and no credentials.
+All the files in the directory must hold the same variable on the same grid,
+and their time slices get merged in chronological order
+(if several files hold the same instant, the slice of the first file in lexicographic order is used).
+The directory is looked up first among the classpath resources, and then as a path on the file system.
+Classpath directories must be on the file system, not packaged in a jar, as netCDF-Java reads only files.</p>
+
+<script>
+
+
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
+<div class="expand">
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: OSMEnvironment
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [maps/cesena.pbf]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">layers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: DoubleGriddedGeoLayer
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: river-discharge
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">data</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">type</span>: GridsFromDirectory
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#78787e"># A directory of NetCDF or GRIB files sharing the same variable and grid:</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#78787e"># a directory among the classpath resources or, if not there, a path</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">directory</span>: copernicus/glofas-cesena
+</span></span><span style="display:flex;"><span>          <span style="color:#78787e"># The variable to read, optional if the files hold only one</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">variable</span>: dis24
+</span></span><span style="display:flex;"><span>      <span style="color:#78787e"># Each simulated time unit lasts one hour of the data</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">timeScale</span>: PT1H
+</span></span><span style="display:flex;"><span>      <span style="color:#78787e"># Simulation time zero corresponds to this instant (by default, the first instant in the data)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">timeOrigin</span>: <span style="color:#5af78e">&#34;2024-06-10T00:00:00Z&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Circle
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">44.14</span>, <span style="color:#ff9f43">12.24</span>, <span style="color:#ff9f43">0.01</span>]
+</span></span></code></pre></div></div>
+</div>
+<p>The same scenario, written with the Kotlin DSL:</p>
+
+<script>
+
+
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
+<div class="expand">
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> it.unibo.alchemist.boundary.kotlindsl.simulationOnMap
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> it.unibo.alchemist.model.geogrid.layers.doubleGriddedGeoLayer
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> it.unibo.alchemist.model.geogrid.snapshots.GridsFromDirectory
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>simulationOnMap(ProtelisIncarnation()) {
+</span></span><span style="display:flex;"><span>    environment(oSMEnvironment(<span style="color:#5af78e">&#34;maps/cesena.pbf&#34;</span>)) {
+</span></span><span style="display:flex;"><span>        layer(
+</span></span><span style="display:flex;"><span>            <span style="color:#5af78e">&#34;river-discharge&#34;</span>,
+</span></span><span style="display:flex;"><span>            doubleGriddedGeoLayer(
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">data</span> = GridsFromDirectory(
+</span></span><span style="display:flex;"><span>                    <span style="color:#78787e">// A directory of NetCDF or GRIB files sharing the same variable and grid:
+</span></span></span><span style="display:flex;"><span>                    <span style="color:#78787e">// a directory among the classpath resources or, if not there, a path
+</span></span></span><span style="display:flex;"><span>                    directory = <span style="color:#5af78e">&#34;copernicus/glofas-cesena&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#78787e">// The variable to read, optional if the files hold only one
+</span></span></span><span style="display:flex;"><span>                    variable = <span style="color:#5af78e">&#34;dis24&#34;</span>,
+</span></span><span style="display:flex;"><span>                ),
+</span></span><span style="display:flex;"><span>                <span style="color:#78787e">// Each simulated time unit lasts one hour of the data
+</span></span></span><span style="display:flex;"><span>                timeScale = <span style="color:#5af78e">&#34;PT1H&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#78787e">// Simulation time zero corresponds to this instant (by default, the first instant in the data)
+</span></span></span><span style="display:flex;"><span>                timeOrigin = <span style="color:#5af78e">&#34;2024-06-10T00:00:00Z&#34;</span>,
+</span></span><span style="display:flex;"><span>            ),
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        deployments {
+</span></span><span style="display:flex;"><span>            deploy(circle(<span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">44.14</span>, <span style="color:#ff9f43">12.24</span>, <span style="color:#ff9f43">0.01</span>))
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
+</div>
+<h2 id="downloading-data-from-a-copernicus-data-store">Downloading data from a Copernicus data store</h2>
+<p>Given an <code>endpoint</code>, a <code>dataset</code>, and the <code>inputs</code> of the request,
+<code>CopernicusData</code> requests the data directly from a data store:
+it submits the request, waits for the data store to prepare the data, downloads it,
+and verifies its integrity before using it.
+Downloads get cached on the local file system,
+so that the data is downloaded only once and is then shared by all the simulations
+(even running in parallel) requesting it.</p>
+
+<script>
+
+
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
+<div class="expand">
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff6ac1">incarnation</span>: protelis
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">environment</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: OSMEnvironment
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [maps/cesena.pbf]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">layers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff6ac1">type</span>: DoubleGriddedGeoLayer
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">molecule</span>: river-discharge
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">parameters</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">data</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">type</span>: CopernicusData
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">parameters</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#78787e"># The datastore API: CDS, EWDS, or ADS</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">endpoint</span>: https://ewds.climate.copernicus.eu/api
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">dataset</span>: cems-glofas-historical
+</span></span><span style="display:flex;"><span>          <span style="color:#78787e"># The request, as shown by the &#34;API request&#34; section of the dataset download form</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">inputs</span>: |<span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">            {
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">              &#34;system_version&#34;: [&#34;version_4_0&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">              &#34;hydrological_model&#34;: [&#34;lisflood&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">              &#34;product_type&#34;: [&#34;consolidated&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">              &#34;variable&#34;: [&#34;river_discharge_in_the_last_24_hours&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">              &#34;hyear&#34;: [&#34;2024&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">              &#34;hmonth&#34;: [&#34;06&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">              &#34;hday&#34;: [&#34;10&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">              &#34;data_format&#34;: &#34;netcdf&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">              &#34;download_format&#34;: &#34;unarchived&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">              &#34;area&#34;: [44.2, 12.2, 44.1, 12.3]
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">            }</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#78787e"># Named parameters must include the optional ones preceding the last one provided</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">variable</span>: <span style="color:#ff6ac1">null</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#78787e"># Optional: where the downloaded data is cached, by default in the user cache directory</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ff6ac1">cacheDirectory</span>: build/copernicus-cache
+</span></span><span style="display:flex;"><span>      <span style="color:#ff6ac1">timeScale</span>: PT1H
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">deployments</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">type</span>: Circle
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">parameters</span>: [<span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">44.14</span>, <span style="color:#ff9f43">12.24</span>, <span style="color:#ff9f43">0.01</span>]
+</span></span></code></pre></div></div>
+</div>
+<p>The same scenario, written with the Kotlin DSL:</p>
+
+<script>
+
+
+function onClick(element) {
+    var content = $(element).parent().find(".expand-content");
+    var chevron = $(element).find(".fas");
+    if (content.css("display") === "none") {
+        chevron.removeClass("fa-chevron-right");
+        chevron.addClass("fa-chevron-down");
+        content.slideDown(100);
+    } else {
+        chevron.removeClass("fa-chevron-down");
+        chevron.addClass("fa-chevron-right");
+        content.slideUp(100);
+    }
+}
+</script>
+<div class="expand">
+    <a class="expand-label" onclick="onClick(this)"> 
+        <span class="fas fa-chevron-right"></span>
+        <strong>Click to show / hide code</strong>
+    </a>
+    <div class="expand-content" style="display: none;"><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> it.unibo.alchemist.boundary.kotlindsl.simulationOnMap
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> it.unibo.alchemist.model.geogrid.layers.doubleGriddedGeoLayer
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> it.unibo.alchemist.model.geogrid.snapshots.CopernicusData
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>simulationOnMap(ProtelisIncarnation()) {
+</span></span><span style="display:flex;"><span>    environment(oSMEnvironment(<span style="color:#5af78e">&#34;maps/cesena.pbf&#34;</span>)) {
+</span></span><span style="display:flex;"><span>        layer(
+</span></span><span style="display:flex;"><span>            <span style="color:#5af78e">&#34;river-discharge&#34;</span>,
+</span></span><span style="display:flex;"><span>            doubleGriddedGeoLayer(
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">data</span> = CopernicusData(
+</span></span><span style="display:flex;"><span>                    <span style="color:#78787e">// The datastore API: CDS, EWDS, or ADS
+</span></span></span><span style="display:flex;"><span>                    endpoint = <span style="color:#5af78e">&#34;https://ewds.climate.copernicus.eu/api&#34;</span>,
+</span></span><span style="display:flex;"><span>                    dataset = <span style="color:#5af78e">&#34;cems-glofas-historical&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#78787e">// The request, as shown by the &#34;API request&#34; section of the dataset download form
+</span></span></span><span style="display:flex;"><span>                    inputs = <span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                        {
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                          &#34;system_version&#34;: [&#34;version_4_0&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                          &#34;hydrological_model&#34;: [&#34;lisflood&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                          &#34;product_type&#34;: [&#34;consolidated&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                          &#34;variable&#34;: [&#34;river_discharge_in_the_last_24_hours&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                          &#34;hyear&#34;: [&#34;2024&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                          &#34;hmonth&#34;: [&#34;06&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                          &#34;hday&#34;: [&#34;10&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                          &#34;data_format&#34;: &#34;netcdf&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                          &#34;download_format&#34;: &#34;unarchived&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                          &#34;area&#34;: [44.2, 12.2, 44.1, 12.3]
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                        }
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                    &#34;&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#78787e">// Optional: where the downloaded data is cached, by default in the user cache directory
+</span></span></span><span style="display:flex;"><span>                    cacheDirectory = <span style="color:#5af78e">&#34;build/copernicus-cache&#34;</span>,
+</span></span><span style="display:flex;"><span>                ),
+</span></span><span style="display:flex;"><span>                timeScale = <span style="color:#5af78e">&#34;PT1H&#34;</span>,
+</span></span><span style="display:flex;"><span>            ),
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        deployments {
+</span></span><span style="display:flex;"><span>            deploy(circle(<span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">44.14</span>, <span style="color:#ff9f43">12.24</span>, <span style="color:#ff9f43">0.01</span>))
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
+</div>
+<p>The parameters of <code>CopernicusData</code> describing the request are:</p>
+<ul>
+<li><code>endpoint</code>: the base URL of the data store API, e.g., <code>https://cds.climate.copernicus.eu/api</code>
+for the Climate Data Store, <code>https://ewds.climate.copernicus.eu/api</code> for the Early Warning Data Store,
+or <code>https://ads.atmosphere.copernicus.eu/api</code> for the Atmosphere Data Store;</li>
+<li><code>dataset</code>: the identifier of the dataset, as shown in its page on the data store
+(e.g., <code>cems-glofas-historical</code>);</li>
+<li><code>inputs</code>: the request, passed as is to the data store, written in one of three ways:
+<ul>
+<li>as a JSON string, as in the examples above;</li>
+<li>as a JSON file, among the classpath resources or, if not there, on the file system;</li>
+<li>as a mapping, written in YAML or as a <code>Map</code> in the Kotlin DSL.</li>
+</ul>
+</li>
+</ul>
+<p>The easiest way to write the request is to compose it in the <em>Download</em> tab of the dataset page,
+and to copy the <code>request</code> dictionary shown in the <em>API request</em> section at the bottom of the page,
+as in the examples above.</p>
+<p>A string is read as a file if there is a file with that name, and as JSON otherwise.</p>
+
+<details open class=" box cstyle notices note">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-exclamation-circle"></i> 
+    Requests with a type field
+  </summary>
+  <div class="box-content">
+<p>Requests of some datasets have a <code>type</code> field,
+which would clash with the <code>type</code> keyword that Alchemist uses to
+<a href="../../../../reference/yaml/index.html#arbitrary-class-loading-system">load classes</a>,
+so these requests cannot be written as YAML mappings:
+write them as a JSON string, e.g., in a block scalar (<code>|</code>) as in the example above, or in a JSON file.</p>
+  </div>
+</details>
+<h3 id="credentials">Credentials</h3>
+<p>Data stores require an account and the acceptance of the dataset license.
+<code>CopernicusData</code> reads the API token from a <code>.cdsapirc</code> file,
+the same used by the <a href="https://cds.climate.copernicus.eu/how-to-api" rel="external">official ECMWF client</a>,
+by default in the user&rsquo;s home directory:</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>url: https://cds.climate.copernicus.eu/api
+</span></span><span style="display:flex;"><span>key: &lt;your-personal-access-token&gt;</span></span></code></pre></div>
+<p>Only the <code>key</code> line is read, as the data store is selected by the <code>endpoint</code> parameter:
+the same token is valid on all the Copernicus data stores.
+A different file can be selected with the <code>cdsApiRcFile</code> parameter.
+The token is read only when the data must be downloaded:
+simulations finding their data in cache need no credentials.</p>
+<h3 id="caching">Caching</h3>
+<p>Each request is cached in its own directory, named after the dataset and a hash of the whole request,
+so that changing any detail of the request (dates, area, variables, &hellip;) produces a different entry.
+By default, the cache is in the user&rsquo;s cache directory
+(e.g., <code>~/.cache/alchemist/copernicus</code> on Linux),
+and the <code>cacheDirectory</code> parameter selects a different one.
+Entries appear only once their data is complete:
+an interrupted download leaves no entry behind,
+and simulations running in parallel wait for each other instead of downloading the same data twice.</p>
+<p>Cached entries are never refreshed:
+to download the data again, for instance because the data store published a revised version,
+delete the corresponding entry from the cache directory.</p>
+<h3 id="other-parameters">Other parameters</h3>
+<p>In YAML, named parameters must include all the optional parameters preceding the last one provided
+(hence <code>variable: null</code> in the example above); the Kotlin DSL has no such restriction.</p>
+<ul>
+<li><code>variable</code>: the variable to read in the downloaded files,
+auto-detected when they hold only one (as in <code>GridsFromDirectory</code>);</li>
+<li><code>providerTimeout</code>: how long, in ISO-8601, to wait for the data store to prepare the data
+(by default, <code>PT30M</code>).
+Large requests may spend a long time in the data store queue.</li>
+</ul>
+<h2 id="interpolation-and-conversion">Interpolation and conversion</h2>
+<p>Values are interpolated first in space, within the two grids around the current time,
+then in time, between the two results.
+The <code>spatialInterpolation</code> parameter can be
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.geogrid.spatialinterpolations/-bilinear-interpolation/"><code>BilinearInterpolation</code></a> (the default) or
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.geogrid.spatialinterpolations/-nearest-interpolation/"><code>NearestInterpolation</code></a>;
+the <code>temporalInterpolation</code> parameter can be
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.geogrid.temporalinterpolations/-linear-interpolation/"><code>LinearInterpolation</code></a> (the default),
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.geogrid.temporalinterpolations/-closest-interpolation/"><code>ClosestInterpolation</code></a>,
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.geogrid.temporalinterpolations/-previous-interpolation/"><code>PreviousInterpolation</code></a>, or
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.geogrid.temporalinterpolations/-next-interpolation/"><code>NextInterpolation</code></a>.</p>
+<p>Grid points with no data (e.g., river discharge far from rivers) are read as <code>NaN</code>.
+<a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.geogrid.layers/-double-gridded-geo-layer/"><code>DoubleGriddedGeoLayer</code></a> keeps them as they are,
+unless its <code>missingValue</code> parameter gives them another value (e.g., <code>missingValue: 0.0</code>).
+Layers of other types can be created with <a href="../../../../reference/kdoc/alchemist/it.unibo.alchemist.model.geogrid.layers/-gridded-geo-layer/"><code>GriddedGeoLayer</code></a>,
+whose <code>converter</code> turns interpolated values, <code>NaN</code> included, into the values of the layer.
+For categorical data, such as precipitation types or land cover classes,
+use nearest interpolation in space and closest, previous, or next in time,
+so that values of different categories never get blended.</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+<div style="white-space: nowrap;">
+    <div style="max-width: 100%; display: inline-block; ">
+        <img alt="The Alchemist Logo" src="../../../../images/logo.svg"/>
+    </div>
+</div>
+
+        </div>
+        <search><form action="../../../../search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="../../../../index.html"><a class="padding" href="../../../../index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="../../../../tutorials/index.html"><a class="padding" href="../../../../tutorials/index.html"><b>1. </b>Tutorials<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-e1e8c1e70c5500b49e8dda2dc550651a" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-url="../../../../howtos/index.html"><a class="padding" href="../../../../howtos/index.html"><b>2. </b>How-to Guides<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-435cd60099784c14f4922700a72c8414" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-url="../../../../howtos/preparation/index.html"><a class="padding" href="../../../../howtos/preparation/index.html">Preparation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-05a7aa1e02f595a8515eaf5fddae49d0" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-url="../../../../howtos/simulation/index.html"><a class="padding" href="../../../../howtos/simulation/index.html">Simulation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-a26b953c6b48aca0d7178891b0b41a46" class="collapsible-menu">
+            <li class="" data-nav-url="../../../../howtos/simulation/variables/index.html"><a class="padding" href="../../../../howtos/simulation/variables/index.html">Create reusable variables<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="../../../../howtos/simulation/repeatability/index.html"><a class="padding" href="../../../../howtos/simulation/repeatability/index.html">Ensure repeatability<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="../../../../howtos/simulation/cognitive/index.html"><a class="padding" href="../../../../howtos/simulation/cognitive/index.html">Cognitive Agents<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="../../../../howtos/simulation/link/index.html"><a class="padding" href="../../../../howtos/simulation/link/index.html">Create a network<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="parent alwaysopen " data-nav-url="../../../../howtos/simulation/layers/index.html"><a class="padding" href="../../../../howtos/simulation/layers/index.html">Create Layers<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-128f7aca8c6b6e202277050fd2f357ea" class="collapsible-menu">
+            <li class="active " data-nav-url="../../../../howtos/simulation/layers/copernicus/index.html"><a class="padding" href="../../../../howtos/simulation/layers/copernicus/index.html">Layers from gridded geographic data<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="alwaysopen " data-nav-url="../../../../howtos/simulation/environment/index.html"><a class="padding" href="../../../../howtos/simulation/environment/index.html">Create rich environments<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-78ff177690d583540f6337cef7b41250" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-url="../../../../howtos/simulation/deploy/index.html"><a class="padding" href="../../../../howtos/simulation/deploy/index.html">Deploy Nodes<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-9c8a515e5f4216ca4012ce17224ad5fe" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../../howtos/simulation/export/index.html"><a class="padding" href="../../../../howtos/simulation/export/index.html">Export data<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="../../../../howtos/simulation/graphql/index.html"><a class="padding" href="../../../../howtos/simulation/graphql/index.html">Monitor and Control Simulations through GraphQL<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="../../../../howtos/simulation/monitors/index.html"><a class="padding" href="../../../../howtos/simulation/monitors/index.html">Monitoring Simulations through Custom Output Monitors<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="alwaysopen " data-nav-url="../../../../howtos/simulation/program/index.html"><a class="padding" href="../../../../howtos/simulation/program/index.html">Program Nodes<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-881185bb06eb26e5d9600ffb8ac58acd" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../../howtos/simulation/smartcam/index.html"><a class="padding" href="../../../../howtos/simulation/smartcam/index.html">Smart cameras and drones<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="alwaysopen " data-nav-url="../../../../howtos/execution/index.html"><a class="padding" href="../../../../howtos/execution/index.html">Execution<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-ff11bb46a92f6091b030f80327596d4a" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-url="../../../../howtos/workarounds/index.html"><a class="padding" href="../../../../howtos/workarounds/index.html">Workarounds<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-e1fafaded981bb0df925dfa0fed664e6" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../../howtos/extensions/index.html"><a class="padding" href="../../../../howtos/extensions/index.html">Extending Alchemist<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="alwaysopen " data-nav-url="../../../../howtos/development/index.html"><a class="padding" href="../../../../howtos/development/index.html">Developing Alchemist<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-ba2020dc75d296655a8215407d2652ae" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-url="../../../../howtos/migration/index.html"><a class="padding" href="../../../../howtos/migration/index.html">Migration<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-da16353d90f78ef40426dec09666d630" class="collapsible-menu"></ul></li></ul></li>
+            <li class="" data-nav-url="../../../../explanation/index.html"><a class="padding" href="../../../../explanation/index.html"><b>3. </b>Explanation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-547d30965b8467ddcbfa08ec6013372a" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-url="../../../../reference/index.html"><a class="padding" href="../../../../reference/index.html"><b>4. </b>Reference<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-66002f201bef818664bb81aa67490c58" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <div class="nav-title padding">More</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="https://github.com/AlchemistSimulator/Alchemist"><a class="padding" href="https://github.com/AlchemistSimulator/Alchemist" rel="external"><i class='fab fa-fw fa-github'></i> GitHub repo<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="https://youtube.com/@alchemistsimulator"><a class="padding" href="https://youtube.com/@alchemistsimulator" rel="external"><i class='fab fa-youtube'></i> YouTube channel<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="../../../../showcase/"><a class="padding" href="../../../../showcase/"><i class='fas fa-fw fa-camera'></i> Use cases<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="../../../../license/"><a class="padding" href="../../../../license/"><i class='fas fa-balance-scale'></i> License<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="../../../../tags/"><a class="padding" href="../../../../tags/"><i class='fas fa-fw fa-tags'></i> Tags<i class="fa-fw fas fa-check read-icon"></i></a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><div class="padding">
+    <div><strong>Alchemist Simulator 50.0.0</strong></div>
+    <br>
+    <a
+        class="github-button"
+        href="https://github.com/AlchemistSimulator/Alchemist/releases/latest/"
+        data-icon="octicon-cloud-download" aria-label="Download Alchemist-full on GitHub"
+    >
+    Download
+    </a>
+    <a
+        class="github-button"
+        href="https://github.com/AlchemistSimulator/Alchemist"
+        data-icon="octicon-star"
+        data-show-count="true"
+        aria-label="Star McShelby/hugo-theme-relearn on GitHub"
+    >
+    Star
+    </a>
+    <a
+        class="github-button"
+        href="https://github.com/AlchemistSimulator/Alchemist/fork"
+        data-icon="octicon-repo-forked"
+        data-show-count="true"
+        aria-label="Fork McShelby/hugo-theme-relearn on GitHub"
+    >
+    Fork
+    </a>
+    <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn"><span class="fas fa-heart"></span></a> by <a href="https://gohugo.io/">Hugo</a></p>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+</div></div>
+      </div>
+    </aside>
+    <script src="../../../../js/js-yaml/js-yaml.min.js?1793904366" defer></script>
+    <script src="../../../../js/d3/d3-color.min.js?1793904366" defer></script>
+    <script src="../../../../js/d3/d3-dispatch.min.js?1793904366" defer></script>
+    <script src="../../../../js/d3/d3-drag.min.js?1793904366" defer></script>
+    <script src="../../../../js/d3/d3-ease.min.js?1793904366" defer></script>
+    <script src="../../../../js/d3/d3-interpolate.min.js?1793904366" defer></script>
+    <script src="../../../../js/d3/d3-selection.min.js?1793904366" defer></script>
+    <script src="../../../../js/d3/d3-timer.min.js?1793904366" defer></script>
+    <script src="../../../../js/d3/d3-transition.min.js?1793904366" defer></script>
+    <script src="../../../../js/d3/d3-zoom.min.js?1793904366" defer></script>
+    <script src="../../../../js/mermaid/mermaid.min.js?1793904366" defer></script>
+    <script>
+      window.relearn.themeUseMermaid = JSON.parse("{}");
+    </script>
+    <script src="../../../../js/clipboard/clipboard.min.js?1793904366" defer></script>
+    <script src="../../../../js/perfect-scrollbar/perfect-scrollbar.min.js?1793904366" defer></script>
+    <script src="../../../../js/theme.min.js?1793904366" defer></script>
+  </body>
+</html>
